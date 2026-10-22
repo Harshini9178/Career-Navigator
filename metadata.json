@@ -1,0 +1,6 @@
+{
+  "name": "Career Navigator",
+  "description": "An AI-powered technical career preparation and placement platform featuring real-time ATS resume scoring, improvement analysis, and interactive mock interviews with personalized communication and technical feedback.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

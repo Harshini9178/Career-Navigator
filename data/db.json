@@ -1,0 +1,3064 @@
+{
+  "users": [
+    {
+      "id": "admin-1",
+      "email": "admin@interviewai.com",
+      "name": "Lohith",
+      "picture": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=120",
+      "role": "admin",
+      "completedProfile": true
+    },
+    {
+      "id": "demo-student-1",
+      "email": "student@interviewai.com",
+      "name": "Trupti",
+      "picture": "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Electronics & Communication",
+      "skills": [
+        "C",
+        "HTML",
+        "CSS",
+        "Java script"
+      ],
+      "projects": [
+        "text to image generator",
+        "expense calculator"
+      ],
+      "targetRole": "system associate",
+      "experienceLevel": "Internship",
+      "completedProfile": true
+    },
+    {
+      "id": "usr-110523722880783682987",
+      "email": "lohithrc.cs23@gmail.com",
+      "name": "Lohith R C",
+      "picture": "https://lh3.googleusercontent.com/a/ACg8ocLUH6E7enBQ7iCj_kdpl0olZ3mbDSfiNXnxLX9plnzxvMtPzAY=s96-c",
+      "role": "student",
+      "completedProfile": true,
+      "skills": [
+        "HTML/CSS",
+        "JavaScript",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
+        "Express",
+        "SQL"
+      ],
+      "branch": "Computer Science",
+      "projects": [
+        "123"
+      ],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level"
+    },
+    {
+      "id": "test-1791817060069",
+      "email": "candidate-1791817060069@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791897010132",
+      "email": "candidate-1791897010132@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791897245227",
+      "email": "candidate-1791897245227@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791901323200",
+      "email": "candidate-1791901323200@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791901366456",
+      "email": "candidate-1791901366456@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791901392784",
+      "email": "candidate-1791901392784@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791903158671",
+      "email": "candidate-1791903158671@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791946411566",
+      "email": "candidate-1791946411567@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791946569795",
+      "email": "candidate-1791946569795@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791947266784",
+      "email": "candidate-1791947266784@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791947300723",
+      "email": "candidate-1791947300723@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791951160289",
+      "email": "candidate-1791951160289@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "usr-1791951546428-b9e0q",
+      "email": "harshinipatel03@gmail.com",
+      "name": "Harshinipatel03",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": true,
+      "skills": [
+        "java",
+        "python",
+        "react",
+        "vite"
+      ],
+      "branch": "Computer Science",
+      "projects": [
+        "text to image generator",
+        "weather app"
+      ],
+      "targetRole": "Full Stack developer",
+      "experienceLevel": "Entry Level"
+    },
+    {
+      "id": "test-1791985003162",
+      "email": "candidate-1791985003162@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791985033434",
+      "email": "candidate-1791985033434@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "usr-test-phone-1",
+      "email": "mobile_9876543210@careernavigator.app",
+      "name": "Alex Mobile",
+      "phone": "+91 9876543210",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "usr-1791985202884-phvz6",
+      "email": "candidate@example.com",
+      "name": "Test Candidate",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "test-1791987150442",
+      "email": "candidate-1791987150442@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791988501887",
+      "email": "candidate-1791988501887@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "usr-1791988567134-sr6yr",
+      "email": "unregistered@example.com",
+      "name": "Unregistered",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "usr-1791988644681-fl0v2",
+      "email": "priya.sharma@domain.edu",
+      "name": "Priya Sharma",
+      "password": "strongPassword123",
+      "phone": "+91 9876543219",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "test-1791995365896",
+      "email": "candidate-1791995365896@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791995752917",
+      "email": "candidate-1791995752917@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791995818111",
+      "email": "candidate-1791995818111@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791997680692",
+      "email": "candidate-1791997680692@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "usr-dup-1",
+      "email": "duplicate.test@careernavigator.app",
+      "name": "User One",
+      "passwordHash": "7543b01e23e7e8a1b40174449cb40429:c8fc74c2211895a274f5a0bcba4970b9dab00c8929633e6cc0b3da71c1b171caa9c3b5a3ed66296e4ac5efdd5e0c55e009cfd9640054a119bed79933e60ff59d",
+      "picture": "https://example.com/p1.png",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "usr-auth-success-1",
+      "email": "alex.success@careernavigator.app",
+      "name": "Alex Success",
+      "passwordHash": "e39c6a3b67c8c3055b8fae217088834b:bb5d18f03d285f652a378fb33410b9f90554e0611ecb910f7d53d4385bcac046c425ef1060a9263ce989a6779b1647ba578584e7c489553f4e774a439a0d93d0",
+      "picture": "https://example.com/p.png",
+      "role": "student",
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791998930886",
+      "email": "candidate-1791998930886@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791999456940",
+      "email": "candidate-1791999456940@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "usr-1791999560360-sxubi",
+      "email": "e2e_engineer_1791999560299@careernavigator.app",
+      "name": "E2E Software Engineer",
+      "password": "ProdReadyPassword2026!",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "usr-1791999636114-oflyh",
+      "email": "e2e_engineer_1791999635172@careernavigator.app",
+      "name": "E2E Software Engineer",
+      "passwordHash": "6161e80fa8078b37d60af4fcc3067954:44798e45e24d97fc983617fa8f787a9f8f18f792cb573c1e86f2221a486634e5db566c15e225d17dab75277dd1c2508340e186445981d206af2618b7c66329ff",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "usr-1791999820233-ztjyf",
+      "email": "e2e_engineer_1791999819534@careernavigator.app",
+      "name": "E2E Software Engineer",
+      "passwordHash": "0e80469f769e5911f82e48079b2e6780:3f759e8a6f8cbbf31e140afd29dbde8d95cb9a5b9b80badadfacd98cc7670a20471aa5474d5a1d7d673c7d973810a5f8686713912d8a5fd083372cc4eedcae6c",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "test-1791999833625",
+      "email": "candidate-1791999833625@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791999913609",
+      "email": "candidate-1791999913609@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1791999990269",
+      "email": "candidate-1791999990269@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1792596949472",
+      "email": "candidate-1792596949472@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "usr-1792673960517-jvb3e",
+      "email": "hharshini857@gmail.com",
+      "name": "Harshini R B",
+      "passwordHash": "b0f787b0c647171370172ed42e590a9b:b42547109fea785db1e893ebd983df756c8455b7a36f01f165609e3775a30ae0b2fd4bcea8c13de13b73bf2c02404b96a70bd4f62bd879531b7f98c241f78c76",
+      "phone": "+91 918073089178",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": true,
+      "skills": [
+        "React",
+        "c",
+        "java"
+      ],
+      "targetRole": "Full Stack Engineer",
+      "branch": "Computer Science",
+      "projects": [
+        "weather prediction",
+        "text to image"
+      ],
+      "experienceLevel": "Entry Level"
+    },
+    {
+      "id": "test-1792674625705",
+      "email": "candidate-1792674625705@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "InterviewAI"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1792674978109",
+      "email": "candidate-1792674978109@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "Career Navigator"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1792675858796",
+      "email": "candidate-1792675858796@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "Career Navigator"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "usr-1792677343215-zwpqa",
+      "email": "testuser123@example.com",
+      "name": "Test User",
+      "passwordHash": "1a0e5a141c9f981f809577d5c0cdaf1f:1f9a0df286e6366ed9bc29d0dfc1b7689a40200578058db98e573031cb35b91b41b2f21d61d277b34235a78a4e83c49e59ec2daf9497996cf16a54c352d4547c",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "test-1792677976391",
+      "email": "candidate-1792677976391@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "Career Navigator"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "test-1792678008120",
+      "email": "candidate-1792678008120@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "Career Navigator"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "usr-test-1792678009553",
+      "email": "candidate.1792678009553@careernavigator.app",
+      "name": "Jane Candidate",
+      "passwordHash": "e499d1c2cf8e333223001ccfd4b137c6:1f06ecba30b2f4c1b2e6efbbcbd8728878434d1b7983436a2b96876f264dbafd9be6020ccdf4b56d95b645d16bdcdeb725b81011eb99b5dd07d7cef6d6dcb3df",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "usr-1792678131346-ntc90",
+      "email": "sarah.connor.1792678131187@careernavigator.app",
+      "name": "Sarah Connor",
+      "passwordHash": "78a3796fa89bc9aeb3eb20f005791898:f6c87aa94d44d703ae1d987a05f4598a9179452fd61db44067892cbf31e4e54299a860bbd706526005f2d934843c06da1f62125cb27dd1384caa46ee17258830",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "test-1792678284568",
+      "email": "candidate-1792678284571@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "Career Navigator"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "usr-test-1792678287531",
+      "email": "candidate.1792678287531@careernavigator.app",
+      "name": "Jane Candidate",
+      "passwordHash": "15e26f22efe65ffcfa28d99f223760df:1e12c2d072464afd522850d51c4b7d38a25894da719fd1f3df995cc7d8842353c362e8cf754abffc6b03d7ddec99f121b4a313ae7f17e256f7aa8f5c560635d0",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "completedProfile": false
+    }
+  ],
+  "resumes": [
+    {
+      "id": "sim-res-pcr1waj35",
+      "userId": "demo-student-1",
+      "fileName": "HARSHINI_Resume_FS.pdf",
+      "uploadedAt": "2026-10-13T14:55:07.479Z",
+      "simulated": true,
+      "atsScore": 38,
+      "skills": [
+        "General Programming",
+        "Problem Solving"
+      ],
+      "missingSections": [
+        "Contact Information",
+        "Professional Summary",
+        "Education",
+        "Technical Skills",
+        "Projects",
+        "Work Experience / Internships",
+        "Certifications"
+      ],
+      "suggestions": [
+        "Add a distinct \"Contact Information\" section to ensure your resume passes ATS automated category parsers.",
+        "Substantiate your achievements with quantifiable results (e.g. \"improved query performance by 25%\" or \"servicing 10k+ requests\").",
+        "Expand your Technical Competencies section with core industry tools, libraries, and frameworks.",
+        "Format your project bullets using the STAR method: Start each line with strong verbs like Engineered, Optimized, or Deployed.",
+        "Keep technical headings formatted in standard Title Case to assist scanner keyword identification."
+      ],
+      "grammarIssues": [
+        "Header warning: No email address detected in candidate contact section.",
+        "Styling issue: Low action-verb density. Begin project bullet points with active verbs rather than passive statements.",
+        "Impact warning: Absence of measurable metrics (%, ms, user scale) to substantiate project accomplishments.",
+        "Length warning: Resume text is very brief (under 100 words). Expand your project and work descriptions."
+      ],
+      "keywords": [
+        {
+          "keyword": "JavaScript",
+          "match": false
+        },
+        {
+          "keyword": "TypeScript",
+          "match": false
+        },
+        {
+          "keyword": "Python",
+          "match": false
+        },
+        {
+          "keyword": "Java",
+          "match": false
+        },
+        {
+          "keyword": "C++",
+          "match": false
+        },
+        {
+          "keyword": "C# / .NET",
+          "match": false
+        },
+        {
+          "keyword": "Go",
+          "match": false
+        },
+        {
+          "keyword": "Rust",
+          "match": false
+        },
+        {
+          "keyword": "HTML/CSS",
+          "match": false
+        },
+        {
+          "keyword": "React",
+          "match": false
+        }
+      ],
+      "improvementsToAdd": [
+        "Cloud & Containerization context (Docker, AWS, Kubernetes, or Vercel)",
+        "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)",
+        "Testing paradigms and frameworks (Unit testing, Vitest, Cypress, or Integration tests)"
+      ],
+      "improvementsToRemove": [
+        "Vague non-technical introductory claims (e.g., \"Hardworking team player looking for an opportunity\")",
+        "Unstructured lists of high-school accomplishments or non-technical secondary coursework"
+      ]
+    },
+    {
+      "id": "sim-res-n9tqe902d",
+      "userId": "usr-110523722880783682987",
+      "fileName": "lohith resume.pdf",
+      "uploadedAt": "2026-07-15T09:10:41.041Z",
+      "simulated": true,
+      "atsScore": 95,
+      "skills": [
+        "HTML/CSS",
+        "JavaScript",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
+        "Express",
+        "SQL",
+        "Git"
+      ],
+      "missingSections": [
+        "Professional Summary",
+        "Industry Certifications",
+        "Contact Address"
+      ],
+      "suggestions": [
+        "Add a brief Professional Summary section right at the top of your resume stating your engineering discipline and career alignment.",
+        "Improve bullet point structure by using the action-verb-first rule (e.g., replace \"Was responsible for coding\" with \"Engineered and refactored core interfaces\").",
+        "Incorporate specific metrics and business results into project bullet points (e.g., \"reducing database call latency by 12%\").",
+        "Add a dedicated Certifications or Coursera/Udemy section if you have external technical credentials."
+      ],
+      "grammarIssues": [
+        "Inconsistent formatting detected for dates (some sections use \"Jan 2026\" while others use \"01/2026\").",
+        "Ensure proper title case is utilized for all technical headers."
+      ],
+      "keywords": [
+        {
+          "keyword": "React.js",
+          "match": true
+        },
+        {
+          "keyword": "Node.js / Express",
+          "match": true
+        },
+        {
+          "keyword": "RESTful API Engineering",
+          "match": true
+        },
+        {
+          "keyword": "CI/CD Pipelines (Docker, Git)",
+          "match": true
+        },
+        {
+          "keyword": "Relational Database (SQL/Postgres)",
+          "match": true
+        }
+      ],
+      "improvementsToAdd": [
+        "Cloud deployment context (AWS / Google Cloud / Vercel)",
+        "TypeScript declaration files and type safety practices",
+        "Relational schema design or Object Relational Mapping (ORM) mentions"
+      ],
+      "improvementsToRemove": [
+        "Outdated high-school accomplishments and grade cards",
+        "Extraneous hobbies that do not relate to engineering competencies"
+      ]
+    },
+    {
+      "id": "sim-res-ob5c7f8hc",
+      "userId": "usr-1791951546428-b9e0q",
+      "fileName": "HARSHINI_Resume_DA.pdf",
+      "targetRole": "Full Stack Engineer",
+      "uploadedAt": "2026-10-15T18:11:43.726Z",
+      "simulated": true,
+      "atsScore": 68,
+      "categoryBreakdown": [
+        {
+          "category": "Section Completeness",
+          "score": 17,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Detected 6 of 7 core structural sections. Missing: Work Experience / Internships."
+        },
+        {
+          "category": "Technical Skills & Density",
+          "score": 25,
+          "maxScore": 25,
+          "weight": 25,
+          "reason": "Found 6 verified technologies in resume text."
+        },
+        {
+          "category": "Experience & Project Depth",
+          "score": 13,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Found 1 action verbs across project and work bullet points."
+        },
+        {
+          "category": "Quantified Impact & Metrics",
+          "score": 0,
+          "maxScore": 15,
+          "weight": 15,
+          "reason": "Found 0 measurable metrics/outcomes."
+        },
+        {
+          "category": "Contact Information",
+          "score": 3,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Contact points evaluated (Email: ✗, Phone: ✓, Links: ✗)."
+        },
+        {
+          "category": "Readability & Structure",
+          "score": 10,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Document contains 315 words with formatted section spacing."
+        }
+      ],
+      "skills": [
+        "Python",
+        "Java",
+        "SQL",
+        "MySQL",
+        "MongoDB",
+        "Git / GitHub"
+      ],
+      "detectedSections": [
+        "Contact Information",
+        "Professional Summary",
+        "Education",
+        "Technical Skills",
+        "Projects",
+        "Certifications"
+      ],
+      "missingSections": [
+        "Work Experience / Internships"
+      ],
+      "sectionDetails": [
+        {
+          "sectionName": "Contact Information",
+          "detected": true,
+          "evidence": "Contextual match: \"91-8073089178\"",
+          "confidence": 0.75
+        },
+        {
+          "sectionName": "Professional Summary",
+          "detected": true,
+          "evidence": "Found heading: \"SUMMARY\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Education",
+          "detected": true,
+          "evidence": "Found heading: \"EDUCATION\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Technical Skills",
+          "detected": true,
+          "evidence": "Found heading: \"SKILLS\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Projects",
+          "detected": true,
+          "evidence": "Found heading: \"PROJECT\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Work Experience / Internships",
+          "detected": false,
+          "confidence": 0
+        },
+        {
+          "sectionName": "Certifications",
+          "detected": true,
+          "evidence": "Found heading: \"CERTIFICATIONS\"",
+          "confidence": 0.95
+        }
+      ],
+      "suggestions": [
+        "Add a distinct \"Work Experience / Internships\" section to pass automated category parsers.",
+        "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed.",
+        "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\").",
+        "Resume demonstrates strong keyword and competency alignment with Full Stack Engineer standards."
+      ],
+      "grammarIssues": [
+        "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.",
+        "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.",
+        "Header warning: No email address detected in candidate contact section."
+      ],
+      "keywords": [
+        {
+          "keyword": "JavaScript",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "TypeScript",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Python",
+          "match": true,
+          "count": 9,
+          "density": 2.86
+        },
+        {
+          "keyword": "Java",
+          "match": true,
+          "count": 1,
+          "density": 0.32
+        },
+        {
+          "keyword": "C++",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "C# / .NET",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Go",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Rust",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "HTML/CSS",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "React",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Node.js",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Express.js",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "SQL",
+          "match": true,
+          "count": 2,
+          "density": 0.63
+        },
+        {
+          "keyword": "PostgreSQL",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "MySQL",
+          "match": true,
+          "count": 1,
+          "density": 0.32
+        },
+        {
+          "keyword": "MongoDB",
+          "match": true,
+          "count": 1,
+          "density": 0.32
+        },
+        {
+          "keyword": "REST APIs",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "GraphQL",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Git / GitHub",
+          "match": true,
+          "count": 2,
+          "density": 0.63
+        },
+        {
+          "keyword": "Docker",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Kubernetes",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "AWS",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Google Cloud / GCP",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "CI/CD",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Unit Testing",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Jest / Vitest / Cypress",
+          "match": false,
+          "count": 0,
+          "density": 0
+        }
+      ],
+      "improvementsToAdd": [
+        "Cloud & Containerization context (Docker, AWS, Kubernetes, or Vercel)",
+        "Testing paradigms and frameworks (Unit testing, Vitest, Jest, or Cypress)"
+      ],
+      "improvementsToRemove": [
+        "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")",
+        "Non-technical high school coursework or obsolete computer package references"
+      ],
+      "contentHash": "4ac2f892",
+      "wordCount": 315
+    },
+    {
+      "id": "res-alice-1",
+      "userId": "user-alice-123",
+      "fileName": "alice.pdf",
+      "uploadedAt": "2026-10-22T14:11:24.832Z",
+      "atsScore": 49,
+      "categoryBreakdown": [
+        {
+          "category": "Section Completeness",
+          "score": 17,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Detected 6 of 7 core structural sections. Missing: Certifications."
+        },
+        {
+          "category": "Technical Skills & Density",
+          "score": 13,
+          "maxScore": 25,
+          "weight": 25,
+          "reason": "Found 3 verified technologies in resume text."
+        },
+        {
+          "category": "Experience & Project Depth",
+          "score": 10,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Found 0 action verbs across project and work bullet points."
+        },
+        {
+          "category": "Quantified Impact & Metrics",
+          "score": 0,
+          "maxScore": 15,
+          "weight": 15,
+          "reason": "Found 0 measurable metrics/outcomes."
+        },
+        {
+          "category": "Contact Information",
+          "score": 7,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Contact points evaluated (Email: ✓, Phone: ✓, Links: ✗)."
+        },
+        {
+          "category": "Readability & Structure",
+          "score": 2,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Document contains 27 words with formatted section spacing."
+        }
+      ],
+      "detectedSections": [
+        "Contact Information",
+        "Professional Summary",
+        "Education",
+        "Technical Skills",
+        "Projects",
+        "Work Experience / Internships"
+      ],
+      "missingSections": [
+        "Certifications"
+      ],
+      "sectionDetails": [
+        {
+          "sectionName": "Contact Information",
+          "detected": true,
+          "evidence": "Contextual match: \"alice@test.org\"",
+          "confidence": 0.75
+        },
+        {
+          "sectionName": "Professional Summary",
+          "detected": true,
+          "evidence": "Found heading: \"SUMMARY: Senior Python Engineer.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Education",
+          "detected": true,
+          "evidence": "Found heading: \"EDUCATION: B.S. CS 2020.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Technical Skills",
+          "detected": true,
+          "evidence": "Found heading: \"SKILLS: Python, Django, PostgreSQL.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Projects",
+          "detected": true,
+          "evidence": "Found heading: \"PROJECTS: API Gateway.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Work Experience / Internships",
+          "detected": true,
+          "evidence": "Found heading: \"WORK EXPERIENCE: Software Engineer at PyCorp (2020-Present).\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Certifications",
+          "detected": false,
+          "confidence": 0
+        }
+      ],
+      "skills": [
+        "Python",
+        "PostgreSQL",
+        "REST APIs"
+      ],
+      "keywords": [
+        {
+          "keyword": "JavaScript",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "TypeScript",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "Python",
+          "match": true,
+          "count": 2,
+          "density": 7.41,
+          "category": "Languages",
+          "aliases": [
+            "python"
+          ]
+        },
+        {
+          "keyword": "Java",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "C++",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "C# / .NET",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "Go",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "Rust",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "HTML/CSS",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "React",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Frameworks",
+          "aliases": []
+        },
+        {
+          "keyword": "Node.js",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Frameworks",
+          "aliases": []
+        },
+        {
+          "keyword": "Express.js",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Frameworks",
+          "aliases": []
+        },
+        {
+          "keyword": "SQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "PostgreSQL",
+          "match": true,
+          "count": 1,
+          "density": 3.7,
+          "category": "Databases & APIs",
+          "aliases": [
+            "postgresql"
+          ]
+        },
+        {
+          "keyword": "MySQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "MongoDB",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "REST APIs",
+          "match": true,
+          "count": 1,
+          "density": 3.7,
+          "category": "Databases & APIs",
+          "aliases": [
+            "api"
+          ]
+        },
+        {
+          "keyword": "GraphQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "Git / GitHub",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Docker",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Kubernetes",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "AWS",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Google Cloud / GCP",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "CI/CD",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Unit Testing",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Testing & Tools",
+          "aliases": []
+        },
+        {
+          "keyword": "Jest / Vitest / Cypress",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Testing & Tools",
+          "aliases": []
+        }
+      ],
+      "suggestions": [
+        "Add a distinct \"Certifications\" section to pass automated category parsers.",
+        "Expand your Technical Skills inventory with primary programming languages, frameworks, and databases.",
+        "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed.",
+        "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\")."
+      ],
+      "grammarIssues": [
+        "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.",
+        "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.",
+        "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions."
+      ],
+      "improvementsToAdd": [
+        "Cloud & Containerization context (Docker, AWS, Kubernetes, or Vercel)",
+        "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)",
+        "Testing paradigms and frameworks (Unit testing, Vitest, Jest, or Cypress)"
+      ],
+      "improvementsToRemove": [
+        "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")",
+        "Non-technical high school coursework or obsolete computer package references"
+      ],
+      "wordCount": 27,
+      "contentHash": "da962907"
+    },
+    {
+      "id": "res-bob-1",
+      "userId": "user-bob-456",
+      "fileName": "bob.pdf",
+      "uploadedAt": "2026-10-22T14:11:24.833Z",
+      "atsScore": 49,
+      "categoryBreakdown": [
+        {
+          "category": "Section Completeness",
+          "score": 17,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Detected 6 of 7 core structural sections. Missing: Certifications."
+        },
+        {
+          "category": "Technical Skills & Density",
+          "score": 13,
+          "maxScore": 25,
+          "weight": 25,
+          "reason": "Found 3 verified technologies in resume text."
+        },
+        {
+          "category": "Experience & Project Depth",
+          "score": 10,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Found 0 action verbs across project and work bullet points."
+        },
+        {
+          "category": "Quantified Impact & Metrics",
+          "score": 0,
+          "maxScore": 15,
+          "weight": 15,
+          "reason": "Found 0 measurable metrics/outcomes."
+        },
+        {
+          "category": "Contact Information",
+          "score": 7,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Contact points evaluated (Email: ✓, Phone: ✓, Links: ✗)."
+        },
+        {
+          "category": "Readability & Structure",
+          "score": 2,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Document contains 28 words with formatted section spacing."
+        }
+      ],
+      "detectedSections": [
+        "Contact Information",
+        "Professional Summary",
+        "Education",
+        "Technical Skills",
+        "Projects",
+        "Work Experience / Internships"
+      ],
+      "missingSections": [
+        "Certifications"
+      ],
+      "sectionDetails": [
+        {
+          "sectionName": "Contact Information",
+          "detected": true,
+          "evidence": "Contextual match: \"bob@test.org\"",
+          "confidence": 0.75
+        },
+        {
+          "sectionName": "Professional Summary",
+          "detected": true,
+          "evidence": "Found heading: \"SUMMARY: Frontend React Specialist.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Education",
+          "detected": true,
+          "evidence": "Found heading: \"EDUCATION: B.S. SE 2021.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Technical Skills",
+          "detected": true,
+          "evidence": "Found heading: \"SKILLS: React, TypeScript, HTML, CSS.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Projects",
+          "detected": true,
+          "evidence": "Found heading: \"PROJECTS: Dashboard UI.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Work Experience / Internships",
+          "detected": true,
+          "evidence": "Found heading: \"WORK EXPERIENCE: Frontend Dev at Reactify (2021-Present).\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Certifications",
+          "detected": false,
+          "confidence": 0
+        }
+      ],
+      "skills": [
+        "TypeScript",
+        "HTML/CSS",
+        "React"
+      ],
+      "keywords": [
+        {
+          "keyword": "JavaScript",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "TypeScript",
+          "match": true,
+          "count": 1,
+          "density": 3.57,
+          "category": "Languages",
+          "aliases": [
+            "typescript"
+          ]
+        },
+        {
+          "keyword": "Python",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "Java",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "C++",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "C# / .NET",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "Go",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "Rust",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "HTML/CSS",
+          "match": true,
+          "count": 2,
+          "density": 7.14,
+          "category": "Languages",
+          "aliases": [
+            "html",
+            "css"
+          ]
+        },
+        {
+          "keyword": "React",
+          "match": true,
+          "count": 2,
+          "density": 7.14,
+          "category": "Frameworks",
+          "aliases": [
+            "react"
+          ]
+        },
+        {
+          "keyword": "Node.js",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Frameworks",
+          "aliases": []
+        },
+        {
+          "keyword": "Express.js",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Frameworks",
+          "aliases": []
+        },
+        {
+          "keyword": "SQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "PostgreSQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "MySQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "MongoDB",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "REST APIs",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "GraphQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "Git / GitHub",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Docker",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Kubernetes",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "AWS",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Google Cloud / GCP",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "CI/CD",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Unit Testing",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Testing & Tools",
+          "aliases": []
+        },
+        {
+          "keyword": "Jest / Vitest / Cypress",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Testing & Tools",
+          "aliases": []
+        }
+      ],
+      "suggestions": [
+        "Add a distinct \"Certifications\" section to pass automated category parsers.",
+        "Expand your Technical Skills inventory with primary programming languages, frameworks, and databases.",
+        "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed.",
+        "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\")."
+      ],
+      "grammarIssues": [
+        "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.",
+        "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.",
+        "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions."
+      ],
+      "improvementsToAdd": [
+        "Cloud & Containerization context (Docker, AWS, Kubernetes, or Vercel)",
+        "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)",
+        "Testing paradigms and frameworks (Unit testing, Vitest, Jest, or Cypress)"
+      ],
+      "improvementsToRemove": [
+        "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")",
+        "Non-technical high school coursework or obsolete computer package references"
+      ],
+      "wordCount": 28,
+      "contentHash": "f2b21c7a"
+    },
+    {
+      "id": "sim-res-znia3ve8v",
+      "userId": "demo-student-id",
+      "fileName": "john_stub.txt",
+      "targetRole": "Full Stack Engineer",
+      "uploadedAt": "2026-10-14T16:43:16.249Z",
+      "simulated": true,
+      "atsScore": 10,
+      "categoryBreakdown": [
+        {
+          "category": "Section Completeness",
+          "score": 6,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Detected 2 of 7 core structural sections. Missing: Contact Information, Professional Summary, Education, Projects, Certifications."
+        },
+        {
+          "category": "Technical Skills & Density",
+          "score": 4,
+          "maxScore": 25,
+          "weight": 25,
+          "reason": "Found 1 verified technologies in resume text."
+        },
+        {
+          "category": "Experience & Project Depth",
+          "score": 10,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Found 0 action verbs across project and work bullet points."
+        },
+        {
+          "category": "Quantified Impact & Metrics",
+          "score": 0,
+          "maxScore": 15,
+          "weight": 15,
+          "reason": "Found 0 measurable metrics/outcomes."
+        },
+        {
+          "category": "Contact Information",
+          "score": 0,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Contact points evaluated (Email: ✗, Phone: ✗, Links: ✗)."
+        },
+        {
+          "category": "Readability & Structure",
+          "score": 2,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Document contains 26 words with formatted section spacing."
+        }
+      ],
+      "skills": [
+        "HTML/CSS"
+      ],
+      "detectedSections": [
+        "Technical Skills",
+        "Work Experience / Internships"
+      ],
+      "missingSections": [
+        "Contact Information",
+        "Professional Summary",
+        "Education",
+        "Projects",
+        "Certifications"
+      ],
+      "sectionDetails": [
+        {
+          "sectionName": "Contact Information",
+          "detected": false,
+          "confidence": 0
+        },
+        {
+          "sectionName": "Professional Summary",
+          "detected": false,
+          "confidence": 0
+        },
+        {
+          "sectionName": "Education",
+          "detected": false,
+          "confidence": 0
+        },
+        {
+          "sectionName": "Technical Skills",
+          "detected": true,
+          "evidence": "Contextual match: \"HTML\"",
+          "confidence": 0.75
+        },
+        {
+          "sectionName": "Projects",
+          "detected": false,
+          "confidence": 0
+        },
+        {
+          "sectionName": "Work Experience / Internships",
+          "detected": true,
+          "evidence": "Contextual match: \"developer\"",
+          "confidence": 0.75
+        },
+        {
+          "sectionName": "Certifications",
+          "detected": false,
+          "confidence": 0
+        }
+      ],
+      "suggestions": [
+        "For Full Stack Engineer roles, highlight essential proficiencies such as react, next.js, typescript.",
+        "Add a distinct \"Contact Information\" section to pass automated category parsers.",
+        "Expand your Technical Skills inventory with primary programming languages, frameworks, and databases.",
+        "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed.",
+        "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\")."
+      ],
+      "grammarIssues": [
+        "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.",
+        "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.",
+        "Header warning: No email address detected in candidate contact section.",
+        "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions."
+      ],
+      "keywords": [
+        {
+          "keyword": "JavaScript",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "TypeScript",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Python",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Java",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "C++",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "C# / .NET",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Go",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Rust",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "HTML/CSS",
+          "match": true,
+          "count": 2,
+          "density": 7.69
+        },
+        {
+          "keyword": "React",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Node.js",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Express.js",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "SQL",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "PostgreSQL",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "MySQL",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "MongoDB",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "REST APIs",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "GraphQL",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Git / GitHub",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Docker",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Kubernetes",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "AWS",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Google Cloud / GCP",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "CI/CD",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Unit Testing",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Jest / Vitest / Cypress",
+          "match": false,
+          "count": 0,
+          "density": 0
+        }
+      ],
+      "improvementsToAdd": [
+        "react",
+        "next.js",
+        "typescript",
+        "Cloud & Containerization context (Docker, AWS, Kubernetes, or Vercel)",
+        "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)"
+      ],
+      "improvementsToRemove": [
+        "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")",
+        "Non-technical high school coursework or obsolete computer package references"
+      ],
+      "contentHash": "531c1fc6",
+      "wordCount": 26
+    },
+    {
+      "id": "sim-res-m217dmqfs",
+      "userId": "usr-1792673960517-jvb3e",
+      "fileName": "Chandana_MN_.._261014095441.pdf",
+      "targetRole": "Full Stack Engineer",
+      "uploadedAt": "2026-10-22T12:59:50.945Z",
+      "simulated": true,
+      "atsScore": 79,
+      "categoryBreakdown": [
+        {
+          "category": "Section Completeness",
+          "score": 17,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Detected 6 of 7 core structural sections. Missing: Certifications."
+        },
+        {
+          "category": "Technical Skills & Density",
+          "score": 25,
+          "maxScore": 25,
+          "weight": 25,
+          "reason": "Found 9 verified technologies in resume text."
+        },
+        {
+          "category": "Experience & Project Depth",
+          "score": 20,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Found 6 action verbs across project and work bullet points."
+        },
+        {
+          "category": "Quantified Impact & Metrics",
+          "score": 0,
+          "maxScore": 15,
+          "weight": 15,
+          "reason": "Found 0 measurable metrics/outcomes."
+        },
+        {
+          "category": "Contact Information",
+          "score": 7,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Contact points evaluated (Email: ✓, Phone: ✓, Links: ✗)."
+        },
+        {
+          "category": "Readability & Structure",
+          "score": 10,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Document contains 382 words with formatted section spacing."
+        }
+      ],
+      "skills": [
+        "JavaScript",
+        "Python",
+        "Java",
+        "HTML/CSS",
+        "React",
+        "Node.js",
+        "SQL",
+        "REST APIs",
+        "Git / GitHub"
+      ],
+      "detectedSections": [
+        "Contact Information",
+        "Professional Summary",
+        "Education",
+        "Technical Skills",
+        "Projects",
+        "Work Experience / Internships"
+      ],
+      "missingSections": [
+        "Certifications"
+      ],
+      "sectionDetails": [
+        {
+          "sectionName": "Contact Information",
+          "detected": true,
+          "evidence": "Contextual match: \"chandanamn199@gmail.com\"",
+          "confidence": 0.75
+        },
+        {
+          "sectionName": "Professional Summary",
+          "detected": true,
+          "evidence": "Found heading: \"CAREER GOAL\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Education",
+          "detected": true,
+          "evidence": "Found heading: \"EDUCATION\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Technical Skills",
+          "detected": true,
+          "evidence": "Found heading: \"TECHNICAL SKILLS\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Projects",
+          "detected": true,
+          "evidence": "Found heading: \"PROJECTS\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Work Experience / Internships",
+          "detected": true,
+          "evidence": "Contextual match: \"Developer\"",
+          "confidence": 0.75
+        },
+        {
+          "sectionName": "Certifications",
+          "detected": false,
+          "confidence": 0
+        }
+      ],
+      "suggestions": [
+        "Add a distinct \"Certifications\" section to pass automated category parsers.",
+        "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\").",
+        "Resume demonstrates strong keyword and competency alignment with Full Stack Engineer standards."
+      ],
+      "grammarIssues": [
+        "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments."
+      ],
+      "keywords": [
+        {
+          "keyword": "JavaScript",
+          "match": true,
+          "count": 2,
+          "density": 0.52
+        },
+        {
+          "keyword": "TypeScript",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Python",
+          "match": true,
+          "count": 7,
+          "density": 1.83
+        },
+        {
+          "keyword": "Java",
+          "match": true,
+          "count": 2,
+          "density": 0.52
+        },
+        {
+          "keyword": "C++",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "C# / .NET",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Go",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Rust",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "HTML/CSS",
+          "match": true,
+          "count": 4,
+          "density": 1.05
+        },
+        {
+          "keyword": "React",
+          "match": true,
+          "count": 1,
+          "density": 0.26
+        },
+        {
+          "keyword": "Node.js",
+          "match": true,
+          "count": 1,
+          "density": 0.26
+        },
+        {
+          "keyword": "Express.js",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "SQL",
+          "match": true,
+          "count": 2,
+          "density": 0.52
+        },
+        {
+          "keyword": "PostgreSQL",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "MySQL",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "MongoDB",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "REST APIs",
+          "match": true,
+          "count": 4,
+          "density": 1.05
+        },
+        {
+          "keyword": "GraphQL",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Git / GitHub",
+          "match": true,
+          "count": 6,
+          "density": 1.57
+        },
+        {
+          "keyword": "Docker",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Kubernetes",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "AWS",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Google Cloud / GCP",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "CI/CD",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Unit Testing",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Jest / Vitest / Cypress",
+          "match": false,
+          "count": 0,
+          "density": 0
+        }
+      ],
+      "improvementsToAdd": [
+        "Testing paradigms and frameworks (Unit testing, Vitest, Jest, or Cypress)"
+      ],
+      "improvementsToRemove": [
+        "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")",
+        "Non-technical high school coursework or obsolete computer package references"
+      ],
+      "contentHash": "cd14713d",
+      "wordCount": 382
+    }
+  ],
+  "interviews": [
+    {
+      "id": "int-1",
+      "userId": "demo-student-1",
+      "jobRole": "Full Stack Engineer",
+      "branch": "Computer Science",
+      "skills": [
+        "React",
+        "TypeScript",
+        "SQL"
+      ],
+      "experienceLevel": "Entry Level",
+      "status": "completed",
+      "questions": [
+        "Explain the virtual DOM and how React renders changes.",
+        "What is the difference between SQL and NoSQL databases?",
+        "Tell me about a challenging technical project you worked on."
+      ],
+      "currentQuestionIndex": 3,
+      "answers": [
+        {
+          "question": "Explain the virtual DOM and how React renders changes.",
+          "answer": "React creates an in-memory lightweight representation of the real DOM. When state updates, React builds a new virtual DOM tree, compares it with the previous one (diffing), and calculates the minimal updates to apply to the real DOM (reconciliation).",
+          "evaluation": {
+            "score": 9,
+            "feedback": "Excellent answer. You correctly covered both the diffing process and reconciliation.",
+            "technicalScore": 9,
+            "communicationScore": 9,
+            "confidenceScore": 8,
+            "grammar": "Perfect.",
+            "clarity": "Highly clear."
+          }
+        },
+        {
+          "question": "What is the difference between SQL and NoSQL databases?",
+          "answer": "SQL databases are relational, table-based, with fixed schemas and support ACID compliance. NoSQL are non-relational, document or key-value based, with dynamic schemas, designed for horizontal scalability.",
+          "evaluation": {
+            "score": 8,
+            "feedback": "Solid explanation of SQL vs NoSQL, clearly stating schemas and scalability models.",
+            "technicalScore": 8,
+            "communicationScore": 8,
+            "confidenceScore": 8,
+            "grammar": "Excellent.",
+            "clarity": "Clear."
+          }
+        },
+        {
+          "question": "Tell me about a challenging technical project you worked on.",
+          "answer": "I worked on a portfolio project where I had to sync state across views. It was challenging because I had prop drilling, so I implemented React Context to solve the complex prop propagation.",
+          "evaluation": {
+            "score": 7,
+            "feedback": "Good description of React Context. Try using the STAR method (Situation, Task, Action, Result) to format your story more impactfully next time.",
+            "technicalScore": 7,
+            "communicationScore": 8,
+            "confidenceScore": 7,
+            "grammar": "Minor phrasing issues.",
+            "clarity": "Understandable."
+          }
+        }
+      ],
+      "overallScore": 80,
+      "technicalScore": 80,
+      "communicationScore": 83,
+      "confidenceScore": 77,
+      "feedbackText": "Great overall performance Trupti! Your React and database theory is very strong. Continue working on structuring your behavioral/project-based answers using action-oriented frameworks like STAR.",
+      "suggestions": [
+        "Use the STAR framework for project-based questions.",
+        "Add more concrete metrics when explaining what you built (e.g., \"achieved 15% improvement\").",
+        "Slightly slow down your speaking pace to sound more composed and confident."
+      ],
+      "createdAt": "2026-07-09T17:51:03.802Z"
+    },
+    {
+      "id": "int-zcejl48rz",
+      "userId": "demo-student-1",
+      "jobRole": "Full Stack Engineer",
+      "branch": "Computer Science",
+      "skills": [
+        "React",
+        "JavaScript",
+        "SQL",
+        "TypeScript",
+        "Python",
+        "Node.js"
+      ],
+      "experienceLevel": "Entry Level",
+      "status": "started",
+      "questions": [
+        "How does Full Stack Engineer benefit from the key features of React? Explain with a real-world architectural example.",
+        "Explain your core project's software structure. How did you design database tables/schema and structure API endpoints for optimal payload transfer?",
+        "Describe a technical bug you encountered in one of your projects. What systematic steps did you execute to debug and resolve it?",
+        "If a team member strongly disagrees with your technical design approach for a critical placement assignment, how do you handle the conflict?",
+        "What is horizontal vs vertical scaling in server architecture? Which would you recommend for hosting a high-traffic e-commerce database, and why?"
+      ],
+      "currentQuestionIndex": 0,
+      "answers": [],
+      "createdAt": "2026-10-12T15:04:51.513Z"
+    },
+    {
+      "id": "int-o9qfrmhfx",
+      "userId": "demo-student-1",
+      "jobRole": "Full Stack Engineer",
+      "branch": "Computer Science",
+      "skills": [
+        "React",
+        "JavaScript",
+        "SQL",
+        "TypeScript",
+        "Python",
+        "Node.js"
+      ],
+      "experienceLevel": "Entry Level",
+      "status": "started",
+      "questions": [
+        "How does Full Stack Engineer benefit from the key features of React? Explain with a real-world architectural example.",
+        "Explain your core project's software structure. How did you design database tables/schema and structure API endpoints for optimal payload transfer?",
+        "Describe a technical bug you encountered in one of your projects. What systematic steps did you execute to debug and resolve it?",
+        "If a team member strongly disagrees with your technical design approach for a critical placement assignment, how do you handle the conflict?",
+        "What is horizontal vs vertical scaling in server architecture? Which would you recommend for hosting a high-traffic e-commerce database, and why?"
+      ],
+      "currentQuestionIndex": 0,
+      "answers": [],
+      "createdAt": "2026-10-13T13:16:25.510Z"
+    },
+    {
+      "id": "int-9ia6sygby",
+      "userId": "demo-student-1",
+      "jobRole": "Full Stack Engineer",
+      "branch": "Computer Science",
+      "skills": [
+        "React",
+        "JavaScript",
+        "SQL",
+        "TypeScript",
+        "Python",
+        "Node.js"
+      ],
+      "experienceLevel": "Entry Level",
+      "status": "started",
+      "questions": [
+        "How does Full Stack Engineer benefit from the key features of React? Explain with a real-world architectural example.",
+        "Regarding your frontend architecture, what specific profiling strategies or React memoization patterns would you apply to prevent unnecessary re-renders when broadcasting updates across complex component trees?",
+        "Explain your core project's software structure. How did you design database tables/schema and structure API endpoints for optimal payload transfer?",
+        "Describe a technical bug you encountered in one of your projects. What systematic steps did you execute to debug and resolve it?",
+        "If a team member strongly disagrees with your technical design approach for a critical placement assignment, how do you handle the conflict?",
+        "What is horizontal vs vertical scaling in server architecture? Which would you recommend for hosting a high-traffic e-commerce database, and why?"
+      ],
+      "currentQuestionIndex": 1,
+      "answers": [
+        {
+          "question": "How does Full Stack Engineer benefit from the key features of React? Explain with a real-world architectural example.",
+          "answer": "React uses a virtual DOM to optimize UI updates, efficiently reconciling differences before applying changes to the actual DOM. For state management, hooks like useState and useReducer or context can be used to handle application data flow.",
+          "evaluation": {
+            "score": 8,
+            "feedback": "Good detail. You explained the concepts clearly, structured your sentences logically, and demonstrated a practical understanding of the core subject.",
+            "technicalScore": 9,
+            "communicationScore": 9,
+            "confidenceScore": 8,
+            "grammar": "Grammatically sound. Good professional phrasing.",
+            "clarity": "Highly clear and understandable delivery.",
+            "wordsPerMinute": 130,
+            "fillerWordCount": 1,
+            "answerDurationSeconds": 35
+          }
+        }
+      ],
+      "createdAt": "2026-10-13T13:17:23.950Z",
+      "followUpQuestions": [
+        "Regarding your frontend architecture, what specific profiling strategies or React memoization patterns would you apply to prevent unnecessary re-renders when broadcasting updates across complex component trees?"
+      ]
+    },
+    {
+      "id": "int-d0sfzfep2",
+      "userId": "demo-student-1",
+      "jobRole": "Full Stack Engineer",
+      "branch": "Computer Science",
+      "skills": [
+        "React",
+        "JavaScript",
+        "SQL",
+        "TypeScript",
+        "Python",
+        "Node.js"
+      ],
+      "experienceLevel": "Entry Level",
+      "status": "started",
+      "questions": [
+        "How does Full Stack Engineer benefit from the key features of React? Explain with a real-world architectural example.",
+        "Regarding your frontend architecture, what specific profiling strategies or React memoization patterns would you apply to prevent unnecessary re-renders when broadcasting updates across complex component trees?",
+        "Explain your core project's software structure. How did you design database tables/schema and structure API endpoints for optimal payload transfer?",
+        "Describe a technical bug you encountered in one of your projects. What systematic steps did you execute to debug and resolve it?",
+        "If a team member strongly disagrees with your technical design approach for a critical placement assignment, how do you handle the conflict?",
+        "What is horizontal vs vertical scaling in server architecture? Which would you recommend for hosting a high-traffic e-commerce database, and why?"
+      ],
+      "currentQuestionIndex": 1,
+      "answers": [
+        {
+          "question": "How does Full Stack Engineer benefit from the key features of React? Explain with a real-world architectural example.",
+          "answer": "React uses a virtual DOM to optimize UI updates, efficiently reconciling differences before applying changes to the actual DOM. For state management, hooks like useState and useReducer or context can be used to handle application data flow.",
+          "evaluation": {
+            "score": 8,
+            "feedback": "Good detail. You explained the concepts clearly, structured your sentences logically, and demonstrated a practical understanding of the core subject.",
+            "technicalScore": 9,
+            "communicationScore": 9,
+            "confidenceScore": 8,
+            "grammar": "Grammatically sound. Good professional phrasing.",
+            "clarity": "Highly clear and understandable delivery.",
+            "wordsPerMinute": 130,
+            "fillerWordCount": 1,
+            "answerDurationSeconds": 35
+          }
+        }
+      ],
+      "createdAt": "2026-10-13T13:17:37.167Z",
+      "followUpQuestions": [
+        "Regarding your frontend architecture, what specific profiling strategies or React memoization patterns would you apply to prevent unnecessary re-renders when broadcasting updates across complex component trees?"
+      ]
+    },
+    {
+      "id": "int-xpwcac2l6",
+      "userId": "usr-1791951546428-b9e0q",
+      "jobRole": "Full Stack developer",
+      "branch": "Computer Science",
+      "skills": [
+        "java",
+        "python",
+        "react",
+        "vite"
+      ],
+      "experienceLevel": "Entry Level",
+      "status": "started",
+      "questions": [
+        "How does Full Stack developer benefit from the key features of java? Explain with a real-world architectural example.",
+        "Explain your core project's software structure. How did you design database tables/schema and structure API endpoints for optimal payload transfer?",
+        "Describe a technical bug you encountered in one of your projects. What systematic steps did you execute to debug and resolve it?",
+        "If a team member strongly disagrees with your technical design approach for a critical placement assignment, how do you handle the conflict?",
+        "What is horizontal vs vertical scaling in server architecture? Which would you recommend for hosting a high-traffic e-commerce database, and why?"
+      ],
+      "currentQuestionIndex": 0,
+      "answers": [],
+      "createdAt": "2026-10-14T15:58:12.331Z"
+    },
+    {
+      "id": "int-8ei541v3a",
+      "userId": "usr-1791951546428-b9e0q",
+      "jobRole": "Full Stack developer",
+      "branch": "Computer Science",
+      "skills": [
+        "java",
+        "python",
+        "react",
+        "vite"
+      ],
+      "experienceLevel": "Entry Level",
+      "status": "started",
+      "questions": [
+        "How does Full Stack developer benefit from the key features of java? Explain with a real-world architectural example.",
+        "Explain your core project's software structure. How did you design database tables/schema and structure API endpoints for optimal payload transfer?",
+        "Describe a technical bug you encountered in one of your projects. What systematic steps did you execute to debug and resolve it?",
+        "If a team member strongly disagrees with your technical design approach for a critical placement assignment, how do you handle the conflict?",
+        "What is horizontal vs vertical scaling in server architecture? Which would you recommend for hosting a high-traffic e-commerce database, and why?"
+      ],
+      "currentQuestionIndex": 0,
+      "answers": [],
+      "createdAt": "2026-10-15T18:12:12.245Z"
+    },
+    {
+      "id": "int-l1zhh0c3m",
+      "userId": "usr-1792673960517-jvb3e",
+      "jobRole": "Full Stack Engineer",
+      "branch": "Computer Science",
+      "skills": [
+        "React",
+        "c",
+        "java"
+      ],
+      "experienceLevel": "Entry Level",
+      "status": "started",
+      "questions": [
+        "How does Full Stack Engineer benefit from the key features of React? Explain with a real-world architectural example.",
+        "Explain your core project's software structure. How did you design database tables/schema and structure API endpoints for optimal payload transfer?",
+        "Describe a technical bug you encountered in one of your projects. What systematic steps did you execute to debug and resolve it?",
+        "If a team member strongly disagrees with your technical design approach for a critical placement assignment, how do you handle the conflict?",
+        "What is horizontal vs vertical scaling in server architecture? Which would you recommend for hosting a high-traffic e-commerce database, and why?"
+      ],
+      "currentQuestionIndex": 0,
+      "answers": [],
+      "createdAt": "2026-10-22T13:01:44.742Z"
+    }
+  ],
+  "templates": [
+    {
+      "id": "template-1",
+      "name": "Standard ATS Minimalist",
+      "description": "A clean, highly parseable single-column format recommended for software engineering and technical roles.",
+      "downloadCount": 142,
+      "fileContent": "# [Your Name]\n[City, State] | [Phone Number] | [Email] | [LinkedIn URL] | [GitHub URL]\n\n## EDUCATION\n**[University Name]** | [Degree, e.g., B.S. in Computer Science]\n*Graduation Date: [Month, Year] | GPA: [X.X/4.0 or percentage]*\n\n## TECHNICAL SKILLS\n* **Languages:** Java, Python, C++, SQL, TypeScript, JavaScript\n* **Frameworks/Libraries:** Spring Boot, React, Node.js, Express, Tailwind CSS\n* **Developer Tools:** Git, Docker, AWS, Google Cloud, PostgreSQL, MongoDB\n\n## WORK EXPERIENCE\n**[Company Name]** | [Job Title, e.g., Software Engineering Intern]\n*[Month, Year] – [Month, Year] | [City, State]*\n* Designed and implemented dynamic web interfaces using React and Tailwind CSS, increasing page load performance by 15%.\n* Developed microservices with Spring Boot and integrated PostgreSQL database, reducing API latency by 20%.\n* Collaborated in an agile team of 5 engineers to deliver critical core features under strict timelines.\n\n## PROJECTS\n**[Project Name (e.g., Career Navigator Platform)]** | *React, Express, Tailwind, Gemini API*\n*[Month, Year] – [Month, Year]*\n* Engineered an AI-driven interview preparation system with real-time feedback and dynamic mock questionnaires.\n* Optimized data persistence utilizing structured file arrays, reducing runtime dependencies by 100%.\n"
+    },
+    {
+      "id": "template-2",
+      "name": "Professional Modern Two-Column",
+      "description": "A stylish layout with a sidebar highlighting technical competencies, suited for frontend and full-stack developers.",
+      "downloadCount": 99,
+      "fileContent": "# [Your Name] - Full Stack Developer\n[Email] • [Phone] • [Website] • [GitHub]\n\n## SUMMARY\nMotivated Computer Science graduate with hands-on experience in full-stack application development. Skilled in building resilient, server-side APIs and engaging, interactive browser interfaces.\n\n## KEY PROJECTS\n### [Project 1 Name] - *Spring Boot, Angular, PostgreSQL*\n* Designed a relational schema for robust transaction tracking with ACID compliance.\n* Built microservice endpoints with custom token-based filter authentication.\n\n### [Project 2 Name] - *React, Tailwind CSS, Firebase*\n* Constructed a collaborative canvas dashboard utilizing real-time event-driven updates.\n"
+    },
+    {
+      "id": "template-3",
+      "name": "Executive Tech Lead Format",
+      "description": "A comprehensive layout that emphasizes professional experience, projects, and systems architecture skills.",
+      "downloadCount": 65,
+      "fileContent": "# [Your Name]\n[Contact Details] • [Portfolio Link] • [GitHub]\n\n## PROFESSIONAL EXPERIENCE\n**Junior Software Engineer** | [Tech Corp]\n*[Month, Year] - Present*\n* Spearheaded transition of legacy monolithic endpoints to scalable RESTful services, servicing 10k+ daily queries.\n* Maintained CI/CD pipelines to guarantee seamless deployments with zero-downtime rollback controls.\n"
+    },
+    {
+      "id": "template-4",
+      "name": "Data Science & Machine Learning Specialist",
+      "description": "Optimized for ML engineers, data scientists, and quantitative analysts featuring model evaluation and data pipeline metrics.",
+      "downloadCount": 112,
+      "fileContent": "# [Your Name] - Data Scientist & ML Engineer\n[City, Country] | [Phone] | [Email] | [LinkedIn] | [Kaggle / GitHub]\n\n## SUMMARY\nData Scientist with deep expertise in supervised/unsupervised learning, deep neural architectures, and distributed data pipelines. Proven record of deploying scalable PyTorch and scikit-learn models into high-volume production systems.\n\n## TECHNICAL SKILLS\n* **Languages:** Python (NumPy, Pandas, SciPy), SQL, R, C++\n* **ML/DL Frameworks:** PyTorch, TensorFlow, Scikit-Learn, Hugging Face, XGBoost\n* **Data Engineering & Cloud:** Apache Spark, Kafka, PostgreSQL, Snowflake, AWS SageMaker, Docker\n\n## MACHINE LEARNING PROJECTS\n### [Project 1: Real-Time Fraud Detection Engine] | *PyTorch, Kafka, FastAPI*\n* Trained a graph neural network on 2.4M transactions, achieving a 94.2% ROC-AUC score and reducing false positives by 28%.\n* Containerized real-time inference microservice with Docker and Triton, reducing p99 response latency to 18ms.\n\n### [Project 2: Customer Churn Propensity Model] | *XGBoost, Snowflake, Streamlit*\n* Engineered 45 feature signals across user activity logs, identifying high-risk churn cohorts with 89% precision.\n* Automated weekly retrain DAGs in Apache Airflow, recovering an estimated $140k in annualized ARR.\n"
+    },
+    {
+      "id": "template-5",
+      "name": "DevOps & Cloud Platform Infrastructure",
+      "description": "Parser-vetted framework emphasizing Kubernetes, Terraform, cloud security, and resilient CI/CD pipelines.",
+      "downloadCount": 89,
+      "fileContent": "# [Your Name] - DevOps & Cloud Infrastructure Engineer\n[Location] | [Phone] | [Email] | [GitHub] | [LinkedIn]\n\n## SUMMARY\nSite Reliability & DevOps Engineer specializing in infrastructure-as-code, multi-region Kubernetes clusters, and zero-downtime deployment pipelines. Passionate about observability, security compliance, and cloud cost governance.\n\n## TECHNICAL PROFICIENCIES\n* **Cloud Providers:** AWS (EKS, S3, RDS, IAM, CloudFront), Google Cloud Platform\n* **Containers & Orchestration:** Docker, Kubernetes, Helm, Istio Service Mesh\n* **IaC & Automation:** Terraform, Ansible, GitHub Actions, ArgoCD, Jenkins\n* **Monitoring & Observability:** Prometheus, Grafana, Datadog, ELK Stack\n\n## WORK EXPERIENCE / PLATFORM PROJECTS\n### Cloud Migration & GitOps Pipeline | *Terraform, Kubernetes, ArgoCD*\n* Architected multi-cluster EKS infrastructure using modular Terraform, standardizing deployments across 3 environments.\n* Configured GitOps deployment flow with ArgoCD, eliminating configuration drift and cutting deployment times from 45m to 4m.\n* Implemented Prometheus alert rules and Grafana dashboards, maintaining 99.98% platform uptime across peak traffic events.\n"
+    },
+    {
+      "id": "template-6",
+      "name": "Embedded Systems & Firmware Engineer",
+      "description": "Designed for IoT, microcontrollers, real-time operating systems (RTOS), and hardware-software interface engineers.",
+      "downloadCount": 54,
+      "fileContent": "# [Your Name] - Embedded Systems & Firmware Engineer\n[Location] | [Phone] | [Email] | [LinkedIn] | [Portfolio / GitHub]\n\n## TECHNICAL COMPETENCIES\n* **Languages:** C, Modern C++ (C++17), Assembly (ARM Cortex), Python\n* **Protocols & Hardware:** UART, SPI, I2C, CAN Bus, BLE, GPIO, Oscilloscopes, Logic Analyzers\n* **Platforms & RTOS:** FreeRTOS, STM32, ESP32, Nordic nRF52, Embedded Linux\n* **Tools:** Keil uVision, STM32CubeIDE, GCC Toolchain, Git, CMake\n\n## CORE HARDWARE PROJECTS\n### Autonomous Telemetry Sensor Node | *STM32, FreeRTOS, LoRaWAN*\n* Developed interrupt-driven FreeRTOS firmware in C, reading environmental sensor arrays over SPI/I2C at 100Hz.\n* Optimized deep-sleep power states, extending battery operational life from 3 weeks to 14 months on a single LiPo cell.\n* Designed modular HAL drivers decoupling peripheral logic from hardware registers, facilitating multi-MCU portability.\n"
+    },
+    {
+      "id": "template-7",
+      "name": "Cybersecurity & Systems Defense Analyst",
+      "description": "Targeted for security analysts, penetration testers, and SOC engineers highlighting vulnerability management and compliance.",
+      "downloadCount": 73,
+      "fileContent": "# [Your Name] - Cybersecurity & SOC Analyst\n[Location] | [Phone] | [Email] | [LinkedIn] | [TryHackMe / Security Profile]\n\n## PROFESSIONAL SUMMARY\nCybersecurity professional with practical experience in threat detection, vulnerability assessment, and security automation. Dedicated to strengthening organizational defense posture and rapid incident containment.\n\n## TECHNICAL DOMAINS\n* **Security Tools:** Wireshark, Nmap, Burp Suite, Metasploit, Nessus, Splunk, Suricata\n* **Standards & Frameworks:** MITRE ATT&CK, NIST CSF, OWASP Top 10, ISO 27001\n* **Scripting & OS:** Python, Bash, PowerShell, Linux/Unix Security, Active Directory\n\n## SECURITY AUDITS & PROJECTS\n### Corporate SIEM Pipeline & Alert Triaging | *Splunk, Suricata, Python*\n* Configured correlation rules in Splunk SIEM mapping alerts to MITRE ATT&CK tactics, triaging 500+ daily telemetry events.\n* Created automated Python scripts to enrich threat intelligence feeds against VirusTotal and AbuseIPDB, cutting MTTR by 40%.\n* Conducted black-box web vulnerability scans against staging applications, uncovering and remediating 4 critical OWASP flaws.\n"
+    },
+    {
+      "id": "template-8",
+      "name": "Mobile Applications Engineer (iOS & Android)",
+      "description": "Tailored for cross-platform and native mobile app developers showcasing app architecture, state management, and offline cache.",
+      "downloadCount": 81,
+      "fileContent": "# [Your Name] - Mobile Software Engineer\n[Location] | [Phone] | [Email] | [App Store / Play Store Links] | [GitHub]\n\n## SUMMARY\nMobile developer with proven experience shipping fluid, battery-efficient iOS and Android applications. Focused on reactive architectures, native module bridging, and offline-first data synchronization.\n\n## SKILLS & FRAMEWORKS\n* **Frameworks & Languages:** React Native, Flutter, Swift, Kotlin, TypeScript, Dart\n* **State & Data:** Redux Toolkit, Zustand, Riverpod, SQLite, Realm, GraphQL, Firebase\n* **Build & Release:** Xcode, Android Studio, Fastlane, TestFlight, Google Play Console\n\n## MOBILE APPLICATIONS SHIPPED\n### [App Name: Health & Fitness Companion] | *Flutter, Riverpod, SQLite*\n* Built cross-platform mobile application supporting local step tracking and cloud sync across 45,000+ registered active users.\n* Implemented background sync service minimizing battery footprint while guaranteeing 99.9% offline-data consistency.\n* Streamlined CI/CD deployment pipelines using Fastlane, cutting binary release turnaround to under 15 minutes.\n"
+    },
+    {
+      "id": "custom-test-1791901366380",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791901392730",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-mv6suppq-4ju91",
+      "name": "Cloud Native Go Developer",
+      "description": "Go + K8s format",
+      "downloadCount": 0,
+      "fileContent": "# Go Engineer Resume\n## SKILLS\nGo, Kubernetes, gRPC"
+    },
+    {
+      "id": "custom-test-1791903158603",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791946411284",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791946569708",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791947266840",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791947300687",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791951159766",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791985003160",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791985033371",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791987150449",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791987323367",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791987357766",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791987412746",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791987446883",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791987488158",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791988501857",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791994654431",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791994869998",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791994913840",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791995365794",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791995752801",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791995818040",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791997680723",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791998930822",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791999456922",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791999913422",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1791999989902",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1792596949521",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1792674538774",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1792674978051",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1792675858678",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1792677976162",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1792678008071",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1792678284277",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    }
+  ],
+  "feedback": [
+    {
+      "id": "feed-1",
+      "userId": "demo-student-1",
+      "userName": "Trupti",
+      "category": "interview",
+      "rating": 5,
+      "comment": "The AI feedback after my mock interview was incredibly detailed! It felt like talking to a real technical interviewer.",
+      "createdAt": "2026-07-09T17:51:03.802Z"
+    }
+  ]
+}
