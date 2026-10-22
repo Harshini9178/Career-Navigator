@@ -16,3 +16,5 @@ test_convert.*
 test_footer.*
 .vscode/
 .idea/
+backend/target/
+*.class
