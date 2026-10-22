@@ -8,13 +8,16 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class AuthResponse {
 
+    private boolean success = true;
     private String message;
     private UserDto user;
     private String token;
+    private java.util.Map<String, Object> emailDelivery;
 
     public AuthResponse() {}
 
     public AuthResponse(String message, UserDto user, String token) {
+        this.success = true;
         this.message = message;
         this.user = user;
         this.token = token;
@@ -24,6 +27,10 @@ public class AuthResponse {
         return new AuthResponse(message, UserDto.fromEntity(entity), token);
     }
 
+    public boolean isSuccess() { return success; }
+    public boolean getSuccess() { return success; }
+    public void setSuccess(boolean success) { this.success = success; }
+
     public String getMessage() { return message; }
     public void setMessage(String message) { this.message = message; }
 
@@ -32,6 +39,9 @@ public class AuthResponse {
 
     public String getToken() { return token; }
     public void setToken(String token) { this.token = token; }
+
+    public java.util.Map<String, Object> getEmailDelivery() { return emailDelivery; }
+    public void setEmailDelivery(java.util.Map<String, Object> emailDelivery) { this.emailDelivery = emailDelivery; }
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     public static class UserDto {
@@ -46,6 +56,8 @@ public class AuthResponse {
         private String targetRole;
         private String experienceLevel;
         private Boolean completedProfile;
+        private String phone;
+        private Boolean emailVerified;
         private String createdAt;
 
         public static UserDto fromEntity(UserEntity u) {
@@ -62,9 +74,17 @@ public class AuthResponse {
             dto.setTargetRole(u.getTargetRole());
             dto.setExperienceLevel(u.getExperienceLevel());
             dto.setCompletedProfile(u.getCompletedProfile());
+            dto.setPhone(u.getPhone());
+            dto.setEmailVerified(u.getEmailVerified());
             dto.setCreatedAt(u.getCreatedAt());
             return dto;
         }
+
+        public String getPhone() { return phone; }
+        public void setPhone(String phone) { this.phone = phone; }
+
+        public Boolean getEmailVerified() { return emailVerified; }
+        public void setEmailVerified(Boolean emailVerified) { this.emailVerified = emailVerified; }
 
         public String getId() { return id; }
         public void setId(String id) { this.id = id; }

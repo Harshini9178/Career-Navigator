@@ -7,7 +7,8 @@
     "role" : "admin",
     "skills" : [ ],
     "projects" : [ ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "demo-student-1",
     "email" : "student@interviewai.com",
@@ -19,7 +20,8 @@
     "projects" : [ "text to image generator", "expense calculator" ],
     "targetRole" : "system associate",
     "experienceLevel" : "Internship",
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "usr-110523722880783682987",
     "email" : "lohithrc.cs23@gmail.com",
@@ -31,7 +33,8 @@
     "projects" : [ "123" ],
     "targetRole" : "Full Stack Engineer",
     "experienceLevel" : "Entry Level",
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791817060069",
     "email" : "candidate-1791817060069@example.com",
@@ -40,7 +43,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791897010132",
     "email" : "candidate-1791897010132@example.com",
@@ -49,7 +53,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791897245227",
     "email" : "candidate-1791897245227@example.com",
@@ -58,7 +63,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791901323200",
     "email" : "candidate-1791901323200@example.com",
@@ -67,7 +73,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791901366456",
     "email" : "candidate-1791901366456@example.com",
@@ -76,7 +83,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791901392784",
     "email" : "candidate-1791901392784@example.com",
@@ -85,7 +93,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791903158671",
     "email" : "candidate-1791903158671@example.com",
@@ -94,7 +103,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791946411566",
     "email" : "candidate-1791946411567@example.com",
@@ -103,7 +113,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791946569795",
     "email" : "candidate-1791946569795@example.com",
@@ -112,7 +123,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791947266784",
     "email" : "candidate-1791947266784@example.com",
@@ -121,7 +133,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791947300723",
     "email" : "candidate-1791947300723@example.com",
@@ -130,7 +143,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791951160289",
     "email" : "candidate-1791951160289@example.com",
@@ -139,7 +153,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "usr-1791951546428-b9e0q",
     "email" : "harshinipatel03@gmail.com",
@@ -151,7 +166,8 @@
     "projects" : [ "text to image generator", "weather app" ],
     "targetRole" : "Full Stack developer",
     "experienceLevel" : "Entry Level",
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791985003162",
     "email" : "candidate-1791985003162@example.com",
@@ -160,7 +176,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791985033434",
     "email" : "candidate-1791985033434@example.com",
@@ -169,7 +186,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "usr-test-phone-1",
     "email" : "mobile_9876543210@careernavigator.app",
@@ -178,7 +196,9 @@
     "role" : "student",
     "skills" : [ ],
     "projects" : [ ],
-    "completedProfile" : false
+    "completedProfile" : false,
+    "phone" : "+91 9876543210",
+    "emailVerified" : true
   }, {
     "id" : "usr-1791985202884-phvz6",
     "email" : "candidate@example.com",
@@ -187,7 +207,8 @@
     "role" : "student",
     "skills" : [ ],
     "projects" : [ ],
-    "completedProfile" : false
+    "completedProfile" : false,
+    "emailVerified" : true
   }, {
     "id" : "test-1791987150442",
     "email" : "candidate-1791987150442@example.com",
@@ -196,7 +217,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791988501887",
     "email" : "candidate-1791988501887@example.com",
@@ -205,7 +227,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "usr-1791988567134-sr6yr",
     "email" : "unregistered@example.com",
@@ -214,7 +237,8 @@
     "role" : "student",
     "skills" : [ ],
     "projects" : [ ],
-    "completedProfile" : false
+    "completedProfile" : false,
+    "emailVerified" : true
   }, {
     "id" : "usr-1791988644681-fl0v2",
     "email" : "priya.sharma@domain.edu",
@@ -223,7 +247,8 @@
     "role" : "student",
     "skills" : [ ],
     "projects" : [ ],
-    "completedProfile" : false
+    "completedProfile" : false,
+    "emailVerified" : true
   }, {
     "id" : "test-1791995365896",
     "email" : "candidate-1791995365896@example.com",
@@ -232,7 +257,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791995752917",
     "email" : "candidate-1791995752917@example.com",
@@ -241,7 +267,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791995818111",
     "email" : "candidate-1791995818111@example.com",
@@ -250,7 +277,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791997680692",
     "email" : "candidate-1791997680692@example.com",
@@ -259,7 +287,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "usr-dup-1",
     "email" : "duplicate.test@careernavigator.app",
@@ -269,7 +298,8 @@
     "skills" : [ ],
     "projects" : [ ],
     "completedProfile" : false,
-    "passwordHash" : "3bafb07fb682ba6d6f84e5c3687246cf:00c17e8b6111d66fdde8c975e2a1c98dce5521673f69c1c15bdd5e6a1710ee36f3240e8d3847b8441fe040979a2195be75bcccd8e816526068c0dbc64957522a"
+    "passwordHash" : "1ec01ff0e6d77bda7f0ff3932bbc54c7:a6eb64642bdec1bd32193f26404fdea7c4489705e6de9065f335e50b8ef2b3db7bc20ac62daba738a8b4c9c4bac86d59f3134e54dc419816be07fa93026dda93",
+    "emailVerified" : true
   }, {
     "id" : "usr-auth-success-1",
     "email" : "alex.success@careernavigator.app",
@@ -279,7 +309,8 @@
     "skills" : [ ],
     "projects" : [ ],
     "completedProfile" : true,
-    "passwordHash" : "67dec5925ee3f534ec292aaa994f8891:76bda082a1714093a7b7875e30f10c99331f225f9872aaaf898ab1de35ceffd06a6ced7868a3515fa1e6341b3ccc6b41cb39d9019720fd3fad7ed13e0cb77ad0"
+    "passwordHash" : "e656fa668b67edbeca665dd8e7ae8bb6:d265600ba4bae8f0eb2894bb685ba58561c08cd2985d0474a672dcaf8ec475808e2ae1fdfa4d5b23e439bf4b216667fd6f7233f04982aa23e402fddd0b888c37",
+    "emailVerified" : true
   }, {
     "id" : "test-1791998930886",
     "email" : "candidate-1791998930886@example.com",
@@ -288,7 +319,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791999456940",
     "email" : "candidate-1791999456940@example.com",
@@ -297,7 +329,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "usr-1791999560360-sxubi",
     "email" : "e2e_engineer_1791999560299@careernavigator.app",
@@ -306,7 +339,8 @@
     "role" : "student",
     "skills" : [ ],
     "projects" : [ ],
-    "completedProfile" : false
+    "completedProfile" : false,
+    "emailVerified" : true
   }, {
     "id" : "usr-1791999636114-oflyh",
     "email" : "e2e_engineer_1791999635172@careernavigator.app",
@@ -316,7 +350,8 @@
     "skills" : [ ],
     "projects" : [ ],
     "completedProfile" : false,
-    "passwordHash" : "6161e80fa8078b37d60af4fcc3067954:44798e45e24d97fc983617fa8f787a9f8f18f792cb573c1e86f2221a486634e5db566c15e225d17dab75277dd1c2508340e186445981d206af2618b7c66329ff"
+    "passwordHash" : "6161e80fa8078b37d60af4fcc3067954:44798e45e24d97fc983617fa8f787a9f8f18f792cb573c1e86f2221a486634e5db566c15e225d17dab75277dd1c2508340e186445981d206af2618b7c66329ff",
+    "emailVerified" : true
   }, {
     "id" : "usr-1791999820233-ztjyf",
     "email" : "e2e_engineer_1791999819534@careernavigator.app",
@@ -326,7 +361,8 @@
     "skills" : [ ],
     "projects" : [ ],
     "completedProfile" : false,
-    "passwordHash" : "0e80469f769e5911f82e48079b2e6780:3f759e8a6f8cbbf31e140afd29dbde8d95cb9a5b9b80badadfacd98cc7670a20471aa5474d5a1d7d673c7d973810a5f8686713912d8a5fd083372cc4eedcae6c"
+    "passwordHash" : "0e80469f769e5911f82e48079b2e6780:3f759e8a6f8cbbf31e140afd29dbde8d95cb9a5b9b80badadfacd98cc7670a20471aa5474d5a1d7d673c7d973810a5f8686713912d8a5fd083372cc4eedcae6c",
+    "emailVerified" : true
   }, {
     "id" : "test-1791999833625",
     "email" : "candidate-1791999833625@example.com",
@@ -335,7 +371,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791999913609",
     "email" : "candidate-1791999913609@example.com",
@@ -344,7 +381,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1791999990269",
     "email" : "candidate-1791999990269@example.com",
@@ -353,7 +391,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1792596949472",
     "email" : "candidate-1792596949472@example.com",
@@ -362,7 +401,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "usr-1792673960517-jvb3e",
     "email" : "hharshini857@gmail.com",
@@ -375,7 +415,8 @@
     "targetRole" : "Full Stack Engineer",
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
-    "passwordHash" : "b0f787b0c647171370172ed42e590a9b:b42547109fea785db1e893ebd983df756c8455b7a36f01f165609e3775a30ae0b2fd4bcea8c13de13b73bf2c02404b96a70bd4f62bd879531b7f98c241f78c76"
+    "passwordHash" : "b0f787b0c647171370172ed42e590a9b:b42547109fea785db1e893ebd983df756c8455b7a36f01f165609e3775a30ae0b2fd4bcea8c13de13b73bf2c02404b96a70bd4f62bd879531b7f98c241f78c76",
+    "emailVerified" : true
   }, {
     "id" : "test-1792674625705",
     "email" : "candidate-1792674625705@example.com",
@@ -384,7 +425,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "InterviewAI" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1792674978109",
     "email" : "candidate-1792674978109@example.com",
@@ -393,7 +435,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "Career Navigator" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1792675858796",
     "email" : "candidate-1792675858796@example.com",
@@ -402,7 +445,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "Career Navigator" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "usr-1792677343215-zwpqa",
     "email" : "testuser123@example.com",
@@ -412,7 +456,8 @@
     "skills" : [ ],
     "projects" : [ ],
     "completedProfile" : false,
-    "passwordHash" : "1a0e5a141c9f981f809577d5c0cdaf1f:1f9a0df286e6366ed9bc29d0dfc1b7689a40200578058db98e573031cb35b91b41b2f21d61d277b34235a78a4e83c49e59ec2daf9497996cf16a54c352d4547c"
+    "passwordHash" : "1a0e5a141c9f981f809577d5c0cdaf1f:1f9a0df286e6366ed9bc29d0dfc1b7689a40200578058db98e573031cb35b91b41b2f21d61d277b34235a78a4e83c49e59ec2daf9497996cf16a54c352d4547c",
+    "emailVerified" : true
   }, {
     "id" : "test-1792677976391",
     "email" : "candidate-1792677976391@example.com",
@@ -421,7 +466,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "Career Navigator" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "test-1792678008120",
     "email" : "candidate-1792678008120@example.com",
@@ -430,7 +476,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "Career Navigator" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "usr-test-1792678009553",
     "email" : "candidate.1792678009553@careernavigator.app",
@@ -439,7 +486,8 @@
     "skills" : [ ],
     "projects" : [ ],
     "completedProfile" : false,
-    "passwordHash" : "e499d1c2cf8e333223001ccfd4b137c6:1f06ecba30b2f4c1b2e6efbbcbd8728878434d1b7983436a2b96876f264dbafd9be6020ccdf4b56d95b645d16bdcdeb725b81011eb99b5dd07d7cef6d6dcb3df"
+    "passwordHash" : "e499d1c2cf8e333223001ccfd4b137c6:1f06ecba30b2f4c1b2e6efbbcbd8728878434d1b7983436a2b96876f264dbafd9be6020ccdf4b56d95b645d16bdcdeb725b81011eb99b5dd07d7cef6d6dcb3df",
+    "emailVerified" : true
   }, {
     "id" : "usr-1792678131346-ntc90",
     "email" : "sarah.connor.1792678131187@careernavigator.app",
@@ -449,7 +497,8 @@
     "skills" : [ ],
     "projects" : [ ],
     "completedProfile" : false,
-    "passwordHash" : "78a3796fa89bc9aeb3eb20f005791898:f6c87aa94d44d703ae1d987a05f4598a9179452fd61db44067892cbf31e4e54299a860bbd706526005f2d934843c06da1f62125cb27dd1384caa46ee17258830"
+    "passwordHash" : "78a3796fa89bc9aeb3eb20f005791898:f6c87aa94d44d703ae1d987a05f4598a9179452fd61db44067892cbf31e4e54299a860bbd706526005f2d934843c06da1f62125cb27dd1384caa46ee17258830",
+    "emailVerified" : true
   }, {
     "id" : "test-1792678284568",
     "email" : "candidate-1792678284571@example.com",
@@ -458,7 +507,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "Career Navigator" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "usr-test-1792678287531",
     "email" : "candidate.1792678287531@careernavigator.app",
@@ -468,7 +518,8 @@
     "skills" : [ ],
     "projects" : [ ],
     "completedProfile" : false,
-    "passwordHash" : "15e26f22efe65ffcfa28d99f223760df:1e12c2d072464afd522850d51c4b7d38a25894da719fd1f3df995cc7d8842353c362e8cf754abffc6b03d7ddec99f121b4a313ae7f17e256f7aa8f5c560635d0"
+    "passwordHash" : "15e26f22efe65ffcfa28d99f223760df:1e12c2d072464afd522850d51c4b7d38a25894da719fd1f3df995cc7d8842353c362e8cf754abffc6b03d7ddec99f121b4a313ae7f17e256f7aa8f5c560635d0",
+    "emailVerified" : true
   }, {
     "id" : "test-1792681419536",
     "email" : "candidate-1792681419536@example.com",
@@ -477,7 +528,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "Career Navigator" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "usr-test-1792681420723",
     "email" : "candidate.1792681420723@careernavigator.app",
@@ -487,7 +539,8 @@
     "skills" : [ ],
     "projects" : [ ],
     "completedProfile" : false,
-    "passwordHash" : "3f9e5ad5d8d98eaa80c47ab7cb508189:72df7c7458e6b557a9409e5c2d0e0d2b4a6f10bababaaf35796062c79954927bff0351ace443d7005cdd5b1a1472ebae26208460a9acf6490261278f415d7be3"
+    "passwordHash" : "3f9e5ad5d8d98eaa80c47ab7cb508189:72df7c7458e6b557a9409e5c2d0e0d2b4a6f10bababaaf35796062c79954927bff0351ace443d7005cdd5b1a1472ebae26208460a9acf6490261278f415d7be3",
+    "emailVerified" : true
   }, {
     "id" : "usr-1792685089255-523c2",
     "email" : "candidate-295322@careernavigator.edu",
@@ -501,6 +554,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$ongd87.u5VtV5T0Sp5TowOvErC/URBG4fj1Nf61B/LOfULA/oKsku",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:04:49.537Z"
   }, {
     "id" : "usr-1792685102024-cec09",
@@ -515,6 +569,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$uraoQPyRb2Jo0Yz8sGoEpOI35uIsbZs1kMf4ErjqQLprpEH.8xBsW",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:05:02.233Z"
   }, {
     "id" : "usr-1792685102917-977c3",
@@ -529,6 +584,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$1IURkYlTA8q5tGMaJ4Rgpu26HrnT0RPsdCdZtkZEQDkd55iPcek3y",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:05:03.138Z"
   }, {
     "id" : "usr-1792685103510-7feac",
@@ -543,6 +599,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$SrqbnFFL1NVnRo.PrBYV5e9Z8bCJ3a7Sw2ji6o7U7BjF1KyCxR1rG",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:05:03.749Z"
   }, {
     "id" : "usr-1792685103905-51f39",
@@ -557,6 +614,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$Zg6DceE.Ly7E2W5H2j3YNu7iqNlaGc01Sh9LD26lj472kzj/MbckC",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:05:04.136Z"
   }, {
     "id" : "admin-1792685104345",
@@ -565,7 +623,8 @@
     "role" : "admin",
     "skills" : [ ],
     "projects" : [ ],
-    "completedProfile" : false
+    "completedProfile" : false,
+    "emailVerified" : true
   }, {
     "id" : "usr-1792685104506-f9b46",
     "email" : "candidate-aa0bd73b@example.com",
@@ -579,6 +638,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$QA1fwb9op/s1Q0FmoadRMeeLscj2vCOr6N7g6o1.yZ5Sz8JqLCfj6",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:05:04.735Z"
   }, {
     "id" : "usr-1792685105003-7501d",
@@ -593,6 +653,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$ou58OU/Alm4/cLfK3I/NOedlXo3emWr37PVKdP.EzHIILpZsq2SNa",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:05:05.235Z"
   }, {
     "id" : "usr-514908b0-1006-457a-86cf-0ef8daba4f87",
@@ -601,7 +662,8 @@
     "role" : "student",
     "skills" : [ "Java", "PostgreSQL", "Docker" ],
     "projects" : [ ],
-    "completedProfile" : false
+    "completedProfile" : false,
+    "emailVerified" : true
   }, {
     "id" : "usr-1792685272928-864e3",
     "email" : "candidate-151166@careernavigator.edu",
@@ -615,6 +677,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$eQkWtaDAPQJAXnsr3rov/uToflUx/dmkDHYms8En9LI0PYJ6/mjHK",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:07:53.204Z"
   }, {
     "id" : "usr-1792685285270-a55e1",
@@ -629,6 +692,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$wLcwOQo9OqcoWnL3Iz.uXOLgaPYgJ3ONBXEJIPV26VaZa83Cl7T0C",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:08:05.495Z"
   }, {
     "id" : "usr-1792685286236-0906b",
@@ -643,6 +707,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$plKhl4CcZW.WXoIQYwPOTuOhYYWvlB7/yjUGQol7YTTF89UsT2LC2",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:08:06.462Z"
   }, {
     "id" : "usr-1792685286730-50e90",
@@ -657,6 +722,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$vv3hitZmVgWBuMP5qCvJ1eEMVBQqBjYeq3/.WNv3pDGoFRmfnq6SC",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:08:06.952Z"
   }, {
     "id" : "usr-1792685287150-1d6f5",
@@ -671,6 +737,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$yFgEJMH1t0HxhSReCELpdudZbw7fXiFTQ2Z7IWV8S.NlsmvGLsQYi",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:08:07.387Z"
   }, {
     "id" : "admin-1792685287541",
@@ -679,7 +746,8 @@
     "role" : "admin",
     "skills" : [ ],
     "projects" : [ ],
-    "completedProfile" : false
+    "completedProfile" : false,
+    "emailVerified" : true
   }, {
     "id" : "usr-1792685287772-b67a9",
     "email" : "candidate-4644703f@example.com",
@@ -693,6 +761,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$2OMhSnpiBnM8TE0chPpDi.V7XhS0C.FhYzazzzKo.Ct4yoE8LxShe",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:08:08.016Z"
   }, {
     "id" : "usr-1792685288269-5a6dd",
@@ -707,6 +776,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$y.owEoMVO1rr/vDDTNdMge8zvWQqK8ZwbEgGtRK3OHDXU1uS5OdTy",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:08:08.512Z"
   }, {
     "id" : "usr-d6d6019d-981c-48a6-9151-940ece2a0847",
@@ -715,7 +785,8 @@
     "role" : "student",
     "skills" : [ "Java", "PostgreSQL", "Docker" ],
     "projects" : [ ],
-    "completedProfile" : false
+    "completedProfile" : false,
+    "emailVerified" : true
   }, {
     "id" : "test-1792685473252",
     "email" : "candidate-1792685473252@example.com",
@@ -724,7 +795,8 @@
     "role" : "student",
     "skills" : [ "React", "TypeScript", "Node.js" ],
     "projects" : [ "Career Navigator" ],
-    "completedProfile" : true
+    "completedProfile" : true,
+    "emailVerified" : true
   }, {
     "id" : "usr-test-1792685477099",
     "email" : "candidate.1792685477099@careernavigator.app",
@@ -734,7 +806,8 @@
     "skills" : [ ],
     "projects" : [ ],
     "completedProfile" : false,
-    "passwordHash" : "b0a2e7a560b235bd00d3ef9efc37684f:ca964ebc8c67fa75ba2130ccba3f75e512a9340cb915e4e1aaab859036bc2b706dc593f9a85b625584bd474a9542cad73321ad1d5db097a554a372270923befb"
+    "passwordHash" : "b0a2e7a560b235bd00d3ef9efc37684f:ca964ebc8c67fa75ba2130ccba3f75e512a9340cb915e4e1aaab859036bc2b706dc593f9a85b625584bd474a9542cad73321ad1d5db097a554a372270923befb",
+    "emailVerified" : true
   }, {
     "id" : "usr-1792688229990-6cc24",
     "email" : "verify-1792688229776@careernavigator.edu",
@@ -748,6 +821,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$eaxpJB09xmAV1Dhc/YdiPuo0JAQMhT1ZMLgRuAFGxzf0lZ5ttC.02",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:57:10.068Z"
   }, {
     "id" : "usr-1792688246505-4fdf3",
@@ -762,6 +836,7 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$4lfx.pTwvL/YGjmoe.8zp.K.aYF3oA5vmNXN/05e1IZSyJsNdE/2O",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:57:26.557Z"
   }, {
     "id" : "usr-1792688266189-4ced5",
@@ -776,7 +851,1003 @@
     "experienceLevel" : "Entry Level",
     "completedProfile" : true,
     "passwordHash" : "$2a$10$.jpAYweKaLFTOFypLRfBjO8I94HP8NztL34DT526VDg6HqwXo.zQ6",
+    "emailVerified" : true,
     "createdAt" : "2026-10-22T16:57:46.244Z"
+  }, {
+    "id" : "usr-1792688643428-39d22",
+    "email" : "geethageetha5088@gmail.com",
+    "name" : "geetha",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$bZbR7Ctp1BruXbO9g.c3COIeo/RUECA1s6FkX4F21.cXRQY3Bewmy",
+    "emailVerified" : true,
+    "createdAt" : "2026-10-22T17:04:03.636Z"
+  }, {
+    "id" : "usr-1792689228687-335cf",
+    "email" : "brandnewunique123@example.com",
+    "name" : "Test User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$dmokm6ef8c5e7spfEOGifO2FuJeFXEf9DapXy2B6kkybveOYEt8Ea",
+    "emailVerified" : true,
+    "createdAt" : "2026-10-22T17:13:48.738Z"
+  }, {
+    "id" : "usr-1792689353113-c2bf0",
+    "email" : "completelyfresh998877@example.com",
+    "name" : "Fresh User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$VmZ8k783yi6Ktm1bjx9EIOy1TuMgg2Ot4d0sSxqYO3jMx5AA.cxFS",
+    "emailVerified" : true,
+    "createdAt" : "2026-10-22T17:15:53.168Z"
+  }, {
+    "id" : "usr-1792691832326-26acc",
+    "email" : "verify_test_1234@example.com",
+    "name" : "Verification Test User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$uT7lR7ry5x6k2H1FYe5wB.OqWRGAoeEBZJUjEDoF2HxOkjMAATHdi",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T17:57:12.517Z"
+  }, {
+    "id" : "test-1792692108965",
+    "email" : "candidate-1792692108965@example.com",
+    "name" : "Test Candidate",
+    "picture" : "https://example.com/photo.jpg",
+    "role" : "student",
+    "skills" : [ "React", "TypeScript", "Node.js" ],
+    "projects" : [ "Career Navigator" ],
+    "completedProfile" : true,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-test-1792692110385",
+    "email" : "candidate.1792692110385@careernavigator.app",
+    "name" : "Jane Candidate",
+    "picture" : "https://example.com/photo.jpg",
+    "role" : "student",
+    "skills" : [ ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "passwordHash" : "43c397b2abe40b4197db1621041f6de9:6a678b0ada24fae797f988d858bd331efdf7f5fec033cc8afd208e77891112ff292e0adb2237e4c73e05d7a83e61dc0f26593f83938ac9e79facb70c938b12e7",
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792692184287-4b955",
+    "email" : "candidate-50f6d6@careernavigator.edu",
+    "name" : "Integration Candidate",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Engineer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Kybr1kyvdbqbwqwrSt8hTO1G3ankPBKzpD7j20kmh8W.c2NWC4BtO",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:03:04.472Z"
+  }, {
+    "id" : "usr-1792692189687-898ed",
+    "email" : "candidate-619caa25@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$ZvBndnrNBraEiv2ufjyu.esgDolY7el2b6Q6d9r2tEmvlVw39dDpS",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:03:09.827Z"
+  }, {
+    "id" : "usr-1792692190164-bd91a",
+    "email" : "candidate-0efc8365@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$0g6qnCE3SnhfXfW.kFSfiuHb.UkoPiOgHjPKhzO8rmLfTgmdQG7gi",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:03:10.278Z"
+  }, {
+    "id" : "usr-1792692190358-4d5cb",
+    "email" : "candidate-e102dc1e@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$IxMiRSWWFWWuldLjPHNWcuKENCkVdgpRHK3hRYoArEv/y6ubvuWsm",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:03:10.469Z"
+  }, {
+    "id" : "usr-1792692190542-a6ea1",
+    "email" : "candidate-b011fa75@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$gyCl4L4qpiFQIX8Qtvwveeiti4dMQzu6Oi9UCL8NTMz6iWeFKsWIu",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:03:10.656Z"
+  }, {
+    "id" : "admin-1792692190711",
+    "email" : "admin-619781@careernavigator.com",
+    "name" : "Admin Officer",
+    "role" : "admin",
+    "skills" : [ ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792692190762-dbc1c",
+    "email" : "candidate-b89c112b@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Zs58BqKgfgDaSLeNt0Maz.3JavP/dl/rd85GMg.hG1YEGZ9fmLWt2",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:03:10.887Z"
+  }, {
+    "id" : "usr-1792692190971-56cd7",
+    "email" : "candidate-767ffb22@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$X76lO9Mqz/LjSmXD/9SkG.6w877X3kKIMB28l4dGlNUcujgoiUkP6",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:03:11.094Z"
+  }, {
+    "id" : "usr-ecf1b415-929f-473a-9685-6d131f0d4da3",
+    "email" : "persist-aad21d2c-ea60-4036-ba97-2982be70160c@example.com",
+    "name" : "Database Test User",
+    "role" : "student",
+    "skills" : [ "Java", "PostgreSQL", "Docker" ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792692191408-4c990",
+    "email" : "testuser-29239679@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$ii81Jo3tNFvq9/l3YdnQ8er/UBVbKx8GrkPLI5AEYkH2V0G/RmDB2",
+    "phone" : "+1 5551234567",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:03:11.568Z"
+  }, {
+    "id" : "usr-1792692191758-281b8",
+    "email" : "caseuser-bb40e528@example.com",
+    "name" : "Case User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$y5YbVh/ZgpP6cRsTcJO.HOuTZIj34YNcvvcTc7xckf3I8dmeC8XpO",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:03:11.909Z"
+  }, {
+    "id" : "usr-1792692191988-d442a",
+    "email" : "whitespace-16251a2a@example.com",
+    "name" : "Whitespace User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Pq9IaGg3rCJ0dFBpsDIZ7O6HtjUX95DIu5wN/4dk48sj3yHX5IlvC",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:03:12.120Z"
+  }, {
+    "id" : "usr-1792692192216-84c98",
+    "email" : "emailtest-7304acaf@example.com",
+    "name" : "Email Test",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$ORTC2/8s5g03F1zhZMNeLu8gwWS00AMYdRQLTcWTf0tzaakHxcgdm",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:03:12.355Z"
+  }, {
+    "id" : "usr-1792692192549-e143c",
+    "email" : "existing-047c323c@example.com",
+    "name" : "Existing User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$sCQXzS3.LtpbIRoNo9xO8.PR6qWAKT2cHjIfasR8rkylSpG0LcP3G",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:03:12.689Z"
+  }, {
+    "id" : "usr-1792692353846-7eba7",
+    "email" : "testuser-ab5126c7@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$kJyy3.H9JbKosLC3g2ADuuPgOs3lAyXT04XUwE7bY3Lv4B4i2GQDK",
+    "phone" : "+1 5555932427",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:05:53.996Z"
+  }, {
+    "id" : "usr-1792692354623-9689b",
+    "email" : "testuser-a70dc2e4@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$wATZwYGHrrVaIvxRcJxS8u16cTZkyB9i0zewetIZ6qIk9OnYdBIR.",
+    "phone" : "+1 5551524744",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:05:54.760Z"
+  }, {
+    "id" : "usr-1792692355011-8cc6a",
+    "email" : "caseuser-53b99ac4@example.com",
+    "name" : "Case User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$I3Ap3GvmhwdfwjTKEsYNT.lcpvjPX7YTptCNEiqpA.dGI9tVPmzMe",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:05:55.149Z"
+  }, {
+    "id" : "usr-1792692355261-edf27",
+    "email" : "whitespace-5c198f65@example.com",
+    "name" : "Whitespace User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$GLfknoviFqLEIc6WViCFDuE/SbLkzoEI1MMouWZDdBmf3MVfCMpZ6",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:05:55.401Z"
+  }, {
+    "id" : "usr-1792692355502-d3c90",
+    "email" : "emailtest-165a17d7@example.com",
+    "name" : "Email Test",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$DKfp2MHT95wdl/5DCLLaPu5yR0JK6FkEGGnIqFFNpvYdLWmD1Gmg2",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:05:55.636Z"
+  }, {
+    "id" : "usr-1792692355733-ecc15",
+    "email" : "testuser-cf026fc0@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$k4Dft2BXYIKIhmzDWBhuQukcsD1AO0gNLiUj7mW6ciLhTDdh6ZXmy",
+    "phone" : "+1 5552288574",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:05:55.870Z"
+  }, {
+    "id" : "usr-1792692355960-26a7e",
+    "email" : "different-b6b66a3c@example.com",
+    "name" : "Mark Smith",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$m8UVnEYo86C3le/9uJfVoerq/4ycgAYmYjg9JzmgQmUUnE/VuFsYG",
+    "phone" : "+1 5559148492",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:05:56.092Z"
+  }, {
+    "id" : "usr-1792692356195-f4c0f",
+    "email" : "testuser-f94efd26@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$jyzgeVt.uA5bxjyEX.AIVuPebUXaRD2nN7ReLVHtHFdw2OC1Zziau",
+    "phone" : "+1 5558742138",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:05:56.324Z"
+  }, {
+    "id" : "usr-1792692356440-a2750",
+    "email" : "testuser-f49f353d@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$7BxZ3lWD7VU70dnhIT8TzOMMSPXL6rD2ux2eyQQLgngvyiTHHxYB2",
+    "phone" : "+1 5558788402",
+    "emailVerified" : true,
+    "createdAt" : "2026-10-22T18:05:56.561Z"
+  }, {
+    "id" : "usr-1792692356756-0439c",
+    "email" : "existing-9f92a640@example.com",
+    "name" : "Existing User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$aanQmEETiNEyR0h/c6WbGuqKS6iT76YTDqNvjW3/Rsjq7EG8CrrRq",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:05:56.890Z"
+  }, {
+    "id" : "usr-1792692395904-01329",
+    "email" : "candidate-71d935@careernavigator.edu",
+    "name" : "Integration Candidate",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Engineer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$y90C6AjKyTuaEyzrpyhU5.IrpXtcIfVJoZ2SEub5qAwdkTWeuvg56",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:36.059Z"
+  }, {
+    "id" : "usr-1792692400850-cfcd6",
+    "email" : "candidate-7e079222@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$6UHrNmdibZ3zsze98tDmOeu6VRVE/2Vf7UOvzq7chViVPZx6oJA3S",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:41.004Z"
+  }, {
+    "id" : "usr-1792692401356-9bb40",
+    "email" : "candidate-fca840f4@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$8HTBT3/sm0B4ttneQz6fcern8kmZ8IFC5D8MQNn90MBZUhtc8PUkS",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:41.473Z"
+  }, {
+    "id" : "usr-1792692401559-c85f4",
+    "email" : "candidate-26503d20@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$lDH36LFci5ntcDcwPAqhuurjqw3KZSU9qC8ahv/4PY0JZzIJNl1BC",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:41.679Z"
+  }, {
+    "id" : "usr-1792692401741-0e98e",
+    "email" : "candidate-44c72b46@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$niDnIxE7wPRmRz9E0Qz8Fe.AwG6lM6cJUcmmpvpc89n8rLWbBbGIS",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:41.855Z"
+  }, {
+    "id" : "admin-1792692401914",
+    "email" : "admin-3d5834@careernavigator.com",
+    "name" : "Admin Officer",
+    "role" : "admin",
+    "skills" : [ ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792692401980-3459d",
+    "email" : "candidate-0f353810@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$eBmlfGQpSSq.fN8Xo341ludyJGHohDksvIIu0.NF0uTu.W3Afk3cS",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:42.095Z"
+  }, {
+    "id" : "usr-1792692402180-559cf",
+    "email" : "candidate-b3233d5b@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$u0kehaVc71xHq4wnJ89Nl.ujZv2NNbq2SKTK0ulFUvQ/e9FRegCju",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:42.296Z"
+  }, {
+    "id" : "usr-506aebc0-a5e4-4360-8853-d8f0e2632cf0",
+    "email" : "persist-0152d193-6848-4ef5-91c2-6e4ede135298@example.com",
+    "name" : "Database Test User",
+    "role" : "student",
+    "skills" : [ "Java", "PostgreSQL", "Docker" ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792692402572-cce2f",
+    "email" : "testuser-e40476dd@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$0aHA4GZ9FBP2FvS1JmLHpOCSACEiUlD192dOludEnu8fzHbfyjdWe",
+    "phone" : "+1 5559651794",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:42.695Z"
+  }, {
+    "id" : "usr-1792692402782-5e6b0",
+    "email" : "testuser-5f824b71@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$zsNcJN92wDSIwbo9uItzduRlwgSh47px9hOtstujzG0AwjvTtg/AS",
+    "phone" : "+1 5558216941",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:42.901Z"
+  }, {
+    "id" : "usr-1792692403020-aafdd",
+    "email" : "caseuser-bd4d0ec7@example.com",
+    "name" : "Case User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$7nnqdnSyblgMohUdKl48lOF7pB53ZfOXQSsDXNie3dEhwR30eaPYG",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:43.160Z"
+  }, {
+    "id" : "usr-1792692403242-b251c",
+    "email" : "whitespace-5a5a05ad@example.com",
+    "name" : "Whitespace User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$r837WRjJmIEjcq/xB3i8w.3n7kEywNaJFYZpzcpHt7bMqqPiXw82e",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:43.398Z"
+  }, {
+    "id" : "usr-1792692403489-dcfe9",
+    "email" : "emailtest-0e6d5536@example.com",
+    "name" : "Email Test",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$idxtypw/6jFlEfluUQMo9O/JitOrUdus2Q1ykykZCBYAAivOnqG3e",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:43.654Z"
+  }, {
+    "id" : "usr-1792692403732-b180b",
+    "email" : "testuser-35d37856@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$P79kd/jbwei//SXB81zSI.I/tvQS87kCky8OsI/Hp/uK5QEOiB1fG",
+    "phone" : "+1 5553777395",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:43.889Z"
+  }, {
+    "id" : "usr-1792692403975-89fd6",
+    "email" : "different-1e745f0b@example.com",
+    "name" : "Mark Smith",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$jN5Vm6zSLuVsshfdi51Nr.NbMd0w3EuxGcI3KixG/FbI4JOw029nO",
+    "phone" : "+1 5555846587",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:44.117Z"
+  }, {
+    "id" : "usr-1792692404223-13fc1",
+    "email" : "testuser-a7324d69@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$I9WPvsb0aWaNgaCXnYh0eeWxsZOFtDzoLftBWX3zKZhUKMufaEIhi",
+    "phone" : "+1 5559882568",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:06:44.378Z"
+  }, {
+    "id" : "usr-1792692404472-07725",
+    "email" : "testuser-35b46268@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$ptwIjP4oio1vzLsGLQEguuhIZ7XPkqAZ0rYF2/UlvcH7foJowUL9a",
+    "phone" : "+1 5557407090",
+    "emailVerified" : true,
+    "createdAt" : "2026-10-22T18:06:44.609Z"
+  }, {
+    "id" : "usr-1792692490801-d5fb4",
+    "email" : "candidate-a389e5@careernavigator.edu",
+    "name" : "Integration Candidate",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Engineer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Lde04uWcAoZgmd92JwvXzOfN8p1neTK8tAhojKM8rwoSV3sjYwylO",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:10.994Z"
+  }, {
+    "id" : "usr-1792692496354-72e72",
+    "email" : "candidate-f337c8af@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$l4Cno/QRJ86MigYSTx6XFux5nxbsvWoBErQlBetyOGauXZXeZdb9W",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:16.519Z"
+  }, {
+    "id" : "usr-1792692496898-9a674",
+    "email" : "candidate-17d892d1@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Xh0vbNQowm49PttiEkhkR.Qqb5NyFD4CokqUZzbAiEzzaBGlggBuy",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:17.020Z"
+  }, {
+    "id" : "usr-1792692497124-fb91b",
+    "email" : "candidate-259c416b@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$KtZhShDcOrsCOfFgcdTFXOW5d/KFvMQgoEijd8ODp/znrnJMO374i",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:17.252Z"
+  }, {
+    "id" : "usr-1792692497339-1e00a",
+    "email" : "candidate-8e436dd0@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$3ba.Qk2UARlCWLSJi98jUOzqS9wtPSu2YnQQ6SMORbCFTHKMPi1GK",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:17.470Z"
+  }, {
+    "id" : "admin-1792692497552",
+    "email" : "admin-857469@careernavigator.com",
+    "name" : "Admin Officer",
+    "role" : "admin",
+    "skills" : [ ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792692497624-316d1",
+    "email" : "candidate-2fc7f36b@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$kDGXj7ldBb7rxzpzpefWYuiz9zokYadkiB18IFbmBCChQY9Yn81Ba",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:17.750Z"
+  }, {
+    "id" : "usr-1792692497841-5738c",
+    "email" : "candidate-44154779@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$zoAp4XP2F6u8HwnWWc3EVeimOynOqwTs0CBAs99dEJp4C01IuYvt.",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:17.970Z"
+  }, {
+    "id" : "usr-bb2cef67-90d7-4f04-80f2-b1a3840271fb",
+    "email" : "persist-5264f025-f461-4c91-ba34-6d0176e7a37b@example.com",
+    "name" : "Database Test User",
+    "role" : "student",
+    "skills" : [ "Java", "PostgreSQL", "Docker" ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792692498292-6d524",
+    "email" : "testuser-463bb96a@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$WFAGPjAi570XFJTnJnWyEekw/7PjRmWNgx6ScH.azNceQqHLTRceC",
+    "phone" : "+1 5559016749",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:18.464Z"
+  }, {
+    "id" : "usr-1792692498602-66fb6",
+    "email" : "testuser-f5e16002@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$qyjkuy2sg.CTQ53gBQ4UNOiLQDRGsRRRlBXT8IhiZeoukDCtW9KYe",
+    "phone" : "+1 5559535735",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:18.785Z"
+  }, {
+    "id" : "usr-1792692498925-3c3a3",
+    "email" : "caseuser-66c4f3e0@example.com",
+    "name" : "Case User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$0t5HW5mbjVTtwlpWtemFG.lAstjyRMsqDOhRypPaw8BCaRekxsMtO",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:19.076Z"
+  }, {
+    "id" : "usr-1792692499160-104f6",
+    "email" : "whitespace-30c0e68a@example.com",
+    "name" : "Whitespace User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$zH74gMpUpoGTEdLvCXuq/.IwKzQgTH7sxUi9WJiQXFIkqFr2wq0CC",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:19.309Z"
+  }, {
+    "id" : "usr-1792692499444-5deb2",
+    "email" : "emailtest-a2f61835@example.com",
+    "name" : "Email Test",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$j9AsMUfvnvjrHGSaSXHXz.BLoDXQTLp2QyYegyWzAePB0rvXRoiSi",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:19.602Z"
+  }, {
+    "id" : "usr-1792692499709-9ad14",
+    "email" : "testuser-0cbebb7d@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Fs9jhxHbsUQ.8l7JyqDITO5gdLn1jWUlnWTKpWcyLVAv0enBwcmEq",
+    "phone" : "+1 5553950717",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:19.867Z"
+  }, {
+    "id" : "usr-1792692499947-9b2af",
+    "email" : "different-16801a63@example.com",
+    "name" : "Mark Smith",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$5rPkFLeRPT.FR4MkKOKRleQTYr5CrVFQLJItx928yzShtkmNFvIQS",
+    "phone" : "+1 5559718213",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:20.094Z"
+  }, {
+    "id" : "usr-1792692500174-8b6d1",
+    "email" : "testuser-7f5b16a1@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Jc0O2fnL8.c7oxPn02i5XeqegY79nOaQlppErLdU4vex7LDcNh7b2",
+    "phone" : "+1 5559252367",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:20.321Z"
+  }, {
+    "id" : "usr-1792692500411-de09a",
+    "email" : "testuser-2f86f807@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$U6L0L4FIoArt860MQ1AZpuWknLJsPOboT8mFxihDDnfmxpnrjm/Gq",
+    "phone" : "+1 5556537589",
+    "emailVerified" : true,
+    "createdAt" : "2026-10-22T18:08:20.563Z"
+  }, {
+    "id" : "usr-1792692500735-3323a",
+    "email" : "existing-95c2ad73@example.com",
+    "name" : "Existing User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$I3OPIeAyOJ4SrDSBPOzd8Oon39yRX5/TA3QmCgUfqEap.K.qGwlGu",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-22T18:08:20.896Z"
+  }, {
+    "id" : "usr-1792692686570-2bb92",
+    "email" : "candidate.1792692686020@example.com",
+    "name" : "Full Flow Candidate",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$5FQVxgdhCw2XEorGg0EmxeMfnRmVXAmH51c5tF.wAc8RyTTVlhQyi",
+    "phone" : "+1 5559876020",
+    "emailVerified" : true,
+    "createdAt" : "2026-10-22T18:11:26.729Z"
   } ],
   "resumes" : [ {
     "id" : "sim-res-pcr1waj35",
@@ -831,7 +1902,7 @@
     "id" : "res-alice-1",
     "userId" : "user-alice-123",
     "fileName" : "alice.pdf",
-    "uploadedAt" : "2026-10-22T16:11:13.444Z",
+    "uploadedAt" : "2026-10-22T18:01:49.161Z",
     "atsScore" : 49,
     "skills" : [ "Python", "PostgreSQL", "REST APIs" ],
     "missingSections" : [ "Certifications" ],
@@ -839,18 +1910,15 @@
     "grammarIssues" : [ "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.", "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.", "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions." ],
     "improvementsToAdd" : [ "Cloud & Containerization context (Docker, AWS, Kubernetes, or Vercel)", "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)", "Testing paradigms and frameworks (Unit testing, Vitest, Jest, or Cypress)" ],
     "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
-    "keywordsJson" : "[{\"keyword\":\"JavaScript\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"TypeScript\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"Python\",\"match\":true,\"count\":2,\"density\":7.41,\"category\":\"Languages\",\"aliases\":[\"python\"]},{\"keyword\":\"Java\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"C++\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"C# / .NET\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"Go\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"Rust\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"HTML/CSS\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"React\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Frameworks\",\"aliases\":[]},{\"keyword\":\"Node.js\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Frameworks\",\"aliases\":[]},{\"keyword\":\"Express.js\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Frameworks\",\"aliases\":[]},{\"keyword\":\"SQL\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Databases & APIs\",\"aliases\":[]},{\"keyword\":\"PostgreSQL\",\"match\":true,\"count\":1,\"density\":3.7,\"category\":\"Databases & APIs\",\"aliases\":[\"postgresql\"]},{\"keyword\":\"MySQL\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Databases & APIs\",\"aliases\":[]},{\"keyword\":\"MongoDB\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Databases & APIs\",\"aliases\":[]},{\"keyword\":\"REST APIs\",\"match\":true,\"count\":1,\"density\":3.7,\"category\":\"Databases & APIs\",\"aliases\":[\"api\"]},{\"keyword\":\"GraphQL\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Databases & APIs\",\"aliases\":[]},{\"keyword\":\"Git / GitHub\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"DevOps & Cloud\",\"aliases\":[]},{\"keyword\":\"Docker\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"DevOps & Cloud\",\"aliases\":[]},{\"keyword\":\"Kubernetes\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"DevOps & Cloud\",\"aliases\":[]},{\"keyword\":\"AWS\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"DevOps & Cloud\",\"aliases\":[]},{\"keyword\":\"Google Cloud / GCP\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"DevOps & Cloud\",\"aliases\":[]},{\"keyword\":\"CI/CD\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"DevOps & Cloud\",\"aliases\":[]},{\"keyword\":\"Unit Testing\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Testing & Tools\",\"aliases\":[]},{\"keyword\":\"Jest / Vitest / Cypress\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Testing & Tools\",\"aliases\":[]}]",
     "wordCount" : 27,
     "contentHash" : "da962907",
     "matchedJDKeywords" : [ ],
-    "missingJDKeywords" : [ ],
-    "categoryBreakdownJson" : "[{\"category\":\"Section Completeness\",\"score\":17,\"maxScore\":20,\"weight\":20,\"reason\":\"Detected 6 of 7 core structural sections. Missing: Certifications.\"},{\"category\":\"Technical Skills & Density\",\"score\":13,\"maxScore\":25,\"weight\":25,\"reason\":\"Found 3 verified technologies in resume text.\"},{\"category\":\"Experience & Project Depth\",\"score\":10,\"maxScore\":20,\"weight\":20,\"reason\":\"Found 0 action verbs across project and work bullet points.\"},{\"category\":\"Quantified Impact & Metrics\",\"score\":0,\"maxScore\":15,\"weight\":15,\"reason\":\"Found 0 measurable metrics/outcomes.\"},{\"category\":\"Contact Information\",\"score\":7,\"maxScore\":10,\"weight\":10,\"reason\":\"Contact points evaluated (Email: ✓, Phone: ✓, Links: ✗).\"},{\"category\":\"Readability & Structure\",\"score\":2,\"maxScore\":10,\"weight\":10,\"reason\":\"Document contains 27 words with formatted section spacing.\"}]",
-    "sectionDetailsJson" : "[{\"sectionName\":\"Contact Information\",\"detected\":true,\"evidence\":\"Contextual match: \\\"alice@test.org\\\"\",\"confidence\":0.75},{\"sectionName\":\"Professional Summary\",\"detected\":true,\"evidence\":\"Found heading: \\\"SUMMARY: Senior Python Engineer.\\\"\",\"confidence\":0.95},{\"sectionName\":\"Education\",\"detected\":true,\"evidence\":\"Found heading: \\\"EDUCATION: B.S. CS 2020.\\\"\",\"confidence\":0.95},{\"sectionName\":\"Technical Skills\",\"detected\":true,\"evidence\":\"Found heading: \\\"SKILLS: Python, Django, PostgreSQL.\\\"\",\"confidence\":0.95},{\"sectionName\":\"Projects\",\"detected\":true,\"evidence\":\"Found heading: \\\"PROJECTS: API Gateway.\\\"\",\"confidence\":0.95},{\"sectionName\":\"Work Experience / Internships\",\"detected\":true,\"evidence\":\"Found heading: \\\"WORK EXPERIENCE: Software Engineer at PyCorp (2020-Present).\\\"\",\"confidence\":0.95},{\"sectionName\":\"Certifications\",\"detected\":false,\"confidence\":0}]"
+    "missingJDKeywords" : [ ]
   }, {
     "id" : "res-bob-1",
     "userId" : "user-bob-456",
     "fileName" : "bob.pdf",
-    "uploadedAt" : "2026-10-22T16:11:13.446Z",
+    "uploadedAt" : "2026-10-22T18:01:49.162Z",
     "atsScore" : 49,
     "skills" : [ "TypeScript", "HTML/CSS", "React" ],
     "missingSections" : [ "Certifications" ],
@@ -858,13 +1926,10 @@
     "grammarIssues" : [ "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.", "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.", "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions." ],
     "improvementsToAdd" : [ "Cloud & Containerization context (Docker, AWS, Kubernetes, or Vercel)", "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)", "Testing paradigms and frameworks (Unit testing, Vitest, Jest, or Cypress)" ],
     "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
-    "keywordsJson" : "[{\"keyword\":\"JavaScript\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"TypeScript\",\"match\":true,\"count\":1,\"density\":3.57,\"category\":\"Languages\",\"aliases\":[\"typescript\"]},{\"keyword\":\"Python\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"Java\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"C++\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"C# / .NET\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"Go\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"Rust\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Languages\",\"aliases\":[]},{\"keyword\":\"HTML/CSS\",\"match\":true,\"count\":2,\"density\":7.14,\"category\":\"Languages\",\"aliases\":[\"html\",\"css\"]},{\"keyword\":\"React\",\"match\":true,\"count\":2,\"density\":7.14,\"category\":\"Frameworks\",\"aliases\":[\"react\"]},{\"keyword\":\"Node.js\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Frameworks\",\"aliases\":[]},{\"keyword\":\"Express.js\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Frameworks\",\"aliases\":[]},{\"keyword\":\"SQL\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Databases & APIs\",\"aliases\":[]},{\"keyword\":\"PostgreSQL\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Databases & APIs\",\"aliases\":[]},{\"keyword\":\"MySQL\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Databases & APIs\",\"aliases\":[]},{\"keyword\":\"MongoDB\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Databases & APIs\",\"aliases\":[]},{\"keyword\":\"REST APIs\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Databases & APIs\",\"aliases\":[]},{\"keyword\":\"GraphQL\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Databases & APIs\",\"aliases\":[]},{\"keyword\":\"Git / GitHub\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"DevOps & Cloud\",\"aliases\":[]},{\"keyword\":\"Docker\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"DevOps & Cloud\",\"aliases\":[]},{\"keyword\":\"Kubernetes\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"DevOps & Cloud\",\"aliases\":[]},{\"keyword\":\"AWS\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"DevOps & Cloud\",\"aliases\":[]},{\"keyword\":\"Google Cloud / GCP\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"DevOps & Cloud\",\"aliases\":[]},{\"keyword\":\"CI/CD\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"DevOps & Cloud\",\"aliases\":[]},{\"keyword\":\"Unit Testing\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Testing & Tools\",\"aliases\":[]},{\"keyword\":\"Jest / Vitest / Cypress\",\"match\":false,\"count\":0,\"density\":0,\"category\":\"Testing & Tools\",\"aliases\":[]}]",
     "wordCount" : 28,
     "contentHash" : "f2b21c7a",
     "matchedJDKeywords" : [ ],
-    "missingJDKeywords" : [ ],
-    "categoryBreakdownJson" : "[{\"category\":\"Section Completeness\",\"score\":17,\"maxScore\":20,\"weight\":20,\"reason\":\"Detected 6 of 7 core structural sections. Missing: Certifications.\"},{\"category\":\"Technical Skills & Density\",\"score\":13,\"maxScore\":25,\"weight\":25,\"reason\":\"Found 3 verified technologies in resume text.\"},{\"category\":\"Experience & Project Depth\",\"score\":10,\"maxScore\":20,\"weight\":20,\"reason\":\"Found 0 action verbs across project and work bullet points.\"},{\"category\":\"Quantified Impact & Metrics\",\"score\":0,\"maxScore\":15,\"weight\":15,\"reason\":\"Found 0 measurable metrics/outcomes.\"},{\"category\":\"Contact Information\",\"score\":7,\"maxScore\":10,\"weight\":10,\"reason\":\"Contact points evaluated (Email: ✓, Phone: ✓, Links: ✗).\"},{\"category\":\"Readability & Structure\",\"score\":2,\"maxScore\":10,\"weight\":10,\"reason\":\"Document contains 28 words with formatted section spacing.\"}]",
-    "sectionDetailsJson" : "[{\"sectionName\":\"Contact Information\",\"detected\":true,\"evidence\":\"Contextual match: \\\"bob@test.org\\\"\",\"confidence\":0.75},{\"sectionName\":\"Professional Summary\",\"detected\":true,\"evidence\":\"Found heading: \\\"SUMMARY: Frontend React Specialist.\\\"\",\"confidence\":0.95},{\"sectionName\":\"Education\",\"detected\":true,\"evidence\":\"Found heading: \\\"EDUCATION: B.S. SE 2021.\\\"\",\"confidence\":0.95},{\"sectionName\":\"Technical Skills\",\"detected\":true,\"evidence\":\"Found heading: \\\"SKILLS: React, TypeScript, HTML, CSS.\\\"\",\"confidence\":0.95},{\"sectionName\":\"Projects\",\"detected\":true,\"evidence\":\"Found heading: \\\"PROJECTS: Dashboard UI.\\\"\",\"confidence\":0.95},{\"sectionName\":\"Work Experience / Internships\",\"detected\":true,\"evidence\":\"Found heading: \\\"WORK EXPERIENCE: Frontend Dev at Reactify (2021-Present).\\\"\",\"confidence\":0.95},{\"sectionName\":\"Certifications\",\"detected\":false,\"confidence\":0}]"
+    "missingJDKeywords" : [ ]
   }, {
     "id" : "sim-res-znia3ve8v",
     "userId" : "demo-student-id",
@@ -935,6 +2000,105 @@
   }, {
     "id" : "res-a781e94e",
     "userId" : "usr-d6d6019d-981c-48a6-9151-940ece2a0847",
+    "fileName" : "resume.pdf",
+    "uploadedAt" : "",
+    "atsScore" : 88,
+    "skills" : [ "Java", "PostgreSQL" ],
+    "missingSections" : [ ],
+    "suggestions" : [ ],
+    "grammarIssues" : [ ],
+    "improvementsToAdd" : [ ],
+    "improvementsToRemove" : [ ],
+    "wordCount" : 300,
+    "contentHash" : "",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-57d0697b",
+    "userId" : "usr-1792692184287-4b955",
+    "fileName" : "alex_resume.pdf",
+    "uploadedAt" : "2026-10-22T18:03:05.833Z",
+    "atsScore" : 42,
+    "skills" : [ "Java", "React", "SQL", "Docker" ],
+    "missingSections" : [ "Professional Summary", "Education", "Projects", "Work Experience / Internships", "Certifications" ],
+    "suggestions" : [ "Add a distinct \"Professional Summary\" section to pass automated category parsers.", "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed." ],
+    "grammarIssues" : [ "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.", "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions." ],
+    "improvementsToAdd" : [ "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)" ],
+    "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
+    "wordCount" : 25,
+    "contentHash" : "1f4c5d05",
+    "targetRole" : "Full Stack Engineer",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-f0c7b40d",
+    "userId" : "usr-ecf1b415-929f-473a-9685-6d131f0d4da3",
+    "fileName" : "resume.pdf",
+    "uploadedAt" : "",
+    "atsScore" : 88,
+    "skills" : [ "Java", "PostgreSQL" ],
+    "missingSections" : [ ],
+    "suggestions" : [ ],
+    "grammarIssues" : [ ],
+    "improvementsToAdd" : [ ],
+    "improvementsToRemove" : [ ],
+    "wordCount" : 300,
+    "contentHash" : "",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-7fb0e001",
+    "userId" : "usr-1792692395904-01329",
+    "fileName" : "alex_resume.pdf",
+    "uploadedAt" : "2026-10-22T18:06:37.184Z",
+    "atsScore" : 42,
+    "skills" : [ "Java", "React", "SQL", "Docker" ],
+    "missingSections" : [ "Professional Summary", "Education", "Projects", "Work Experience / Internships", "Certifications" ],
+    "suggestions" : [ "Add a distinct \"Professional Summary\" section to pass automated category parsers.", "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed." ],
+    "grammarIssues" : [ "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.", "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions." ],
+    "improvementsToAdd" : [ "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)" ],
+    "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
+    "wordCount" : 25,
+    "contentHash" : "1f4c5d05",
+    "targetRole" : "Full Stack Engineer",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-abed4867",
+    "userId" : "usr-506aebc0-a5e4-4360-8853-d8f0e2632cf0",
+    "fileName" : "resume.pdf",
+    "uploadedAt" : "",
+    "atsScore" : 88,
+    "skills" : [ "Java", "PostgreSQL" ],
+    "missingSections" : [ ],
+    "suggestions" : [ ],
+    "grammarIssues" : [ ],
+    "improvementsToAdd" : [ ],
+    "improvementsToRemove" : [ ],
+    "wordCount" : 300,
+    "contentHash" : "",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-76677849",
+    "userId" : "usr-1792692490801-d5fb4",
+    "fileName" : "alex_resume.pdf",
+    "uploadedAt" : "2026-10-22T18:08:12.285Z",
+    "atsScore" : 42,
+    "skills" : [ "Java", "React", "SQL", "Docker" ],
+    "missingSections" : [ "Professional Summary", "Education", "Projects", "Work Experience / Internships", "Certifications" ],
+    "suggestions" : [ "Add a distinct \"Professional Summary\" section to pass automated category parsers.", "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed." ],
+    "grammarIssues" : [ "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.", "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions." ],
+    "improvementsToAdd" : [ "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)" ],
+    "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
+    "wordCount" : 25,
+    "contentHash" : "1f4c5d05",
+    "targetRole" : "Full Stack Engineer",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-7c78d6a5",
+    "userId" : "usr-bb2cef67-90d7-4f04-80f2-b1a3840271fb",
     "fileName" : "resume.pdf",
     "uploadedAt" : "",
     "atsScore" : 88,
@@ -1095,8 +2259,84 @@
     "jobRole" : "Full Stack Engineer",
     "branch" : "Computer Science",
     "experienceLevel" : "Entry Level",
-    "suggestions" : [ ],
-    "qasJson" : "[{\"question\":\"Explain the architectural lifecycle and execution model of Java in a production environment.\",\"answer\":\"Spring Boot uses Dependency Injection managed by the ApplicationContext to instantiate and wire beans.\",\"evaluation\":{\"score\":4,\"technicalScore\":5,\"communicationScore\":4,\"confidenceScore\":5,\"feedback\":\"Answer is concise but would benefit from concrete real-world engineering examples.\",\"grammar\":\"Good syntax and professional technical vocabulary.\",\"clarity\":\"Pacing was fast; expand on key points.\"}},{\"question\":\"How would you design a scalable, low-latency microservice tailored for a Full Stack Engineer role?\",\"answer\":\"\"},{\"question\":\"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\"answer\":\"\"},{\"question\":\"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\"answer\":\"\"},{\"question\":\"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\"answer\":\"\"}]"
+    "overallScore" : 70,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ]
+  }, {
+    "id" : "int-96a97090",
+    "userId" : "usr-1792692184287-4b955",
+    "date" : "2026-10-22T18:03:06.177Z",
+    "jobRole" : "Full Stack Engineer",
+    "branch" : "Computer Science",
+    "experienceLevel" : "Entry Level",
+    "overallScore" : 70,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ]
+  }, {
+    "id" : "int-92be6313",
+    "userId" : "usr-ecf1b415-929f-473a-9685-6d131f0d4da3",
+    "date" : "",
+    "jobRole" : "Backend Engineer",
+    "overallScore" : 82,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ]
+  }, {
+    "id" : "int-c300d04e",
+    "userId" : "usr-1792692395904-01329",
+    "date" : "2026-10-22T18:06:37.482Z",
+    "jobRole" : "Full Stack Engineer",
+    "branch" : "Computer Science",
+    "experienceLevel" : "Entry Level",
+    "overallScore" : 70,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ]
+  }, {
+    "id" : "int-c7420236",
+    "userId" : "usr-506aebc0-a5e4-4360-8853-d8f0e2632cf0",
+    "date" : "",
+    "jobRole" : "Backend Engineer",
+    "overallScore" : 82,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ]
+  }, {
+    "id" : "int-af297b1b",
+    "userId" : "usr-1792692490801-d5fb4",
+    "date" : "2026-10-22T18:08:12.578Z",
+    "jobRole" : "Full Stack Engineer",
+    "branch" : "Computer Science",
+    "experienceLevel" : "Entry Level",
+    "overallScore" : 70,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ]
+  }, {
+    "id" : "int-4b9f1efc",
+    "userId" : "usr-bb2cef67-90d7-4f04-80f2-b1a3840271fb",
+    "date" : "",
+    "jobRole" : "Backend Engineer",
+    "overallScore" : 82,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ]
   } ],
   "templates" : [ {
     "id" : "template-1",
@@ -1465,8 +2705,15 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ],
-    "sectionsJson" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    "tags" : [ ]
+  }, {
+    "id" : "custom-test-1792692109001",
+    "name" : "FinTech Quantitative Developer ATS Format",
+    "targetRole" : "Software Engineer",
+    "atsScore" : 92,
+    "downloads" : 0,
+    "category" : "Specialized layout for high-frequency trading and financial risk models.",
+    "tags" : [ ]
   } ],
   "feedback" : [ {
     "id" : "feed-1",
@@ -1513,5 +2760,59 @@
     "category" : "interview",
     "comment" : "Excellent simulated AI mock interview experience!",
     "createdAt" : "2026-10-22T16:57:46.481Z"
+  }, {
+    "id" : "feed-90406842",
+    "userId" : "usr-1792692184287-4b955",
+    "studentName" : "Integration Candidate",
+    "email" : "candidate-50f6d6@careernavigator.edu",
+    "rating" : 5,
+    "category" : "interview",
+    "comment" : "The simulated technical assessor gave very specific guidance on Spring Boot bean lifecycles.",
+    "createdAt" : "2026-10-22T18:03:06.519Z"
+  }, {
+    "id" : "feed-97c423c4",
+    "userId" : "usr-ecf1b415-929f-473a-9685-6d131f0d4da3",
+    "studentName" : "",
+    "email" : "",
+    "rating" : 5,
+    "category" : "general",
+    "comment" : "Excellent preparation platform!",
+    "createdAt" : ""
+  }, {
+    "id" : "feed-747bfbf2",
+    "userId" : "usr-1792692395904-01329",
+    "studentName" : "Integration Candidate",
+    "email" : "candidate-71d935@careernavigator.edu",
+    "rating" : 5,
+    "category" : "interview",
+    "comment" : "The simulated technical assessor gave very specific guidance on Spring Boot bean lifecycles.",
+    "createdAt" : "2026-10-22T18:06:37.757Z"
+  }, {
+    "id" : "feed-94322707",
+    "userId" : "usr-506aebc0-a5e4-4360-8853-d8f0e2632cf0",
+    "studentName" : "",
+    "email" : "",
+    "rating" : 5,
+    "category" : "general",
+    "comment" : "Excellent preparation platform!",
+    "createdAt" : ""
+  }, {
+    "id" : "feed-9a32a5a4",
+    "userId" : "usr-1792692490801-d5fb4",
+    "studentName" : "Integration Candidate",
+    "email" : "candidate-a389e5@careernavigator.edu",
+    "rating" : 5,
+    "category" : "interview",
+    "comment" : "The simulated technical assessor gave very specific guidance on Spring Boot bean lifecycles.",
+    "createdAt" : "2026-10-22T18:08:13.046Z"
+  }, {
+    "id" : "feed-eacd5de4",
+    "userId" : "usr-bb2cef67-90d7-4f04-80f2-b1a3840271fb",
+    "studentName" : "",
+    "email" : "",
+    "rating" : 5,
+    "category" : "general",
+    "comment" : "Excellent preparation platform!",
+    "createdAt" : ""
   } ]
 }

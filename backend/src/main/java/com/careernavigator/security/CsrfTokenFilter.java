@@ -26,6 +26,8 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
             "/api/auth/logout",
             "/api/auth/send-otp",
             "/api/auth/verify-otp",
+            "/api/auth/verify-email",
+            "/api/auth/resend-verification",
             "/api/auth/forgot-password",
             "/api/auth/reset-password",
             "/api/auth/url",

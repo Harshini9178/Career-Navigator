@@ -17,7 +17,9 @@ public class AuthRequests {
         private String password;
 
         public String getEmail() { return email; }
-        public void setEmail(String email) { this.email = email; }
+        public void setEmail(String email) {
+            this.email = email != null ? email.trim() : null;
+        }
 
         public String getPassword() { return password; }
         public void setPassword(String password) { this.password = password; }
@@ -39,9 +41,12 @@ public class AuthRequests {
         private String experienceLevel;
         private List<String> skills;
         private List<String> projects;
+        private String phone;
 
         public String getEmail() { return email; }
-        public void setEmail(String email) { this.email = email; }
+        public void setEmail(String email) {
+            this.email = email != null ? email.trim() : null;
+        }
 
         public String getPassword() { return password; }
         public void setPassword(String password) { this.password = password; }
@@ -66,30 +71,106 @@ public class AuthRequests {
 
         public List<String> getProjects() { return projects; }
         public void setProjects(List<String> projects) { this.projects = projects; }
+
+        public String getPhone() { return phone; }
+        public void setPhone(String phone) {
+            this.phone = phone != null ? phone.trim() : null;
+        }
     }
 
     public static class SendOtpRequest {
-        @NotBlank(message = "Email is required")
-        @Email(message = "Valid email is required")
         private String email;
+        private String phone;
+        private String identifier;
 
         public String getEmail() { return email; }
-        public void setEmail(String email) { this.email = email; }
+        public void setEmail(String email) {
+            this.email = email != null ? email.trim() : null;
+        }
+
+        public String getPhone() { return phone; }
+        public void setPhone(String phone) {
+            this.phone = phone != null ? phone.trim() : null;
+        }
+
+        public String getIdentifier() {
+            if (identifier != null && !identifier.isBlank()) return identifier.trim();
+            if (email != null && !email.isBlank()) return email.trim();
+            return phone != null ? phone.trim() : null;
+        }
+        public void setIdentifier(String identifier) {
+            this.identifier = identifier != null ? identifier.trim() : null;
+        }
     }
 
     public static class VerifyOtpRequest {
-        @NotBlank(message = "Email is required")
-        @Email(message = "Valid email is required")
         private String email;
+        private String phone;
+        private String identifier;
+        private String name;
 
-        @NotBlank(message = "OTP is required")
+        @NotBlank(message = "OTP code is required")
         private String otp;
 
         public String getEmail() { return email; }
-        public void setEmail(String email) { this.email = email; }
+        public void setEmail(String email) {
+            this.email = email != null ? email.trim() : null;
+        }
+
+        public String getPhone() { return phone; }
+        public void setPhone(String phone) {
+            this.phone = phone != null ? phone.trim() : null;
+        }
+
+        public String getName() { return name; }
+        public void setName(String name) { this.name = name; }
+
+        public String getIdentifier() {
+            if (identifier != null && !identifier.isBlank()) return identifier.trim();
+            if (email != null && !email.isBlank()) return email.trim();
+            return phone != null ? phone.trim() : null;
+        }
+        public void setIdentifier(String identifier) {
+            this.identifier = identifier != null ? identifier.trim() : null;
+        }
 
         public String getOtp() { return otp; }
-        public void setOtp(String otp) { this.otp = otp; }
+        public void setOtp(String otp) {
+            this.otp = otp != null ? otp.trim() : null;
+        }
+    }
+
+    public static class VerifyEmailRequest {
+        @NotBlank(message = "Email is required")
+        private String email;
+
+        private String token;
+        private String code;
+
+        public String getEmail() { return email; }
+        public void setEmail(String email) {
+            this.email = email != null ? email.trim() : null;
+        }
+
+        public String getToken() { return token; }
+        public void setToken(String token) {
+            this.token = token != null ? token.trim() : null;
+        }
+
+        public String getCode() { return code; }
+        public void setCode(String code) {
+            this.code = code != null ? code.trim() : null;
+        }
+    }
+
+    public static class ResendVerificationRequest {
+        @NotBlank(message = "Email is required")
+        private String email;
+
+        public String getEmail() { return email; }
+        public void setEmail(String email) {
+            this.email = email != null ? email.trim() : null;
+        }
     }
 
     public static class ResetPasswordRequest {
@@ -105,10 +186,14 @@ public class AuthRequests {
         private String newPassword;
 
         public String getEmail() { return email; }
-        public void setEmail(String email) { this.email = email; }
+        public void setEmail(String email) {
+            this.email = email != null ? email.trim() : null;
+        }
 
         public String getOtp() { return otp; }
-        public void setOtp(String otp) { this.otp = otp; }
+        public void setOtp(String otp) {
+            this.otp = otp != null ? otp.trim() : null;
+        }
 
         public String getNewPassword() { return newPassword; }
         public void setNewPassword(String newPassword) { this.newPassword = newPassword; }

@@ -374,7 +374,9 @@ export const jsonDb = {
     return readDb().users.find((u) => u.id === id);
   },
   getUserByEmail: (email: string): User | undefined => {
-    return readDb().users.find((u) => u.email.toLowerCase() === email.toLowerCase());
+    if (!email || typeof email !== 'string') return undefined;
+    const clean = email.trim().toLowerCase();
+    return readDb().users.find((u) => u.email && u.email.trim().toLowerCase() === clean);
   },
   saveUser: (user: User): User => {
     const db = readDb();

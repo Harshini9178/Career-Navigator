@@ -54,9 +54,39 @@ public class UserEntity {
     private String passwordHash;
 
     @Column
+    private String phone;
+
+    @Column
+    private Boolean emailVerified = true;
+
+    @Column
+    private String verificationToken;
+
+    @Column
+    private Long verificationTokenExpiresAt;
+
+    @Column
+    private String verificationCode;
+
+    @Column
     private String createdAt;
 
     public UserEntity() {}
+
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
+
+    public Boolean getEmailVerified() { return emailVerified != null ? emailVerified : true; }
+    public void setEmailVerified(Boolean emailVerified) { this.emailVerified = emailVerified; }
+
+    public String getVerificationToken() { return verificationToken; }
+    public void setVerificationToken(String verificationToken) { this.verificationToken = verificationToken; }
+
+    public Long getVerificationTokenExpiresAt() { return verificationTokenExpiresAt; }
+    public void setVerificationTokenExpiresAt(Long verificationTokenExpiresAt) { this.verificationTokenExpiresAt = verificationTokenExpiresAt; }
+
+    public String getVerificationCode() { return verificationCode; }
+    public void setVerificationCode(String verificationCode) { this.verificationCode = verificationCode; }
 
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }

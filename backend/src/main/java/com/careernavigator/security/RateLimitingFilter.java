@@ -35,7 +35,7 @@ public class RateLimitingFilter extends OncePerRequestFilter {
         String ip = getClientIp(request);
         long now = System.currentTimeMillis();
 
-        // 1. Auth Rate Limiting (20 req / 60 sec)
+        // 1. Auth Rate Limiting (100 req / 60 sec)
         if (path.startsWith("/api/auth/login") || path.startsWith("/api/auth/register") || path.startsWith("/api/auth/send-otp")) {
             RateLimitEntry entry = authLimits.compute(ip, (k, v) -> {
                 if (v == null || now > v.resetAt) {
@@ -45,7 +45,7 @@ public class RateLimitingFilter extends OncePerRequestFilter {
                 return v;
             });
 
-            if (entry.count > 25) {
+            if (entry.count > 100) {
                 long retryAfter = Math.max(1, (entry.resetAt - now) / 1000);
                 response.setStatus(429);
                 response.setHeader("Retry-After", String.valueOf(retryAfter));

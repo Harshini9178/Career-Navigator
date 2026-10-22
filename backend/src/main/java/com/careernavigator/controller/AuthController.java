@@ -44,12 +44,35 @@ public class AuthController {
 
     @PostMapping("/api/auth/send-otp")
     public ResponseEntity<Map<String, Object>> sendOtp(@Valid @RequestBody SendOtpRequest req) {
-        return ResponseEntity.ok(authService.sendOtp(req.getEmail()));
+        return ResponseEntity.ok(authService.sendOtp(req.getIdentifier()));
     }
 
     @PostMapping("/api/auth/verify-otp")
-    public ResponseEntity<Map<String, Object>> verifyOtp(@Valid @RequestBody VerifyOtpRequest req) {
-        return ResponseEntity.ok(authService.verifyOtp(req.getEmail(), req.getOtp()));
+    public ResponseEntity<Map<String, Object>> verifyOtp(@Valid @RequestBody VerifyOtpRequest req, HttpServletResponse response) {
+        return ResponseEntity.ok(authService.verifyOtp(req.getIdentifier(), req.getOtp(), req.getName(), response));
+    }
+
+    @PostMapping("/api/auth/verify-email")
+    public ResponseEntity<Map<String, Object>> verifyEmail(@Valid @RequestBody VerifyEmailRequest req, HttpServletResponse response) {
+        return ResponseEntity.ok(authService.verifyEmail(req, response));
+    }
+
+    @GetMapping("/api/auth/verify-email")
+    public ResponseEntity<Map<String, Object>> verifyEmailGet(
+            @RequestParam String email,
+            @RequestParam(required = false) String token,
+            @RequestParam(required = false) String code,
+            HttpServletResponse response) {
+        VerifyEmailRequest req = new VerifyEmailRequest();
+        req.setEmail(email);
+        req.setToken(token);
+        req.setCode(code);
+        return ResponseEntity.ok(authService.verifyEmail(req, response));
+    }
+
+    @PostMapping("/api/auth/resend-verification")
+    public ResponseEntity<Map<String, Object>> resendVerification(@Valid @RequestBody ResendVerificationRequest req) {
+        return ResponseEntity.ok(authService.resendVerification(req.getEmail()));
     }
 
     @PostMapping({"/api/auth/forgot-password", "/api/auth/reset-password"})

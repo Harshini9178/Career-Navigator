@@ -86,6 +86,8 @@ public class DatabaseStorageService {
                     u.setExperienceLevel(uNode.path("experienceLevel").asText(null));
                     u.setCompletedProfile(uNode.path("completedProfile").asBoolean(false));
                     u.setPasswordHash(uNode.path("passwordHash").asText(null));
+                    u.setPhone(uNode.has("phone") && !uNode.get("phone").isNull() ? uNode.get("phone").asText() : null);
+                    u.setEmailVerified(uNode.has("emailVerified") ? uNode.get("emailVerified").asBoolean(true) : true);
                     u.setCreatedAt(uNode.path("createdAt").asText(null));
 
                     if (uNode.has("skills") && uNode.get("skills").isArray()) {

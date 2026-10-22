@@ -13,6 +13,8 @@ export interface AuthContextType {
   sendOtp: (phone: string) => Promise<{ success: boolean; otp?: string; message?: string; error?: string }>;
   verifyOtp: (phone: string, otp: string, name?: string) => Promise<boolean>;
   register: (name: string, email: string, password?: string, role?: 'student' | 'admin', phone?: string) => Promise<boolean>;
+  verifyEmail: (email: string, tokenOrCode: string) => Promise<{ success: boolean; message: string }>;
+  resendVerification: (email: string) => Promise<{ success: boolean; message: string }>;
   demoLogin: (role: 'student' | 'admin') => Promise<boolean>;
   googleLogin: () => Promise<void>;
   logout: () => Promise<void>;
@@ -158,15 +160,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   ): Promise<boolean> => {
     clearError();
     try {
-      const res = await api.post('/api/auth/register', { name, email, password, role, phone });
+      const cleanEmail = email.trim().toLowerCase();
+      const res = await api.post('/api/auth/register', {
+        name: name.trim(),
+        email: cleanEmail,
+        password,
+        role,
+        phone: phone?.trim() || undefined
+      });
       const { ok, status, data } = await parseApiResponse(res);
 
-      if (!ok || !data.success) {
+      if (!ok || data.success === false) {
         if (status === 409) {
           throw new Error(data.error || 'An account with this email already exists. Please log in.');
         }
         if (status === 400) {
           throw new Error(data.error || 'Please check your registration details and try again.');
+        }
+        if (status === 429) {
+          throw new Error(data.error || 'Too many attempts. Please try again in a few moments.');
         }
         if (status >= 500) {
           throw new Error(data.error || 'Server error occurred during registration. Please try again shortly.');
@@ -175,13 +187,68 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       }
 
       sound.playChime();
-      setUser(data.user);
+      if (data.user) {
+        setUser(data.user);
+      }
       return true;
     } catch (err: any) {
       sound.playClick(400);
       const userMessage = formatApiError(err, 'Registration failed. Please check your connection and try again.');
       setAuthError(userMessage);
       return false;
+    }
+  };
+
+  // Email Verification Handler
+  const verifyEmail = async (email: string, tokenOrCode: string): Promise<{ success: boolean; message: string }> => {
+    clearError();
+    try {
+      const clean = tokenOrCode.trim();
+      const isSixDigit = /^\d{6}$/.test(clean);
+      const payload = isSixDigit
+        ? { email: email.trim().toLowerCase(), code: clean }
+        : { email: email.trim().toLowerCase(), token: clean };
+
+      const res = await api.post('/api/auth/verify-email', payload);
+      const { ok, data } = await parseApiResponse(res);
+
+      if (!ok || data.success === false) {
+        throw new Error(data.error || 'Verification failed. Please check your code or link.');
+      }
+
+      sound.playChime();
+      if (data.user) {
+        setUser(data.user);
+      }
+      return { success: true, message: data.message || 'Email verified successfully!' };
+    } catch (err: any) {
+      sound.playClick(400);
+      const userMessage = formatApiError(err, 'Verification failed.');
+      setAuthError(userMessage);
+      return { success: false, message: userMessage };
+    }
+  };
+
+  // Resend Email Verification
+  const resendVerification = async (email: string): Promise<{ success: boolean; message: string }> => {
+    clearError();
+    try {
+      const res = await api.post('/api/auth/resend-verification', { email: email.trim().toLowerCase() });
+      const { ok, status, data } = await parseApiResponse(res);
+
+      if (!ok || data.success === false) {
+        if (status === 429) {
+          throw new Error(data.error || 'Please wait a moment before requesting another verification email.');
+        }
+        throw new Error(data.error || 'Failed to dispatch verification email.');
+      }
+
+      return { success: true, message: data.message || 'Verification email dispatched.' };
+    } catch (err: any) {
+      sound.playClick(400);
+      const userMessage = formatApiError(err, 'Failed to dispatch verification email.');
+      setAuthError(userMessage);
+      return { success: false, message: userMessage };
     }
   };
 
@@ -299,6 +366,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         sendOtp,
         verifyOtp,
         register,
+        verifyEmail,
+        resendVerification,
         demoLogin,
         googleLogin,
         logout,
