@@ -18,7 +18,8 @@ import {
   Compass,
   FileText,
   Video,
-  Code
+  Code,
+  Brain
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext.js';
 import { sound } from '../lib/sound.js';
@@ -412,12 +413,12 @@ export default function SignInPage({
 
               <div className="flex items-start gap-3 p-3 rounded-xl border border-slate-800/80 bg-slate-900/50 backdrop-blur-sm">
                 <div className="w-8 h-8 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 flex-shrink-0 mt-0.5">
-                  <Code className="w-4 h-4" />
+                  <Brain className="w-4 h-4" />
                 </div>
                 <div>
-                  <h2 className="text-xs font-semibold text-slate-200">Integrated CodeLab Sandbox</h2>
+                  <h2 className="text-xs font-semibold text-slate-200">Aptitude Assessment Center</h2>
                   <p className="text-xs text-slate-400 mt-0.5">
-                    In-browser code editor with instant test-case execution and algorithmic review.
+                    Quantitative, logical reasoning, verbal ability, and data interpretation practice.
                   </p>
                 </div>
               </div>

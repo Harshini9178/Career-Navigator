@@ -6646,6 +6646,312 @@
           }
         }
       ]
+    },
+    {
+      "id": "int-d1umjb2cv",
+      "userId": "usr-1791951546428-b9e0q",
+      "jobRole": "Full Stack developer",
+      "branch": "Computer Science",
+      "skills": [
+        "java",
+        "python",
+        "react",
+        "vite"
+      ],
+      "experienceLevel": "Entry Level",
+      "status": "completed",
+      "questions": [
+        "In Java, explain the differences between the 'StringBuilder' and 'StringBuffer' classes, and describe a specific scenario in your projects where choosing one over the other significantly impacted performance.",
+        "Design a high-level architecture for your text-to-image generator, detailing how you manage the asynchronous communication between the React frontend, the backend API, and the heavy image-processing inference task.",
+        "Given that your text-to-image generator likely consumes high-latency external APIs, how would you implement an efficient caching strategy using Redis or a database to prevent redundant API calls?",
+        "Describe a time during your project development when you encountered a technical blocker that required you to pivot your implementation strategy; what was your process for diagnosing the root cause and executing the fix?",
+        "Explain the lifecycle of a React component in a Vite-based project and discuss how you would optimize the re-rendering process for a data-intensive dashboard like your weather application."
+      ],
+      "currentQuestionIndex": 5,
+      "answers": [
+        {
+          "question": "In Java, explain the differences between the 'StringBuilder' and 'StringBuffer' classes, and describe a specific scenario in your projects where choosing one over the other significantly impacted performance.",
+          "questionId": "q-auto-1",
+          "category": "resume",
+          "difficulty": "intermediate",
+          "answer": "in Java explain the difference between the straight stringbuilder and string buffer",
+          "code": "",
+          "language": "java",
+          "skipped": false,
+          "evaluation": {
+            "score": 3,
+            "technicalScore": 3,
+            "communicationScore": 3,
+            "confidenceScore": 8,
+            "grammar": "Well-formed sentences and vocabulary.",
+            "clarity": "Concise response; expand on core mechanisms.",
+            "feedback": "Adequate preliminary attempt. Review the model points to build a more comprehensive response.",
+            "strengths": [
+              "Provided a relevant baseline response to the question prompt."
+            ],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Deepen coverage of: \"Clear technical explanation covering core principles.\"",
+              "Expand your answer with real-world architectural trade-offs and concrete engineering examples."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 45,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 16,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "Design a high-level architecture for your text-to-image generator, detailing how you manage the asynchronous communication between the React frontend, the backend API, and the heavy image-processing inference task.",
+          "questionId": "q-auto-2",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-23T17:02:34.631Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in technical under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 2,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "Given that your text-to-image generator likely consumes high-latency external APIs, how would you implement an efficient caching strategy using Redis or a database to prevent redundant API calls?",
+          "questionId": "q-auto-3",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-23T17:04:04.975Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in technical under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 79,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "Describe a time during your project development when you encountered a technical blocker that required you to pivot your implementation strategy; what was your process for diagnosing the root cause and executing the fix?",
+          "questionId": "q-auto-4",
+          "category": "resume",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-23T17:05:28.650Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in resume under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 74,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "Explain the lifecycle of a React component in a Vite-based project and discuss how you would optimize the re-rendering process for a data-intensive dashboard like your weather application.",
+          "questionId": "q-auto-5",
+          "category": "resume",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-23T17:05:37.509Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in resume under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 7,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        }
+      ],
+      "createdAt": "2026-10-23T17:02:13.550Z",
+      "overallScore": 6,
+      "technicalScore": 6,
+      "communicationScore": 29,
+      "confidenceScore": 27,
+      "feedbackText": "Baseline technical interview completed. Answered 1 of 5 questions with an average score of 30% on attempted questions (4 skipped). Prioritize strengthening core Full Stack developer fundamentals and code syntax structure.",
+      "suggestions": [
+        "Commit to a rigorous technical interview preparation schedule covering core language concepts like Java concurrency and React component lifecycles.",
+        "Adopt the STAR method (Situation, Task, Action, Result) to structure responses for behavioral and situational questions.",
+        "Practice articulating your project architecture by creating simple system design diagrams and explaining them aloud.",
+        "Build a habit of responding to technical prompts even when uncertain to practice the skill of logical reasoning and knowledge synthesis.",
+        "Schedule mock interviews to improve your ability to communicate complex concepts under pressure."
+      ],
+      "averageAnsweredScore": 30,
+      "averageScoreOutOf10": 3,
+      "totalPointsEarned": 3,
+      "maxPossiblePoints": 50,
+      "categoryScores": {
+        "resume": 10,
+        "technical": 0
+      },
+      "questionsAnswered": 1,
+      "questionsSkipped": 4,
+      "questionsPending": 0,
+      "strongestAreas": [
+        "Provided a relevant baseline response to the question prompt."
+      ],
+      "topicsToImprove": [
+        "Deepen coverage of: \"Clear technical explanation covering core principles.\"",
+        "Expand your answer with real-world architectural trade-offs and concrete engineering examples."
+      ],
+      "suggestedPracticeQuestions": [
+        "Review algorithmic optimization for Full Stack developer technical scenarios.",
+        "Practice designing resilient database schemas and indexing structures.",
+        "Refine STAR-method behavioral responses regarding technical challenges."
+      ],
+      "recommendedLearningTopics": [
+        "Asynchronous Concurrency and Thread Safety",
+        "System Design Patterns: Caching, Rate Limiting & Message Queues",
+        "Database Sharding, ACID Transactions & Index Optimization"
+      ]
     }
   ],
   "templates": [

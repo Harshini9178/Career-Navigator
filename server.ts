@@ -1374,6 +1374,85 @@ app.get('/api/interview/:id', (req, res) => {
   res.json({ success: true, interview });
 });
 
+// Finalize and submit mock interview session
+app.post('/api/interview/:id/submit', (req, res) => {
+  const { id } = req.params;
+  const userId = getSessionUserId(req);
+
+  try {
+    let interview = jsonDb.getInterviewById(id);
+
+    if (interview) {
+      // Update existing interview
+      interview.status = 'completed';
+      if (Array.isArray(req.body.answers)) {
+        interview.answers = req.body.answers;
+      }
+      if (typeof req.body.overallScore === 'number') interview.overallScore = req.body.overallScore;
+      if (typeof req.body.averageAnsweredScore === 'number') interview.averageAnsweredScore = req.body.averageAnsweredScore;
+      if (typeof req.body.averageScoreOutOf10 === 'number') interview.averageScoreOutOf10 = req.body.averageScoreOutOf10;
+      if (typeof req.body.totalPointsEarned === 'number') interview.totalPointsEarned = req.body.totalPointsEarned;
+      if (typeof req.body.maxPossiblePoints === 'number') interview.maxPossiblePoints = req.body.maxPossiblePoints;
+      if (typeof req.body.technicalScore === 'number') interview.technicalScore = req.body.technicalScore;
+      if (typeof req.body.communicationScore === 'number') interview.communicationScore = req.body.communicationScore;
+      if (typeof req.body.confidenceScore === 'number') interview.confidenceScore = req.body.confidenceScore;
+      if (req.body.categoryScores) interview.categoryScores = req.body.categoryScores;
+      if (typeof req.body.questionsAnswered === 'number') interview.questionsAnswered = req.body.questionsAnswered;
+      if (typeof req.body.questionsSkipped === 'number') interview.questionsSkipped = req.body.questionsSkipped;
+      if (typeof req.body.questionsPending === 'number') interview.questionsPending = req.body.questionsPending;
+      if (Array.isArray(req.body.strongestAreas)) interview.strongestAreas = req.body.strongestAreas;
+      if (Array.isArray(req.body.topicsToImprove)) interview.topicsToImprove = req.body.topicsToImprove;
+      if (Array.isArray(req.body.suggestedPracticeQuestions)) interview.suggestedPracticeQuestions = req.body.suggestedPracticeQuestions;
+      if (Array.isArray(req.body.recommendedLearningTopics)) interview.recommendedLearningTopics = req.body.recommendedLearningTopics;
+      if (req.body.feedbackText) interview.feedbackText = req.body.feedbackText;
+      if (Array.isArray(req.body.suggestions)) interview.suggestions = req.body.suggestions;
+      if (userId && (!interview.userId || interview.userId.startsWith('demo-'))) {
+        interview.userId = userId;
+      }
+    } else {
+      // If not present in JSON DB (e.g. client-side initialized), synthesize completed interview
+      interview = {
+        id,
+        userId: userId || 'demo-student-1',
+        jobRole: req.body.jobRole || 'Full Stack Engineer',
+        branch: req.body.branch || 'General Engineering',
+        skills: req.body.skills || ['Coding'],
+        experienceLevel: req.body.experienceLevel || 'Entry Level',
+        status: 'completed',
+        questions: Array.isArray(req.body.answers) ? req.body.answers.map((a: any) => a.question || a.questionId) : [],
+        currentQuestionIndex: Array.isArray(req.body.answers) ? req.body.answers.length : 0,
+        answers: Array.isArray(req.body.answers) ? req.body.answers : [],
+        overallScore: req.body.overallScore ?? 80,
+        averageAnsweredScore: req.body.averageAnsweredScore,
+        averageScoreOutOf10: req.body.averageScoreOutOf10,
+        totalPointsEarned: req.body.totalPointsEarned,
+        maxPossiblePoints: req.body.maxPossiblePoints,
+        technicalScore: req.body.technicalScore,
+        communicationScore: req.body.communicationScore,
+        confidenceScore: req.body.confidenceScore,
+        categoryScores: req.body.categoryScores,
+        questionsAnswered: req.body.questionsAnswered,
+        questionsSkipped: req.body.questionsSkipped,
+        questionsPending: req.body.questionsPending,
+        strongestAreas: req.body.strongestAreas,
+        topicsToImprove: req.body.topicsToImprove,
+        suggestedPracticeQuestions: req.body.suggestedPracticeQuestions,
+        recommendedLearningTopics: req.body.recommendedLearningTopics,
+        feedbackText: req.body.feedbackText,
+        suggestions: req.body.suggestions,
+        createdAt: new Date().toISOString()
+      };
+    }
+
+    const saved = jsonDb.saveInterview(interview);
+    logger.info(`Mock interview ${id} submitted and completed successfully for user ${saved.userId}`);
+    return res.json({ success: true, interview: saved });
+  } catch (error: any) {
+    logger.error('Interview final submit error:', error);
+    return res.status(500).json({ error: 'Failed to record interview submission', details: error.message });
+  }
+});
+
 // Answer the current interview question and evaluate it
 app.post('/api/interview/:id/answer', aiRateLimiter(20), async (req, res) => {
   const { id } = req.params;

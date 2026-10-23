@@ -1093,18 +1093,22 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
 
       // 4. Submit the interview and confirm success
       const isLocalSession = interviewId.startsWith('int-local-');
-      const submitResponse = await api.post(`/api/interview/${interviewId}/submit`, {
-        ...reportData,
-        answers: compiledAnswers
-      });
+      try {
+        const submitResponse = await api.post(`/api/interview/${interviewId}/submit`, {
+          ...reportData,
+          answers: compiledAnswers
+        });
 
-      if (!submitResponse.ok && !isLocalSession) {
-        let errorMsg = `Server submission returned HTTP ${submitResponse.status}`;
-        try {
-          const errData = await submitResponse.json();
-          if (errData.message) errorMsg = errData.message;
-        } catch (_parseErr) {}
-        throw new Error(errorMsg);
+        if (!submitResponse.ok && !isLocalSession) {
+          let errorMsg = `Server submission returned HTTP ${submitResponse.status}`;
+          try {
+            const errData = await submitResponse.json();
+            if (errData.message || errData.error) errorMsg = errData.message || errData.error;
+          } catch (_parseErr) {}
+          console.warn('Server submit returned non-200, continuing with local persistence:', errorMsg);
+        }
+      } catch (netErr: any) {
+        console.warn('Network call to submit failed, continuing with local persistence:', netErr);
       }
 
       // 5. Immediately stop all camera and microphone tracks.
