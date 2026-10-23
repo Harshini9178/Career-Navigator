@@ -55,6 +55,18 @@ export interface ResumeAnalysis {
   wordCount?: number;
 }
 
+export interface StructuredQuestion {
+  id: string;
+  category: 'technical' | 'coding' | 'resume' | 'behavioral' | 'aptitude';
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
+  roles: string[];
+  question: string;
+  expectedAnswerPoints: string[];
+  evaluationCriteria: string[];
+  codeTemplate?: string;
+  defaultLanguage?: string;
+}
+
 export interface AnswerEvaluation {
   score: number;
   feedback: string;
@@ -63,15 +75,28 @@ export interface AnswerEvaluation {
   confidenceScore: number;
   grammar: string;
   clarity: string;
+  strengths?: string[];
+  missingConcepts?: string[];
+  improvementSuggestions?: string[];
+  modelAnswerPoints?: string[];
   wordsPerMinute?: number;
   fillerWordCount?: number;
   answerDurationSeconds?: number;
+  evaluationSource?: 'ai' | 'rubric';
 }
 
 export interface InterviewAnswer {
   question: string;
+  questionId?: string;
+  category?: 'technical' | 'coding' | 'resume' | 'behavioral' | 'aptitude';
+  difficulty?: 'beginner' | 'intermediate' | 'advanced';
   answer: string;
+  code?: string;
+  language?: string;
+  skipped?: boolean;
   evaluation?: AnswerEvaluation;
+  expectedAnswerPoints?: string[];
+  evaluationCriteria?: string[];
 }
 
 export interface MockInterview {
@@ -82,8 +107,9 @@ export interface MockInterview {
   skills: string[];
   experienceLevel: string;
   status: 'started' | 'completed';
-  interviewMode?: 'voice' | 'text';
+  interviewMode?: 'voice' | 'text' | 'video_audio';
   questions: string[];
+  structuredQuestions?: StructuredQuestion[];
   followUpQuestions?: string[];
   currentQuestionIndex: number;
   answers: InterviewAnswer[];
@@ -91,6 +117,17 @@ export interface MockInterview {
   technicalScore?: number;
   communicationScore?: number;
   confidenceScore?: number;
+  categoryScores?: Record<string, number>;
+  questionsAnswered?: number;
+  questionsSkipped?: number;
+  strongestAreas?: string[];
+  topicsToImprove?: string[];
+  suggestedPracticeQuestions?: string[];
+  recommendedLearningTopics?: string[];
+  durationMinutes?: number;
+  prepTimerSeconds?: number;
+  selectedResumeId?: string;
+  selectedResumeName?: string;
   feedbackText?: string;
   suggestions?: string[];
   createdAt: string;

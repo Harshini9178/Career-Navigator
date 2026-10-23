@@ -29,13 +29,11 @@ public class InterviewService {
     }
 
     public Map<String, Object> generateInterview(GenerateInterviewRequest req, UserEntity user) {
-        String role = req.getTargetRole() != null ? req.getTargetRole() : "Full Stack Developer";
-        String branch = req.getBranch() != null ? req.getBranch() : "Computer Science";
-        String level = req.getExperienceLevel() != null ? req.getExperienceLevel() : "Entry Level";
-        List<String> skills = req.getSkills() != null ? req.getSkills() : List.of("Java", "Spring Boot", "React");
-        List<String> projects = req.getProjects() != null ? req.getProjects() : List.of("Placement Navigator");
-
-        List<String> questions = geminiService.generateQuestions(branch, skills, projects, role, level);
+        String role = req.getTargetRole() != null && !req.getTargetRole().isBlank() ? req.getTargetRole() : "Full Stack Developer";
+        String branch = req.getBranch() != null && !req.getBranch().isBlank() ? req.getBranch() : "Computer Science";
+        String level = req.getExperienceLevel() != null && !req.getExperienceLevel().isBlank() ? req.getExperienceLevel() : "Intermediate";
+        List<String> skills = req.getSkills() != null && !req.getSkills().isEmpty() ? req.getSkills() : List.of("Java", "Spring Boot", "React");
+        List<String> projects = req.getProjects() != null && !req.getProjects().isEmpty() ? req.getProjects() : List.of("Career Navigator");
 
         MockInterviewEntity interview = new MockInterviewEntity();
         interview.setId("int-" + UUID.randomUUID().toString().substring(0, 8));
@@ -46,11 +44,22 @@ public class InterviewService {
         interview.setExperienceLevel(level);
 
         List<Map<String, Object>> qasList = new ArrayList<>();
-        for (String q : questions) {
-            Map<String, Object> qa = new LinkedHashMap<>();
-            qa.put("question", q);
-            qa.put("answer", "");
-            qasList.add(qa);
+
+        if (req.getStructuredQuestions() != null && !req.getStructuredQuestions().isEmpty()) {
+            for (Map<String, Object> sq : req.getStructuredQuestions()) {
+                Map<String, Object> qa = new LinkedHashMap<>(sq);
+                qa.put("question", sq.get("question"));
+                qa.put("answer", "");
+                qasList.add(qa);
+            }
+        } else {
+            List<String> questions = geminiService.generateQuestions(branch, skills, projects, role, level);
+            for (String q : questions) {
+                Map<String, Object> qa = new LinkedHashMap<>();
+                qa.put("question", q);
+                qa.put("answer", "");
+                qasList.add(qa);
+            }
         }
 
         try {
@@ -67,11 +76,16 @@ public class InterviewService {
         res.put("branch", branch);
         res.put("experienceLevel", level);
         res.put("status", "started");
-        res.put("questions", questions);
+        res.put("questions", interview.getQuestions());
+        res.put("structuredQuestions", qasList);
         res.put("answers", Collections.emptyList());
         res.put("currentQuestionIndex", 0);
         res.put("date", interview.getDate());
         res.put("createdAt", interview.getDate());
+        res.put("durationMinutes", req.getDurationMinutes() != null ? req.getDurationMinutes() : 30);
+        res.put("prepTimerSeconds", req.getPrepTimerSeconds() != null ? req.getPrepTimerSeconds() : 0);
+        res.put("selectedResumeId", req.getSelectedResumeId());
+        res.put("selectedResumeName", req.getSelectedResumeName());
         res.put("suggestions", Collections.emptyList());
         return res;
     }
@@ -96,13 +110,15 @@ public class InterviewService {
         res.put("suggestions", interview.getSuggestions() != null ? interview.getSuggestions() : Collections.emptyList());
 
         List<String> questions = new ArrayList<>();
+        List<Map<String, Object>> structuredQuestions = new ArrayList<>();
         List<Map<String, Object>> answers = new ArrayList<>();
         try {
             if (interview.getQasJson() != null) {
                 List<Map<String, Object>> qasList = objectMapper.readValue(interview.getQasJson(), new TypeReference<>() {});
                 for (Map<String, Object> qa : qasList) {
+                    structuredQuestions.add(qa);
                     if (qa.get("question") != null) questions.add(qa.get("question").toString());
-                    if (qa.get("answer") != null && !qa.get("answer").toString().isBlank()) {
+                    if ((qa.get("answer") != null && !qa.get("answer").toString().isBlank()) || Boolean.TRUE.equals(qa.get("skipped"))) {
                         answers.add(qa);
                     }
                 }
@@ -110,6 +126,7 @@ public class InterviewService {
         } catch (Exception ignored) {
         }
         res.put("questions", questions);
+        res.put("structuredQuestions", structuredQuestions);
         res.put("answers", answers);
         res.put("currentQuestionIndex", answers.size());
         res.put("status", (interview.getOverallScore() != null || (questions.size() > 0 && answers.size() >= questions.size())) ? "completed" : "started");
@@ -145,13 +162,33 @@ public class InterviewService {
                 }
             }
 
-            eval = geminiService.evaluateAnswer(question, req.getAnswer());
+            if (Boolean.TRUE.equals(req.getSkipped())) {
+                eval = new LinkedHashMap<>();
+                eval.put("score", 0);
+                eval.put("technicalScore", 0);
+                eval.put("communicationScore", 0);
+                eval.put("confidenceScore", 0);
+                eval.put("feedback", "Question was skipped by candidate.");
+                eval.put("grammar", "N/A");
+                eval.put("clarity", "Skipped");
+            } else {
+                String fullAnswer = req.getAnswer();
+                if (req.getCode() != null && !req.getCode().isBlank()) {
+                    fullAnswer = (fullAnswer != null ? fullAnswer + "\n\n" : "") + "[Code in " + req.getLanguage() + "]:\n" + req.getCode();
+                }
+                eval = geminiService.evaluateAnswer(question, fullAnswer != null ? fullAnswer : "");
+            }
 
             boolean found = false;
             for (Map<String, Object> qa : qasList) {
-                if (question.equals(qa.get("question")) || qa.get("answer") == null || qa.get("answer").toString().isBlank()) {
+                if (question.equals(qa.get("question")) || (qa.get("answer") == null || qa.get("answer").toString().isBlank())) {
                     qa.put("question", question);
-                    qa.put("answer", req.getAnswer());
+                    qa.put("answer", req.getAnswer() != null ? req.getAnswer() : "");
+                    if (req.getCode() != null) qa.put("code", req.getCode());
+                    if (req.getLanguage() != null) qa.put("language", req.getLanguage());
+                    if (req.getCategory() != null) qa.put("category", req.getCategory());
+                    if (req.getDifficulty() != null) qa.put("difficulty", req.getDifficulty());
+                    if (req.getSkipped() != null) qa.put("skipped", req.getSkipped());
                     qa.put("evaluation", eval);
                     found = true;
                     break;
@@ -160,13 +197,18 @@ public class InterviewService {
             if (!found) {
                 Map<String, Object> newQa = new LinkedHashMap<>();
                 newQa.put("question", question);
-                newQa.put("answer", req.getAnswer());
+                newQa.put("answer", req.getAnswer() != null ? req.getAnswer() : "");
+                if (req.getCode() != null) newQa.put("code", req.getCode());
+                if (req.getLanguage() != null) newQa.put("language", req.getLanguage());
+                if (req.getCategory() != null) newQa.put("category", req.getCategory());
+                if (req.getDifficulty() != null) newQa.put("difficulty", req.getDifficulty());
+                if (req.getSkipped() != null) newQa.put("skipped", req.getSkipped());
                 newQa.put("evaluation", eval);
                 qasList.add(newQa);
             }
 
             // Check if all answered to generate overall report
-            boolean allAnswered = qasList.stream().allMatch(qa -> qa.get("answer") != null && !qa.get("answer").toString().isBlank());
+            boolean allAnswered = qasList.stream().allMatch(qa -> (qa.get("answer") != null && !qa.get("answer").toString().isBlank()) || Boolean.TRUE.equals(qa.get("skipped")));
             if (allAnswered && qasList.size() >= 3) {
                 Map<String, Object> report = geminiService.generateOverallReport(interview.getJobRole(), qasList);
                 interview.setOverallScore((Integer) report.get("overallScore"));
@@ -188,6 +230,50 @@ public class InterviewService {
         }
 
         return eval;
+    }
+
+    public Map<String, Object> submitInterview(String interviewId, Map<String, Object> payload, UserEntity user) {
+        MockInterviewEntity interview = interviewRepository.findById(interviewId)
+                .orElseThrow(() -> new ApiException("Interview not found", 404));
+
+        try {
+            if (payload != null) {
+                if (payload.get("overallScore") instanceof Number n) {
+                    interview.setOverallScore(n.intValue());
+                }
+                if (payload.get("technicalScore") instanceof Number n) {
+                    interview.setTechnicalScore(n.intValue());
+                }
+                if (payload.get("communicationScore") instanceof Number n) {
+                    interview.setCommunicationScore(n.intValue());
+                }
+                if (payload.get("confidenceScore") instanceof Number n) {
+                    interview.setConfidenceScore(n.intValue());
+                }
+                if (payload.get("feedbackText") != null) {
+                    interview.setFeedbackText(payload.get("feedbackText").toString());
+                }
+                if (payload.get("suggestions") instanceof List<?> list) {
+                    List<String> strList = new ArrayList<>();
+                    for (Object o : list) if (o != null) strList.add(o.toString());
+                    interview.setSuggestions(strList);
+                }
+                if (payload.get("answers") instanceof List<?> answersList) {
+                    interview.setQasJson(objectMapper.writeValueAsString(answersList));
+                }
+            }
+
+            if (interview.getOverallScore() == null) {
+                interview.setOverallScore(75);
+            }
+
+            interviewRepository.save(interview);
+            databaseStorageService.syncToDbJson();
+        } catch (Exception e) {
+            throw new ApiException("Failed to submit interview report: " + e.getMessage(), 500);
+        }
+
+        return getInterview(interviewId, user);
     }
 
     public Map<String, Object> reviewCode(CodeReviewRequest req) {
