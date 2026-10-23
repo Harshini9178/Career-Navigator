@@ -474,7 +474,7 @@
       "skills": [],
       "projects": [],
       "completedProfile": false,
-      "passwordHash": "9479072395a199dacbd87610d0be23f9:62d11ec58b330cff7a3b12479ee5830f0b7b00f61c14d0983b4a50179cef50dcd73cb863c1419c898f5005b17272ff876f99f60cfff6606011481cbd96195da1",
+      "passwordHash": "b2cd8315fb9911b4a676f0b72735d83f:15bb661c18e16f117e18bf8d3650b9772314617c700035429af5db9fcdb17098b68748ab339845b5e9b56d084fcefb7b875a69781216c974450986ff8b4fd3e9",
       "emailVerified": true
     },
     {
@@ -486,7 +486,7 @@
       "skills": [],
       "projects": [],
       "completedProfile": true,
-      "passwordHash": "e5b5f656bda8f4aca8cd5811d2bd2665:449dd46dd9ca938290737a1560563b2a5539040dcd51ba0aa5117ab6e4803e9a841dc08a2f17b1f4416f239810eb04911b55678d95cd197ae70c44c6d07d3654",
+      "passwordHash": "808d9fa5b1e587627ee3e74dbcb706ea:9cfed6a204f4ddc81647b237af136b45f360ec105312f93d0eb5093e5474044d3494f1f39eac8bdd0ea3112be7fc220d9d19ca3ee14f86b58dbeca224efa84e6",
       "emailVerified": true
     },
     {
@@ -3448,6 +3448,67 @@
       "email": "candidate.1792768996773@careernavigator.app",
       "name": "Jane Candidate",
       "passwordHash": "af9b7f07a7c1701e3fa7e24edfd93dbd:f14d4f7638d1e64cc9bdc2ace474f2e9ee1b110e74bfab555270e873c4997fa42882066f6bfb6511604d5fbb9509dc7117212a774456b40c4107c76b7f4942d4",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "usr-1792776495604-oc7kt",
+      "email": "candidate_a_1792776495328@careernavigator.app",
+      "name": "Candidate Alpha",
+      "passwordHash": "6e03108d532b58fa0ac94cd0f31ca4df:cbf9278b50a999b3da7a6543013500d07c83f5785b1b0ba157c80559117197bf9d647f739fa13bf2c60c94c0662a4b944889c5b5788177a8a49a1fdbee2c8b60",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "usr-1792776495955-t68ie",
+      "email": "candidate_b_1792776495656@careernavigator.app",
+      "name": "Candidate Beta",
+      "passwordHash": "0af092f0a5ddac1cae5c5313e381a805:9a2b1ebb2d44c80be9f1449b40af461681220c82cd3b98eb54b4cc49c7d8d83b8e21c012ce04c8d484ad4fd08da8a51e11776c57ca6eb3ec439c99aa97ef3f6b",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "usr-1792777175701-tuu0z",
+      "email": "candidate_a_1792777175394@careernavigator.app",
+      "name": "Candidate Alpha",
+      "passwordHash": "27dfef31ee957675546d472b22967142:e52853da46e0f8d8ccf5bca14397764aa313755c968bc4181108d4840a2f17b4ba1234dfd5303af5c6e22299fc7feb9e059c402483f950e1c4373ea8b44eee32",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "usr-1792777175971-ali8r",
+      "email": "candidate_b_1792777175744@careernavigator.app",
+      "name": "Candidate Beta",
+      "passwordHash": "c9130c1b8c6163c92d1b26b51ecc477b:7950ae950b8f6392694d92f56bb61d54859e62fe1326a6f741f4f0ed879ae14cfe900e298001541c5235028799cf43bb50807efc592eea98a76bdcc5e2e02253",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "test-1792777243465",
+      "email": "candidate-1792777243465@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "Career Navigator"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "usr-test-1792777246961",
+      "email": "candidate.1792777246961@careernavigator.app",
+      "name": "Jane Candidate",
+      "passwordHash": "58d50d5fc3d50700c3de1afbc52f0245:5110c3937909eeb587406125c656dac1e13ed3d6bd5ec7c40dac17b84e04c16164afdc3dc6e4c5be18157964d6ab0f75f21d624a8408f3d0f8135143fb5a5beb",
       "picture": "https://example.com/photo.jpg",
       "role": "student",
       "completedProfile": false
@@ -7632,6 +7693,13 @@
       "description": "Specialized layout for high-frequency trading and financial risk models.",
       "downloadCount": 0,
       "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1792777238134",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
     }
   ],
   "feedback": [
@@ -7830,22 +7898,6 @@
   ],
   "conversations": [
     {
-      "id": "conv-beta-1",
-      "userId": "student-test-beta",
-      "title": "Python Django Setup",
-      "learningMode": false,
-      "createdAt": "2026-10-23T15:24:12.045Z",
-      "updatedAt": "2026-10-23T15:24:12.045Z",
-      "messages": [
-        {
-          "id": "m3",
-          "role": "user",
-          "content": "How do migrations work?",
-          "timestamp": "2026-10-23T15:24:12.045Z"
-        }
-      ]
-    },
-    {
       "id": "conv-1792769318609-8266b6bb",
       "userId": "demo-student-1",
       "title": "Explain Java interface in simple terms for a ...",
@@ -7934,6 +7986,410 @@
         ],
         "latestAtsScore": 68
       }
+    },
+    {
+      "id": "conv-beta-1",
+      "userId": "student-test-beta",
+      "title": "Python Django Setup",
+      "learningMode": false,
+      "createdAt": "2026-10-23T17:42:22.269Z",
+      "updatedAt": "2026-10-23T17:42:22.269Z",
+      "messages": [
+        {
+          "id": "m3",
+          "role": "user",
+          "content": "How do migrations work?",
+          "timestamp": "2026-10-23T17:42:22.269Z"
+        }
+      ]
+    }
+  ],
+  "resumeDocuments": [
+    {
+      "id": "res-1792777180720-9zira",
+      "userId": "usr-1792777175701-tuu0z",
+      "title": "Updated Senior Full Stack Engineer Resume",
+      "targetRole": "Full Stack Engineer",
+      "templateId": "software-engineer",
+      "atsScore": 96,
+      "content": {
+        "personalInfo": {
+          "fullName": "Candidate Alpha",
+          "headline": "Full Stack Software Engineer",
+          "email": "candidate_a_1792777175394@careernavigator.app",
+          "phone": "+91 98765 43210",
+          "cityCountry": "Bengaluru, India",
+          "linkedIn": "https://linkedin.com/in/candidate-alpha",
+          "github": "https://github.com/candidate-alpha",
+          "portfolioWebsite": "https://alpha.dev"
+        },
+        "summary": "Experienced Full Stack Engineer with 3+ years architecting scalable enterprise systems with Java Spring Boot and React. Increased transactional throughput by 40%. Expert in high-throughput distributed systems.",
+        "education": [
+          {
+            "id": "edu-1",
+            "institution": "Indian Institute of Technology",
+            "degree": "Bachelor of Technology in Computer Science",
+            "fieldOfStudy": "Computer Science",
+            "startDate": "2020",
+            "endDate": "2024",
+            "gradeCgpa": "9.2 CGPA",
+            "relevantCoursework": "Data Structures, Distributed Systems, Cloud Architecture"
+          }
+        ],
+        "skills": {
+          "programmingLanguages": [
+            "Java",
+            "TypeScript",
+            "SQL",
+            "Python"
+          ],
+          "frameworks": [
+            "Spring Boot",
+            "React",
+            "Node.js",
+            "Tailwind CSS"
+          ],
+          "databases": [
+            "PostgreSQL",
+            "Redis"
+          ],
+          "toolsPlatforms": [
+            "Docker",
+            "Kubernetes",
+            "AWS",
+            "Git"
+          ],
+          "coreConcepts": [
+            "Microservices",
+            "RESTful APIs",
+            "System Design"
+          ],
+          "communicationLeadership": [
+            "Cross-functional Leadership",
+            "Agile Scrum"
+          ]
+        },
+        "experience": [
+          {
+            "id": "exp-1",
+            "title": "Software Development Engineer",
+            "company": "NextGen Fintech Labs",
+            "location": "Bengaluru, India",
+            "startDate": "Jun 2024",
+            "endDate": "Present",
+            "current": true,
+            "responsibilities": [
+              "Architected high-throughput payment settlement microservices handling 2M daily transactions",
+              "Developed reactive student assessment dashboard using React, Vite, and Tailwind CSS"
+            ],
+            "achievements": "Optimized SQL database query latency by 35% through indexing and Redis caching",
+            "projectImpact": "Prevented duplicate charges with idempotent distributed locking"
+          }
+        ],
+        "projects": [
+          {
+            "id": "proj-1",
+            "title": "Career Navigator Studio",
+            "description": "AI-powered placement preparation platform and ATS resume optimizer",
+            "technologies": [
+              "Spring Boot",
+              "React",
+              "PostgreSQL",
+              "Tailwind CSS"
+            ],
+            "keyContributions": [
+              "Designed split-screen resume builder with vector PDF generation and real-time preview"
+            ],
+            "impact": "Adopted by 5,000+ university students with 94% placement readiness score",
+            "githubUrl": "https://github.com/mockgenius/career-navigator"
+          }
+        ],
+        "certifications": [
+          {
+            "id": "cert-1",
+            "name": "AWS Certified Solutions Architect",
+            "issuingOrganization": "Amazon Web Services",
+            "issueDate": "2024",
+            "credentialUrl": "https://aws.amazon.com"
+          }
+        ],
+        "additionalSections": {
+          "publications": [],
+          "volunteerExperience": [],
+          "leadership": [
+            "Tech Community Organizer"
+          ],
+          "languages": [
+            "English (Fluent)",
+            "Hindi (Native)"
+          ],
+          "interests": [
+            "High-performance computing",
+            "Open source"
+          ],
+          "customSections": []
+        }
+      },
+      "createdAt": "2026-10-23T17:39:40.720Z",
+      "updatedAt": "2026-10-23T17:39:41.161Z"
+    },
+    {
+      "id": "res-1792777483493-wkpf2",
+      "userId": "usr-1791951546428-b9e0q",
+      "title": "Harshinipatel03 - Full Stack developer Resume",
+      "targetRole": "Full Stack developer",
+      "templateId": "classic-ats",
+      "atsScore": 90,
+      "content": {
+        "personalInfo": {
+          "fullName": "Harshinipatel03",
+          "headline": "Full Stack developer",
+          "email": "harshinipatel03@gmail.com",
+          "phone": "",
+          "cityCountry": "Bengaluru, India",
+          "linkedIn": "",
+          "github": "",
+          "portfolioWebsite": ""
+        },
+        "summary": "Driven software engineer focused on developing robust, scalable distributed applications and clean user experiences.",
+        "education": [
+          {
+            "id": "edu-1792777483489",
+            "institution": "National Institute of Engineering",
+            "degree": "Bachelor of Technology in Computer Science",
+            "fieldOfStudy": "Computer Science",
+            "startDate": "2020",
+            "graduationDate": "2024",
+            "gradeCgpa": "8.8 CGPA",
+            "coursework": "Data Structures, Database Management, Cloud Computing"
+          }
+        ],
+        "skills": {
+          "programmingLanguages": [
+            "java",
+            "python",
+            "react",
+            "vite"
+          ],
+          "frameworks": [
+            "React",
+            "Spring Boot",
+            "Node.js",
+            "Tailwind CSS"
+          ],
+          "databases": [
+            "PostgreSQL",
+            "Redis"
+          ],
+          "toolsPlatforms": [
+            "Docker",
+            "AWS",
+            "Git",
+            "Vite"
+          ],
+          "coreConcepts": [
+            "Microservices",
+            "REST APIs",
+            "System Design"
+          ],
+          "communicationLeadership": [
+            "Agile Development",
+            "Team Collaboration"
+          ]
+        },
+        "experience": [
+          {
+            "id": "exp-1792777483489",
+            "jobTitle": "Full Stack developer",
+            "company": "Tech Solutions Inc.",
+            "location": "Bengaluru, India",
+            "startDate": "Jan 2024",
+            "endDate": "Present",
+            "currentRole": true,
+            "responsibilities": "Engineered scalable REST APIs reducing endpoint latency by 25%. Collaborated in cross-functional sprints.",
+            "achievements": "Optimized SQL database query latency by 35% through indexing and Redis caching",
+            "impact": "Prevented duplicate charges with idempotent distributed locking",
+            "bullets": [
+              "Engineered scalable REST APIs reducing endpoint latency by 25%.",
+              "Collaborated in cross-functional sprints delivering mission-critical web applications."
+            ]
+          }
+        ],
+        "projects": [
+          {
+            "id": "proj-1792777483490",
+            "title": "Career Navigator Studio",
+            "description": "Comprehensive platform for AI interview practice and ATS resume optimization.",
+            "technologies": [
+              "React",
+              "TypeScript",
+              "Spring Boot",
+              "Tailwind CSS"
+            ],
+            "keyContributions": "Implemented vector PDF generation and real-time preview studio.",
+            "resultsImpact": "Zero-latency generation for all standard resume templates.",
+            "githubUrl": "https://github.com/mockgenius/career-navigator",
+            "liveUrl": "https://careernavigator.app"
+          }
+        ],
+        "certifications": [
+          {
+            "id": "cert-1792777483490",
+            "name": "AWS Certified Cloud Practitioner",
+            "issuingOrganization": "Amazon Web Services",
+            "issueDate": "2024",
+            "credentialUrl": "https://aws.amazon.com",
+            "type": "certification"
+          }
+        ],
+        "additionalSections": {
+          "publications": [],
+          "volunteerExperience": [],
+          "leadership": [
+            "Technical Club Lead"
+          ],
+          "languages": [
+            "English (Fluent)",
+            "Hindi (Native)"
+          ],
+          "interests": [
+            "Distributed Systems",
+            "Open Source"
+          ],
+          "customSections": []
+        }
+      },
+      "createdAt": "2026-10-23T17:44:43.493Z",
+      "updatedAt": "2026-10-23T17:44:43.493Z"
+    },
+    {
+      "id": "res-1792777483578-y985z",
+      "userId": "usr-1791951546428-b9e0q",
+      "title": "Harshinipatel03 - Full Stack developer Resume",
+      "targetRole": "Full Stack developer",
+      "templateId": "classic-ats",
+      "atsScore": 90,
+      "content": {
+        "personalInfo": {
+          "fullName": "Harshinipatel03",
+          "headline": "Full Stack developer",
+          "email": "harshinipatel03@gmail.com",
+          "phone": "",
+          "cityCountry": "Bengaluru, India",
+          "linkedIn": "",
+          "github": "",
+          "portfolioWebsite": ""
+        },
+        "summary": "Driven software engineer focused on developing robust, scalable distributed applications and clean user experiences.",
+        "education": [
+          {
+            "id": "edu-1792777483577",
+            "institution": "National Institute of Engineering",
+            "degree": "Bachelor of Technology in Computer Science",
+            "fieldOfStudy": "Computer Science",
+            "startDate": "2020",
+            "graduationDate": "2024",
+            "gradeCgpa": "8.8 CGPA",
+            "coursework": "Data Structures, Database Management, Cloud Computing"
+          }
+        ],
+        "skills": {
+          "programmingLanguages": [
+            "java",
+            "python",
+            "react",
+            "vite"
+          ],
+          "frameworks": [
+            "React",
+            "Spring Boot",
+            "Node.js",
+            "Tailwind CSS"
+          ],
+          "databases": [
+            "PostgreSQL",
+            "Redis"
+          ],
+          "toolsPlatforms": [
+            "Docker",
+            "AWS",
+            "Git",
+            "Vite"
+          ],
+          "coreConcepts": [
+            "Microservices",
+            "REST APIs",
+            "System Design"
+          ],
+          "communicationLeadership": [
+            "Agile Development",
+            "Team Collaboration"
+          ]
+        },
+        "experience": [
+          {
+            "id": "exp-1792777483577",
+            "jobTitle": "Full Stack developer",
+            "company": "Tech Solutions Inc.",
+            "location": "Bengaluru, India",
+            "startDate": "Jan 2024",
+            "endDate": "Present",
+            "currentRole": true,
+            "responsibilities": "Engineered scalable REST APIs reducing endpoint latency by 25%. Collaborated in cross-functional sprints.",
+            "achievements": "Optimized SQL database query latency by 35% through indexing and Redis caching",
+            "impact": "Prevented duplicate charges with idempotent distributed locking",
+            "bullets": [
+              "Engineered scalable REST APIs reducing endpoint latency by 25%.",
+              "Collaborated in cross-functional sprints delivering mission-critical web applications."
+            ]
+          }
+        ],
+        "projects": [
+          {
+            "id": "proj-1792777483577",
+            "title": "Career Navigator Studio",
+            "description": "Comprehensive platform for AI interview practice and ATS resume optimization.",
+            "technologies": [
+              "React",
+              "TypeScript",
+              "Spring Boot",
+              "Tailwind CSS"
+            ],
+            "keyContributions": "Implemented vector PDF generation and real-time preview studio.",
+            "resultsImpact": "Zero-latency generation for all standard resume templates.",
+            "githubUrl": "https://github.com/mockgenius/career-navigator",
+            "liveUrl": "https://careernavigator.app"
+          }
+        ],
+        "certifications": [
+          {
+            "id": "cert-1792777483577",
+            "name": "AWS Certified Cloud Practitioner",
+            "issuingOrganization": "Amazon Web Services",
+            "issueDate": "2024",
+            "credentialUrl": "https://aws.amazon.com",
+            "type": "certification"
+          }
+        ],
+        "additionalSections": {
+          "publications": [],
+          "volunteerExperience": [],
+          "leadership": [
+            "Technical Club Lead"
+          ],
+          "languages": [
+            "English (Fluent)",
+            "Hindi (Native)"
+          ],
+          "interests": [
+            "Distributed Systems",
+            "Open Source"
+          ],
+          "customSections": []
+        }
+      },
+      "createdAt": "2026-10-23T17:44:43.578Z",
+      "updatedAt": "2026-10-23T18:02:50.199Z"
     }
   ]
 }

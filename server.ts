@@ -6,11 +6,13 @@ import { createServer as createViteServer } from 'vite';
 import { db } from './src/db/database.js';
 const jsonDb = db;
 import { aiService } from './src/lib/gemini.js';
-import { User, ResumeAnalysis, MockInterview, StudentFeedback, ResumeTemplate, ChatMessage, StoredConversation, ConversationSummary } from './src/types.js';
+import { User, ResumeAnalysis, MockInterview, StudentFeedback, ResumeTemplate, ChatMessage, StoredConversation, ConversationSummary, ResumeDocument } from './src/types.js';
 import { validateEnvironment } from './src/lib/validateEnv.js';
 import { logger } from './src/lib/logger.js';
 import { openApiSpec } from './src/lib/openapi.js';
 import { hashPassword, verifyPassword, sanitizeUser, isValidEmail } from './src/lib/password.js';
+import { generateResumePdfBuffer } from './src/lib/pdfGenerator.js';
+import { calculateAtsReadiness, matchResumeWithJob, createDefaultResumeContent } from './src/lib/atsScorer.js';
 
 const app = express();
 const PORT = parseInt(process.env.PORT || '3000', 10);
@@ -1065,6 +1067,217 @@ app.post('/api/resume/templates/import', (req, res) => {
 
   const saved = jsonDb.addTemplate(newTemplate);
   res.json({ success: true, template: saved });
+});
+
+// ==========================================
+// 3.4 RESUME BUILDER STUDIO & PDF EXPORT ENDPOINTS
+// ==========================================
+
+// List user's resumes
+app.get('/api/resumes', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
+  }
+
+  const list = jsonDb.getResumeDocumentsByUserId(userId);
+  res.json({ success: true, resumes: list, total: list.length });
+});
+
+// Create a new resume document
+app.post('/api/resumes', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
+  }
+
+  const user = jsonDb.getUserById(userId);
+  const { title, targetRole, templateId, content } = req.body || {};
+  const role = (targetRole && targetRole.trim()) ? targetRole.trim() : (user?.targetRole || 'Full Stack Engineer');
+  const finalContent = content || createDefaultResumeContent(user || {}, role);
+  const atsReport = calculateAtsReadiness(finalContent, role);
+
+  const now = new Date().toISOString();
+  const newDoc: ResumeDocument = {
+    id: `res-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+    userId,
+    title: (title && title.trim()) ? title.trim() : `${user?.name || 'Candidate'} - Professional Resume`,
+    targetRole: role,
+    templateId: (templateId && templateId.trim()) ? templateId.trim() : 'classic-ats',
+    atsScore: atsReport.overallScore,
+    content: finalContent,
+    createdAt: now,
+    updatedAt: now
+  };
+
+  const saved = jsonDb.saveResumeDocument(newDoc);
+  logger.info(`Resume created successfully: ${saved.id} for user ${userId}`);
+  res.status(201).json({ success: true, resume: saved, message: 'Resume created successfully' });
+});
+
+// Live preview ATS check (used during editing before explicit save)
+app.post('/api/resumes/ats-check-preview', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
+  }
+
+  const { content, targetRole } = req.body || {};
+  const atsCheck = calculateAtsReadiness(content, targetRole || 'Full Stack Engineer');
+  res.json({ success: true, atsCheck });
+});
+
+// Get single resume document by ID
+app.get('/api/resumes/:id', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
+  }
+
+  const doc = jsonDb.getResumeDocumentById(req.params.id, userId);
+  if (!doc) {
+    return res.status(404).json({ error: 'Resume document not found or access denied' });
+  }
+
+  res.json({ success: true, resume: doc });
+});
+
+// Update resume document
+app.put('/api/resumes/:id', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
+  }
+
+  const doc = jsonDb.getResumeDocumentById(req.params.id, userId);
+  if (!doc) {
+    return res.status(404).json({ error: 'Resume document not found or access denied' });
+  }
+
+  const { title, targetRole, templateId, content } = req.body || {};
+
+  if (title && typeof title === 'string') doc.title = title.trim();
+  if (targetRole && typeof targetRole === 'string') doc.targetRole = targetRole.trim();
+  if (templateId && typeof templateId === 'string') doc.templateId = templateId.trim();
+
+  if (content && typeof content === 'object') {
+    doc.content = content;
+    const atsReport = calculateAtsReadiness(content, doc.targetRole);
+    doc.atsScore = atsReport.overallScore;
+  }
+
+  doc.updatedAt = new Date().toISOString();
+  const updated = jsonDb.saveResumeDocument(doc);
+  res.json({ success: true, resume: updated, message: 'Resume updated successfully' });
+});
+
+// Delete resume document
+app.delete('/api/resumes/:id', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
+  }
+
+  const deleted = jsonDb.deleteResumeDocument(req.params.id, userId);
+  if (!deleted) {
+    return res.status(404).json({ error: 'Resume document not found or access denied' });
+  }
+
+  res.json({ success: true, message: 'Resume deleted successfully' });
+});
+
+// Duplicate resume document
+app.post('/api/resumes/:id/duplicate', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
+  }
+
+  const duplicated = jsonDb.duplicateResumeDocument(req.params.id, userId);
+  if (!duplicated) {
+    return res.status(404).json({ error: 'Resume document not found or access denied' });
+  }
+
+  res.status(201).json({ success: true, resume: duplicated, message: 'Resume duplicated successfully' });
+});
+
+// Run ATS readiness check on saved resume
+app.post('/api/resumes/:id/ats-check', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
+  }
+
+  const doc = jsonDb.getResumeDocumentById(req.params.id, userId);
+  if (!doc) {
+    return res.status(404).json({ error: 'Resume document not found or access denied' });
+  }
+
+  const atsCheck = calculateAtsReadiness(doc.content, doc.targetRole);
+  res.json({ success: true, atsCheck });
+});
+
+// Match resume against Job Description
+app.post('/api/resumes/:id/job-match', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
+  }
+
+  const doc = jsonDb.getResumeDocumentById(req.params.id, userId);
+  if (!doc) {
+    return res.status(404).json({ error: 'Resume document not found or access denied' });
+  }
+
+  const { targetRole, jobDescription } = req.body || {};
+  const jobMatch = matchResumeWithJob(doc.content, targetRole || doc.targetRole, jobDescription || '');
+  res.json({ success: true, jobMatch });
+});
+
+// Export resume to standard vector PDF
+app.get('/api/resumes/:id/export/pdf', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
+  }
+
+  const doc = jsonDb.getResumeDocumentById(req.params.id, userId);
+  if (!doc) {
+    return res.status(404).json({ error: 'Resume document not found or access denied' });
+  }
+
+  try {
+    const pdfBuffer = generateResumePdfBuffer(doc);
+    const safeTitle = (doc.title || 'Resume').replace(/[^a-zA-Z0-9_\-]/g, '_');
+
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="${safeTitle}.pdf"`);
+    res.setHeader('Content-Length', pdfBuffer.length.toString());
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+
+    logger.info(`Exported resume PDF: ${doc.id} (${pdfBuffer.length} bytes) for user ${userId}`);
+    res.status(200).end(pdfBuffer);
+  } catch (err: any) {
+    logger.error('Failed to generate resume PDF:', err);
+    res.status(500).json({ error: 'Failed to generate PDF document', details: err.message });
+  }
+});
+
+// Aptitude Assessment routes fallback (avoid proxy errors)
+app.get('/api/aptitude/categories', (req, res) => {
+  res.json({
+    success: true,
+    categories: [
+      { id: 'quant', name: 'Quantitative Aptitude', questionsCount: 40, icon: 'Calculator' },
+      { id: 'logical', name: 'Logical Reasoning', questionsCount: 35, icon: 'Brain' },
+      { id: 'verbal', name: 'Verbal Ability', questionsCount: 30, icon: 'BookOpen' },
+      { id: 'tech', name: 'Core Computer Science', questionsCount: 50, icon: 'Code' }
+    ]
+  });
+});
+
+app.get('/api/aptitude/history', (req, res) => {
+  res.json({ success: true, history: [] });
 });
 
 // ==========================================

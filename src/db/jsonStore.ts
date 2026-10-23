@@ -1,7 +1,7 @@
 // ponytail: deprecated — replaced by database.ts (SQLite). Kept for reference.
 import fs from 'fs';
 import path from 'path';
-import { User, ResumeAnalysis, MockInterview, ResumeTemplate, StudentFeedback, DashboardMetrics, StoredConversation, ConversationSummary } from '../types.js';
+import { User, ResumeAnalysis, MockInterview, ResumeTemplate, StudentFeedback, DashboardMetrics, StoredConversation, ConversationSummary, ResumeDocument } from '../types.js';
 
 const DB_DIR = path.join(process.cwd(), 'data');
 const DB_FILE = path.join(DB_DIR, 'db.json');
@@ -13,6 +13,7 @@ interface Schema {
   templates: ResumeTemplate[];
   feedback: StudentFeedback[];
   conversations?: StoredConversation[];
+  resumeDocuments?: ResumeDocument[];
 }
 
 const DEFAULT_TEMPLATES: ResumeTemplate[] = [
@@ -380,10 +381,11 @@ function readDb(): Schema {
       });
     }
     parsed.conversations = Array.isArray(parsed.conversations) ? parsed.conversations : [];
+    parsed.resumeDocuments = Array.isArray(parsed.resumeDocuments) ? parsed.resumeDocuments : [];
     return parsed;
   } catch (err) {
     console.error('Error reading JSON DB, reinitializing:', err);
-    return { users: [], resumes: [], interviews: [], templates: [...DEFAULT_TEMPLATES], feedback: [], conversations: [] };
+    return { users: [], resumes: [], interviews: [], templates: [...DEFAULT_TEMPLATES], feedback: [], conversations: [], resumeDocuments: [] };
   }
 }
 
@@ -672,5 +674,62 @@ export const jsonDb = {
     db.conversations = db.conversations.filter((c) => c.userId !== userId);
     writeDb(db);
     return true;
+  },
+
+  // --- RESUME DOCUMENTS (Resume Builder Studio) ---
+  getResumeDocumentsByUserId: (userId: string): ResumeDocument[] => {
+    const list = readDb().resumeDocuments || [];
+    return list
+      .filter((r) => r.userId === userId)
+      .sort((a, b) => new Date(b.updatedAt || b.createdAt).getTime() - new Date(a.updatedAt || a.createdAt).getTime());
+  },
+
+  getResumeDocumentById: (id: string, userId?: string): ResumeDocument | undefined => {
+    const list = readDb().resumeDocuments || [];
+    if (userId) {
+      return list.find((r) => r.id === id && r.userId === userId);
+    }
+    return list.find((r) => r.id === id);
+  },
+
+  saveResumeDocument: (doc: ResumeDocument): ResumeDocument => {
+    const db = readDb();
+    if (!Array.isArray(db.resumeDocuments)) {
+      db.resumeDocuments = [];
+    }
+    const idx = db.resumeDocuments.findIndex((r) => r.id === doc.id);
+    if (idx >= 0) {
+      db.resumeDocuments[idx] = { ...db.resumeDocuments[idx], ...doc };
+    } else {
+      db.resumeDocuments.push(doc);
+    }
+    writeDb(db);
+    return doc;
+  },
+
+  deleteResumeDocument: (id: string, userId: string): boolean => {
+    const db = readDb();
+    if (!Array.isArray(db.resumeDocuments)) return false;
+    const initialLen = db.resumeDocuments.length;
+    db.resumeDocuments = db.resumeDocuments.filter((r) => !(r.id === id && r.userId === userId));
+    if (db.resumeDocuments.length !== initialLen) {
+      writeDb(db);
+      return true;
+    }
+    return false;
+  },
+
+  duplicateResumeDocument: (id: string, userId: string): ResumeDocument | null => {
+    const original = jsonDb.getResumeDocumentById(id, userId);
+    if (!original) return null;
+    const now = new Date().toISOString();
+    const newDoc: ResumeDocument = {
+      ...JSON.parse(JSON.stringify(original)),
+      id: `res-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
+      title: `${original.title} (Copy)`,
+      createdAt: now,
+      updatedAt: now
+    };
+    return jsonDb.saveResumeDocument(newDoc);
   }
 };

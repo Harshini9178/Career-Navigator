@@ -232,9 +232,27 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
 
   // Explicit Save
   const handleManualSave = async () => {
-    if (!activeResume) return;
     setSaveStatus('saving');
     try {
+      if (!activeResume) {
+        const res = await api.post('/api/resumes', {
+          title: title || `${user.name || 'Candidate'} - ${targetRole} Resume`,
+          targetRole,
+          templateId,
+          content
+        });
+        if (res.ok) {
+          const data = await res.json();
+          const newDoc: ResumeDocument = data.resume;
+          setActiveResume(newDoc);
+          setResumes((prev) => [newDoc, ...prev]);
+          setSaveStatus('saved');
+          runAtsCheck(content, targetRole);
+        } else {
+          setSaveStatus('unsaved');
+        }
+        return;
+      }
       const res = await api.put(`/api/resumes/${activeResume.id}`, {
         title,
         targetRole,
@@ -245,6 +263,7 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
         const data = await res.json();
         setActiveResume(data.resume);
         setSaveStatus('saved');
+        setResumes((prev) => prev.map((r) => (r.id === data.resume.id ? data.resume : r)));
         runAtsCheck(content, targetRole);
       } else {
         setSaveStatus('unsaved');
@@ -345,35 +364,59 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
     }
   };
 
-  // Export PDF (Direct Backend Download)
+  // Export PDF (Direct Vector Download with Auto-save & Fallback)
   const handleDownloadPdf = async () => {
-    if (!activeResume) return;
+    let resumeToExport = activeResume;
     try {
-      // First ensure current state is saved
-      await api.put(`/api/resumes/${activeResume.id}`, {
-        title,
-        targetRole,
-        templateId,
-        content
-      });
+      // First ensure state is persisted
+      if (!resumeToExport) {
+        const createRes = await api.post('/api/resumes', {
+          title: title || `${user.name || 'Candidate'} - ${targetRole} Resume`,
+          targetRole,
+          templateId,
+          content
+        });
+        if (createRes.ok) {
+          const data = await createRes.json();
+          resumeToExport = data.resume;
+          setActiveResume(data.resume);
+          setResumes((prev) => [data.resume, ...prev]);
+        } else {
+          throw new Error('Could not initialize resume for PDF export');
+        }
+      } else {
+        await api.put(`/api/resumes/${resumeToExport.id}`, {
+          title,
+          targetRole,
+          templateId,
+          content
+        });
+      }
 
-      const response = await fetch(`/api/resumes/${activeResume.id}/export/pdf`, {
-        method: 'GET',
+      if (!resumeToExport) throw new Error('No resume available to export');
+
+      const response = await api.get(`/api/resumes/${resumeToExport.id}/export/pdf`, {
         headers: {
           'Accept': 'application/pdf'
         }
       });
 
-      if (!response.ok) throw new Error('PDF export failed');
+      if (!response.ok) {
+        throw new Error(`PDF export failed with status ${response.status}`);
+      }
+
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
+      a.style.display = 'none';
       a.href = url;
-      a.download = `${title.replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf`;
+      a.download = `${(title || 'Resume').replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf`;
       document.body.appendChild(a);
       a.click();
-      window.URL.revokeObjectURL(url);
-      document.body.removeChild(a);
+      setTimeout(() => {
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      }, 500);
     } catch (e) {
       console.error('PDF download error:', e);
       // Fallback: Open print dialog
