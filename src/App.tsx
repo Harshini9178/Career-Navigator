@@ -45,33 +45,84 @@ function MainWorkspace() {
   const [unauthView, setUnauthView] = useState<'landing' | 'signin'>('landing');
   const [signInMode, setSignInMode] = useState<'signin' | 'register'>('signin');
   const [targetViewAfterAuth, setTargetViewAfterAuth] = useState<string | null>(null);
-  const [currentView, setCurrentView] = useState<string>('student-dashboard');
-  const [activeInterviewId, setActiveInterviewId] = useState<string | null>(null);
+  // Parse initial route from URL or sessionStorage
+  const getInitialRouteState = () => {
+    if (typeof window === 'undefined') {
+      return { view: 'student-dashboard', interviewId: null };
+    }
+    const path = window.location.pathname;
+    const sessionMatch = path.match(/\/mock-interview\/session\/([^/]+)/);
+    if (sessionMatch) {
+      return { view: 'mock-interview', interviewId: sessionMatch[1] };
+    }
+    const cleanPath = path.replace(/^\//, '');
+    if (cleanPath && cleanPath !== '' && cleanPath !== 'index.html') {
+      return { view: cleanPath, interviewId: null };
+    }
+    try {
+      const savedView = sessionStorage.getItem('career_navigator_view');
+      const savedIntId = sessionStorage.getItem('career_navigator_active_interview_id');
+      if (savedView) {
+        return { view: savedView, interviewId: savedIntId || null };
+      }
+    } catch (_e) {}
+    return { view: 'student-dashboard', interviewId: null };
+  };
 
-  const prevUserRef = useRef<User | null>(null);
+  const initialRoute = getInitialRouteState();
+  const [currentView, setCurrentView] = useState<string>(initialRoute.view);
+  const [activeInterviewId, setActiveInterviewId] = useState<string | null>(initialRoute.interviewId);
+  const prevUserEmailRef = useRef<string | null>(null);
 
-  // Sync view only when user initially logs in (respecting target view if clicked from landing page)
+  // Sync browser back/forward buttons (popstate)
   useEffect(() => {
-    const wasUnauthenticated = !prevUserRef.current && !!user;
-    prevUserRef.current = user;
+    const handlePopState = () => {
+      const state = getInitialRouteState();
+      setCurrentView(state.view);
+      setActiveInterviewId(state.interviewId);
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
-    if (wasUnauthenticated && user) {
+  // Sync view when user logs in (respecting target view or active session without overriding current state)
+  useEffect(() => {
+    if (user) {
+      const isInitialUserLoad = prevUserEmailRef.current === null;
+      const isDifferentUser = prevUserEmailRef.current !== user.email;
+      prevUserEmailRef.current = user.email;
       if (targetViewAfterAuth) {
         setCurrentView(targetViewAfterAuth);
         setTargetViewAfterAuth(null);
-      } else if (user.role === 'admin') {
-        setCurrentView('admin-dashboard');
-      } else {
-        setCurrentView('student-dashboard');
+      } else if (isDifferentUser && !isInitialUserLoad) {
+        // If a different user signed in, switch to default
+        if (user.role === 'admin') {
+          setCurrentView('admin-dashboard');
+        } else {
+          setCurrentView('student-dashboard');
+        }
       }
+    } else {
+      prevUserEmailRef.current = null;
     }
   }, [user, targetViewAfterAuth]);
 
   const handleNavigate = (view: string, targetId?: string) => {
     if (view === 'mock-interview' && targetId) {
       setActiveInterviewId(targetId);
+      try {
+        sessionStorage.setItem('career_navigator_active_interview_id', targetId);
+        window.history.pushState(null, '', `/mock-interview/session/${targetId}`);
+      } catch (_e) {}
+    } else {
+      try {
+        window.history.pushState(null, '', `/${view}`);
+      } catch (_e) {}
     }
     setCurrentView(view);
+    try {
+      sessionStorage.setItem('career_navigator_view', view);
+    } catch (_e) {}
   };
 
   const handleLogout = async () => {
@@ -80,6 +131,11 @@ function MainWorkspace() {
     setTargetViewAfterAuth(null);
     setCurrentView('student-dashboard');
     setActiveInterviewId(null);
+    try {
+      sessionStorage.removeItem('career_navigator_view');
+      sessionStorage.removeItem('career_navigator_active_interview_id');
+      window.history.pushState(null, '', '/');
+    } catch (_e) {}
   };
 
   if (isLoading) {

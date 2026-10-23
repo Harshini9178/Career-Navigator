@@ -37,24 +37,50 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setOauthInstructions(null);
   }, []);
 
-  // Fetch current session state on initial load
+  // Fetch current session state on initial load with resilient localStorage backup
   const refreshUser = useCallback(async () => {
     try {
       const res = await api.get('/api/auth/me');
-      const { ok, data } = await parseApiResponse(res);
-      if (ok && data?.user) {
+      if (ok && (data?.authenticated || data?.user) && data?.user) {
         setUser(data.user);
+        try {
+          localStorage.setItem('career_navigator_user', JSON.stringify(data.user));
+        } catch (_e) {}
         return;
+      }
+      // Check localStorage for offline/cached session
+      const cached = localStorage.getItem('career_navigator_user');
+      if (cached) {
+        try {
+          setUser(JSON.parse(cached));
+          return;
+        } catch (_e) {}
       }
       setUser(null);
     } catch {
-      setUser(null);
+      const cached = localStorage.getItem('career_navigator_user');
+      if (cached) {
+        try {
+          setUser(JSON.parse(cached));
+        } catch (_e) {
+          setUser(null);
+        }
+      } else {
+        setUser(null);
+      }
     } finally {
       setIsLoading(false);
     }
   }, []);
 
   useEffect(() => {
+    // Immediate optimistic load from cache to prevent flickers
+    const cached = localStorage.getItem('career_navigator_user');
+    if (cached) {
+      try {
+        setUser(JSON.parse(cached));
+      } catch (_e) {}
+    }
     refreshUser();
   }, [refreshUser]);
 
@@ -98,6 +124,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       sound.playChime();
       setUser(data.user);
+      try {
+        localStorage.setItem('career_navigator_user', JSON.stringify(data.user));
+      } catch (_e) {}
       return true;
     } catch (err: any) {
       sound.playClick(400);
@@ -265,6 +294,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       sound.playChime();
       setUser(data.user);
+      try {
+        localStorage.setItem('career_navigator_user', JSON.stringify(data.user));
+      } catch (_e) {}
       return true;
     } catch (err: any) {
       sound.playClick(400);
@@ -313,6 +345,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       console.error('Logout error:', err);
     } finally {
       setUser(null);
+      try {
+        localStorage.removeItem('career_navigator_user');
+      } catch (_e) {}
       clearError();
     }
   };

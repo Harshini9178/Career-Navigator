@@ -87,6 +87,7 @@ public class AuthController {
         }
         return ResponseEntity.ok(Map.of(
                 "authenticated", true,
+                "success", true,
                 "user", UserDto.fromEntity(user)
         ));
     }
