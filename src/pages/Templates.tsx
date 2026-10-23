@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Download, Copy, Check, FileText, Upload, Plus, X, Sparkles, FolderUp, CheckCircle2 } from 'lucide-react';
 import { ResumeTemplate } from '../types.js';
 import { api } from '../lib/api.js';
-import { sound } from '../lib/sound.js';
 
 function normalizeTemplate(t: any): ResumeTemplate {
   return {
@@ -48,12 +47,10 @@ export default function Templates() {
   const handleCopy = (template: ResumeTemplate) => {
     navigator.clipboard.writeText(template.fileContent || '');
     setCopiedId(template.id);
-    sound.playClick(1200);
     setTimeout(() => setCopiedId(null), 2000);
   };
 
   const handleDownload = async (template: ResumeTemplate) => {
-    sound.playClick(1000);
     try {
       await api.post(`/api/resume/templates/${template.id}/download`);
       setTemplates((prev) =>
@@ -73,12 +70,10 @@ export default function Templates() {
     }
   };
 
-  // Handle file drop / selection for import
   const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    sound.playClick(900);
     const fileName = file.name;
     const baseName = fileName.replace(/\.[^/.]+$/, "");
     if (!importName) {
@@ -118,7 +113,6 @@ export default function Templates() {
     setImporting(true);
     setImportError(null);
     setImportSuccess(null);
-    sound.playClick(1100);
 
     try {
       const response = await api.post('/api/resume/templates/import', {
@@ -131,7 +125,6 @@ export default function Templates() {
       if (data.success && data.template) {
         setTemplates((prev) => [data.template, ...prev]);
         setSelectedTemplate(data.template);
-        sound.playChime();
         setImportSuccess('Template imported successfully!');
         setTimeout(() => {
           setIsImportModalOpen(false);
@@ -180,7 +173,6 @@ export default function Templates() {
         <div className="flex items-center space-x-3">
           <button
             onClick={() => {
-              sound.playClick(1000);
               setIsImportModalOpen(true);
             }}
             className="px-4 py-2 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white rounded-xl text-xs font-bold transition flex items-center space-x-1.5 active:scale-95 cursor-pointer"
@@ -209,7 +201,6 @@ export default function Templates() {
                 <div
                   key={template.id}
                   onClick={() => {
-                    sound.playClick(800);
                     setSelectedTemplate(template);
                   }}
                   className={`border p-4 sm:p-5 rounded-2xl cursor-pointer transition flex flex-col justify-between ${

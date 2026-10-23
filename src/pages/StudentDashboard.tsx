@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import {
   FileText,
+  FileEdit,
   Video,
   AlertCircle,
   ArrowRight,
@@ -79,6 +80,7 @@ function normalizeInterviews(data: any): MockInterview[] {
 export default function StudentDashboard({ user, onNavigate }: StudentDashboardProps) {
   const [resume, setResume] = useState<ResumeAnalysis | null>(null);
   const [interviews, setInterviews] = useState<MockInterview[]>([]);
+  const [savedResumesCount, setSavedResumesCount] = useState<number>(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -91,11 +93,17 @@ export default function StudentDashboard({ user, onNavigate }: StudentDashboardP
         .catch(() => null),
       api.get('/api/interview/history')
         .then((res) => (res.ok ? res.json() : null))
+        .catch(() => null),
+      api.get('/api/resumes')
+        .then((res) => (res.ok ? res.json() : null))
         .catch(() => null)
     ])
-      .then(([resumeData, interviewData]) => {
+      .then(([resumeData, interviewData, builderData]) => {
         setResume(normalizeResume(resumeData));
         setInterviews(normalizeInterviews(interviewData));
+        if (builderData && Array.isArray(builderData.resumes)) {
+          setSavedResumesCount(builderData.resumes.length);
+        }
       })
       .catch((err) => {
         console.error('Failed to load dashboard data:', err);
@@ -294,11 +302,56 @@ export default function StudentDashboard({ user, onNavigate }: StudentDashboardP
               Scan Resume
             </button>
             <button
+              onClick={() => onNavigate('resume-builder')}
+              className="border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 text-xs font-medium px-5 py-2.5 rounded-md transition font-heading flex items-center gap-1.5"
+            >
+              <FileEdit className="w-3.5 h-3.5 text-emerald-400" />
+              <span>Resume Builder</span>
+            </button>
+            <button
               onClick={() => onNavigate('aptitude')}
               className="border border-indigo-500/40 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 text-xs font-medium px-5 py-2.5 rounded-md transition font-heading flex items-center gap-1.5"
             >
               <Brain className="w-3.5 h-3.5 text-indigo-400" />
               <span>Aptitude Assessment</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Build Your Resume Dedicated Card */}
+      <div className="border border-[var(--border)] bg-[var(--bg-card)] text-[var(--text-primary)] rounded-xl p-6 sm:p-8 relative overflow-hidden shadow-none">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="max-w-2xl space-y-2">
+            <div className="inline-flex items-center space-x-1.5 border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 rounded-md text-[10px] font-mono text-emerald-400">
+              <FileEdit className="w-3.5 h-3.5" />
+              <span>ATS Resume Studio</span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[var(--text-primary)] font-heading">
+              Build Your Resume
+            </h3>
+            <p className="text-[var(--text-secondary)] text-xs sm:text-sm leading-relaxed">
+              Build, customize, and export ATS-compliant resumes using 8 recruiter-approved templates. Tailor skills and experience with real-time scoring, action verb suggestions, and job description matching.
+            </p>
+            {savedResumesCount > 0 && (
+              <p className="text-xs text-emerald-400 font-mono font-medium">
+                You have {savedResumesCount} saved {savedResumesCount === 1 ? 'resume' : 'resumes'} ready in your studio.
+              </p>
+            )}
+          </div>
+          <div className="flex flex-wrap sm:flex-nowrap gap-3 shrink-0">
+            <button
+              onClick={() => onNavigate('resume-builder')}
+              className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold px-5 py-2.5 rounded-md transition flex items-center space-x-2 shadow-none font-heading"
+            >
+              <FileEdit className="w-4 h-4" />
+              <span>{savedResumesCount > 0 ? 'Continue Editing Resume' : 'Create Resume'}</span>
+            </button>
+            <button
+              onClick={() => onNavigate('resume-builder')}
+              className="border border-[var(--border)] hover:bg-[var(--bg-card-hover)] bg-transparent text-[var(--text-primary)] text-xs font-medium px-5 py-2.5 rounded-md transition font-heading"
+            >
+              View My Resumes
             </button>
           </div>
         </div>

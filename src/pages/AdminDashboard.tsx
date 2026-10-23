@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { DashboardMetrics, StudentFeedback, ResumeTemplate } from '../types.js';
 import { api } from '../lib/api.js';
+import { getAvatarSrc } from '../lib/avatars.js';
 
 function normalizeMetrics(raw: any): DashboardMetrics | null {
   if (!raw) return null;
@@ -367,9 +368,9 @@ export default function AdminDashboard() {
                       <td className="p-4 pl-6">
                         <div className="flex items-center space-x-3">
                           <img
-                            src={student.picture || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120'}
+                            src={getAvatarSrc(student.picture)}
                             alt={student.name}
-                            className="w-9 h-9 rounded-full object-cover border border-[var(--border)]"
+                            className="w-9 h-9 rounded-full object-cover border border-[var(--border)] bg-slate-900"
                           />
                           <div>
                             <span className="block font-bold text-[var(--text-primary)]">{student.name}</span>
@@ -634,9 +635,9 @@ export default function AdminDashboard() {
               <div className="flex justify-between items-start border-b border-[var(--border)] pb-4">
                 <div className="flex items-center space-x-3">
                   <img
-                    src={selectedStudent.picture || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120'}
+                    src={getAvatarSrc(selectedStudent.picture)}
                     alt={selectedStudent.name}
-                    className="w-12 h-12 rounded-full border border-[var(--border)] object-cover"
+                    className="w-12 h-12 rounded-full border border-[var(--border)] object-cover bg-slate-900"
                   />
                   <div>
                     <h3 className="font-extrabold text-[var(--text-primary)] text-sm leading-tight font-display">{selectedStudent.name}</h3>

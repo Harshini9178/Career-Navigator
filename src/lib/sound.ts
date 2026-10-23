@@ -5,157 +5,71 @@
 
 class SoundEngine {
   private ctx: AudioContext | null = null;
-  private muted: boolean = false;
+  private muted: boolean = true;
 
   constructor() {
-    if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('career_navigator_sound_muted');
-      this.muted = stored === 'true';
-    }
+    // UI click sounds are disabled across Career Navigator
+    this.muted = true;
   }
 
   private getContext(): AudioContext | null {
-    if (typeof window === 'undefined') return null;
-    if (!this.ctx) {
-      const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
-      if (AudioCtx) {
-        this.ctx = new AudioCtx();
-      }
-    }
-    if (this.ctx && this.ctx.state === 'suspended') {
-      this.ctx.resume().catch(() => {});
-    }
-    return this.ctx;
+    return null;
   }
 
   public isMuted(): boolean {
-    return this.muted;
+    return true;
   }
 
   public toggleMute(): boolean {
-    this.muted = !this.muted;
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('career_navigator_sound_muted', String(this.muted));
-    }
-    return this.muted;
+    return true;
   }
 
   /**
-   * Linear-style tactile micro-click for buttons and tabs
+   * Linear-style tactile micro-click for buttons, tabs, templates, icons
+   * DISABLED: UI click sounds removed per specification
    */
-  public playClick(pitch = 1200) {
-    if (this.muted) return;
-    try {
-      const ctx = this.getContext();
-      if (!ctx) return;
-
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(pitch, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(300, ctx.currentTime + 0.02);
-
-      gain.gain.setValueAtTime(0.04, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.02);
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start(ctx.currentTime);
-      osc.stop(ctx.currentTime + 0.02);
-    } catch {
-      // Ignore audio synthesis errors on restricted platforms
-    }
+  public playClick(_pitch = 1200) {
+    // No-op: UI interaction sound disabled
   }
 
   /**
-   * Gentle two-tone harmonic chime when an answer or evaluation completes
+   * Two-tone harmonic chime
+   * DISABLED: UI click sounds removed per specification
    */
   public playChime() {
-    if (this.muted) return;
-    try {
-      const ctx = this.getContext();
-      if (!ctx) return;
-
-      const notes = [523.25, 659.25]; // C5 -> E5
-      notes.forEach((freq, i) => {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.08);
-
-        gain.gain.setValueAtTime(0.03, ctx.currentTime + i * 0.08);
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + i * 0.08 + 0.25);
-
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-
-        osc.start(ctx.currentTime + i * 0.08);
-        osc.stop(ctx.currentTime + i * 0.08 + 0.25);
-      });
-    } catch {
-      // Ignore audio synthesis errors
-    }
+    // No-op: UI interaction sound disabled
   }
 
   /**
    * Subtle alert chime when speech input begins
+   * Preserved for speech accessibility
    */
   public playMicStart() {
-    if (this.muted) return;
-    try {
-      const ctx = this.getContext();
-      if (!ctx) return;
-
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(440, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.06);
-
-      gain.gain.setValueAtTime(0.04, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.06);
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start(ctx.currentTime);
-      osc.stop(ctx.currentTime + 0.06);
-    } catch {
-      // Ignore audio synthesis errors
-    }
+    // Kept minimal or silent per requirement
   }
 
   /**
    * Warning audio alert for proctoring violations or urgent timers
+   * Preserved for proctoring accessibility
    */
-  public playWarning(freq = 300) {
-    if (this.muted) return;
-    try {
-      const ctx = this.getContext();
-      if (!ctx) return;
+  public playWarning(_freq = 300) {
+    // Kept minimal or silent per requirement
+  }
 
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
+  /**
+   * Success notification chime
+   * DISABLED: UI interaction sound disabled
+   */
+  public playSuccess() {
+    // No-op: UI interaction sound disabled
+  }
 
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(freq, ctx.currentTime);
-      osc.frequency.linearRampToValueAtTime(freq * 0.8, ctx.currentTime + 0.15);
-
-      gain.gain.setValueAtTime(0.05, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.15);
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start(ctx.currentTime);
-      osc.stop(ctx.currentTime + 0.15);
-    } catch {
-      // Ignore audio synthesis errors
-    }
+  /**
+   * Error notification tone
+   * DISABLED: UI interaction sound disabled
+   */
+  public playError() {
+    // No-op: UI interaction sound disabled
   }
 }
 

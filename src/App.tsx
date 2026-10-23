@@ -12,11 +12,11 @@ import { ErrorBoundary } from './components/ErrorBoundary.js';
 const ResumeAnalyzer = lazy(() => import('./pages/ResumeAnalyzer.js'));
 const InterviewPrep = lazy(() => import('./pages/InterviewPrep.js'));
 const MockInterview = lazy(() => import('./pages/MockInterview.js'));
-const Templates = lazy(() => import('./pages/Templates.js'));
 const ProfileManagement = lazy(() => import('./pages/ProfileManagement.js'));
 const FeedbackForm = lazy(() => import('./pages/FeedbackForm.js'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard.js'));
 const AptitudeAssessment = lazy(() => import('./pages/AptitudeAssessment.js'));
+const ResumeBuilder = lazy(() => import('./pages/ResumeBuilder.js'));
 
 function ViewFallback() {
   return (
@@ -157,14 +157,14 @@ function MainWorkspace() {
           onBackToHome={() => setUnauthView('landing')}
           initialMode={signInMode}
           targetDestinationName={
-            targetViewAfterAuth === 'resume-analyzer'
+            targetViewAfterAuth === 'resume-builder'
+              ? 'Resume Builder Studio'
+              : targetViewAfterAuth === 'resume-analyzer'
               ? 'ATS Resume Optimizer'
               : targetViewAfterAuth === 'interview-prep'
               ? 'Mock Interview Studio'
               : targetViewAfterAuth === 'aptitude' || targetViewAfterAuth === 'code-sandbox'
               ? 'Aptitude Assessment Center'
-              : targetViewAfterAuth === 'templates'
-              ? 'Resume Templates'
               : undefined
           }
         />
@@ -190,8 +190,11 @@ function MainWorkspace() {
       // Student Views
       case 'student-dashboard':
         return <StudentDashboard user={user} onNavigate={handleNavigate} />;
+      case 'resume-builder':
+      case 'templates': // Graceful redirect for any legacy bookmarks
+        return <ResumeBuilder user={user} onNavigate={handleNavigate} />;
       case 'resume-analyzer':
-        return <ResumeAnalyzer />;
+        return <ResumeAnalyzer onNavigate={handleNavigate} />;
       case 'interview-prep':
         return <InterviewPrep user={user} onNavigate={handleNavigate} />;
       case 'mock-interview':
@@ -200,13 +203,11 @@ function MainWorkspace() {
         ) : (
           <InterviewPrep user={user} onNavigate={handleNavigate} />
         );
-      case 'templates':
-        return <Templates />;
       case 'aptitude':
       case 'code-sandbox':
         return <AptitudeAssessment user={user} onNavigate={handleNavigate} />;
       case 'profile':
-        return <ProfileManagement user={user} onProfileUpdate={() => refreshUser()} />;
+        return <ProfileManagement user={user} onProfileUpdate={() => refreshUser()} onNavigate={handleNavigate} />;
       case 'feedback':
         return <FeedbackForm />;
 
@@ -226,6 +227,8 @@ function MainWorkspace() {
     switch (currentView) {
       case 'student-dashboard':
         return 'Placement Readiness Hub';
+      case 'resume-builder':
+        return 'Resume Builder Studio';
       case 'resume-analyzer':
         return 'ATS Keywords Optimizer';
       case 'interview-prep':
@@ -235,10 +238,8 @@ function MainWorkspace() {
       case 'aptitude':
       case 'code-sandbox':
         return 'Aptitude Assessment Center';
-      case 'templates':
-        return 'ATS-vetted Resume Frameworks';
       case 'profile':
-        return 'Placement Settings';
+        return 'Career Profile & Placement Settings';
       case 'feedback':
         return 'Share Experience';
       case 'admin-dashboard':

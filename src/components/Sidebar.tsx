@@ -2,8 +2,8 @@ import { useState } from 'react';
 import {
   LayoutDashboard,
   FileText,
+  FileEdit,
   Video,
-  Download,
   User,
   MessageSquare,
   LogOut,
@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { User as UserType } from '../types.js';
 import SignOutModal from './SignOutModal.js';
+import { getAvatarSrc } from '../lib/avatars.js';
 import { sound } from '../lib/sound.js';
 
 interface SidebarProps {
@@ -31,10 +32,10 @@ export default function Sidebar({ user, currentView, onNavigate, onLogout }: Sid
 
   const studentLinks = [
     { view: 'student-dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { view: 'resume-builder', label: 'Resume Builder', icon: FileEdit },
     { view: 'resume-analyzer', label: 'Resume Analyzer', icon: FileText },
     { view: 'interview-prep', label: 'Mock Interviews', icon: Video },
     { view: 'aptitude', label: 'Aptitude Assessment', icon: Brain },
-    { view: 'templates', label: 'ATS Templates', icon: Download },
     { view: 'profile', label: 'Profile', icon: User },
     { view: 'feedback', label: 'Feedback', icon: MessageSquare }
   ];
@@ -71,9 +72,9 @@ export default function Sidebar({ user, currentView, onNavigate, onLogout }: Sid
       <div className="p-4 border-b border-[var(--border)] bg-[var(--bg-sidebar)]">
         <div className="flex items-center space-x-3">
           <img
-            src={user.picture || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120'}
+            src={getAvatarSrc(user.picture)}
             alt={user.name}
-            className="w-9 h-9 rounded-full border border-[var(--border)] object-cover"
+            className="w-9 h-9 rounded-full border border-[var(--border)] object-cover bg-slate-900"
           />
           <div className="overflow-hidden flex-1">
             <span className="block font-medium text-xs text-[var(--text-primary)] truncate">{user.name}</span>

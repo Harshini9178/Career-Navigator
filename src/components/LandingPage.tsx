@@ -4,7 +4,6 @@ import {
   Mic,
   MicOff,
   Volume2,
-  VolumeX,
   Play,
   Terminal,
   Code2,
@@ -105,7 +104,6 @@ export default function LandingPage({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeTrack, setActiveTrack] = useState<RoleTrack>('sysdesign');
   const [viewMode, setViewMode] = useState<'dialogue' | 'feedback'>('dialogue');
-  const [isMuted, setIsMuted] = useState(sound.isMuted());
 
   // Interactive Voice Simulator state
   const [isRecording, setIsRecording] = useState(false);
@@ -139,12 +137,6 @@ export default function LandingPage({
     }
     return () => clearInterval(interval);
   }, [isRecording]);
-
-  const handleToggleSound = () => {
-    const muted = sound.toggleMute();
-    setIsMuted(muted);
-    if (!muted) sound.playClick(1200);
-  };
 
   // Speech Recognition Handling
   const handleToggleLiveMic = () => {
@@ -292,15 +284,6 @@ export default function LandingPage({
 
           {/* Right Action Buttons */}
           <div className="hidden sm:flex items-center gap-3">
-            <button
-              onClick={handleToggleSound}
-              className="p-2 rounded-lg border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-white transition cursor-pointer"
-              title={isMuted ? 'Unmute UI sounds' : 'Mute UI sounds'}
-              aria-label="Toggle UI Sounds"
-            >
-              {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-blue-400" />}
-            </button>
-
             {currentUser ? (
               <button
                 onClick={onNavigateToDashboard}
@@ -761,10 +744,10 @@ export default function LandingPage({
                   </ul>
                 </div>
                 <button
-                  onClick={() => handleNavigateToFeature('templates')}
+                  onClick={() => handleNavigateToFeature('resume-builder')}
                   className="mt-6 pt-4 border-t border-slate-800 text-xs font-semibold text-purple-400 hover:text-purple-300 flex items-center gap-1.5 transition cursor-pointer"
                 >
-                  <span>Browse Templates</span>
+                  <span>Launch Resume Builder</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>

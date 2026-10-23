@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Instant;
 import java.util.*;
 
 @Service
@@ -29,6 +30,7 @@ public class DatabaseStorageService {
     private final InterviewRepository interviewRepository;
     private final TemplateRepository templateRepository;
     private final FeedbackRepository feedbackRepository;
+    private final ResumeDocumentRepository resumeDocumentRepository;
     private final ObjectMapper objectMapper;
 
     @Value("${app.data.db-json-path:../data/db.json}")
@@ -40,12 +42,14 @@ public class DatabaseStorageService {
             InterviewRepository interviewRepository,
             TemplateRepository templateRepository,
             FeedbackRepository feedbackRepository,
+            ResumeDocumentRepository resumeDocumentRepository,
             ObjectMapper objectMapper) {
         this.userRepository = userRepository;
         this.resumeRepository = resumeRepository;
         this.interviewRepository = interviewRepository;
         this.templateRepository = templateRepository;
         this.feedbackRepository = feedbackRepository;
+        this.resumeDocumentRepository = resumeDocumentRepository;
         this.objectMapper = objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
@@ -89,6 +93,25 @@ public class DatabaseStorageService {
                     u.setPhone(uNode.has("phone") && !uNode.get("phone").isNull() ? uNode.get("phone").asText() : null);
                     u.setEmailVerified(uNode.has("emailVerified") ? uNode.get("emailVerified").asBoolean(true) : true);
                     u.setCreatedAt(uNode.path("createdAt").asText(null));
+                    u.setCityState(uNode.path("cityState").asText(null));
+                    u.setCollege(uNode.path("college").asText(null));
+                    u.setDegree(uNode.path("degree").asText(null));
+                    u.setGraduationYear(uNode.path("graduationYear").asText(null));
+                    u.setCurrentSemester(uNode.path("currentSemester").asText(null));
+                    u.setLinkedIn(uNode.path("linkedIn").asText(null));
+                    u.setGithub(uNode.path("github").asText(null));
+                    u.setPortfolioWebsite(uNode.path("portfolioWebsite").asText(null));
+                    u.setPreferredLocation(uNode.path("preferredLocation").asText(null));
+                    u.setWorkPreference(uNode.path("workPreference").asText(null));
+                    u.setExpectedSalary(uNode.path("expectedSalary").asText(null));
+                    u.setEmploymentType(uNode.path("employmentType").asText(null));
+                    u.setTargetCompanies(uNode.path("targetCompanies").asText(null));
+                    u.setSkillsDataJson(uNode.path("skillsDataJson").asText(null));
+                    u.setProjectsDataJson(uNode.path("projectsDataJson").asText(null));
+                    u.setEducationDataJson(uNode.path("educationDataJson").asText(null));
+                    u.setCertificationsDataJson(uNode.path("certificationsDataJson").asText(null));
+                    u.setExperienceDataJson(uNode.path("experienceDataJson").asText(null));
+                    u.setInterviewPreferencesJson(uNode.path("interviewPreferencesJson").asText(null));
 
                     if (uNode.has("skills") && uNode.get("skills").isArray()) {
                         List<String> skills = new ArrayList<>();
@@ -280,6 +303,24 @@ public class DatabaseStorageService {
                 logger.info("Imported {} feedbacks from db.json", feedbackRepository.count());
             }
 
+            // 6. Resume Documents (Builder)
+            if (root.has("resumeDocuments") && root.get("resumeDocuments").isArray()) {
+                for (JsonNode rNode : root.get("resumeDocuments")) {
+                    ResumeDocumentEntity rd = new ResumeDocumentEntity();
+                    rd.setId(rNode.path("id").asText(UUID.randomUUID().toString()));
+                    rd.setUserId(rNode.path("userId").asText(""));
+                    rd.setTitle(rNode.path("title").asText("Professional Resume"));
+                    rd.setTargetRole(rNode.path("targetRole").asText("Full Stack Engineer"));
+                    rd.setTemplateId(rNode.path("templateId").asText("classic-ats"));
+                    rd.setAtsScore(rNode.path("atsScore").asInt(85));
+                    rd.setContentJson(rNode.has("contentJson") ? rNode.get("contentJson").asText() : "{}");
+                    rd.setCreatedAt(rNode.path("createdAt").asText(Instant.now().toString()));
+                    rd.setUpdatedAt(rNode.path("updatedAt").asText(Instant.now().toString()));
+                    resumeDocumentRepository.save(rd);
+                }
+                logger.info("Imported {} resume documents from db.json", resumeDocumentRepository.count());
+            }
+
         } catch (Exception e) {
             logger.error("Failed to parse db.json: {}", e.getMessage(), e);
         }
@@ -298,6 +339,7 @@ public class DatabaseStorageService {
             data.put("interviews", interviewRepository.findAll());
             data.put("templates", templateRepository.findAll());
             data.put("feedback", feedbackRepository.findAll());
+            data.put("resumeDocuments", resumeDocumentRepository.findAll());
 
             objectMapper.writeValue(dbFile, data);
             logger.debug("Synchronized current state to {}", dbFile.getAbsolutePath());

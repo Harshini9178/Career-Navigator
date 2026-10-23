@@ -11,8 +11,6 @@ import {
   AlertCircle,
   CheckCircle2,
   ChevronLeft,
-  Volume2,
-  VolumeX,
   Smartphone,
   KeyRound,
   RotateCcw,
@@ -80,7 +78,6 @@ export default function SignInPage({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [validationError, setValidationError] = useState<string | null>(null);
   const [successNotice, setSuccessNotice] = useState<string | null>(null);
-  const [isMuted, setIsMuted] = useState(sound.isMuted());
 
   const otpInputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
@@ -91,12 +88,6 @@ export default function SignInPage({
       return () => clearTimeout(timer);
     }
   }, [otpCountdown]);
-
-  const handleToggleSound = () => {
-    const nextMuted = sound.toggleMute();
-    setIsMuted(nextMuted);
-    if (!nextMuted) sound.playClick(900);
-  };
 
   const switchMode = (newMode: 'signin' | 'register' | 'mobile_otp' | 'forgot_password') => {
     sound.playClick(1000);
@@ -369,16 +360,6 @@ export default function SignInPage({
           </div>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3">
-          <button
-            onClick={handleToggleSound}
-            className="p-1.5 rounded-lg border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-slate-200 text-xs transition cursor-pointer"
-            title={isMuted ? 'Unmute sounds' : 'Mute sounds'}
-            aria-label="Toggle sound effects"
-          >
-            {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4 text-blue-400" />}
-          </button>
-        </div>
       </header>
 
       {/* Main Two-Column Layout */}

@@ -13,7 +13,10 @@ import {
   Layers,
   Award,
   ListFilter,
-  Edit3
+  Edit3,
+  FileEdit,
+  FolderOpen,
+  ArrowRight
 } from 'lucide-react';
 import { ResumeAnalysis } from '../types.js';
 import { api } from '../lib/api.js';
@@ -25,7 +28,11 @@ async function extractPdfText(file: File): Promise<string> {
   return extractPdfTextFromArrayBuffer(arrayBuffer);
 }
 
-export default function ResumeAnalyzer() {
+interface ResumeAnalyzerProps {
+  onNavigate?: (view: string) => void;
+}
+
+export default function ResumeAnalyzer({ onNavigate }: ResumeAnalyzerProps = {}) {
   const [dragActive, setDragActive] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [resumeText, setResumeText] = useState('');
@@ -36,6 +43,10 @@ export default function ResumeAnalyzer() {
   const [error, setError] = useState<string | null>(null);
   const [extractingPdf, setExtractingPdf] = useState(false);
   const [showDiagnosticText, setShowDiagnosticText] = useState(false);
+  const [sourceBuilderResume, setSourceBuilderResume] = useState<{ title: string; id: string } | null>(null);
+  const [savedResumesList, setSavedResumesList] = useState<any[]>([]);
+  const [showSavedPicker, setShowSavedPicker] = useState(false);
+  const [loadingSavedResumes, setLoadingSavedResumes] = useState(false);
   const analysisRequestIdRef = useRef<number>(0);
 
   const normalizeResumeAnalysis = (data: any): ResumeAnalysis => {
@@ -80,7 +91,22 @@ export default function ResumeAnalyzer() {
   };
 
   useEffect(() => {
-    // Fetch active resume evaluation on load
+    // Check if redirected from Resume Builder Studio with prefilled resume
+    try {
+      const prefillStr = sessionStorage.getItem('analyzer_prefill_resume');
+      if (prefillStr) {
+        sessionStorage.removeItem('analyzer_prefill_resume');
+        const prefill = JSON.parse(prefillStr);
+        if (prefill.resumeText) {
+          setResumeText(prefill.resumeText);
+          if (prefill.targetRole) setTargetRole(prefill.targetRole);
+          if (prefill.resumeTitle) setSourceBuilderResume({ title: prefill.resumeTitle, id: prefill.resumeId });
+          return;
+        }
+      }
+    } catch (_e) {}
+
+    // Otherwise fetch active resume evaluation on load
     api.get('/api/resume/my-analysis')
       .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
@@ -99,6 +125,65 @@ export default function ResumeAnalyzer() {
       })
       .catch((err) => console.error(err));
   }, []);
+
+  const handleOpenSavedPicker = async () => {
+    setLoadingSavedResumes(true);
+    try {
+      const res = await api.get('/api/resumes');
+      if (res.ok) {
+        const data = await res.json();
+        setSavedResumesList(data.resumes || []);
+        setShowSavedPicker(true);
+      }
+    } catch (e) {
+      console.error('Failed to load saved resumes:', e);
+    } finally {
+      setLoadingSavedResumes(false);
+    }
+  };
+
+  const handleSelectSavedResume = (r: any) => {
+    const content = r.content || {};
+    const pi = content.personalInfo || {};
+    const text = [
+      pi.fullName,
+      pi.headline,
+      pi.email,
+      pi.phone,
+      pi.cityCountry,
+      pi.linkedIn,
+      pi.github,
+      '\nSUMMARY',
+      content.summary,
+      '\nSKILLS',
+      (content.skills?.programmingLanguages || []).join(', '),
+      (content.skills?.frameworks || []).join(', '),
+      (content.skills?.databases || []).join(', '),
+      (content.skills?.toolsPlatforms || []).join(', '),
+      (content.skills?.coreConcepts || []).join(', '),
+      '\nEXPERIENCE',
+      ...(content.experience || []).map(
+        (e: any) => `${e.jobTitle} - ${e.company} (${e.startDate} - ${e.endDate})\n${(e.bullets || []).join('\n')}`
+      ),
+      '\nPROJECTS',
+      ...(content.projects || []).map(
+        (p: any) => `${p.title} [${(p.technologies || []).join(', ')}]\n${p.description}\n${p.resultsImpact || ''}`
+      ),
+      '\nEDUCATION',
+      ...(content.education || []).map(
+        (edu: any) => `${edu.degree} in ${edu.fieldOfStudy} - ${edu.institution} (${edu.graduationDate})`
+      )
+    ]
+      .filter(Boolean)
+      .join('\n');
+
+    setResumeText(text);
+    if (r.targetRole) setTargetRole(r.targetRole);
+    setSourceBuilderResume({ title: r.title, id: r.id });
+    setShowSavedPicker(false);
+    setFile(null);
+    setAnalysis(null);
+  };
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
@@ -315,7 +400,38 @@ export default function ResumeAnalyzer() {
           {/* Upload Widget */}
           <div className="lg:col-span-7 space-y-6">
             <div className="glass-card bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl p-6 space-y-4">
-              <h4 className="font-bold text-xs text-[var(--text-muted)] uppercase tracking-wider font-mono">1. Upload Document</h4>
+              <div className="flex items-center justify-between">
+                <h4 className="font-bold text-xs text-[var(--text-muted)] uppercase tracking-wider font-mono">1. Resume Input Document</h4>
+                <button
+                  type="button"
+                  onClick={handleOpenSavedPicker}
+                  disabled={loadingSavedResumes}
+                  className="border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 text-xs font-semibold px-3 py-1.5 rounded-lg transition flex items-center space-x-1.5"
+                >
+                  <FolderOpen className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>{loadingSavedResumes ? 'Loading...' : 'Import from Saved Resumes'}</span>
+                </button>
+              </div>
+
+              {/* Source Banner if prefilled from Resume Builder */}
+              {sourceBuilderResume && (
+                <div className="p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-between text-xs">
+                  <div className="flex items-center space-x-2 text-emerald-300">
+                    <FileEdit className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span>Loaded from Studio: <strong>{sourceBuilderResume.title}</strong></span>
+                  </div>
+                  {onNavigate && (
+                    <button
+                      type="button"
+                      onClick={() => onNavigate('resume-builder')}
+                      className="text-emerald-400 hover:text-emerald-300 font-semibold flex items-center space-x-1"
+                    >
+                      <span>Return to Builder</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </button>
+                  )}
+                </div>
+              )}
 
               {/* Drag and Drop Box */}
               <div
@@ -879,6 +995,61 @@ export default function ResumeAnalyzer() {
                   ))}
                 </ul>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Saved Resumes Picker Modal */}
+      {showSavedPicker && (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-md flex items-center justify-center p-4 sm:p-6">
+          <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl w-full max-w-lg flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+            <div className="p-4 border-b border-[var(--border)] flex items-center justify-between bg-[var(--bg-base)]">
+              <div className="flex items-center space-x-2">
+                <FileEdit className="w-4 h-4 text-emerald-400" />
+                <h3 className="font-heading font-bold text-sm text-[var(--text-primary)]">
+                  Select a Resume from Studio
+                </h3>
+              </div>
+              <button
+                onClick={() => setShowSavedPicker(false)}
+                className="text-[var(--text-muted)] hover:text-[var(--text-primary)]"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="p-4 max-h-80 overflow-y-auto space-y-2">
+              {savedResumesList.length === 0 ? (
+                <p className="text-xs text-[var(--text-muted)] text-center py-6">
+                  No saved resumes found in Resume Builder. Create one first!
+                </p>
+              ) : (
+                savedResumesList.map((r: any) => (
+                  <div
+                    key={r.id}
+                    onClick={() => handleSelectSavedResume(r)}
+                    className="p-3 rounded-xl border border-[var(--border)] bg-[var(--bg-base)] hover:border-emerald-500/50 hover:bg-emerald-500/5 cursor-pointer transition flex items-center justify-between"
+                  >
+                    <div>
+                      <h4 className="font-bold text-xs text-[var(--text-primary)]">{r.title}</h4>
+                      <p className="text-[10px] text-[var(--text-muted)]">
+                        Target: {r.targetRole || 'Full Stack Engineer'} • ATS: {r.atsScore ?? 85}/100
+                      </p>
+                    </div>
+                    <span className="text-[11px] font-semibold text-emerald-400">Select →</span>
+                  </div>
+                ))
+              )}
+            </div>
+
+            <div className="p-3 border-t border-[var(--border)] bg-[var(--bg-base)] flex justify-end">
+              <button
+                onClick={() => setShowSavedPicker(false)}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium text-[var(--text-secondary)] hover:bg-[var(--bg-card-hover)]"
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>

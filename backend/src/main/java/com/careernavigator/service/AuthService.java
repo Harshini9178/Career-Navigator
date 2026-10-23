@@ -144,7 +144,7 @@ public class AuthService {
         user.setCompletedProfile(true);
         user.setPasswordHash(passwordEncoder.encode(req.getPassword()));
         user.setCreatedAt(new Date().toInstant().toString());
-        user.setPicture("https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120");
+        user.setPicture(null);
 
         userRepository.save(user);
         databaseStorageService.syncToDbJson();
@@ -435,11 +435,33 @@ public class AuthService {
 
         if (req.getName() != null) user.setName(req.getName());
         if (req.getPicture() != null) user.setPicture(req.getPicture());
+        if (req.getPhone() != null) user.setPhone(req.getPhone());
         if (req.getBranch() != null) user.setBranch(req.getBranch());
         if (req.getTargetRole() != null) user.setTargetRole(req.getTargetRole());
         if (req.getExperienceLevel() != null) user.setExperienceLevel(req.getExperienceLevel());
+        if (req.getCityState() != null) user.setCityState(req.getCityState());
+        if (req.getCollege() != null) user.setCollege(req.getCollege());
+        if (req.getDegree() != null) user.setDegree(req.getDegree());
+        if (req.getGraduationYear() != null) user.setGraduationYear(req.getGraduationYear());
+        if (req.getCurrentSemester() != null) user.setCurrentSemester(req.getCurrentSemester());
+        if (req.getLinkedIn() != null) user.setLinkedIn(req.getLinkedIn());
+        if (req.getGithub() != null) user.setGithub(req.getGithub());
+        if (req.getPortfolioWebsite() != null) user.setPortfolioWebsite(req.getPortfolioWebsite());
+        if (req.getPreferredLocation() != null) user.setPreferredLocation(req.getPreferredLocation());
+        if (req.getWorkPreference() != null) user.setWorkPreference(req.getWorkPreference());
+        if (req.getExpectedSalary() != null) user.setExpectedSalary(req.getExpectedSalary());
+        if (req.getEmploymentType() != null) user.setEmploymentType(req.getEmploymentType());
+        if (req.getTargetCompanies() != null) user.setTargetCompanies(req.getTargetCompanies());
+
         if (req.getSkills() != null) user.setSkills(req.getSkills());
         if (req.getProjects() != null) user.setProjects(req.getProjects());
+        if (req.getSkillsDataJson() != null) user.setSkillsDataJson(req.getSkillsDataJson());
+        if (req.getProjectsDataJson() != null) user.setProjectsDataJson(req.getProjectsDataJson());
+        if (req.getEducationDataJson() != null) user.setEducationDataJson(req.getEducationDataJson());
+        if (req.getCertificationsDataJson() != null) user.setCertificationsDataJson(req.getCertificationsDataJson());
+        if (req.getExperienceDataJson() != null) user.setExperienceDataJson(req.getExperienceDataJson());
+        if (req.getInterviewPreferencesJson() != null) user.setInterviewPreferencesJson(req.getInterviewPreferencesJson());
+
         user.setCompletedProfile(true);
 
         userRepository.save(user);

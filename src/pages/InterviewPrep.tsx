@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import {
   Video,
   VideoOff,
@@ -50,21 +50,36 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
   const [starting, setStarting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Setup Modal State
+  // Parse saved interview preferences from User Profile if present
+  const savedInterviewPrefs = useMemo(() => {
+    if (!user.interviewPreferencesJson) return null;
+    try {
+      return JSON.parse(user.interviewPreferencesJson);
+    } catch {
+      return null;
+    }
+  }, [user.interviewPreferencesJson]);
+
+  // Setup Modal State initialized from User Career Profile Preferences
   const [showSetupModal, setShowSetupModal] = useState(false);
   const [selectedRole, setSelectedRole] = useState<string>(
-    user.targetRole || (INTERVIEW_ROLES as readonly string[])[0]
+    savedInterviewPrefs?.targetRole || user.targetRole || (INTERVIEW_ROLES as readonly string[])[0]
   );
   const [customRole, setCustomRole] = useState('');
   const [isCustomRole, setIsCustomRole] = useState(false);
-  const [difficulty, setDifficulty] = useState<'beginner' | 'intermediate' | 'advanced'>('intermediate');
+  const [difficulty, setDifficulty] = useState<'beginner' | 'intermediate' | 'advanced'>(() => {
+    if (savedInterviewPrefs?.difficulty === 'Easy') return 'beginner';
+    if (savedInterviewPrefs?.difficulty === 'Hard') return 'advanced';
+    return 'intermediate';
+  });
   const [questionCount, setQuestionCount] = useState<5 | 10 | 15>(5);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([
-    'technical',
-    'coding',
-    'resume',
-    'behavioral'
-  ]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(() => {
+    if (!savedInterviewPrefs?.focus) return ['technical', 'coding', 'resume', 'behavioral'];
+    if (savedInterviewPrefs.focus === 'Technical') return ['technical', 'coding'];
+    if (savedInterviewPrefs.focus === 'HR' || savedInterviewPrefs.focus === 'Behavioral') return ['behavioral', 'resume'];
+    if (savedInterviewPrefs.focus === 'System Design') return ['technical', 'coding'];
+    return ['technical', 'coding', 'resume', 'behavioral'];
+  });
   const [durationMinutes, setDurationMinutes] = useState<number>(30);
   const [prepTimerSeconds, setPrepTimerSeconds] = useState<number>(0); // 0 = off, 30s, 60s
   const [interviewMode, setInterviewMode] = useState<'video_audio' | 'text'>('video_audio');
@@ -309,9 +324,13 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
 
     const effectiveRole = isCustomRole ? customRole.trim() || 'Software Engineer' : selectedRole;
 
-    // Resolve candidate project and skills from selected resume or profile
-    let activeSkills = user.skills || [];
-    let activeProjects = user.projects || [];
+    // Resolve candidate project and skills from selected resume or profile preferences
+    let activeSkills = (savedInterviewPrefs?.technicalCompetencies && savedInterviewPrefs.technicalCompetencies.length > 0)
+      ? savedInterviewPrefs.technicalCompetencies
+      : (user.skills || []);
+    let activeProjects = (savedInterviewPrefs?.keyProjects && savedInterviewPrefs.keyProjects.length > 0)
+      ? savedInterviewPrefs.keyProjects
+      : (user.projects || []);
     let selectedResumeName = 'Placement Profile';
 
     if (selectedResumeId !== 'profile') {
@@ -336,8 +355,8 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
 
     const payload = {
       targetRole: effectiveRole,
-      branch: user.branch || 'Engineering',
-      experienceLevel: difficulty.charAt(0).toUpperCase() + difficulty.slice(1),
+      branch: savedInterviewPrefs?.branch || user.branch || 'Engineering',
+      experienceLevel: savedInterviewPrefs?.experienceLevel || user.experienceLevel || (difficulty.charAt(0).toUpperCase() + difficulty.slice(1)),
       skills: activeSkills.length > 0 ? activeSkills : ['Full Stack', 'Software Engineering'],
       projects: activeProjects.length > 0 ? activeProjects : ['Engineering Project'],
       questionCount,

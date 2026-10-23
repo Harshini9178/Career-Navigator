@@ -1,3 +1,73 @@
+export type SkillCategory =
+  | 'Programming Languages'
+  | 'Frameworks'
+  | 'Databases'
+  | 'Developer Tools'
+  | 'Cloud'
+  | 'Other';
+
+export type SkillProficiency = 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
+
+export interface ProfileSkillItem {
+  id?: string;
+  name: string;
+  category: SkillCategory;
+  proficiency: SkillProficiency;
+  isPrimary?: boolean;
+}
+
+export interface ProfileProjectItem {
+  id: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  startDate?: string;
+  endDate?: string;
+  githubUrl?: string;
+  liveUrl?: string;
+  role?: string;
+  accomplishments?: string[];
+}
+
+export interface ProfileEducationItem {
+  id: string;
+  institution: string;
+  degree: string;
+  specialization: string;
+  startYear: string;
+  graduationYear: string;
+  score?: string;
+  status: 'Pursuing' | 'Completed';
+}
+
+export interface ProfileCertificationItem {
+  id: string;
+  title: string;
+  issuer: string;
+  issueDate?: string;
+  credentialUrl?: string;
+}
+
+export interface ProfileExperienceItem {
+  id: string;
+  company: string;
+  role: string;
+  startDate?: string;
+  endDate?: string;
+  current?: boolean;
+  description?: string;
+}
+
+export interface InterviewPreferences {
+  targetRole: string;
+  branch: string;
+  experienceLevel: string;
+  technicalCompetencies: string[];
+  keyProjects: string[];
+  difficulty: 'Easy' | 'Medium' | 'Hard';
+  focus: 'Technical' | 'HR' | 'Behavioral' | 'System Design' | 'Mixed';
+}
+
 export interface User {
   id: string;
   email: string;
@@ -13,6 +83,30 @@ export interface User {
   phone?: string;
   password?: string;
   passwordHash?: string;
+  createdAt?: string;
+
+  // Enhanced Career Profile fields
+  cityState?: string;
+  college?: string;
+  degree?: string;
+  graduationYear?: string;
+  currentSemester?: string;
+  linkedIn?: string;
+  github?: string;
+  portfolioWebsite?: string;
+  preferredLocation?: string;
+  workPreference?: 'On-site' | 'Hybrid' | 'Remote' | string;
+  expectedSalary?: string;
+  employmentType?: 'Full-time' | 'Internship' | 'Contract' | 'Part-time' | string;
+  targetCompanies?: string;
+
+  // JSON serialized structured sub-sections
+  skillsDataJson?: string;
+  projectsDataJson?: string;
+  educationDataJson?: string;
+  certificationsDataJson?: string;
+  experienceDataJson?: string;
+  interviewPreferencesJson?: string;
 }
 
 export interface SectionAnalysisResult {
@@ -256,3 +350,135 @@ export interface AptitudeHistoryItem {
   forcedSubmissionReason?: string;
   categoryScores: Record<string, number>;
 }
+
+// ================= Resume Builder Interfaces =================
+
+export interface ResumePersonalInfo {
+  fullName: string;
+  headline: string;
+  email: string;
+  phone: string;
+  cityCountry: string;
+  linkedIn: string;
+  github: string;
+  portfolioWebsite: string;
+}
+
+export interface ResumeEducation {
+  id: string;
+  institution: string;
+  degree: string;
+  fieldOfStudy: string;
+  startDate: string;
+  graduationDate: string;
+  gradeCgpa: string;
+  coursework: string;
+}
+
+export interface ResumeWorkExperience {
+  id: string;
+  jobTitle: string;
+  company: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  currentRole: boolean;
+  responsibilities: string;
+  achievements: string;
+  impact: string;
+  bullets: string[];
+}
+
+export interface ResumeSkills {
+  programmingLanguages: string[];
+  frameworks: string[];
+  databases: string[];
+  toolsPlatforms: string[];
+  coreConcepts: string[];
+  communicationLeadership: string[];
+}
+
+export interface ResumeProject {
+  id: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  keyContributions: string;
+  resultsImpact: string;
+  githubUrl: string;
+  liveUrl: string;
+}
+
+export interface ResumeCertification {
+  id: string;
+  name: string;
+  issuingOrganization: string;
+  issueDate: string;
+  credentialUrl: string;
+  type: 'certification' | 'award' | 'hackathon' | 'academic';
+}
+
+export interface ResumeCustomSection {
+  id: string;
+  heading: string;
+  items: string[];
+}
+
+export interface ResumeAdditionalSections {
+  publications: string[];
+  volunteerExperience: string[];
+  leadership: string[];
+  languages: string[];
+  interests: string[];
+  customSections: ResumeCustomSection[];
+}
+
+export interface ResumeContent {
+  personalInfo: ResumePersonalInfo;
+  summary: string;
+  education: ResumeEducation[];
+  skills: ResumeSkills;
+  experience: ResumeWorkExperience[];
+  projects: ResumeProject[];
+  certifications: ResumeCertification[];
+  additionalSections: ResumeAdditionalSections;
+}
+
+export interface ResumeDocument {
+  id: string;
+  userId: string;
+  title: string;
+  targetRole: string;
+  templateId: string;
+  atsScore: number;
+  content: ResumeContent;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface AtsCheckCategoryItem {
+  name: string;
+  score: number;
+  maxScore: number;
+  status: 'passed' | 'warning' | 'missing';
+  explanation: string;
+}
+
+export interface AtsCheckReport {
+  overallScore: number;
+  categoryScores: AtsCheckCategoryItem[];
+  passedChecks: string[];
+  warnings: string[];
+  missingInfo: string[];
+  improvementSuggestions: string[];
+}
+
+export interface JobMatchReport {
+  matchPercentage: number;
+  matchedKeywords: string[];
+  missingKeywords: string[];
+  matchedSkills: string[];
+  experienceRelevance: string[];
+  phrasingSuggestions: string[];
+}
+

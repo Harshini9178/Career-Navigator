@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { LogOut, X, AlertTriangle, ShieldCheck } from 'lucide-react';
 import { useAuth } from '../context/AuthContext.js';
 import { sound } from '../lib/sound.js';
+import { getAvatarSrc } from '../lib/avatars.js';
 
 interface SignOutModalProps {
   isOpen: boolean;
@@ -78,9 +79,9 @@ export default function SignOutModal({ isOpen, onClose, onConfirmLogout }: SignO
         {user && (
           <div className="flex items-center space-x-3 p-3 rounded-xl bg-[var(--bg-base)] border border-[var(--border)]">
             <img
-              src={user.picture || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120'}
+              src={getAvatarSrc(user.picture)}
               alt={user.name}
-              className="w-9 h-9 rounded-full object-cover border border-[var(--border)]"
+              className="w-9 h-9 rounded-full object-cover border border-[var(--border)] bg-slate-900"
             />
             <div className="min-w-0 flex-1">
               <span className="block font-semibold text-xs text-[var(--text-primary)] truncate">{user.name}</span>
