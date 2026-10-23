@@ -1,0 +1,5 @@
+c86af39 feat: implement backend Gemini service and frontend career assistant UI components
+b47574d feat: add interactive interview preparation and mock interview components with AI question bank and real-time media support
+ec80347 feat: add mock interview prep module with backend controller and frontend question bank
+7db7e24 feat: add admin dashboard and backend services for student management and resume templates
+e3c5c74 Fix registration duplicate-email bug and implement email verification with Spring Mail

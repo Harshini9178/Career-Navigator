@@ -222,60 +222,103 @@ function evaluateWithRubricFallback(
 
 export function compileFinalReport(
   jobRole: string,
-  answers: { question: string; category?: string; answer: string; code?: string; skipped?: boolean; evaluation?: AnswerEvaluation }[]
+  answers: {
+    question: string;
+    category?: string;
+    answer: string;
+    code?: string;
+    skipped?: boolean;
+    evaluation?: AnswerEvaluation;
+  }[]
 ) {
-  let totalScore = 0;
-  let evaluatedCount = 0;
+  const totalQuestions = answers.length;
+  let totalPointsEarned = 0;
+  let answeredCount = 0;
   let skippedCount = 0;
-  const categoryScoresMap: Record<string, { total: number; count: number }> = {};
+  let pendingCount = 0;
+  const categoryScoresMap: Record<string, { totalPoints: number; count: number }> = {};
   const strongestSet = new Set<string>();
   const improvementSet = new Set<string>();
 
   for (const ans of answers) {
     const cat = ans.category || 'technical';
     if (!categoryScoresMap[cat]) {
-      categoryScoresMap[cat] = { total: 0, count: 0 };
+      categoryScoresMap[cat] = { totalPoints: 0, count: 0 };
     }
 
     if (ans.skipped) {
       skippedCount++;
-      categoryScoresMap[cat].total += 0;
       categoryScoresMap[cat].count++;
+      // Skipped questions count as 0 earned points in overall denominator
       continue;
     }
 
-    evaluatedCount++;
-    const score = ans.evaluation?.score ?? 7;
-    totalScore += score * 10; // scale 0-10 to 0-100
-    categoryScoresMap[cat].total += score * 10;
-    categoryScoresMap[cat].count++;
+    const hasContent = (ans.answer && ans.answer.trim().length > 0 && ans.answer !== '[Question Skipped]') ||
+                       (ans.code && ans.code.trim().length > 0);
 
-    if (ans.evaluation?.strengths) {
-      ans.evaluation.strengths.forEach((s) => strongestSet.add(s));
-    }
-    if (ans.evaluation?.improvementSuggestions) {
-      ans.evaluation.improvementSuggestions.forEach((s) => improvementSet.add(s));
+    if (hasContent) {
+      const score = ans.evaluation?.score;
+      if (typeof score === 'number') {
+        answeredCount++;
+        const points = Math.min(10, Math.max(0, score));
+        totalPointsEarned += points;
+        categoryScoresMap[cat].totalPoints += points;
+        categoryScoresMap[cat].count++;
+
+        if (ans.evaluation?.strengths) {
+          ans.evaluation.strengths.forEach((s) => strongestSet.add(s));
+        }
+        if (ans.evaluation?.improvementSuggestions) {
+          ans.evaluation.improvementSuggestions.forEach((s) => improvementSet.add(s));
+        }
+      } else {
+        pendingCount++;
+      }
+    } else {
+      skippedCount++;
+      categoryScoresMap[cat].count++;
     }
   }
 
-  const overallScore = evaluatedCount > 0 ? Math.round(totalScore / (evaluatedCount + skippedCount)) : 0;
+  // Formula as required:
+  // Overall Score = (Total Points Earned / (Total Questions * 10)) * 100
+  const maxPossiblePoints = totalQuestions * 10;
+  const overallScore = maxPossiblePoints > 0
+    ? Math.round((totalPointsEarned / maxPossiblePoints) * 100)
+    : 0;
+
+  // Average Score on Answered Questions = (Total Points Earned / (Answered Questions * 10)) * 100
+  const averageAnsweredScore = answeredCount > 0
+    ? Math.round((totalPointsEarned / (answeredCount * 10)) * 100)
+    : 0;
+
+  const averageScoreOutOf10 = answeredCount > 0
+    ? Number((totalPointsEarned / answeredCount).toFixed(1))
+    : 0;
+
   const technicalScore = Math.min(100, Math.round(overallScore * 1.05));
-  const communicationScore = Math.min(100, Math.max(50, overallScore));
-  const confidenceScore = Math.min(100, Math.max(60, overallScore + 2));
+  const communicationScore = Math.min(100, Math.max(overallScore, Math.round(averageAnsweredScore * 0.95)));
+  const confidenceScore = Math.min(100, Math.max(overallScore, Math.round(averageAnsweredScore * 0.9)));
 
   const categoryScores: Record<string, number> = {};
   for (const [cat, data] of Object.entries(categoryScoresMap)) {
-    categoryScores[cat] = data.count > 0 ? Math.round(data.total / data.count) : 0;
+    categoryScores[cat] = data.count > 0 ? Math.round((data.totalPoints / (data.count * 10)) * 100) : 0;
   }
 
   return {
     overallScore,
+    averageAnsweredScore,
+    averageScoreOutOf10,
+    totalPointsEarned,
+    maxPossiblePoints,
+    totalQuestions,
+    questionsAnswered: answeredCount,
+    questionsSkipped: skippedCount,
+    questionsPending: pendingCount,
     technicalScore,
     communicationScore,
     confidenceScore,
     categoryScores,
-    questionsAnswered: evaluatedCount,
-    questionsSkipped: skippedCount,
     strongestAreas: Array.from(strongestSet).slice(0, 4),
     topicsToImprove: Array.from(improvementSet).slice(0, 4),
     suggestedPracticeQuestions: [
@@ -291,7 +334,7 @@ export function compileFinalReport(
     feedbackText: overallScore >= 80
       ? `Exceptional interview demonstration for the ${jobRole} track. Candidate articulated architectural decisions, handled complexity thoroughly, and maintained strong clarity.`
       : overallScore >= 60
-      ? `Promising performance for ${jobRole}. Foundational fundamentals are solid; incorporating deeper system design trade-offs and edge cases will improve placement score.`
-      : `Baseline technical interview completed. Prioritize strengthening core ${jobRole} fundamentals and code syntax structure.`
+      ? `Promising performance for ${jobRole}. Foundational fundamentals are solid; candidate achieved an average of ${averageAnsweredScore}% on attempted questions. Incorporating deeper system design trade-offs and edge cases will improve placement score.`
+      : `Baseline technical interview completed. Answered ${answeredCount} of ${totalQuestions} questions with an average score of ${averageAnsweredScore}% on attempted questions (${skippedCount} skipped). Prioritize strengthening core ${jobRole} fundamentals and code syntax structure.`
   };
 }

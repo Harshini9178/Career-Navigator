@@ -1,0 +1,5 @@
+3906b4a chore: sync database state
+aa8a283 chore: polish vite watch config and auth context session restore
+1e76fdb Merge branch 'origin/main' and resolve conflicts
+5a7b74a feat: complete Aptitude Assessment module replacing Code Lab and merge upstream
+b47574d feat: add interactive interview preparation and mock interview components with AI question bank and real-time media support

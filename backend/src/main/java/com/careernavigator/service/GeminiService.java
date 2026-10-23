@@ -163,38 +163,42 @@ public class GeminiService {
     }
 
     public Map<String, Object> generateOverallReport(String jobRole, List<Map<String, Object>> qas) {
-        int avgTech = 75;
-        int avgComm = 80;
-        int avgConf = 78;
+        int totalQuestions = qas != null ? qas.size() : 0;
+        int totalPoints = 0;
+        int answeredCount = 0;
+        int totalTech = 0;
+        int totalComm = 0;
 
         if (qas != null && !qas.isEmpty()) {
-            int totalTech = 0;
-            int totalComm = 0;
-            int count = 0;
             for (Map<String, Object> qa : qas) {
+                if (Boolean.TRUE.equals(qa.get("skipped"))) {
+                    continue;
+                }
                 Object evalObj = qa.get("evaluation");
                 if (evalObj instanceof Map<?, ?> eval) {
-                    Object tScore = eval.get("technicalScore");
-                    Object cScore = eval.get("communicationScore");
-                    if (tScore instanceof Number nt) totalTech += nt.intValue() * 10;
-                    if (cScore instanceof Number nc) totalComm += nc.intValue() * 10;
-                    count++;
+                    answeredCount++;
+                    Object s = eval.get("score");
+                    Object t = eval.get("technicalScore");
+                    Object c = eval.get("communicationScore");
+                    if (s instanceof Number ns) totalPoints += ns.intValue();
+                    if (t instanceof Number nt) totalTech += nt.intValue();
+                    if (c instanceof Number nc) totalComm += nc.intValue();
                 }
-            }
-            if (count > 0) {
-                avgTech = totalTech / count;
-                avgComm = totalComm / count;
             }
         }
 
-        int overall = (int) Math.round((avgTech * 0.45) + (avgComm * 0.35) + (avgConf * 0.20));
+        // Overall Score = (Total Points Earned / (Total Questions * 10)) * 100
+        int overall = totalQuestions > 0 ? (int) Math.round(((double) totalPoints / (totalQuestions * 10)) * 100) : 0;
+        int avgTech = answeredCount > 0 ? (int) Math.round(((double) totalTech / (answeredCount * 10)) * 100) : 0;
+        int avgComm = answeredCount > 0 ? (int) Math.round(((double) totalComm / (answeredCount * 10)) * 100) : 0;
+        int avgConf = Math.min(100, Math.max(overall, 60));
 
         Map<String, Object> report = new LinkedHashMap<>();
         report.put("overallScore", overall);
         report.put("technicalScore", avgTech);
         report.put("communicationScore", avgComm);
         report.put("confidenceScore", avgConf);
-        report.put("feedbackText", "Candidate demonstrated solid foundational knowledge for the " + jobRole + " track. Answers were coherent and structured.");
+        report.put("feedbackText", "Candidate demonstrated knowledge across " + answeredCount + " answered questions (" + (totalQuestions - answeredCount) + " skipped) for the " + jobRole + " track.");
         report.put("suggestions", Arrays.asList(
                 "Incorporate more production-level examples and error-handling scenarios.",
                 "Structure technical answers using the STAR method (Situation, Task, Action, Result).",

@@ -263,8 +263,27 @@ public class InterviewService {
                 }
             }
 
-            if (interview.getOverallScore() == null) {
-                interview.setOverallScore(75);
+            if (interview.getOverallScore() == null && interview.getQasJson() != null) {
+                try {
+                    List<Map<String, Object>> qas = objectMapper.readValue(interview.getQasJson(), new TypeReference<>() {});
+                    int totalPoints = 0;
+                    int count = 0;
+                    for (Map<String, Object> qa : qas) {
+                        count++;
+                        if (!Boolean.TRUE.equals(qa.get("skipped"))) {
+                            Object evalObj = qa.get("evaluation");
+                            if (evalObj instanceof Map<?, ?> eval && eval.get("score") instanceof Number n) {
+                                totalPoints += n.intValue();
+                            }
+                        }
+                    }
+                    int score = count > 0 ? (int) Math.round(((double) totalPoints / (count * 10)) * 100) : 0;
+                    interview.setOverallScore(score);
+                } catch (Exception ignored) {
+                    interview.setOverallScore(0);
+                }
+            } else if (interview.getOverallScore() == null) {
+                interview.setOverallScore(0);
             }
 
             interviewRepository.save(interview);

@@ -1,0 +1,104 @@
+diff --git a/data/db.json b/data/db.json
+index 4da1986..54071d2 100644
+--- a/data/db.json
++++ b/data/db.json
+@@ -4153,6 +4153,40 @@
+       "question" : "Explain your project \"text to image generator\" and the core problem it solves.",
+       "answer" : "[Question Skipped]"
+     } ]
++  }, {
++    "id" : "int-56a231e6",
++    "userId" : "usr-1792741981498-8d841",
++    "date" : "2026-10-23T10:53:52.665Z",
++    "jobRole" : "Java Developer",
++    "branch" : "Computer Science",
++    "experienceLevel" : "Intermediate",
++    "suggestions" : [ ],
++    "qasJson" : "[{\"id\":\"q-4\",\"category\":\"technical\",\"difficulty\":\"intermediate\",\"question\":\"Explain the difference between ArrayList and LinkedList.\",\"expectedAnswerPoints\":[\"Underlying Structure: ArrayList uses a dynamically resizing array; LinkedList is built upon a doubly linked list of nodes.\",\"Random Access: ArrayList provides O(1) constant-time random access by index via direct memory offset; LinkedList requires O(N) traversal.\",\"Insertion/Deletion: LinkedList offers O(1) insertion/deletion at endpoints or when an iterator is positioned; ArrayList requires O(N) array copying/shifting.\",\"Memory Overhead: LinkedList consumes more memory per element due to node pointers (prev and next references).\"],\"evaluationCriteria\":[\"Big-O time complexity comparison for search vs insertion/deletion\",\"Memory layout differences (contiguous memory array vs pointer overhead)\",\"Practical guidance on when to choose one over the other in production\"],\"answer\":\"Lin linked linked list linked list linked list linked list  difference  difference between  difference between  difference between AR  difference between AR  difference between arra  difference between arrayl  difference between arraylist  difference between arraylist and  difference between arraylist and Lin  difference between arraylist and linked  difference between arraylist and linked list  difference between arraylist and linked list  difference between arraylist and linked list  difference between arraylist and linked list\",\"code\":\"\",\"language\":\"java\",\"evaluation\":{\"score\":8,\"technicalScore\":9,\"communicationScore\":8,\"confidenceScore\":7,\"feedback\":\"Thorough and articulate response covering essential technical foundations.\",\"grammar\":\"Good syntax and professional technical vocabulary.\",\"clarity\":\"Clear, logical structure.\"}},{\"id\":\"q-6\",\"category\":\"technical\",\"difficulty\":\"intermediate\",\"question\":\"What is Spring Boot, and how does it simplify application development?\",\"expectedAnswerPoints\":[\"Spring Boot is an opinionated framework built on top of Spring that eliminates boilerplate XML and annotation configuration.\",\"Auto-Configuration: Automatically configures beans and components based on jar dependencies on the classpath (@EnableAutoConfiguration).\",\"Starter Dependencies: Curated dependency packages (spring-boot-starter-web, spring-boot-starter-data-jpa) managing compatible versions.\",\"Embedded Servers: Bundles Tomcat, Jetty, or Undertow directly into a standalone runnable JAR without requiring external servlet containers.\",\"Actuator: Built-in production telemetry, health checks, and metrics monitoring.\"],\"evaluationCriteria\":[\"Understanding of convention-over-configuration and auto-configuration\",\"Embedded web server deployment model\",\"Starter POM dependency management\"],\"answer\":\"\"},{\"id\":\"q-18\",\"category\":\"coding\",\"difficulty\":\"intermediate\",\"question\":\"Explain the time and space complexity of a solution you have written.\",\"expectedAnswerPoints\":[\"Big-O notation describes the upper bound asymptotic behavior of an algorithm as input size N grows to infinity.\",\"Time Complexity: Number of fundamental machine operations performed relative to N (e.g. O(1), O(log N), O(N), O(N log N), O(N^2)).\",\"Space Complexity: Auxiliary memory allocated beyond the input parameters (stack frames in recursion, dynamic collections like HashSets/Lists).\",\"Concrete Example: Quicksort average O(N log N) time with O(log N) stack frames vs worst-case O(N^2) time.\"],\"evaluationCriteria\":[\"Distinction between time vs auxiliary space complexity\",\"Distinction between best, average, and worst-case scenarios\",\"Analysis of recursive call stack memory overhead\"],\"codeTemplate\":\"// Example: Binary Search Time & Space Complexity Analysis\\npublic class BinarySearch {\\n    // Time Complexity: O(log N) - Search space is halved in every iteration.\\n    // Auxiliary Space Complexity: O(1) - Constant variables (left, right, mid).\\n    public static int binarySearch(int[] arr, int target) {\\n        int left = 0, right = arr.length - 1;\\n        while (left <= right) {\\n            int mid = left + (right - left) / 2;\\n            if (arr[mid] == target) return mid;\\n            if (arr[mid] < target) left = mid + 1;\\n            else right = mid - 1;\\n        }\\n        return -1;\\n    }\\n}\",\"defaultLanguage\":\"java\",\"answer\":\"\"},{\"id\":\"q-20\",\"category\":\"resume\",\"difficulty\":\"intermediate\",\"question\":\"Describe your role, technical contributions, and challenges in your project.\",\"expectedAnswerPoints\":[\"Specific responsibilities (e.g., API design, database schema, state management, deployment pipeline).\",\"Key technical decisions made individually vs in collaboration with team members.\",\"A notable technical roadblock encountered and the systematic debugging approach taken to overcome it.\"],\"evaluationCriteria\":[\"Precise identification of personal contribution vs team effort\",\"Technical depth in explaining engineering hurdles\",\"Structured problem-solving mindset\"],\"answer\":\"\"},{\"id\":\"q-28\",\"category\":\"behavioral\",\"difficulty\":\"intermediate\",\"question\":\"Describe a situation where you had to learn a new technology quickly.\",\"expectedAnswerPoints\":[\"Context: Project requirement or urgent fix demanding an unfamiliar language, library, or tool.\",\"Learning Strategy: Official documentation, building minimal working prototypes, reading source code, and structured tutorials.\",\"Execution: Rapid integration into the project with clean design patterns and unit tests.\",\"Key takeaway: Meta-learning ability and confidence in navigating new codebases.\"],\"evaluationCriteria\":[\"Methodical approach to learning unfamiliar technical systems\",\"Speed and efficacy of applying new concepts to production code\",\"Resilience and adaptability\"],\"answer\":\"\"}]",
++    "status" : "started",
++    "skills" : [ ],
++    "createdAt" : "2026-10-23T10:53:52.665Z",
++    "questions" : [ "Explain the difference between ArrayList and LinkedList.", "What is Spring Boot, and how does it simplify application development?", "Explain the time and space complexity of a solution you have written.", "Describe your role, technical contributions, and challenges in your project.", "Describe a situation where you had to learn a new technology quickly." ],
++    "currentQuestionIndex" : 1,
++    "answers" : [ {
++      "id" : "q-4",
++      "category" : "technical",
++      "difficulty" : "intermediate",
++      "question" : "Explain the difference between ArrayList and LinkedList.",
++      "expectedAnswerPoints" : [ "Underlying Structure: ArrayList uses a dynamically resizing array; LinkedList is built upon a doubly linked list of nodes.", "Random Access: ArrayList provides O(1) constant-time random access by index via direct memory offset; LinkedList requires O(N) traversal.", "Insertion/Deletion: LinkedList offers O(1) insertion/deletion at endpoints or when an iterator is positioned; ArrayList requires O(N) array copying/shifting.", "Memory Overhead: LinkedList consumes more memory per element due to node pointers (prev and next references)." ],
++      "evaluationCriteria" : [ "Big-O time complexity comparison for search vs insertion/deletion", "Memory layout differences (contiguous memory array vs pointer overhead)", "Practical guidance on when to choose one over the other in production" ],
++      "answer" : "Lin linked linked list linked list linked list linked list  difference  difference between  difference between  difference between AR  difference between AR  difference between arra  difference between arrayl  difference between arraylist  difference between arraylist and  difference between arraylist and Lin  difference between arraylist and linked  difference between arraylist and linked list  difference between arraylist and linked list  difference between arraylist and linked list  difference between arraylist and linked list",
++      "code" : "",
++      "language" : "java",
++      "evaluation" : {
++        "score" : 8,
++        "technicalScore" : 9,
++        "communicationScore" : 8,
++        "confidenceScore" : 7,
++        "feedback" : "Thorough and articulate response covering essential technical foundations.",
++        "grammar" : "Good syntax and professional technical vocabulary.",
++        "clarity" : "Clear, logical structure."
++      }
++    } ]
+   } ],
+   "templates" : [ {
+     "id" : "template-1",
+@@ -4918,42 +4952,6 @@
+     "careerContextJson" : "{\r\n  \"targetRole\" : \"system associate\",\r\n  \"branch\" : \"Electronics & Communication\",\r\n  \"skills\" : [ \"General Programming\", \"Problem Solving\" ],\r\n  \"latestAtsScore\" : 38\r\n}",
+     "createdAt" : "2026-10-23T10:04:55.133851600Z",
+     "updatedAt" : "2026-10-23T10:04:55.133302800Z"
+-  }, {
+-    "id" : "chat-cb006a1f-3608-4212-93e6-8e8b56d50f27",
+-    "userId" : "usr-1792741981498-8d841",
+-    "title" : "Give me a 30-day placement preparat...",
+-    "learningMode" : false,
+-    "messagesJson" : "[ {\r\n  \"id\" : \"msg-89b781d3\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"Give me a 30-day placement preparation plan.\",\r\n  \"timestamp\" : \"2026-10-23T10:08:57.667604200Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : false\r\n}, {\r\n  \"id\" : \"msg-cf621e28\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"hii\",\r\n  \"timestamp\" : \"2026-10-23T10:09:18.629267800Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : false\r\n} ]",
+-    "careerContextJson" : "{\r\n  \"targetRole\" : \"Full Stack Developer\",\r\n  \"branch\" : \"Computer Science\",\r\n  \"skills\" : [ ]\r\n}",
+-    "createdAt" : "2026-10-23T10:08:57.667604200Z",
+-    "updatedAt" : "2026-10-23T10:09:18.629267800Z"
+-  }, {
+-    "id" : "chat-5730c5ae-76cc-46e9-85f6-3ee571c976cf",
+-    "userId" : "usr-1792741981498-8d841",
+-    "title" : "Explain this programming error.",
+-    "learningMode" : false,
+-    "messagesJson" : "[ {\r\n  \"id\" : \"msg-f9b44b2c\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"Explain this programming error.\",\r\n  \"timestamp\" : \"2026-10-23T10:35:20.760351100Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : false\r\n}, {\r\n  \"id\" : \"msg-0ea414bb\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"hii\",\r\n  \"timestamp\" : \"2026-10-23T10:37:18.934292Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : false\r\n}, {\r\n  \"id\" : \"msg-1b75d6cf\",\r\n  \"role\" : \"assistant\",\r\n  \"content\" : \"The configured GEMINI_API_KEY is invalid or expired. Please check your API key in .env or Google AI Studio.\",\r\n  \"timestamp\" : \"2026-10-23T10:37:26.526748Z\",\r\n  \"error\" : true\r\n} ]",
+-    "careerContextJson" : "{\r\n  \"targetRole\" : \"Full Stack Developer\",\r\n  \"branch\" : \"Computer Science\",\r\n  \"skills\" : [ ]\r\n}",
+-    "createdAt" : "2026-10-23T10:35:20.762351600Z",
+-    "updatedAt" : "2026-10-23T10:37:18.934292Z"
+-  }, {
+-    "id" : "chat-e26d6e81-304f-41cc-a9e9-41bab79d76c1",
+-    "userId" : "usr-1792741981498-8d841",
+-    "title" : "Give me a 30-day placement preparat...",
+-    "learningMode" : false,
+-    "messagesJson" : "[ {\r\n  \"id\" : \"msg-554dc6e9\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"Give me a 30-day placement preparation plan.\",\r\n  \"timestamp\" : \"2026-10-23T10:42:05.452262800Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : false\r\n} ]",
+-    "careerContextJson" : "{\r\n  \"targetRole\" : \"Full Stack Developer\",\r\n  \"branch\" : \"Computer Science\",\r\n  \"skills\" : [ ]\r\n}",
+-    "createdAt" : "2026-10-23T10:42:05.453784200Z",
+-    "updatedAt" : "2026-10-23T10:42:05.452262800Z"
+-  }, {
+-    "id" : "chat-2bb2db59-5aec-4a48-8726-e4e886765cb2",
+-    "userId" : "usr-1792741981498-8d841",
+-    "title" : "Help me prepare for a technical int...",
+-    "learningMode" : true,
+-    "messagesJson" : "[ {\r\n  \"id\" : \"msg-3c44df77\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"Help me prepare for a technical interview.\",\r\n  \"timestamp\" : \"2026-10-23T10:42:24.717102700Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : true\r\n} ]",
+-    "careerContextJson" : "{\r\n  \"targetRole\" : \"Full Stack Developer\",\r\n  \"branch\" : \"Computer Science\",\r\n  \"skills\" : [ ]\r\n}",
+-    "createdAt" : "2026-10-23T10:42:24.718106400Z",
+-    "updatedAt" : "2026-10-23T10:42:24.717102700Z"
+   }, {
+     "id" : "chat-ce8104ea-0046-474e-b02e-9d3a5174abb0",
+     "userId" : "demo-student-1",
+@@ -4963,14 +4961,5 @@
+     "careerContextJson" : "{\r\n  \"targetRole\" : \"system associate\",\r\n  \"branch\" : \"Electronics & Communication\",\r\n  \"skills\" : [ \"General Programming\", \"Problem Solving\" ],\r\n  \"latestAtsScore\" : 38\r\n}",
+     "createdAt" : "2026-10-23T10:46:11.389482200Z",
+     "updatedAt" : "2026-10-23T10:46:11.384061500Z"
+-  }, {
+-    "id" : "chat-92b6c997-c28f-46d1-b836-e9a0bb7368fa",
+-    "userId" : "usr-1792741981498-8d841",
+-    "title" : "Give me a 30-day placement preparat...",
+-    "learningMode" : false,
+-    "messagesJson" : "[ {\r\n  \"id\" : \"msg-d4a74cd9\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"Give me a 30-day placement preparation plan.\",\r\n  \"timestamp\" : \"2026-10-23T10:51:35.260733600Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : false\r\n} ]",
+-    "careerContextJson" : "{\r\n  \"targetRole\" : \"Full Stack Developer\",\r\n  \"branch\" : \"Computer Science\",\r\n  \"skills\" : [ ]\r\n}",
+-    "createdAt" : "2026-10-23T10:51:35.265665200Z",
+-    "updatedAt" : "2026-10-23T10:51:35.260733600Z"
+   } ]
+ }
+\ No newline at end of file

@@ -3303,9 +3303,9 @@
     "suggestions" : [ "Use the STAR framework for project-based questions.", "Add more concrete metrics when explaining what you built (e.g., \"achieved 15% improvement\").", "Slightly slow down your speaking pace to sound more composed and confident." ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.676Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
@@ -3332,9 +3332,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.699Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
@@ -3361,9 +3361,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.702Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
@@ -3390,9 +3390,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.705Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
@@ -3419,9 +3419,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.707Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
@@ -3448,9 +3448,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack developer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.708Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack developer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack developer",
@@ -3477,9 +3477,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack developer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.709Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack developer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack developer",
@@ -3506,9 +3506,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.710Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
@@ -3533,9 +3533,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Backend Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.713Z",
     "questions" : [ "Explain the core architectural patterns you use in Backend Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Backend Engineer",
@@ -3562,9 +3562,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-22T16:07:56.991Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
@@ -3589,9 +3589,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Backend Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.716Z",
     "questions" : [ "Explain the core architectural patterns you use in Backend Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Backend Engineer",
@@ -3618,9 +3618,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-22T16:57:46.312Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
@@ -3647,9 +3647,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-22T18:03:06.177Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
@@ -3674,9 +3674,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Backend Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.721Z",
     "questions" : [ "Explain the core architectural patterns you use in Backend Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Backend Engineer",
@@ -3703,9 +3703,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-22T18:06:37.482Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
@@ -3730,9 +3730,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Backend Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.723Z",
     "questions" : [ "Explain the core architectural patterns you use in Backend Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Backend Engineer",
@@ -3759,9 +3759,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-22T18:08:12.578Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
@@ -3786,9 +3786,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Backend Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.727Z",
     "questions" : [ "Explain the core architectural patterns you use in Backend Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Backend Engineer",
@@ -3815,9 +3815,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:02:22.874Z",
     "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
@@ -3842,9 +3842,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Backend Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:21.732Z",
     "questions" : [ "Explain the core architectural patterns you use in Backend Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "Explain the core architectural patterns you use in Backend Engineer",
@@ -3871,9 +3871,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"In Spring Boot, the ApplicationContext manages dependency injection using singleton beans by default, configured via annotations like @Service and @Component.\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Engineer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:26.526Z",
     "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Engineer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "skills" : [ ],
     "currentQuestionIndex" : 1,
     "answers" : [ {
       "question" : "Explain the architectural lifecycle and execution model of Java in a production environment.",
@@ -3892,9 +3892,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:22:33.729Z",
     "questions" : [ ],
+    "skills" : [ ],
     "currentQuestionIndex" : 0,
     "answers" : [ ]
   }, {
@@ -3912,9 +3912,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"In Spring Boot, the ApplicationContext manages dependency injection using singleton beans by default, configured via annotations like @Service and @Component.\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Engineer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:47:15.359Z",
     "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Engineer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "skills" : [ ],
     "currentQuestionIndex" : 1,
     "answers" : [ {
       "question" : "Explain the architectural lifecycle and execution model of Java in a production environment.",
@@ -3933,9 +3933,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:47:21.913Z",
     "questions" : [ ],
+    "skills" : [ ],
     "currentQuestionIndex" : 0,
     "answers" : [ ]
   }, {
@@ -3953,9 +3953,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:55:47.157Z",
     "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "skills" : [ ],
     "currentQuestionIndex" : 0,
     "answers" : [ ]
   }, {
@@ -3973,9 +3973,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:56:38.599Z",
     "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "skills" : [ ],
     "currentQuestionIndex" : 0,
     "answers" : [ ]
   }, {
@@ -3993,9 +3993,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T05:58:39.606Z",
     "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "skills" : [ ],
     "currentQuestionIndex" : 0,
     "answers" : [ ]
   }, {
@@ -4013,9 +4013,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"In Java Spring Boot, dependency injection is managed by the Spring IoC container using @Autowired or constructor injection.\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T06:01:11.208Z",
     "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "skills" : [ ],
     "currentQuestionIndex" : 1,
     "answers" : [ {
       "question" : "Explain the architectural lifecycle and execution model of Java in a production environment.",
@@ -4036,9 +4036,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"In Java Spring Boot, dependency injection is managed by the Spring IoC container using @Autowired or constructor injection to achieve loose coupling.\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T06:01:31.777Z",
     "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "skills" : [ ],
     "currentQuestionIndex" : 1,
     "answers" : [ {
       "question" : "Explain the architectural lifecycle and execution model of Java in a production environment.",
@@ -4059,9 +4059,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain your project \\\"text to image generator\\\" and the core problem it solves.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Explain a bug you encountered and how you resolved it.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a technical challenge you faced and how you solved it.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you handle feedback or disagreements within a team?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"If five workers complete a task in ten days at the same rate, how long would ten workers take?\",\r\n  \"answer\" : \"\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T07:31:24.968Z",
     "questions" : [ "Explain your project \"text to image generator\" and the core problem it solves.", "Explain a bug you encountered and how you resolved it.", "Describe a technical challenge you faced and how you solved it.", "How do you handle feedback or disagreements within a team?", "If five workers complete a task in ten days at the same rate, how long would ten workers take?" ],
+    "skills" : [ ],
     "currentQuestionIndex" : 0,
     "answers" : [ ]
   }, {
@@ -4079,9 +4079,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"In your project \\\"text to image generator\\\", describe your specific technical contributions and challenges.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Why did you select the technology stack for your project \\\"text to image generator\\\"?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a technical challenge you faced and how you solved it.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you handle feedback or disagreements within a team?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"If five workers complete a task in ten days at the same rate, how long would ten workers take?\",\r\n  \"answer\" : \"\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T07:41:14.676Z",
     "questions" : [ "In your project \"text to image generator\", describe your specific technical contributions and challenges.", "Why did you select the technology stack for your project \"text to image generator\"?", "Describe a technical challenge you faced and how you solved it.", "How do you handle feedback or disagreements within a team?", "If five workers complete a task in ten days at the same rate, how long would ten workers take?" ],
+    "skills" : [ ],
     "currentQuestionIndex" : 0,
     "answers" : [ ]
   }, {
@@ -4099,9 +4099,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"Explain the difference between ArrayList and LinkedList.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"What is the difference between authentication and authorization?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Find the second-largest element in an array.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Find duplicate elements in an integer array.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Explain one project you developed and the problem it solves.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe your role, technical contributions, and challenges in your project.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a technical challenge you faced and how you solved it.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had to learn a new technology quickly.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Find the next number in the sequence: 2, 6, 12, 20, 30, __.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"If five workers complete a task in ten days at the same rate, how long would ten workers take?\",\r\n  \"answer\" : \"\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T07:55:43.874Z",
     "questions" : [ "Explain the difference between ArrayList and LinkedList.", "What is the difference between authentication and authorization?", "Find the second-largest element in an array.", "Find duplicate elements in an integer array.", "Explain one project you developed and the problem it solves.", "Describe your role, technical contributions, and challenges in your project.", "Describe a technical challenge you faced and how you solved it.", "Describe a situation where you had to learn a new technology quickly.", "Find the next number in the sequence: 2, 6, 12, 20, 30, __.", "If five workers complete a task in ten days at the same rate, how long would ten workers take?" ],
+    "skills" : [ ],
     "currentQuestionIndex" : 0,
     "answers" : [ ]
   }, {
@@ -4119,9 +4119,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"What is the difference between an abstract class and an interface in Java?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"What is the difference between authentication and authorization?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Why did you select your project's technology stack?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Find the second-largest element in an array.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Find the next number in the sequence: 2, 6, 12, 20, 30, __.\",\r\n  \"answer\" : \"\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T07:57:48.114Z",
     "questions" : [ "What is the difference between an abstract class and an interface in Java?", "What is the difference between authentication and authorization?", "Why did you select your project's technology stack?", "Find the second-largest element in an array.", "Find the next number in the sequence: 2, 6, 12, 20, 30, __." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 0,
     "answers" : [ ]
   }, {
@@ -4139,9 +4139,9 @@
     "suggestions" : [ ],
     "qasJson" : "[ {\r\n  \"question\" : \"In your project \\\"text to image generator\\\", describe your specific technical contributions and challenges.\",\r\n  \"answer\" : \"[Question Skipped]\"\r\n}, {\r\n  \"question\" : \"Why did you select the technology stack for your project \\\"text to image generator\\\"?\",\r\n  \"answer\" : \"[Question Skipped]\"\r\n}, {\r\n  \"question\" : \"Explain your project \\\"text to image generator\\\" and the core problem it solves.\",\r\n  \"answer\" : \"[Question Skipped]\"\r\n}, {\r\n  \"question\" : \"How do you handle feedback or disagreements within a team?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a technical challenge you faced and how you solved it.\",\r\n  \"answer\" : \"\"\r\n} ]",
     "status" : "completed",
-    "skills" : [ ],
     "createdAt" : "2026-10-23T09:07:26.506Z",
     "questions" : [ "In your project \"text to image generator\", describe your specific technical contributions and challenges.", "Why did you select the technology stack for your project \"text to image generator\"?", "Explain your project \"text to image generator\" and the core problem it solves.", "How do you handle feedback or disagreements within a team?", "Describe a technical challenge you faced and how you solved it." ],
+    "skills" : [ ],
     "currentQuestionIndex" : 3,
     "answers" : [ {
       "question" : "In your project \"text to image generator\", describe your specific technical contributions and challenges.",
@@ -4152,6 +4152,143 @@
     }, {
       "question" : "Explain your project \"text to image generator\" and the core problem it solves.",
       "answer" : "[Question Skipped]"
+    } ]
+  }, {
+    "id" : "int-56a231e6",
+    "userId" : "usr-1792741981498-8d841",
+    "date" : "2026-10-23T10:53:52.665Z",
+    "jobRole" : "Java Developer",
+    "branch" : "Computer Science",
+    "experienceLevel" : "Intermediate",
+    "overallScore" : 70,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the difference between ArrayList and LinkedList.\",\r\n  \"answer\" : \"Lin linked linked list linked list linked list linked list  difference  difference between  difference between  difference between AR  difference between AR  difference between arra  difference between arrayl  difference between arraylist  difference between arraylist and  difference between arraylist and Lin  difference between arraylist and linked  difference between arraylist and linked list  difference between arraylist and linked list  difference between arraylist and linked list  difference between arraylist and linked list\"\r\n}, {\r\n  \"question\" : \"What is Spring Boot, and how does it simplify application development?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Explain the time and space complexity of a solution you have written.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe your role, technical contributions, and challenges in your project.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had to learn a new technology quickly.\",\r\n  \"answer\" : \"\"\r\n} ]",
+    "status" : "completed",
+    "createdAt" : "2026-10-23T10:53:52.665Z",
+    "questions" : [ "Explain the difference between ArrayList and LinkedList.", "What is Spring Boot, and how does it simplify application development?", "Explain the time and space complexity of a solution you have written.", "Describe your role, technical contributions, and challenges in your project.", "Describe a situation where you had to learn a new technology quickly." ],
+    "skills" : [ ],
+    "currentQuestionIndex" : 1,
+    "answers" : [ {
+      "question" : "Explain the difference between ArrayList and LinkedList.",
+      "answer" : "Lin linked linked list linked list linked list linked list  difference  difference between  difference between  difference between AR  difference between AR  difference between arra  difference between arrayl  difference between arraylist  difference between arraylist and  difference between arraylist and Lin  difference between arraylist and linked  difference between arraylist and linked list  difference between arraylist and linked list  difference between arraylist and linked list  difference between arraylist and linked list"
+    } ]
+  }, {
+    "id" : "int-bbf94c74",
+    "userId" : "demo-student-1",
+    "date" : "2026-10-23T11:27:55.601Z",
+    "jobRole" : "system associate",
+    "branch" : "Electronics & Communication",
+    "experienceLevel" : "Intermediate",
+    "overallScore" : 36,
+    "technicalScore" : 55,
+    "communicationScore" : 45,
+    "confidenceScore" : 60,
+    "feedbackText" : "Candidate demonstrated knowledge across 4 answered questions (1 skipped) for the system associate track.",
+    "suggestions" : [ "Incorporate more production-level examples and error-handling scenarios.", "Structure technical answers using the STAR method (Situation, Task, Action, Result).", "Deepen knowledge of database indexing and asynchronous workflows." ],
+    "qasJson" : "[{\"id\":\"q-21\",\"category\":\"resume\",\"difficulty\":\"intermediate\",\"question\":\"Why did you select the technology stack for your project \\\"text to image generator\\\"?\",\"expectedAnswerPoints\":[\"Rationalized engineering trade-offs between alternative frameworks and languages.\",\"Ecosystem benefits: developer productivity, type safety, performance, community packages, and maintenance.\",\"Suitability for project constraints: e.g., React for component reusability, Spring Boot for enterprise security and JPA ORM, PostgreSQL for relational consistency.\"],\"evaluationCriteria\":[\"Justification grounded in technical trade-offs rather than \\\"because it was popular\\\"\",\"Comparison against at least one rejected alternative technology\",\"Alignment of chosen stack with project performance requirements\"],\"answer\":\"ArrayList is backed by a dynamically resizing contiguous array providing O(1) random access, whereas LinkedList is backed by a doubly-linked list of nodes with pointer references.\",\"code\":\"\",\"language\":\"java\",\"evaluation\":{\"score\":6,\"technicalScore\":7,\"communicationScore\":6,\"confidenceScore\":5,\"feedback\":\"Answer is concise but would benefit from concrete real-world engineering examples.\",\"grammar\":\"Good syntax and professional technical vocabulary.\",\"clarity\":\"Pacing was fast; expand on key points.\"}},{\"id\":\"q-20\",\"category\":\"resume\",\"difficulty\":\"intermediate\",\"question\":\"In your project \\\"text to image generator\\\", describe your specific technical contributions and challenges.\",\"expectedAnswerPoints\":[\"Specific responsibilities (e.g., API design, database schema, state management, deployment pipeline).\",\"Key technical decisions made individually vs in collaboration with team members.\",\"A notable technical roadblock encountered and the systematic debugging approach taken to overcome it.\"],\"evaluationCriteria\":[\"Precise identification of personal contribution vs team effort\",\"Technical depth in explaining engineering hurdles\",\"Structured problem-solving mindset\"],\"answer\":\"[Question Skipped]\",\"skipped\":true,\"evaluation\":{\"score\":0,\"technicalScore\":0,\"communicationScore\":0,\"confidenceScore\":0,\"feedback\":\"Question was skipped by candidate.\",\"grammar\":\"N/A\",\"clarity\":\"Skipped\"}},{\"id\":\"q-19\",\"category\":\"resume\",\"difficulty\":\"intermediate\",\"question\":\"Explain your project \\\"text to image generator\\\" and the core problem it solves.\",\"expectedAnswerPoints\":[\"Core problem statement and business/user context.\",\"Target user demographic and why existing solutions were inadequate.\",\"High-level architectural overview: frontend interface, backend service, and data store.\",\"Concrete outcomes or measurable impact achieved by the project.\"],\"evaluationCriteria\":[\"Clear, articulate problem statement using STAR framework\",\"Architectural clarity connecting technical components\",\"Evidence of real engineering ownership\"],\"answer\":\"This project solves image generation problems using machine learning models.\",\"code\":\"\",\"language\":\"java\",\"evaluation\":{\"score\":4,\"technicalScore\":5,\"communicationScore\":4,\"confidenceScore\":5,\"feedback\":\"Answer is concise but would benefit from concrete real-world engineering examples.\",\"grammar\":\"Good syntax and professional technical vocabulary.\",\"clarity\":\"Pacing was fast; expand on key points.\"}},{\"id\":\"q-26\",\"category\":\"behavioral\",\"difficulty\":\"intermediate\",\"question\":\"Describe a technical challenge you faced and how you solved it.\",\"expectedAnswerPoints\":[\"Situation: The technical environment and constraint (e.g. deadline, unfamiliar library, failing build).\",\"Task: What needed to be delivered.\",\"Action: Proactive steps taken to research, prototype, debug, and implement the solution.\",\"Result: Concrete outcome (feature delivered, latency reduced, test suite passed).\"],\"evaluationCriteria\":[\"Structured response adhering to the STAR method\",\"Technical problem solving and resourcefulness demonstrated\",\"Quantifiable or clear qualitative result\"],\"answer\":\"Faced memory leaks in large data processing and solved it by implementing pagination and streaming.\",\"code\":\"\",\"language\":\"java\",\"evaluation\":{\"score\":4,\"technicalScore\":5,\"communicationScore\":4,\"confidenceScore\":5,\"feedback\":\"Answer is concise but would benefit from concrete real-world engineering examples.\",\"grammar\":\"Good syntax and professional technical vocabulary.\",\"clarity\":\"Pacing was fast; expand on key points.\"}},{\"id\":\"q-28\",\"category\":\"behavioral\",\"difficulty\":\"intermediate\",\"question\":\"Describe a situation where you had to learn a new technology quickly.\",\"expectedAnswerPoints\":[\"Context: Project requirement or urgent fix demanding an unfamiliar language, library, or tool.\",\"Learning Strategy: Official documentation, building minimal working prototypes, reading source code, and structured tutorials.\",\"Execution: Rapid integration into the project with clean design patterns and unit tests.\",\"Key takeaway: Meta-learning ability and confidence in navigating new codebases.\"],\"evaluationCriteria\":[\"Methodical approach to learning unfamiliar technical systems\",\"Speed and efficacy of applying new concepts to production code\",\"Resilience and adaptability\"],\"answer\":\"Learned React and TypeScript quickly by reading documentation and building prototype components.\",\"code\":\"\",\"language\":\"java\",\"evaluation\":{\"score\":4,\"technicalScore\":5,\"communicationScore\":4,\"confidenceScore\":5,\"feedback\":\"Answer is concise but would benefit from concrete real-world engineering examples.\",\"grammar\":\"Good syntax and professional technical vocabulary.\",\"clarity\":\"Pacing was fast; expand on key points.\"}}]",
+    "status" : "completed",
+    "createdAt" : "2026-10-23T11:27:55.601Z",
+    "questions" : [ "Why did you select the technology stack for your project \"text to image generator\"?", "In your project \"text to image generator\", describe your specific technical contributions and challenges.", "Explain your project \"text to image generator\" and the core problem it solves.", "Describe a technical challenge you faced and how you solved it.", "Describe a situation where you had to learn a new technology quickly." ],
+    "skills" : [ ],
+    "currentQuestionIndex" : 5,
+    "answers" : [ {
+      "id" : "q-21",
+      "category" : "resume",
+      "difficulty" : "intermediate",
+      "question" : "Why did you select the technology stack for your project \"text to image generator\"?",
+      "expectedAnswerPoints" : [ "Rationalized engineering trade-offs between alternative frameworks and languages.", "Ecosystem benefits: developer productivity, type safety, performance, community packages, and maintenance.", "Suitability for project constraints: e.g., React for component reusability, Spring Boot for enterprise security and JPA ORM, PostgreSQL for relational consistency." ],
+      "evaluationCriteria" : [ "Justification grounded in technical trade-offs rather than \"because it was popular\"", "Comparison against at least one rejected alternative technology", "Alignment of chosen stack with project performance requirements" ],
+      "answer" : "ArrayList is backed by a dynamically resizing contiguous array providing O(1) random access, whereas LinkedList is backed by a doubly-linked list of nodes with pointer references.",
+      "code" : "",
+      "language" : "java",
+      "evaluation" : {
+        "score" : 6,
+        "technicalScore" : 7,
+        "communicationScore" : 6,
+        "confidenceScore" : 5,
+        "feedback" : "Answer is concise but would benefit from concrete real-world engineering examples.",
+        "grammar" : "Good syntax and professional technical vocabulary.",
+        "clarity" : "Pacing was fast; expand on key points."
+      }
+    }, {
+      "id" : "q-20",
+      "category" : "resume",
+      "difficulty" : "intermediate",
+      "question" : "In your project \"text to image generator\", describe your specific technical contributions and challenges.",
+      "expectedAnswerPoints" : [ "Specific responsibilities (e.g., API design, database schema, state management, deployment pipeline).", "Key technical decisions made individually vs in collaboration with team members.", "A notable technical roadblock encountered and the systematic debugging approach taken to overcome it." ],
+      "evaluationCriteria" : [ "Precise identification of personal contribution vs team effort", "Technical depth in explaining engineering hurdles", "Structured problem-solving mindset" ],
+      "answer" : "[Question Skipped]",
+      "skipped" : true,
+      "evaluation" : {
+        "score" : 0,
+        "technicalScore" : 0,
+        "communicationScore" : 0,
+        "confidenceScore" : 0,
+        "feedback" : "Question was skipped by candidate.",
+        "grammar" : "N/A",
+        "clarity" : "Skipped"
+      }
+    }, {
+      "id" : "q-19",
+      "category" : "resume",
+      "difficulty" : "intermediate",
+      "question" : "Explain your project \"text to image generator\" and the core problem it solves.",
+      "expectedAnswerPoints" : [ "Core problem statement and business/user context.", "Target user demographic and why existing solutions were inadequate.", "High-level architectural overview: frontend interface, backend service, and data store.", "Concrete outcomes or measurable impact achieved by the project." ],
+      "evaluationCriteria" : [ "Clear, articulate problem statement using STAR framework", "Architectural clarity connecting technical components", "Evidence of real engineering ownership" ],
+      "answer" : "This project solves image generation problems using machine learning models.",
+      "code" : "",
+      "language" : "java",
+      "evaluation" : {
+        "score" : 4,
+        "technicalScore" : 5,
+        "communicationScore" : 4,
+        "confidenceScore" : 5,
+        "feedback" : "Answer is concise but would benefit from concrete real-world engineering examples.",
+        "grammar" : "Good syntax and professional technical vocabulary.",
+        "clarity" : "Pacing was fast; expand on key points."
+      }
+    }, {
+      "id" : "q-26",
+      "category" : "behavioral",
+      "difficulty" : "intermediate",
+      "question" : "Describe a technical challenge you faced and how you solved it.",
+      "expectedAnswerPoints" : [ "Situation: The technical environment and constraint (e.g. deadline, unfamiliar library, failing build).", "Task: What needed to be delivered.", "Action: Proactive steps taken to research, prototype, debug, and implement the solution.", "Result: Concrete outcome (feature delivered, latency reduced, test suite passed)." ],
+      "evaluationCriteria" : [ "Structured response adhering to the STAR method", "Technical problem solving and resourcefulness demonstrated", "Quantifiable or clear qualitative result" ],
+      "answer" : "Faced memory leaks in large data processing and solved it by implementing pagination and streaming.",
+      "code" : "",
+      "language" : "java",
+      "evaluation" : {
+        "score" : 4,
+        "technicalScore" : 5,
+        "communicationScore" : 4,
+        "confidenceScore" : 5,
+        "feedback" : "Answer is concise but would benefit from concrete real-world engineering examples.",
+        "grammar" : "Good syntax and professional technical vocabulary.",
+        "clarity" : "Pacing was fast; expand on key points."
+      }
+    }, {
+      "id" : "q-28",
+      "category" : "behavioral",
+      "difficulty" : "intermediate",
+      "question" : "Describe a situation where you had to learn a new technology quickly.",
+      "expectedAnswerPoints" : [ "Context: Project requirement or urgent fix demanding an unfamiliar language, library, or tool.", "Learning Strategy: Official documentation, building minimal working prototypes, reading source code, and structured tutorials.", "Execution: Rapid integration into the project with clean design patterns and unit tests.", "Key takeaway: Meta-learning ability and confidence in navigating new codebases." ],
+      "evaluationCriteria" : [ "Methodical approach to learning unfamiliar technical systems", "Speed and efficacy of applying new concepts to production code", "Resilience and adaptability" ],
+      "answer" : "Learned React and TypeScript quickly by reading documentation and building prototype components.",
+      "code" : "",
+      "language" : "java",
+      "evaluation" : {
+        "score" : 4,
+        "technicalScore" : 5,
+        "communicationScore" : 4,
+        "confidenceScore" : 5,
+        "feedback" : "Answer is concise but would benefit from concrete real-world engineering examples.",
+        "grammar" : "Good syntax and professional technical vocabulary.",
+        "clarity" : "Pacing was fast; expand on key points."
+      }
     } ]
   } ],
   "templates" : [ {
@@ -4164,8 +4301,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "A clean, highly parseable single-column format recommended for software engineering and technical roles.",
-    "fileContent" : "",
-    "downloadCount" : 142
+    "downloadCount" : 142,
+    "fileContent" : ""
   }, {
     "id" : "template-2",
     "name" : "Professional Modern Two-Column",
@@ -4176,8 +4313,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "A stylish layout with a sidebar highlighting technical competencies, suited for frontend and full-stack developers.",
-    "fileContent" : "",
-    "downloadCount" : 99
+    "downloadCount" : 99,
+    "fileContent" : ""
   }, {
     "id" : "template-3",
     "name" : "Executive Tech Lead Format",
@@ -4188,8 +4325,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "A comprehensive layout that emphasizes professional experience, projects, and systems architecture skills.",
-    "fileContent" : "",
-    "downloadCount" : 65
+    "downloadCount" : 65,
+    "fileContent" : ""
   }, {
     "id" : "template-4",
     "name" : "Data Science & Machine Learning Specialist",
@@ -4200,8 +4337,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Optimized for ML engineers, data scientists, and quantitative analysts featuring model evaluation and data pipeline metrics.",
-    "fileContent" : "",
-    "downloadCount" : 112
+    "downloadCount" : 112,
+    "fileContent" : ""
   }, {
     "id" : "template-5",
     "name" : "DevOps & Cloud Platform Infrastructure",
@@ -4212,8 +4349,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Parser-vetted framework emphasizing Kubernetes, Terraform, cloud security, and resilient CI/CD pipelines.",
-    "fileContent" : "",
-    "downloadCount" : 89
+    "downloadCount" : 89,
+    "fileContent" : ""
   }, {
     "id" : "template-6",
     "name" : "Embedded Systems & Firmware Engineer",
@@ -4224,8 +4361,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Designed for IoT, microcontrollers, real-time operating systems (RTOS), and hardware-software interface engineers.",
-    "fileContent" : "",
-    "downloadCount" : 54
+    "downloadCount" : 54,
+    "fileContent" : ""
   }, {
     "id" : "template-7",
     "name" : "Cybersecurity & Systems Defense Analyst",
@@ -4236,8 +4373,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Targeted for security analysts, penetration testers, and SOC engineers highlighting vulnerability management and compliance.",
-    "fileContent" : "",
-    "downloadCount" : 73
+    "downloadCount" : 73,
+    "fileContent" : ""
   }, {
     "id" : "template-8",
     "name" : "Mobile Applications Engineer (iOS & Android)",
@@ -4248,8 +4385,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Tailored for cross-platform and native mobile app developers showcasing app architecture, state management, and offline cache.",
-    "fileContent" : "",
-    "downloadCount" : 81
+    "downloadCount" : 81,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791901366380",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4260,8 +4397,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791901392730",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4272,8 +4409,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-mv6suppq-4ju91",
     "name" : "Cloud Native Go Developer",
@@ -4284,8 +4421,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Go + K8s format",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791903158603",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4296,8 +4433,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791946411284",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4308,8 +4445,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791946569708",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4320,8 +4457,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791947266840",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4332,8 +4469,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791947300687",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4344,8 +4481,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791951159766",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4356,8 +4493,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791985003160",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4368,8 +4505,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791985033371",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4380,8 +4517,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791987150449",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4392,8 +4529,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791987323367",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4404,8 +4541,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791987357766",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4416,8 +4553,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791987412746",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4428,8 +4565,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791987446883",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4440,8 +4577,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791987488158",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4452,8 +4589,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791988501857",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4464,8 +4601,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791994654431",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4476,8 +4613,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791994869998",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4488,8 +4625,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791994913840",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4500,8 +4637,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791995365794",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4512,8 +4649,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791995752801",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4524,8 +4661,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791995818040",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4536,8 +4673,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791997680723",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4548,8 +4685,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791998930822",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4560,8 +4697,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791999456922",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4572,8 +4709,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791999913422",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4584,8 +4721,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1791999989902",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4596,8 +4733,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1792596949521",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4608,8 +4745,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1792674538774",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4620,8 +4757,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1792674978051",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4632,8 +4769,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1792675858678",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4644,8 +4781,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1792677976162",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4656,8 +4793,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1792678008071",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4668,8 +4805,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1792678284277",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4680,8 +4817,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1792681419581",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4692,8 +4829,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1792685473413",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4704,8 +4841,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1792692109001",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4716,8 +4853,8 @@
     "tags" : [ ],
     "sectionsJson" : "",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : ""
   }, {
     "id" : "custom-test-1792731770512",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4728,8 +4865,8 @@
     "tags" : [ ],
     "sectionsJson" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
   }, {
     "id" : "custom-test-1792733268491",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4740,8 +4877,8 @@
     "tags" : [ ],
     "sectionsJson" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
   }, {
     "id" : "custom-test-1792734393264",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -4752,8 +4889,8 @@
     "tags" : [ ],
     "sectionsJson" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
     "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
-    "downloadCount" : 0
+    "downloadCount" : 0,
+    "fileContent" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
   } ],
   "feedback" : [ {
     "id" : "feed-1",
@@ -4919,42 +5056,6 @@
     "createdAt" : "2026-10-23T10:04:55.133851600Z",
     "updatedAt" : "2026-10-23T10:04:55.133302800Z"
   }, {
-    "id" : "chat-cb006a1f-3608-4212-93e6-8e8b56d50f27",
-    "userId" : "usr-1792741981498-8d841",
-    "title" : "Give me a 30-day placement preparat...",
-    "learningMode" : false,
-    "messagesJson" : "[ {\r\n  \"id\" : \"msg-89b781d3\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"Give me a 30-day placement preparation plan.\",\r\n  \"timestamp\" : \"2026-10-23T10:08:57.667604200Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : false\r\n}, {\r\n  \"id\" : \"msg-cf621e28\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"hii\",\r\n  \"timestamp\" : \"2026-10-23T10:09:18.629267800Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : false\r\n} ]",
-    "careerContextJson" : "{\r\n  \"targetRole\" : \"Full Stack Developer\",\r\n  \"branch\" : \"Computer Science\",\r\n  \"skills\" : [ ]\r\n}",
-    "createdAt" : "2026-10-23T10:08:57.667604200Z",
-    "updatedAt" : "2026-10-23T10:09:18.629267800Z"
-  }, {
-    "id" : "chat-5730c5ae-76cc-46e9-85f6-3ee571c976cf",
-    "userId" : "usr-1792741981498-8d841",
-    "title" : "Explain this programming error.",
-    "learningMode" : false,
-    "messagesJson" : "[ {\r\n  \"id\" : \"msg-f9b44b2c\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"Explain this programming error.\",\r\n  \"timestamp\" : \"2026-10-23T10:35:20.760351100Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : false\r\n}, {\r\n  \"id\" : \"msg-0ea414bb\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"hii\",\r\n  \"timestamp\" : \"2026-10-23T10:37:18.934292Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : false\r\n}, {\r\n  \"id\" : \"msg-1b75d6cf\",\r\n  \"role\" : \"assistant\",\r\n  \"content\" : \"The configured GEMINI_API_KEY is invalid or expired. Please check your API key in .env or Google AI Studio.\",\r\n  \"timestamp\" : \"2026-10-23T10:37:26.526748Z\",\r\n  \"error\" : true\r\n} ]",
-    "careerContextJson" : "{\r\n  \"targetRole\" : \"Full Stack Developer\",\r\n  \"branch\" : \"Computer Science\",\r\n  \"skills\" : [ ]\r\n}",
-    "createdAt" : "2026-10-23T10:35:20.762351600Z",
-    "updatedAt" : "2026-10-23T10:37:18.934292Z"
-  }, {
-    "id" : "chat-e26d6e81-304f-41cc-a9e9-41bab79d76c1",
-    "userId" : "usr-1792741981498-8d841",
-    "title" : "Give me a 30-day placement preparat...",
-    "learningMode" : false,
-    "messagesJson" : "[ {\r\n  \"id\" : \"msg-554dc6e9\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"Give me a 30-day placement preparation plan.\",\r\n  \"timestamp\" : \"2026-10-23T10:42:05.452262800Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : false\r\n} ]",
-    "careerContextJson" : "{\r\n  \"targetRole\" : \"Full Stack Developer\",\r\n  \"branch\" : \"Computer Science\",\r\n  \"skills\" : [ ]\r\n}",
-    "createdAt" : "2026-10-23T10:42:05.453784200Z",
-    "updatedAt" : "2026-10-23T10:42:05.452262800Z"
-  }, {
-    "id" : "chat-2bb2db59-5aec-4a48-8726-e4e886765cb2",
-    "userId" : "usr-1792741981498-8d841",
-    "title" : "Help me prepare for a technical int...",
-    "learningMode" : true,
-    "messagesJson" : "[ {\r\n  \"id\" : \"msg-3c44df77\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"Help me prepare for a technical interview.\",\r\n  \"timestamp\" : \"2026-10-23T10:42:24.717102700Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : true\r\n} ]",
-    "careerContextJson" : "{\r\n  \"targetRole\" : \"Full Stack Developer\",\r\n  \"branch\" : \"Computer Science\",\r\n  \"skills\" : [ ]\r\n}",
-    "createdAt" : "2026-10-23T10:42:24.718106400Z",
-    "updatedAt" : "2026-10-23T10:42:24.717102700Z"
-  }, {
     "id" : "chat-ce8104ea-0046-474e-b02e-9d3a5174abb0",
     "userId" : "demo-student-1",
     "title" : "Explain Java inheritance with an ex...",
@@ -4963,14 +5064,5 @@
     "careerContextJson" : "{\r\n  \"targetRole\" : \"system associate\",\r\n  \"branch\" : \"Electronics & Communication\",\r\n  \"skills\" : [ \"General Programming\", \"Problem Solving\" ],\r\n  \"latestAtsScore\" : 38\r\n}",
     "createdAt" : "2026-10-23T10:46:11.389482200Z",
     "updatedAt" : "2026-10-23T10:46:11.384061500Z"
-  }, {
-    "id" : "chat-92b6c997-c28f-46d1-b836-e9a0bb7368fa",
-    "userId" : "usr-1792741981498-8d841",
-    "title" : "Give me a 30-day placement preparat...",
-    "learningMode" : false,
-    "messagesJson" : "[ {\r\n  \"id\" : \"msg-d4a74cd9\",\r\n  \"role\" : \"user\",\r\n  \"content\" : \"Give me a 30-day placement preparation plan.\",\r\n  \"timestamp\" : \"2026-10-23T10:51:35.260733600Z\",\r\n  \"error\" : false,\r\n  \"learningMode\" : false\r\n} ]",
-    "careerContextJson" : "{\r\n  \"targetRole\" : \"Full Stack Developer\",\r\n  \"branch\" : \"Computer Science\",\r\n  \"skills\" : [ ]\r\n}",
-    "createdAt" : "2026-10-23T10:51:35.265665200Z",
-    "updatedAt" : "2026-10-23T10:51:35.260733600Z"
   } ]
 }
