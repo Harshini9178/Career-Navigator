@@ -8,6 +8,7 @@ interface NavbarProps {
   user: User;
   title: string;
   onLogout?: () => void;
+  onNavigate?: (view: string) => void;
 }
 
 interface AiStatus {
@@ -18,7 +19,7 @@ interface AiStatus {
   features: string[];
 }
 
-export default function Navbar({ user, title, onLogout }: NavbarProps) {
+export default function Navbar({ user, title, onLogout, onNavigate }: NavbarProps) {
   const [aiStatus, setAiStatus] = useState<AiStatus | null>(null);
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [question, setQuestion] = useState('');
@@ -55,8 +56,9 @@ export default function Navbar({ user, title, onLogout }: NavbarProps) {
     try {
       const response = await api.post('/api/ai/quick-ask', { question: question.trim() });
       const data = await response.json();
-      if (data.success && data.answer) {
-        setAiAnswer(data.answer);
+      const reply = data.answer || data.response;
+      if (data.success && reply) {
+        setAiAnswer(reply);
         sound.playChime();
       } else {
         setAiAnswer(data.error || 'Failed to retrieve answer from AI service.');
@@ -267,8 +269,23 @@ export default function Navbar({ user, title, onLogout }: NavbarProps) {
             {/* Environment setup hint */}
             {!aiStatus?.configured && (
               <p className="text-[10px] text-[var(--text-muted)] font-mono leading-relaxed">
-                💡 <span className="text-[var(--text-secondary)]">Pro Tip:</span> To enable live Google Gemini AI inference, provide your <code className="text-[var(--text-primary)]">GEMINI_API_KEY</code> in <code className="text-[var(--text-primary)]">.env</code>. The app currently uses the realistic built-in simulation engine.
+                💡 <span className="text-[var(--text-secondary)]">Pro Tip:</span> To enable live Google Gemini AI inference, provide your <code className="text-[var(--text-primary)]">GEMINI_API_KEY</code> in <code className="text-[var(--text-primary)]">.env</code>.
               </p>
+            )}
+
+            {/* Link to Full Chatbot Page */}
+            {onNavigate && (
+              <button
+                onClick={() => {
+                  setIsAiModalOpen(false);
+                  onNavigate('career-assistant');
+                }}
+                className="w-full flex items-center justify-center space-x-2 py-2.5 px-4 rounded-xl bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white text-xs font-semibold transition"
+              >
+                <Bot className="w-4 h-4" />
+                <span>Open Full Career Assistant Chat</span>
+                <ExternalLink className="w-3.5 h-3.5 opacity-80" />
+              </button>
             )}
           </div>
         </div>

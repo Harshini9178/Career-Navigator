@@ -10,6 +10,7 @@ import { ErrorBoundary } from './components/ErrorBoundary.js';
 
 // Lazy-loaded pages for optimal performance and chunk-splitting
 const ResumeAnalyzer = lazy(() => import('./pages/ResumeAnalyzer.js'));
+const CareerAssistant = lazy(() => import('./pages/CareerAssistant.js'));
 const InterviewPrep = lazy(() => import('./pages/InterviewPrep.js'));
 const MockInterview = lazy(() => import('./pages/MockInterview.js'));
 const Templates = lazy(() => import('./pages/Templates.js'));
@@ -191,6 +192,8 @@ function MainWorkspace() {
       // Student Views
       case 'student-dashboard':
         return <StudentDashboard user={user} onNavigate={handleNavigate} />;
+      case 'career-assistant':
+        return <CareerAssistant user={user} onNavigate={handleNavigate} />;
       case 'resume-analyzer':
         return <ResumeAnalyzer />;
       case 'interview-prep':
@@ -226,6 +229,8 @@ function MainWorkspace() {
     switch (currentView) {
       case 'student-dashboard':
         return 'Placement Readiness Hub';
+      case 'career-assistant':
+        return 'AI Career Assistant & Mentor';
       case 'resume-analyzer':
         return 'ATS Keywords Optimizer';
       case 'interview-prep':
@@ -271,7 +276,7 @@ function MainWorkspace() {
 
       {/* Main Content Layout Right Panel – responsive: no left padding on mobile */}
       <div className="flex-1 lg:pl-60 flex flex-col min-h-screen">
-        <Navbar user={user} title={getViewTitle()} onLogout={handleLogout} />
+        <Navbar user={user} title={getViewTitle()} onLogout={handleLogout} onNavigate={handleNavigate} />
         
         <main id="main-content" tabIndex={-1} className="flex-1 bg-[var(--bg-base)] overflow-y-auto focus:outline-none">
           <ErrorBoundary fallbackTitle={`Error loading ${getViewTitle()}`}>

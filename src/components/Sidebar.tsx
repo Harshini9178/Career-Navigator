@@ -3,6 +3,7 @@ import {
   LayoutDashboard,
   FileText,
   Video,
+  Bot,
   Download,
   User,
   MessageSquare,
@@ -31,6 +32,7 @@ export default function Sidebar({ user, currentView, onNavigate, onLogout }: Sid
 
   const studentLinks = [
     { view: 'student-dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { view: 'career-assistant', label: 'AI Career Assistant', icon: Bot },
     { view: 'resume-analyzer', label: 'Resume Analyzer', icon: FileText },
     { view: 'interview-prep', label: 'Mock Interviews', icon: Video },
     { view: 'code-sandbox', label: 'Code Lab', icon: Code2 },

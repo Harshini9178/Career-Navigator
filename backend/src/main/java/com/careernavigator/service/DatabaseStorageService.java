@@ -29,6 +29,7 @@ public class DatabaseStorageService {
     private final InterviewRepository interviewRepository;
     private final TemplateRepository templateRepository;
     private final FeedbackRepository feedbackRepository;
+    private final ChatConversationRepository chatConversationRepository;
     private final ObjectMapper objectMapper;
 
     @Value("${app.data.db-json-path:../data/db.json}")
@@ -40,12 +41,14 @@ public class DatabaseStorageService {
             InterviewRepository interviewRepository,
             TemplateRepository templateRepository,
             FeedbackRepository feedbackRepository,
+            ChatConversationRepository chatConversationRepository,
             ObjectMapper objectMapper) {
         this.userRepository = userRepository;
         this.resumeRepository = resumeRepository;
         this.interviewRepository = interviewRepository;
         this.templateRepository = templateRepository;
         this.feedbackRepository = feedbackRepository;
+        this.chatConversationRepository = chatConversationRepository;
         this.objectMapper = objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
@@ -280,6 +283,23 @@ public class DatabaseStorageService {
                 logger.info("Imported {} feedbacks from db.json", feedbackRepository.count());
             }
 
+            // 6. Chat Conversations
+            if (root.has("chatConversations") && root.get("chatConversations").isArray()) {
+                for (JsonNode cNode : root.get("chatConversations")) {
+                    ChatConversationEntity c = new ChatConversationEntity();
+                    c.setId(cNode.path("id").asText(UUID.randomUUID().toString()));
+                    c.setUserId(cNode.path("userId").asText(""));
+                    c.setTitle(cNode.path("title").asText("New Chat"));
+                    c.setLearningMode(cNode.path("learningMode").asBoolean(false));
+                    c.setMessagesJson(cNode.has("messagesJson") ? cNode.path("messagesJson").asText("[]") : "[]");
+                    c.setCareerContextJson(cNode.has("careerContextJson") ? cNode.path("careerContextJson").asText("{}") : "{}");
+                    c.setCreatedAt(cNode.path("createdAt").asText(""));
+                    c.setUpdatedAt(cNode.path("updatedAt").asText(""));
+                    chatConversationRepository.save(c);
+                }
+                logger.info("Imported {} chat conversations from db.json", chatConversationRepository.count());
+            }
+
         } catch (Exception e) {
             logger.error("Failed to parse db.json: {}", e.getMessage(), e);
         }
@@ -298,6 +318,7 @@ public class DatabaseStorageService {
             data.put("interviews", interviewRepository.findAll());
             data.put("templates", templateRepository.findAll());
             data.put("feedback", feedbackRepository.findAll());
+            data.put("chatConversations", chatConversationRepository.findAll());
 
             objectMapper.writeValue(dbFile, data);
             logger.debug("Synchronized current state to {}", dbFile.getAbsolutePath());
