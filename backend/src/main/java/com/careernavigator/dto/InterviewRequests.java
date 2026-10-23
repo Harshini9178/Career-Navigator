@@ -1,6 +1,7 @@
 package com.careernavigator.dto;
 
 import java.util.List;
+import java.util.Map;
 
 public class InterviewRequests {
 
@@ -11,6 +12,13 @@ public class InterviewRequests {
         private List<String> skills;
         private List<String> projects;
         private String resumeText;
+        private Integer questionCount;
+        private List<String> categories;
+        private Integer durationMinutes;
+        private Integer prepTimerSeconds;
+        private String selectedResumeId;
+        private String selectedResumeName;
+        private List<Map<String, Object>> structuredQuestions;
 
         public String getTargetRole() { return targetRole; }
         public void setTargetRole(String targetRole) { this.targetRole = targetRole; }
@@ -29,17 +37,74 @@ public class InterviewRequests {
 
         public String getResumeText() { return resumeText; }
         public void setResumeText(String resumeText) { this.resumeText = resumeText; }
+
+        public Integer getQuestionCount() { return questionCount; }
+        public void setQuestionCount(Integer questionCount) { this.questionCount = questionCount; }
+
+        public List<String> getCategories() { return categories; }
+        public void setCategories(List<String> categories) { this.categories = categories; }
+
+        public Integer getDurationMinutes() { return durationMinutes; }
+        public void setDurationMinutes(Integer durationMinutes) { this.durationMinutes = durationMinutes; }
+
+        public Integer getPrepTimerSeconds() { return prepTimerSeconds; }
+        public void setPrepTimerSeconds(Integer prepTimerSeconds) { this.prepTimerSeconds = prepTimerSeconds; }
+
+        public String getSelectedResumeId() { return selectedResumeId; }
+        public void setSelectedResumeId(String selectedResumeId) { this.selectedResumeId = selectedResumeId; }
+
+        public String getSelectedResumeName() { return selectedResumeName; }
+        public void setSelectedResumeName(String selectedResumeName) { this.selectedResumeName = selectedResumeName; }
+
+        public List<Map<String, Object>> getStructuredQuestions() { return structuredQuestions; }
+        public void setStructuredQuestions(List<Map<String, Object>> structuredQuestions) { this.structuredQuestions = structuredQuestions; }
     }
 
     public static class AnswerRequest {
         private String question;
+        private String questionId;
+        private String category;
+        private String difficulty;
         private String answer;
+        private String code;
+        private String language;
+        private Boolean skipped;
+        private Integer wordsPerMinute;
+        private Integer fillerWordCount;
+        private Integer answerDurationSeconds;
 
         public String getQuestion() { return question; }
         public void setQuestion(String question) { this.question = question; }
 
+        public String getQuestionId() { return questionId; }
+        public void setQuestionId(String questionId) { this.questionId = questionId; }
+
+        public String getCategory() { return category; }
+        public void setCategory(String category) { this.category = category; }
+
+        public String getDifficulty() { return difficulty; }
+        public void setDifficulty(String difficulty) { this.difficulty = difficulty; }
+
         public String getAnswer() { return answer; }
         public void setAnswer(String answer) { this.answer = answer; }
+
+        public String getCode() { return code; }
+        public void setCode(String code) { this.code = code; }
+
+        public String getLanguage() { return language; }
+        public void setLanguage(String language) { this.language = language; }
+
+        public Boolean getSkipped() { return skipped; }
+        public void setSkipped(Boolean skipped) { this.skipped = skipped; }
+
+        public Integer getWordsPerMinute() { return wordsPerMinute; }
+        public void setWordsPerMinute(Integer wordsPerMinute) { this.wordsPerMinute = wordsPerMinute; }
+
+        public Integer getFillerWordCount() { return fillerWordCount; }
+        public void setFillerWordCount(Integer fillerWordCount) { this.fillerWordCount = fillerWordCount; }
+
+        public Integer getAnswerDurationSeconds() { return answerDurationSeconds; }
+        public void setAnswerDurationSeconds(Integer answerDurationSeconds) { this.answerDurationSeconds = answerDurationSeconds; }
     }
 
     public static class CodeReviewRequest {
@@ -64,3 +129,4 @@ public class InterviewRequests {
         public void setQuery(String query) { this.query = query; }
     }
 }
+

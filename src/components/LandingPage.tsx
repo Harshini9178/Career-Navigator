@@ -20,7 +20,8 @@ import {
   X,
   ChevronRight,
   ShieldCheck,
-  Check
+  Check,
+  Brain
 } from 'lucide-react';
 import { motion, useScroll, useTransform, useSpring } from 'motion/react';
 import { User as UserType } from '../types.js';
@@ -698,37 +699,37 @@ export default function LandingPage({
                 </button>
               </div>
 
-              {/* Feature 3: Coding Practice (CodeLab) */}
+              {/* Feature 3: Aptitude Assessment */}
               <div className="p-6 rounded-2xl border border-slate-800 bg-[#0F172A]/70 hover:border-indigo-500/40 hover:bg-[#0F172A] transition flex flex-col justify-between group">
                 <div className="space-y-4">
                   <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 group-hover:scale-105 transition">
-                    <Code className="w-5 h-5" />
+                    <Brain className="w-5 h-5" />
                   </div>
-                  <h3 className="text-base font-bold text-white tracking-tight">Coding Practice</h3>
+                  <h3 className="text-base font-bold text-white tracking-tight">Aptitude Assessment</h3>
                   <ul className="space-y-2 text-xs text-slate-400 leading-relaxed">
                     <li className="flex items-start gap-2">
                       <Check className="w-3.5 h-3.5 text-teal-400 flex-shrink-0 mt-0.5" />
-                      <span>Software engineering challenges</span>
+                      <span>30-minute timed proctored exam</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-3.5 h-3.5 text-teal-400 flex-shrink-0 mt-0.5" />
-                      <span>Integrated Monaco editor</span>
+                      <span>Quant, Logic, Verbal, Tech & DI</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-3.5 h-3.5 text-teal-400 flex-shrink-0 mt-0.5" />
-                      <span>In-browser code execution</span>
+                      <span>Anti-cheating integrity monitoring</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="w-3.5 h-3.5 text-teal-400 flex-shrink-0 mt-0.5" />
-                      <span>Automated test evaluations</span>
+                      <span>In-depth explanations & score review</span>
                     </li>
                   </ul>
                 </div>
                 <button
-                  onClick={() => handleNavigateToFeature('code-sandbox')}
+                  onClick={() => handleNavigateToFeature('aptitude')}
                   className="mt-6 pt-4 border-t border-slate-800 text-xs font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1.5 transition cursor-pointer"
                 >
-                  <span>Open CodeLab</span>
+                  <span>Launch Assessment</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>

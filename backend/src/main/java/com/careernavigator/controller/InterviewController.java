@@ -35,10 +35,13 @@ public class InterviewController {
 
     @PostMapping("/generate")
     public ResponseEntity<Map<String, Object>> generateInterview(
-            @RequestBody GenerateInterviewRequest req,
+            @RequestBody(required = false) GenerateInterviewRequest req,
             @AuthenticationPrincipal UserEntity user) {
         if (user == null) {
             throw new ApiException("Authentication required", 401);
+        }
+        if (req == null) {
+            req = new GenerateInterviewRequest();
         }
         Map<String, Object> intv = interviewService.generateInterview(req, user);
         Map<String, Object> body = new LinkedHashMap<>(intv);
@@ -76,15 +79,33 @@ public class InterviewController {
     @PostMapping("/{id}/answer")
     public ResponseEntity<Map<String, Object>> answerQuestion(
             @PathVariable("id") String id,
-            @RequestBody AnswerRequest req,
+            @RequestBody(required = false) AnswerRequest req,
             @AuthenticationPrincipal UserEntity user) {
         if (user == null) {
             throw new ApiException("Authentication required", 401);
+        }
+        if (req == null) {
+            req = new AnswerRequest();
         }
         Map<String, Object> eval = interviewService.evaluateAnswer(id, req, user);
         Map<String, Object> body = new LinkedHashMap<>(eval);
         body.put("success", true);
         body.put("interview", interviewService.getInterview(id, user));
+        return ResponseEntity.ok(body);
+    }
+
+    @PostMapping("/{id}/submit")
+    public ResponseEntity<Map<String, Object>> submitInterview(
+            @PathVariable("id") String id,
+            @RequestBody(required = false) Map<String, Object> payload,
+            @AuthenticationPrincipal UserEntity user) {
+        if (user == null) {
+            throw new ApiException("Authentication required", 401);
+        }
+        Map<String, Object> report = interviewService.submitInterview(id, payload, user);
+        Map<String, Object> body = new LinkedHashMap<>(report);
+        body.put("success", true);
+        body.put("interview", report);
         return ResponseEntity.ok(body);
     }
 

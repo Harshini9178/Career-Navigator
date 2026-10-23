@@ -352,6 +352,32 @@ function readDb(): Schema {
     if (!parsed.templates || !Array.isArray(parsed.templates) || parsed.templates.length === 0) {
       parsed.templates = [...DEFAULT_TEMPLATES];
     }
+    parsed.users = Array.isArray(parsed.users) ? parsed.users : [];
+    if (!parsed.users.some((u: any) => u.id === 'admin-1')) {
+      parsed.users.unshift({
+        id: 'admin-1',
+        email: 'admin@careernavigator.app',
+        name: 'Super Admin',
+        picture: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=120',
+        role: 'admin',
+        completedProfile: true
+      });
+    }
+    if (!parsed.users.some((u: any) => u.id === 'demo-student-1')) {
+      parsed.users.push({
+        id: 'demo-student-1',
+        email: 'student@careernavigator.app',
+        name: 'Jane Doe',
+        picture: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=120',
+        role: 'student',
+        branch: 'Computer Science',
+        skills: ['React', 'JavaScript', 'SQL', 'TypeScript'],
+        projects: ['Portfolio Website', 'Weather App'],
+        targetRole: 'Full Stack Engineer',
+        experienceLevel: 'Entry Level',
+        completedProfile: true
+      });
+    }
     return parsed;
   } catch (err) {
     console.error('Error reading JSON DB, reinitializing:', err);

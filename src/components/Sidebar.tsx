@@ -11,7 +11,7 @@ import {
   PieChart,
   Menu,
   X,
-  Code2
+  Brain
 } from 'lucide-react';
 import { User as UserType } from '../types.js';
 import SignOutModal from './SignOutModal.js';
@@ -33,7 +33,7 @@ export default function Sidebar({ user, currentView, onNavigate, onLogout }: Sid
     { view: 'student-dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { view: 'resume-analyzer', label: 'Resume Analyzer', icon: FileText },
     { view: 'interview-prep', label: 'Mock Interviews', icon: Video },
-    { view: 'code-sandbox', label: 'Code Lab', icon: Code2 },
+    { view: 'aptitude', label: 'Aptitude Assessment', icon: Brain },
     { view: 'templates', label: 'ATS Templates', icon: Download },
     { view: 'profile', label: 'Profile', icon: User },
     { view: 'feedback', label: 'Feedback', icon: MessageSquare }
