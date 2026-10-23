@@ -125,6 +125,9 @@ public class ResumeAnalysisResponse {
         public String getCategory() { return category; }
         public void setCategory(String category) { this.category = category; }
 
+        public String getName() { return category; }
+        public void setName(String name) { this.category = name; }
+
         public int getScore() { return score; }
         public void setScore(int score) { this.score = score; }
 
@@ -197,6 +200,11 @@ public class ResumeAnalysisResponse {
 
         public String getCategory() { return category; }
         public void setCategory(String category) { this.category = category; }
+
+        private String relevance = "Supporting";
+
+        public String getRelevance() { return relevance; }
+        public void setRelevance(String relevance) { this.relevance = relevance; }
 
         public List<String> getAliases() { return aliases; }
         public void setAliases(List<String> aliases) { this.aliases = aliases; }

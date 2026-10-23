@@ -42,7 +42,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       const res = await api.get('/api/auth/me');
       const { ok, data } = await parseApiResponse(res);
-      if (ok && data?.authenticated && data?.user) {
+      if (ok && data?.user) {
         setUser(data.user);
         return;
       }

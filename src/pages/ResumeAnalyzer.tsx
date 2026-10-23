@@ -12,7 +12,8 @@ import {
   Briefcase,
   Layers,
   Award,
-  ListFilter
+  ListFilter,
+  Edit3
 } from 'lucide-react';
 import { ResumeAnalysis } from '../types.js';
 import { api } from '../lib/api.js';
@@ -38,25 +39,43 @@ export default function ResumeAnalyzer() {
   const analysisRequestIdRef = useRef<number>(0);
 
   const normalizeResumeAnalysis = (data: any): ResumeAnalysis => {
+    let breakdownList: any[] = [];
+    if (Array.isArray(data.categoryBreakdown)) {
+      breakdownList = data.categoryBreakdown.map((item: any) => ({
+        category: item.name || item.category || 'Category',
+        name: item.name || item.category || 'Category',
+        score: typeof item.score === 'number' ? Math.round(item.score * 10) / 10 : 0,
+        maxScore: typeof item.maxScore === 'number' ? item.maxScore : (item.weight || 20),
+        weight: typeof item.weight === 'number' ? item.weight : 20,
+        reason: item.reason || ''
+      }));
+    } else if (data.categoryBreakdown && typeof data.categoryBreakdown === 'object') {
+      const cb = data.categoryBreakdown;
+      breakdownList = [
+        { category: 'Technical Skills & Role Alignment', name: 'Technical Skills & Role Alignment', score: cb.skillsDensity ?? 0, maxScore: 25, weight: 25, reason: 'Evaluates required & preferred role skills.' },
+        { category: 'Section Completeness', name: 'Section Completeness', score: cb.sectionCompleteness ?? 0, maxScore: 20, weight: 20, reason: 'Checks presence of essential resume sections.' },
+        { category: 'Experience & Project Depth', name: 'Experience & Project Depth', score: cb.experienceDepth ?? 0, maxScore: 20, weight: 20, reason: 'Analyzes work history and technical project depth.' },
+        { category: 'Quantified Impact & Metrics', name: 'Quantified Impact & Metrics', score: cb.quantifiedImpact ?? 0, maxScore: 15, weight: 15, reason: 'Assesses quantifiable metrics and measurable outcomes.' },
+        { category: 'Contact Information', name: 'Contact Information', score: cb.contactInfo ?? 0, maxScore: 10, weight: 10, reason: 'Checks email, phone, and professional profile links.' },
+        { category: 'Formatting & Readability', name: 'Formatting & Readability', score: cb.formattingReadability ?? 0, maxScore: 10, weight: 10, reason: 'Validates structure and optimal length.' }
+      ];
+    }
+
     return {
       ...data,
       skills: Array.isArray(data.skills) ? data.skills : [],
       missingSections: Array.isArray(data.missingSections) ? data.missingSections : [],
       detectedSections: Array.isArray(data.detectedSections) ? data.detectedSections : [],
+      sectionDetails: Array.isArray(data.sectionDetails) ? data.sectionDetails : [],
       grammarIssues: Array.isArray(data.grammarIssues) ? data.grammarIssues : [],
       suggestions: Array.isArray(data.suggestions) ? data.suggestions : [],
       keywords: Array.isArray(data.keywords) ? data.keywords : [],
       matchedJDKeywords: Array.isArray(data.matchedJDKeywords) ? data.matchedJDKeywords : [],
       missingJDKeywords: Array.isArray(data.missingJDKeywords) ? data.missingJDKeywords : [],
+      improvementsToAdd: Array.isArray(data.improvementsToAdd) ? data.improvementsToAdd : [],
+      improvementsToRemove: Array.isArray(data.improvementsToRemove) ? data.improvementsToRemove : [],
       atsScore: typeof data.atsScore === 'number' ? data.atsScore : 0,
-      categoryBreakdown: data.categoryBreakdown || {
-        sectionCompleteness: 0,
-        skillsDensity: 0,
-        experienceDepth: 0,
-        quantifiedImpact: 0,
-        contactInfo: 0,
-        formattingReadability: 0
-      }
+      categoryBreakdown: breakdownList
     };
   };
 
@@ -243,6 +262,15 @@ export default function ResumeAnalyzer() {
           {analysis && (
             <>
               <button
+                type="button"
+                onClick={() => setAnalysis(null)}
+                className="text-xs bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white font-semibold px-3.5 py-2 rounded-xl transition flex items-center space-x-1.5 shadow-sm"
+              >
+                <Edit3 className="w-4 h-4" />
+                <span>Edit Resume & Re-Audit</span>
+              </button>
+              <button
+                type="button"
                 onClick={() => setShowDiagnosticText(!showDiagnosticText)}
                 className="text-xs border border-[var(--border)] hover:bg-[var(--bg-card-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-semibold px-3 py-2 rounded-xl transition flex items-center space-x-1.5"
               >
@@ -250,6 +278,7 @@ export default function ResumeAnalyzer() {
                 <span>{showDiagnosticText ? 'Hide Text' : 'View Extracted Text'}</span>
               </button>
               <button
+                type="button"
                 onClick={handleReset}
                 className="text-xs border border-[var(--border)] hover:bg-[var(--bg-card-hover)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-semibold px-4 py-2 rounded-xl transition flex items-center space-x-1.5"
               >
@@ -369,6 +398,9 @@ export default function ResumeAnalyzer() {
                   <option value="Full Stack Engineer">Full Stack Engineer</option>
                   <option value="Frontend Developer">Frontend Developer</option>
                   <option value="Backend Developer">Backend Developer</option>
+                  <option value="Java Developer">Java Developer</option>
+                  <option value="Python Developer">Python Developer</option>
+                  <option value="Data Analyst">Data Analyst</option>
                   <option value="DevOps & Cloud Engineer">DevOps & Cloud Engineer</option>
                   <option value="Data Scientist / AI/ML Engineer">Data Scientist / AI/ML Engineer</option>
                   <option value="Mobile App Developer">Mobile App Developer</option>
@@ -408,6 +440,8 @@ export default function ResumeAnalyzer() {
               )}
 
               <button
+                type="button"
+                id="run-ats-audit-btn"
                 onClick={handleSubmitAnalysis}
                 disabled={loading || extractingPdf}
                 className="w-full bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white font-bold text-xs py-3 rounded-xl transition flex items-center justify-center space-x-2"
@@ -415,7 +449,7 @@ export default function ResumeAnalyzer() {
                 {loading ? (
                   <>
                     <RefreshCw className="w-4 h-4 animate-spin" />
-                    <span>Analyzing Resume with Gemini AI...</span>
+                    <span>Analyzing Resume with Spring Boot ATS Engine...</span>
                   </>
                 ) : (
                   <>
@@ -520,8 +554,8 @@ export default function ResumeAnalyzer() {
                 </p>
               </div>
 
-              {/* Category Breakdown (6 weighted dimensions totaling 100%) */}
-              {analysis.categoryBreakdown && (
+              {/* Category Breakdown (Deterministic weighted dimensions totaling 100%) */}
+              {Array.isArray(analysis.categoryBreakdown) && analysis.categoryBreakdown.length > 0 && (
                 <div className="pt-4 border-t border-[var(--border)] text-left space-y-2.5">
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase tracking-wider font-mono">
@@ -532,66 +566,36 @@ export default function ResumeAnalyzer() {
                     </span>
                   </div>
 
-                  <div className="space-y-2">
-                    <div className="space-y-0.5">
-                      <div className="flex justify-between text-[10px] font-mono">
-                        <span className="text-[var(--text-secondary)]">Section Completeness (20%)</span>
-                        <span className="font-bold text-[var(--text-primary)]">{analysis.categoryBreakdown.sectionCompleteness}/20</span>
-                      </div>
-                      <div className="w-full bg-[var(--bg-base)] h-1.5 rounded-full overflow-hidden">
-                        <div className="bg-[var(--primary)] h-full rounded-full transition-all duration-300" style={{ width: `${(analysis.categoryBreakdown.sectionCompleteness / 20) * 100}%` }} />
-                      </div>
-                    </div>
-
-                    <div className="space-y-0.5">
-                      <div className="flex justify-between text-[10px] font-mono">
-                        <span className="text-[var(--text-secondary)]">Skills & Density (25%)</span>
-                        <span className="font-bold text-[var(--text-primary)]">{analysis.categoryBreakdown.skillsDensity}/25</span>
-                      </div>
-                      <div className="w-full bg-[var(--bg-base)] h-1.5 rounded-full overflow-hidden">
-                        <div className="bg-[var(--primary)] h-full rounded-full transition-all duration-300" style={{ width: `${(analysis.categoryBreakdown.skillsDensity / 25) * 100}%` }} />
-                      </div>
-                    </div>
-
-                    <div className="space-y-0.5">
-                      <div className="flex justify-between text-[10px] font-mono">
-                        <span className="text-[var(--text-secondary)]">Experience & Projects (20%)</span>
-                        <span className="font-bold text-[var(--text-primary)]">{analysis.categoryBreakdown.experienceDepth}/20</span>
-                      </div>
-                      <div className="w-full bg-[var(--bg-base)] h-1.5 rounded-full overflow-hidden">
-                        <div className="bg-[var(--primary)] h-full rounded-full transition-all duration-300" style={{ width: `${(analysis.categoryBreakdown.experienceDepth / 20) * 100}%` }} />
-                      </div>
-                    </div>
-
-                    <div className="space-y-0.5">
-                      <div className="flex justify-between text-[10px] font-mono">
-                        <span className="text-[var(--text-secondary)]">Measurable Impact (15%)</span>
-                        <span className="font-bold text-[var(--text-primary)]">{analysis.categoryBreakdown.quantifiedImpact}/15</span>
-                      </div>
-                      <div className="w-full bg-[var(--bg-base)] h-1.5 rounded-full overflow-hidden">
-                        <div className="bg-[var(--primary)] h-full rounded-full transition-all duration-300" style={{ width: `${(analysis.categoryBreakdown.quantifiedImpact / 15) * 100}%` }} />
-                      </div>
-                    </div>
-
-                    <div className="space-y-0.5">
-                      <div className="flex justify-between text-[10px] font-mono">
-                        <span className="text-[var(--text-secondary)]">Contact Info (10%)</span>
-                        <span className="font-bold text-[var(--text-primary)]">{analysis.categoryBreakdown.contactInfo}/10</span>
-                      </div>
-                      <div className="w-full bg-[var(--bg-base)] h-1.5 rounded-full overflow-hidden">
-                        <div className="bg-[var(--primary)] h-full rounded-full transition-all duration-300" style={{ width: `${(analysis.categoryBreakdown.contactInfo / 10) * 100}%` }} />
-                      </div>
-                    </div>
-
-                    <div className="space-y-0.5">
-                      <div className="flex justify-between text-[10px] font-mono">
-                        <span className="text-[var(--text-secondary)]">Readability & Format (10%)</span>
-                        <span className="font-bold text-[var(--text-primary)]">{analysis.categoryBreakdown.formattingReadability}/10</span>
-                      </div>
-                      <div className="w-full bg-[var(--bg-base)] h-1.5 rounded-full overflow-hidden">
-                        <div className="bg-[var(--primary)] h-full rounded-full transition-all duration-300" style={{ width: `${(analysis.categoryBreakdown.formattingReadability / 10) * 100}%` }} />
-                      </div>
-                    </div>
+                  <div className="space-y-2.5">
+                    {analysis.categoryBreakdown.map((cat: any, idx: number) => {
+                      const catName = cat.name || cat.category || 'Category';
+                      const max = cat.maxScore || cat.weight || 20;
+                      const score = Math.round(cat.score ?? 0);
+                      const pct = max > 0 ? Math.min(100, Math.max(0, (score / max) * 100)) : 0;
+                      return (
+                        <div key={idx} className="space-y-1">
+                          <div className="flex justify-between text-[10px] font-mono">
+                            <span className="text-[var(--text-secondary)]">
+                              {catName} ({cat.weight || max}%)
+                            </span>
+                            <span className="font-bold text-[var(--text-primary)]">
+                              {score}/{max}
+                            </span>
+                          </div>
+                          <div className="w-full bg-[var(--bg-base)] h-1.5 rounded-full overflow-hidden">
+                            <div
+                              className="bg-[var(--primary)] h-full rounded-full transition-all duration-300"
+                              style={{ width: `${pct}%` }}
+                            />
+                          </div>
+                          {cat.reason && (
+                            <p className="text-[9px] text-[var(--text-muted)] italic font-mono leading-tight">
+                              {cat.reason}
+                            </p>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -816,7 +820,12 @@ export default function ResumeAnalyzer() {
                           : 'bg-[var(--bg-base)] border-[var(--border)] opacity-60'
                       }`}
                     >
-                      <span className="font-semibold text-[var(--text-primary)]">{kw.keyword}</span>
+                      <div className="flex flex-col">
+                        <span className="font-semibold text-[var(--text-primary)]">{kw.keyword}</span>
+                        {kw.relevance && (
+                          <span className="text-[9px] text-[var(--text-muted)]">{kw.relevance}</span>
+                        )}
+                      </div>
                       <span
                         className={`inline-flex items-center space-x-1 text-[10px] font-bold px-2 py-0.5 rounded-full ${
                           isMatched

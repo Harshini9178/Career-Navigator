@@ -23,11 +23,12 @@ export interface SectionAnalysisResult {
 }
 
 export interface ScoreCategoryBreakdown {
-  category: string;
+  category?: string;
+  name?: string;
   score: number;
   maxScore: number;
   weight: number;
-  reason: string;
+  reason?: string;
 }
 
 export interface ResumeAnalysis {
@@ -44,7 +45,7 @@ export interface ResumeAnalysis {
   categoryBreakdown?: ScoreCategoryBreakdown[];
   suggestions: string[];
   grammarIssues: string[];
-  keywords: { keyword: string; match: boolean; count?: number; density?: number }[];
+  keywords: { keyword: string; match: boolean; count?: number; density?: number; relevance?: string; evidence?: string }[];
   improvementsToAdd: string[];
   improvementsToRemove: string[];
   jdMatchScore?: number;

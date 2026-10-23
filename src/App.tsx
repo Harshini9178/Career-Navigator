@@ -1,4 +1,4 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import LandingPage from './components/LandingPage.js';
 import Sidebar from './components/Sidebar.js';
 import Navbar from './components/Navbar.js';
@@ -48,9 +48,14 @@ function MainWorkspace() {
   const [currentView, setCurrentView] = useState<string>('student-dashboard');
   const [activeInterviewId, setActiveInterviewId] = useState<string | null>(null);
 
-  // Sync view when user logs in (respecting target view if clicked from landing page)
+  const prevUserRef = useRef<User | null>(null);
+
+  // Sync view only when user initially logs in (respecting target view if clicked from landing page)
   useEffect(() => {
-    if (user) {
+    const wasUnauthenticated = !prevUserRef.current && !!user;
+    prevUserRef.current = user;
+
+    if (wasUnauthenticated && user) {
       if (targetViewAfterAuth) {
         setCurrentView(targetViewAfterAuth);
         setTargetViewAfterAuth(null);

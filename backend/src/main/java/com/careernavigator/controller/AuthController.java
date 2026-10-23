@@ -85,7 +85,10 @@ public class AuthController {
         if (user == null) {
             throw new ApiException("Authentication required", 401);
         }
-        return ResponseEntity.ok(Map.of("user", UserDto.fromEntity(user)));
+        return ResponseEntity.ok(Map.of(
+                "authenticated", true,
+                "user", UserDto.fromEntity(user)
+        ));
     }
 
     @PostMapping("/api/auth/logout")
