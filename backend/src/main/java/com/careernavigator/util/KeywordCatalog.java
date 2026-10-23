@@ -4,6 +4,7 @@ import com.careernavigator.dto.ResumeAnalysisResponse.KeywordDensityResult;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -69,7 +70,7 @@ public class KeywordCatalog {
 
             // Token boundary: Must not match JavaScript or JavaBean
             new CatalogItem("Java", "Languages", List.of("java", "jvm", "jdk"),
-                    "\\bjava\\b(?!script|\\.net|bean)", Pattern.CASE_INSENSITIVE),
+                    "(?<![a-zA-Z0-9_])java(?![a-zA-Z0-9_]|script|bean)", Pattern.CASE_INSENSITIVE),
 
             new CatalogItem("C++", "Languages", List.of("c++", "cpp", "c/c++"),
                     "\\bc\\+\\+|\\bcpp\\b|\\bc/c\\+\\+", Pattern.CASE_INSENSITIVE),
@@ -77,15 +78,14 @@ public class KeywordCatalog {
             new CatalogItem("C# / .NET", "Languages", List.of("c#", "c sharp", ".net", "dotnet", "asp.net"),
                     "\\bc#|\\bc\\s*sharp|\\b\\.net\\b|\\bdotnet\\b|\\basp\\.net\\b", Pattern.CASE_INSENSITIVE),
 
-            // Token boundary: Must not match Google, Algorithms, Mongo, Django, etc.
             new CatalogItem("Go", "Languages", List.of("golang", "go language"),
                     "\\bgolang\\b|\\bgo\\s+language\\b|(?<![a-zA-Z0-9_])Go(?![a-zA-Z0-9_])", 0),
 
             new CatalogItem("Rust", "Languages", List.of("rust", "cargo"),
                     "\\brust(\\s+lang(uage)?)?\\b|\\bcargo\\b", Pattern.CASE_INSENSITIVE),
 
-            new CatalogItem("HTML/CSS", "Languages", List.of("html", "css", "html5", "css3", "tailwind", "sass"),
-                    "\\bhtml5?\\b|\\bcss3?\\b|\\btailwind(\\s*css)?\\b|\\bsass\\b|\\bscss\\b", Pattern.CASE_INSENSITIVE),
+            new CatalogItem("HTML/CSS", "Languages", List.of("html", "css", "html5", "css3", "tailwind", "sass", "scss"),
+                    "\\bhtml5?\\b|\\bcss3?\\b|\\bhtml\\s*[/&]?\\s*css\\b|\\btailwind(\\s*css)?\\b|\\bsass\\b|\\bscss\\b", Pattern.CASE_INSENSITIVE),
 
             // Frameworks
             new CatalogItem("React", "Frameworks", List.of("react", "react.js", "reactjs", "react native"),
@@ -96,6 +96,9 @@ public class KeywordCatalog {
 
             new CatalogItem("Express.js", "Frameworks", List.of("express", "express.js", "expressjs"),
                     "\\bexpress(\\.js|js)?\\b", Pattern.CASE_INSENSITIVE),
+
+            new CatalogItem("Spring Boot", "Frameworks", List.of("spring boot", "spring", "spring-boot", "spring framework"),
+                    "\\bspring(\\s*boot|\\s*framework)?\\b", Pattern.CASE_INSENSITIVE),
 
             // Databases & APIs
             new CatalogItem("SQL", "Databases & APIs", List.of("sql", "rdbms"),
@@ -133,27 +136,75 @@ public class KeywordCatalog {
                     "\\bgoogle\\s+cloud\\b|\\bgcp\\b", Pattern.CASE_INSENSITIVE),
 
             new CatalogItem("CI/CD", "DevOps & Cloud", List.of("ci/cd", "cicd", "jenkins", "github actions"),
-                    "\\bci/cd\\b|\\bcicd\\b|\\bjenkins\\b|\\bgithub\\s+actions\\b", Pattern.CASE_INSENSITIVE)
+                    "\\bci/cd\\b|\\bcicd\\b|\\bjenkins\\b|\\bgithub\\s+actions\\b", Pattern.CASE_INSENSITIVE),
+
+            new CatalogItem("Terraform", "DevOps & Cloud", List.of("terraform", "iac"),
+                    "\\bterraform\\b|\\biac\\b", Pattern.CASE_INSENSITIVE),
+
+            new CatalogItem("Prometheus", "DevOps & Cloud", List.of("prometheus"),
+                    "\\bprometheus\\b", Pattern.CASE_INSENSITIVE),
+
+            new CatalogItem("Grafana", "DevOps & Cloud", List.of("grafana"),
+                    "\\bgrafana\\b", Pattern.CASE_INSENSITIVE),
+
+            new CatalogItem("Kafka", "Databases & APIs", List.of("kafka"),
+                    "\\b(apache\\s*)?kafka\\b", Pattern.CASE_INSENSITIVE),
+
+            new CatalogItem("Redis", "Databases & APIs", List.of("redis"),
+                    "\\bredis\\b", Pattern.CASE_INSENSITIVE),
+
+            // Testing, Architecture & Systems
+            new CatalogItem("Testing / QA", "Testing & Tools", List.of("unit test", "jest", "junit", "mockito", "pytest", "cypress", "selenium", "tdd"),
+                    "\\b(unit\\s*test(ing)?|jest|junit|mockito|pytest|cypress|selenium|tdd|test\\s*driven)\\b", Pattern.CASE_INSENSITIVE),
+
+            new CatalogItem("Linux / Unix", "DevOps & Cloud", List.of("linux", "unix", "bash", "shell"),
+                    "\\blinux\\b|\\bunix\\b|\\bbash\\b|\\bshell\\s*scripting\\b", Pattern.CASE_INSENSITIVE),
+
+            // Data & AI
+            new CatalogItem("Data Analysis / Pandas", "Data & AI", List.of("pandas", "numpy", "data analysis", "data cleaning"),
+                    "\\b(pandas|numpy|data\\s*analysis|data\\s*cleaning|eda)\\b", Pattern.CASE_INSENSITIVE),
+
+            new CatalogItem("Data Visualization", "Data & AI", List.of("tableau", "power bi", "matplotlib", "seaborn", "excel"),
+                    "\\b(tableau|power\\s*bi|matplotlib|seaborn|d3\\.js|excel)\\b", Pattern.CASE_INSENSITIVE),
+
+            new CatalogItem("Machine Learning", "Data & AI", List.of("machine learning", "scikit-learn", "tensorflow", "pytorch", "deep learning"),
+                    "\\b(machine\\s*learning|scikit-learn|tensorflow|pytorch|deep\\s*learning|ml\\b)", Pattern.CASE_INSENSITIVE)
     );
 
     public static List<KeywordDensityResult> analyzeKeywords(String normalizedText) {
+        return analyzeKeywords(normalizedText, null);
+    }
+
+    public static List<KeywordDensityResult> analyzeKeywords(String normalizedText, RoleCatalog.RoleProfile roleProfile) {
         String[] tokens = normalizedText.split("\\s+");
         int totalTokens = Math.max(1, tokens.length);
         List<KeywordDensityResult> results = new ArrayList<>();
+
+        List<String> required = (roleProfile != null) ? roleProfile.getRequiredSkills() : Collections.emptyList();
+        List<String> preferred = (roleProfile != null) ? roleProfile.getPreferredSkills() : Collections.emptyList();
 
         for (CatalogItem item : ITEMS) {
             KeywordMatchResult matchResult = item.match(normalizedText);
             boolean match = matchResult.getCount() > 0;
             double density = Math.round(((double) matchResult.getCount() / totalTokens) * 10000.0) / 100.0;
 
-            results.add(new KeywordDensityResult(
+            String relevance = "Supporting";
+            if (required.contains(item.getCanonical())) {
+                relevance = "Required";
+            } else if (preferred.contains(item.getCanonical())) {
+                relevance = "Preferred";
+            }
+
+            KeywordDensityResult kdr = new KeywordDensityResult(
                     item.getCanonical(),
                     match,
                     matchResult.getCount(),
                     density,
                     item.getCategory(),
                     item.getAliases()
-            ));
+            );
+            kdr.setRelevance(relevance);
+            results.add(kdr);
         }
 
         return results;

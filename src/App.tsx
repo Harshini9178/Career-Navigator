@@ -17,7 +17,7 @@ const Templates = lazy(() => import('./pages/Templates.js'));
 const ProfileManagement = lazy(() => import('./pages/ProfileManagement.js'));
 const FeedbackForm = lazy(() => import('./pages/FeedbackForm.js'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard.js'));
-const CodeSandbox = lazy(() => import('./pages/CodeSandbox.js'));
+const AptitudeAssessment = lazy(() => import('./pages/AptitudeAssessment.js'));
 
 function ViewFallback() {
   return (
@@ -92,7 +92,6 @@ function MainWorkspace() {
       const isInitialUserLoad = prevUserEmailRef.current === null;
       const isDifferentUser = prevUserEmailRef.current !== user.email;
       prevUserEmailRef.current = user.email;
-
       if (targetViewAfterAuth) {
         setCurrentView(targetViewAfterAuth);
         setTargetViewAfterAuth(null);
@@ -163,8 +162,8 @@ function MainWorkspace() {
               ? 'ATS Resume Optimizer'
               : targetViewAfterAuth === 'interview-prep'
               ? 'Mock Interview Studio'
-              : targetViewAfterAuth === 'code-sandbox'
-              ? 'CodeLab Sandbox'
+              : targetViewAfterAuth === 'aptitude' || targetViewAfterAuth === 'code-sandbox'
+              ? 'Aptitude Assessment Center'
               : targetViewAfterAuth === 'templates'
               ? 'Resume Templates'
               : undefined
@@ -206,8 +205,9 @@ function MainWorkspace() {
         );
       case 'templates':
         return <Templates />;
+      case 'aptitude':
       case 'code-sandbox':
-        return <CodeSandbox />;
+        return <AptitudeAssessment user={user} onNavigate={handleNavigate} />;
       case 'profile':
         return <ProfileManagement user={user} onProfileUpdate={() => refreshUser()} />;
       case 'feedback':
@@ -237,8 +237,9 @@ function MainWorkspace() {
         return 'Mock Assessment Gate';
       case 'mock-interview':
         return 'AI Interview Assessor';
+      case 'aptitude':
       case 'code-sandbox':
-        return 'Code Lab Sandbox';
+        return 'Aptitude Assessment Center';
       case 'templates':
         return 'ATS-vetted Resume Frameworks';
       case 'profile':

@@ -6,7 +6,8 @@ import {
   ArrowRight,
   Award,
   Sparkles,
-  Calendar
+  Calendar,
+  Brain
 } from 'lucide-react';
 import { ResumeAnalysis, MockInterview, User } from '../types.js';
 import { api } from '../lib/api.js';
@@ -291,6 +292,13 @@ export default function StudentDashboard({ user, onNavigate }: StudentDashboardP
               className="border border-[var(--border)] hover:bg-[var(--bg-card-hover)] bg-transparent text-[var(--text-primary)] text-xs font-medium px-5 py-2.5 rounded-md transition font-heading"
             >
               Scan Resume
+            </button>
+            <button
+              onClick={() => onNavigate('aptitude')}
+              className="border border-indigo-500/40 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 text-xs font-medium px-5 py-2.5 rounded-md transition font-heading flex items-center gap-1.5"
+            >
+              <Brain className="w-3.5 h-3.5 text-indigo-400" />
+              <span>Aptitude Assessment</span>
             </button>
           </div>
         </div>

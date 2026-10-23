@@ -90,11 +90,17 @@ class ApiIntegrationTests {
                 cs.beginText();
                 cs.setFont(new PDType1Font(Standard14Fonts.FontName.HELVETICA_BOLD), 12);
                 cs.newLineAtOffset(50, 700);
-                cs.showText("Alex Johnson - alex@example.com - +1 555-0100");
+                cs.showText("Alex Johnson - alex@example.com - +1 555-0100 - github.com/alexj");
                 cs.newLineAtOffset(0, -30);
-                cs.showText("Technical Skills: Java, Spring Boot, React, Docker, SQL");
+                cs.showText("Professional Summary: Experienced Full Stack Engineer specializing in scalable web apps.");
+                cs.newLineAtOffset(0, -30);
+                cs.showText("Technical Skills: JavaScript, TypeScript, React, Java, Spring Boot, Docker, SQL, Git");
                 cs.newLineAtOffset(0, -30);
                 cs.showText("Projects: Distributed Cloud Banking System built with 10k rps capacity.");
+                cs.newLineAtOffset(0, -30);
+                cs.showText("Work Experience: Senior Developer at TechCorp, engineered high-scale backend services.");
+                cs.newLineAtOffset(0, -30);
+                cs.showText("Education: Bachelor of Science in Computer Science, State University.");
                 cs.endText();
             }
             doc.save(baos);

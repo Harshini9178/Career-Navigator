@@ -15,7 +15,7 @@ export default defineConfig(() => {
       port: 3000,
       hmr: process.env.DISABLE_HMR !== 'true',
       watch: process.env.DISABLE_HMR === 'true' ? null : {
-        ignored: ['**/data/**', '**/backend/**', '**/*.jsonl', '**/*.log', '**/dist/**']
+        ignored: ['**/data/**', '**/backend/**', '**/.git/**', '**/target/**', '**/db.json', '**/*.jsonl', '**/*.log', '**/dist/**']
       },
       proxy: {
         '/api': {

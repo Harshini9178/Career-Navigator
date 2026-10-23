@@ -128,6 +128,35 @@ class SoundEngine {
       // Ignore audio synthesis errors
     }
   }
+
+  /**
+   * Warning audio alert for proctoring violations or urgent timers
+   */
+  public playWarning(freq = 300) {
+    if (this.muted) return;
+    try {
+      const ctx = this.getContext();
+      if (!ctx) return;
+
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      osc.frequency.linearRampToValueAtTime(freq * 0.8, ctx.currentTime + 0.15);
+
+      gain.gain.setValueAtTime(0.05, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.15);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.15);
+    } catch {
+      // Ignore audio synthesis errors
+    }
+  }
 }
 
 export const sound = new SoundEngine();

@@ -86,9 +86,9 @@ public class AuthController {
             throw new ApiException("Authentication required", 401);
         }
         return ResponseEntity.ok(Map.of(
-            "authenticated", true,
-            "success", true,
-            "user", UserDto.fromEntity(user)
+                "authenticated", true,
+                "success", true,
+                "user", UserDto.fromEntity(user)
         ));
     }
 

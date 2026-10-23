@@ -23,11 +23,12 @@ export interface SectionAnalysisResult {
 }
 
 export interface ScoreCategoryBreakdown {
-  category: string;
+  category?: string;
+  name?: string;
   score: number;
   maxScore: number;
   weight: number;
-  reason: string;
+  reason?: string;
 }
 
 export interface ResumeAnalysis {
@@ -44,7 +45,7 @@ export interface ResumeAnalysis {
   categoryBreakdown?: ScoreCategoryBreakdown[];
   suggestions: string[];
   grammarIssues: string[];
-  keywords: { keyword: string; match: boolean; count?: number; density?: number }[];
+  keywords: { keyword: string; match: boolean; count?: number; density?: number; relevance?: string; evidence?: string }[];
   improvementsToAdd: string[];
   improvementsToRemove: string[];
   jdMatchScore?: number;
@@ -200,4 +201,93 @@ export interface ConversationDetail {
   updatedAt: string;
   messages: ChatMessage[];
   careerContext?: Record<string, any>;
+}
+
+export interface AptitudeCategoryMeta {
+  name: string;
+  description: string;
+  icon: string;
+  totalInBank: number;
+  questionsPerTest: number;
+}
+
+export interface AptitudeQuestionClient {
+  id: string;
+  questionText: string;
+  category: string;
+  topic: string;
+  difficulty: string;
+  options: string[];
+}
+
+export interface CategoryScore {
+  category: string;
+  score: number;
+  total: number;
+  percentage: number;
+}
+
+export interface AptitudeAttempt {
+  id: string;
+  userId: string;
+  status: 'IN_PROGRESS' | 'COMPLETED' | 'TIMED_OUT' | 'VIOLATION_TERMINATED';
+  startedAt: string;
+  deadline: string;
+  remainingSeconds: number;
+  totalQuestions: number;
+  answeredCount: number;
+  markedCount: number;
+  violationsCount: number;
+  questions: AptitudeQuestionClient[];
+  answers: Record<string, number>;
+  markedForReview: string[];
+}
+
+export interface QuestionReview {
+  id: string;
+  questionText: string;
+  category: string;
+  topic: string;
+  difficulty: string;
+  options: string[];
+  selectedOption: number | null;
+  correctAnswerIndex: number;
+  isCorrect: boolean;
+  explanation: string;
+}
+
+export interface AptitudeResult {
+  id: string;
+  userId: string;
+  score: number;
+  percentage: number;
+  totalQuestions: number;
+  correctCount: number;
+  incorrectCount: number;
+  unansweredCount: number;
+  durationSeconds: number;
+  status: string;
+  startedAt: string;
+  completedAt: string;
+  violationsCount: number;
+  forcedSubmissionReason?: string;
+  categoryScores: CategoryScore[];
+  strengths: string[];
+  improvements: string[];
+  recommendations: string[];
+  questionReviews: QuestionReview[];
+}
+
+export interface AptitudeHistoryItem {
+  id: string;
+  startedAt: string;
+  completedAt: string;
+  score: number;
+  percentage: number;
+  totalQuestions: number;
+  durationSeconds: number;
+  status: string;
+  violationsCount: number;
+  forcedSubmissionReason?: string;
+  categoryScores: Record<string, number>;
 }
