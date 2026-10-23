@@ -1,927 +1,1758 @@
 {
-  "users" : [ {
-    "id" : "admin-1",
-    "email" : "admin@careernavigator.app",
-    "name" : "Super Admin",
-    "picture" : "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=120",
-    "role" : "admin",
-    "skills" : [ ],
-    "projects" : [ ],
-    "completedProfile" : true,
-    "emailVerified" : true
-  }, {
-    "id" : "test-1792745983862",
-    "email" : "candidate-1792745983862@example.com",
-    "name" : "Test Candidate",
-    "picture" : "https://example.com/photo.jpg",
-    "role" : "student",
-    "skills" : [ "React", "TypeScript", "Node.js" ],
-    "projects" : [ "Career Navigator" ],
-    "completedProfile" : true,
-    "emailVerified" : true
-  }, {
-    "id" : "usr-test-1792745985765",
-    "email" : "candidate.1792745985765@careernavigator.app",
-    "name" : "Jane Candidate",
-    "picture" : "https://example.com/photo.jpg",
-    "role" : "student",
-    "skills" : [ ],
-    "projects" : [ ],
-    "completedProfile" : false,
-    "passwordHash" : "8af23163869191405fa308621f3b4c49:5603a32db5865139bd86d64948667eeee9c402e364e244cf0415dc92950bce9343fba478edd1b6decc0024696576428b5adade785c8c3d72706a97cc04e5497b",
-    "emailVerified" : true
-  }, {
-    "id" : "usr-test-phone-1",
-    "email" : "mobile_9876543210@careernavigator.app",
-    "name" : "Alex Mobile",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde",
-    "role" : "student",
-    "skills" : [ ],
-    "projects" : [ ],
-    "completedProfile" : false,
-    "phone" : "+91 9876543210",
-    "emailVerified" : true
-  }, {
-    "id" : "usr-dup-1",
-    "email" : "duplicate.test@careernavigator.app",
-    "name" : "User One",
-    "picture" : "https://example.com/p1.png",
-    "role" : "student",
-    "skills" : [ ],
-    "projects" : [ ],
-    "completedProfile" : false,
-    "passwordHash" : "80c202854f4ea69eb9218b821cd238af:21e84978f01006995e4294f26ad7ea90f6e27f97ba9d5c5b6964b002b9206222699f553ab4d1d7fb2a144ff0c9ab8b57c7fe8d43c4e64528f8ceea60ba8af41c",
-    "emailVerified" : true
-  }, {
-    "id" : "usr-auth-success-1",
-    "email" : "alex.success@careernavigator.app",
-    "name" : "Alex Success",
-    "picture" : "https://example.com/p.png",
-    "role" : "student",
-    "skills" : [ ],
-    "projects" : [ ],
-    "completedProfile" : true,
-    "passwordHash" : "569499b455e2fbe43936362e599ef826:996fe0acf19f2d898055126c008bf53c5a8a13d90902824cf204de183bc88bd182d0934e1fd45aebbe47f035821fce255fc36a76a8e9888e2e5c74c1f9a4bb28",
-    "emailVerified" : true
-  }, {
-    "id" : "test-1792746063261",
-    "email" : "candidate-1792746063261@example.com",
-    "name" : "Test Candidate",
-    "picture" : "https://example.com/photo.jpg",
-    "role" : "student",
-    "skills" : [ "React", "TypeScript", "Node.js" ],
-    "projects" : [ "Career Navigator" ],
-    "completedProfile" : true,
-    "emailVerified" : true
-  }, {
-    "id" : "demo-student-1",
-    "email" : "student@careernavigator.app",
-    "name" : "Jane Doe",
-    "picture" : "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ "React", "JavaScript", "SQL", "TypeScript" ],
-    "projects" : [ "Portfolio Website", "Weather App" ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "emailVerified" : true
-  }, {
-    "id" : "test-1792746142396",
-    "email" : "candidate-1792746142396@example.com",
-    "name" : "Test Candidate",
-    "picture" : "https://example.com/photo.jpg",
-    "role" : "student",
-    "skills" : [ "React", "TypeScript", "Node.js" ],
-    "projects" : [ "Career Navigator" ],
-    "completedProfile" : true,
-    "emailVerified" : true
-  }, {
-    "id" : "usr-test-1792746144044",
-    "email" : "candidate.1792746144044@careernavigator.app",
-    "name" : "Jane Candidate",
-    "picture" : "https://example.com/photo.jpg",
-    "role" : "student",
-    "skills" : [ ],
-    "projects" : [ ],
-    "completedProfile" : false,
-    "passwordHash" : "37cceff45681e51006e8de943b3a9d6d:66d6048565125bc64d4e2e9424db36d91328328554c34dfde8fd2b87cc24241a5fb1a23c0982ba5fe0cd7b93d05209b1bf3171491d1a3f45c229e327919ad44e",
-    "emailVerified" : true
-  }, {
-    "id" : "usr-1792746260155-e22ea",
-    "email" : "aptitude.tester.b13407e0@careernavigator.test",
-    "name" : "Aptitude Candidate b13407e0",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$mNSKg7NOTTIEMXCy8w05oOisf0xBdQeGskwkt8XIwGdPehp5vjM/K",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:04:20.299Z"
-  }, {
-    "id" : "usr-1792746260917-5e919",
-    "email" : "aptitude.tester.2a036d55@careernavigator.test",
-    "name" : "Aptitude Candidate 2a036d55",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$WquVyGXC4zcFLkpiHE74NOXmH7E.PjOvyC06Fd8T8l/zb/TYNqiNG",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:04:21.020Z"
-  }, {
-    "id" : "usr-1792746261146-2a8da",
-    "email" : "aptitude.tester.4c07e6f9@careernavigator.test",
-    "name" : "Aptitude Candidate 4c07e6f9",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$IxeKEL60KfrczyDM0y91auob8bcpQPRVc.gvRd39Mo5w/6Q0zCb3C",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:04:21.247Z"
-  }, {
-    "id" : "usr-1792746261443-286c7",
-    "email" : "aptitude.tester.daa4b2e7@careernavigator.test",
-    "name" : "Aptitude Candidate daa4b2e7",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$sZXG9o.CzBTd08igEHi5W.tT9ZG3nXfUTsJr8P6E4GVf9SgpPmM12",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:04:21.546Z"
-  }, {
-    "id" : "usr-1792746261629-30350",
-    "email" : "aptitude.tester.57f946ca@careernavigator.test",
-    "name" : "Aptitude Candidate 57f946ca",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$p97wuiJfBFwXGLvIg.oaF.3xFZwdeVfjI8ynUyNkyYw1wTxd7rL6u",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:04:21.726Z"
-  }, {
-    "id" : "usr-1792746262062-d1f15",
-    "email" : "aptitude.tester.63c545ba@careernavigator.test",
-    "name" : "Aptitude Candidate 63c545ba",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$B8Ml.2qFCbfdyIXiX37FTeqcmtXqHEzI5IPGHowwi4KzdG/jSkzlO",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:04:22.156Z"
-  }, {
-    "id" : "usr-1792746434373-fe716",
-    "email" : "aptitude.tester.899de8ee@careernavigator.test",
-    "name" : "Aptitude Candidate 899de8ee",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$bwfY6qDaA6ghI0VQqezAWeXJhd0xjUIcNmeGZr.vzsDN4FnZ94Rgu",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:07:14.488Z"
-  }, {
-    "id" : "usr-1792746435031-86969",
-    "email" : "aptitude.tester.5c92beba@careernavigator.test",
-    "name" : "Aptitude Candidate 5c92beba",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$8EkgLeKRiAZlr5r81onWV.FJz/k6aQ3jDbSY5CxebWYvrlUoLDw/q",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:07:15.127Z"
-  }, {
-    "id" : "usr-1792746435227-0c610",
-    "email" : "aptitude.tester.d3e6b17f@careernavigator.test",
-    "name" : "Aptitude Candidate d3e6b17f",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$fcP9Ke6gvUmioWO55db6Cu8fFElNKzrDkEaGaVBAjoRNcicDdAy/a",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:07:15.318Z"
-  }, {
-    "id" : "usr-1792746435444-6c3ec",
-    "email" : "aptitude.tester.12dd4bc8@careernavigator.test",
-    "name" : "Aptitude Candidate 12dd4bc8",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$QWKPQGkr//bgx.K/wXchhOqN.gPwp9DudovABUGD7AXz/S94pwxCu",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:07:15.535Z"
-  }, {
-    "id" : "usr-1792746435615-57163",
-    "email" : "aptitude.tester.c9ec6e57@careernavigator.test",
-    "name" : "Aptitude Candidate c9ec6e57",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$BzjRbHztaijDa8LUoNy.X.ZXGIQ0ZJ5vTZORG9VPg0Q0csE1pvYO6",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:07:15.714Z"
-  }, {
-    "id" : "usr-1792746435976-95c47",
-    "email" : "aptitude.tester.d14efcd6@careernavigator.test",
-    "name" : "Aptitude Candidate d14efcd6",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$u5tfPEqCIFhHVBvMrEFlgOQARf3o28ormV/lVa6wjsDoYKZqgHwk2",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:07:16.070Z"
-  }, {
-    "id" : "usr-1792746612499-cfc2f",
-    "email" : "candidate-1f110d@careernavigator.edu",
-    "name" : "Integration Candidate",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$PlKSbQ1OPdhaJr9/rLOep.jobLKi8F9.h9/nhwKQD/C18Nx.nJJgW",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:12.613Z"
-  }, {
-    "id" : "usr-1792746613783-e180b",
-    "email" : "aptitude.tester.e507a513@careernavigator.test",
-    "name" : "Aptitude Candidate e507a513",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$1AUM97SnrZvpDtT3Nc9qR.y7tf682ext5jlz0qWq0sCicNnDA0n6y",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:13.921Z"
-  }, {
-    "id" : "usr-1792746614187-ff8b7",
-    "email" : "aptitude.tester.8a35d705@careernavigator.test",
-    "name" : "Aptitude Candidate 8a35d705",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$r.kj79XTvZ1pDn1BRTUIxOxC8FCnFaPmOXJ4hqIeZtTCNbFmUDITK",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:14.278Z"
-  }, {
-    "id" : "usr-1792746614407-37348",
-    "email" : "aptitude.tester.c1890c78@careernavigator.test",
-    "name" : "Aptitude Candidate c1890c78",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$Th0/ombXcu31G99sSkOu5OwJel0lrshx8FYFGOsnr0O/P4DTFcCYC",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:14.500Z"
-  }, {
-    "id" : "usr-1792746614599-9958b",
-    "email" : "aptitude.tester.a5ae1ba4@careernavigator.test",
-    "name" : "Aptitude Candidate a5ae1ba4",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$aTvbmR9lXTxCz3tJ2VYPAe838DxfRPICwLZrpC0kj89g/3qDps2nu",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:14.702Z"
-  }, {
-    "id" : "usr-1792746614790-06875",
-    "email" : "aptitude.tester.18501160@careernavigator.test",
-    "name" : "Aptitude Candidate 18501160",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$uzJyaobshN6JI0sDrMFPnOypQKkUTgUqj9dzEq8F8hiJVFaGUCS9u",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:14.899Z"
-  }, {
-    "id" : "usr-1792746615100-acc90",
-    "email" : "aptitude.tester.47fe4c24@careernavigator.test",
-    "name" : "Aptitude Candidate 47fe4c24",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Engineer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$ypLtYV6IOuYkX1E0HX1Sde5a0OKRTPmwc6CjK4JquSsNBlKlC9W82",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:15.189Z"
-  }, {
-    "id" : "usr-1792746617521-68769",
-    "email" : "candidate-f3d55b5a@example.com",
-    "name" : "Alex Johnson",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$yf7RiAKV/vzv6KKREETxduODuq8cGzwUERHvJg49/ietSaEuew4ce",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:17.618Z"
-  }, {
-    "id" : "usr-1792746617874-ab221",
-    "email" : "candidate-eb1d156f@example.com",
-    "name" : "Alex Johnson",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$sR6pDCQJpqhpUpN2rLCyL.A0DVEpY2VKHpa0ogoOFQTNxNZerUpri",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:17.985Z"
-  }, {
-    "id" : "usr-1792746618046-90e66",
-    "email" : "candidate-c50743b4@example.com",
-    "name" : "Alex Johnson",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$bD3PzQySSG3UBAINpjwsY.uiJgr5mfykk3mRO3PEQFEMR3ioI9nM6",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:18.140Z"
-  }, {
-    "id" : "usr-1792746618167-78676",
-    "email" : "candidate-df100b57@example.com",
-    "name" : "Alex Johnson",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$Vt4Ly6NnHjJ6GCCXmVAmp.Vu832ZH5vS.vz/lc4Q70wnNkYHmdsH2",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:18.267Z"
-  }, {
-    "id" : "admin-1792746618300",
-    "email" : "admin-220d81@careernavigator.com",
-    "name" : "Admin Officer",
-    "role" : "admin",
-    "skills" : [ ],
-    "projects" : [ ],
-    "completedProfile" : false,
-    "emailVerified" : true
-  }, {
-    "id" : "usr-1792746618332-8ba67",
-    "email" : "candidate-a72f5e13@example.com",
-    "name" : "Alex Johnson",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$GoMWzKVnquEyzX68SK0lBOhjXOHLkJYjh2MAkQQF7oKq5uhvPH4zy",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:18.423Z"
-  }, {
-    "id" : "usr-1792746618462-f29f0",
-    "email" : "candidate-248e610e@example.com",
-    "name" : "Alex Johnson",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$yydr0WZxcqcJV/.CLnP0zuZsMuRiwsTj8rjsYVrYxNOF0aSnKZCwq",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:18.554Z"
-  }, {
-    "id" : "usr-2503b199-0ba4-4870-a7d0-536f2b3144ff",
-    "email" : "persist-0d0c2788-eefa-43ab-a96a-871ed5627783@example.com",
-    "name" : "Database Test User",
-    "role" : "student",
-    "skills" : [ "Java", "PostgreSQL", "Docker" ],
-    "projects" : [ ],
-    "completedProfile" : false,
-    "emailVerified" : true
-  }, {
-    "id" : "usr-1792746618749-3f5f5",
-    "email" : "testuser-57296578@example.com",
-    "name" : "Jane Doe",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$OMrfuqhhJNl7aMMlwHbB3u7EhqQ5/HZIZH0VaNCl58rfy3CDk1ExO",
-    "phone" : "+1 5553489097",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:18.843Z"
-  }, {
-    "id" : "usr-1792746618891-3bcd9",
-    "email" : "testuser-9e1270ff@example.com",
-    "name" : "Jane Doe",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$ERtTXZFdk9d9nBpagMej6.zwYiBWJVYkFEkIjjAJT2UL4DiVMaq2O",
-    "phone" : "+1 5550192198",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:18.981Z"
-  }, {
-    "id" : "usr-1792746619091-bf49e",
-    "email" : "caseuser-ec80bb0d@example.com",
-    "name" : "Case User",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$6MWgI2hsk0yrT2x8RgJO7ubJxYkccdEc.jTIsRs1azEQxRdxzeZOW",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:19.230Z"
-  }, {
-    "id" : "usr-1792746619297-85ab6",
-    "email" : "whitespace-33dbd8cd@example.com",
-    "name" : "Whitespace User",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$91TKC7P17jlbW5lRSkRBYOnJzHR8a/3r4yc9XDGHs03wEbtpVYkQ2",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:19.401Z"
-  }, {
-    "id" : "usr-1792746619449-1e92a",
-    "email" : "emailtest-defe0383@example.com",
-    "name" : "Email Test",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$RihdVfpFlAVwnoxZFNW5gOm20CI/JAkwNw2clJwQVDr8E.glR4Bjy",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:19.542Z"
-  }, {
-    "id" : "usr-1792746619575-d7234",
-    "email" : "testuser-2dda9df0@example.com",
-    "name" : "Jane Doe",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$y5kN0fLCBtKjAjVGZI7Hp.ihL.fYTRUldVKFSM/RGDIQUWbDrjQmi",
-    "phone" : "+1 5553447548",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:19.666Z"
-  }, {
-    "id" : "usr-1792746619698-97e44",
-    "email" : "different-07491c7f@example.com",
-    "name" : "Mark Smith",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$Nz6u4qk.7ozyuET1UlU2dOb8e.rXHWOJb9v1r.cAYScQ9c86VFdru",
-    "phone" : "+1 5556264834",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:19.790Z"
-  }, {
-    "id" : "usr-1792746619832-c2f2b",
-    "email" : "testuser-11b6e96b@example.com",
-    "name" : "Jane Doe",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$WMivPkDLEruWtx/7EccOz.SSz6gxISGJkvHhI2eX4i2cUd3CEeq4O",
-    "phone" : "+1 5550007020",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:19.921Z"
-  }, {
-    "id" : "usr-1792746619962-29c75",
-    "email" : "testuser-ecbebe7a@example.com",
-    "name" : "Jane Doe",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$STEvNdCBYfNtZWgkH9RPrOx2nrBZJfFU7dYaJ0F60bkL8S1B.flry",
-    "phone" : "+1 5550686702",
-    "emailVerified" : true,
-    "createdAt" : "2026-10-23T09:10:20.066Z"
-  }, {
-    "id" : "usr-1792746620145-599d0",
-    "email" : "existing-090c7bc1@example.com",
-    "name" : "Existing User",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$s4v/v2zgOm7JNJWbTQ8YhudSFuLNk45neOti4FlNLJJ1A/WJOAyia",
-    "emailVerified" : false,
-    "createdAt" : "2026-10-23T09:10:20.244Z"
-  }, {
-    "id" : "usr-1792746931331-53ece",
-    "email" : "harshinipatel03@gmail.com",
-    "name" : "Harshini R B",
-    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
-    "role" : "student",
-    "branch" : "Computer Science",
-    "skills" : [ ],
-    "projects" : [ ],
-    "targetRole" : "Full Stack Developer",
-    "experienceLevel" : "Entry Level",
-    "completedProfile" : true,
-    "passwordHash" : "$2a$10$Hn8P1ufMbze.BeqvurOdiOJgvz.j.CffFKk6SYbjsRguclNlzWs2u",
-    "phone" : "+91 8073089178",
-    "emailVerified" : false,
-    "verificationToken" : "887cb9f1bad270067d1bc4640d4e4ae7582cdb30fa912c28",
-    "verificationTokenExpiresAt" : 1792747831331,
-    "verificationCode" : "011892",
-    "createdAt" : "2026-10-23T09:15:31.532Z"
-  } ],
-  "resumes" : [ {
-    "id" : "res-alice-1",
-    "userId" : "user-alice-123",
-    "fileName" : "alice.pdf",
-    "uploadedAt" : "2026-10-23T09:02:22.763Z",
-    "atsScore" : 49,
-    "skills" : [ "Python", "PostgreSQL", "REST APIs" ],
-    "missingSections" : [ "Certifications" ],
-    "suggestions" : [ "Add a distinct \"Certifications\" section to pass automated category parsers.", "Expand your Technical Skills inventory with primary programming languages, frameworks, and databases.", "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed.", "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\")." ],
-    "grammarIssues" : [ "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.", "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.", "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions." ],
-    "improvementsToAdd" : [ "Cloud & Containerization context (Docker, AWS, Kubernetes, or Vercel)", "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)", "Testing paradigms and frameworks (Unit testing, Vitest, Jest, or Cypress)" ],
-    "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
-    "wordCount" : 27,
-    "contentHash" : "da962907",
-    "matchedJDKeywords" : [ ],
-    "missingJDKeywords" : [ ]
-  }, {
-    "id" : "res-bob-1",
-    "userId" : "user-bob-456",
-    "fileName" : "bob.pdf",
-    "uploadedAt" : "2026-10-23T09:02:22.764Z",
-    "atsScore" : 49,
-    "skills" : [ "TypeScript", "HTML/CSS", "React" ],
-    "missingSections" : [ "Certifications" ],
-    "suggestions" : [ "Add a distinct \"Certifications\" section to pass automated category parsers.", "Expand your Technical Skills inventory with primary programming languages, frameworks, and databases.", "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed.", "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\")." ],
-    "grammarIssues" : [ "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.", "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.", "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions." ],
-    "improvementsToAdd" : [ "Cloud & Containerization context (Docker, AWS, Kubernetes, or Vercel)", "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)", "Testing paradigms and frameworks (Unit testing, Vitest, Jest, or Cypress)" ],
-    "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
-    "wordCount" : 28,
-    "contentHash" : "f2b21c7a",
-    "matchedJDKeywords" : [ ],
-    "missingJDKeywords" : [ ]
-  }, {
-    "id" : "res-8aebc630",
-    "userId" : "usr-1792746612499-cfc2f",
-    "fileName" : "alex_resume.pdf",
-    "uploadedAt" : "2026-10-23T09:10:13.352Z",
-    "atsScore" : 62,
-    "skills" : [ "JavaScript", "TypeScript", "Java", "React", "Spring Boot", "SQL", "Git / GitHub", "Docker" ],
-    "missingSections" : [ "Professional Summary", "Certifications" ],
-    "suggestions" : [ "Add target role required skills (Node.js, REST APIs) if you have hands-on academic or project experience with them.", "Add a distinct \"Professional Summary\" section heading to pass automated applicant tracking parsers.", "Structure technical accomplishment bullets using the STAR method: Begin with strong action verbs (e.g. Engineered, Architected, Optimized)." ],
-    "grammarIssues" : [ "Action verb density is low. Lead bullet points with past-tense action verbs rather than passive duties.", "Length warning: Resume text is very brief (under 100 words). Add project and technical details." ],
-    "improvementsToAdd" : [ "Role requirement: Hands-on context for Node.js" ],
-    "improvementsToRemove" : [ "Generic objective statements (e.g. \"Hardworking individual looking for a challenging opportunity\")", "Non-technical secondary school grades or outdated software packages" ],
-    "wordCount" : 60,
-    "contentHash" : "b0d29323",
-    "targetRole" : "Full Stack Engineer",
-    "matchedJDKeywords" : [ ],
-    "missingJDKeywords" : [ ]
-  }, {
-    "id" : "res-ede825d9",
-    "userId" : "usr-2503b199-0ba4-4870-a7d0-536f2b3144ff",
-    "fileName" : "resume.pdf",
-    "uploadedAt" : "",
-    "atsScore" : 88,
-    "skills" : [ "Java", "PostgreSQL" ],
-    "missingSections" : [ ],
-    "suggestions" : [ ],
-    "grammarIssues" : [ ],
-    "improvementsToAdd" : [ ],
-    "improvementsToRemove" : [ ],
-    "wordCount" : 300,
-    "contentHash" : "",
-    "matchedJDKeywords" : [ ],
-    "missingJDKeywords" : [ ]
-  } ],
-  "interviews" : [ {
-    "id" : "int-4ad9daad",
-    "userId" : "usr-1792746612499-cfc2f",
-    "date" : "2026-10-23T09:10:13.507Z",
-    "jobRole" : "Full Stack Engineer",
-    "branch" : "Computer Science",
-    "experienceLevel" : "Entry Level",
-    "overallScore" : 70,
-    "technicalScore" : 70,
-    "communicationScore" : 70,
-    "confidenceScore" : 70,
-    "feedbackText" : "",
-    "suggestions" : [ ],
-    "qasJson" : "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"In Spring Boot, the ApplicationContext manages dependency injection using singleton beans by default, configured via annotations like @Service and @Component.\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Engineer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
-    "status" : "completed",
-    "skills" : [ ],
-    "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Engineer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
-    "createdAt" : "2026-10-23T09:10:13.507Z",
-    "answers" : [ {
-      "question" : "Explain the architectural lifecycle and execution model of Java in a production environment.",
-      "answer" : "In Spring Boot, the ApplicationContext manages dependency injection using singleton beans by default, configured via annotations like @Service and @Component."
-    } ],
-    "currentQuestionIndex" : 1
-  }, {
-    "id" : "int-c977643a",
-    "userId" : "usr-2503b199-0ba4-4870-a7d0-536f2b3144ff",
-    "date" : "2026-10-23T09:10:20.260Z",
-    "jobRole" : "Backend Engineer",
-    "overallScore" : 82,
-    "technicalScore" : 70,
-    "communicationScore" : 70,
-    "confidenceScore" : 70,
-    "feedbackText" : "",
-    "suggestions" : [ ],
-    "qasJson" : "[ ]",
-    "status" : "completed",
-    "skills" : [ ],
-    "questions" : [ ],
-    "createdAt" : "2026-10-23T09:10:20.260Z",
-    "answers" : [ ],
-    "currentQuestionIndex" : 0
-  } ],
-  "templates" : [ {
-    "id" : "template-1",
-    "name" : "Standard ATS Minimalist",
-    "targetRole" : "Software Engineer",
-    "atsScore" : 92,
-    "downloads" : 142,
-    "category" : "A clean, highly parseable single-column format recommended for software engineering and technical roles.",
-    "tags" : [ ],
-    "sectionsJson" : "# [Your Name]\n[City, State] | [Phone Number] | [Email] | [LinkedIn URL] | [GitHub URL]\n\n## EDUCATION\n**[University Name]** | [Degree, e.g., B.S. in Computer Science]\n*Graduation Date: [Month, Year] | GPA: [X.X/4.0 or percentage]*\n\n## TECHNICAL SKILLS\n* **Languages:** Java, Python, C++, SQL, TypeScript, JavaScript\n* **Frameworks/Libraries:** Spring Boot, React, Node.js, Express, Tailwind CSS\n* **Developer Tools:** Git, Docker, AWS, Google Cloud, PostgreSQL, MongoDB\n\n## WORK EXPERIENCE\n**[Company Name]** | [Job Title, e.g., Software Engineering Intern]\n*[Month, Year] – [Month, Year] | [City, State]*\n* Designed and implemented dynamic web interfaces using React and Tailwind CSS, increasing page load performance by 15%.\n* Developed microservices with Spring Boot and integrated PostgreSQL database, reducing API latency by 20%.\n* Collaborated in an agile team of 5 engineers to deliver critical core features under strict timelines.\n\n## PROJECTS\n**[Project Name (e.g., Career Navigator Platform)]** | *React, Express, Tailwind, Gemini API*\n*[Month, Year] – [Month, Year]*\n* Engineered an AI-driven interview preparation system with real-time feedback and dynamic mock questionnaires.\n* Optimized data persistence utilizing structured file arrays, reducing runtime dependencies by 100%.\n",
-    "description" : "A clean, highly parseable single-column format recommended for software engineering and technical roles.",
-    "fileContent" : "# [Your Name]\n[City, State] | [Phone Number] | [Email] | [LinkedIn URL] | [GitHub URL]\n\n## EDUCATION\n**[University Name]** | [Degree, e.g., B.S. in Computer Science]\n*Graduation Date: [Month, Year] | GPA: [X.X/4.0 or percentage]*\n\n## TECHNICAL SKILLS\n* **Languages:** Java, Python, C++, SQL, TypeScript, JavaScript\n* **Frameworks/Libraries:** Spring Boot, React, Node.js, Express, Tailwind CSS\n* **Developer Tools:** Git, Docker, AWS, Google Cloud, PostgreSQL, MongoDB\n\n## WORK EXPERIENCE\n**[Company Name]** | [Job Title, e.g., Software Engineering Intern]\n*[Month, Year] – [Month, Year] | [City, State]*\n* Designed and implemented dynamic web interfaces using React and Tailwind CSS, increasing page load performance by 15%.\n* Developed microservices with Spring Boot and integrated PostgreSQL database, reducing API latency by 20%.\n* Collaborated in an agile team of 5 engineers to deliver critical core features under strict timelines.\n\n## PROJECTS\n**[Project Name (e.g., Career Navigator Platform)]** | *React, Express, Tailwind, Gemini API*\n*[Month, Year] – [Month, Year]*\n* Engineered an AI-driven interview preparation system with real-time feedback and dynamic mock questionnaires.\n* Optimized data persistence utilizing structured file arrays, reducing runtime dependencies by 100%.\n",
-    "downloadCount" : 142
-  }, {
-    "id" : "template-2",
-    "name" : "Professional Modern Two-Column",
-    "targetRole" : "Software Engineer",
-    "atsScore" : 92,
-    "downloads" : 98,
-    "category" : "A stylish layout with a sidebar highlighting technical competencies, suited for frontend and full-stack developers.",
-    "tags" : [ ],
-    "sectionsJson" : "# [Your Name] - Full Stack Developer\n[Email] • [Phone] • [Website] • [GitHub]\n\n## SUMMARY\nMotivated Computer Science graduate with hands-on experience in full-stack application development. Skilled in building resilient, server-side APIs and engaging, interactive browser interfaces.\n\n## KEY PROJECTS\n### [Project 1 Name] - *Spring Boot, Angular, PostgreSQL*\n* Designed a relational schema for robust transaction tracking with ACID compliance.\n* Built microservice endpoints with custom token-based filter authentication.\n\n### [Project 2 Name] - *React, Tailwind CSS, Firebase*\n* Constructed a collaborative canvas dashboard utilizing real-time event-driven updates.\n",
-    "description" : "A stylish layout with a sidebar highlighting technical competencies, suited for frontend and full-stack developers.",
-    "fileContent" : "# [Your Name] - Full Stack Developer\n[Email] • [Phone] • [Website] • [GitHub]\n\n## SUMMARY\nMotivated Computer Science graduate with hands-on experience in full-stack application development. Skilled in building resilient, server-side APIs and engaging, interactive browser interfaces.\n\n## KEY PROJECTS\n### [Project 1 Name] - *Spring Boot, Angular, PostgreSQL*\n* Designed a relational schema for robust transaction tracking with ACID compliance.\n* Built microservice endpoints with custom token-based filter authentication.\n\n### [Project 2 Name] - *React, Tailwind CSS, Firebase*\n* Constructed a collaborative canvas dashboard utilizing real-time event-driven updates.\n",
-    "downloadCount" : 98
-  }, {
-    "id" : "template-3",
-    "name" : "Executive Tech Lead Format",
-    "targetRole" : "Software Engineer",
-    "atsScore" : 92,
-    "downloads" : 65,
-    "category" : "A comprehensive layout that emphasizes professional experience, projects, and systems architecture skills.",
-    "tags" : [ ],
-    "sectionsJson" : "# [Your Name]\n[Contact Details] • [Portfolio Link] • [GitHub]\n\n## PROFESSIONAL EXPERIENCE\n**Junior Software Engineer** | [Tech Corp]\n*[Month, Year] - Present*\n* Spearheaded transition of legacy monolithic endpoints to scalable RESTful services, servicing 10k+ daily queries.\n* Maintained CI/CD pipelines to guarantee seamless deployments with zero-downtime rollback controls.\n",
-    "description" : "A comprehensive layout that emphasizes professional experience, projects, and systems architecture skills.",
-    "fileContent" : "# [Your Name]\n[Contact Details] • [Portfolio Link] • [GitHub]\n\n## PROFESSIONAL EXPERIENCE\n**Junior Software Engineer** | [Tech Corp]\n*[Month, Year] - Present*\n* Spearheaded transition of legacy monolithic endpoints to scalable RESTful services, servicing 10k+ daily queries.\n* Maintained CI/CD pipelines to guarantee seamless deployments with zero-downtime rollback controls.\n",
-    "downloadCount" : 65
-  }, {
-    "id" : "template-4",
-    "name" : "Data Science & Machine Learning Specialist",
-    "targetRole" : "Software Engineer",
-    "atsScore" : 92,
-    "downloads" : 112,
-    "category" : "Optimized for ML engineers, data scientists, and quantitative analysts featuring model evaluation and data pipeline metrics.",
-    "tags" : [ ],
-    "sectionsJson" : "# [Your Name] - Data Scientist & ML Engineer\n[City, Country] | [Phone] | [Email] | [LinkedIn] | [Kaggle / GitHub]\n\n## SUMMARY\nData Scientist with deep expertise in supervised/unsupervised learning, deep neural architectures, and distributed data pipelines. Proven record of deploying scalable PyTorch and scikit-learn models into high-volume production systems.\n\n## TECHNICAL SKILLS\n* **Languages:** Python (NumPy, Pandas, SciPy), SQL, R, C++\n* **ML/DL Frameworks:** PyTorch, TensorFlow, Scikit-Learn, Hugging Face, XGBoost\n* **Data Engineering & Cloud:** Apache Spark, Kafka, PostgreSQL, Snowflake, AWS SageMaker, Docker\n\n## MACHINE LEARNING PROJECTS\n### [Project 1: Real-Time Fraud Detection Engine] | *PyTorch, Kafka, FastAPI*\n* Trained a graph neural network on 2.4M transactions, achieving a 94.2% ROC-AUC score and reducing false positives by 28%.\n* Containerized real-time inference microservice with Docker and Triton, reducing p99 response latency to 18ms.\n\n### [Project 2: Customer Churn Propensity Model] | *XGBoost, Snowflake, Streamlit*\n* Engineered 45 feature signals across user activity logs, identifying high-risk churn cohorts with 89% precision.\n* Automated weekly retrain DAGs in Apache Airflow, recovering an estimated $140k in annualized ARR.\n",
-    "description" : "Optimized for ML engineers, data scientists, and quantitative analysts featuring model evaluation and data pipeline metrics.",
-    "fileContent" : "# [Your Name] - Data Scientist & ML Engineer\n[City, Country] | [Phone] | [Email] | [LinkedIn] | [Kaggle / GitHub]\n\n## SUMMARY\nData Scientist with deep expertise in supervised/unsupervised learning, deep neural architectures, and distributed data pipelines. Proven record of deploying scalable PyTorch and scikit-learn models into high-volume production systems.\n\n## TECHNICAL SKILLS\n* **Languages:** Python (NumPy, Pandas, SciPy), SQL, R, C++\n* **ML/DL Frameworks:** PyTorch, TensorFlow, Scikit-Learn, Hugging Face, XGBoost\n* **Data Engineering & Cloud:** Apache Spark, Kafka, PostgreSQL, Snowflake, AWS SageMaker, Docker\n\n## MACHINE LEARNING PROJECTS\n### [Project 1: Real-Time Fraud Detection Engine] | *PyTorch, Kafka, FastAPI*\n* Trained a graph neural network on 2.4M transactions, achieving a 94.2% ROC-AUC score and reducing false positives by 28%.\n* Containerized real-time inference microservice with Docker and Triton, reducing p99 response latency to 18ms.\n\n### [Project 2: Customer Churn Propensity Model] | *XGBoost, Snowflake, Streamlit*\n* Engineered 45 feature signals across user activity logs, identifying high-risk churn cohorts with 89% precision.\n* Automated weekly retrain DAGs in Apache Airflow, recovering an estimated $140k in annualized ARR.\n",
-    "downloadCount" : 112
-  }, {
-    "id" : "template-5",
-    "name" : "DevOps & Cloud Platform Infrastructure",
-    "targetRole" : "Software Engineer",
-    "atsScore" : 92,
-    "downloads" : 89,
-    "category" : "Parser-vetted framework emphasizing Kubernetes, Terraform, cloud security, and resilient CI/CD pipelines.",
-    "tags" : [ ],
-    "sectionsJson" : "# [Your Name] - DevOps & Cloud Infrastructure Engineer\n[Location] | [Phone] | [Email] | [GitHub] | [LinkedIn]\n\n## SUMMARY\nSite Reliability & DevOps Engineer specializing in infrastructure-as-code, multi-region Kubernetes clusters, and zero-downtime deployment pipelines. Passionate about observability, security compliance, and cloud cost governance.\n\n## TECHNICAL PROFICIENCIES\n* **Cloud Providers:** AWS (EKS, S3, RDS, IAM, CloudFront), Google Cloud Platform\n* **Containers & Orchestration:** Docker, Kubernetes, Helm, Istio Service Mesh\n* **IaC & Automation:** Terraform, Ansible, GitHub Actions, ArgoCD, Jenkins\n* **Monitoring & Observability:** Prometheus, Grafana, Datadog, ELK Stack\n\n## WORK EXPERIENCE / PLATFORM PROJECTS\n### Cloud Migration & GitOps Pipeline | *Terraform, Kubernetes, ArgoCD*\n* Architected multi-cluster EKS infrastructure using modular Terraform, standardizing deployments across 3 environments.\n* Configured GitOps deployment flow with ArgoCD, eliminating configuration drift and cutting deployment times from 45m to 4m.\n* Implemented Prometheus alert rules and Grafana dashboards, maintaining 99.98% platform uptime across peak traffic events.\n",
-    "description" : "Parser-vetted framework emphasizing Kubernetes, Terraform, cloud security, and resilient CI/CD pipelines.",
-    "fileContent" : "# [Your Name] - DevOps & Cloud Infrastructure Engineer\n[Location] | [Phone] | [Email] | [GitHub] | [LinkedIn]\n\n## SUMMARY\nSite Reliability & DevOps Engineer specializing in infrastructure-as-code, multi-region Kubernetes clusters, and zero-downtime deployment pipelines. Passionate about observability, security compliance, and cloud cost governance.\n\n## TECHNICAL PROFICIENCIES\n* **Cloud Providers:** AWS (EKS, S3, RDS, IAM, CloudFront), Google Cloud Platform\n* **Containers & Orchestration:** Docker, Kubernetes, Helm, Istio Service Mesh\n* **IaC & Automation:** Terraform, Ansible, GitHub Actions, ArgoCD, Jenkins\n* **Monitoring & Observability:** Prometheus, Grafana, Datadog, ELK Stack\n\n## WORK EXPERIENCE / PLATFORM PROJECTS\n### Cloud Migration & GitOps Pipeline | *Terraform, Kubernetes, ArgoCD*\n* Architected multi-cluster EKS infrastructure using modular Terraform, standardizing deployments across 3 environments.\n* Configured GitOps deployment flow with ArgoCD, eliminating configuration drift and cutting deployment times from 45m to 4m.\n* Implemented Prometheus alert rules and Grafana dashboards, maintaining 99.98% platform uptime across peak traffic events.\n",
-    "downloadCount" : 89
-  }, {
-    "id" : "template-6",
-    "name" : "Embedded Systems & Firmware Engineer",
-    "targetRole" : "Software Engineer",
-    "atsScore" : 92,
-    "downloads" : 54,
-    "category" : "Designed for IoT, microcontrollers, real-time operating systems (RTOS), and hardware-software interface engineers.",
-    "tags" : [ ],
-    "sectionsJson" : "# [Your Name] - Embedded Systems & Firmware Engineer\n[Location] | [Phone] | [Email] | [LinkedIn] | [Portfolio / GitHub]\n\n## TECHNICAL COMPETENCIES\n* **Languages:** C, Modern C++ (C++17), Assembly (ARM Cortex), Python\n* **Protocols & Hardware:** UART, SPI, I2C, CAN Bus, BLE, GPIO, Oscilloscopes, Logic Analyzers\n* **Platforms & RTOS:** FreeRTOS, STM32, ESP32, Nordic nRF52, Embedded Linux\n* **Tools:** Keil uVision, STM32CubeIDE, GCC Toolchain, Git, CMake\n\n## CORE HARDWARE PROJECTS\n### Autonomous Telemetry Sensor Node | *STM32, FreeRTOS, LoRaWAN*\n* Developed interrupt-driven FreeRTOS firmware in C, reading environmental sensor arrays over SPI/I2C at 100Hz.\n* Optimized deep-sleep power states, extending battery operational life from 3 weeks to 14 months on a single LiPo cell.\n* Designed modular HAL drivers decoupling peripheral logic from hardware registers, facilitating multi-MCU portability.\n",
-    "description" : "Designed for IoT, microcontrollers, real-time operating systems (RTOS), and hardware-software interface engineers.",
-    "fileContent" : "# [Your Name] - Embedded Systems & Firmware Engineer\n[Location] | [Phone] | [Email] | [LinkedIn] | [Portfolio / GitHub]\n\n## TECHNICAL COMPETENCIES\n* **Languages:** C, Modern C++ (C++17), Assembly (ARM Cortex), Python\n* **Protocols & Hardware:** UART, SPI, I2C, CAN Bus, BLE, GPIO, Oscilloscopes, Logic Analyzers\n* **Platforms & RTOS:** FreeRTOS, STM32, ESP32, Nordic nRF52, Embedded Linux\n* **Tools:** Keil uVision, STM32CubeIDE, GCC Toolchain, Git, CMake\n\n## CORE HARDWARE PROJECTS\n### Autonomous Telemetry Sensor Node | *STM32, FreeRTOS, LoRaWAN*\n* Developed interrupt-driven FreeRTOS firmware in C, reading environmental sensor arrays over SPI/I2C at 100Hz.\n* Optimized deep-sleep power states, extending battery operational life from 3 weeks to 14 months on a single LiPo cell.\n* Designed modular HAL drivers decoupling peripheral logic from hardware registers, facilitating multi-MCU portability.\n",
-    "downloadCount" : 54
-  }, {
-    "id" : "template-7",
-    "name" : "Cybersecurity & Systems Defense Analyst",
-    "targetRole" : "Software Engineer",
-    "atsScore" : 92,
-    "downloads" : 73,
-    "category" : "Targeted for security analysts, penetration testers, and SOC engineers highlighting vulnerability management and compliance.",
-    "tags" : [ ],
-    "sectionsJson" : "# [Your Name] - Cybersecurity & SOC Analyst\n[Location] | [Phone] | [Email] | [LinkedIn] | [TryHackMe / Security Profile]\n\n## PROFESSIONAL SUMMARY\nCybersecurity professional with practical experience in threat detection, vulnerability assessment, and security automation. Dedicated to strengthening organizational defense posture and rapid incident containment.\n\n## TECHNICAL DOMAINS\n* **Security Tools:** Wireshark, Nmap, Burp Suite, Metasploit, Nessus, Splunk, Suricata\n* **Standards & Frameworks:** MITRE ATT&CK, NIST CSF, OWASP Top 10, ISO 27001\n* **Scripting & OS:** Python, Bash, PowerShell, Linux/Unix Security, Active Directory\n\n## SECURITY AUDITS & PROJECTS\n### Corporate SIEM Pipeline & Alert Triaging | *Splunk, Suricata, Python*\n* Configured correlation rules in Splunk SIEM mapping alerts to MITRE ATT&CK tactics, triaging 500+ daily telemetry events.\n* Created automated Python scripts to enrich threat intelligence feeds against VirusTotal and AbuseIPDB, cutting MTTR by 40%.\n* Conducted black-box web vulnerability scans against staging applications, uncovering and remediating 4 critical OWASP flaws.\n",
-    "description" : "Targeted for security analysts, penetration testers, and SOC engineers highlighting vulnerability management and compliance.",
-    "fileContent" : "# [Your Name] - Cybersecurity & SOC Analyst\n[Location] | [Phone] | [Email] | [LinkedIn] | [TryHackMe / Security Profile]\n\n## PROFESSIONAL SUMMARY\nCybersecurity professional with practical experience in threat detection, vulnerability assessment, and security automation. Dedicated to strengthening organizational defense posture and rapid incident containment.\n\n## TECHNICAL DOMAINS\n* **Security Tools:** Wireshark, Nmap, Burp Suite, Metasploit, Nessus, Splunk, Suricata\n* **Standards & Frameworks:** MITRE ATT&CK, NIST CSF, OWASP Top 10, ISO 27001\n* **Scripting & OS:** Python, Bash, PowerShell, Linux/Unix Security, Active Directory\n\n## SECURITY AUDITS & PROJECTS\n### Corporate SIEM Pipeline & Alert Triaging | *Splunk, Suricata, Python*\n* Configured correlation rules in Splunk SIEM mapping alerts to MITRE ATT&CK tactics, triaging 500+ daily telemetry events.\n* Created automated Python scripts to enrich threat intelligence feeds against VirusTotal and AbuseIPDB, cutting MTTR by 40%.\n* Conducted black-box web vulnerability scans against staging applications, uncovering and remediating 4 critical OWASP flaws.\n",
-    "downloadCount" : 73
-  }, {
-    "id" : "template-8",
-    "name" : "Mobile Applications Engineer (iOS & Android)",
-    "targetRole" : "Software Engineer",
-    "atsScore" : 92,
-    "downloads" : 81,
-    "category" : "Tailored for cross-platform and native mobile app developers showcasing app architecture, state management, and offline cache.",
-    "tags" : [ ],
-    "sectionsJson" : "# [Your Name] - Mobile Software Engineer\n[Location] | [Phone] | [Email] | [App Store / Play Store Links] | [GitHub]\n\n## SUMMARY\nMobile developer with proven experience shipping fluid, battery-efficient iOS and Android applications. Focused on reactive architectures, native module bridging, and offline-first data synchronization.\n\n## SKILLS & FRAMEWORKS\n* **Frameworks & Languages:** React Native, Flutter, Swift, Kotlin, TypeScript, Dart\n* **State & Data:** Redux Toolkit, Zustand, Riverpod, SQLite, Realm, GraphQL, Firebase\n* **Build & Release:** Xcode, Android Studio, Fastlane, TestFlight, Google Play Console\n\n## MOBILE APPLICATIONS SHIPPED\n### [App Name: Health & Fitness Companion] | *Flutter, Riverpod, SQLite*\n* Built cross-platform mobile application supporting local step tracking and cloud sync across 45,000+ registered active users.\n* Implemented background sync service minimizing battery footprint while guaranteeing 99.9% offline-data consistency.\n* Streamlined CI/CD deployment pipelines using Fastlane, cutting binary release turnaround to under 15 minutes.\n",
-    "description" : "Tailored for cross-platform and native mobile app developers showcasing app architecture, state management, and offline cache.",
-    "fileContent" : "# [Your Name] - Mobile Software Engineer\n[Location] | [Phone] | [Email] | [App Store / Play Store Links] | [GitHub]\n\n## SUMMARY\nMobile developer with proven experience shipping fluid, battery-efficient iOS and Android applications. Focused on reactive architectures, native module bridging, and offline-first data synchronization.\n\n## SKILLS & FRAMEWORKS\n* **Frameworks & Languages:** React Native, Flutter, Swift, Kotlin, TypeScript, Dart\n* **State & Data:** Redux Toolkit, Zustand, Riverpod, SQLite, Realm, GraphQL, Firebase\n* **Build & Release:** Xcode, Android Studio, Fastlane, TestFlight, Google Play Console\n\n## MOBILE APPLICATIONS SHIPPED\n### [App Name: Health & Fitness Companion] | *Flutter, Riverpod, SQLite*\n* Built cross-platform mobile application supporting local step tracking and cloud sync across 45,000+ registered active users.\n* Implemented background sync service minimizing battery footprint while guaranteeing 99.9% offline-data consistency.\n* Streamlined CI/CD deployment pipelines using Fastlane, cutting binary release turnaround to under 15 minutes.\n",
-    "downloadCount" : 81
-  }, {
-    "id" : "custom-test-1792745983924",
-    "name" : "FinTech Quantitative Developer ATS Format",
-    "targetRole" : "Software Engineer",
-    "atsScore" : 92,
-    "downloads" : 0,
-    "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ],
-    "sectionsJson" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
-    "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
-    "downloadCount" : 0
-  }, {
-    "id" : "custom-test-1792746142404",
-    "name" : "FinTech Quantitative Developer ATS Format",
-    "targetRole" : "Software Engineer",
-    "atsScore" : 92,
-    "downloads" : 0,
-    "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ],
-    "sectionsJson" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
-    "description" : "Specialized layout for high-frequency trading and financial risk models.",
-    "fileContent" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
-    "downloadCount" : 0
-  } ],
-  "feedback" : [ {
-    "id" : "feed-bfc2dfd7",
-    "userId" : "usr-1792746612499-cfc2f",
-    "studentName" : "Integration Candidate",
-    "email" : "candidate-1f110d@careernavigator.edu",
-    "rating" : 5,
-    "category" : "interview",
-    "comment" : "The simulated technical assessor gave very specific guidance on Spring Boot bean lifecycles.",
-    "createdAt" : "2026-10-23T09:10:13.645Z"
-  }, {
-    "id" : "feed-36b96c37",
-    "userId" : "usr-2503b199-0ba4-4870-a7d0-536f2b3144ff",
-    "studentName" : "",
-    "email" : "",
-    "rating" : 5,
-    "category" : "general",
-    "comment" : "Excellent preparation platform!",
-    "createdAt" : ""
-  } ]
+  "users": [
+    {
+      "id": "admin-1",
+      "email": "admin@careernavigator.app",
+      "name": "Super Admin",
+      "picture": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=120",
+      "role": "admin",
+      "skills": [],
+      "projects": [],
+      "completedProfile": true,
+      "emailVerified": true
+    },
+    {
+      "id": "test-1792745983862",
+      "email": "candidate-1792745983862@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "Career Navigator"
+      ],
+      "completedProfile": true,
+      "emailVerified": true
+    },
+    {
+      "id": "usr-test-1792745985765",
+      "email": "candidate.1792745985765@careernavigator.app",
+      "name": "Jane Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [],
+      "projects": [],
+      "completedProfile": false,
+      "passwordHash": "8af23163869191405fa308621f3b4c49:5603a32db5865139bd86d64948667eeee9c402e364e244cf0415dc92950bce9343fba478edd1b6decc0024696576428b5adade785c8c3d72706a97cc04e5497b",
+      "emailVerified": true
+    },
+    {
+      "id": "usr-test-phone-1",
+      "email": "mobile_9876543210@careernavigator.app",
+      "name": "Alex Mobile",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde",
+      "role": "student",
+      "skills": [],
+      "projects": [],
+      "completedProfile": false,
+      "phone": "+91 9876543210",
+      "emailVerified": true
+    },
+    {
+      "id": "usr-dup-1",
+      "email": "duplicate.test@careernavigator.app",
+      "name": "User One",
+      "picture": "https://example.com/p1.png",
+      "role": "student",
+      "skills": [],
+      "projects": [],
+      "completedProfile": false,
+      "passwordHash": "4c9111e0d725c128760e1c84924e1504:0e3cc69ee8142056c2027d0cac06ff03ff00de5a623a3bde5b73ce3f59a4e61595fc5d850fdcf5bb3859332ab4e99550543377e2a89f610966fc48f1f9d0fb74",
+      "emailVerified": true
+    },
+    {
+      "id": "usr-auth-success-1",
+      "email": "alex.success@careernavigator.app",
+      "name": "Alex Success",
+      "picture": "https://example.com/p.png",
+      "role": "student",
+      "skills": [],
+      "projects": [],
+      "completedProfile": true,
+      "passwordHash": "b2e9f5834759bd05ff61d64d1c32f1ab:df6f0d043972b9a1eb7faa350c00135169906054380f19e5819fb153a3921a64040922a40de27804cf706481ebc12df657e5f5e6b27057d30592296a532a0fbf",
+      "emailVerified": true
+    },
+    {
+      "id": "test-1792746063261",
+      "email": "candidate-1792746063261@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "Career Navigator"
+      ],
+      "completedProfile": true,
+      "emailVerified": true
+    },
+    {
+      "id": "demo-student-1",
+      "email": "student@careernavigator.app",
+      "name": "Jane Doe",
+      "picture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [
+        "React",
+        "JavaScript",
+        "SQL",
+        "TypeScript"
+      ],
+      "projects": [
+        "Portfolio Website",
+        "Weather App"
+      ],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "emailVerified": true
+    },
+    {
+      "id": "test-1792746142396",
+      "email": "candidate-1792746142396@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "Career Navigator"
+      ],
+      "completedProfile": true,
+      "emailVerified": true
+    },
+    {
+      "id": "usr-test-1792746144044",
+      "email": "candidate.1792746144044@careernavigator.app",
+      "name": "Jane Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [],
+      "projects": [],
+      "completedProfile": false,
+      "passwordHash": "37cceff45681e51006e8de943b3a9d6d:66d6048565125bc64d4e2e9424db36d91328328554c34dfde8fd2b87cc24241a5fb1a23c0982ba5fe0cd7b93d05209b1bf3171491d1a3f45c229e327919ad44e",
+      "emailVerified": true
+    },
+    {
+      "id": "usr-1792746260155-e22ea",
+      "email": "aptitude.tester.b13407e0@careernavigator.test",
+      "name": "Aptitude Candidate b13407e0",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$mNSKg7NOTTIEMXCy8w05oOisf0xBdQeGskwkt8XIwGdPehp5vjM/K",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:04:20.299Z"
+    },
+    {
+      "id": "usr-1792746260917-5e919",
+      "email": "aptitude.tester.2a036d55@careernavigator.test",
+      "name": "Aptitude Candidate 2a036d55",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$WquVyGXC4zcFLkpiHE74NOXmH7E.PjOvyC06Fd8T8l/zb/TYNqiNG",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:04:21.020Z"
+    },
+    {
+      "id": "usr-1792746261146-2a8da",
+      "email": "aptitude.tester.4c07e6f9@careernavigator.test",
+      "name": "Aptitude Candidate 4c07e6f9",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$IxeKEL60KfrczyDM0y91auob8bcpQPRVc.gvRd39Mo5w/6Q0zCb3C",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:04:21.247Z"
+    },
+    {
+      "id": "usr-1792746261443-286c7",
+      "email": "aptitude.tester.daa4b2e7@careernavigator.test",
+      "name": "Aptitude Candidate daa4b2e7",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$sZXG9o.CzBTd08igEHi5W.tT9ZG3nXfUTsJr8P6E4GVf9SgpPmM12",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:04:21.546Z"
+    },
+    {
+      "id": "usr-1792746261629-30350",
+      "email": "aptitude.tester.57f946ca@careernavigator.test",
+      "name": "Aptitude Candidate 57f946ca",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$p97wuiJfBFwXGLvIg.oaF.3xFZwdeVfjI8ynUyNkyYw1wTxd7rL6u",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:04:21.726Z"
+    },
+    {
+      "id": "usr-1792746262062-d1f15",
+      "email": "aptitude.tester.63c545ba@careernavigator.test",
+      "name": "Aptitude Candidate 63c545ba",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$B8Ml.2qFCbfdyIXiX37FTeqcmtXqHEzI5IPGHowwi4KzdG/jSkzlO",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:04:22.156Z"
+    },
+    {
+      "id": "usr-1792746434373-fe716",
+      "email": "aptitude.tester.899de8ee@careernavigator.test",
+      "name": "Aptitude Candidate 899de8ee",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$bwfY6qDaA6ghI0VQqezAWeXJhd0xjUIcNmeGZr.vzsDN4FnZ94Rgu",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:07:14.488Z"
+    },
+    {
+      "id": "usr-1792746435031-86969",
+      "email": "aptitude.tester.5c92beba@careernavigator.test",
+      "name": "Aptitude Candidate 5c92beba",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$8EkgLeKRiAZlr5r81onWV.FJz/k6aQ3jDbSY5CxebWYvrlUoLDw/q",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:07:15.127Z"
+    },
+    {
+      "id": "usr-1792746435227-0c610",
+      "email": "aptitude.tester.d3e6b17f@careernavigator.test",
+      "name": "Aptitude Candidate d3e6b17f",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$fcP9Ke6gvUmioWO55db6Cu8fFElNKzrDkEaGaVBAjoRNcicDdAy/a",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:07:15.318Z"
+    },
+    {
+      "id": "usr-1792746435444-6c3ec",
+      "email": "aptitude.tester.12dd4bc8@careernavigator.test",
+      "name": "Aptitude Candidate 12dd4bc8",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$QWKPQGkr//bgx.K/wXchhOqN.gPwp9DudovABUGD7AXz/S94pwxCu",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:07:15.535Z"
+    },
+    {
+      "id": "usr-1792746435615-57163",
+      "email": "aptitude.tester.c9ec6e57@careernavigator.test",
+      "name": "Aptitude Candidate c9ec6e57",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$BzjRbHztaijDa8LUoNy.X.ZXGIQ0ZJ5vTZORG9VPg0Q0csE1pvYO6",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:07:15.714Z"
+    },
+    {
+      "id": "usr-1792746435976-95c47",
+      "email": "aptitude.tester.d14efcd6@careernavigator.test",
+      "name": "Aptitude Candidate d14efcd6",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$u5tfPEqCIFhHVBvMrEFlgOQARf3o28ormV/lVa6wjsDoYKZqgHwk2",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:07:16.070Z"
+    },
+    {
+      "id": "usr-1792746612499-cfc2f",
+      "email": "candidate-1f110d@careernavigator.edu",
+      "name": "Integration Candidate",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$PlKSbQ1OPdhaJr9/rLOep.jobLKi8F9.h9/nhwKQD/C18Nx.nJJgW",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:12.613Z"
+    },
+    {
+      "id": "usr-1792746613783-e180b",
+      "email": "aptitude.tester.e507a513@careernavigator.test",
+      "name": "Aptitude Candidate e507a513",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$1AUM97SnrZvpDtT3Nc9qR.y7tf682ext5jlz0qWq0sCicNnDA0n6y",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:13.921Z"
+    },
+    {
+      "id": "usr-1792746614187-ff8b7",
+      "email": "aptitude.tester.8a35d705@careernavigator.test",
+      "name": "Aptitude Candidate 8a35d705",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$r.kj79XTvZ1pDn1BRTUIxOxC8FCnFaPmOXJ4hqIeZtTCNbFmUDITK",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:14.278Z"
+    },
+    {
+      "id": "usr-1792746614407-37348",
+      "email": "aptitude.tester.c1890c78@careernavigator.test",
+      "name": "Aptitude Candidate c1890c78",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$Th0/ombXcu31G99sSkOu5OwJel0lrshx8FYFGOsnr0O/P4DTFcCYC",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:14.500Z"
+    },
+    {
+      "id": "usr-1792746614599-9958b",
+      "email": "aptitude.tester.a5ae1ba4@careernavigator.test",
+      "name": "Aptitude Candidate a5ae1ba4",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$aTvbmR9lXTxCz3tJ2VYPAe838DxfRPICwLZrpC0kj89g/3qDps2nu",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:14.702Z"
+    },
+    {
+      "id": "usr-1792746614790-06875",
+      "email": "aptitude.tester.18501160@careernavigator.test",
+      "name": "Aptitude Candidate 18501160",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$uzJyaobshN6JI0sDrMFPnOypQKkUTgUqj9dzEq8F8hiJVFaGUCS9u",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:14.899Z"
+    },
+    {
+      "id": "usr-1792746615100-acc90",
+      "email": "aptitude.tester.47fe4c24@careernavigator.test",
+      "name": "Aptitude Candidate 47fe4c24",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Engineer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$ypLtYV6IOuYkX1E0HX1Sde5a0OKRTPmwc6CjK4JquSsNBlKlC9W82",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:15.189Z"
+    },
+    {
+      "id": "usr-1792746617521-68769",
+      "email": "candidate-f3d55b5a@example.com",
+      "name": "Alex Johnson",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$yf7RiAKV/vzv6KKREETxduODuq8cGzwUERHvJg49/ietSaEuew4ce",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:17.618Z"
+    },
+    {
+      "id": "usr-1792746617874-ab221",
+      "email": "candidate-eb1d156f@example.com",
+      "name": "Alex Johnson",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$sR6pDCQJpqhpUpN2rLCyL.A0DVEpY2VKHpa0ogoOFQTNxNZerUpri",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:17.985Z"
+    },
+    {
+      "id": "usr-1792746618046-90e66",
+      "email": "candidate-c50743b4@example.com",
+      "name": "Alex Johnson",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$bD3PzQySSG3UBAINpjwsY.uiJgr5mfykk3mRO3PEQFEMR3ioI9nM6",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:18.140Z"
+    },
+    {
+      "id": "usr-1792746618167-78676",
+      "email": "candidate-df100b57@example.com",
+      "name": "Alex Johnson",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$Vt4Ly6NnHjJ6GCCXmVAmp.Vu832ZH5vS.vz/lc4Q70wnNkYHmdsH2",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:18.267Z"
+    },
+    {
+      "id": "admin-1792746618300",
+      "email": "admin-220d81@careernavigator.com",
+      "name": "Admin Officer",
+      "role": "admin",
+      "skills": [],
+      "projects": [],
+      "completedProfile": false,
+      "emailVerified": true
+    },
+    {
+      "id": "usr-1792746618332-8ba67",
+      "email": "candidate-a72f5e13@example.com",
+      "name": "Alex Johnson",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$GoMWzKVnquEyzX68SK0lBOhjXOHLkJYjh2MAkQQF7oKq5uhvPH4zy",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:18.423Z"
+    },
+    {
+      "id": "usr-1792746618462-f29f0",
+      "email": "candidate-248e610e@example.com",
+      "name": "Alex Johnson",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$yydr0WZxcqcJV/.CLnP0zuZsMuRiwsTj8rjsYVrYxNOF0aSnKZCwq",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:18.554Z"
+    },
+    {
+      "id": "usr-2503b199-0ba4-4870-a7d0-536f2b3144ff",
+      "email": "persist-0d0c2788-eefa-43ab-a96a-871ed5627783@example.com",
+      "name": "Database Test User",
+      "role": "student",
+      "skills": [
+        "Java",
+        "PostgreSQL",
+        "Docker"
+      ],
+      "projects": [],
+      "completedProfile": false,
+      "emailVerified": true
+    },
+    {
+      "id": "usr-1792746618749-3f5f5",
+      "email": "testuser-57296578@example.com",
+      "name": "Jane Doe",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$OMrfuqhhJNl7aMMlwHbB3u7EhqQ5/HZIZH0VaNCl58rfy3CDk1ExO",
+      "phone": "+1 5553489097",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:18.843Z"
+    },
+    {
+      "id": "usr-1792746618891-3bcd9",
+      "email": "testuser-9e1270ff@example.com",
+      "name": "Jane Doe",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$ERtTXZFdk9d9nBpagMej6.zwYiBWJVYkFEkIjjAJT2UL4DiVMaq2O",
+      "phone": "+1 5550192198",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:18.981Z"
+    },
+    {
+      "id": "usr-1792746619091-bf49e",
+      "email": "caseuser-ec80bb0d@example.com",
+      "name": "Case User",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$6MWgI2hsk0yrT2x8RgJO7ubJxYkccdEc.jTIsRs1azEQxRdxzeZOW",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:19.230Z"
+    },
+    {
+      "id": "usr-1792746619297-85ab6",
+      "email": "whitespace-33dbd8cd@example.com",
+      "name": "Whitespace User",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$91TKC7P17jlbW5lRSkRBYOnJzHR8a/3r4yc9XDGHs03wEbtpVYkQ2",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:19.401Z"
+    },
+    {
+      "id": "usr-1792746619449-1e92a",
+      "email": "emailtest-defe0383@example.com",
+      "name": "Email Test",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$RihdVfpFlAVwnoxZFNW5gOm20CI/JAkwNw2clJwQVDr8E.glR4Bjy",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:19.542Z"
+    },
+    {
+      "id": "usr-1792746619575-d7234",
+      "email": "testuser-2dda9df0@example.com",
+      "name": "Jane Doe",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$y5kN0fLCBtKjAjVGZI7Hp.ihL.fYTRUldVKFSM/RGDIQUWbDrjQmi",
+      "phone": "+1 5553447548",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:19.666Z"
+    },
+    {
+      "id": "usr-1792746619698-97e44",
+      "email": "different-07491c7f@example.com",
+      "name": "Mark Smith",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$Nz6u4qk.7ozyuET1UlU2dOb8e.rXHWOJb9v1r.cAYScQ9c86VFdru",
+      "phone": "+1 5556264834",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:19.790Z"
+    },
+    {
+      "id": "usr-1792746619832-c2f2b",
+      "email": "testuser-11b6e96b@example.com",
+      "name": "Jane Doe",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$WMivPkDLEruWtx/7EccOz.SSz6gxISGJkvHhI2eX4i2cUd3CEeq4O",
+      "phone": "+1 5550007020",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:19.921Z"
+    },
+    {
+      "id": "usr-1792746619962-29c75",
+      "email": "testuser-ecbebe7a@example.com",
+      "name": "Jane Doe",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$STEvNdCBYfNtZWgkH9RPrOx2nrBZJfFU7dYaJ0F60bkL8S1B.flry",
+      "phone": "+1 5550686702",
+      "emailVerified": true,
+      "createdAt": "2026-10-23T09:10:20.066Z"
+    },
+    {
+      "id": "usr-1792746620145-599d0",
+      "email": "existing-090c7bc1@example.com",
+      "name": "Existing User",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$s4v/v2zgOm7JNJWbTQ8YhudSFuLNk45neOti4FlNLJJ1A/WJOAyia",
+      "emailVerified": false,
+      "createdAt": "2026-10-23T09:10:20.244Z"
+    },
+    {
+      "id": "usr-1792746931331-53ece",
+      "email": "harshinipatel03@gmail.com",
+      "name": "Harshini R B",
+      "picture": "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+      "role": "student",
+      "branch": "Computer Science",
+      "skills": [],
+      "projects": [],
+      "targetRole": "Full Stack Developer",
+      "experienceLevel": "Entry Level",
+      "completedProfile": true,
+      "passwordHash": "$2a$10$Hn8P1ufMbze.BeqvurOdiOJgvz.j.CffFKk6SYbjsRguclNlzWs2u",
+      "phone": "+91 8073089178",
+      "emailVerified": false,
+      "verificationToken": "887cb9f1bad270067d1bc4640d4e4ae7582cdb30fa912c28",
+      "verificationTokenExpiresAt": 1792747831331,
+      "verificationCode": "011892",
+      "createdAt": "2026-10-23T09:15:31.532Z"
+    },
+    {
+      "id": "test-1792747976476",
+      "email": "candidate-1792747976476@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "Career Navigator"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "usr-test-1792747977732",
+      "email": "candidate.1792747977732@careernavigator.app",
+      "name": "Jane Candidate",
+      "passwordHash": "4f934ea9f2c1198b26e76644e4854892:f56c5fec720b053fd0ad9bf9e1e7e75195b74a2e439cde809f33e2d2899cdd86327b5a0cff350cc5dd352422a01a70208b89fc6a604c9f2a5c38fb8453490bb2",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "completedProfile": false
+    }
+  ],
+  "resumes": [
+    {
+      "id": "res-alice-1",
+      "userId": "user-alice-123",
+      "fileName": "alice.pdf",
+      "uploadedAt": "2026-10-23T09:32:56.870Z",
+      "atsScore": 49,
+      "categoryBreakdown": [
+        {
+          "category": "Section Completeness",
+          "score": 17,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Detected 6 of 7 core structural sections. Missing: Certifications."
+        },
+        {
+          "category": "Technical Skills & Density",
+          "score": 13,
+          "maxScore": 25,
+          "weight": 25,
+          "reason": "Found 3 verified technologies in resume text."
+        },
+        {
+          "category": "Experience & Project Depth",
+          "score": 10,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Found 0 action verbs across project and work bullet points."
+        },
+        {
+          "category": "Quantified Impact & Metrics",
+          "score": 0,
+          "maxScore": 15,
+          "weight": 15,
+          "reason": "Found 0 measurable metrics/outcomes."
+        },
+        {
+          "category": "Contact Information",
+          "score": 7,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Contact points evaluated (Email: ✓, Phone: ✓, Links: ✗)."
+        },
+        {
+          "category": "Readability & Structure",
+          "score": 2,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Document contains 27 words with formatted section spacing."
+        }
+      ],
+      "detectedSections": [
+        "Contact Information",
+        "Professional Summary",
+        "Education",
+        "Technical Skills",
+        "Projects",
+        "Work Experience / Internships"
+      ],
+      "missingSections": [
+        "Certifications"
+      ],
+      "sectionDetails": [
+        {
+          "sectionName": "Contact Information",
+          "detected": true,
+          "evidence": "Contextual match: \"alice@test.org\"",
+          "confidence": 0.75
+        },
+        {
+          "sectionName": "Professional Summary",
+          "detected": true,
+          "evidence": "Found heading: \"SUMMARY: Senior Python Engineer.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Education",
+          "detected": true,
+          "evidence": "Found heading: \"EDUCATION: B.S. CS 2020.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Technical Skills",
+          "detected": true,
+          "evidence": "Found heading: \"SKILLS: Python, Django, PostgreSQL.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Projects",
+          "detected": true,
+          "evidence": "Found heading: \"PROJECTS: API Gateway.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Work Experience / Internships",
+          "detected": true,
+          "evidence": "Found heading: \"WORK EXPERIENCE: Software Engineer at PyCorp (2020-Present).\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Certifications",
+          "detected": false,
+          "confidence": 0
+        }
+      ],
+      "skills": [
+        "Python",
+        "PostgreSQL",
+        "REST APIs"
+      ],
+      "keywords": [
+        {
+          "keyword": "JavaScript",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "TypeScript",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "Python",
+          "match": true,
+          "count": 2,
+          "density": 7.41,
+          "category": "Languages",
+          "aliases": [
+            "python"
+          ]
+        },
+        {
+          "keyword": "Java",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "C++",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "C# / .NET",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "Go",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "Rust",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "HTML/CSS",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "React",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Frameworks",
+          "aliases": []
+        },
+        {
+          "keyword": "Node.js",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Frameworks",
+          "aliases": []
+        },
+        {
+          "keyword": "Express.js",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Frameworks",
+          "aliases": []
+        },
+        {
+          "keyword": "SQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "PostgreSQL",
+          "match": true,
+          "count": 1,
+          "density": 3.7,
+          "category": "Databases & APIs",
+          "aliases": [
+            "postgresql"
+          ]
+        },
+        {
+          "keyword": "MySQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "MongoDB",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "REST APIs",
+          "match": true,
+          "count": 1,
+          "density": 3.7,
+          "category": "Databases & APIs",
+          "aliases": [
+            "api"
+          ]
+        },
+        {
+          "keyword": "GraphQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "Git / GitHub",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Docker",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Kubernetes",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "AWS",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Google Cloud / GCP",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "CI/CD",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Unit Testing",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Testing & Tools",
+          "aliases": []
+        },
+        {
+          "keyword": "Jest / Vitest / Cypress",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Testing & Tools",
+          "aliases": []
+        }
+      ],
+      "suggestions": [
+        "Add a distinct \"Certifications\" section to pass automated category parsers.",
+        "Expand your Technical Skills inventory with primary programming languages, frameworks, and databases.",
+        "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed.",
+        "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\")."
+      ],
+      "grammarIssues": [
+        "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.",
+        "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.",
+        "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions."
+      ],
+      "improvementsToAdd": [
+        "Cloud & Containerization context (Docker, AWS, Kubernetes, or Vercel)",
+        "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)",
+        "Testing paradigms and frameworks (Unit testing, Vitest, Jest, or Cypress)"
+      ],
+      "improvementsToRemove": [
+        "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")",
+        "Non-technical high school coursework or obsolete computer package references"
+      ],
+      "wordCount": 27,
+      "contentHash": "da962907"
+    },
+    {
+      "id": "res-bob-1",
+      "userId": "user-bob-456",
+      "fileName": "bob.pdf",
+      "uploadedAt": "2026-10-23T09:32:56.870Z",
+      "atsScore": 49,
+      "categoryBreakdown": [
+        {
+          "category": "Section Completeness",
+          "score": 17,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Detected 6 of 7 core structural sections. Missing: Certifications."
+        },
+        {
+          "category": "Technical Skills & Density",
+          "score": 13,
+          "maxScore": 25,
+          "weight": 25,
+          "reason": "Found 3 verified technologies in resume text."
+        },
+        {
+          "category": "Experience & Project Depth",
+          "score": 10,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Found 0 action verbs across project and work bullet points."
+        },
+        {
+          "category": "Quantified Impact & Metrics",
+          "score": 0,
+          "maxScore": 15,
+          "weight": 15,
+          "reason": "Found 0 measurable metrics/outcomes."
+        },
+        {
+          "category": "Contact Information",
+          "score": 7,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Contact points evaluated (Email: ✓, Phone: ✓, Links: ✗)."
+        },
+        {
+          "category": "Readability & Structure",
+          "score": 2,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Document contains 28 words with formatted section spacing."
+        }
+      ],
+      "detectedSections": [
+        "Contact Information",
+        "Professional Summary",
+        "Education",
+        "Technical Skills",
+        "Projects",
+        "Work Experience / Internships"
+      ],
+      "missingSections": [
+        "Certifications"
+      ],
+      "sectionDetails": [
+        {
+          "sectionName": "Contact Information",
+          "detected": true,
+          "evidence": "Contextual match: \"bob@test.org\"",
+          "confidence": 0.75
+        },
+        {
+          "sectionName": "Professional Summary",
+          "detected": true,
+          "evidence": "Found heading: \"SUMMARY: Frontend React Specialist.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Education",
+          "detected": true,
+          "evidence": "Found heading: \"EDUCATION: B.S. SE 2021.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Technical Skills",
+          "detected": true,
+          "evidence": "Found heading: \"SKILLS: React, TypeScript, HTML, CSS.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Projects",
+          "detected": true,
+          "evidence": "Found heading: \"PROJECTS: Dashboard UI.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Work Experience / Internships",
+          "detected": true,
+          "evidence": "Found heading: \"WORK EXPERIENCE: Frontend Dev at Reactify (2021-Present).\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Certifications",
+          "detected": false,
+          "confidence": 0
+        }
+      ],
+      "skills": [
+        "TypeScript",
+        "HTML/CSS",
+        "React"
+      ],
+      "keywords": [
+        {
+          "keyword": "JavaScript",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "TypeScript",
+          "match": true,
+          "count": 1,
+          "density": 3.57,
+          "category": "Languages",
+          "aliases": [
+            "typescript"
+          ]
+        },
+        {
+          "keyword": "Python",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "Java",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "C++",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "C# / .NET",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "Go",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "Rust",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Languages",
+          "aliases": []
+        },
+        {
+          "keyword": "HTML/CSS",
+          "match": true,
+          "count": 2,
+          "density": 7.14,
+          "category": "Languages",
+          "aliases": [
+            "html",
+            "css"
+          ]
+        },
+        {
+          "keyword": "React",
+          "match": true,
+          "count": 2,
+          "density": 7.14,
+          "category": "Frameworks",
+          "aliases": [
+            "react"
+          ]
+        },
+        {
+          "keyword": "Node.js",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Frameworks",
+          "aliases": []
+        },
+        {
+          "keyword": "Express.js",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Frameworks",
+          "aliases": []
+        },
+        {
+          "keyword": "SQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "PostgreSQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "MySQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "MongoDB",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "REST APIs",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "GraphQL",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Databases & APIs",
+          "aliases": []
+        },
+        {
+          "keyword": "Git / GitHub",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Docker",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Kubernetes",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "AWS",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Google Cloud / GCP",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "CI/CD",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "DevOps & Cloud",
+          "aliases": []
+        },
+        {
+          "keyword": "Unit Testing",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Testing & Tools",
+          "aliases": []
+        },
+        {
+          "keyword": "Jest / Vitest / Cypress",
+          "match": false,
+          "count": 0,
+          "density": 0,
+          "category": "Testing & Tools",
+          "aliases": []
+        }
+      ],
+      "suggestions": [
+        "Add a distinct \"Certifications\" section to pass automated category parsers.",
+        "Expand your Technical Skills inventory with primary programming languages, frameworks, and databases.",
+        "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed.",
+        "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\")."
+      ],
+      "grammarIssues": [
+        "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.",
+        "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.",
+        "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions."
+      ],
+      "improvementsToAdd": [
+        "Cloud & Containerization context (Docker, AWS, Kubernetes, or Vercel)",
+        "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)",
+        "Testing paradigms and frameworks (Unit testing, Vitest, Jest, or Cypress)"
+      ],
+      "improvementsToRemove": [
+        "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")",
+        "Non-technical high school coursework or obsolete computer package references"
+      ],
+      "wordCount": 28,
+      "contentHash": "f2b21c7a"
+    },
+    {
+      "id": "res-8aebc630",
+      "userId": "usr-1792746612499-cfc2f",
+      "fileName": "alex_resume.pdf",
+      "uploadedAt": "2026-10-23T09:10:13.352Z",
+      "atsScore": 62,
+      "skills": [
+        "JavaScript",
+        "TypeScript",
+        "Java",
+        "React",
+        "Spring Boot",
+        "SQL",
+        "Git / GitHub",
+        "Docker"
+      ],
+      "missingSections": [
+        "Professional Summary",
+        "Certifications"
+      ],
+      "suggestions": [
+        "Add target role required skills (Node.js, REST APIs) if you have hands-on academic or project experience with them.",
+        "Add a distinct \"Professional Summary\" section heading to pass automated applicant tracking parsers.",
+        "Structure technical accomplishment bullets using the STAR method: Begin with strong action verbs (e.g. Engineered, Architected, Optimized)."
+      ],
+      "grammarIssues": [
+        "Action verb density is low. Lead bullet points with past-tense action verbs rather than passive duties.",
+        "Length warning: Resume text is very brief (under 100 words). Add project and technical details."
+      ],
+      "improvementsToAdd": [
+        "Role requirement: Hands-on context for Node.js"
+      ],
+      "improvementsToRemove": [
+        "Generic objective statements (e.g. \"Hardworking individual looking for a challenging opportunity\")",
+        "Non-technical secondary school grades or outdated software packages"
+      ],
+      "wordCount": 60,
+      "contentHash": "b0d29323",
+      "targetRole": "Full Stack Engineer",
+      "matchedJDKeywords": [],
+      "missingJDKeywords": []
+    },
+    {
+      "id": "res-ede825d9",
+      "userId": "usr-2503b199-0ba4-4870-a7d0-536f2b3144ff",
+      "fileName": "resume.pdf",
+      "uploadedAt": "",
+      "atsScore": 88,
+      "skills": [
+        "Java",
+        "PostgreSQL"
+      ],
+      "missingSections": [],
+      "suggestions": [],
+      "grammarIssues": [],
+      "improvementsToAdd": [],
+      "improvementsToRemove": [],
+      "wordCount": 300,
+      "contentHash": "",
+      "matchedJDKeywords": [],
+      "missingJDKeywords": []
+    }
+  ],
+  "interviews": [
+    {
+      "id": "int-4ad9daad",
+      "userId": "usr-1792746612499-cfc2f",
+      "date": "2026-10-23T09:10:13.507Z",
+      "jobRole": "Full Stack Engineer",
+      "branch": "Computer Science",
+      "experienceLevel": "Entry Level",
+      "overallScore": 70,
+      "technicalScore": 70,
+      "communicationScore": 70,
+      "confidenceScore": 70,
+      "feedbackText": "",
+      "suggestions": [],
+      "qasJson": "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"In Spring Boot, the ApplicationContext manages dependency injection using singleton beans by default, configured via annotations like @Service and @Component.\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Engineer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
+      "status": "completed",
+      "skills": [],
+      "questions": [
+        "Explain the architectural lifecycle and execution model of Java in a production environment.",
+        "How would you design a scalable, low-latency microservice tailored for a Full Stack Engineer role?",
+        "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.",
+        "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?",
+        "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?"
+      ],
+      "createdAt": "2026-10-23T09:10:13.507Z",
+      "answers": [
+        {
+          "question": "Explain the architectural lifecycle and execution model of Java in a production environment.",
+          "answer": "In Spring Boot, the ApplicationContext manages dependency injection using singleton beans by default, configured via annotations like @Service and @Component."
+        }
+      ],
+      "currentQuestionIndex": 1
+    },
+    {
+      "id": "int-c977643a",
+      "userId": "usr-2503b199-0ba4-4870-a7d0-536f2b3144ff",
+      "date": "2026-10-23T09:10:20.260Z",
+      "jobRole": "Backend Engineer",
+      "overallScore": 82,
+      "technicalScore": 70,
+      "communicationScore": 70,
+      "confidenceScore": 70,
+      "feedbackText": "",
+      "suggestions": [],
+      "qasJson": "[ ]",
+      "status": "completed",
+      "skills": [],
+      "questions": [],
+      "createdAt": "2026-10-23T09:10:20.260Z",
+      "answers": [],
+      "currentQuestionIndex": 0
+    }
+  ],
+  "templates": [
+    {
+      "id": "template-1",
+      "name": "Standard ATS Minimalist",
+      "targetRole": "Software Engineer",
+      "atsScore": 92,
+      "downloads": 142,
+      "category": "A clean, highly parseable single-column format recommended for software engineering and technical roles.",
+      "tags": [],
+      "sectionsJson": "# [Your Name]\n[City, State] | [Phone Number] | [Email] | [LinkedIn URL] | [GitHub URL]\n\n## EDUCATION\n**[University Name]** | [Degree, e.g., B.S. in Computer Science]\n*Graduation Date: [Month, Year] | GPA: [X.X/4.0 or percentage]*\n\n## TECHNICAL SKILLS\n* **Languages:** Java, Python, C++, SQL, TypeScript, JavaScript\n* **Frameworks/Libraries:** Spring Boot, React, Node.js, Express, Tailwind CSS\n* **Developer Tools:** Git, Docker, AWS, Google Cloud, PostgreSQL, MongoDB\n\n## WORK EXPERIENCE\n**[Company Name]** | [Job Title, e.g., Software Engineering Intern]\n*[Month, Year] – [Month, Year] | [City, State]*\n* Designed and implemented dynamic web interfaces using React and Tailwind CSS, increasing page load performance by 15%.\n* Developed microservices with Spring Boot and integrated PostgreSQL database, reducing API latency by 20%.\n* Collaborated in an agile team of 5 engineers to deliver critical core features under strict timelines.\n\n## PROJECTS\n**[Project Name (e.g., Career Navigator Platform)]** | *React, Express, Tailwind, Gemini API*\n*[Month, Year] – [Month, Year]*\n* Engineered an AI-driven interview preparation system with real-time feedback and dynamic mock questionnaires.\n* Optimized data persistence utilizing structured file arrays, reducing runtime dependencies by 100%.\n",
+      "description": "A clean, highly parseable single-column format recommended for software engineering and technical roles.",
+      "fileContent": "# [Your Name]\n[City, State] | [Phone Number] | [Email] | [LinkedIn URL] | [GitHub URL]\n\n## EDUCATION\n**[University Name]** | [Degree, e.g., B.S. in Computer Science]\n*Graduation Date: [Month, Year] | GPA: [X.X/4.0 or percentage]*\n\n## TECHNICAL SKILLS\n* **Languages:** Java, Python, C++, SQL, TypeScript, JavaScript\n* **Frameworks/Libraries:** Spring Boot, React, Node.js, Express, Tailwind CSS\n* **Developer Tools:** Git, Docker, AWS, Google Cloud, PostgreSQL, MongoDB\n\n## WORK EXPERIENCE\n**[Company Name]** | [Job Title, e.g., Software Engineering Intern]\n*[Month, Year] – [Month, Year] | [City, State]*\n* Designed and implemented dynamic web interfaces using React and Tailwind CSS, increasing page load performance by 15%.\n* Developed microservices with Spring Boot and integrated PostgreSQL database, reducing API latency by 20%.\n* Collaborated in an agile team of 5 engineers to deliver critical core features under strict timelines.\n\n## PROJECTS\n**[Project Name (e.g., Career Navigator Platform)]** | *React, Express, Tailwind, Gemini API*\n*[Month, Year] – [Month, Year]*\n* Engineered an AI-driven interview preparation system with real-time feedback and dynamic mock questionnaires.\n* Optimized data persistence utilizing structured file arrays, reducing runtime dependencies by 100%.\n",
+      "downloadCount": 142
+    },
+    {
+      "id": "template-2",
+      "name": "Professional Modern Two-Column",
+      "targetRole": "Software Engineer",
+      "atsScore": 92,
+      "downloads": 98,
+      "category": "A stylish layout with a sidebar highlighting technical competencies, suited for frontend and full-stack developers.",
+      "tags": [],
+      "sectionsJson": "# [Your Name] - Full Stack Developer\n[Email] • [Phone] • [Website] • [GitHub]\n\n## SUMMARY\nMotivated Computer Science graduate with hands-on experience in full-stack application development. Skilled in building resilient, server-side APIs and engaging, interactive browser interfaces.\n\n## KEY PROJECTS\n### [Project 1 Name] - *Spring Boot, Angular, PostgreSQL*\n* Designed a relational schema for robust transaction tracking with ACID compliance.\n* Built microservice endpoints with custom token-based filter authentication.\n\n### [Project 2 Name] - *React, Tailwind CSS, Firebase*\n* Constructed a collaborative canvas dashboard utilizing real-time event-driven updates.\n",
+      "description": "A stylish layout with a sidebar highlighting technical competencies, suited for frontend and full-stack developers.",
+      "fileContent": "# [Your Name] - Full Stack Developer\n[Email] • [Phone] • [Website] • [GitHub]\n\n## SUMMARY\nMotivated Computer Science graduate with hands-on experience in full-stack application development. Skilled in building resilient, server-side APIs and engaging, interactive browser interfaces.\n\n## KEY PROJECTS\n### [Project 1 Name] - *Spring Boot, Angular, PostgreSQL*\n* Designed a relational schema for robust transaction tracking with ACID compliance.\n* Built microservice endpoints with custom token-based filter authentication.\n\n### [Project 2 Name] - *React, Tailwind CSS, Firebase*\n* Constructed a collaborative canvas dashboard utilizing real-time event-driven updates.\n",
+      "downloadCount": 98
+    },
+    {
+      "id": "template-3",
+      "name": "Executive Tech Lead Format",
+      "targetRole": "Software Engineer",
+      "atsScore": 92,
+      "downloads": 65,
+      "category": "A comprehensive layout that emphasizes professional experience, projects, and systems architecture skills.",
+      "tags": [],
+      "sectionsJson": "# [Your Name]\n[Contact Details] • [Portfolio Link] • [GitHub]\n\n## PROFESSIONAL EXPERIENCE\n**Junior Software Engineer** | [Tech Corp]\n*[Month, Year] - Present*\n* Spearheaded transition of legacy monolithic endpoints to scalable RESTful services, servicing 10k+ daily queries.\n* Maintained CI/CD pipelines to guarantee seamless deployments with zero-downtime rollback controls.\n",
+      "description": "A comprehensive layout that emphasizes professional experience, projects, and systems architecture skills.",
+      "fileContent": "# [Your Name]\n[Contact Details] • [Portfolio Link] • [GitHub]\n\n## PROFESSIONAL EXPERIENCE\n**Junior Software Engineer** | [Tech Corp]\n*[Month, Year] - Present*\n* Spearheaded transition of legacy monolithic endpoints to scalable RESTful services, servicing 10k+ daily queries.\n* Maintained CI/CD pipelines to guarantee seamless deployments with zero-downtime rollback controls.\n",
+      "downloadCount": 65
+    },
+    {
+      "id": "template-4",
+      "name": "Data Science & Machine Learning Specialist",
+      "targetRole": "Software Engineer",
+      "atsScore": 92,
+      "downloads": 112,
+      "category": "Optimized for ML engineers, data scientists, and quantitative analysts featuring model evaluation and data pipeline metrics.",
+      "tags": [],
+      "sectionsJson": "# [Your Name] - Data Scientist & ML Engineer\n[City, Country] | [Phone] | [Email] | [LinkedIn] | [Kaggle / GitHub]\n\n## SUMMARY\nData Scientist with deep expertise in supervised/unsupervised learning, deep neural architectures, and distributed data pipelines. Proven record of deploying scalable PyTorch and scikit-learn models into high-volume production systems.\n\n## TECHNICAL SKILLS\n* **Languages:** Python (NumPy, Pandas, SciPy), SQL, R, C++\n* **ML/DL Frameworks:** PyTorch, TensorFlow, Scikit-Learn, Hugging Face, XGBoost\n* **Data Engineering & Cloud:** Apache Spark, Kafka, PostgreSQL, Snowflake, AWS SageMaker, Docker\n\n## MACHINE LEARNING PROJECTS\n### [Project 1: Real-Time Fraud Detection Engine] | *PyTorch, Kafka, FastAPI*\n* Trained a graph neural network on 2.4M transactions, achieving a 94.2% ROC-AUC score and reducing false positives by 28%.\n* Containerized real-time inference microservice with Docker and Triton, reducing p99 response latency to 18ms.\n\n### [Project 2: Customer Churn Propensity Model] | *XGBoost, Snowflake, Streamlit*\n* Engineered 45 feature signals across user activity logs, identifying high-risk churn cohorts with 89% precision.\n* Automated weekly retrain DAGs in Apache Airflow, recovering an estimated $140k in annualized ARR.\n",
+      "description": "Optimized for ML engineers, data scientists, and quantitative analysts featuring model evaluation and data pipeline metrics.",
+      "fileContent": "# [Your Name] - Data Scientist & ML Engineer\n[City, Country] | [Phone] | [Email] | [LinkedIn] | [Kaggle / GitHub]\n\n## SUMMARY\nData Scientist with deep expertise in supervised/unsupervised learning, deep neural architectures, and distributed data pipelines. Proven record of deploying scalable PyTorch and scikit-learn models into high-volume production systems.\n\n## TECHNICAL SKILLS\n* **Languages:** Python (NumPy, Pandas, SciPy), SQL, R, C++\n* **ML/DL Frameworks:** PyTorch, TensorFlow, Scikit-Learn, Hugging Face, XGBoost\n* **Data Engineering & Cloud:** Apache Spark, Kafka, PostgreSQL, Snowflake, AWS SageMaker, Docker\n\n## MACHINE LEARNING PROJECTS\n### [Project 1: Real-Time Fraud Detection Engine] | *PyTorch, Kafka, FastAPI*\n* Trained a graph neural network on 2.4M transactions, achieving a 94.2% ROC-AUC score and reducing false positives by 28%.\n* Containerized real-time inference microservice with Docker and Triton, reducing p99 response latency to 18ms.\n\n### [Project 2: Customer Churn Propensity Model] | *XGBoost, Snowflake, Streamlit*\n* Engineered 45 feature signals across user activity logs, identifying high-risk churn cohorts with 89% precision.\n* Automated weekly retrain DAGs in Apache Airflow, recovering an estimated $140k in annualized ARR.\n",
+      "downloadCount": 112
+    },
+    {
+      "id": "template-5",
+      "name": "DevOps & Cloud Platform Infrastructure",
+      "targetRole": "Software Engineer",
+      "atsScore": 92,
+      "downloads": 89,
+      "category": "Parser-vetted framework emphasizing Kubernetes, Terraform, cloud security, and resilient CI/CD pipelines.",
+      "tags": [],
+      "sectionsJson": "# [Your Name] - DevOps & Cloud Infrastructure Engineer\n[Location] | [Phone] | [Email] | [GitHub] | [LinkedIn]\n\n## SUMMARY\nSite Reliability & DevOps Engineer specializing in infrastructure-as-code, multi-region Kubernetes clusters, and zero-downtime deployment pipelines. Passionate about observability, security compliance, and cloud cost governance.\n\n## TECHNICAL PROFICIENCIES\n* **Cloud Providers:** AWS (EKS, S3, RDS, IAM, CloudFront), Google Cloud Platform\n* **Containers & Orchestration:** Docker, Kubernetes, Helm, Istio Service Mesh\n* **IaC & Automation:** Terraform, Ansible, GitHub Actions, ArgoCD, Jenkins\n* **Monitoring & Observability:** Prometheus, Grafana, Datadog, ELK Stack\n\n## WORK EXPERIENCE / PLATFORM PROJECTS\n### Cloud Migration & GitOps Pipeline | *Terraform, Kubernetes, ArgoCD*\n* Architected multi-cluster EKS infrastructure using modular Terraform, standardizing deployments across 3 environments.\n* Configured GitOps deployment flow with ArgoCD, eliminating configuration drift and cutting deployment times from 45m to 4m.\n* Implemented Prometheus alert rules and Grafana dashboards, maintaining 99.98% platform uptime across peak traffic events.\n",
+      "description": "Parser-vetted framework emphasizing Kubernetes, Terraform, cloud security, and resilient CI/CD pipelines.",
+      "fileContent": "# [Your Name] - DevOps & Cloud Infrastructure Engineer\n[Location] | [Phone] | [Email] | [GitHub] | [LinkedIn]\n\n## SUMMARY\nSite Reliability & DevOps Engineer specializing in infrastructure-as-code, multi-region Kubernetes clusters, and zero-downtime deployment pipelines. Passionate about observability, security compliance, and cloud cost governance.\n\n## TECHNICAL PROFICIENCIES\n* **Cloud Providers:** AWS (EKS, S3, RDS, IAM, CloudFront), Google Cloud Platform\n* **Containers & Orchestration:** Docker, Kubernetes, Helm, Istio Service Mesh\n* **IaC & Automation:** Terraform, Ansible, GitHub Actions, ArgoCD, Jenkins\n* **Monitoring & Observability:** Prometheus, Grafana, Datadog, ELK Stack\n\n## WORK EXPERIENCE / PLATFORM PROJECTS\n### Cloud Migration & GitOps Pipeline | *Terraform, Kubernetes, ArgoCD*\n* Architected multi-cluster EKS infrastructure using modular Terraform, standardizing deployments across 3 environments.\n* Configured GitOps deployment flow with ArgoCD, eliminating configuration drift and cutting deployment times from 45m to 4m.\n* Implemented Prometheus alert rules and Grafana dashboards, maintaining 99.98% platform uptime across peak traffic events.\n",
+      "downloadCount": 89
+    },
+    {
+      "id": "template-6",
+      "name": "Embedded Systems & Firmware Engineer",
+      "targetRole": "Software Engineer",
+      "atsScore": 92,
+      "downloads": 54,
+      "category": "Designed for IoT, microcontrollers, real-time operating systems (RTOS), and hardware-software interface engineers.",
+      "tags": [],
+      "sectionsJson": "# [Your Name] - Embedded Systems & Firmware Engineer\n[Location] | [Phone] | [Email] | [LinkedIn] | [Portfolio / GitHub]\n\n## TECHNICAL COMPETENCIES\n* **Languages:** C, Modern C++ (C++17), Assembly (ARM Cortex), Python\n* **Protocols & Hardware:** UART, SPI, I2C, CAN Bus, BLE, GPIO, Oscilloscopes, Logic Analyzers\n* **Platforms & RTOS:** FreeRTOS, STM32, ESP32, Nordic nRF52, Embedded Linux\n* **Tools:** Keil uVision, STM32CubeIDE, GCC Toolchain, Git, CMake\n\n## CORE HARDWARE PROJECTS\n### Autonomous Telemetry Sensor Node | *STM32, FreeRTOS, LoRaWAN*\n* Developed interrupt-driven FreeRTOS firmware in C, reading environmental sensor arrays over SPI/I2C at 100Hz.\n* Optimized deep-sleep power states, extending battery operational life from 3 weeks to 14 months on a single LiPo cell.\n* Designed modular HAL drivers decoupling peripheral logic from hardware registers, facilitating multi-MCU portability.\n",
+      "description": "Designed for IoT, microcontrollers, real-time operating systems (RTOS), and hardware-software interface engineers.",
+      "fileContent": "# [Your Name] - Embedded Systems & Firmware Engineer\n[Location] | [Phone] | [Email] | [LinkedIn] | [Portfolio / GitHub]\n\n## TECHNICAL COMPETENCIES\n* **Languages:** C, Modern C++ (C++17), Assembly (ARM Cortex), Python\n* **Protocols & Hardware:** UART, SPI, I2C, CAN Bus, BLE, GPIO, Oscilloscopes, Logic Analyzers\n* **Platforms & RTOS:** FreeRTOS, STM32, ESP32, Nordic nRF52, Embedded Linux\n* **Tools:** Keil uVision, STM32CubeIDE, GCC Toolchain, Git, CMake\n\n## CORE HARDWARE PROJECTS\n### Autonomous Telemetry Sensor Node | *STM32, FreeRTOS, LoRaWAN*\n* Developed interrupt-driven FreeRTOS firmware in C, reading environmental sensor arrays over SPI/I2C at 100Hz.\n* Optimized deep-sleep power states, extending battery operational life from 3 weeks to 14 months on a single LiPo cell.\n* Designed modular HAL drivers decoupling peripheral logic from hardware registers, facilitating multi-MCU portability.\n",
+      "downloadCount": 54
+    },
+    {
+      "id": "template-7",
+      "name": "Cybersecurity & Systems Defense Analyst",
+      "targetRole": "Software Engineer",
+      "atsScore": 92,
+      "downloads": 73,
+      "category": "Targeted for security analysts, penetration testers, and SOC engineers highlighting vulnerability management and compliance.",
+      "tags": [],
+      "sectionsJson": "# [Your Name] - Cybersecurity & SOC Analyst\n[Location] | [Phone] | [Email] | [LinkedIn] | [TryHackMe / Security Profile]\n\n## PROFESSIONAL SUMMARY\nCybersecurity professional with practical experience in threat detection, vulnerability assessment, and security automation. Dedicated to strengthening organizational defense posture and rapid incident containment.\n\n## TECHNICAL DOMAINS\n* **Security Tools:** Wireshark, Nmap, Burp Suite, Metasploit, Nessus, Splunk, Suricata\n* **Standards & Frameworks:** MITRE ATT&CK, NIST CSF, OWASP Top 10, ISO 27001\n* **Scripting & OS:** Python, Bash, PowerShell, Linux/Unix Security, Active Directory\n\n## SECURITY AUDITS & PROJECTS\n### Corporate SIEM Pipeline & Alert Triaging | *Splunk, Suricata, Python*\n* Configured correlation rules in Splunk SIEM mapping alerts to MITRE ATT&CK tactics, triaging 500+ daily telemetry events.\n* Created automated Python scripts to enrich threat intelligence feeds against VirusTotal and AbuseIPDB, cutting MTTR by 40%.\n* Conducted black-box web vulnerability scans against staging applications, uncovering and remediating 4 critical OWASP flaws.\n",
+      "description": "Targeted for security analysts, penetration testers, and SOC engineers highlighting vulnerability management and compliance.",
+      "fileContent": "# [Your Name] - Cybersecurity & SOC Analyst\n[Location] | [Phone] | [Email] | [LinkedIn] | [TryHackMe / Security Profile]\n\n## PROFESSIONAL SUMMARY\nCybersecurity professional with practical experience in threat detection, vulnerability assessment, and security automation. Dedicated to strengthening organizational defense posture and rapid incident containment.\n\n## TECHNICAL DOMAINS\n* **Security Tools:** Wireshark, Nmap, Burp Suite, Metasploit, Nessus, Splunk, Suricata\n* **Standards & Frameworks:** MITRE ATT&CK, NIST CSF, OWASP Top 10, ISO 27001\n* **Scripting & OS:** Python, Bash, PowerShell, Linux/Unix Security, Active Directory\n\n## SECURITY AUDITS & PROJECTS\n### Corporate SIEM Pipeline & Alert Triaging | *Splunk, Suricata, Python*\n* Configured correlation rules in Splunk SIEM mapping alerts to MITRE ATT&CK tactics, triaging 500+ daily telemetry events.\n* Created automated Python scripts to enrich threat intelligence feeds against VirusTotal and AbuseIPDB, cutting MTTR by 40%.\n* Conducted black-box web vulnerability scans against staging applications, uncovering and remediating 4 critical OWASP flaws.\n",
+      "downloadCount": 73
+    },
+    {
+      "id": "template-8",
+      "name": "Mobile Applications Engineer (iOS & Android)",
+      "targetRole": "Software Engineer",
+      "atsScore": 92,
+      "downloads": 81,
+      "category": "Tailored for cross-platform and native mobile app developers showcasing app architecture, state management, and offline cache.",
+      "tags": [],
+      "sectionsJson": "# [Your Name] - Mobile Software Engineer\n[Location] | [Phone] | [Email] | [App Store / Play Store Links] | [GitHub]\n\n## SUMMARY\nMobile developer with proven experience shipping fluid, battery-efficient iOS and Android applications. Focused on reactive architectures, native module bridging, and offline-first data synchronization.\n\n## SKILLS & FRAMEWORKS\n* **Frameworks & Languages:** React Native, Flutter, Swift, Kotlin, TypeScript, Dart\n* **State & Data:** Redux Toolkit, Zustand, Riverpod, SQLite, Realm, GraphQL, Firebase\n* **Build & Release:** Xcode, Android Studio, Fastlane, TestFlight, Google Play Console\n\n## MOBILE APPLICATIONS SHIPPED\n### [App Name: Health & Fitness Companion] | *Flutter, Riverpod, SQLite*\n* Built cross-platform mobile application supporting local step tracking and cloud sync across 45,000+ registered active users.\n* Implemented background sync service minimizing battery footprint while guaranteeing 99.9% offline-data consistency.\n* Streamlined CI/CD deployment pipelines using Fastlane, cutting binary release turnaround to under 15 minutes.\n",
+      "description": "Tailored for cross-platform and native mobile app developers showcasing app architecture, state management, and offline cache.",
+      "fileContent": "# [Your Name] - Mobile Software Engineer\n[Location] | [Phone] | [Email] | [App Store / Play Store Links] | [GitHub]\n\n## SUMMARY\nMobile developer with proven experience shipping fluid, battery-efficient iOS and Android applications. Focused on reactive architectures, native module bridging, and offline-first data synchronization.\n\n## SKILLS & FRAMEWORKS\n* **Frameworks & Languages:** React Native, Flutter, Swift, Kotlin, TypeScript, Dart\n* **State & Data:** Redux Toolkit, Zustand, Riverpod, SQLite, Realm, GraphQL, Firebase\n* **Build & Release:** Xcode, Android Studio, Fastlane, TestFlight, Google Play Console\n\n## MOBILE APPLICATIONS SHIPPED\n### [App Name: Health & Fitness Companion] | *Flutter, Riverpod, SQLite*\n* Built cross-platform mobile application supporting local step tracking and cloud sync across 45,000+ registered active users.\n* Implemented background sync service minimizing battery footprint while guaranteeing 99.9% offline-data consistency.\n* Streamlined CI/CD deployment pipelines using Fastlane, cutting binary release turnaround to under 15 minutes.\n",
+      "downloadCount": 81
+    },
+    {
+      "id": "custom-test-1792745983924",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "targetRole": "Software Engineer",
+      "atsScore": 92,
+      "downloads": 0,
+      "category": "Specialized layout for high-frequency trading and financial risk models.",
+      "tags": [],
+      "sectionsJson": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
+      "downloadCount": 0
+    },
+    {
+      "id": "custom-test-1792746142404",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "targetRole": "Software Engineer",
+      "atsScore": 92,
+      "downloads": 0,
+      "category": "Specialized layout for high-frequency trading and financial risk models.",
+      "tags": [],
+      "sectionsJson": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
+      "downloadCount": 0
+    },
+    {
+      "id": "custom-test-1792747976501",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    }
+  ],
+  "feedback": [
+    {
+      "id": "feed-bfc2dfd7",
+      "userId": "usr-1792746612499-cfc2f",
+      "studentName": "Integration Candidate",
+      "email": "candidate-1f110d@careernavigator.edu",
+      "rating": 5,
+      "category": "interview",
+      "comment": "The simulated technical assessor gave very specific guidance on Spring Boot bean lifecycles.",
+      "createdAt": "2026-10-23T09:10:13.645Z"
+    },
+    {
+      "id": "feed-36b96c37",
+      "userId": "usr-2503b199-0ba4-4870-a7d0-536f2b3144ff",
+      "studentName": "",
+      "email": "",
+      "rating": 5,
+      "category": "general",
+      "comment": "Excellent preparation platform!",
+      "createdAt": ""
+    }
+  ]
 }
