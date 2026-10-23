@@ -33,7 +33,9 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
             "/api/auth/url",
             "/auth/callback",
             "/api/health",
-            "/health"
+            "/health",
+            "/api/ai/status",
+            "/api/ai/quick-ask"
     );
 
     @Override

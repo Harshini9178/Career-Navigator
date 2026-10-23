@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   Video,
   VideoOff,
@@ -36,6 +36,7 @@ import { api } from '../lib/api.js';
 import { sound } from '../lib/sound.js';
 import { evaluateAnswerSubmission, compileFinalReport } from '../lib/evaluationService.js';
 import { BUILT_IN_QUESTION_BANK } from '../lib/questionBank.js';
+import { stopMediaStream } from '../lib/mediaManager.js';
 
 interface MockInterviewProps {
   interviewId: string;
@@ -95,12 +96,29 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
 
   // Voice recording & Web Speech API
   const [isRecording, setIsRecording] = useState(false);
+  const [speechStatus, setSpeechStatus] = useState<'idle' | 'listening' | 'processing' | 'unavailable' | 'error'>('idle');
+  const [interimTranscript, setInterimTranscript] = useState('');
   const [recordingSeconds, setRecordingSeconds] = useState(0);
   const [speechSupported, setSpeechSupported] = useState(true);
   const [speechError, setSpeechError] = useState<string | null>(null);
+  const [validationError, setValidationError] = useState<string | null>(null);
+  const [submissionError, setSubmissionError] = useState<string | null>(null);
+
+  // Speech Recognition Baseline Refs to prevent repeating words
+  const finalTranscriptRef = useRef<string>('');
+  const manualBaseTextRef = useRef<string>('');
 
   // Camera & Audio Telemetry
-  const [isCameraOn, setIsCameraOn] = useState(true);
+  const [isCameraOn, setIsCameraOn] = useState(() => {
+    try {
+      const stored = localStorage.getItem(`mock_interview_${interviewId}`);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed.status === 'completed' || parsed.interviewMode === 'text') return false;
+      }
+    } catch (_e) {}
+    return true;
+  });
   const [isMicMuted, setIsMicMuted] = useState(false);
   const [micVolume, setMicVolume] = useState<number>(0);
   const [cameraError, setCameraError] = useState<string | null>(null);
@@ -112,11 +130,121 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
   // DOM Refs
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const activeStreamsRef = useRef<Set<MediaStream>>(new Set());
   const audioContextRef = useRef<AudioContext | null>(null);
+  const audioSourceRef = useRef<MediaStreamAudioSourceNode | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const animFrameRef = useRef<number | null>(null);
   const recognitionRef = useRef<any>(null);
   const isRecordingRef = useRef(false);
+  const isMountedRef = useRef(true);
+  const mediaRequestIdRef = useRef<number>(0);
+  const isSessionCompletedRef = useRef<boolean>(false);
+
+  // Safe & Reusable Media, Speech, and Telemetry Cleanup
+  const stopInterviewMedia = useCallback(() => {
+    // Invalidate any in-flight getUserMedia requests
+    mediaRequestIdRef.current += 1;
+
+    // 1. Stop Speech Recognition
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.onresult = null;
+        recognitionRef.current.onerror = null;
+        recognitionRef.current.onend = null;
+        recognitionRef.current.onstart = null;
+        if (typeof recognitionRef.current.abort === 'function') {
+          recognitionRef.current.abort();
+        } else if (typeof recognitionRef.current.stop === 'function') {
+          recognitionRef.current.stop();
+        }
+      } catch (_e) {
+        // Recognition may already be stopped
+      }
+      recognitionRef.current = null;
+    }
+    isRecordingRef.current = false;
+
+    // 2. Stop All Media Stream Tracks
+    if (streamRef.current) {
+      try {
+        streamRef.current.getTracks().forEach((track) => {
+          try {
+            track.stop();
+          } catch (_e) {}
+        });
+      } catch (_e) {}
+      streamRef.current = null;
+    }
+
+    // Stop all additional active streams acquired during the session
+    if (activeStreamsRef.current) {
+      activeStreamsRef.current.forEach((stream) => {
+        try {
+          stream.getTracks().forEach((track) => {
+            try {
+              track.stop();
+            } catch (_e) {}
+          });
+        } catch (_e) {}
+      });
+      activeStreamsRef.current.clear();
+    }
+
+    // 3. Clear Video Element Preview & Attached MediaStreams
+    if (videoRef.current) {
+      try {
+        if (videoRef.current.srcObject && (videoRef.current.srcObject as MediaStream).getTracks) {
+          (videoRef.current.srcObject as MediaStream).getTracks().forEach((track) => {
+            try {
+              track.stop();
+            } catch (_e) {}
+          });
+        }
+      } catch (_e) {}
+      try {
+        videoRef.current.pause();
+      } catch (_e) {}
+      videoRef.current.srcObject = null;
+    }
+
+    // 4. Cancel Audio Analyser, Source, and Animation Frame
+    if (animFrameRef.current) {
+      cancelAnimationFrame(animFrameRef.current);
+      animFrameRef.current = null;
+    }
+    if (audioSourceRef.current) {
+      try {
+        audioSourceRef.current.disconnect();
+      } catch (_e) {}
+      audioSourceRef.current = null;
+    }
+    analyserRef.current = null;
+    if (audioContextRef.current && audioContextRef.current.state !== 'closed') {
+      try {
+        audioContextRef.current.close();
+      } catch (_e) {}
+      audioContextRef.current = null;
+    }
+
+    // 5. Cancel Speech Synthesis TTS
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      try {
+        window.speechSynthesis.cancel();
+      } catch (_e) {}
+    }
+
+    // 6. Reset UI indicators safely if still mounted
+    if (isMountedRef.current) {
+      setIsCameraOn(false);
+      setIsRecording(false);
+      setIsMicMuted(false);
+      setMicVolume(0);
+      setSpeechStatus('idle');
+      setInterimTranscript('');
+      setIsSpeaking(false);
+    }
+  }, []);
 
   // 1. Initial Load of interview (Server or Local Fallback)
   useEffect(() => {
@@ -159,9 +287,9 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
 
     return () => {
       isMounted = false;
-      stopMediaTracks();
+      stopInterviewMedia();
     };
-  }, [interviewId]);
+  }, [interviewId, stopInterviewMedia]);
 
   const applyInterviewData = (data: any) => {
     // Reconstruct structured questions if only string questions exist
@@ -230,6 +358,12 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
       prepTimerSeconds: data.prepTimerSeconds || 0,
       status: data.status || (data.overallScore ? 'completed' : 'started')
     };
+
+    if (intvObj.status === 'completed') {
+      isSessionCompletedRef.current = true;
+      setIsCameraOn(false);
+      stopInterviewMedia();
+    }
 
     setInterview(intvObj);
     setCurrentIdx(intvObj.currentQuestionIndex);
@@ -336,181 +470,278 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
     return () => clearInterval(timer);
   }, [isRecording]);
 
-  // 4. Camera & Microphone Setup with Volume Telemetry
+  // Component Mount / Unmount Lifecycle: Guarantee Full Media Release
   useEffect(() => {
-    let isMounted = true;
+    isMountedRef.current = true;
+    const handleUnload = () => {
+      stopInterviewMedia();
+    };
+    window.addEventListener('beforeunload', handleUnload);
+    window.addEventListener('pagehide', handleUnload);
 
-    if (interview && interview.status !== 'completed' && interview.interviewMode !== 'text' && isCameraOn) {
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices
-          .getUserMedia({
-            video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: 'user' },
-            audio: true
-          })
-          .then((stream) => {
-            if (!isMounted) {
-              stream.getTracks().forEach((track) => track.stop());
-              return;
-            }
-            streamRef.current = stream;
-            setCameraError(null);
-            if (videoRef.current) {
-              videoRef.current.srcObject = stream;
-            }
+    return () => {
+      isMountedRef.current = false;
+      window.removeEventListener('beforeunload', handleUnload);
+      window.removeEventListener('pagehide', handleUnload);
+      stopInterviewMedia();
+    };
+  }, [stopInterviewMedia]);
 
-            // Web Audio API mic level meter
-            try {
-              const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
-              const audioCtx = new AudioCtx();
-              audioContextRef.current = audioCtx;
-              const source = audioCtx.createMediaStreamSource(stream);
-              const analyser = audioCtx.createAnalyser();
-              analyser.fftSize = 256;
-              source.connect(analyser);
-              analyserRef.current = analyser;
+  // Automatic cleanup when interview reaches completed status
+  useEffect(() => {
+    if (interview?.status === 'completed') {
+      isSessionCompletedRef.current = true;
+      stopInterviewMedia();
+    }
+  }, [interview?.status, stopInterviewMedia]);
 
-              const dataArray = new Uint8Array(analyser.frequencyBinCount);
-              const updateMeter = () => {
-                if (!analyserRef.current) return;
-                analyserRef.current.getByteFrequencyData(dataArray);
-                let sum = 0;
-                for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
-                const avg = sum / dataArray.length;
-                setMicVolume(Math.min(100, Math.round((avg / 128) * 100)));
-                animFrameRef.current = requestAnimationFrame(updateMeter);
-              };
-              updateMeter();
-            } catch (_audioErr) {
-              // ignore audio analyser error
-            }
-          })
-          .catch((err) => {
-            console.warn('Camera/mic telemetry stream error:', err);
-            if (isMounted) {
-              setCameraError('Camera/microphone preview not active (permission denied or device in use). Text mode is fully available.');
-              setIsCameraOn(false);
-            }
+  // Camera & Microphone Setup with Volume Telemetry
+  useEffect(() => {
+    // Strictly prevent media access if completed, text-only, or camera turned off
+    if (!interview || interview.status === 'completed' || isSessionCompletedRef.current || interview.interviewMode === 'text' || !isCameraOn) {
+      stopInterviewMedia();
+      return;
+    }
+
+    const currentRequestId = ++mediaRequestIdRef.current;
+    let isEffectActive = true;
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices
+        .getUserMedia({
+          video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: 'user' },
+          audio: true
+        })
+        .then((stream) => {
+          if (!isEffectActive || !isMountedRef.current || isSessionCompletedRef.current || interview.status === 'completed' || currentRequestId !== mediaRequestIdRef.current) {
+            stopMediaStream(stream);
+            return;
+          }
+
+          activeStreamsRef.current.add(stream);
+          streamRef.current = stream;
+
+          stream.getTracks().forEach((track) => {
+            track.addEventListener('ended', () => {
+              if (stream.getTracks().every((t) => t.readyState === 'ended')) {
+                activeStreamsRef.current.delete(stream);
+              }
+            });
           });
-      } else {
+
+          if (isMountedRef.current) {
+            setCameraError(null);
+          }
+          if (videoRef.current) {
+            videoRef.current.srcObject = stream;
+          }
+
+          // Web Audio API mic level meter
+          try {
+            const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+            const audioCtx = new AudioCtx();
+            audioContextRef.current = audioCtx;
+            const source = audioCtx.createMediaStreamSource(stream);
+            audioSourceRef.current = source;
+            const analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 256;
+            source.connect(analyser);
+            analyserRef.current = analyser;
+
+            const dataArray = new Uint8Array(analyser.frequencyBinCount);
+            const updateMeter = () => {
+              if (!analyserRef.current || !isEffectActive || currentRequestId !== mediaRequestIdRef.current) return;
+              analyserRef.current.getByteFrequencyData(dataArray);
+              let sum = 0;
+              for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
+              const avg = sum / dataArray.length;
+              if (isMountedRef.current) {
+                setMicVolume(Math.min(100, Math.round((avg / 128) * 100)));
+              }
+              animFrameRef.current = requestAnimationFrame(updateMeter);
+            };
+            updateMeter();
+          } catch (_audioErr) {
+            // ignore audio analyser error
+          }
+        })
+        .catch((err) => {
+          console.warn('Camera/mic telemetry stream error:', err);
+          if (isMountedRef.current && isEffectActive && currentRequestId === mediaRequestIdRef.current) {
+            setCameraError('Camera/microphone preview not active (permission denied or device in use). Text mode is fully available.');
+            setIsCameraOn(false);
+          }
+        });
+    } else {
+      if (isMountedRef.current) {
         setCameraError('MediaDevices API not supported in this browser.');
         setIsCameraOn(false);
       }
     }
 
     return () => {
-      isMounted = false;
-      stopMediaTracks();
+      isEffectActive = false;
+      stopInterviewMedia();
     };
-  }, [isCameraOn, interview?.status, interview?.interviewMode]);
+  }, [isCameraOn, interview?.status, interview?.interviewMode, stopInterviewMedia]);
 
-  const stopMediaTracks = () => {
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach((track) => track.stop());
-      streamRef.current = null;
+  // 5. Speech-to-Text Implementation (Non-Duplicating)
+  const stopSpeechRecognition = () => {
+    isRecordingRef.current = false;
+    if (isMountedRef.current) {
+      setIsRecording(false);
+      setSpeechStatus('idle');
+      setInterimTranscript('');
     }
-    if (animFrameRef.current) {
-      cancelAnimationFrame(animFrameRef.current);
-      animFrameRef.current = null;
-    }
-    if (audioContextRef.current && audioContextRef.current.state !== 'closed') {
+    if (recognitionRef.current) {
       try {
-        audioContextRef.current.close();
+        recognitionRef.current.onresult = null;
+        recognitionRef.current.onerror = null;
+        recognitionRef.current.onend = null;
+        recognitionRef.current.onstart = null;
+        recognitionRef.current.stop();
       } catch (_e) {
         // ignore
       }
-      audioContextRef.current = null;
+      recognitionRef.current = null;
     }
   };
 
-  // 5. Speech-to-Text Toggle
-  const handleToggleRecording = () => {
-    setSpeechError(null);
-
-    if (isRecording) {
-      sound.playClick(800);
-      isRecordingRef.current = false;
-      setIsRecording(false);
-      if (recognitionRef.current) {
-        try {
-          recognitionRef.current.stop();
-        } catch (_e) {
-          // ignore
-        }
-      }
-      return;
-    }
-
+  const startSpeechRecognition = () => {
     sound.playMicStart();
     if (!speechSupported) {
       setSpeechError('Speech recognition is not supported in this browser. Please use Chrome/Edge or type your answer.');
+      setSpeechStatus('unavailable');
       return;
+    }
+
+    // Stop existing instance first
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.onresult = null;
+        recognitionRef.current.onerror = null;
+        recognitionRef.current.onend = null;
+        recognitionRef.current.stop();
+      } catch (_e) {}
+      recognitionRef.current = null;
     }
 
     try {
       const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        setSpeechError('Speech recognition is not available.');
+        setSpeechStatus('unavailable');
+        return;
+      }
+
       const recognition = new SpeechRecognition();
       recognitionRef.current = recognition;
       recognition.continuous = true;
       recognition.interimResults = true;
       recognition.lang = 'en-US';
 
+      // Snapshot current manual text as the stable baseline
+      const currentAnswerObj = draftAnswers[currentIdx] || { text: '', code: '', language: 'java' };
+      manualBaseTextRef.current = (currentAnswerObj.text || '').trim();
+      finalTranscriptRef.current = '';
+      setInterimTranscript('');
+
       recognition.onstart = () => {
         isRecordingRef.current = true;
         setIsRecording(true);
+        setSpeechStatus('listening');
         setSpeechError(null);
+        if (validationError) setValidationError(null);
       };
 
       recognition.onresult = (event: any) => {
-        let finalChunk = '';
-        let interimChunk = '';
+        let finalSegment = '';
+        let interimSegment = '';
 
-        for (let i = event.resultIndex; i < event.results.length; ++i) {
-          if (event.results[i].isFinal) {
-            finalChunk += event.results[i][0].transcript + ' ';
-          } else {
-            interimChunk += event.results[i][0].transcript;
+        for (let i = 0; i < event.results.length; ++i) {
+          const item = event.results[i];
+          if (item && item[0]) {
+            if (item.isFinal) {
+              finalSegment += item[0].transcript.trim() + ' ';
+            } else {
+              interimSegment += item[0].transcript;
+            }
           }
         }
 
+        finalTranscriptRef.current = finalSegment.trim();
+        setInterimTranscript(interimSegment);
+        setSpeechStatus(interimSegment ? 'processing' : 'listening');
+
+        // Build composite answer from baseline + finalized speech + latest interim snippet
+        const parts = [
+          manualBaseTextRef.current,
+          finalTranscriptRef.current,
+          interimSegment.trim()
+        ].filter(Boolean);
+
+        const combinedText = parts.join(' ');
+
         setDraftAnswers((prev) => {
           const current = prev[currentIdx] || { text: '', code: '', language: 'java' };
-          const base = current.text ? current.text.trim() + ' ' : '';
           return {
             ...prev,
             [currentIdx]: {
               ...current,
-              text: (base + finalChunk + interimChunk).trimStart()
+              text: combinedText,
+              skipped: false,
+              evaluation: undefined // Invalidate previous score on new speech
             }
           };
         });
       };
 
       recognition.onerror = (event: any) => {
+        console.warn('Speech recognition event error:', event.error);
         if (event.error === 'not-allowed') {
           setSpeechError('Microphone permission denied for speech recognition.');
-          setIsRecording(false);
-          isRecordingRef.current = false;
+          setSpeechStatus('unavailable');
+          stopSpeechRecognition();
+        } else if (event.error === 'no-speech') {
+          // Expected on pauses, keep listening
+        } else if (event.error !== 'aborted') {
+          setSpeechError(`Speech error: ${event.error}`);
+          setSpeechStatus('error');
         }
       };
 
       recognition.onend = () => {
         if (isRecordingRef.current) {
+          // Commit current text to baseline and seamlessly restart
+          const currentAnswerObj = draftAnswers[currentIdx] || { text: '', code: '', language: 'java' };
+          manualBaseTextRef.current = (currentAnswerObj.text || '').trim();
+          finalTranscriptRef.current = '';
+          setInterimTranscript('');
           try {
             recognition.start();
           } catch (_e) {
-            setIsRecording(false);
-            isRecordingRef.current = false;
+            stopSpeechRecognition();
           }
         } else {
-          setIsRecording(false);
+          stopSpeechRecognition();
         }
       };
 
       recognition.start();
     } catch (err: any) {
       setSpeechError('Failed to initialize speech recognition: ' + err.message);
-      setIsRecording(false);
-      isRecordingRef.current = false;
+      setSpeechStatus('error');
+      stopSpeechRecognition();
+    }
+  };
+
+  const handleToggleRecording = () => {
+    setSpeechError(null);
+    if (isRecording) {
+      sound.playClick(800);
+      stopSpeechRecognition();
+    } else {
+      startSpeechRecognition();
     }
   };
 
@@ -572,23 +803,32 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
   };
 
   const handleUpdateText = (val: string) => {
+    manualBaseTextRef.current = val;
+    finalTranscriptRef.current = '';
+    setInterimTranscript('');
+    if (validationError) setValidationError(null);
+
     setDraftAnswers((prev) => ({
       ...prev,
       [currentIdx]: {
         ...(prev[currentIdx] || { code: '', language: 'java' }),
         text: val,
-        skipped: false
+        skipped: false,
+        evaluation: undefined // Invalidate previous score on edit
       }
     }));
   };
 
   const handleUpdateCode = (val: string) => {
+    if (validationError) setValidationError(null);
+
     setDraftAnswers((prev) => ({
       ...prev,
       [currentIdx]: {
         ...(prev[currentIdx] || { text: '', language: 'java' }),
         code: val,
-        skipped: false
+        skipped: false,
+        evaluation: undefined // Invalidate previous score on edit
       }
     }));
   };
@@ -610,50 +850,119 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
     });
   };
 
-  // 7. Save Current Question & Optional In-flight Evaluation
+  // Safe Navigation Between Questions
+  const handleNavigateToQuestion = (targetIdx: number) => {
+    if (targetIdx < 0 || targetIdx >= structuredQuestions.length) return;
+    if (isRecording) {
+      stopSpeechRecognition();
+    }
+    setValidationError(null);
+    setCurrentIdx(targetIdx);
+  };
+
+  // 7. Save Current Question & In-flight Evaluation with Validation
   const handleSaveCurrentAnswer = async (advance: boolean = false) => {
     if (!currentQuestion) return;
 
+    // 1. Ensure speech dictation is stopped and flushed
     if (isRecording) {
-      handleToggleRecording();
+      stopSpeechRecognition();
     }
 
+    const current = draftAnswers[currentIdx] || { text: '', code: '', language: 'java' };
+    const hasText = (current.text || '').trim().length > 0;
+    const hasCode = (current.code || '').trim().length > 0;
+
+    // 2. Validate non-empty answer before saving and proceeding
+    if (!hasText && !hasCode) {
+      setValidationError('Please answer this question or use Skip to continue.');
+      return;
+    }
+
+    setValidationError(null);
     setEvaluatingCurrent(true);
 
-    const fillerCount = countFillerWords(currentDraft.text);
-    const liveWPM = calculateWPM(currentDraft.text, questionSeconds);
+    try {
+      const fillerCount = countFillerWords(current.text);
+      const liveWPM = calculateWPM(current.text, questionSeconds);
 
-    const evalResult = await evaluateAnswerSubmission({
-      interviewId,
-      question: currentQuestion,
-      answerText: currentDraft.text,
-      code: currentDraft.code,
-      language: currentDraft.language,
-      skipped: false,
-      wordsPerMinute: liveWPM,
-      fillerWordCount: fillerCount,
-      durationSeconds: questionSeconds
-    });
+      const evalResult = await evaluateAnswerSubmission({
+        interviewId,
+        question: currentQuestion,
+        answerText: current.text,
+        code: current.code,
+        language: current.language,
+        skipped: false,
+        wordsPerMinute: liveWPM,
+        fillerWordCount: fillerCount,
+        durationSeconds: questionSeconds
+      });
 
-    setDraftAnswers((prev) => ({
-      ...prev,
-      [currentIdx]: {
-        ...prev[currentIdx],
-        evaluation: evalResult,
-        skipped: false
+      setDraftAnswers((prev) => ({
+        ...prev,
+        [currentIdx]: {
+          ...prev[currentIdx],
+          text: current.text,
+          code: current.code,
+          language: current.language,
+          evaluation: evalResult,
+          skipped: false
+        }
+      }));
+
+      sound.playChime();
+
+      // Navigate only after answer is persisted
+      if (advance) {
+        if (currentIdx < structuredQuestions.length - 1) {
+          handleNavigateToQuestion(currentIdx + 1);
+        } else {
+          // On the last question, open submission confirmation screen
+          setShowSubmitConfirm(true);
+        }
       }
-    }));
-
-    sound.playChime();
-    setEvaluatingCurrent(false);
-
-    if (advance && currentIdx < structuredQuestions.length - 1) {
-      setCurrentIdx((prev) => prev + 1);
+    } catch (err: any) {
+      console.error('Failed to evaluate/save answer:', err);
+      setValidationError('Failed to save answer. Your answer has been retained—please click retry.');
+    } finally {
+      setEvaluatingCurrent(false);
     }
   };
 
-  // 8. Skip Question
-  const handleSkipQuestion = () => {
+  // 8. Skip Question with Explicit Tracking
+  const handleSkipQuestion = async () => {
+    if (!currentQuestion) return;
+
+    if (isRecording) {
+      stopSpeechRecognition();
+    }
+
+    setValidationError(null);
+    setEvaluatingCurrent(true);
+
+    const skipTimestamp = new Date().toISOString();
+
+    const skippedEval: AnswerEvaluation = {
+      score: 0,
+      technicalScore: 0,
+      communicationScore: 0,
+      confidenceScore: 0,
+      grammar: 'N/A (Skipped)',
+      clarity: 'Question was skipped by candidate.',
+      feedback: 'This question was explicitly skipped by the candidate.',
+      strengths: [],
+      missingConcepts: currentQuestion.expectedAnswerPoints || [],
+      improvementSuggestions: [
+        `Review fundamental concepts in ${currentQuestion.category} under difficulty level "${currentQuestion.difficulty}".`,
+        'Practice articulating key bullet points aloud before moving to code.'
+      ],
+      modelAnswerPoints: currentQuestion.expectedAnswerPoints || [],
+      wordsPerMinute: 0,
+      fillerWordCount: 0,
+      answerDurationSeconds: questionSeconds,
+      evaluationSource: 'rubric'
+    };
+
     setDraftAnswers((prev) => ({
       ...prev,
       [currentIdx]: {
@@ -661,25 +970,30 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
         code: '',
         language: currentDraft.language || 'java',
         skipped: true,
-        evaluation: {
-          score: 0,
-          technicalScore: 0,
-          communicationScore: 0,
-          confidenceScore: 0,
-          grammar: 'N/A',
-          clarity: 'Skipped',
-          feedback: 'Question was skipped by candidate.',
-          strengths: [],
-          missingConcepts: currentQuestion ? currentQuestion.expectedAnswerPoints : [],
-          improvementSuggestions: ['Revisit this topic in the question review section.'],
-          modelAnswerPoints: currentQuestion ? currentQuestion.expectedAnswerPoints : [],
-          evaluationSource: 'rubric'
-        }
+        skipTimestamp,
+        evaluation: skippedEval
       }
     }));
 
+    try {
+      await api.post(`/api/interview/${interviewId}/answer`, {
+        question: currentQuestion.question,
+        questionId: currentQuestion.id,
+        category: currentQuestion.category,
+        difficulty: currentQuestion.difficulty,
+        answer: '[Question Skipped]',
+        skipped: true
+      });
+    } catch (err) {
+      console.warn('Backend record skip error, saved to local state:', err);
+    } finally {
+      setEvaluatingCurrent(false);
+    }
+
     if (currentIdx < structuredQuestions.length - 1) {
-      setCurrentIdx((prev) => prev + 1);
+      handleNavigateToQuestion(currentIdx + 1);
+    } else {
+      setShowSubmitConfirm(true);
     }
   };
 
@@ -688,97 +1002,143 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
     handleFinalizeInterview();
   };
 
-  // 10. Final Submission of Mock Interview
+  // 10. Final Submission of Mock Interview with Strict Lifecycle & Safe Retry
   const handleFinalizeInterview = async () => {
     if (!interview) return;
     setSubmittingFinal(true);
-    setShowSubmitConfirm(false);
-    stopMediaTracks();
+    setSubmissionError(null);
 
-    // Prepare complete answers array
+    // 1. Finalize the candidate's current answer and stop speech recognition
+    if (isRecording) {
+      stopSpeechRecognition();
+    }
+
+    const currentDraft = draftAnswers[currentIdx] || { text: '', code: '', language: 'java' };
+    const latestAnswers = {
+      ...draftAnswers,
+      [currentIdx]: {
+        ...currentDraft,
+        text: (currentDraft.text || '').trim(),
+        code: (currentDraft.code || '').trim()
+      }
+    };
+
+    // 2. Save all answers and skipped questions, & 3. Complete pending evaluations
     const compiledAnswers: InterviewAnswer[] = [];
 
-    for (let i = 0; i < structuredQuestions.length; i++) {
-      const sq = structuredQuestions[i];
-      const draft = draftAnswers[i] || { text: '', code: '', language: 'java' };
+    try {
+      for (let i = 0; i < structuredQuestions.length; i++) {
+        const sq = structuredQuestions[i];
+        const draft = latestAnswers[i] || { text: '', code: '', language: 'java' };
 
-      let evaluation = draft.evaluation;
-      if (!evaluation) {
-        // Evaluate now if not evaluated earlier
-        evaluation = await evaluateAnswerSubmission({
-          interviewId,
-          question: sq,
-          answerText: draft.text,
-          code: draft.code,
-          language: draft.language,
-          skipped: draft.skipped || (!draft.text.trim() && !draft.code.trim()),
-          wordsPerMinute: 0,
-          fillerWordCount: countFillerWords(draft.text),
-          durationSeconds: 30
+        let evaluation = draft.evaluation;
+        const isSkippedOrEmpty = draft.skipped || (!draft.text?.trim() && !draft.code?.trim());
+
+        if (!evaluation) {
+          evaluation = await evaluateAnswerSubmission({
+            interviewId,
+            question: sq,
+            answerText: draft.text || (isSkippedOrEmpty ? '[Question Skipped]' : ''),
+            code: draft.code || '',
+            language: draft.language || 'java',
+            skipped: isSkippedOrEmpty,
+            wordsPerMinute: 0,
+            fillerWordCount: countFillerWords(draft.text || ''),
+            durationSeconds: 30
+          });
+        }
+
+        compiledAnswers.push({
+          question: sq.question,
+          questionId: sq.id,
+          category: sq.category,
+          difficulty: sq.difficulty,
+          answer: draft.text || (isSkippedOrEmpty ? '[Question Skipped]' : ''),
+          code: draft.code || '',
+          language: draft.language || 'java',
+          skipped: isSkippedOrEmpty,
+          skipTimestamp: draft.skipTimestamp,
+          evaluation,
+          expectedAnswerPoints: sq.expectedAnswerPoints,
+          evaluationCriteria: sq.evaluationCriteria
         });
       }
 
-      compiledAnswers.push({
-        question: sq.question,
-        questionId: sq.id,
-        category: sq.category,
-        difficulty: sq.difficulty,
-        answer: draft.text || (draft.skipped ? '[Skipped]' : ''),
-        code: draft.code,
-        language: draft.language,
-        skipped: draft.skipped || (!draft.text.trim() && !draft.code.trim()),
-        evaluation,
-        expectedAnswerPoints: sq.expectedAnswerPoints,
-        evaluationCriteria: sq.evaluationCriteria
-      });
-    }
+      // Compile comprehensive final metrics
+      const reportData = compileFinalReport(interview.jobRole, compiledAnswers);
 
-    // Compile comprehensive final metrics
-    const reportData = compileFinalReport(interview.jobRole, compiledAnswers);
+      const updatedInterview: InterviewType = {
+        ...interview,
+        status: 'completed',
+        answers: compiledAnswers,
+        overallScore: reportData.overallScore,
+        averageAnsweredScore: reportData.averageAnsweredScore,
+        averageScoreOutOf10: reportData.averageScoreOutOf10,
+        totalPointsEarned: reportData.totalPointsEarned,
+        maxPossiblePoints: reportData.maxPossiblePoints,
+        technicalScore: reportData.technicalScore,
+        communicationScore: reportData.communicationScore,
+        confidenceScore: reportData.confidenceScore,
+        categoryScores: reportData.categoryScores,
+        questionsAnswered: reportData.questionsAnswered,
+        questionsSkipped: reportData.questionsSkipped,
+        questionsPending: reportData.questionsPending,
+        strongestAreas: reportData.strongestAreas,
+        topicsToImprove: reportData.topicsToImprove,
+        suggestedPracticeQuestions: reportData.suggestedPracticeQuestions,
+        recommendedLearningTopics: reportData.recommendedLearningTopics,
+        feedbackText: reportData.feedbackText,
+        suggestions: reportData.topicsToImprove
+      };
 
-    const updatedInterview: InterviewType = {
-      ...interview,
-      status: 'completed',
-      answers: compiledAnswers,
-      overallScore: reportData.overallScore,
-      technicalScore: reportData.technicalScore,
-      communicationScore: reportData.communicationScore,
-      confidenceScore: reportData.confidenceScore,
-      categoryScores: reportData.categoryScores,
-      questionsAnswered: reportData.questionsAnswered,
-      questionsSkipped: reportData.questionsSkipped,
-      strongestAreas: reportData.strongestAreas,
-      topicsToImprove: reportData.topicsToImprove,
-      suggestedPracticeQuestions: reportData.suggestedPracticeQuestions,
-      recommendedLearningTopics: reportData.recommendedLearningTopics,
-      feedbackText: reportData.feedbackText,
-      suggestions: reportData.topicsToImprove
-    };
-
-    // Save to server
-    try {
-      await api.post(`/api/interview/${interviewId}/submit`, {
+      // 4. Submit the interview and confirm success
+      const isLocalSession = interviewId.startsWith('int-local-');
+      const submitResponse = await api.post(`/api/interview/${interviewId}/submit`, {
         ...reportData,
         answers: compiledAnswers
       });
-    } catch (err) {
-      console.warn('Backend interview submit error, saving to local store:', err);
-    }
 
-    // Always persist to localStorage for instant reload & Past Performance Logs
-    try {
-      localStorage.setItem(`mock_interview_${interviewId}`, JSON.stringify(updatedInterview));
-      const userHistory = localStorage.getItem(`mock_history_${interview.userId}`);
-      let list = userHistory ? JSON.parse(userHistory) : [];
-      list = list.filter((item: any) => item.id !== interviewId);
-      list.unshift(updatedInterview);
-      localStorage.setItem(`mock_history_${interview.userId}`, JSON.stringify(list));
-    } catch (_e) {
-      // ignore
-    }
+      if (!submitResponse.ok && !isLocalSession) {
+        let errorMsg = `Server submission returned HTTP ${submitResponse.status}`;
+        try {
+          const errData = await submitResponse.json();
+          if (errData.message) errorMsg = errData.message;
+        } catch (_parseErr) {}
+        throw new Error(errorMsg);
+      }
 
-    setInterview(updatedInterview);
-    setSubmittingFinal(false);
+      // 5. Immediately stop all camera and microphone tracks.
+      // 6. Stop speech recognition and clear the video preview.
+      isSessionCompletedRef.current = true;
+      stopInterviewMedia();
+      setShowSubmitConfirm(false);
+
+      // Persist completed interview to local storage for instant reload & Past Performance Logs
+      try {
+        localStorage.setItem(`mock_interview_${interviewId}`, JSON.stringify(updatedInterview));
+        const userHistory = localStorage.getItem(`mock_history_${interview.userId}`);
+        let list = userHistory ? JSON.parse(userHistory) : [];
+        list = list.filter((item: any) => item.id !== interviewId);
+        list.unshift(updatedInterview);
+        localStorage.setItem(`mock_history_${interview.userId}`, JSON.stringify(list));
+      } catch (_e) {}
+
+      // 7. Display the final interview report
+      sound.playSuccess();
+      setInterview(updatedInterview);
+      setSubmissionError(null);
+    } catch (submitErr: any) {
+      console.error('Interview submission failed:', submitErr);
+      // Safe retry preservation: retain all candidate answers
+      setSubmissionError(`Submission failed: ${submitErr.message || 'Network error'}. Your answers are safely preserved. Please retry.`);
+      try {
+        const inProgress = { ...interview, answers: compiledAnswers };
+        localStorage.setItem(`mock_interview_${interviewId}`, JSON.stringify(inProgress));
+      } catch (_e) {}
+      setShowSubmitConfirm(true);
+    } finally {
+      setSubmittingFinal(false);
+    }
   };
 
   // Keyboard shortcut: Cmd/Ctrl + Enter to Save and Next
@@ -822,8 +1182,10 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
   const isCompleted = interview.status === 'completed';
   const totalQuestions = structuredQuestions.length || 1;
   const answeredCount = Object.values(draftAnswers).filter(
-    (d: any) => (d?.text && d.text.trim().length > 0) || (d?.code && d.code.trim().length > 0)
+    (d: any) => !d?.skipped && ((d?.text && d.text.trim().length > 0 && d.text !== '[Question Skipped]') || (d?.code && d.code.trim().length > 0))
   ).length;
+  const skippedCount = Object.values(draftAnswers).filter((d: any) => !!d?.skipped).length;
+  const remainingCount = Math.max(0, totalQuestions - answeredCount - skippedCount);
 
   return (
     <div className="p-4 sm:p-8 max-w-7xl mx-auto space-y-6 text-[var(--text-primary)]">
@@ -831,10 +1193,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
       <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
         <button
           onClick={() => {
-            stopMediaTracks();
-            if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-              window.speechSynthesis.cancel();
-            }
+            stopInterviewMedia();
             onNavigate('interview-prep');
           }}
           className="inline-flex items-center space-x-1.5 text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition font-semibold"
@@ -872,7 +1231,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                     Question {currentIdx + 1} of {totalQuestions}
                   </span>
                   <span className="text-[10px] text-[var(--text-muted)] font-mono">
-                    ({answeredCount} answered)
+                    ({answeredCount} answered • {skippedCount} skipped{remainingCount > 0 ? ` • ${remainingCount} remaining` : ''})
                   </span>
                 </div>
 
@@ -915,23 +1274,23 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
               <div className="flex items-center gap-1.5 pt-1 overflow-x-auto pb-1">
                 {structuredQuestions.map((sq, idx) => {
                   const draft = draftAnswers[idx];
-                  const hasAnswer = (draft?.text && draft.text.trim().length > 0) || (draft?.code && draft.code.trim().length > 0);
+                  const hasAnswer = !draft?.skipped && ((draft?.text && draft.text.trim().length > 0 && draft.text !== '[Question Skipped]') || (draft?.code && draft.code.trim().length > 0));
                   const isCurrent = idx === currentIdx;
 
                   return (
                     <button
                       key={sq.id || idx}
-                      onClick={() => setCurrentIdx(idx)}
+                      onClick={() => handleNavigateToQuestion(idx)}
                       className={`w-7 h-7 rounded-lg text-xs font-mono font-bold transition flex items-center justify-center border ${
                         isCurrent
-                          ? 'bg-[var(--primary)] border-[var(--primary)] text-white shadow-md'
+                          ? 'bg-[var(--primary)] border-[var(--primary)] text-white shadow-md ring-2 ring-[var(--primary)]/30'
                           : draft?.skipped
-                          ? 'bg-[var(--warning-soft)] border-[var(--warning)]/30 text-[var(--warning)]'
+                          ? 'bg-[var(--warning-soft)] border-[var(--warning)]/40 text-[var(--warning)]'
                           : hasAnswer
                           ? 'bg-[var(--primary-soft)] border-[var(--primary)]/30 text-[var(--primary)]'
                           : 'bg-[var(--bg-base)] border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text-primary)]'
                       }`}
-                      title={`Question ${idx + 1}: ${sq.category}`}
+                      title={`Question ${idx + 1}: ${draft?.skipped ? 'Skipped' : hasAnswer ? 'Answered' : 'Not yet attempted'} (${sq.category})`}
                     >
                       {idx + 1}
                     </button>
@@ -1112,14 +1471,56 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                     </div>
                   )}
 
+                  {/* Validation Error Banner */}
+                  {validationError && (
+                    <div className="flex items-center space-x-2 p-3 bg-[var(--danger-soft)] border border-[var(--danger)]/30 rounded-xl text-[var(--danger)] text-xs font-semibold animate-shake">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                      <span>{validationError}</span>
+                    </div>
+                  )}
+
+                  {/* Submission Failure Alert with Safe Retry */}
+                  {submissionError && (
+                    <div className="flex items-center justify-between p-3 bg-[var(--danger-soft)] border border-[var(--danger)]/30 rounded-xl text-[var(--danger)] text-xs font-semibold animate-shake">
+                      <div className="flex items-center space-x-2">
+                        <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                        <span>{submissionError}</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handleFinalizeInterview}
+                        className="px-3 py-1 bg-[var(--danger)] hover:opacity-90 text-white rounded-lg text-xs font-bold transition ml-2"
+                      >
+                        Retry Submit
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Speech Dictation Status & Interim Live Preview */}
+                  {isRecording && (
+                    <div className="flex items-center justify-between p-2.5 bg-[var(--bg-base)] border border-[var(--primary)]/30 rounded-xl text-xs font-mono">
+                      <div className="flex items-center space-x-2">
+                        <span className="w-2.5 h-2.5 rounded-full bg-[var(--danger)] animate-ping flex-shrink-0" />
+                        <span className="font-bold text-[var(--primary)]">
+                          {speechStatus === 'listening' ? 'Listening to speech...' : 'Processing audio transcript...'}
+                        </span>
+                      </div>
+                      {interimTranscript && (
+                        <span className="text-[var(--text-muted)] italic truncate max-w-sm pl-2">
+                          "{interimTranscript}"
+                        </span>
+                      )}
+                    </div>
+                  )}
+
                   {/* Navigation and Action Buttons */}
                   <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[var(--border)]">
                     {/* Left: Previous / Dictation */}
                     <div className="flex items-center space-x-2">
                       <button
                         type="button"
-                        onClick={() => setCurrentIdx((prev) => Math.max(0, prev - 1))}
-                        disabled={currentIdx === 0}
+                        onClick={() => handleNavigateToQuestion(Math.max(0, currentIdx - 1))}
+                        disabled={currentIdx === 0 || evaluatingCurrent}
                         className="inline-flex items-center space-x-1 text-xs font-semibold px-3 py-2 rounded-xl border border-[var(--border)] bg-[var(--bg-base)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-40 disabled:cursor-not-allowed transition"
                       >
                         <ChevronLeft className="w-4 h-4" />
@@ -1129,6 +1530,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                       <button
                         type="button"
                         onClick={handleToggleRecording}
+                        disabled={evaluatingCurrent}
                         aria-label={isRecording ? 'Stop voice dictation' : 'Start voice dictation'}
                         className={`inline-flex items-center space-x-1.5 text-xs font-semibold px-3.5 py-2 rounded-xl transition ${
                           isRecording
@@ -1147,7 +1549,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                         type="button"
                         onClick={() => handleSaveCurrentAnswer(false)}
                         disabled={evaluatingCurrent}
-                        className="inline-flex items-center space-x-1.5 text-xs font-semibold px-3.5 py-2 rounded-xl border border-[var(--border)] bg-[var(--bg-base)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition"
+                        className="inline-flex items-center space-x-1.5 text-xs font-semibold px-3.5 py-2 rounded-xl border border-[var(--border)] bg-[var(--bg-base)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] disabled:opacity-50 transition"
                       >
                         {evaluatingCurrent ? <div className="w-3.5 h-3.5 border-2 border-[var(--primary)] border-t-transparent rounded-full animate-spin" /> : <Save className="w-4 h-4 text-[var(--primary)]" />}
                         <span>Save Draft</span>
@@ -1156,34 +1558,54 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                       <button
                         type="button"
                         onClick={handleSkipQuestion}
-                        className="inline-flex items-center space-x-1 text-xs font-semibold px-3 py-2 rounded-xl border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition"
+                        disabled={evaluatingCurrent}
+                        className="inline-flex items-center space-x-1 text-xs font-semibold px-3 py-2 rounded-xl border border-[var(--border)] text-[var(--text-muted)] hover:text-[var(--text-primary)] disabled:opacity-50 transition"
                       >
                         <SkipForward className="w-3.5 h-3.5" />
                         <span>Skip</span>
                       </button>
                     </div>
 
-                    {/* Right: Next or Submit */}
+                    {/* Right: Next or Finish */}
                     <div className="flex items-center space-x-2">
                       {currentIdx < totalQuestions - 1 ? (
                         <button
                           type="button"
                           onClick={() => handleSaveCurrentAnswer(true)}
                           disabled={evaluatingCurrent}
-                          className="inline-flex items-center space-x-1.5 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white font-bold text-xs px-4 py-2 rounded-xl transition shadow-md active:scale-95"
+                          className="inline-flex items-center space-x-1.5 bg-[var(--primary)] hover:bg-[var(--primary-hover)] disabled:opacity-50 text-white font-bold text-xs px-4 py-2 rounded-xl transition shadow-md active:scale-95"
                         >
-                          <span>Save & Next</span>
-                          <kbd className="hidden sm:inline-block px-1 py-0.2 rounded bg-white/20 font-mono text-[9px]">⌘+↵</kbd>
-                          <ChevronRight className="w-4 h-4" />
+                          {evaluatingCurrent ? (
+                            <>
+                              <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                              <span>Saving...</span>
+                            </>
+                          ) : (
+                            <>
+                              <span>Save & Next</span>
+                              <kbd className="hidden sm:inline-block px-1 py-0.2 rounded bg-white/20 font-mono text-[9px]">⌘+↵</kbd>
+                              <ChevronRight className="w-4 h-4" />
+                            </>
+                          )}
                         </button>
                       ) : (
                         <button
                           type="button"
-                          onClick={() => setShowSubmitConfirm(true)}
-                          className="inline-flex items-center space-x-1.5 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] hover:opacity-90 text-white font-bold text-xs px-5 py-2 rounded-xl transition shadow-lg"
+                          onClick={() => handleSaveCurrentAnswer(true)}
+                          disabled={evaluatingCurrent}
+                          className="inline-flex items-center space-x-1.5 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] hover:opacity-90 disabled:opacity-50 text-white font-bold text-xs px-5 py-2 rounded-xl transition shadow-lg active:scale-95"
                         >
-                          <Check className="w-4 h-4" />
-                          <span>Submit Interview</span>
+                          {evaluatingCurrent ? (
+                            <>
+                              <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                              <span>Saving...</span>
+                            </>
+                          ) : (
+                            <>
+                              <Check className="w-4 h-4" />
+                              <span>Save & Finish</span>
+                            </>
+                          )}
                         </button>
                       )}
                     </div>
@@ -1372,7 +1794,33 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
               <span className="text-4xl font-extrabold text-transparent bg-clip-text bg-[image:var(--gradient-brand)] font-mono block">
                 {interview.overallScore}%
               </span>
-              <span className="block text-[10px] text-[var(--text-muted)]">Benchmark readiness</span>
+              <span className="block text-[10px] text-[var(--text-muted)] font-mono">
+                {interview.totalPointsEarned ?? Math.round(((interview.overallScore ?? 0) * totalQuestions * 10) / 100)} / {interview.maxPossiblePoints ?? (totalQuestions * 10)} total pts
+              </span>
+            </div>
+
+            <div className="glass-card bg-[var(--bg-card)] border border-[var(--border)] p-6 rounded-2xl text-center space-y-2">
+              <span className="block text-[10px] font-bold text-[var(--text-muted)] uppercase font-mono tracking-wider">
+                Avg on Answered
+              </span>
+              <span className="text-4xl font-extrabold text-[var(--accent)] font-mono block">
+                {interview.averageAnsweredScore ?? interview.overallScore}%
+              </span>
+              <span className="block text-[10px] text-[var(--text-muted)] font-mono">
+                {interview.averageScoreOutOf10 ?? ((interview.averageAnsweredScore ?? interview.overallScore ?? 0) / 10).toFixed(1)} / 10 avg per answer
+              </span>
+            </div>
+
+            <div className="glass-card bg-[var(--bg-card)] border border-[var(--border)] p-6 rounded-2xl text-center space-y-2">
+              <span className="block text-[10px] font-bold text-[var(--text-muted)] uppercase font-mono tracking-wider">
+                Questions Attempted
+              </span>
+              <span className="text-4xl font-extrabold text-[var(--primary)] font-mono block">
+                {interview.questionsAnswered ?? (interview.answers || []).length} / {totalQuestions}
+              </span>
+              <span className="block text-[10px] text-[var(--text-muted)] font-mono">
+                {interview.questionsSkipped ?? 0} skipped • {interview.questionsPending ?? 0} pending
+              </span>
             </div>
 
             <div className="glass-card bg-[var(--bg-card)] border border-[var(--border)] p-6 rounded-2xl text-center space-y-2">
@@ -1384,25 +1832,21 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
               </span>
               <span className="block text-[10px] text-[var(--text-muted)]">Domain theory match</span>
             </div>
+          </div>
 
-            <div className="glass-card bg-[var(--bg-card)] border border-[var(--border)] p-6 rounded-2xl text-center space-y-2">
-              <span className="block text-[10px] font-bold text-[var(--text-muted)] uppercase font-mono tracking-wider">
-                Communication Articulation
+          {/* Transparent Scoring Formula Notice */}
+          <div className="p-4 bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl flex items-start space-x-3 text-xs text-[var(--text-secondary)]">
+            <ShieldAlert className="w-5 h-5 text-[var(--primary)] flex-shrink-0 mt-0.5" />
+            <div className="space-y-1">
+              <span className="font-bold text-[var(--text-primary)] font-mono text-[11px] uppercase tracking-wider block">
+                Transparent Placement Scoring Breakdown:
               </span>
-              <span className="text-4xl font-extrabold text-[var(--accent)] font-mono block">
-                {interview.communicationScore}%
-              </span>
-              <span className="block text-[10px] text-[var(--text-muted)]">Clarity and structure</span>
-            </div>
-
-            <div className="glass-card bg-[var(--bg-card)] border border-[var(--border)] p-6 rounded-2xl text-center space-y-2">
-              <span className="block text-[10px] font-bold text-[var(--text-muted)] uppercase font-mono tracking-wider">
-                Confidence & Pacing
-              </span>
-              <span className="text-4xl font-extrabold text-[var(--primary)] font-mono block">
-                {interview.confidenceScore}%
-              </span>
-              <span className="block text-[10px] text-[var(--text-muted)]">Composure index</span>
+              <p className="leading-relaxed">
+                Overall score is computed via <span className="font-mono font-bold text-[var(--primary)]">Overall Score = (Total Points Earned / (Total Questions × 10)) × 100</span>.
+                The candidate earned <span className="font-bold text-[var(--text-primary)]">{interview.totalPointsEarned ?? Math.round(((interview.overallScore ?? 0) * totalQuestions * 10) / 100)}</span> points out of a maximum possible <span className="font-bold text-[var(--text-primary)]">{interview.maxPossiblePoints ?? (totalQuestions * 10)}</span> points across all {totalQuestions} questions.
+                On the {interview.questionsAnswered ?? (interview.answers || []).length} attempted questions, the candidate achieved an average score of <span className="font-bold text-[var(--accent)]">{interview.averageAnsweredScore ?? interview.overallScore}%</span> ({interview.averageScoreOutOf10 ?? ((interview.averageAnsweredScore ?? interview.overallScore ?? 0) / 10).toFixed(1)} / 10).
+                {interview.questionsSkipped ? ` The ${interview.questionsSkipped} skipped question(s) count as 0 points toward the overall interview percentage.` : ' All questions were attempted.'}
+              </p>
             </div>
           </div>
 
@@ -1646,7 +2090,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
             <div className="flex items-center space-x-3">
               <button
                 onClick={() => {
-                  // Retake current interview
+                  stopInterviewMedia();
                   if (!interview) return;
                   const resetDrafts: Record<number, any> = {};
                   structuredQuestions.forEach((sq, idx) => {
@@ -1658,15 +2102,21 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                     };
                   });
                   setDraftAnswers(resetDrafts);
+                  isSessionCompletedRef.current = false;
                   setInterview({
                     ...interview,
                     status: 'started',
                     answers: [],
                     currentQuestionIndex: 0,
-                    overallScore: undefined
+                    overallScore: undefined,
+                    averageAnsweredScore: undefined,
+                    averageScoreOutOf10: undefined,
+                    totalPointsEarned: undefined,
+                    maxPossiblePoints: undefined
                   });
                   setCurrentIdx(0);
                   setRemainingTotalSeconds((interview.durationMinutes || 30) * 60);
+                  setIsCameraOn(true);
                 }}
                 className="px-4 py-2.5 rounded-xl border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-semibold text-xs transition flex items-center space-x-1.5"
               >
@@ -1675,14 +2125,20 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
               </button>
 
               <button
-                onClick={() => onNavigate('interview-prep')}
+                onClick={() => {
+                  stopInterviewMedia();
+                  onNavigate('interview-prep');
+                }}
                 className="px-5 py-2.5 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white font-bold text-xs rounded-xl transition flex items-center space-x-1.5 shadow-md"
               >
                 <span>Start New Interview</span>
               </button>
 
               <button
-                onClick={() => onNavigate('student-dashboard')}
+                onClick={() => {
+                  stopInterviewMedia();
+                  onNavigate('student-dashboard');
+                }}
                 className="px-4 py-2.5 rounded-xl border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-semibold text-xs transition"
               >
                 Return to Dashboard
@@ -1695,22 +2151,81 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
       {/* SUBMISSION CONFIRMATION MODAL */}
       {showSubmitConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm">
-          <div className="glass-panel bg-[var(--bg-card)] border border-[var(--border)] rounded-3xl w-full max-w-md p-6 space-y-5 text-[var(--text-primary)] shadow-2xl">
+          <div className="glass-panel bg-[var(--bg-card)] border border-[var(--border)] rounded-3xl w-full max-w-lg p-6 space-y-5 text-[var(--text-primary)] shadow-2xl">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full bg-[var(--primary-soft)] border border-[var(--primary)]/20 flex items-center justify-center text-[var(--primary)]">
+              <div className="w-10 h-10 rounded-full bg-[var(--primary-soft)] border border-[var(--primary)]/20 flex items-center justify-center text-[var(--primary)] flex-shrink-0">
                 <Check className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="font-bold font-display text-sm">Submit Mock Interview?</h4>
+                <h4 className="font-bold font-display text-base">Confirm Final Submission?</h4>
                 <p className="text-[11px] text-[var(--text-muted)]">
-                  You have completed {answeredCount} of {totalQuestions} questions.
+                  Session summary for {interview.jobRole} ({interview.experienceLevel} track)
                 </p>
               </div>
             </div>
 
-            <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-              Submitting will compile your technical and communication metrics into your permanent performance log and unlock model answer explanations.
-            </p>
+            {/* Submission Error Banner inside confirmation modal */}
+            {submissionError && (
+              <div className="p-3 rounded-xl bg-[var(--danger-soft)] border border-[var(--danger)]/30 text-[var(--danger)] text-xs flex items-start space-x-2">
+                <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <p className="font-bold">Submission Problem</p>
+                  <p className="text-[11px] leading-relaxed text-[var(--text-secondary)]">{submissionError}</p>
+                </div>
+              </div>
+            )}
+
+            {/* Performance Summary Pill Boxes */}
+            <div className="grid grid-cols-3 gap-3">
+              <div className="p-3 rounded-xl bg-[var(--primary-soft)] border border-[var(--primary)]/20 text-center">
+                <span className="block text-[10px] font-mono uppercase text-[var(--primary)] font-bold">Answered</span>
+                <span className="text-xl font-bold font-mono text-[var(--primary)]">{answeredCount}</span>
+              </div>
+              <div className="p-3 rounded-xl bg-[var(--warning-soft)] border border-[var(--warning)]/30 text-center">
+                <span className="block text-[10px] font-mono uppercase text-[var(--warning)] font-bold">Skipped</span>
+                <span className="text-xl font-bold font-mono text-[var(--warning)]">{skippedCount}</span>
+              </div>
+              <div className="p-3 rounded-xl bg-[var(--bg-base)] border border-[var(--border)] text-center">
+                <span className="block text-[10px] font-mono uppercase text-[var(--text-muted)] font-bold">Unattempted</span>
+                <span className="text-xl font-bold font-mono text-[var(--text-secondary)]">{remainingCount}</span>
+              </div>
+            </div>
+
+            {remainingCount > 0 ? (
+              <div className="p-3 rounded-xl bg-[var(--warning-soft)] border border-[var(--warning)]/30 text-[var(--warning)] text-xs space-y-2">
+                <div className="flex items-center space-x-1.5 font-bold">
+                  <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                  <span>{remainingCount} question{remainingCount > 1 ? 's' : ''} not yet attempted</span>
+                </div>
+                <p className="text-[11px] leading-relaxed text-[var(--text-secondary)]">
+                  Unattempted questions will be treated as skipped and earn 0 points in the final placement score calculation. You can review and answer them before submitting.
+                </p>
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {structuredQuestions.map((sq, idx) => {
+                    const draft = draftAnswers[idx];
+                    const isAttempted = draft?.skipped || ((draft?.text && draft.text.trim().length > 0 && draft.text !== '[Question Skipped]') || (draft?.code && draft.code.trim().length > 0));
+                    if (isAttempted) return null;
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => {
+                          setShowSubmitConfirm(false);
+                          handleNavigateToQuestion(idx);
+                        }}
+                        className="px-2 py-0.5 text-[10px] font-mono font-bold rounded bg-[var(--bg-card)] border border-[var(--warning)]/40 text-[var(--warning)] hover:underline"
+                      >
+                        Answer Q{idx + 1}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+                All questions have been answered or explicitly skipped. Submitting will compile your performance metrics into your permanent log and unlock model answer explanations.
+              </p>
+            )}
 
             <div className="flex justify-end space-x-3 pt-2">
               <button
@@ -1718,14 +2233,14 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                 onClick={() => setShowSubmitConfirm(false)}
                 className="px-4 py-2 rounded-xl border border-[var(--border)] text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-semibold transition"
               >
-                Continue Answering
+                Review Answers
               </button>
 
               <button
                 type="button"
                 onClick={handleFinalizeInterview}
                 disabled={submittingFinal}
-                className="px-5 py-2 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] hover:opacity-90 text-white font-bold text-xs rounded-xl transition flex items-center space-x-1.5 shadow-md"
+                className="px-5 py-2 bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] hover:opacity-90 text-white font-bold text-xs rounded-xl transition flex items-center space-x-1.5 shadow-md disabled:opacity-50"
               >
                 {submittingFinal ? (
                   <>
@@ -1733,7 +2248,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                     <span>Compiling Report...</span>
                   </>
                 ) : (
-                  <span>Confirm & Submit</span>
+                  <span>{submissionError ? 'Retry Submission' : 'Confirm & Submit'}</span>
                 )}
               </button>
             </div>

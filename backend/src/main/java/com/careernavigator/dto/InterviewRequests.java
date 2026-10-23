@@ -124,9 +124,19 @@ public class InterviewRequests {
 
     public static class QuickAskRequest {
         private String query;
+        private String question;
 
-        public String getQuery() { return query; }
+        public String getQuery() {
+            if (query != null && !query.isBlank()) return query;
+            return question;
+        }
         public void setQuery(String query) { this.query = query; }
+
+        public String getQuestion() {
+            if (question != null && !question.isBlank()) return question;
+            return query;
+        }
+        public void setQuestion(String question) { this.question = question; }
     }
 }
 

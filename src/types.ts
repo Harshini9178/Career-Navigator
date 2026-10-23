@@ -189,6 +189,7 @@ export interface InterviewAnswer {
   code?: string;
   language?: string;
   skipped?: boolean;
+  skipTimestamp?: string;
   evaluation?: AnswerEvaluation;
   expectedAnswerPoints?: string[];
   evaluationCriteria?: string[];
@@ -209,12 +210,17 @@ export interface MockInterview {
   currentQuestionIndex: number;
   answers: InterviewAnswer[];
   overallScore?: number;
+  averageAnsweredScore?: number;
+  averageScoreOutOf10?: number;
+  totalPointsEarned?: number;
+  maxPossiblePoints?: number;
   technicalScore?: number;
   communicationScore?: number;
   confidenceScore?: number;
   categoryScores?: Record<string, number>;
   questionsAnswered?: number;
   questionsSkipped?: number;
+  questionsPending?: number;
   strongestAreas?: string[];
   topicsToImprove?: string[];
   suggestedPracticeQuestions?: string[];
@@ -260,6 +266,35 @@ export interface DashboardMetrics {
   }[];
   branchDistribution: { branch: string; count: number }[];
   weeklyInterviews: { name: string; count: number }[];
+}
+
+export interface ChatMessage {
+  id: string;
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+  timestamp: string;
+  error?: boolean;
+  learningMode?: boolean;
+}
+
+export interface ConversationSummary {
+  id: string;
+  title: string;
+  messageCount: number;
+  learningMode?: boolean;
+  createdAt: string;
+  updatedAt: string;
+  lastMessageSnippet?: string;
+}
+
+export interface ConversationDetail {
+  id: string;
+  title: string;
+  learningMode?: boolean;
+  createdAt: string;
+  updatedAt: string;
+  messages: ChatMessage[];
+  careerContext?: Record<string, any>;
 }
 
 export interface AptitudeCategoryMeta {

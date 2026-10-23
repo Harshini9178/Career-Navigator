@@ -41,6 +41,13 @@ class SoundEngine {
   }
 
   /**
+   * Harmonious success chime for final completion
+   */
+  public playSuccess() {
+    this.playChime();
+  }
+
+  /**
    * Subtle alert chime when speech input begins
    * Preserved for speech accessibility
    */

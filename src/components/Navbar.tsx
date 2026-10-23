@@ -7,6 +7,7 @@ interface NavbarProps {
   user: User;
   title: string;
   onLogout?: () => void;
+  onNavigate?: (view: string) => void;
 }
 
 export default function Navbar({ user, title, onLogout }: NavbarProps) {

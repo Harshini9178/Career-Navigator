@@ -80,6 +80,7 @@ public class SecurityConfig {
                                 "/api/auth/url",
                                 "/auth/callback",
                                 "/api/ai/status",
+                                "/api/ai/quick-ask",
                                 "/api/resume/templates",
                                 "/api/docs/**",
                                 "/monitor"

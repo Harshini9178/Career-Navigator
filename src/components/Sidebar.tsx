@@ -4,6 +4,7 @@ import {
   FileText,
   FileEdit,
   Video,
+  Bot,
   User,
   MessageSquare,
   LogOut,
@@ -33,6 +34,7 @@ export default function Sidebar({ user, currentView, onNavigate, onLogout }: Sid
   const studentLinks = [
     { view: 'student-dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { view: 'resume-builder', label: 'Resume Builder', icon: FileEdit },
+    { view: 'career-assistant', label: 'AI Career Assistant', icon: Bot },
     { view: 'resume-analyzer', label: 'Resume Analyzer', icon: FileText },
     { view: 'interview-prep', label: 'Mock Interviews', icon: Video },
     { view: 'aptitude', label: 'Aptitude Assessment', icon: Brain },

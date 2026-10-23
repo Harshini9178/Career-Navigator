@@ -92,6 +92,7 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
   const [deviceCheckStep, setDeviceCheckStep] = useState(false);
   const [cameraPermission, setCameraPermission] = useState<'idle' | 'granted' | 'denied'>('idle');
   const [cameraStream, setCameraStream] = useState<MediaStream | null>(null);
+  const cameraStreamRef = useRef<MediaStream | null>(null);
   const [isCameraOn, setIsCameraOn] = useState(true);
   const [isMicMuted, setIsMicMuted] = useState(false);
   const [micVolume, setMicVolume] = useState<number>(0);
@@ -101,6 +102,7 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
   const audioContextRef = useRef<AudioContext | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const animFrameRef = useRef<number | null>(null);
+  const isMountedRef = useRef<boolean>(true);
 
   // 1. Load History
   const loadHistory = () => {
@@ -192,9 +194,26 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
   const stopMediaTracks = () => {
     if (cameraStream) {
       cameraStream.getTracks().forEach((track) => {
-        track.stop();
+        try { track.stop(); } catch (_e) {}
       });
       setCameraStream(null);
+    }
+    if (cameraStreamRef.current) {
+      cameraStreamRef.current.getTracks().forEach((track) => {
+        try { track.stop(); } catch (_e) {}
+      });
+      cameraStreamRef.current = null;
+    }
+    if (videoPreviewRef.current) {
+      try {
+        if (videoPreviewRef.current.srcObject && (videoPreviewRef.current.srcObject as MediaStream).getTracks) {
+          (videoPreviewRef.current.srcObject as MediaStream).getTracks().forEach((track) => {
+            try { track.stop(); } catch (_e) {}
+          });
+        }
+        videoPreviewRef.current.pause();
+      } catch (_e) {}
+      videoPreviewRef.current.srcObject = null;
     }
     if (animFrameRef.current) {
       cancelAnimationFrame(animFrameRef.current);
@@ -208,12 +227,24 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
       }
       audioContextRef.current = null;
     }
-    setMicVolume(0);
-    setCameraPermission('idle');
+    if (isMountedRef.current) {
+      setMicVolume(0);
+      setCameraPermission('idle');
+    }
   };
 
   useEffect(() => {
+    isMountedRef.current = true;
+    const handleUnload = () => {
+      stopMediaTracks();
+    };
+    window.addEventListener('beforeunload', handleUnload);
+    window.addEventListener('pagehide', handleUnload);
+
     return () => {
+      isMountedRef.current = false;
+      window.removeEventListener('beforeunload', handleUnload);
+      window.removeEventListener('pagehide', handleUnload);
       stopMediaTracks();
     };
   }, []);
@@ -233,6 +264,7 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
         audio: true
       });
 
+      cameraStreamRef.current = stream;
       setCameraStream(stream);
       setCameraPermission('granted');
 
@@ -593,7 +625,10 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
                     </span>
 
                     <button
-                      onClick={() => onNavigate('mock-interview', interview.id)}
+                      onClick={() => {
+                        stopMediaTracks();
+                        onNavigate('mock-interview', interview.id);
+                      }}
                       className="text-xs font-bold text-[var(--primary)] hover:text-[var(--primary-hover)] flex items-center space-x-1 transition"
                     >
                       <span>{isDone ? 'Review Report' : 'Resume Mock'}</span>
