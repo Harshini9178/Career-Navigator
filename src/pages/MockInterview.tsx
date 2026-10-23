@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import {
   Video,
   VideoOff,
@@ -36,6 +36,7 @@ import { api } from '../lib/api.js';
 import { sound } from '../lib/sound.js';
 import { evaluateAnswerSubmission, compileFinalReport } from '../lib/evaluationService.js';
 import { BUILT_IN_QUESTION_BANK } from '../lib/questionBank.js';
+import { stopMediaStream } from '../lib/mediaManager.js';
 
 interface MockInterviewProps {
   interviewId: string;
@@ -101,13 +102,23 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
   const [speechSupported, setSpeechSupported] = useState(true);
   const [speechError, setSpeechError] = useState<string | null>(null);
   const [validationError, setValidationError] = useState<string | null>(null);
+  const [submissionError, setSubmissionError] = useState<string | null>(null);
 
   // Speech Recognition Baseline Refs to prevent repeating words
   const finalTranscriptRef = useRef<string>('');
   const manualBaseTextRef = useRef<string>('');
 
   // Camera & Audio Telemetry
-  const [isCameraOn, setIsCameraOn] = useState(true);
+  const [isCameraOn, setIsCameraOn] = useState(() => {
+    try {
+      const stored = localStorage.getItem(`mock_interview_${interviewId}`);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed.status === 'completed' || parsed.interviewMode === 'text') return false;
+      }
+    } catch (_e) {}
+    return true;
+  });
   const [isMicMuted, setIsMicMuted] = useState(false);
   const [micVolume, setMicVolume] = useState<number>(0);
   const [cameraError, setCameraError] = useState<string | null>(null);
@@ -119,11 +130,121 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
   // DOM Refs
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
+  const activeStreamsRef = useRef<Set<MediaStream>>(new Set());
   const audioContextRef = useRef<AudioContext | null>(null);
+  const audioSourceRef = useRef<MediaStreamAudioSourceNode | null>(null);
   const analyserRef = useRef<AnalyserNode | null>(null);
   const animFrameRef = useRef<number | null>(null);
   const recognitionRef = useRef<any>(null);
   const isRecordingRef = useRef(false);
+  const isMountedRef = useRef(true);
+  const mediaRequestIdRef = useRef<number>(0);
+  const isSessionCompletedRef = useRef<boolean>(false);
+
+  // Safe & Reusable Media, Speech, and Telemetry Cleanup
+  const stopInterviewMedia = useCallback(() => {
+    // Invalidate any in-flight getUserMedia requests
+    mediaRequestIdRef.current += 1;
+
+    // 1. Stop Speech Recognition
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.onresult = null;
+        recognitionRef.current.onerror = null;
+        recognitionRef.current.onend = null;
+        recognitionRef.current.onstart = null;
+        if (typeof recognitionRef.current.abort === 'function') {
+          recognitionRef.current.abort();
+        } else if (typeof recognitionRef.current.stop === 'function') {
+          recognitionRef.current.stop();
+        }
+      } catch (_e) {
+        // Recognition may already be stopped
+      }
+      recognitionRef.current = null;
+    }
+    isRecordingRef.current = false;
+
+    // 2. Stop All Media Stream Tracks
+    if (streamRef.current) {
+      try {
+        streamRef.current.getTracks().forEach((track) => {
+          try {
+            track.stop();
+          } catch (_e) {}
+        });
+      } catch (_e) {}
+      streamRef.current = null;
+    }
+
+    // Stop all additional active streams acquired during the session
+    if (activeStreamsRef.current) {
+      activeStreamsRef.current.forEach((stream) => {
+        try {
+          stream.getTracks().forEach((track) => {
+            try {
+              track.stop();
+            } catch (_e) {}
+          });
+        } catch (_e) {}
+      });
+      activeStreamsRef.current.clear();
+    }
+
+    // 3. Clear Video Element Preview & Attached MediaStreams
+    if (videoRef.current) {
+      try {
+        if (videoRef.current.srcObject && (videoRef.current.srcObject as MediaStream).getTracks) {
+          (videoRef.current.srcObject as MediaStream).getTracks().forEach((track) => {
+            try {
+              track.stop();
+            } catch (_e) {}
+          });
+        }
+      } catch (_e) {}
+      try {
+        videoRef.current.pause();
+      } catch (_e) {}
+      videoRef.current.srcObject = null;
+    }
+
+    // 4. Cancel Audio Analyser, Source, and Animation Frame
+    if (animFrameRef.current) {
+      cancelAnimationFrame(animFrameRef.current);
+      animFrameRef.current = null;
+    }
+    if (audioSourceRef.current) {
+      try {
+        audioSourceRef.current.disconnect();
+      } catch (_e) {}
+      audioSourceRef.current = null;
+    }
+    analyserRef.current = null;
+    if (audioContextRef.current && audioContextRef.current.state !== 'closed') {
+      try {
+        audioContextRef.current.close();
+      } catch (_e) {}
+      audioContextRef.current = null;
+    }
+
+    // 5. Cancel Speech Synthesis TTS
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      try {
+        window.speechSynthesis.cancel();
+      } catch (_e) {}
+    }
+
+    // 6. Reset UI indicators safely if still mounted
+    if (isMountedRef.current) {
+      setIsCameraOn(false);
+      setIsRecording(false);
+      setIsMicMuted(false);
+      setMicVolume(0);
+      setSpeechStatus('idle');
+      setInterimTranscript('');
+      setIsSpeaking(false);
+    }
+  }, []);
 
   // 1. Initial Load of interview (Server or Local Fallback)
   useEffect(() => {
@@ -166,9 +287,9 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
 
     return () => {
       isMounted = false;
-      stopMediaTracks();
+      stopInterviewMedia();
     };
-  }, [interviewId]);
+  }, [interviewId, stopInterviewMedia]);
 
   const applyInterviewData = (data: any) => {
     // Reconstruct structured questions if only string questions exist
@@ -237,6 +358,12 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
       prepTimerSeconds: data.prepTimerSeconds || 0,
       status: data.status || (data.overallScore ? 'completed' : 'started')
     };
+
+    if (intvObj.status === 'completed') {
+      isSessionCompletedRef.current = true;
+      setIsCameraOn(false);
+      stopInterviewMedia();
+    }
 
     setInterview(intvObj);
     setCurrentIdx(intvObj.currentQuestionIndex);
@@ -343,103 +470,135 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
     return () => clearInterval(timer);
   }, [isRecording]);
 
-  // 4. Camera & Microphone Setup with Volume Telemetry
+  // Component Mount / Unmount Lifecycle: Guarantee Full Media Release
   useEffect(() => {
-    let isMounted = true;
+    isMountedRef.current = true;
+    const handleUnload = () => {
+      stopInterviewMedia();
+    };
+    window.addEventListener('beforeunload', handleUnload);
+    window.addEventListener('pagehide', handleUnload);
 
-    if (interview && interview.status !== 'completed' && interview.interviewMode !== 'text' && isCameraOn) {
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices
-          .getUserMedia({
-            video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: 'user' },
-            audio: true
-          })
-          .then((stream) => {
-            if (!isMounted) {
-              stream.getTracks().forEach((track) => track.stop());
-              return;
-            }
-            streamRef.current = stream;
-            setCameraError(null);
-            if (videoRef.current) {
-              videoRef.current.srcObject = stream;
-            }
+    return () => {
+      isMountedRef.current = false;
+      window.removeEventListener('beforeunload', handleUnload);
+      window.removeEventListener('pagehide', handleUnload);
+      stopInterviewMedia();
+    };
+  }, [stopInterviewMedia]);
 
-            // Web Audio API mic level meter
-            try {
-              const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
-              const audioCtx = new AudioCtx();
-              audioContextRef.current = audioCtx;
-              const source = audioCtx.createMediaStreamSource(stream);
-              const analyser = audioCtx.createAnalyser();
-              analyser.fftSize = 256;
-              source.connect(analyser);
-              analyserRef.current = analyser;
+  // Automatic cleanup when interview reaches completed status
+  useEffect(() => {
+    if (interview?.status === 'completed') {
+      isSessionCompletedRef.current = true;
+      stopInterviewMedia();
+    }
+  }, [interview?.status, stopInterviewMedia]);
 
-              const dataArray = new Uint8Array(analyser.frequencyBinCount);
-              const updateMeter = () => {
-                if (!analyserRef.current) return;
-                analyserRef.current.getByteFrequencyData(dataArray);
-                let sum = 0;
-                for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
-                const avg = sum / dataArray.length;
-                setMicVolume(Math.min(100, Math.round((avg / 128) * 100)));
-                animFrameRef.current = requestAnimationFrame(updateMeter);
-              };
-              updateMeter();
-            } catch (_audioErr) {
-              // ignore audio analyser error
-            }
-          })
-          .catch((err) => {
-            console.warn('Camera/mic telemetry stream error:', err);
-            if (isMounted) {
-              setCameraError('Camera/microphone preview not active (permission denied or device in use). Text mode is fully available.');
-              setIsCameraOn(false);
-            }
+  // Camera & Microphone Setup with Volume Telemetry
+  useEffect(() => {
+    // Strictly prevent media access if completed, text-only, or camera turned off
+    if (!interview || interview.status === 'completed' || isSessionCompletedRef.current || interview.interviewMode === 'text' || !isCameraOn) {
+      stopInterviewMedia();
+      return;
+    }
+
+    const currentRequestId = ++mediaRequestIdRef.current;
+    let isEffectActive = true;
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices
+        .getUserMedia({
+          video: { width: { ideal: 640 }, height: { ideal: 480 }, facingMode: 'user' },
+          audio: true
+        })
+        .then((stream) => {
+          if (!isEffectActive || !isMountedRef.current || isSessionCompletedRef.current || interview.status === 'completed' || currentRequestId !== mediaRequestIdRef.current) {
+            stopMediaStream(stream);
+            return;
+          }
+
+          activeStreamsRef.current.add(stream);
+          streamRef.current = stream;
+
+          stream.getTracks().forEach((track) => {
+            track.addEventListener('ended', () => {
+              if (stream.getTracks().every((t) => t.readyState === 'ended')) {
+                activeStreamsRef.current.delete(stream);
+              }
+            });
           });
-      } else {
+
+          if (isMountedRef.current) {
+            setCameraError(null);
+          }
+          if (videoRef.current) {
+            videoRef.current.srcObject = stream;
+          }
+
+          // Web Audio API mic level meter
+          try {
+            const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
+            const audioCtx = new AudioCtx();
+            audioContextRef.current = audioCtx;
+            const source = audioCtx.createMediaStreamSource(stream);
+            audioSourceRef.current = source;
+            const analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 256;
+            source.connect(analyser);
+            analyserRef.current = analyser;
+
+            const dataArray = new Uint8Array(analyser.frequencyBinCount);
+            const updateMeter = () => {
+              if (!analyserRef.current || !isEffectActive || currentRequestId !== mediaRequestIdRef.current) return;
+              analyserRef.current.getByteFrequencyData(dataArray);
+              let sum = 0;
+              for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
+              const avg = sum / dataArray.length;
+              if (isMountedRef.current) {
+                setMicVolume(Math.min(100, Math.round((avg / 128) * 100)));
+              }
+              animFrameRef.current = requestAnimationFrame(updateMeter);
+            };
+            updateMeter();
+          } catch (_audioErr) {
+            // ignore audio analyser error
+          }
+        })
+        .catch((err) => {
+          console.warn('Camera/mic telemetry stream error:', err);
+          if (isMountedRef.current && isEffectActive && currentRequestId === mediaRequestIdRef.current) {
+            setCameraError('Camera/microphone preview not active (permission denied or device in use). Text mode is fully available.');
+            setIsCameraOn(false);
+          }
+        });
+    } else {
+      if (isMountedRef.current) {
         setCameraError('MediaDevices API not supported in this browser.');
         setIsCameraOn(false);
       }
     }
 
     return () => {
-      isMounted = false;
-      stopMediaTracks();
+      isEffectActive = false;
+      stopInterviewMedia();
     };
-  }, [isCameraOn, interview?.status, interview?.interviewMode]);
-
-  const stopMediaTracks = () => {
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach((track) => track.stop());
-      streamRef.current = null;
-    }
-    if (animFrameRef.current) {
-      cancelAnimationFrame(animFrameRef.current);
-      animFrameRef.current = null;
-    }
-    if (audioContextRef.current && audioContextRef.current.state !== 'closed') {
-      try {
-        audioContextRef.current.close();
-      } catch (_e) {
-        // ignore
-      }
-      audioContextRef.current = null;
-    }
-  };
+  }, [isCameraOn, interview?.status, interview?.interviewMode, stopInterviewMedia]);
 
   // 5. Speech-to-Text Implementation (Non-Duplicating)
   const stopSpeechRecognition = () => {
     isRecordingRef.current = false;
-    setIsRecording(false);
-    setSpeechStatus('idle');
-    setInterimTranscript('');
+    if (isMountedRef.current) {
+      setIsRecording(false);
+      setSpeechStatus('idle');
+      setInterimTranscript('');
+    }
     if (recognitionRef.current) {
       try {
         recognitionRef.current.onresult = null;
         recognitionRef.current.onerror = null;
         recognitionRef.current.onend = null;
+        recognitionRef.current.onstart = null;
         recognitionRef.current.stop();
       } catch (_e) {
         // ignore
@@ -843,102 +1002,143 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
     handleFinalizeInterview();
   };
 
-  // 10. Final Submission of Mock Interview
+  // 10. Final Submission of Mock Interview with Strict Lifecycle & Safe Retry
   const handleFinalizeInterview = async () => {
     if (!interview) return;
     setSubmittingFinal(true);
-    setShowSubmitConfirm(false);
-    stopMediaTracks();
+    setSubmissionError(null);
 
-    // Prepare complete answers array
+    // 1. Finalize the candidate's current answer and stop speech recognition
+    if (isRecording) {
+      stopSpeechRecognition();
+    }
+
+    const currentDraft = draftAnswers[currentIdx] || { text: '', code: '', language: 'java' };
+    const latestAnswers = {
+      ...draftAnswers,
+      [currentIdx]: {
+        ...currentDraft,
+        text: (currentDraft.text || '').trim(),
+        code: (currentDraft.code || '').trim()
+      }
+    };
+
+    // 2. Save all answers and skipped questions, & 3. Complete pending evaluations
     const compiledAnswers: InterviewAnswer[] = [];
 
-    for (let i = 0; i < structuredQuestions.length; i++) {
-      const sq = structuredQuestions[i];
-      const draft = draftAnswers[i] || { text: '', code: '', language: 'java' };
+    try {
+      for (let i = 0; i < structuredQuestions.length; i++) {
+        const sq = structuredQuestions[i];
+        const draft = latestAnswers[i] || { text: '', code: '', language: 'java' };
 
-      let evaluation = draft.evaluation;
-      if (!evaluation) {
-        // Evaluate now if not evaluated earlier
-        evaluation = await evaluateAnswerSubmission({
-          interviewId,
-          question: sq,
-          answerText: draft.text,
-          code: draft.code,
-          language: draft.language,
-          skipped: draft.skipped || (!draft.text.trim() && !draft.code.trim()),
-          wordsPerMinute: 0,
-          fillerWordCount: countFillerWords(draft.text),
-          durationSeconds: 30
+        let evaluation = draft.evaluation;
+        const isSkippedOrEmpty = draft.skipped || (!draft.text?.trim() && !draft.code?.trim());
+
+        if (!evaluation) {
+          evaluation = await evaluateAnswerSubmission({
+            interviewId,
+            question: sq,
+            answerText: draft.text || (isSkippedOrEmpty ? '[Question Skipped]' : ''),
+            code: draft.code || '',
+            language: draft.language || 'java',
+            skipped: isSkippedOrEmpty,
+            wordsPerMinute: 0,
+            fillerWordCount: countFillerWords(draft.text || ''),
+            durationSeconds: 30
+          });
+        }
+
+        compiledAnswers.push({
+          question: sq.question,
+          questionId: sq.id,
+          category: sq.category,
+          difficulty: sq.difficulty,
+          answer: draft.text || (isSkippedOrEmpty ? '[Question Skipped]' : ''),
+          code: draft.code || '',
+          language: draft.language || 'java',
+          skipped: isSkippedOrEmpty,
+          skipTimestamp: draft.skipTimestamp,
+          evaluation,
+          expectedAnswerPoints: sq.expectedAnswerPoints,
+          evaluationCriteria: sq.evaluationCriteria
         });
       }
 
-      compiledAnswers.push({
-        question: sq.question,
-        questionId: sq.id,
-        category: sq.category,
-        difficulty: sq.difficulty,
-        answer: draft.text || (draft.skipped ? '[Skipped]' : ''),
-        code: draft.code,
-        language: draft.language,
-        skipped: draft.skipped || (!draft.text.trim() && !draft.code.trim()),
-        evaluation,
-        expectedAnswerPoints: sq.expectedAnswerPoints,
-        evaluationCriteria: sq.evaluationCriteria
-      });
-    }
+      // Compile comprehensive final metrics
+      const reportData = compileFinalReport(interview.jobRole, compiledAnswers);
 
-    // Compile comprehensive final metrics
-    const reportData = compileFinalReport(interview.jobRole, compiledAnswers);
+      const updatedInterview: InterviewType = {
+        ...interview,
+        status: 'completed',
+        answers: compiledAnswers,
+        overallScore: reportData.overallScore,
+        averageAnsweredScore: reportData.averageAnsweredScore,
+        averageScoreOutOf10: reportData.averageScoreOutOf10,
+        totalPointsEarned: reportData.totalPointsEarned,
+        maxPossiblePoints: reportData.maxPossiblePoints,
+        technicalScore: reportData.technicalScore,
+        communicationScore: reportData.communicationScore,
+        confidenceScore: reportData.confidenceScore,
+        categoryScores: reportData.categoryScores,
+        questionsAnswered: reportData.questionsAnswered,
+        questionsSkipped: reportData.questionsSkipped,
+        questionsPending: reportData.questionsPending,
+        strongestAreas: reportData.strongestAreas,
+        topicsToImprove: reportData.topicsToImprove,
+        suggestedPracticeQuestions: reportData.suggestedPracticeQuestions,
+        recommendedLearningTopics: reportData.recommendedLearningTopics,
+        feedbackText: reportData.feedbackText,
+        suggestions: reportData.topicsToImprove
+      };
 
-    const updatedInterview: InterviewType = {
-      ...interview,
-      status: 'completed',
-      answers: compiledAnswers,
-      overallScore: reportData.overallScore,
-      averageAnsweredScore: reportData.averageAnsweredScore,
-      averageScoreOutOf10: reportData.averageScoreOutOf10,
-      totalPointsEarned: reportData.totalPointsEarned,
-      maxPossiblePoints: reportData.maxPossiblePoints,
-      technicalScore: reportData.technicalScore,
-      communicationScore: reportData.communicationScore,
-      confidenceScore: reportData.confidenceScore,
-      categoryScores: reportData.categoryScores,
-      questionsAnswered: reportData.questionsAnswered,
-      questionsSkipped: reportData.questionsSkipped,
-      questionsPending: reportData.questionsPending,
-      strongestAreas: reportData.strongestAreas,
-      topicsToImprove: reportData.topicsToImprove,
-      suggestedPracticeQuestions: reportData.suggestedPracticeQuestions,
-      recommendedLearningTopics: reportData.recommendedLearningTopics,
-      feedbackText: reportData.feedbackText,
-      suggestions: reportData.topicsToImprove
-    };
-
-    // Save to server
-    try {
-      await api.post(`/api/interview/${interviewId}/submit`, {
+      // 4. Submit the interview and confirm success
+      const isLocalSession = interviewId.startsWith('int-local-');
+      const submitResponse = await api.post(`/api/interview/${interviewId}/submit`, {
         ...reportData,
         answers: compiledAnswers
       });
-    } catch (err) {
-      console.warn('Backend interview submit error, saving to local store:', err);
-    }
 
-    // Always persist to localStorage for instant reload & Past Performance Logs
-    try {
-      localStorage.setItem(`mock_interview_${interviewId}`, JSON.stringify(updatedInterview));
-      const userHistory = localStorage.getItem(`mock_history_${interview.userId}`);
-      let list = userHistory ? JSON.parse(userHistory) : [];
-      list = list.filter((item: any) => item.id !== interviewId);
-      list.unshift(updatedInterview);
-      localStorage.setItem(`mock_history_${interview.userId}`, JSON.stringify(list));
-    } catch (_e) {
-      // ignore
-    }
+      if (!submitResponse.ok && !isLocalSession) {
+        let errorMsg = `Server submission returned HTTP ${submitResponse.status}`;
+        try {
+          const errData = await submitResponse.json();
+          if (errData.message) errorMsg = errData.message;
+        } catch (_parseErr) {}
+        throw new Error(errorMsg);
+      }
 
-    setInterview(updatedInterview);
-    setSubmittingFinal(false);
+      // 5. Immediately stop all camera and microphone tracks.
+      // 6. Stop speech recognition and clear the video preview.
+      isSessionCompletedRef.current = true;
+      stopInterviewMedia();
+      setShowSubmitConfirm(false);
+
+      // Persist completed interview to local storage for instant reload & Past Performance Logs
+      try {
+        localStorage.setItem(`mock_interview_${interviewId}`, JSON.stringify(updatedInterview));
+        const userHistory = localStorage.getItem(`mock_history_${interview.userId}`);
+        let list = userHistory ? JSON.parse(userHistory) : [];
+        list = list.filter((item: any) => item.id !== interviewId);
+        list.unshift(updatedInterview);
+        localStorage.setItem(`mock_history_${interview.userId}`, JSON.stringify(list));
+      } catch (_e) {}
+
+      // 7. Display the final interview report
+      sound.playSuccess();
+      setInterview(updatedInterview);
+      setSubmissionError(null);
+    } catch (submitErr: any) {
+      console.error('Interview submission failed:', submitErr);
+      // Safe retry preservation: retain all candidate answers
+      setSubmissionError(`Submission failed: ${submitErr.message || 'Network error'}. Your answers are safely preserved. Please retry.`);
+      try {
+        const inProgress = { ...interview, answers: compiledAnswers };
+        localStorage.setItem(`mock_interview_${interviewId}`, JSON.stringify(inProgress));
+      } catch (_e) {}
+      setShowSubmitConfirm(true);
+    } finally {
+      setSubmittingFinal(false);
+    }
   };
 
   // Keyboard shortcut: Cmd/Ctrl + Enter to Save and Next
@@ -993,10 +1193,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
       <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
         <button
           onClick={() => {
-            stopMediaTracks();
-            if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-              window.speechSynthesis.cancel();
-            }
+            stopInterviewMedia();
             onNavigate('interview-prep');
           }}
           className="inline-flex items-center space-x-1.5 text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition font-semibold"
@@ -1279,6 +1476,23 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                     <div className="flex items-center space-x-2 p-3 bg-[var(--danger-soft)] border border-[var(--danger)]/30 rounded-xl text-[var(--danger)] text-xs font-semibold animate-shake">
                       <AlertCircle className="w-4 h-4 flex-shrink-0" />
                       <span>{validationError}</span>
+                    </div>
+                  )}
+
+                  {/* Submission Failure Alert with Safe Retry */}
+                  {submissionError && (
+                    <div className="flex items-center justify-between p-3 bg-[var(--danger-soft)] border border-[var(--danger)]/30 rounded-xl text-[var(--danger)] text-xs font-semibold animate-shake">
+                      <div className="flex items-center space-x-2">
+                        <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                        <span>{submissionError}</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handleFinalizeInterview}
+                        className="px-3 py-1 bg-[var(--danger)] hover:opacity-90 text-white rounded-lg text-xs font-bold transition ml-2"
+                      >
+                        Retry Submit
+                      </button>
                     </div>
                   )}
 
@@ -1876,7 +2090,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
             <div className="flex items-center space-x-3">
               <button
                 onClick={() => {
-                  // Retake current interview
+                  stopInterviewMedia();
                   if (!interview) return;
                   const resetDrafts: Record<number, any> = {};
                   structuredQuestions.forEach((sq, idx) => {
@@ -1888,15 +2102,21 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                     };
                   });
                   setDraftAnswers(resetDrafts);
+                  isSessionCompletedRef.current = false;
                   setInterview({
                     ...interview,
                     status: 'started',
                     answers: [],
                     currentQuestionIndex: 0,
-                    overallScore: undefined
+                    overallScore: undefined,
+                    averageAnsweredScore: undefined,
+                    averageScoreOutOf10: undefined,
+                    totalPointsEarned: undefined,
+                    maxPossiblePoints: undefined
                   });
                   setCurrentIdx(0);
                   setRemainingTotalSeconds((interview.durationMinutes || 30) * 60);
+                  setIsCameraOn(true);
                 }}
                 className="px-4 py-2.5 rounded-xl border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-semibold text-xs transition flex items-center space-x-1.5"
               >
@@ -1905,14 +2125,20 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
               </button>
 
               <button
-                onClick={() => onNavigate('interview-prep')}
+                onClick={() => {
+                  stopInterviewMedia();
+                  onNavigate('interview-prep');
+                }}
                 className="px-5 py-2.5 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white font-bold text-xs rounded-xl transition flex items-center space-x-1.5 shadow-md"
               >
                 <span>Start New Interview</span>
               </button>
 
               <button
-                onClick={() => onNavigate('student-dashboard')}
+                onClick={() => {
+                  stopInterviewMedia();
+                  onNavigate('student-dashboard');
+                }}
                 className="px-4 py-2.5 rounded-xl border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-semibold text-xs transition"
               >
                 Return to Dashboard
@@ -1937,6 +2163,17 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                 </p>
               </div>
             </div>
+
+            {/* Submission Error Banner inside confirmation modal */}
+            {submissionError && (
+              <div className="p-3 rounded-xl bg-[var(--danger-soft)] border border-[var(--danger)]/30 text-[var(--danger)] text-xs flex items-start space-x-2">
+                <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <p className="font-bold">Submission Problem</p>
+                  <p className="text-[11px] leading-relaxed text-[var(--text-secondary)]">{submissionError}</p>
+                </div>
+              </div>
+            )}
 
             {/* Performance Summary Pill Boxes */}
             <div className="grid grid-cols-3 gap-3">
@@ -2011,7 +2248,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                     <span>Compiling Report...</span>
                   </>
                 ) : (
-                  <span>Confirm & Submit</span>
+                  <span>{submissionError ? 'Retry Submission' : 'Confirm & Submit'}</span>
                 )}
               </button>
             </div>
