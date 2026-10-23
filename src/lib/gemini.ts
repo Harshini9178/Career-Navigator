@@ -242,7 +242,7 @@ Return details structured in JSON format.`;
     }
 
     try {
-      const prompt = `Generate exactly 5 targeted interview questions for an engineering interview.
+      const prompt = `Generate exactly 5 targeted engineering interview questions strictly within these 4 domains for an engineering interview:
 Candidate Context:
 - Target Job Role: ${targetRole}
 - Engineering Branch: ${branch}
@@ -251,13 +251,14 @@ Candidate Context:
 - Projects: ${projects.join(', ')}
 - Resume Excerpt: ${resumeText.substring(0, 2000)}
 
-Generate questions from the following categories:
-1. Technical/Core Engineering Question (specifically on skills like ${skills[0] || 'programming'})
-2. Technical Coding/System Design Question
-3. Resume/Project-Based Question (specifically on ${projects[0] || 'core projects'})
-4. Behavioral/HR Scenario Question
-5. Aptitude/Analytical Problem Solving Question
+Domains:
+1. Technical Core (specifically on skills like ${skills[0] || 'programming'})
+2. Programming & Coding / System Design
+3. Project & Resume-Based (specifically on ${projects[0] || 'core projects'})
+4. Behavioral & HR
+5. Advanced Technical Application / System Architecture
 
+Do NOT generate aptitude, math puzzle, or general numerical reasoning questions.
 Return exactly 5 questions as a JSON array of strings.`;
 
       const response = await client.models.generateContent({

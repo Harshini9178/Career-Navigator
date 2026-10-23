@@ -1414,11 +1414,11 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                   Category-Wise Performance Breakdown
                 </h4>
                 <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase">
-                  5 Domains Tested
+                  {Object.keys(interview.categoryScores).length} {Object.keys(interview.categoryScores).length === 1 ? 'Domain' : 'Domains'} Evaluated
                 </span>
               </div>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {Object.entries(interview.categoryScores).map(([cat, score]) => (
                   <div key={cat} className="bg-[var(--bg-base)] p-3.5 rounded-xl border border-[var(--border)] space-y-2">
                     <div className="flex justify-between items-center text-xs">

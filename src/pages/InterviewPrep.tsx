@@ -63,8 +63,7 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
     'technical',
     'coding',
     'resume',
-    'behavioral',
-    'aptitude'
+    'behavioral'
   ]);
   const [durationMinutes, setDurationMinutes] = useState<number>(30);
   const [prepTimerSeconds, setPrepTimerSeconds] = useState<number>(0); // 0 = off, 30s, 60s
@@ -486,7 +485,7 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
         <div className="hidden md:block md:col-span-4 bg-[var(--bg-base)] p-5 rounded-2xl border border-[var(--border)] space-y-3 text-xs relative z-10">
           <div className="flex items-center justify-between pb-2 border-b border-[var(--border)]">
             <span className="font-bold text-[var(--text-primary)] font-display">Supported Categories:</span>
-            <span className="text-[10px] font-mono text-[var(--primary)] font-bold">5 Domains</span>
+            <span className="text-[10px] font-mono text-[var(--primary)] font-bold">4 Domains</span>
           </div>
 
           <div className="space-y-2 text-[11px] text-[var(--text-secondary)]">
@@ -505,10 +504,6 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
             <div className="flex items-center justify-between">
               <span>4. Behavioral & Situational</span>
               <span className="font-mono text-[10px] text-[var(--text-muted)]">STAR Method</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span>5. Aptitude & Analytical</span>
-              <span className="font-mono text-[10px] text-[var(--text-muted)]">Reasoning</span>
             </div>
           </div>
         </div>

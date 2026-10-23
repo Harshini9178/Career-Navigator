@@ -43,8 +43,9 @@ public class GeminiService {
             String primaryProject = (projects != null && !projects.isEmpty()) ? projects.get(0) : "Engineering Capstone";
 
             String prompt = String.format(
-                    "Generate exactly 5 targeted engineering interview questions for: Role=%s, Branch=%s, Level=%s, Skills=%s, Projects=%s. " +
-                    "Categories: 1. Core Technical (%s), 2. System Design/Coding, 3. Project Deep Dive (%s), 4. Behavioral/Conflict Resolution, 5. Analytical Problem Solving. " +
+                    "Generate exactly 5 targeted engineering interview questions strictly within these 4 domains for: Role=%s, Branch=%s, Level=%s, Skills=%s, Projects=%s. " +
+                    "Domains: 1. Core Technical (%s), 2. System Design/Coding, 3. Project Deep Dive (%s), 4. Behavioral/HR, 5. Advanced Technical Architecture. " +
+                    "Do NOT generate aptitude, math puzzles, or numerical reasoning questions. " +
                     "Return strictly a JSON array of 5 strings.",
                     targetRole, branch, experienceLevel, skills, projects, primarySkill, primaryProject
             );

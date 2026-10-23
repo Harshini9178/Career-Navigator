@@ -14,8 +14,7 @@ export const QUESTION_CATEGORIES = [
   { id: 'technical', label: 'Technical Core', description: 'Language internals, architecture, databases & APIs' },
   { id: 'coding', label: 'Programming & Coding', description: 'Data structures, algorithms & syntax problem solving' },
   { id: 'resume', label: 'Project & Resume-Based', description: 'Architecture, engineering decisions & system trade-offs' },
-  { id: 'behavioral', label: 'Behavioral & HR', description: 'Collaboration, conflict resolution & teamwork' },
-  { id: 'aptitude', label: 'Aptitude & Analytical', description: 'Quantitative reasoning, sequence analysis & system triage' }
+  { id: 'behavioral', label: 'Behavioral & HR', description: 'Collaboration, conflict resolution & teamwork' }
 ] as const;
 
 export const INTERVIEW_ROLES = [
@@ -698,78 +697,6 @@ public class BinarySearch {
     ]
   },
 
-  // --- Category 5: Aptitude and Analytical Questions ---
-  {
-    id: 'q-30',
-    category: 'aptitude',
-    difficulty: 'beginner',
-    roles: ['Java Developer', 'Full Stack Developer', 'Frontend Developer', 'Backend Developer', 'Python Developer', 'Software Engineer'],
-    question: 'A number increases from 80 to 100. What is the percentage increase?',
-    expectedAnswerPoints: [
-      'Formula: Percentage Increase = ((New Value - Old Value) / Old Value) * 100',
-      'Calculation: (100 - 80) / 80 = 20 / 80 = 1/4 = 0.25',
-      'Final Answer: 25% increase.'
-    ],
-    evaluationCriteria: [
-      'Correct mathematical result: 25%',
-      'Clear articulation of formula and intermediate step',
-      'Avoidance of common error: calculating 20% by dividing by 100'
-    ]
-  },
-  {
-    id: 'q-31',
-    category: 'aptitude',
-    difficulty: 'intermediate',
-    roles: ['Java Developer', 'Full Stack Developer', 'Frontend Developer', 'Backend Developer', 'Python Developer', 'Software Engineer'],
-    question: 'Find the next number in the sequence: 2, 6, 12, 20, 30, __.',
-    expectedAnswerPoints: [
-      'Pattern 1 (Differences): Differences between consecutive terms are +4, +6, +8, +10. Next difference is +12. 30 + 12 = 42.',
-      'Pattern 2 (Factorial/Multiplication): 1*2=2, 2*3=6, 3*4=12, 4*5=20, 5*6=30. Next term is 6*7 = 42.',
-      'Pattern 3 (n² + n): 1²+1=2, 2²+2=6, 3²+3=12, 4²+4=20, 5²+5=30. Next term is 6²+6 = 36+6 = 42.',
-      'Final Answer: 42.'
-    ],
-    evaluationCriteria: [
-      'Correct answer: 42',
-      'Clear explanation of the underlying mathematical progression or difference pattern',
-      'Analytical problem-solving articulation'
-    ]
-  },
-  {
-    id: 'q-32',
-    category: 'aptitude',
-    difficulty: 'intermediate',
-    roles: ['Java Developer', 'Full Stack Developer', 'Frontend Developer', 'Backend Developer', 'Python Developer', 'Software Engineer'],
-    question: 'If five workers complete a task in ten days at the same rate, how long would ten workers take?',
-    expectedAnswerPoints: [
-      'Work equation: Total Work = Workers × Days = 5 workers × 10 days = 50 worker-days of total work.',
-      'New arrangement: 50 worker-days / 10 workers = 5 days.',
-      'Final Answer: 5 days (inverse proportionality: doubling workers halves the required duration).'
-    ],
-    evaluationCriteria: [
-      'Correct answer: 5 days',
-      'Recognition of inverse variation (more workers = fewer days)',
-      'Clear worker-day calculation methodology'
-    ]
-  },
-  {
-    id: 'q-33',
-    category: 'aptitude',
-    difficulty: 'advanced',
-    roles: ['Java Developer', 'Full Stack Developer', 'Backend Developer', 'Frontend Developer', 'Python Developer', 'Software Engineer'],
-    question: 'Explain how you would debug an application that suddenly becomes slow.',
-    expectedAnswerPoints: [
-      '1. Verify Metrics: Inspect server telemetry (CPU usage, memory usage, heap dumps, disk I/O, network bandwidth).',
-      '2. Database Layer: Inspect slow query logs, connection pool saturation, unindexed table scans, and lock contention.',
-      '3. Application Profiling: Take thread dumps to detect thread locks or deadlocks; run APM profiling to identify high-latency methods.',
-      '4. External Dependencies: Verify external API/microservice response times and timeout circuit breakers.',
-      '5. Traffic Analysis: Check request rate spikes or DDoS patterns; apply rate-limiting or auto-scaling if needed.'
-    ],
-    evaluationCriteria: [
-      'Systematic, structured triage methodology from outer metrics to inner code bottlenecks',
-      'Identification of common root causes: unindexed queries, database connection exhaustion, memory leak GC pauses',
-      'Use of profiling tools and APM logs'
-    ]
-  }
 ];
 
 export interface QuestionFilterOptions {
@@ -794,7 +721,7 @@ export function getBalancedQuestions(options: QuestionFilterOptions): Structured
   const targetDifficulty = options.difficulty || 'intermediate';
   const selectedCategories = (options.categories && options.categories.length > 0)
     ? options.categories
-    : ['technical', 'coding', 'resume', 'behavioral', 'aptitude'];
+    : ['technical', 'coding', 'resume', 'behavioral'];
 
   const targetRole = options.targetRole || options.role || 'Full Stack Developer';
 
@@ -803,8 +730,7 @@ export function getBalancedQuestions(options: QuestionFilterOptions): Structured
     technical: [],
     coding: [],
     resume: [],
-    behavioral: [],
-    aptitude: []
+    behavioral: []
   };
 
   for (const q of BUILT_IN_QUESTION_BANK) {
@@ -812,8 +738,10 @@ export function getBalancedQuestions(options: QuestionFilterOptions): Structured
 
     // Weight role alignment
     const roleMatches = q.roles.some((r) => r.toLowerCase().includes(targetRole.toLowerCase()) || targetRole.toLowerCase().includes(r.toLowerCase()));
-    if (roleMatches || q.category === 'behavioral' || q.category === 'aptitude' || q.category === 'resume') {
-      categorizedPool[q.category].push({ ...q });
+    if (roleMatches || q.category === 'behavioral' || q.category === 'resume') {
+      if (categorizedPool[q.category]) {
+        categorizedPool[q.category].push({ ...q });
+      }
     }
   }
 
