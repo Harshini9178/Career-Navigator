@@ -43,27 +43,68 @@ function AnimatedCounter({ value, duration = 900 }: { value: number | null; dura
   return <span>{displayValue}</span>;
 }
 
+function normalizeResume(data: any): ResumeAnalysis | null {
+  if (!data) return null;
+  const item = data.analysis !== undefined ? data.analysis : (data.atsScore !== undefined ? data : null);
+  if (!item) return null;
+  return {
+    ...item,
+    skills: Array.isArray(item.skills) ? item.skills : [],
+    suggestions: Array.isArray(item.suggestions) ? item.suggestions : [],
+    missingSections: Array.isArray(item.missingSections) ? item.missingSections : [],
+    detectedSections: Array.isArray(item.detectedSections) ? item.detectedSections : [],
+    keywords: Array.isArray(item.keywords) ? item.keywords : [],
+    grammarIssues: Array.isArray(item.grammarIssues) ? item.grammarIssues : [],
+    atsScore: typeof item.atsScore === 'number' ? item.atsScore : 0
+  };
+}
+
+function normalizeInterviews(data: any): MockInterview[] {
+  if (!data) return [];
+  const list = Array.isArray(data)
+    ? data
+    : (Array.isArray(data.history)
+      ? data.history
+      : (Array.isArray(data.interviews) ? data.interviews : []));
+  return list.map((item: any) => ({
+    ...item,
+    questions: Array.isArray(item.questions) ? item.questions : [],
+    answers: Array.isArray(item.answers) ? item.answers : [],
+    createdAt: item.createdAt || item.date || new Date().toISOString(),
+    overallScore: typeof item.overallScore === 'number' ? item.overallScore : (item.score ?? 0)
+  }));
+}
+
 export default function StudentDashboard({ user, onNavigate }: StudentDashboardProps) {
   const [resume, setResume] = useState<ResumeAnalysis | null>(null);
   const [interviews, setInterviews] = useState<MockInterview[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    // Fetch user resume analysis and interview history
+  const fetchDashboardData = () => {
+    setLoading(true);
+    setError(null);
     Promise.all([
-      api.get('/api/resume/my-analysis').then((res) => res.json()),
-      api.get('/api/interview/history').then((res) => res.json())
+      api.get('/api/resume/my-analysis')
+        .then((res) => (res.ok ? res.json() : null))
+        .catch(() => null),
+      api.get('/api/interview/history')
+        .then((res) => (res.ok ? res.json() : null))
+        .catch(() => null)
     ])
       .then(([resumeData, interviewData]) => {
-        if (resumeData.success && resumeData.analysis) {
-          setResume(resumeData.analysis);
-        }
-        if (interviewData.success && interviewData.history) {
-          setInterviews(interviewData.history);
-        }
+        setResume(normalizeResume(resumeData));
+        setInterviews(normalizeInterviews(interviewData));
       })
-      .catch((err) => console.error('Failed to load dashboard data:', err))
+      .catch((err) => {
+        console.error('Failed to load dashboard data:', err);
+        setError('Failed to load your placement readiness data. Please verify the backend service is running.');
+      })
       .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchDashboardData();
   }, []);
 
   const latestInterview = interviews[0] || null;
@@ -99,6 +140,24 @@ export default function StudentDashboard({ user, onNavigate }: StudentDashboardP
         <div className="flex flex-col items-center space-y-3">
           <div className="w-8 h-8 border-2 border-[var(--border)] border-t-[var(--primary)] rounded-full animate-spin" />
           <p className="text-[var(--text-muted)] text-xs font-mono">loading_dashboard...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center h-[calc(100vh-4rem)] bg-[var(--bg-base)]">
+        <div className="flex flex-col items-center space-y-4 max-w-md text-center p-6 glass-card rounded-2xl border border-[var(--border)]">
+          <AlertCircle className="w-10 h-10 text-[var(--warning)]" />
+          <h3 className="text-base font-bold text-[var(--text-primary)]">Placement Readiness Hub</h3>
+          <p className="text-xs text-[var(--text-secondary)]">{error}</p>
+          <button
+            onClick={fetchDashboardData}
+            className="px-4 py-2 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white text-xs font-semibold rounded-lg transition"
+          >
+            Retry Connection
+          </button>
         </div>
       </div>
     );
@@ -166,7 +225,7 @@ export default function StudentDashboard({ user, onNavigate }: StudentDashboardP
           </div>
           <div className="mt-6 pt-4 border-t border-[var(--border)] flex items-center justify-between">
             <span className="text-xs text-[var(--text-secondary)] font-medium">
-              {resume ? `${resume.skills.length} skills parsed` : 'No resume uploaded yet'}
+              {resume ? `${(resume.skills || []).length} skills parsed` : 'No resume uploaded yet'}
             </span>
             <button
               onClick={() => onNavigate('resume-analyzer')}
@@ -259,7 +318,7 @@ export default function StudentDashboard({ user, onNavigate }: StudentDashboardP
               <div className="space-y-2">
                 <span className="text-[10px] font-bold text-[var(--text-secondary)] uppercase tracking-wider">Identified Competencies</span>
                 <div className="flex flex-wrap gap-1.5">
-                  {resume.skills.slice(0, 8).map((skill, i) => (
+                  {(resume.skills || []).slice(0, 8).map((skill, i) => (
                     <span key={i} className="bg-[var(--primary-soft)] text-[var(--primary)] text-[10px] px-2 py-1 rounded-md font-medium border border-[var(--primary)]/20">
                       {skill}
                     </span>
@@ -271,7 +330,7 @@ export default function StudentDashboard({ user, onNavigate }: StudentDashboardP
               <div className="space-y-3 pt-2">
                 <span className="text-[10px] font-bold text-[var(--text-secondary)] uppercase tracking-wider">Critical Additions</span>
                 <div className="space-y-2">
-                  {resume.suggestions.slice(0, 2).map((item, idx) => (
+                  {(resume.suggestions || []).slice(0, 2).map((item, idx) => (
                     <div key={idx} className="flex items-start space-x-2 text-xs text-[var(--text-secondary)]">
                       <div className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] mt-1.5 flex-shrink-0" />
                       <p className="leading-relaxed">{item}</p>
@@ -332,11 +391,11 @@ export default function StudentDashboard({ user, onNavigate }: StudentDashboardP
                         <td className="py-3">
                           <span className="flex items-center space-x-1.5">
                             <Calendar className="w-3.5 h-3.5 text-[var(--text-muted)]" />
-                            <span>{new Date(interview.createdAt).toLocaleDateString()}</span>
+                            <span>{new Date(interview.createdAt || interview.date || Date.now()).toLocaleDateString()}</span>
                           </span>
                         </td>
                         <td className="py-3 font-mono text-[10px] text-[var(--text-muted)]">
-                          {interview.answers.length} / {interview.questions.length} answered
+                          {(interview.answers || []).length} / {(interview.questions || []).length} answered
                         </td>
                         <td className="py-3 text-right">
                           <span className={`font-bold font-mono text-xs ${

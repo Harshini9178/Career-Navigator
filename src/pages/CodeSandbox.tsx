@@ -429,8 +429,15 @@ export default function CodeSandbox() {
       }
 
       const data = await response.json();
-      if (data.success && data.review) {
-        setReviewResult(data.review);
+      const rawReview = data.review !== undefined ? data.review : (data.correctness !== undefined ? data : null);
+      if (rawReview) {
+        setReviewResult({
+          correctness: typeof rawReview.correctness === 'number' ? rawReview.correctness : 0,
+          timeComplexity: rawReview.timeComplexity || 'O(N)',
+          spaceComplexity: rawReview.spaceComplexity || 'O(1)',
+          feedback: rawReview.feedback || '',
+          suggestions: Array.isArray(rawReview.suggestions) ? rawReview.suggestions : []
+        });
       }
     } catch (err: any) {
       console.error(err);
@@ -571,10 +578,10 @@ export default function CodeSandbox() {
                   {reviewResult.feedback}
                 </p>
 
-                {reviewResult.suggestions.length > 0 && (
+                {(reviewResult.suggestions || []).length > 0 && (
                   <div className="space-y-1.5 pt-1">
                     <span className="text-[10px] font-mono font-bold text-[var(--text-muted)] uppercase">Optimization Tips:</span>
-                    {reviewResult.suggestions.map((s, idx) => (
+                    {(reviewResult.suggestions || []).map((s, idx) => (
                       <div key={idx} className="flex items-start space-x-2 text-[11px] text-[var(--text-secondary)]">
                         <span className="text-[var(--primary)] font-bold">•</span>
                         <span>{s}</span>

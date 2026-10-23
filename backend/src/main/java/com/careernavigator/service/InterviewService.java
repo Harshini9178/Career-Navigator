@@ -62,9 +62,17 @@ public class InterviewService {
 
         Map<String, Object> res = new LinkedHashMap<>();
         res.put("id", interview.getId());
+        res.put("userId", interview.getUserId());
         res.put("jobRole", role);
+        res.put("branch", branch);
+        res.put("experienceLevel", level);
+        res.put("status", "started");
         res.put("questions", questions);
+        res.put("answers", Collections.emptyList());
+        res.put("currentQuestionIndex", 0);
         res.put("date", interview.getDate());
+        res.put("createdAt", interview.getDate());
+        res.put("suggestions", Collections.emptyList());
         return res;
     }
 
@@ -74,21 +82,37 @@ public class InterviewService {
 
         Map<String, Object> res = new LinkedHashMap<>();
         res.put("id", interview.getId());
+        res.put("userId", interview.getUserId());
         res.put("jobRole", interview.getJobRole());
+        res.put("branch", interview.getBranch());
+        res.put("experienceLevel", interview.getExperienceLevel());
         res.put("date", interview.getDate());
+        res.put("createdAt", interview.getDate() != null ? interview.getDate() : "");
         res.put("overallScore", interview.getOverallScore());
         res.put("technicalScore", interview.getTechnicalScore());
         res.put("communicationScore", interview.getCommunicationScore());
         res.put("confidenceScore", interview.getConfidenceScore());
         res.put("feedbackText", interview.getFeedbackText());
-        res.put("suggestions", interview.getSuggestions());
+        res.put("suggestions", interview.getSuggestions() != null ? interview.getSuggestions() : Collections.emptyList());
 
+        List<String> questions = new ArrayList<>();
+        List<Map<String, Object>> answers = new ArrayList<>();
         try {
             if (interview.getQasJson() != null) {
-                res.put("qas", objectMapper.readValue(interview.getQasJson(), new TypeReference<List<Map<String, Object>>>() {}));
+                List<Map<String, Object>> qasList = objectMapper.readValue(interview.getQasJson(), new TypeReference<>() {});
+                for (Map<String, Object> qa : qasList) {
+                    if (qa.get("question") != null) questions.add(qa.get("question").toString());
+                    if (qa.get("answer") != null && !qa.get("answer").toString().isBlank()) {
+                        answers.add(qa);
+                    }
+                }
             }
         } catch (Exception ignored) {
         }
+        res.put("questions", questions);
+        res.put("answers", answers);
+        res.put("currentQuestionIndex", answers.size());
+        res.put("status", (interview.getOverallScore() != null || (questions.size() > 0 && answers.size() >= questions.size())) ? "completed" : "started");
 
         return res;
     }
@@ -101,17 +125,32 @@ public class InterviewService {
         MockInterviewEntity interview = interviewRepository.findById(interviewId)
                 .orElseThrow(() -> new ApiException("Interview not found", 404));
 
-        Map<String, Object> eval = geminiService.evaluateAnswer(req.getQuestion(), req.getAnswer());
-
+        Map<String, Object> eval;
         try {
             List<Map<String, Object>> qasList = new ArrayList<>();
             if (interview.getQasJson() != null) {
                 qasList = objectMapper.readValue(interview.getQasJson(), new TypeReference<>() {});
             }
 
+            String question = req.getQuestion();
+            if (question == null || question.isBlank()) {
+                for (Map<String, Object> qa : qasList) {
+                    if (qa.get("answer") == null || qa.get("answer").toString().isBlank()) {
+                        question = qa.get("question") != null ? qa.get("question").toString() : null;
+                        break;
+                    }
+                }
+                if (question == null || question.isBlank()) {
+                    question = "Interview Technical Question";
+                }
+            }
+
+            eval = geminiService.evaluateAnswer(question, req.getAnswer());
+
             boolean found = false;
             for (Map<String, Object> qa : qasList) {
-                if (req.getQuestion().equals(qa.get("question"))) {
+                if (question.equals(qa.get("question")) || qa.get("answer") == null || qa.get("answer").toString().isBlank()) {
+                    qa.put("question", question);
                     qa.put("answer", req.getAnswer());
                     qa.put("evaluation", eval);
                     found = true;
@@ -120,7 +159,7 @@ public class InterviewService {
             }
             if (!found) {
                 Map<String, Object> newQa = new LinkedHashMap<>();
-                newQa.put("question", req.getQuestion());
+                newQa.put("question", question);
                 newQa.put("answer", req.getAnswer());
                 newQa.put("evaluation", eval);
                 qasList.add(newQa);

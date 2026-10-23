@@ -27,51 +27,81 @@ public class AdminController {
 
     @GetMapping("/metrics")
     public ResponseEntity<Map<String, Object>> getMetrics() {
-        return ResponseEntity.ok(adminService.getMetrics());
+        Map<String, Object> metrics = adminService.getMetrics();
+        Map<String, Object> body = new java.util.LinkedHashMap<>(metrics);
+        body.put("success", true);
+        body.put("metrics", metrics);
+        return ResponseEntity.ok(body);
     }
 
     @GetMapping("/students")
-    public ResponseEntity<List<Map<String, Object>>> getStudents() {
-        return ResponseEntity.ok(adminService.getStudents());
+    public ResponseEntity<Map<String, Object>> getStudents() {
+        List<Map<String, Object>> students = adminService.getStudents();
+        Map<String, Object> body = new java.util.LinkedHashMap<>();
+        body.put("success", true);
+        body.put("students", students);
+        return ResponseEntity.ok(body);
     }
 
     @GetMapping("/feedbacks")
-    public ResponseEntity<List<StudentFeedbackEntity>> getFeedbacks() {
-        return ResponseEntity.ok(adminService.getFeedbacks());
+    public ResponseEntity<Map<String, Object>> getFeedbacks() {
+        List<StudentFeedbackEntity> feedbacks = adminService.getFeedbacks();
+        Map<String, Object> body = new java.util.LinkedHashMap<>();
+        body.put("success", true);
+        body.put("feedbacks", feedbacks);
+        return ResponseEntity.ok(body);
     }
 
     @GetMapping("/interview/{id}")
     public ResponseEntity<Map<String, Object>> getInterview(@PathVariable("id") String id) {
-        return ResponseEntity.ok(interviewService.getInterview(id, null));
+        Map<String, Object> intv = interviewService.getInterview(id, null);
+        Map<String, Object> body = new java.util.LinkedHashMap<>(intv);
+        body.put("success", true);
+        body.put("interview", intv);
+        return ResponseEntity.ok(body);
     }
 
     @GetMapping("/student/{userId}/interviews")
-    public ResponseEntity<List<MockInterviewEntity>> getStudentInterviews(@PathVariable("userId") String userId) {
-        return ResponseEntity.ok(adminService.getStudentInterviews(userId));
+    public ResponseEntity<Map<String, Object>> getStudentInterviews(@PathVariable("userId") String userId) {
+        List<MockInterviewEntity> interviews = adminService.getStudentInterviews(userId);
+        Map<String, Object> body = new java.util.LinkedHashMap<>();
+        body.put("success", true);
+        body.put("interviews", interviews);
+        return ResponseEntity.ok(body);
     }
 
     @GetMapping("/student/{userId}/resume")
-    public ResponseEntity<ResumeAnalysisEntity> getStudentResume(@PathVariable("userId") String userId) {
-        return adminService.getStudentResume(userId)
-                .map(ResponseEntity::ok)
-                .orElseThrow(() -> new ApiException("Resume not found for student", 404));
+    public ResponseEntity<Map<String, Object>> getStudentResume(@PathVariable("userId") String userId) {
+        Optional<ResumeAnalysisEntity> resume = adminService.getStudentResume(userId);
+        Map<String, Object> body = new java.util.LinkedHashMap<>();
+        body.put("success", true);
+        body.put("analysis", resume.orElse(null));
+        return ResponseEntity.ok(body);
     }
 
     @PostMapping("/templates")
-    public ResponseEntity<ResumeTemplateEntity> createTemplate(@RequestBody ResumeTemplateEntity template) {
-        return ResponseEntity.ok(adminService.createTemplate(template));
+    public ResponseEntity<Map<String, Object>> createTemplate(@RequestBody ResumeTemplateEntity template) {
+        ResumeTemplateEntity saved = adminService.createTemplate(template);
+        Map<String, Object> body = new java.util.LinkedHashMap<>();
+        body.put("success", true);
+        body.put("template", saved);
+        return ResponseEntity.ok(body);
     }
 
     @PutMapping("/templates/{id}")
-    public ResponseEntity<ResumeTemplateEntity> updateTemplate(
+    public ResponseEntity<Map<String, Object>> updateTemplate(
             @PathVariable("id") String id,
             @RequestBody ResumeTemplateEntity template) {
-        return ResponseEntity.ok(adminService.updateTemplate(id, template));
+        ResumeTemplateEntity updated = adminService.updateTemplate(id, template);
+        Map<String, Object> body = new java.util.LinkedHashMap<>();
+        body.put("success", true);
+        body.put("template", updated);
+        return ResponseEntity.ok(body);
     }
 
     @DeleteMapping("/templates/{id}")
-    public ResponseEntity<Map<String, String>> deleteTemplate(@PathVariable("id") String id) {
+    public ResponseEntity<Map<String, Object>> deleteTemplate(@PathVariable("id") String id) {
         adminService.deleteTemplate(id);
-        return ResponseEntity.ok(Map.of("message", "Template deleted successfully"));
+        return ResponseEntity.ok(Map.of("success", true, "message", "Template deleted successfully"));
     }
 }

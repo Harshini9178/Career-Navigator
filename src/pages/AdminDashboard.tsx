@@ -25,6 +25,20 @@ import {
 import { DashboardMetrics, StudentFeedback, ResumeTemplate } from '../types.js';
 import { api } from '../lib/api.js';
 
+function normalizeMetrics(raw: any): DashboardMetrics | null {
+  if (!raw) return null;
+  const m = raw.metrics !== undefined ? raw.metrics : raw;
+  return {
+    totalStudents: typeof m.totalStudents === 'number' ? m.totalStudents : 0,
+    totalInterviews: typeof m.totalInterviews === 'number' ? m.totalInterviews : 0,
+    avgInterviewScore: typeof m.avgInterviewScore === 'number' ? m.avgInterviewScore : 0,
+    avgATSScore: typeof m.avgATSScore === 'number' ? m.avgATSScore : 0,
+    weeklyInterviews: Array.isArray(m.weeklyInterviews) ? m.weeklyInterviews : [],
+    branchDistribution: Array.isArray(m.branchDistribution) ? m.branchDistribution : [],
+    recentActivity: Array.isArray(m.recentActivity) ? m.recentActivity : []
+  };
+}
+
 export default function AdminDashboard() {
   const [metrics, setMetrics] = useState<DashboardMetrics | null>(null);
   const [students, setStudents] = useState<any[]>([]);
@@ -58,23 +72,30 @@ export default function AdminDashboard() {
     }).toString();
 
     Promise.all([
-      api.get('/api/admin/metrics').then((res) => res.json()),
-      api.get(`/api/admin/students?${query}`).then((res) => res.json()),
-      api.get('/api/admin/feedbacks').then((res) => res.json()),
-      api.get('/api/resume/templates').then((res) => res.json())
+      api.get('/api/admin/metrics').then((res) => (res.ok ? res.json() : null)).catch(() => null),
+      api.get(`/api/admin/students?${query}`).then((res) => (res.ok ? res.json() : null)).catch(() => null),
+      api.get('/api/admin/feedbacks').then((res) => (res.ok ? res.json() : null)).catch(() => null),
+      api.get('/api/resume/templates').then((res) => (res.ok ? res.json() : null)).catch(() => null)
     ])
       .then(([metricsData, studentsData, feedbacksData, templatesData]) => {
-        if (metricsData.success && metricsData.metrics) {
-          setMetrics(metricsData.metrics);
+        if (metricsData) {
+          setMetrics(normalizeMetrics(metricsData));
         }
-        if (studentsData.success && studentsData.students) {
-          setStudents(studentsData.students);
+        if (studentsData) {
+          const sList = Array.isArray(studentsData) ? studentsData : (studentsData.students || []);
+          setStudents(sList);
         }
-        if (feedbacksData.success && feedbacksData.feedbacks) {
-          setFeedbacks(feedbacksData.feedbacks);
+        if (feedbacksData) {
+          const fList = Array.isArray(feedbacksData) ? feedbacksData : (feedbacksData.feedbacks || []);
+          setFeedbacks(fList);
         }
-        if (templatesData.success && templatesData.templates) {
-          setTemplates(templatesData.templates);
+        if (templatesData) {
+          const tList = Array.isArray(templatesData) ? templatesData : (templatesData.templates || []);
+          setTemplates(tList.map((t: any) => ({
+            ...t,
+            downloadCount: typeof t.downloadCount === 'number' ? t.downloadCount : (t.downloads || 0),
+            fileContent: t.fileContent || t.sectionsJson || ''
+          })));
         }
       })
       .catch((err) => console.error('Failed to load admin logs:', err))
@@ -159,7 +180,9 @@ export default function AdminDashboard() {
   }
 
   // Calculate max for chart scaling
-  const maxWeeklyCount = metrics ? Math.max(...metrics.weeklyInterviews.map(w => w.count), 1) : 1;
+  const maxWeeklyCount = metrics && Array.isArray(metrics.weeklyInterviews) && metrics.weeklyInterviews.length > 0
+    ? Math.max(...metrics.weeklyInterviews.map((w) => w.count), 1)
+    : 1;
 
   return (
     <div className="p-4 sm:p-8 max-w-7xl mx-auto space-y-8 text-[var(--text-primary)]">
@@ -219,7 +242,7 @@ export default function AdminDashboard() {
           <div className="bg-[var(--bg-card)] border border-[var(--border)] p-6 rounded-2xl space-y-4">
             <h4 className="font-bold text-xs text-[var(--text-muted)] uppercase tracking-wider font-mono">Weekly Interview Activity</h4>
             <div className="flex items-end justify-between h-40 gap-2">
-              {metrics.weeklyInterviews.map((day) => (
+              {(metrics.weeklyInterviews || []).map((day) => (
                 <div key={day.name} className="flex-1 flex flex-col items-center justify-end h-full gap-2">
                   <span className="text-[9px] font-bold text-[var(--primary)] font-mono">{day.count}</span>
                   <div
@@ -235,10 +258,10 @@ export default function AdminDashboard() {
           {/* Branch Distribution Pie-style chart */}
           <div className="bg-[var(--bg-card)] border border-[var(--border)] p-6 rounded-2xl space-y-4">
             <h4 className="font-bold text-xs text-[var(--text-muted)] uppercase tracking-wider font-mono">Branch Distribution</h4>
-            {metrics.branchDistribution.length > 0 ? (
+            {(metrics.branchDistribution || []).length > 0 ? (
               <div className="space-y-3">
-                {metrics.branchDistribution.map((b, idx) => {
-                  const totalStudents = metrics.branchDistribution.reduce((s, x) => s + x.count, 0);
+                {(metrics.branchDistribution || []).map((b, idx) => {
+                  const totalStudents = (metrics.branchDistribution || []).reduce((s, x) => s + x.count, 0);
                   const pct = totalStudents > 0 ? Math.round((b.count / totalStudents) * 100) : 0;
                   const colors = ['bg-[var(--primary)]', 'bg-[var(--accent)]', 'bg-[var(--primary-hover)]', 'bg-[var(--success)]', 'bg-[var(--warning)]', 'bg-[var(--danger)]'];
                   return (

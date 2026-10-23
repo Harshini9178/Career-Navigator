@@ -37,18 +37,44 @@ export default function ResumeAnalyzer() {
   const [showDiagnosticText, setShowDiagnosticText] = useState(false);
   const analysisRequestIdRef = useRef<number>(0);
 
+  const normalizeResumeAnalysis = (data: any): ResumeAnalysis => {
+    return {
+      ...data,
+      skills: Array.isArray(data.skills) ? data.skills : [],
+      missingSections: Array.isArray(data.missingSections) ? data.missingSections : [],
+      detectedSections: Array.isArray(data.detectedSections) ? data.detectedSections : [],
+      grammarIssues: Array.isArray(data.grammarIssues) ? data.grammarIssues : [],
+      suggestions: Array.isArray(data.suggestions) ? data.suggestions : [],
+      keywords: Array.isArray(data.keywords) ? data.keywords : [],
+      matchedJDKeywords: Array.isArray(data.matchedJDKeywords) ? data.matchedJDKeywords : [],
+      missingJDKeywords: Array.isArray(data.missingJDKeywords) ? data.missingJDKeywords : [],
+      atsScore: typeof data.atsScore === 'number' ? data.atsScore : 0,
+      categoryBreakdown: data.categoryBreakdown || {
+        sectionCompleteness: 0,
+        skillsDensity: 0,
+        experienceDepth: 0,
+        quantifiedImpact: 0,
+        contactInfo: 0,
+        formattingReadability: 0
+      }
+    };
+  };
+
   useEffect(() => {
     // Fetch active resume evaluation on load
     api.get('/api/resume/my-analysis')
-      .then((res) => res.json())
+      .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (data.success && data.analysis) {
-          setAnalysis(data.analysis);
-          if (data.analysis.jobDescription) {
-            setJobDescription(data.analysis.jobDescription);
+        if (!data) return;
+        const raw = data.analysis !== undefined ? data.analysis : (data.atsScore !== undefined ? data : null);
+        if (raw) {
+          const normalized = normalizeResumeAnalysis(raw);
+          setAnalysis(normalized);
+          if (normalized.jobDescription) {
+            setJobDescription(normalized.jobDescription);
           }
-          if (data.analysis.targetRole) {
-            setTargetRole(data.analysis.targetRole);
+          if (normalized.targetRole) {
+            setTargetRole(normalized.targetRole);
           }
         }
       })
@@ -176,8 +202,9 @@ export default function ResumeAnalyzer() {
       }
 
       const data = await response.json();
-      if (data.success && data.analysis) {
-        setAnalysis(data.analysis);
+      const raw = data.analysis !== undefined ? data.analysis : (data.atsScore !== undefined ? data : null);
+      if (raw) {
+        setAnalysis(normalizeResumeAnalysis(raw));
       } else {
         throw new Error('Analysis payload error.');
       }

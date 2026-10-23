@@ -51,8 +51,15 @@ public class ResumeService {
     private ResumeAnalysisResponse processResumeAnalysis(MultipartFile file, String targetRole, String jobDescription, UserEntity user) {
         String extractedText = resumeParserService.extractText(file);
         String fileName = file.getOriginalFilename() != null ? file.getOriginalFilename() : "resume.pdf";
+        return analyzeResumeText(extractedText, fileName, targetRole, jobDescription, user);
+    }
 
-        ResumeAnalysisResponse response = atsScoringService.evaluateResume(extractedText, fileName, targetRole, jobDescription);
+    public ResumeAnalysisResponse analyzeResumeText(String resumeText, String fileName, String targetRole, String jobDescription, UserEntity user) {
+        if (resumeText == null || resumeText.trim().length() < 30) {
+            throw new ApiException("Resume text content is required and must be at least 30 characters.", 400);
+        }
+        String safeFileName = (fileName != null && !fileName.isBlank()) ? fileName : "resume.pdf";
+        ResumeAnalysisResponse response = atsScoringService.evaluateResume(resumeText, safeFileName, targetRole, jobDescription);
         response.setUserId(user != null ? user.getId() : "anonymous");
 
         // Persist to JPA and db.json
@@ -83,19 +90,17 @@ public class ResumeService {
 
             resumeRepository.save(entity);
             databaseStorageService.syncToDbJson();
-        } catch (Exception e) {
-            // Non-critical logging: Analysis is already computed and can still be returned to user
+        } catch (Exception ignored) {
         }
 
         return response;
     }
 
-    public ResumeAnalysisResponse getLatestAnalysis(String userId) {
+    public Optional<ResumeAnalysisResponse> findLatestAnalysis(String userId) {
         Optional<ResumeAnalysisEntity> opt = resumeRepository.findFirstByUserIdOrderByUploadedAtDesc(userId);
         if (opt.isEmpty()) {
-            throw new ApiException("No resume analysis found for the current user.", 404);
+            return Optional.empty();
         }
-
         ResumeAnalysisEntity entity = opt.get();
         ResumeAnalysisResponse resp = new ResumeAnalysisResponse();
         resp.setId(entity.getId());
@@ -129,8 +134,12 @@ public class ResumeService {
             }
         } catch (Exception ignored) {
         }
+        return Optional.of(resp);
+    }
 
-        return resp;
+    public ResumeAnalysisResponse getLatestAnalysis(String userId) {
+        return findLatestAnalysis(userId)
+                .orElseThrow(() -> new ApiException("No resume analysis found for the current user.", 404));
     }
 
     public List<ResumeTemplateEntity> getAllTemplates() {

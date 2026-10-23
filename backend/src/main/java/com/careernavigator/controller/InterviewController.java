@@ -6,6 +6,7 @@ import com.careernavigator.entity.UserEntity;
 import com.careernavigator.exception.ApiException;
 import com.careernavigator.service.GeminiService;
 import com.careernavigator.service.InterviewService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
@@ -23,6 +25,8 @@ public class InterviewController {
 
     private final InterviewService interviewService;
     private final GeminiService geminiService;
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     public InterviewController(InterviewService interviewService, GeminiService geminiService) {
         this.interviewService = interviewService;
@@ -36,7 +40,11 @@ public class InterviewController {
         if (user == null) {
             throw new ApiException("Authentication required", 401);
         }
-        return ResponseEntity.ok(interviewService.generateInterview(req, user));
+        Map<String, Object> intv = interviewService.generateInterview(req, user);
+        Map<String, Object> body = new LinkedHashMap<>(intv);
+        body.put("success", true);
+        body.put("interview", intv);
+        return ResponseEntity.ok(body);
     }
 
     @GetMapping("/{id}")
@@ -46,15 +54,23 @@ public class InterviewController {
         if (user == null) {
             throw new ApiException("Authentication required", 401);
         }
-        return ResponseEntity.ok(interviewService.getInterview(id, user));
+        Map<String, Object> intv = interviewService.getInterview(id, user);
+        Map<String, Object> body = new LinkedHashMap<>(intv);
+        body.put("success", true);
+        body.put("interview", intv);
+        return ResponseEntity.ok(body);
     }
 
     @GetMapping("/history")
-    public ResponseEntity<List<MockInterviewEntity>> getHistory(@AuthenticationPrincipal UserEntity user) {
+    public ResponseEntity<Map<String, Object>> getHistory(@AuthenticationPrincipal UserEntity user) {
         if (user == null) {
             throw new ApiException("Authentication required", 401);
         }
-        return ResponseEntity.ok(interviewService.getUserInterviewHistory(user.getId()));
+        List<MockInterviewEntity> history = interviewService.getUserInterviewHistory(user.getId());
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("success", true);
+        body.put("history", history);
+        return ResponseEntity.ok(body);
     }
 
     @PostMapping("/{id}/answer")
@@ -65,7 +81,11 @@ public class InterviewController {
         if (user == null) {
             throw new ApiException("Authentication required", 401);
         }
-        return ResponseEntity.ok(interviewService.evaluateAnswer(id, req, user));
+        Map<String, Object> eval = interviewService.evaluateAnswer(id, req, user);
+        Map<String, Object> body = new LinkedHashMap<>(eval);
+        body.put("success", true);
+        body.put("interview", interviewService.getInterview(id, user));
+        return ResponseEntity.ok(body);
     }
 
     @PostMapping(value = "/{id}/answer-stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
@@ -85,9 +105,17 @@ public class InterviewController {
                 String[] words = feedback != null ? feedback.split(" ") : new String[]{"Answer", "evaluated."};
 
                 for (String word : words) {
-                    emitter.send(SseEmitter.event().data(word + " "));
+                    Map<String, String> tokenObj = Map.of("token", word + " ");
+                    emitter.send(SseEmitter.event().data(objectMapper.writeValueAsString(tokenObj)));
                     Thread.sleep(40);
                 }
+
+                Map<String, Object> updatedIntv = interviewService.getInterview(id, user);
+                Map<String, Object> doneObj = new LinkedHashMap<>();
+                doneObj.put("done", true);
+                doneObj.put("interview", updatedIntv);
+                doneObj.put("currentEvaluation", eval);
+                emitter.send(SseEmitter.event().data(objectMapper.writeValueAsString(doneObj)));
                 emitter.complete();
             } catch (Exception e) {
                 emitter.completeWithError(e);
@@ -101,9 +129,10 @@ public class InterviewController {
     public ResponseEntity<Map<String, Object>> reviewCode(
             @RequestBody CodeReviewRequest req,
             @AuthenticationPrincipal UserEntity user) {
-        if (user == null) {
-            throw new ApiException("Authentication required", 401);
-        }
-        return ResponseEntity.ok(interviewService.reviewCode(req));
+        Map<String, Object> review = interviewService.reviewCode(req);
+        Map<String, Object> body = new LinkedHashMap<>(review);
+        body.put("success", true);
+        body.put("review", review);
+        return ResponseEntity.ok(body);
     }
 }

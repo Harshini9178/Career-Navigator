@@ -174,8 +174,15 @@ public class DatabaseStorageService {
                     MockInterviewEntity i = new MockInterviewEntity();
                     i.setId(iNode.path("id").asText(UUID.randomUUID().toString()));
                     i.setUserId(iNode.path("userId").asText(""));
-                    i.setDate(iNode.path("date").asText(""));
-                    i.setJobRole(iNode.path("jobRole").asText(""));
+                    String dateVal = iNode.path("date").asText("");
+                    if (dateVal.isBlank() && iNode.has("createdAt")) {
+                        dateVal = iNode.path("createdAt").asText("");
+                    }
+                    if (dateVal.isBlank()) {
+                        dateVal = new Date().toInstant().toString();
+                    }
+                    i.setDate(dateVal);
+                    i.setJobRole(iNode.path("jobRole").asText("Full Stack Engineer"));
                     i.setBranch(iNode.path("branch").asText(null));
                     i.setExperienceLevel(iNode.path("experienceLevel").asText(null));
                     i.setOverallScore(iNode.path("overallScore").asInt(70));
@@ -191,6 +198,39 @@ public class DatabaseStorageService {
                     }
                     if (iNode.has("qas")) {
                         i.setQasJson(iNode.get("qas").toString());
+                    } else if (iNode.has("questions")) {
+                        List<Map<String, Object>> qasList = new ArrayList<>();
+                        JsonNode qArr = iNode.get("questions");
+                        JsonNode aArr = iNode.has("answers") ? iNode.get("answers") : null;
+                        int idx = 0;
+                        for (JsonNode qNode : qArr) {
+                            Map<String, Object> qa = new LinkedHashMap<>();
+                            qa.put("question", qNode.asText());
+                            if (aArr != null && aArr.has(idx)) {
+                                qa.put("answer", aArr.get(idx).path("answer").asText(""));
+                            } else {
+                                qa.put("answer", "");
+                            }
+                            qasList.add(qa);
+                            idx++;
+                        }
+                        i.setQasJson(objectMapper.writeValueAsString(qasList));
+                    }
+
+                    if (i.getQasJson() == null || i.getQasJson().isBlank()) {
+                        List<Map<String, Object>> defaultQas = new ArrayList<>();
+                        String[] defaultQuestions = {
+                                "Explain the core architectural patterns you use in " + i.getJobRole(),
+                                "How do you design and structure scalable microservice APIs?",
+                                "Describe a challenging technical debugging problem you resolved."
+                        };
+                        for (String dq : defaultQuestions) {
+                            Map<String, Object> qa = new LinkedHashMap<>();
+                            qa.put("question", dq);
+                            qa.put("answer", "Evaluated during assessment session.");
+                            defaultQas.add(qa);
+                        }
+                        i.setQasJson(objectMapper.writeValueAsString(defaultQas));
                     }
 
                     interviewRepository.save(i);

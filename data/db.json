@@ -298,7 +298,7 @@
     "skills" : [ ],
     "projects" : [ ],
     "completedProfile" : false,
-    "passwordHash" : "1ec01ff0e6d77bda7f0ff3932bbc54c7:a6eb64642bdec1bd32193f26404fdea7c4489705e6de9065f335e50b8ef2b3db7bc20ac62daba738a8b4c9c4bac86d59f3134e54dc419816be07fa93026dda93",
+    "passwordHash" : "9a0821783436cb97da0489d494382713:fa117a63300f5d5f85e9f9c63e1dbf1489d6a5c4f1c6c5da0f489276fb1a070c4ca41fd5826b434b05ecd0e68e29f8743886b5dd677acef61956a7f64e35e245",
     "emailVerified" : true
   }, {
     "id" : "usr-auth-success-1",
@@ -309,7 +309,7 @@
     "skills" : [ ],
     "projects" : [ ],
     "completedProfile" : true,
-    "passwordHash" : "e656fa668b67edbeca665dd8e7ae8bb6:d265600ba4bae8f0eb2894bb685ba58561c08cd2985d0474a672dcaf8ec475808e2ae1fdfa4d5b23e439bf4b216667fd6f7233f04982aa23e402fddd0b888c37",
+    "passwordHash" : "beb5d9603e1eefd1fb87b11f18566703:db8e83a3ccbb25aef0583eefa55c5cba98ddc56ab3958398929fc8a34da3cdf624d3da26a85ed8c37a33ac3cb0870b20d8b04389fa84dc0acc8403af30380283",
     "emailVerified" : true
   }, {
     "id" : "test-1791998930886",
@@ -1848,6 +1848,984 @@
     "phone" : "+1 5559876020",
     "emailVerified" : true,
     "createdAt" : "2026-10-22T18:11:26.729Z"
+  }, {
+    "id" : "usr-1792731740922-af869",
+    "email" : "candidate-d0157f@careernavigator.edu",
+    "name" : "Integration Candidate",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Engineer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$bJgvEdDIOix/Z3OL6ycYou1iwDWzw4/4NZlM6tZQjR8xfqb3uWjw6",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:21.033Z"
+  }, {
+    "id" : "usr-1792731746067-15e26",
+    "email" : "candidate-9bbeed8d@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$O6cQh2fPj4dr/jMCldB6he/eGx/xhZjEHbctVAF.QKiRgm1TdINwi",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:26.168Z"
+  }, {
+    "id" : "usr-1792731746528-cc1fa",
+    "email" : "candidate-5d591a77@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$SW8LHhP3rZB8twDGqMoUreUBZoo7inHJZPbSt9lXm4r0nAJoAThRu",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:26.625Z"
+  }, {
+    "id" : "usr-1792731746742-0a153",
+    "email" : "candidate-df2b6c91@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$phwbDaN0V5rHmnHwb39m6elTn/Rme75BxLTMPKH4Iz5Jgpg7IAIFG",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:26.858Z"
+  }, {
+    "id" : "usr-1792731746923-5b7d5",
+    "email" : "candidate-98b3aff3@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$/jbKjsCiGv/ltmpw/Lta3.mx9O8TZoS3xAxEUkq1uVC/Qrnjiy6bG",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:27.074Z"
+  }, {
+    "id" : "admin-1792731747158",
+    "email" : "admin-c1df85@careernavigator.com",
+    "name" : "Admin Officer",
+    "role" : "admin",
+    "skills" : [ ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792731747234-97eb5",
+    "email" : "candidate-8977e51f@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Ay5m9CUFIygqkLs666RMuuAuCDE4/knlHVgDSyacBa6SR0xbBTnb.",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:27.392Z"
+  }, {
+    "id" : "usr-1792731747517-8d44c",
+    "email" : "candidate-9fc175eb@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$TXD7D9l1ne8I64X2gSCl6.UArc3XgOfZxOVOCluw1WLInxFoD6keC",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:27.662Z"
+  }, {
+    "id" : "usr-04470b84-2873-4db6-930c-7b6a9e5ed6d6",
+    "email" : "persist-ec1dabbf-3409-4a73-a6b2-3a748809d61f@example.com",
+    "name" : "Database Test User",
+    "role" : "student",
+    "skills" : [ "Java", "PostgreSQL", "Docker" ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792731748107-3f3cf",
+    "email" : "testuser-b26cd9e0@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$SkW0yB3F38Sn.I7irdnE7uNrfrnXdsg7h7EN5zYl26XFWDhAzGBdC",
+    "phone" : "+1 5552671869",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:28.249Z"
+  }, {
+    "id" : "usr-1792731748388-54dc4",
+    "email" : "testuser-6aafa8d3@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$qrR9A9LHDKauIk4TtUD5uukG3BtzgT1IECD8K6LVFA2OcHL9yRjSO",
+    "phone" : "+1 5559805098",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:28.521Z"
+  }, {
+    "id" : "usr-1792731748655-ec1c1",
+    "email" : "caseuser-1ba2d83e@example.com",
+    "name" : "Case User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Vi8ZTzvWfZgmlWRfKyhTpetFtaYBhrQ1xki404.tzpzbsoVayjIfC",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:28.772Z"
+  }, {
+    "id" : "usr-1792731748838-df2f9",
+    "email" : "whitespace-c2ef35ed@example.com",
+    "name" : "Whitespace User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$EcEey/efVU7YYh4ZDtX7GeBaiwPdi9YtMNjyqpRZ.9.2OlVfGpr1G",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:28.941Z"
+  }, {
+    "id" : "usr-1792731749017-665f8",
+    "email" : "emailtest-a628bb10@example.com",
+    "name" : "Email Test",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Fphe6e01DjlmC2.m.Ci5Ie3IuejkUE8cVt1ewb3i6CDfV2LdHbcEK",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:29.164Z"
+  }, {
+    "id" : "usr-1792731749261-f4229",
+    "email" : "testuser-3345159c@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$ZlOq4TXmi2atblUY/rRIyuuJyjBqmMjIjYrn4qwciYqE5NPQAIjCu",
+    "phone" : "+1 5553763633",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:29.424Z"
+  }, {
+    "id" : "usr-1792731749515-d5d72",
+    "email" : "different-07151ed7@example.com",
+    "name" : "Mark Smith",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Kqd07HJVw/kCmzpb734K6ecQ1a1doDkwOq65TgIdzBrK/n8XpV4Jy",
+    "phone" : "+1 5553445149",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:29.655Z"
+  }, {
+    "id" : "usr-1792731749721-6f09d",
+    "email" : "testuser-ccbb6e68@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$uYz/mvKLL4kf8bxxhgMEJ.F36noyJlTJ0rPboZ61jaz8zFUfMTMI6",
+    "phone" : "+1 5555951889",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:29.856Z"
+  }, {
+    "id" : "usr-1792731749930-6205d",
+    "email" : "testuser-25fda2a7@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Ci5Cyk/q8PjiFc4fmiKkx.x8L5iEzpq7HD1M79LiNjeYKjljYaG62",
+    "phone" : "+1 5555275288",
+    "emailVerified" : true,
+    "createdAt" : "2026-10-23T05:02:30.094Z"
+  }, {
+    "id" : "usr-1792731750354-d9fa3",
+    "email" : "existing-e7405df6@example.com",
+    "name" : "Existing User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$doWhY5vAg5xuHRIn1Kk6vu/QqABrZOJUjpy2miiZhB4lGjLifKdbK",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:02:30.510Z"
+  }, {
+    "id" : "test-1792731770456",
+    "email" : "candidate-1792731770456@example.com",
+    "name" : "Test Candidate",
+    "picture" : "https://example.com/photo.jpg",
+    "role" : "student",
+    "skills" : [ "React", "TypeScript", "Node.js" ],
+    "projects" : [ "Career Navigator" ],
+    "completedProfile" : true,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-test-1792731772281",
+    "email" : "candidate.1792731772281@careernavigator.app",
+    "name" : "Jane Candidate",
+    "picture" : "https://example.com/photo.jpg",
+    "role" : "student",
+    "skills" : [ ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "passwordHash" : "09fca229bc25d658435d607027588398:e1f762fadcb28d2157d8408f0cd31ce7b1e0d382f5f4c213d17cfbf7943ac5c86a6241faa7f2ad2cb884b35b54a5844dbf90c2c73ee2e1c8f71653eab16d69a0",
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792732945056-59b51",
+    "email" : "candidate-bcf28f@careernavigator.edu",
+    "name" : "Integration Candidate",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Engineer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$5J1A4gy.tZxqALAugntwO.GxfuBDXdakhnJXyxJxDGXjUTtz44enm",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:25.178Z"
+  }, {
+    "id" : "usr-1792732949841-0f1f1",
+    "email" : "candidate-89282086@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$xqAAKK2qQRJC5OqtKtWMzO2sAdqm/3oFK1Hw3hNqCHhmAXG6twFJW",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:29.979Z"
+  }, {
+    "id" : "usr-1792732950308-7a3ab",
+    "email" : "candidate-d868f078@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$vZRIf17hg6z7TModaRbOgOIQ91cVJcSM.JxlWZeS6mMrqRdhh7ruW",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:30.424Z"
+  }, {
+    "id" : "usr-1792732950510-65d4e",
+    "email" : "candidate-4d1dc2dc@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$CIr0aUjooHgemA4qyyG4xu8R0Lasv6RHzylpL3SdfyGkcT8JsBEua",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:30.594Z"
+  }, {
+    "id" : "usr-1792732950647-9a698",
+    "email" : "candidate-01abab40@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$ehugHjEvOzjsiO.pQpfl7O1aWghA.7daQA3cn5Sgw0I.09SnJ9LTi",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:30.734Z"
+  }, {
+    "id" : "admin-1792732950806",
+    "email" : "admin-946e40@careernavigator.com",
+    "name" : "Admin Officer",
+    "role" : "admin",
+    "skills" : [ ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792732950872-77bf9",
+    "email" : "candidate-e0400431@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$nSkW67rlkZN679RptuzTZetcgMJZQsu4Cx50XqSqisG8zDdmcFul.",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:30.963Z"
+  }, {
+    "id" : "usr-1792732951052-9e55b",
+    "email" : "candidate-0cc8ca12@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$1zu.9MP43k4TKQAmB8WFKutTW4xsXq1fHpFsriSYQqt0Ry7Vpn3Q2",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:31.156Z"
+  }, {
+    "id" : "usr-d20691d5-21e5-4d01-bf8b-790f897f1e50",
+    "email" : "persist-6803ad1a-5cd3-4376-816f-f8edb18e9575@example.com",
+    "name" : "Database Test User",
+    "role" : "student",
+    "skills" : [ "Java", "PostgreSQL", "Docker" ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792732951440-32ea1",
+    "email" : "testuser-974b403f@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$UIcrbbU4uuXneTmOZG3uQudk4oIBCxgKODAIawxjLU5vubYG0NniC",
+    "phone" : "+1 5550145957",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:31.573Z"
+  }, {
+    "id" : "usr-1792732951677-9d492",
+    "email" : "testuser-f2ef7b4e@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$8VOsAEImBSgQ6bda6NrelOK5LYSDGzibhggbvnMWn5/FbOdW1wxgi",
+    "phone" : "+1 5551016617",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:31.810Z"
+  }, {
+    "id" : "usr-1792732951920-ed101",
+    "email" : "caseuser-336b71c0@example.com",
+    "name" : "Case User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$uM9HsAEv11UIr2Amnxw9dOksOX9jnwzP9XlzaygPSjQO3W5RgRioa",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:32.050Z"
+  }, {
+    "id" : "usr-1792732952138-a13f9",
+    "email" : "whitespace-d57f5249@example.com",
+    "name" : "Whitespace User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$UaUJjfZRWWtPdx.s7UQ9Nu3iE9pnvxEPOyzBVGhpjEhiUH023QwVW",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:32.268Z"
+  }, {
+    "id" : "usr-1792732952367-63ca8",
+    "email" : "emailtest-aa3bd921@example.com",
+    "name" : "Email Test",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$eRy05.o0O6gR6951G0D0rOBBgu07nUEDi3v6q7jVDnFQJEpz/ME4W",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:32.521Z"
+  }, {
+    "id" : "usr-1792732952613-df533",
+    "email" : "testuser-8c457a45@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$BNIHNTGU/9rsKUwHYH9SO.8W9j.QJLLNSiudXbf0zu7vHHnXlv/42",
+    "phone" : "+1 5558921993",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:32.751Z"
+  }, {
+    "id" : "usr-1792732952831-59926",
+    "email" : "different-28f1dbe5@example.com",
+    "name" : "Mark Smith",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$43Zk3AmKL3fUEF7yuCGIIeZRqkawo9/eLRJh0.hfGaJEqF3Tb6rqO",
+    "phone" : "+1 5557976816",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:32.969Z"
+  }, {
+    "id" : "usr-1792732953050-89b9d",
+    "email" : "testuser-9e653140@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$BD2dpNqtXcc/1Vt0a3eA4e9V0mA.BpTb4aPofr4xj55mw92M5jnZm",
+    "phone" : "+1 5555988709",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:33.182Z"
+  }, {
+    "id" : "usr-1792732953284-e789a",
+    "email" : "testuser-64ff5422@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$dZ8Zex9NlyrxtvC1LezWtudUs9Sc1V7T9j8eZ6ewUrNqt43C.gW6i",
+    "phone" : "+1 5554031773",
+    "emailVerified" : true,
+    "createdAt" : "2026-10-23T05:22:33.394Z"
+  }, {
+    "id" : "usr-1792732953566-7ee2c",
+    "email" : "existing-82c79639@example.com",
+    "name" : "Existing User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$D8R6/SpvrCut1vyeK2bf4OlO.OI.4koK1DkOE/mguwl6cRezplMmW",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:22:33.688Z"
+  }, {
+    "id" : "test-1792733268455",
+    "email" : "candidate-1792733268455@example.com",
+    "name" : "Test Candidate",
+    "picture" : "https://example.com/photo.jpg",
+    "role" : "student",
+    "skills" : [ "React", "TypeScript", "Node.js" ],
+    "projects" : [ "Career Navigator" ],
+    "completedProfile" : true,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-test-1792733269430",
+    "email" : "candidate.1792733269430@careernavigator.app",
+    "name" : "Jane Candidate",
+    "picture" : "https://example.com/photo.jpg",
+    "role" : "student",
+    "skills" : [ ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "passwordHash" : "55787683a4344e18e76eb57a60f9d4cf:bc65c2208f4bae32c67a2eb35affbfb643778de879da7d5e15e1734f973b6b40ecdb77b2a1e29fa0f4213aa4e3c2cf2260dfe0b6bbdd5a93c60d6f40b4cead34",
+    "emailVerified" : true
+  }, {
+    "id" : "test-1792734393249",
+    "email" : "candidate-1792734393249@example.com",
+    "name" : "Test Candidate",
+    "picture" : "https://example.com/photo.jpg",
+    "role" : "student",
+    "skills" : [ "React", "TypeScript", "Node.js" ],
+    "projects" : [ "Career Navigator" ],
+    "completedProfile" : true,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-test-1792734394573",
+    "email" : "candidate.1792734394573@careernavigator.app",
+    "name" : "Jane Candidate",
+    "picture" : "https://example.com/photo.jpg",
+    "role" : "student",
+    "skills" : [ ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "passwordHash" : "49f3b5e09dabc00e87068a1ac021a93b:9ee2e5e4280d66cc16b34e1245a5cdfe4f01bd3556fbe08a699ac138dd103a8c3271e2292705bde264c8fb893540b3c20a8d1aaa0c5357cf131b20696dcbca86",
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792734433468-a58f5",
+    "email" : "candidate-f73230@careernavigator.edu",
+    "name" : "Integration Candidate",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Engineer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$sK2nrPWaLvh1yJGvOHWz0eWw9/nHVTAl0fdbFf1/KcZWv9RVwuZs6",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:13.636Z"
+  }, {
+    "id" : "usr-1792734438154-ee09a",
+    "email" : "candidate-d8538ee8@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$L6Qdx3tPUa95o5QeyhSn8uPDwDJQK5UZNKdrGkN7s/EaJoy7aIolO",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:18.287Z"
+  }, {
+    "id" : "usr-1792734438650-07e00",
+    "email" : "candidate-5dac77db@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$kfbqI8ZW5mzQSbbKtnzIkO.9PFW86xMh4wDTH/VgBEdZyvxQO5tla",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:18.750Z"
+  }, {
+    "id" : "usr-1792734438860-e93f9",
+    "email" : "candidate-8bd052e6@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$fZHFH.h4ZcrjrRed2kYKce0Q053mu9b6yCpSbaNGmACTTYkmhPbNS",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:18.955Z"
+  }, {
+    "id" : "usr-1792734439027-60ad6",
+    "email" : "candidate-d49c8247@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$5E5VI5QYXUYl/pPZ1rWzv.g05Vd.Ls840OgGPedvuvKHfOMD7v6lG",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:19.127Z"
+  }, {
+    "id" : "admin-1792734439210",
+    "email" : "admin-57f06e@careernavigator.com",
+    "name" : "Admin Officer",
+    "role" : "admin",
+    "skills" : [ ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792734439294-b3326",
+    "email" : "candidate-c7400e82@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$kEdXC4e4iZnJTqgIrvoU/OQR2jrfiuQqAJlPpXvlpPULfNXB2Y67.",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:19.394Z"
+  }, {
+    "id" : "usr-1792734439486-57511",
+    "email" : "candidate-72f4a314@example.com",
+    "name" : "Alex Johnson",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Lx4Zv3NT3YcSg2XoDi7q8eQQ0DJD0OqrtSf5POmDwGz25hLJv4zee",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:19.623Z"
+  }, {
+    "id" : "usr-4df1235b-1697-4830-bc1e-27965f42a417",
+    "email" : "persist-741b1793-059f-45cd-bd2e-5221eeb8a3be@example.com",
+    "name" : "Database Test User",
+    "role" : "student",
+    "skills" : [ "Java", "PostgreSQL", "Docker" ],
+    "projects" : [ ],
+    "completedProfile" : false,
+    "emailVerified" : true
+  }, {
+    "id" : "usr-1792734440023-d849a",
+    "email" : "testuser-d5fabded@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$CJrT.R1CaUdSe.AiW8bYYehqBT4xb8s6syaoAqKJlByVDTBT506sC",
+    "phone" : "+1 5553202989",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:20.171Z"
+  }, {
+    "id" : "usr-1792734440266-5f16e",
+    "email" : "testuser-41ed6760@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$bZ1kcx4il7tHhN4gXCXy..ElOQUv2MAxCnlLZw4tnFG3ZzvAqPlLy",
+    "phone" : "+1 5559576041",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:20.395Z"
+  }, {
+    "id" : "usr-1792734440498-01be8",
+    "email" : "caseuser-2ac2fed3@example.com",
+    "name" : "Case User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$43H5LiSKyq34Z6BE2mnfheDf/SWYM2PU6Bo9/lZPgOY3ZIfbOAyK6",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:20.616Z"
+  }, {
+    "id" : "usr-1792734440668-1b1e1",
+    "email" : "whitespace-bb807b2e@example.com",
+    "name" : "Whitespace User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$sU7Atvv1VeI7ENPt6khsNOPPmxoPetZLngNEWiV919b0/Qj9AKlj2",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:20.772Z"
+  }, {
+    "id" : "usr-1792734440839-01e5c",
+    "email" : "emailtest-038fde12@example.com",
+    "name" : "Email Test",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$ea4NGGpC0Tbeb5K7aMtKsufW6KxC8ViAli2YtvDsHh4rNfdNoCq7q",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:20.934Z"
+  }, {
+    "id" : "usr-1792734440975-75c11",
+    "email" : "testuser-9303d5f2@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$O54MXMjYzwT0bnaLsj90ceWpQWfqNJ0mMlCE/xofc2xEkmTnLjsMC",
+    "phone" : "+1 5551679174",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:21.074Z"
+  }, {
+    "id" : "usr-1792734441128-52cdf",
+    "email" : "different-6f0f34e9@example.com",
+    "name" : "Mark Smith",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$kMPu6fS5An3LajL8acK.te5d3yjVIZG/tU9/LeQsSafOWfwcMgLA2",
+    "phone" : "+1 5551185012",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:21.240Z"
+  }, {
+    "id" : "usr-1792734441321-ea678",
+    "email" : "testuser-f8d73a6f@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$5zBkv.Dy8MdQ7Qea9Mx1oem0CFRc1.MMs/XGdqcf2lh4fwyWJP59S",
+    "phone" : "+1 5556050589",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:21.433Z"
+  }, {
+    "id" : "usr-1792734441510-321f5",
+    "email" : "testuser-be1c1fc5@example.com",
+    "name" : "Jane Doe",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$h67lFNQS2Hu74KrCHd1TrewenxPD3d/eRHz8Z537eXP3.9.SJbb.i",
+    "phone" : "+1 5553902564",
+    "emailVerified" : true,
+    "createdAt" : "2026-10-23T05:47:21.627Z"
+  }, {
+    "id" : "usr-1792734441755-a0778",
+    "email" : "existing-d2d91c05@example.com",
+    "name" : "Existing User",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$Dw2UTbnjzMWAuNYVZriGT.U0CBgadZQtx7USlzxLkLiLmEBzEoXs.",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:47:21.867Z"
+  }, {
+    "id" : "usr-1792734598232-91d7d",
+    "email" : "newuser_1792734598142@example.com",
+    "name" : "New Candidate",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$VunIZIMijE3M5M4uc1vR8ecHdfVNwUDt6W7pIfsU/q/..nZJnHn6O",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:49:58.307Z"
+  }, {
+    "id" : "usr-1792734653744-1d79e",
+    "email" : "candidate_1792734653718@example.com",
+    "name" : "Candidate With CSRF",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$0JGLEys8cnzb6dpQgQL1NONbaxBvdUIori.DQ3pDn2PR3VLgjZQqq",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:50:53.810Z"
+  }, {
+    "id" : "usr-1792734838003-25cfa",
+    "email" : "candidate_1792734837779@example.com",
+    "name" : "Candidate With CSRF",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Information Technology",
+    "skills" : [ "Java", "Spring Boot", "React" ],
+    "projects" : [ "Career Navigator" ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$c9.vmicuYpI2Au4Lh4GLoeaIxIvEG4SuNp1Fg9MD/lOmNl6yQVjVm",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:53:58.076Z"
+  }, {
+    "id" : "usr-1792734946930-80447",
+    "email" : "e2e_1792734946905@example.com",
+    "name" : "E2E Verification Student",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$alCe1yRjpwW2TjG0wIu0Ue2DQcby1FTrhDHa2h3Xh4LkdJYrnx8v2",
+    "emailVerified" : false,
+    "createdAt" : "2026-10-23T05:55:46.996Z"
+  }, {
+    "id" : "usr-1792735291514-9914f",
+    "email" : "e2e_full_1792735291410@example.com",
+    "name" : "E2E Full Verification Student",
+    "picture" : "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=120",
+    "role" : "student",
+    "branch" : "Computer Science",
+    "skills" : [ ],
+    "projects" : [ ],
+    "targetRole" : "Full Stack Developer",
+    "experienceLevel" : "Entry Level",
+    "completedProfile" : true,
+    "passwordHash" : "$2a$10$rKWFAfOxYN6axXnQSoIreehq/cP9M8sLTqeiay7GrvDiSuNCStDyi",
+    "emailVerified" : false,
+    "verificationToken" : "ff6ff14affb5ded026ae5b737eafbc689fbdf4870bb20e5a",
+    "verificationTokenExpiresAt" : 1792736191514,
+    "verificationCode" : "600550",
+    "createdAt" : "2026-10-23T06:01:31.589Z"
   } ],
   "resumes" : [ {
     "id" : "sim-res-pcr1waj35",
@@ -1902,7 +2880,7 @@
     "id" : "res-alice-1",
     "userId" : "user-alice-123",
     "fileName" : "alice.pdf",
-    "uploadedAt" : "2026-10-22T18:01:49.161Z",
+    "uploadedAt" : "2026-10-23T05:46:33.388Z",
     "atsScore" : 49,
     "skills" : [ "Python", "PostgreSQL", "REST APIs" ],
     "missingSections" : [ "Certifications" ],
@@ -1918,7 +2896,7 @@
     "id" : "res-bob-1",
     "userId" : "user-bob-456",
     "fileName" : "bob.pdf",
-    "uploadedAt" : "2026-10-22T18:01:49.162Z",
+    "uploadedAt" : "2026-10-23T05:46:33.388Z",
     "atsScore" : 49,
     "skills" : [ "TypeScript", "HTML/CSS", "React" ],
     "missingSections" : [ "Certifications" ],
@@ -2112,11 +3090,207 @@
     "contentHash" : "",
     "matchedJDKeywords" : [ ],
     "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-ba1bd010",
+    "userId" : "usr-1792731740922-af869",
+    "fileName" : "alex_resume.pdf",
+    "uploadedAt" : "2026-10-23T05:02:22.430Z",
+    "atsScore" : 42,
+    "skills" : [ "Java", "React", "SQL", "Docker" ],
+    "missingSections" : [ "Professional Summary", "Education", "Projects", "Work Experience / Internships", "Certifications" ],
+    "suggestions" : [ "Add a distinct \"Professional Summary\" section to pass automated category parsers.", "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed." ],
+    "grammarIssues" : [ "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.", "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions." ],
+    "improvementsToAdd" : [ "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)" ],
+    "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
+    "wordCount" : 25,
+    "contentHash" : "1f4c5d05",
+    "targetRole" : "Full Stack Engineer",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-940db8e7",
+    "userId" : "usr-04470b84-2873-4db6-930c-7b6a9e5ed6d6",
+    "fileName" : "resume.pdf",
+    "uploadedAt" : "",
+    "atsScore" : 88,
+    "skills" : [ "Java", "PostgreSQL" ],
+    "missingSections" : [ ],
+    "suggestions" : [ ],
+    "grammarIssues" : [ ],
+    "improvementsToAdd" : [ ],
+    "improvementsToRemove" : [ ],
+    "wordCount" : 300,
+    "contentHash" : "",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-1c6e0b33",
+    "userId" : "usr-1792732945056-59b51",
+    "fileName" : "alex_resume.pdf",
+    "uploadedAt" : "2026-10-23T05:22:26.226Z",
+    "atsScore" : 42,
+    "skills" : [ "Java", "React", "SQL", "Docker" ],
+    "missingSections" : [ "Professional Summary", "Education", "Projects", "Work Experience / Internships", "Certifications" ],
+    "suggestions" : [ "Add a distinct \"Professional Summary\" section to pass automated category parsers.", "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed." ],
+    "grammarIssues" : [ "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.", "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions." ],
+    "improvementsToAdd" : [ "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)" ],
+    "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
+    "wordCount" : 25,
+    "contentHash" : "1f4c5d05",
+    "targetRole" : "Full Stack Engineer",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-735ee1cb",
+    "userId" : "usr-d20691d5-21e5-4d01-bf8b-790f897f1e50",
+    "fileName" : "resume.pdf",
+    "uploadedAt" : "",
+    "atsScore" : 88,
+    "skills" : [ "Java", "PostgreSQL" ],
+    "missingSections" : [ ],
+    "suggestions" : [ ],
+    "grammarIssues" : [ ],
+    "improvementsToAdd" : [ ],
+    "improvementsToRemove" : [ ],
+    "wordCount" : 300,
+    "contentHash" : "",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-eb985228",
+    "userId" : "usr-1792734433468-a58f5",
+    "fileName" : "alex_resume.pdf",
+    "uploadedAt" : "2026-10-23T05:47:15.074Z",
+    "atsScore" : 42,
+    "skills" : [ "Java", "React", "SQL", "Docker" ],
+    "missingSections" : [ "Professional Summary", "Education", "Projects", "Work Experience / Internships", "Certifications" ],
+    "suggestions" : [ "Add a distinct \"Professional Summary\" section to pass automated category parsers.", "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed." ],
+    "grammarIssues" : [ "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.", "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions." ],
+    "improvementsToAdd" : [ "Version control and automation workflows (Git, GitHub Actions, CI/CD pipelines)" ],
+    "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
+    "wordCount" : 25,
+    "contentHash" : "1f4c5d05",
+    "targetRole" : "Full Stack Engineer",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-8df49566",
+    "userId" : "usr-4df1235b-1697-4830-bc1e-27965f42a417",
+    "fileName" : "resume.pdf",
+    "uploadedAt" : "",
+    "atsScore" : 88,
+    "skills" : [ "Java", "PostgreSQL" ],
+    "missingSections" : [ ],
+    "suggestions" : [ ],
+    "grammarIssues" : [ ],
+    "improvementsToAdd" : [ ],
+    "improvementsToRemove" : [ ],
+    "wordCount" : 300,
+    "contentHash" : "",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-238ac6e8",
+    "userId" : "usr-1792734946930-80447",
+    "fileName" : "resume.txt",
+    "uploadedAt" : "2026-10-23T05:55:47.078Z",
+    "atsScore" : 46,
+    "skills" : [ "TypeScript", "Java", "React", "SQL", "REST APIs", "Git / GitHub", "Docker" ],
+    "missingSections" : [ "Contact Information", "Professional Summary", "Education", "Projects", "Certifications" ],
+    "suggestions" : [ "Add a distinct \"Contact Information\" section to pass automated category parsers.", "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed.", "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\")." ],
+    "grammarIssues" : [ "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.", "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.", "Header warning: No email address detected in candidate contact section.", "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions." ],
+    "improvementsToAdd" : [ ],
+    "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
+    "wordCount" : 26,
+    "contentHash" : "9f65b7d3",
+    "targetRole" : "Full Stack Engineer",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ]
+  }, {
+    "id" : "res-7b8a39d1",
+    "userId" : "usr-1792735291514-9914f",
+    "fileName" : "resume.txt",
+    "uploadedAt" : "2026-10-23T06:01:31.695Z",
+    "atsScore" : 46,
+    "skills" : [ "TypeScript", "Java", "React", "SQL", "REST APIs", "Git / GitHub", "Docker" ],
+    "missingSections" : [ "Contact Information", "Professional Summary", "Education", "Projects", "Certifications" ],
+    "suggestions" : [ "Add a distinct \"Contact Information\" section to pass automated category parsers.", "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed.", "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\")." ],
+    "grammarIssues" : [ "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.", "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.", "Header warning: No email address detected in candidate contact section.", "Length warning: Resume text is very brief (under 100 words). Expand your project and technical descriptions." ],
+    "improvementsToAdd" : [ ],
+    "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
+    "keywordsJson" : "[{\"keyword\":\"JavaScript\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"javascript\",\"js\",\"es6\",\"ecmascript\"]},{\"keyword\":\"TypeScript\",\"match\":true,\"count\":1,\"density\":3.85,\"category\":\"Languages\",\"aliases\":[\"typescript\",\"ts\"]},{\"keyword\":\"Python\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"python\",\"py\"]},{\"keyword\":\"Java\",\"match\":true,\"count\":1,\"density\":3.85,\"category\":\"Languages\",\"aliases\":[\"java\",\"jvm\",\"jdk\"]},{\"keyword\":\"C++\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"c++\",\"cpp\",\"c/c++\"]},{\"keyword\":\"C# / .NET\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"c#\",\"c sharp\",\".net\",\"dotnet\",\"asp.net\"]},{\"keyword\":\"Go\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"golang\",\"go language\"]},{\"keyword\":\"Rust\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"rust\",\"cargo\"]},{\"keyword\":\"HTML/CSS\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"html\",\"css\",\"html5\",\"css3\",\"tailwind\",\"sass\"]},{\"keyword\":\"React\",\"match\":true,\"count\":1,\"density\":3.85,\"category\":\"Frameworks\",\"aliases\":[\"react\",\"react.js\",\"reactjs\",\"react native\"]},{\"keyword\":\"Node.js\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Frameworks\",\"aliases\":[\"node.js\",\"nodejs\",\"node\"]},{\"keyword\":\"Express.js\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Frameworks\",\"aliases\":[\"express\",\"express.js\",\"expressjs\"]},{\"keyword\":\"SQL\",\"match\":true,\"count\":1,\"density\":3.85,\"category\":\"Databases & APIs\",\"aliases\":[\"sql\",\"rdbms\"]},{\"keyword\":\"PostgreSQL\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"postgresql\",\"postgres\"]},{\"keyword\":\"MySQL\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"mysql\"]},{\"keyword\":\"MongoDB\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"mongodb\",\"mongo\"]},{\"keyword\":\"REST APIs\",\"match\":true,\"count\":1,\"density\":3.85,\"category\":\"Databases & APIs\",\"aliases\":[\"rest api\",\"restful\",\"apis\"]},{\"keyword\":\"GraphQL\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"graphql\",\"gql\"]},{\"keyword\":\"Git / GitHub\",\"match\":true,\"count\":1,\"density\":3.85,\"category\":\"DevOps & Cloud\",\"aliases\":[\"git\",\"github\",\"gitlab\",\"version control\"]},{\"keyword\":\"Docker\",\"match\":true,\"count\":1,\"density\":3.85,\"category\":\"DevOps & Cloud\",\"aliases\":[\"docker\",\"containerization\"]},{\"keyword\":\"Kubernetes\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"kubernetes\",\"k8s\"]},{\"keyword\":\"AWS\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"aws\",\"amazon web services\"]},{\"keyword\":\"Google Cloud / GCP\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"gcp\",\"google cloud\"]},{\"keyword\":\"CI/CD\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"ci/cd\",\"cicd\",\"jenkins\",\"github actions\"]}]",
+    "wordCount" : 26,
+    "contentHash" : "9f65b7d3",
+    "targetRole" : "Full Stack Engineer",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ],
+    "categoryBreakdownJson" : "[{\"category\":\"Section Completeness\",\"score\":6,\"maxScore\":20,\"weight\":20,\"reason\":\"Detected 2 of 7 core structural sections. Missing: Contact Information, Professional Summary, Education, Projects, Certifications.\"},{\"category\":\"Technical Skills & Density\",\"score\":25,\"maxScore\":25,\"weight\":25,\"reason\":\"Found 7 verified technologies in resume text.\"},{\"category\":\"Experience & Project Depth\",\"score\":13,\"maxScore\":20,\"weight\":20,\"reason\":\"Found 1 action verbs across project and work bullet points.\"},{\"category\":\"Quantified Impact & Metrics\",\"score\":0,\"maxScore\":15,\"weight\":15,\"reason\":\"Found 0 measurable metrics/outcomes.\"},{\"category\":\"Contact Information\",\"score\":0,\"maxScore\":10,\"weight\":10,\"reason\":\"Contact points evaluated (Email: ✗, Phone: ✗, Links: ✗).\"},{\"category\":\"Readability & Structure\",\"score\":2,\"maxScore\":10,\"weight\":10,\"reason\":\"Document contains 26 words with formatted section spacing.\"}]",
+    "sectionDetailsJson" : "[{\"sectionName\":\"Contact Information\",\"detected\":false,\"evidence\":null,\"confidence\":0.0},{\"sectionName\":\"Professional Summary\",\"detected\":false,\"evidence\":null,\"confidence\":0.0},{\"sectionName\":\"Education\",\"detected\":false,\"evidence\":null,\"confidence\":0.0},{\"sectionName\":\"Technical Skills\",\"detected\":true,\"evidence\":\"Contextual match: \\\"Java\\\"\",\"confidence\":0.75},{\"sectionName\":\"Projects\",\"detected\":false,\"evidence\":null,\"confidence\":0.0},{\"sectionName\":\"Work Experience / Internships\",\"detected\":true,\"evidence\":\"Contextual match: \\\"Software Engineer\\\"\",\"confidence\":0.75},{\"sectionName\":\"Certifications\",\"detected\":false,\"evidence\":null,\"confidence\":0.0}]"
+  }, {
+    "id" : "res-039d185c",
+    "userId" : "usr-1791951546428-b9e0q",
+    "fileName" : "Chandana_M_P_Resume.pdf",
+    "uploadedAt" : "2026-10-23T06:04:27.255Z",
+    "atsScore" : 80,
+    "skills" : [ "Python", "Java", "C++", "HTML/CSS", "REST APIs", "Git / GitHub" ],
+    "missingSections" : [ ],
+    "suggestions" : [ "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\")." ],
+    "grammarIssues" : [ "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments." ],
+    "improvementsToAdd" : [ ],
+    "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
+    "keywordsJson" : "[{\"keyword\":\"JavaScript\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"javascript\",\"js\",\"es6\",\"ecmascript\"]},{\"keyword\":\"TypeScript\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"typescript\",\"ts\"]},{\"keyword\":\"Python\",\"match\":true,\"count\":6,\"density\":1.6,\"category\":\"Languages\",\"aliases\":[\"python\",\"py\"]},{\"keyword\":\"Java\",\"match\":true,\"count\":2,\"density\":0.53,\"category\":\"Languages\",\"aliases\":[\"java\",\"jvm\",\"jdk\"]},{\"keyword\":\"C++\",\"match\":true,\"count\":2,\"density\":0.53,\"category\":\"Languages\",\"aliases\":[\"c++\",\"cpp\",\"c/c++\"]},{\"keyword\":\"C# / .NET\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"c#\",\"c sharp\",\".net\",\"dotnet\",\"asp.net\"]},{\"keyword\":\"Go\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"golang\",\"go language\"]},{\"keyword\":\"Rust\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"rust\",\"cargo\"]},{\"keyword\":\"HTML/CSS\",\"match\":true,\"count\":4,\"density\":1.07,\"category\":\"Languages\",\"aliases\":[\"html\",\"css\",\"html5\",\"css3\",\"tailwind\",\"sass\"]},{\"keyword\":\"React\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Frameworks\",\"aliases\":[\"react\",\"react.js\",\"reactjs\",\"react native\"]},{\"keyword\":\"Node.js\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Frameworks\",\"aliases\":[\"node.js\",\"nodejs\",\"node\"]},{\"keyword\":\"Express.js\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Frameworks\",\"aliases\":[\"express\",\"express.js\",\"expressjs\"]},{\"keyword\":\"SQL\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"sql\",\"rdbms\"]},{\"keyword\":\"PostgreSQL\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"postgresql\",\"postgres\"]},{\"keyword\":\"MySQL\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"mysql\"]},{\"keyword\":\"MongoDB\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"mongodb\",\"mongo\"]},{\"keyword\":\"REST APIs\",\"match\":true,\"count\":3,\"density\":0.8,\"category\":\"Databases & APIs\",\"aliases\":[\"rest api\",\"restful\",\"apis\"]},{\"keyword\":\"GraphQL\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"graphql\",\"gql\"]},{\"keyword\":\"Git / GitHub\",\"match\":true,\"count\":1,\"density\":0.27,\"category\":\"DevOps & Cloud\",\"aliases\":[\"git\",\"github\",\"gitlab\",\"version control\"]},{\"keyword\":\"Docker\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"docker\",\"containerization\"]},{\"keyword\":\"Kubernetes\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"kubernetes\",\"k8s\"]},{\"keyword\":\"AWS\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"aws\",\"amazon web services\"]},{\"keyword\":\"Google Cloud / GCP\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"gcp\",\"google cloud\"]},{\"keyword\":\"CI/CD\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"ci/cd\",\"cicd\",\"jenkins\",\"github actions\"]}]",
+    "wordCount" : 375,
+    "contentHash" : "ea591098",
+    "targetRole" : "Full Stack Engineer",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ],
+    "categoryBreakdownJson" : "[{\"category\":\"Section Completeness\",\"score\":20,\"maxScore\":20,\"weight\":20,\"reason\":\"Detected 7 of 7 core structural sections.\"},{\"category\":\"Technical Skills & Density\",\"score\":25,\"maxScore\":25,\"weight\":25,\"reason\":\"Found 6 verified technologies in resume text.\"},{\"category\":\"Experience & Project Depth\",\"score\":18,\"maxScore\":20,\"weight\":20,\"reason\":\"Found 3 action verbs across project and work bullet points.\"},{\"category\":\"Quantified Impact & Metrics\",\"score\":0,\"maxScore\":15,\"weight\":15,\"reason\":\"Found 0 measurable metrics/outcomes.\"},{\"category\":\"Contact Information\",\"score\":7,\"maxScore\":10,\"weight\":10,\"reason\":\"Contact points evaluated (Email: ✓, Phone: ✗, Links: ✓).\"},{\"category\":\"Readability & Structure\",\"score\":10,\"maxScore\":10,\"weight\":10,\"reason\":\"Document contains 375 words with formatted section spacing.\"}]",
+    "sectionDetailsJson" : "[{\"sectionName\":\"Contact Information\",\"detected\":true,\"evidence\":\"Contextual match: \\\"chandanakargal25@gmail.com\\\"\",\"confidence\":0.75},{\"sectionName\":\"Professional Summary\",\"detected\":true,\"evidence\":\"Found heading: \\\"CAREER GOAL\\\"\",\"confidence\":0.95},{\"sectionName\":\"Education\",\"detected\":true,\"evidence\":\"Found heading: \\\"EDUCATION\\\"\",\"confidence\":0.95},{\"sectionName\":\"Technical Skills\",\"detected\":true,\"evidence\":\"Found heading: \\\"TECHNICAL SKILLS\\\"\",\"confidence\":0.95},{\"sectionName\":\"Projects\",\"detected\":true,\"evidence\":\"Found heading: \\\"PROJECTS\\\"\",\"confidence\":0.95},{\"sectionName\":\"Work Experience / Internships\",\"detected\":true,\"evidence\":\"Found heading: \\\"improving overall logic reliability and user experience.\\\"\",\"confidence\":0.95},{\"sectionName\":\"Certifications\",\"detected\":true,\"evidence\":\"Found heading: \\\"CERTIFICATIONS & COURSEWORK\\\"\",\"confidence\":0.95}]"
+  }, {
+    "id" : "res-f9edf020",
+    "userId" : "usr-1791951546428-b9e0q",
+    "fileName" : "Chandana_MN_.._261014095441.pdf",
+    "uploadedAt" : "2026-10-23T06:05:21.307Z",
+    "atsScore" : 79,
+    "skills" : [ "JavaScript", "Python", "Java", "HTML/CSS", "React", "Node.js", "SQL", "REST APIs", "Git / GitHub" ],
+    "missingSections" : [ "Certifications" ],
+    "suggestions" : [ "Add a distinct \"Certifications\" section to pass automated category parsers.", "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\")." ],
+    "grammarIssues" : [ "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments." ],
+    "improvementsToAdd" : [ ],
+    "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
+    "keywordsJson" : "[{\"keyword\":\"JavaScript\",\"match\":true,\"count\":2,\"density\":0.52,\"category\":\"Languages\",\"aliases\":[\"javascript\",\"js\",\"es6\",\"ecmascript\"]},{\"keyword\":\"TypeScript\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"typescript\",\"ts\"]},{\"keyword\":\"Python\",\"match\":true,\"count\":7,\"density\":1.83,\"category\":\"Languages\",\"aliases\":[\"python\",\"py\"]},{\"keyword\":\"Java\",\"match\":true,\"count\":2,\"density\":0.52,\"category\":\"Languages\",\"aliases\":[\"java\",\"jvm\",\"jdk\"]},{\"keyword\":\"C++\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"c++\",\"cpp\",\"c/c++\"]},{\"keyword\":\"C# / .NET\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"c#\",\"c sharp\",\".net\",\"dotnet\",\"asp.net\"]},{\"keyword\":\"Go\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"golang\",\"go language\"]},{\"keyword\":\"Rust\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"rust\",\"cargo\"]},{\"keyword\":\"HTML/CSS\",\"match\":true,\"count\":4,\"density\":1.05,\"category\":\"Languages\",\"aliases\":[\"html\",\"css\",\"html5\",\"css3\",\"tailwind\",\"sass\"]},{\"keyword\":\"React\",\"match\":true,\"count\":1,\"density\":0.26,\"category\":\"Frameworks\",\"aliases\":[\"react\",\"react.js\",\"reactjs\",\"react native\"]},{\"keyword\":\"Node.js\",\"match\":true,\"count\":1,\"density\":0.26,\"category\":\"Frameworks\",\"aliases\":[\"node.js\",\"nodejs\",\"node\"]},{\"keyword\":\"Express.js\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Frameworks\",\"aliases\":[\"express\",\"express.js\",\"expressjs\"]},{\"keyword\":\"SQL\",\"match\":true,\"count\":2,\"density\":0.52,\"category\":\"Databases & APIs\",\"aliases\":[\"sql\",\"rdbms\"]},{\"keyword\":\"PostgreSQL\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"postgresql\",\"postgres\"]},{\"keyword\":\"MySQL\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"mysql\"]},{\"keyword\":\"MongoDB\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"mongodb\",\"mongo\"]},{\"keyword\":\"REST APIs\",\"match\":true,\"count\":4,\"density\":1.05,\"category\":\"Databases & APIs\",\"aliases\":[\"rest api\",\"restful\",\"apis\"]},{\"keyword\":\"GraphQL\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"graphql\",\"gql\"]},{\"keyword\":\"Git / GitHub\",\"match\":true,\"count\":6,\"density\":1.57,\"category\":\"DevOps & Cloud\",\"aliases\":[\"git\",\"github\",\"gitlab\",\"version control\"]},{\"keyword\":\"Docker\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"docker\",\"containerization\"]},{\"keyword\":\"Kubernetes\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"kubernetes\",\"k8s\"]},{\"keyword\":\"AWS\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"aws\",\"amazon web services\"]},{\"keyword\":\"Google Cloud / GCP\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"gcp\",\"google cloud\"]},{\"keyword\":\"CI/CD\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"ci/cd\",\"cicd\",\"jenkins\",\"github actions\"]}]",
+    "wordCount" : 382,
+    "contentHash" : "cd14713d",
+    "targetRole" : "Full Stack Engineer",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ],
+    "categoryBreakdownJson" : "[{\"category\":\"Section Completeness\",\"score\":17,\"maxScore\":20,\"weight\":20,\"reason\":\"Detected 6 of 7 core structural sections. Missing: Certifications.\"},{\"category\":\"Technical Skills & Density\",\"score\":25,\"maxScore\":25,\"weight\":25,\"reason\":\"Found 9 verified technologies in resume text.\"},{\"category\":\"Experience & Project Depth\",\"score\":20,\"maxScore\":20,\"weight\":20,\"reason\":\"Found 6 action verbs across project and work bullet points.\"},{\"category\":\"Quantified Impact & Metrics\",\"score\":0,\"maxScore\":15,\"weight\":15,\"reason\":\"Found 0 measurable metrics/outcomes.\"},{\"category\":\"Contact Information\",\"score\":7,\"maxScore\":10,\"weight\":10,\"reason\":\"Contact points evaluated (Email: ✓, Phone: ✓, Links: ✗).\"},{\"category\":\"Readability & Structure\",\"score\":10,\"maxScore\":10,\"weight\":10,\"reason\":\"Document contains 382 words with formatted section spacing.\"}]",
+    "sectionDetailsJson" : "[{\"sectionName\":\"Contact Information\",\"detected\":true,\"evidence\":\"Contextual match: \\\"chandanamn199@gmail.com\\\"\",\"confidence\":0.75},{\"sectionName\":\"Professional Summary\",\"detected\":true,\"evidence\":\"Found heading: \\\"CAREER GOAL\\\"\",\"confidence\":0.95},{\"sectionName\":\"Education\",\"detected\":true,\"evidence\":\"Found heading: \\\"EDUCATION\\\"\",\"confidence\":0.95},{\"sectionName\":\"Technical Skills\",\"detected\":true,\"evidence\":\"Found heading: \\\"TECHNICAL SKILLS\\\"\",\"confidence\":0.95},{\"sectionName\":\"Projects\",\"detected\":true,\"evidence\":\"Found heading: \\\"PROJECTS\\\"\",\"confidence\":0.95},{\"sectionName\":\"Work Experience / Internships\",\"detected\":true,\"evidence\":\"Contextual match: \\\"Developer\\\"\",\"confidence\":0.75},{\"sectionName\":\"Certifications\",\"detected\":false,\"evidence\":null,\"confidence\":0.0}]"
+  }, {
+    "id" : "res-f41cc6f7",
+    "userId" : "usr-1791951546428-b9e0q",
+    "fileName" : "HARSHINI_Resume_DA.pdf",
+    "uploadedAt" : "2026-10-23T06:06:55.432Z",
+    "atsScore" : 68,
+    "skills" : [ "Python", "Java", "SQL", "MySQL", "MongoDB", "Git / GitHub" ],
+    "missingSections" : [ "Work Experience / Internships" ],
+    "suggestions" : [ "Add a distinct \"Work Experience / Internships\" section to pass automated category parsers.", "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed.", "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\")." ],
+    "grammarIssues" : [ "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.", "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.", "Header warning: No email address detected in candidate contact section." ],
+    "improvementsToAdd" : [ "Cloud & Containerization context (Docker, AWS, Kubernetes, or Vercel)" ],
+    "improvementsToRemove" : [ "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")", "Non-technical high school coursework or obsolete computer package references" ],
+    "keywordsJson" : "[{\"keyword\":\"JavaScript\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"javascript\",\"js\",\"es6\",\"ecmascript\"]},{\"keyword\":\"TypeScript\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"typescript\",\"ts\"]},{\"keyword\":\"Python\",\"match\":true,\"count\":9,\"density\":2.86,\"category\":\"Languages\",\"aliases\":[\"python\",\"py\"]},{\"keyword\":\"Java\",\"match\":true,\"count\":1,\"density\":0.32,\"category\":\"Languages\",\"aliases\":[\"java\",\"jvm\",\"jdk\"]},{\"keyword\":\"C++\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"c++\",\"cpp\",\"c/c++\"]},{\"keyword\":\"C# / .NET\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"c#\",\"c sharp\",\".net\",\"dotnet\",\"asp.net\"]},{\"keyword\":\"Go\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"golang\",\"go language\"]},{\"keyword\":\"Rust\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"rust\",\"cargo\"]},{\"keyword\":\"HTML/CSS\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Languages\",\"aliases\":[\"html\",\"css\",\"html5\",\"css3\",\"tailwind\",\"sass\"]},{\"keyword\":\"React\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Frameworks\",\"aliases\":[\"react\",\"react.js\",\"reactjs\",\"react native\"]},{\"keyword\":\"Node.js\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Frameworks\",\"aliases\":[\"node.js\",\"nodejs\",\"node\"]},{\"keyword\":\"Express.js\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Frameworks\",\"aliases\":[\"express\",\"express.js\",\"expressjs\"]},{\"keyword\":\"SQL\",\"match\":true,\"count\":2,\"density\":0.63,\"category\":\"Databases & APIs\",\"aliases\":[\"sql\",\"rdbms\"]},{\"keyword\":\"PostgreSQL\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"postgresql\",\"postgres\"]},{\"keyword\":\"MySQL\",\"match\":true,\"count\":1,\"density\":0.32,\"category\":\"Databases & APIs\",\"aliases\":[\"mysql\"]},{\"keyword\":\"MongoDB\",\"match\":true,\"count\":1,\"density\":0.32,\"category\":\"Databases & APIs\",\"aliases\":[\"mongodb\",\"mongo\"]},{\"keyword\":\"REST APIs\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"rest api\",\"restful\",\"apis\"]},{\"keyword\":\"GraphQL\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"Databases & APIs\",\"aliases\":[\"graphql\",\"gql\"]},{\"keyword\":\"Git / GitHub\",\"match\":true,\"count\":2,\"density\":0.63,\"category\":\"DevOps & Cloud\",\"aliases\":[\"git\",\"github\",\"gitlab\",\"version control\"]},{\"keyword\":\"Docker\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"docker\",\"containerization\"]},{\"keyword\":\"Kubernetes\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"kubernetes\",\"k8s\"]},{\"keyword\":\"AWS\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"aws\",\"amazon web services\"]},{\"keyword\":\"Google Cloud / GCP\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"gcp\",\"google cloud\"]},{\"keyword\":\"CI/CD\",\"match\":false,\"count\":0,\"density\":0.0,\"category\":\"DevOps & Cloud\",\"aliases\":[\"ci/cd\",\"cicd\",\"jenkins\",\"github actions\"]}]",
+    "wordCount" : 315,
+    "contentHash" : "4ac2f892",
+    "targetRole" : "Full Stack Engineer",
+    "matchedJDKeywords" : [ ],
+    "missingJDKeywords" : [ ],
+    "categoryBreakdownJson" : "[{\"category\":\"Section Completeness\",\"score\":17,\"maxScore\":20,\"weight\":20,\"reason\":\"Detected 6 of 7 core structural sections. Missing: Work Experience / Internships.\"},{\"category\":\"Technical Skills & Density\",\"score\":25,\"maxScore\":25,\"weight\":25,\"reason\":\"Found 6 verified technologies in resume text.\"},{\"category\":\"Experience & Project Depth\",\"score\":13,\"maxScore\":20,\"weight\":20,\"reason\":\"Found 1 action verbs across project and work bullet points.\"},{\"category\":\"Quantified Impact & Metrics\",\"score\":0,\"maxScore\":15,\"weight\":15,\"reason\":\"Found 0 measurable metrics/outcomes.\"},{\"category\":\"Contact Information\",\"score\":3,\"maxScore\":10,\"weight\":10,\"reason\":\"Contact points evaluated (Email: ✗, Phone: ✓, Links: ✗).\"},{\"category\":\"Readability & Structure\",\"score\":10,\"maxScore\":10,\"weight\":10,\"reason\":\"Document contains 315 words with formatted section spacing.\"}]",
+    "sectionDetailsJson" : "[{\"sectionName\":\"Contact Information\",\"detected\":true,\"evidence\":\"Contextual match: \\\"91-8073089178\\\"\",\"confidence\":0.75},{\"sectionName\":\"Professional Summary\",\"detected\":true,\"evidence\":\"Found heading: \\\"SUMMARY\\\"\",\"confidence\":0.95},{\"sectionName\":\"Education\",\"detected\":true,\"evidence\":\"Found heading: \\\"EDUCATION\\\"\",\"confidence\":0.95},{\"sectionName\":\"Technical Skills\",\"detected\":true,\"evidence\":\"Found heading: \\\"SKILLS\\\"\",\"confidence\":0.95},{\"sectionName\":\"Projects\",\"detected\":true,\"evidence\":\"Found heading: \\\"PROJECT\\\"\",\"confidence\":0.95},{\"sectionName\":\"Work Experience / Internships\",\"detected\":false,\"evidence\":null,\"confidence\":0.0},{\"sectionName\":\"Certifications\",\"detected\":true,\"evidence\":\"Found heading: \\\"CERTIFICATIONS\\\"\",\"confidence\":0.95}]"
   } ],
   "interviews" : [ {
     "id" : "int-1",
     "userId" : "demo-student-1",
-    "date" : "",
+    "date" : "2026-10-23T05:22:21.676Z",
     "jobRole" : "Full Stack Engineer",
     "branch" : "Computer Science",
     "experienceLevel" : "Entry Level",
@@ -2125,11 +3299,27 @@
     "communicationScore" : 83,
     "confidenceScore" : 77,
     "feedbackText" : "Great overall performance Trupti! Your React and database theory is very strong. Continue working on structuring your behavioral/project-based answers using action-oriented frameworks like STAR.",
-    "suggestions" : [ "Use the STAR framework for project-based questions.", "Add more concrete metrics when explaining what you built (e.g., \"achieved 15% improvement\").", "Slightly slow down your speaking pace to sound more composed and confident." ]
+    "suggestions" : [ "Use the STAR framework for project-based questions.", "Add more concrete metrics when explaining what you built (e.g., \"achieved 15% improvement\").", "Slightly slow down your speaking pace to sound more composed and confident." ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.676Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-zcejl48rz",
     "userId" : "demo-student-1",
-    "date" : "",
+    "date" : "2026-10-23T05:22:21.699Z",
     "jobRole" : "Full Stack Engineer",
     "branch" : "Computer Science",
     "experienceLevel" : "Entry Level",
@@ -2138,11 +3328,27 @@
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.699Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-o9qfrmhfx",
     "userId" : "demo-student-1",
-    "date" : "",
+    "date" : "2026-10-23T05:22:21.702Z",
     "jobRole" : "Full Stack Engineer",
     "branch" : "Computer Science",
     "experienceLevel" : "Entry Level",
@@ -2151,11 +3357,27 @@
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.702Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-9ia6sygby",
     "userId" : "demo-student-1",
-    "date" : "",
+    "date" : "2026-10-23T05:22:21.705Z",
     "jobRole" : "Full Stack Engineer",
     "branch" : "Computer Science",
     "experienceLevel" : "Entry Level",
@@ -2164,11 +3386,27 @@
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.705Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-d0sfzfep2",
     "userId" : "demo-student-1",
-    "date" : "",
+    "date" : "2026-10-23T05:22:21.707Z",
     "jobRole" : "Full Stack Engineer",
     "branch" : "Computer Science",
     "experienceLevel" : "Entry Level",
@@ -2177,11 +3415,27 @@
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.707Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-xpwcac2l6",
     "userId" : "usr-1791951546428-b9e0q",
-    "date" : "",
+    "date" : "2026-10-23T05:22:21.708Z",
     "jobRole" : "Full Stack developer",
     "branch" : "Computer Science",
     "experienceLevel" : "Entry Level",
@@ -2190,11 +3444,27 @@
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack developer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack developer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.708Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack developer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-8ei541v3a",
     "userId" : "usr-1791951546428-b9e0q",
-    "date" : "",
+    "date" : "2026-10-23T05:22:21.709Z",
     "jobRole" : "Full Stack developer",
     "branch" : "Computer Science",
     "experienceLevel" : "Entry Level",
@@ -2203,11 +3473,27 @@
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack developer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack developer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.709Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack developer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-l1zhh0c3m",
     "userId" : "usr-1792673960517-jvb3e",
-    "date" : "",
+    "date" : "2026-10-23T05:22:21.710Z",
     "jobRole" : "Full Stack Engineer",
     "branch" : "Computer Science",
     "experienceLevel" : "Entry Level",
@@ -2216,18 +3502,50 @@
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.710Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-0fc88dd9",
     "userId" : "usr-514908b0-1006-457a-86cf-0ef8daba4f87",
-    "date" : "",
+    "date" : "2026-10-23T05:22:21.713Z",
     "jobRole" : "Backend Engineer",
     "overallScore" : 82,
     "technicalScore" : 70,
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Backend Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Backend Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.713Z",
+    "questions" : [ "Explain the core architectural patterns you use in Backend Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-ac733c20",
     "userId" : "usr-1792685272928-864e3",
@@ -2240,18 +3558,50 @@
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-22T16:07:56.991Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-40768e63",
     "userId" : "usr-d6d6019d-981c-48a6-9151-940ece2a0847",
-    "date" : "",
+    "date" : "2026-10-23T05:22:21.716Z",
     "jobRole" : "Backend Engineer",
     "overallScore" : 82,
     "technicalScore" : 70,
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Backend Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Backend Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.716Z",
+    "questions" : [ "Explain the core architectural patterns you use in Backend Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-779089a9",
     "userId" : "usr-1792688266189-4ced5",
@@ -2264,7 +3614,23 @@
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-22T16:57:46.312Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-96a97090",
     "userId" : "usr-1792692184287-4b955",
@@ -2277,18 +3643,50 @@
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-22T18:03:06.177Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-92be6313",
     "userId" : "usr-ecf1b415-929f-473a-9685-6d131f0d4da3",
-    "date" : "",
+    "date" : "2026-10-23T05:22:21.721Z",
     "jobRole" : "Backend Engineer",
     "overallScore" : 82,
     "technicalScore" : 70,
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Backend Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Backend Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.721Z",
+    "questions" : [ "Explain the core architectural patterns you use in Backend Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-c300d04e",
     "userId" : "usr-1792692395904-01329",
@@ -2301,18 +3699,50 @@
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-22T18:06:37.482Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-c7420236",
     "userId" : "usr-506aebc0-a5e4-4360-8853-d8f0e2632cf0",
-    "date" : "",
+    "date" : "2026-10-23T05:22:21.723Z",
     "jobRole" : "Backend Engineer",
     "overallScore" : 82,
     "technicalScore" : 70,
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Backend Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Backend Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.723Z",
+    "questions" : [ "Explain the core architectural patterns you use in Backend Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-af297b1b",
     "userId" : "usr-1792692490801-d5fb4",
@@ -2325,18 +3755,302 @@
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-22T18:08:12.578Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
   }, {
     "id" : "int-4b9f1efc",
     "userId" : "usr-bb2cef67-90d7-4f04-80f2-b1a3840271fb",
-    "date" : "",
+    "date" : "2026-10-23T05:22:21.727Z",
     "jobRole" : "Backend Engineer",
     "overallScore" : 82,
     "technicalScore" : 70,
     "communicationScore" : 70,
     "confidenceScore" : 70,
     "feedbackText" : "",
-    "suggestions" : [ ]
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Backend Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Backend Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.727Z",
+    "questions" : [ "Explain the core architectural patterns you use in Backend Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
+  }, {
+    "id" : "int-47b3e953",
+    "userId" : "usr-1792731740922-af869",
+    "date" : "2026-10-23T05:02:22.874Z",
+    "jobRole" : "Full Stack Engineer",
+    "branch" : "Computer Science",
+    "experienceLevel" : "Entry Level",
+    "overallScore" : 70,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Full Stack Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Full Stack Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:02:22.874Z",
+    "questions" : [ "Explain the core architectural patterns you use in Full Stack Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
+  }, {
+    "id" : "int-0c6db015",
+    "userId" : "usr-04470b84-2873-4db6-930c-7b6a9e5ed6d6",
+    "date" : "2026-10-23T05:22:21.732Z",
+    "jobRole" : "Backend Engineer",
+    "overallScore" : 82,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the core architectural patterns you use in Backend Engineer\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"How do you design and structure scalable microservice APIs?\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n}, {\r\n  \"question\" : \"Describe a challenging technical debugging problem you resolved.\",\r\n  \"answer\" : \"Evaluated during assessment session.\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the core architectural patterns you use in Backend Engineer",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "How do you design and structure scalable microservice APIs?",
+      "answer" : "Evaluated during assessment session."
+    }, {
+      "question" : "Describe a challenging technical debugging problem you resolved.",
+      "answer" : "Evaluated during assessment session."
+    } ],
+    "createdAt" : "2026-10-23T05:22:21.732Z",
+    "questions" : [ "Explain the core architectural patterns you use in Backend Engineer", "How do you design and structure scalable microservice APIs?", "Describe a challenging technical debugging problem you resolved." ],
+    "currentQuestionIndex" : 3
+  }, {
+    "id" : "int-7def06bc",
+    "userId" : "usr-1792732945056-59b51",
+    "date" : "2026-10-23T05:22:26.526Z",
+    "jobRole" : "Full Stack Engineer",
+    "branch" : "Computer Science",
+    "experienceLevel" : "Entry Level",
+    "overallScore" : 70,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"In Spring Boot, the ApplicationContext manages dependency injection using singleton beans by default, configured via annotations like @Service and @Component.\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Engineer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the architectural lifecycle and execution model of Java in a production environment.",
+      "answer" : "In Spring Boot, the ApplicationContext manages dependency injection using singleton beans by default, configured via annotations like @Service and @Component."
+    } ],
+    "createdAt" : "2026-10-23T05:22:26.526Z",
+    "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Engineer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "currentQuestionIndex" : 1
+  }, {
+    "id" : "int-0268d6c3",
+    "userId" : "usr-d20691d5-21e5-4d01-bf8b-790f897f1e50",
+    "date" : "2026-10-23T05:22:33.729Z",
+    "jobRole" : "Backend Engineer",
+    "overallScore" : 82,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ],
+    "qasJson" : "[ ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ ],
+    "createdAt" : "2026-10-23T05:22:33.729Z",
+    "questions" : [ ],
+    "currentQuestionIndex" : 0
+  }, {
+    "id" : "int-dc5b2cbf",
+    "userId" : "usr-1792734433468-a58f5",
+    "date" : "2026-10-23T05:47:15.359Z",
+    "jobRole" : "Full Stack Engineer",
+    "branch" : "Computer Science",
+    "experienceLevel" : "Entry Level",
+    "overallScore" : 70,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"In Spring Boot, the ApplicationContext manages dependency injection using singleton beans by default, configured via annotations like @Service and @Component.\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Engineer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the architectural lifecycle and execution model of Java in a production environment.",
+      "answer" : "In Spring Boot, the ApplicationContext manages dependency injection using singleton beans by default, configured via annotations like @Service and @Component."
+    } ],
+    "createdAt" : "2026-10-23T05:47:15.359Z",
+    "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Engineer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "currentQuestionIndex" : 1
+  }, {
+    "id" : "int-203a2657",
+    "userId" : "usr-4df1235b-1697-4830-bc1e-27965f42a417",
+    "date" : "2026-10-23T05:47:21.913Z",
+    "jobRole" : "Backend Engineer",
+    "overallScore" : 82,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ],
+    "qasJson" : "[ ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ ],
+    "createdAt" : "2026-10-23T05:47:21.913Z",
+    "questions" : [ ],
+    "currentQuestionIndex" : 0
+  }, {
+    "id" : "int-ebecb094",
+    "userId" : "usr-1792734946930-80447",
+    "date" : "2026-10-23T05:55:47.157Z",
+    "jobRole" : "Full Stack Developer",
+    "branch" : "Computer Science",
+    "experienceLevel" : "Entry Level",
+    "overallScore" : 70,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ ],
+    "createdAt" : "2026-10-23T05:55:47.157Z",
+    "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "currentQuestionIndex" : 0
+  }, {
+    "id" : "int-8013f4de",
+    "userId" : "demo-student-1",
+    "date" : "2026-10-23T05:56:38.599Z",
+    "jobRole" : "Full Stack Developer",
+    "branch" : "Computer Science",
+    "experienceLevel" : "Entry Level",
+    "overallScore" : 70,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ ],
+    "createdAt" : "2026-10-23T05:56:38.599Z",
+    "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "currentQuestionIndex" : 0
+  }, {
+    "id" : "int-1c3db437",
+    "userId" : "demo-student-1",
+    "date" : "2026-10-23T05:58:39.606Z",
+    "jobRole" : "Full Stack Developer",
+    "branch" : "Computer Science",
+    "experienceLevel" : "Entry Level",
+    "overallScore" : 70,
+    "technicalScore" : 70,
+    "communicationScore" : 70,
+    "confidenceScore" : 70,
+    "feedbackText" : "",
+    "suggestions" : [ ],
+    "qasJson" : "[ {\r\n  \"question\" : \"Explain the architectural lifecycle and execution model of Java in a production environment.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\r\n  \"answer\" : \"\"\r\n}, {\r\n  \"question\" : \"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\r\n  \"answer\" : \"\"\r\n} ]",
+    "status" : "completed",
+    "skills" : [ ],
+    "answers" : [ ],
+    "createdAt" : "2026-10-23T05:58:39.606Z",
+    "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "currentQuestionIndex" : 0
+  }, {
+    "id" : "int-b6b3df87",
+    "userId" : "demo-student-1",
+    "date" : "2026-10-23T06:01:11.208Z",
+    "jobRole" : "Full Stack Developer",
+    "branch" : "Computer Science",
+    "experienceLevel" : "Entry Level",
+    "suggestions" : [ ],
+    "qasJson" : "[{\"question\":\"Explain the architectural lifecycle and execution model of Java in a production environment.\",\"answer\":\"In Java Spring Boot, dependency injection is managed by the Spring IoC container using @Autowired or constructor injection.\",\"evaluation\":{\"score\":4,\"technicalScore\":5,\"communicationScore\":4,\"confidenceScore\":5,\"feedback\":\"Answer is concise but would benefit from concrete real-world engineering examples.\",\"grammar\":\"Good syntax and professional technical vocabulary.\",\"clarity\":\"Pacing was fast; expand on key points.\"}},{\"question\":\"How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?\",\"answer\":\"\"},{\"question\":\"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\"answer\":\"\"},{\"question\":\"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\"answer\":\"\"},{\"question\":\"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\"answer\":\"\"}]",
+    "status" : "started",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the architectural lifecycle and execution model of Java in a production environment.",
+      "answer" : "In Java Spring Boot, dependency injection is managed by the Spring IoC container using @Autowired or constructor injection.",
+      "evaluation" : {
+        "score" : 4,
+        "technicalScore" : 5,
+        "communicationScore" : 4,
+        "confidenceScore" : 5,
+        "feedback" : "Answer is concise but would benefit from concrete real-world engineering examples.",
+        "grammar" : "Good syntax and professional technical vocabulary.",
+        "clarity" : "Pacing was fast; expand on key points."
+      }
+    } ],
+    "createdAt" : "2026-10-23T06:01:11.208Z",
+    "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "currentQuestionIndex" : 1
+  }, {
+    "id" : "int-98121aa4",
+    "userId" : "usr-1792735291514-9914f",
+    "date" : "2026-10-23T06:01:31.777Z",
+    "jobRole" : "Full Stack Developer",
+    "branch" : "Computer Science",
+    "experienceLevel" : "Entry Level",
+    "suggestions" : [ ],
+    "qasJson" : "[{\"question\":\"Explain the architectural lifecycle and execution model of Java in a production environment.\",\"answer\":\"In Java Spring Boot, dependency injection is managed by the Spring IoC container using @Autowired or constructor injection to achieve loose coupling.\",\"evaluation\":{\"score\":6,\"technicalScore\":7,\"communicationScore\":6,\"confidenceScore\":5,\"feedback\":\"Answer is concise but would benefit from concrete real-world engineering examples.\",\"grammar\":\"Good syntax and professional technical vocabulary.\",\"clarity\":\"Pacing was fast; expand on key points.\"}},{\"question\":\"How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?\",\"answer\":\"\"},{\"question\":\"Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.\",\"answer\":\"\"},{\"question\":\"Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?\",\"answer\":\"\"},{\"question\":\"How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?\",\"answer\":\"\"}]",
+    "status" : "started",
+    "skills" : [ ],
+    "answers" : [ {
+      "question" : "Explain the architectural lifecycle and execution model of Java in a production environment.",
+      "answer" : "In Java Spring Boot, dependency injection is managed by the Spring IoC container using @Autowired or constructor injection to achieve loose coupling.",
+      "evaluation" : {
+        "score" : 6,
+        "technicalScore" : 7,
+        "communicationScore" : 6,
+        "confidenceScore" : 5,
+        "feedback" : "Answer is concise but would benefit from concrete real-world engineering examples.",
+        "grammar" : "Good syntax and professional technical vocabulary.",
+        "clarity" : "Pacing was fast; expand on key points."
+      }
+    } ],
+    "createdAt" : "2026-10-23T06:01:31.777Z",
+    "questions" : [ "Explain the architectural lifecycle and execution model of Java in a production environment.", "How would you design a scalable, low-latency microservice tailored for a Full Stack Developer role?", "Walk me through a complex bug you diagnosed in one of your projects, including the root-cause analysis and mitigation.", "Describe a situation where you had a disagreement with a team member about technical trade-offs. How did you resolve it?", "How do you profile and optimize memory leaks or CPU bottlenecks in high-throughput applications?" ],
+    "currentQuestionIndex" : 1
   } ],
   "templates" : [ {
     "id" : "template-1",
@@ -2345,7 +4059,11 @@
     "atsScore" : 92,
     "downloads" : 142,
     "category" : "A clean, highly parseable single-column format recommended for software engineering and technical roles.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 142,
+    "description" : "A clean, highly parseable single-column format recommended for software engineering and technical roles."
   }, {
     "id" : "template-2",
     "name" : "Professional Modern Two-Column",
@@ -2353,7 +4071,11 @@
     "atsScore" : 92,
     "downloads" : 99,
     "category" : "A stylish layout with a sidebar highlighting technical competencies, suited for frontend and full-stack developers.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 99,
+    "description" : "A stylish layout with a sidebar highlighting technical competencies, suited for frontend and full-stack developers."
   }, {
     "id" : "template-3",
     "name" : "Executive Tech Lead Format",
@@ -2361,7 +4083,11 @@
     "atsScore" : 92,
     "downloads" : 65,
     "category" : "A comprehensive layout that emphasizes professional experience, projects, and systems architecture skills.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 65,
+    "description" : "A comprehensive layout that emphasizes professional experience, projects, and systems architecture skills."
   }, {
     "id" : "template-4",
     "name" : "Data Science & Machine Learning Specialist",
@@ -2369,7 +4095,11 @@
     "atsScore" : 92,
     "downloads" : 112,
     "category" : "Optimized for ML engineers, data scientists, and quantitative analysts featuring model evaluation and data pipeline metrics.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 112,
+    "description" : "Optimized for ML engineers, data scientists, and quantitative analysts featuring model evaluation and data pipeline metrics."
   }, {
     "id" : "template-5",
     "name" : "DevOps & Cloud Platform Infrastructure",
@@ -2377,7 +4107,11 @@
     "atsScore" : 92,
     "downloads" : 89,
     "category" : "Parser-vetted framework emphasizing Kubernetes, Terraform, cloud security, and resilient CI/CD pipelines.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 89,
+    "description" : "Parser-vetted framework emphasizing Kubernetes, Terraform, cloud security, and resilient CI/CD pipelines."
   }, {
     "id" : "template-6",
     "name" : "Embedded Systems & Firmware Engineer",
@@ -2385,7 +4119,11 @@
     "atsScore" : 92,
     "downloads" : 54,
     "category" : "Designed for IoT, microcontrollers, real-time operating systems (RTOS), and hardware-software interface engineers.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 54,
+    "description" : "Designed for IoT, microcontrollers, real-time operating systems (RTOS), and hardware-software interface engineers."
   }, {
     "id" : "template-7",
     "name" : "Cybersecurity & Systems Defense Analyst",
@@ -2393,7 +4131,11 @@
     "atsScore" : 92,
     "downloads" : 73,
     "category" : "Targeted for security analysts, penetration testers, and SOC engineers highlighting vulnerability management and compliance.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 73,
+    "description" : "Targeted for security analysts, penetration testers, and SOC engineers highlighting vulnerability management and compliance."
   }, {
     "id" : "template-8",
     "name" : "Mobile Applications Engineer (iOS & Android)",
@@ -2401,7 +4143,11 @@
     "atsScore" : 92,
     "downloads" : 81,
     "category" : "Tailored for cross-platform and native mobile app developers showcasing app architecture, state management, and offline cache.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 81,
+    "description" : "Tailored for cross-platform and native mobile app developers showcasing app architecture, state management, and offline cache."
   }, {
     "id" : "custom-test-1791901366380",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2409,7 +4155,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791901392730",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2417,7 +4167,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-mv6suppq-4ju91",
     "name" : "Cloud Native Go Developer",
@@ -2425,7 +4179,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Go + K8s format",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Go + K8s format"
   }, {
     "id" : "custom-test-1791903158603",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2433,7 +4191,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791946411284",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2441,7 +4203,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791946569708",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2449,7 +4215,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791947266840",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2457,7 +4227,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791947300687",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2465,7 +4239,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791951159766",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2473,7 +4251,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791985003160",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2481,7 +4263,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791985033371",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2489,7 +4275,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791987150449",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2497,7 +4287,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791987323367",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2505,7 +4299,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791987357766",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2513,7 +4311,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791987412746",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2521,7 +4323,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791987446883",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2529,7 +4335,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791987488158",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2537,7 +4347,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791988501857",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2545,7 +4359,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791994654431",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2553,7 +4371,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791994869998",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2561,7 +4383,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791994913840",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2569,7 +4395,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791995365794",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2577,7 +4407,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791995752801",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2585,7 +4419,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791995818040",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2593,7 +4431,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791997680723",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2601,7 +4443,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791998930822",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2609,7 +4455,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791999456922",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2617,7 +4467,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791999913422",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2625,7 +4479,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1791999989902",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2633,7 +4491,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1792596949521",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2641,7 +4503,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1792674538774",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2649,7 +4515,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1792674978051",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2657,7 +4527,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1792675858678",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2665,7 +4539,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1792677976162",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2673,7 +4551,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1792678008071",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2681,7 +4563,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1792678284277",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2689,7 +4575,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1792681419581",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2697,7 +4587,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1792685473413",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2705,7 +4599,11 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   }, {
     "id" : "custom-test-1792692109001",
     "name" : "FinTech Quantitative Developer ATS Format",
@@ -2713,7 +4611,47 @@
     "atsScore" : 92,
     "downloads" : 0,
     "category" : "Specialized layout for high-frequency trading and financial risk models.",
-    "tags" : [ ]
+    "tags" : [ ],
+    "sectionsJson" : "",
+    "fileContent" : "",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
+  }, {
+    "id" : "custom-test-1792731770512",
+    "name" : "FinTech Quantitative Developer ATS Format",
+    "targetRole" : "Software Engineer",
+    "atsScore" : 92,
+    "downloads" : 0,
+    "category" : "Specialized layout for high-frequency trading and financial risk models.",
+    "tags" : [ ],
+    "sectionsJson" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
+    "fileContent" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
+  }, {
+    "id" : "custom-test-1792733268491",
+    "name" : "FinTech Quantitative Developer ATS Format",
+    "targetRole" : "Software Engineer",
+    "atsScore" : 92,
+    "downloads" : 0,
+    "category" : "Specialized layout for high-frequency trading and financial risk models.",
+    "tags" : [ ],
+    "sectionsJson" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
+    "fileContent" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
+  }, {
+    "id" : "custom-test-1792734393264",
+    "name" : "FinTech Quantitative Developer ATS Format",
+    "targetRole" : "Software Engineer",
+    "atsScore" : 92,
+    "downloads" : 0,
+    "category" : "Specialized layout for high-frequency trading and financial risk models.",
+    "tags" : [ ],
+    "sectionsJson" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
+    "fileContent" : "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB",
+    "downloadCount" : 0,
+    "description" : "Specialized layout for high-frequency trading and financial risk models."
   } ],
   "feedback" : [ {
     "id" : "feed-1",
@@ -2808,6 +4746,60 @@
   }, {
     "id" : "feed-eacd5de4",
     "userId" : "usr-bb2cef67-90d7-4f04-80f2-b1a3840271fb",
+    "studentName" : "",
+    "email" : "",
+    "rating" : 5,
+    "category" : "general",
+    "comment" : "Excellent preparation platform!",
+    "createdAt" : ""
+  }, {
+    "id" : "feed-172ec1d1",
+    "userId" : "usr-1792731740922-af869",
+    "studentName" : "Integration Candidate",
+    "email" : "candidate-d0157f@careernavigator.edu",
+    "rating" : 5,
+    "category" : "interview",
+    "comment" : "The simulated technical assessor gave very specific guidance on Spring Boot bean lifecycles.",
+    "createdAt" : "2026-10-23T05:02:23.245Z"
+  }, {
+    "id" : "feed-94ddc7fd",
+    "userId" : "usr-04470b84-2873-4db6-930c-7b6a9e5ed6d6",
+    "studentName" : "",
+    "email" : "",
+    "rating" : 5,
+    "category" : "general",
+    "comment" : "Excellent preparation platform!",
+    "createdAt" : ""
+  }, {
+    "id" : "feed-de27711b",
+    "userId" : "usr-1792732945056-59b51",
+    "studentName" : "Integration Candidate",
+    "email" : "candidate-bcf28f@careernavigator.edu",
+    "rating" : 5,
+    "category" : "interview",
+    "comment" : "The simulated technical assessor gave very specific guidance on Spring Boot bean lifecycles.",
+    "createdAt" : "2026-10-23T05:22:26.848Z"
+  }, {
+    "id" : "feed-c53b69ec",
+    "userId" : "usr-d20691d5-21e5-4d01-bf8b-790f897f1e50",
+    "studentName" : "",
+    "email" : "",
+    "rating" : 5,
+    "category" : "general",
+    "comment" : "Excellent preparation platform!",
+    "createdAt" : ""
+  }, {
+    "id" : "feed-16e5c02b",
+    "userId" : "usr-1792734433468-a58f5",
+    "studentName" : "Integration Candidate",
+    "email" : "candidate-f73230@careernavigator.edu",
+    "rating" : 5,
+    "category" : "interview",
+    "comment" : "The simulated technical assessor gave very specific guidance on Spring Boot bean lifecycles.",
+    "createdAt" : "2026-10-23T05:47:15.638Z"
+  }, {
+    "id" : "feed-3fdfd513",
+    "userId" : "usr-4df1235b-1697-4830-bc1e-27965f42a417",
     "studentName" : "",
     "email" : "",
     "rating" : 5,

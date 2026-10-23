@@ -25,8 +25,8 @@ export default function ProfileManagement({ user, onProfileUpdate }: ProfileProp
     try {
       const response = await api.put('/api/profile', {
         branch,
-        skills,
-        projects,
+        skills: typeof skills === 'string' ? skills.split(',').map((s) => s.trim()).filter(Boolean) : skills,
+        projects: typeof projects === 'string' ? projects.split(',').map((p) => p.trim()).filter(Boolean) : projects,
         targetRole,
         experienceLevel
       });
@@ -36,8 +36,9 @@ export default function ProfileManagement({ user, onProfileUpdate }: ProfileProp
       }
 
       const data = await response.json();
-      if (data.success && data.user) {
-        onProfileUpdate(data.user);
+      const updatedUser = data.user || (data.id ? data : null);
+      if (updatedUser) {
+        onProfileUpdate(updatedUser);
         setMessage('Your Placement Profile has been successfully updated!');
       }
     } catch (err: any) {

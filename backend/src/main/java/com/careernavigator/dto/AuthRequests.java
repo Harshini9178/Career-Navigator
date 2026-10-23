@@ -66,11 +66,19 @@ public class AuthRequests {
         public String getExperienceLevel() { return experienceLevel; }
         public void setExperienceLevel(String experienceLevel) { this.experienceLevel = experienceLevel; }
 
-        public List<String> getSkills() { return skills; }
-        public void setSkills(List<String> skills) { this.skills = skills; }
+        public List<String> getSkills() { return skills != null ? skills : new java.util.ArrayList<>(); }
+        
+        @com.fasterxml.jackson.annotation.JsonSetter
+        public void setSkills(Object skillsObj) {
+            this.skills = ProfileUpdateRequest.parseStringOrList(skillsObj);
+        }
 
-        public List<String> getProjects() { return projects; }
-        public void setProjects(List<String> projects) { this.projects = projects; }
+        public List<String> getProjects() { return projects != null ? projects : new java.util.ArrayList<>(); }
+        
+        @com.fasterxml.jackson.annotation.JsonSetter
+        public void setProjects(Object projectsObj) {
+            this.projects = ProfileUpdateRequest.parseStringOrList(projectsObj);
+        }
 
         public String getPhone() { return phone; }
         public void setPhone(String phone) {
@@ -223,10 +231,32 @@ public class AuthRequests {
         public String getExperienceLevel() { return experienceLevel; }
         public void setExperienceLevel(String experienceLevel) { this.experienceLevel = experienceLevel; }
 
-        public List<String> getSkills() { return skills; }
-        public void setSkills(List<String> skills) { this.skills = skills; }
+        public List<String> getSkills() { return skills != null ? skills : new java.util.ArrayList<>(); }
+        
+        @com.fasterxml.jackson.annotation.JsonSetter
+        public void setSkills(Object skillsObj) {
+            this.skills = parseStringOrList(skillsObj);
+        }
 
-        public List<String> getProjects() { return projects; }
-        public void setProjects(List<String> projects) { this.projects = projects; }
+        public List<String> getProjects() { return projects != null ? projects : new java.util.ArrayList<>(); }
+        
+        @com.fasterxml.jackson.annotation.JsonSetter
+        public void setProjects(Object projectsObj) {
+            this.projects = parseStringOrList(projectsObj);
+        }
+
+        public static List<String> parseStringOrList(Object obj) {
+            if (obj == null) return new java.util.ArrayList<>();
+            if (obj instanceof List<?> list) {
+                return list.stream().map(Object::toString).toList();
+            }
+            if (obj instanceof String str) {
+                return java.util.Arrays.stream(str.split(","))
+                        .map(String::trim)
+                        .filter(s -> !s.isEmpty())
+                        .toList();
+            }
+            return new java.util.ArrayList<>();
+        }
     }
 }

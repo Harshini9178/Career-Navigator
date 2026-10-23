@@ -65,6 +65,20 @@ function AudioSpectrumVisualizer({ isActive, isAi = false }: { isActive: boolean
   );
 }
 
+function normalizeInterview(data: any): InterviewType | null {
+  if (!data) return null;
+  const item = data.interview !== undefined ? data.interview : (data.questions !== undefined ? data : null);
+  if (!item) return null;
+  return {
+    ...item,
+    questions: Array.isArray(item.questions) ? item.questions : [],
+    answers: Array.isArray(item.answers) ? item.answers : [],
+    currentQuestionIndex: typeof item.currentQuestionIndex === 'number' ? item.currentQuestionIndex : 0,
+    status: item.status || 'in_progress',
+    createdAt: item.createdAt || item.date || new Date().toISOString()
+  };
+}
+
 export default function MockInterview({ interviewId, onNavigate }: MockInterviewProps) {
   const [interview, setInterview] = useState<InterviewType | null>(null);
   const [loading, setLoading] = useState(true);
@@ -100,10 +114,12 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
   // 1. Initial Load of interview
   useEffect(() => {
     api.get(`/api/interview/${interviewId}`)
-      .then((res) => res.json())
+      .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (data.success && data.interview) {
-          setInterview(data.interview);
+        if (!data) return;
+        const normalized = normalizeInterview(data);
+        if (normalized) {
+          setInterview(normalized);
         }
       })
       .catch((err) => console.error(err))
@@ -140,7 +156,9 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
   }, [isRecording]);
 
   // 5. Text-To-Speech: Speak question when active question changes
-  const activeQuestion = interview && interview.status !== 'completed' ? interview.questions[interview.currentQuestionIndex] : '';
+  const activeQuestion = interview && interview.status !== 'completed' && Array.isArray(interview.questions)
+    ? (interview.questions[interview.currentQuestionIndex] || '')
+    : '';
 
   useEffect(() => {
     if (!activeQuestion || !ttsEnabled) return;
@@ -448,7 +466,8 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
             if (payload.done) {
               sound.playChime();
               if (payload.interview) {
-                setInterview(payload.interview);
+                const norm = normalizeInterview(payload.interview);
+                if (norm) setInterview(norm);
                 setLastEvaluation(payload.currentEvaluation || null);
                 setCurrentAnswer('');
                 baseAnswerRef.current = '';
@@ -516,8 +535,8 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
   }
 
   const isCompleted = interview.status === 'completed';
-  const qCount = interview.questions.length;
-  const currentIdx = interview.currentQuestionIndex;
+  const qCount = (interview.questions || []).length || 1;
+  const currentIdx = interview.currentQuestionIndex || 0;
 
   return (
     <div className="p-4 sm:p-8 max-w-7xl mx-auto space-y-6 text-[var(--text-primary)]">

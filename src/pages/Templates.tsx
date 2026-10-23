@@ -4,6 +4,16 @@ import { ResumeTemplate } from '../types.js';
 import { api } from '../lib/api.js';
 import { sound } from '../lib/sound.js';
 
+function normalizeTemplate(t: any): ResumeTemplate {
+  return {
+    id: t.id || `tpl-${Math.random()}`,
+    name: t.name || 'Untitled Template',
+    description: t.description || '',
+    downloadCount: typeof t.downloadCount === 'number' ? t.downloadCount : (typeof t.downloads === 'number' ? t.downloads : 0),
+    fileContent: t.fileContent || t.sectionsJson || ''
+  };
+}
+
 export default function Templates() {
   const [templates, setTemplates] = useState<ResumeTemplate[]>([]);
   const [loading, setLoading] = useState(true);
@@ -21,19 +31,22 @@ export default function Templates() {
 
   useEffect(() => {
     api.get('/api/resume/templates')
-      .then((res) => res.json())
+      .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (data.success && data.templates) {
-          setTemplates(data.templates);
-          setSelectedTemplate(data.templates[0] || null);
-        }
+        if (!data) return;
+        const list = Array.isArray(data)
+          ? data
+          : (Array.isArray(data.templates) ? data.templates : []);
+        const normalized = list.map(normalizeTemplate);
+        setTemplates(normalized);
+        setSelectedTemplate(normalized[0] || null);
       })
       .catch((err) => console.error(err))
       .finally(() => setLoading(false));
   }, []);
 
   const handleCopy = (template: ResumeTemplate) => {
-    navigator.clipboard.writeText(template.fileContent);
+    navigator.clipboard.writeText(template.fileContent || '');
     setCopiedId(template.id);
     sound.playClick(1200);
     setTimeout(() => setCopiedId(null), 2000);
@@ -44,14 +57,14 @@ export default function Templates() {
     try {
       await api.post(`/api/resume/templates/${template.id}/download`);
       setTemplates((prev) =>
-        prev.map((t) => (t.id === template.id ? { ...t, downloadCount: t.downloadCount + 1 } : t))
+        prev.map((t) => (t.id === template.id ? { ...t, downloadCount: (t.downloadCount || 0) + 1 } : t))
       );
 
       // Trigger a raw text file download
       const element = document.createElement('a');
-      const file = new Blob([template.fileContent], { type: 'text/plain' });
+      const file = new Blob([template.fileContent || ''], { type: 'text/plain' });
       element.href = URL.createObjectURL(file);
-      element.download = `${template.name.replace(/\s+/g, '_')}_Template.txt`;
+      element.download = `${(template.name || 'Template').replace(/\s+/g, '_')}_Template.txt`;
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);

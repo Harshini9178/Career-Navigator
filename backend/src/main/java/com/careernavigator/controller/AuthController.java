@@ -111,6 +111,7 @@ public class AuthController {
         }
         UserEntity updated = authService.updateProfile(user.getId(), req);
         return ResponseEntity.ok(Map.of(
+                "success", true,
                 "message", "Profile updated successfully",
                 "user", UserDto.fromEntity(updated)
         ));

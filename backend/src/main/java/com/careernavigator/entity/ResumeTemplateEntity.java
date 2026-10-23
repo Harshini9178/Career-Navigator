@@ -65,4 +65,22 @@ public class ResumeTemplateEntity {
 
     public String getSectionsJson() { return sectionsJson; }
     public void setSectionsJson(String sectionsJson) { this.sectionsJson = sectionsJson; }
+
+    @Transient
+    @com.fasterxml.jackson.annotation.JsonProperty("downloadCount")
+    public Integer getDownloadCount() {
+        return downloads != null ? downloads : 0;
+    }
+
+    @Transient
+    @com.fasterxml.jackson.annotation.JsonProperty("fileContent")
+    public String getFileContent() {
+        return sectionsJson != null ? sectionsJson : "";
+    }
+
+    @Transient
+    @com.fasterxml.jackson.annotation.JsonProperty("description")
+    public String getDescription() {
+        return category != null && !category.isBlank() ? category : "Standard ATS Resume Template";
+    }
 }

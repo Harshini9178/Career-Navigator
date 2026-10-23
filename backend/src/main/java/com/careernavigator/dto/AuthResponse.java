@@ -69,8 +69,8 @@ public class AuthResponse {
             dto.setPicture(u.getPicture());
             dto.setRole(u.getRole());
             dto.setBranch(u.getBranch());
-            dto.setSkills(u.getSkills());
-            dto.setProjects(u.getProjects());
+            dto.setSkills(u.getSkills() != null ? u.getSkills() : new java.util.ArrayList<>());
+            dto.setProjects(u.getProjects() != null ? u.getProjects() : new java.util.ArrayList<>());
             dto.setTargetRole(u.getTargetRole());
             dto.setExperienceLevel(u.getExperienceLevel());
             dto.setCompletedProfile(u.getCompletedProfile());

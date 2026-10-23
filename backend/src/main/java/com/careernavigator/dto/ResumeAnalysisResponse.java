@@ -48,35 +48,41 @@ public class ResumeAnalysisResponse {
     public Integer getAtsScore() { return atsScore; }
     public void setAtsScore(Integer atsScore) { this.atsScore = atsScore; }
 
-    public List<ScoreCategoryBreakdown> getCategoryBreakdown() { return categoryBreakdown; }
-    public void setCategoryBreakdown(List<ScoreCategoryBreakdown> categoryBreakdown) { this.categoryBreakdown = categoryBreakdown; }
+    private boolean success = true;
 
-    public List<String> getDetectedSections() { return detectedSections; }
-    public void setDetectedSections(List<String> detectedSections) { this.detectedSections = detectedSections; }
+    public boolean isSuccess() { return success; }
+    public boolean getSuccess() { return success; }
+    public void setSuccess(boolean success) { this.success = success; }
 
-    public List<String> getMissingSections() { return missingSections; }
-    public void setMissingSections(List<String> missingSections) { this.missingSections = missingSections; }
+    public List<ScoreCategoryBreakdown> getCategoryBreakdown() { return categoryBreakdown != null ? categoryBreakdown : new ArrayList<>(); }
+    public void setCategoryBreakdown(List<ScoreCategoryBreakdown> categoryBreakdown) { this.categoryBreakdown = categoryBreakdown != null ? categoryBreakdown : new ArrayList<>(); }
 
-    public List<SectionAnalysisResult> getSectionDetails() { return sectionDetails; }
-    public void setSectionDetails(List<SectionAnalysisResult> sectionDetails) { this.sectionDetails = sectionDetails; }
+    public List<String> getDetectedSections() { return detectedSections != null ? detectedSections : new ArrayList<>(); }
+    public void setDetectedSections(List<String> detectedSections) { this.detectedSections = detectedSections != null ? detectedSections : new ArrayList<>(); }
 
-    public List<String> getSkills() { return skills; }
-    public void setSkills(List<String> skills) { this.skills = skills; }
+    public List<String> getMissingSections() { return missingSections != null ? missingSections : new ArrayList<>(); }
+    public void setMissingSections(List<String> missingSections) { this.missingSections = missingSections != null ? missingSections : new ArrayList<>(); }
 
-    public List<KeywordDensityResult> getKeywords() { return keywords; }
-    public void setKeywords(List<KeywordDensityResult> keywords) { this.keywords = keywords; }
+    public List<SectionAnalysisResult> getSectionDetails() { return sectionDetails != null ? sectionDetails : new ArrayList<>(); }
+    public void setSectionDetails(List<SectionAnalysisResult> sectionDetails) { this.sectionDetails = sectionDetails != null ? sectionDetails : new ArrayList<>(); }
 
-    public List<String> getSuggestions() { return suggestions; }
-    public void setSuggestions(List<String> suggestions) { this.suggestions = suggestions; }
+    public List<String> getSkills() { return skills != null ? skills : new ArrayList<>(); }
+    public void setSkills(List<String> skills) { this.skills = skills != null ? skills : new ArrayList<>(); }
 
-    public List<String> getGrammarIssues() { return grammarIssues; }
-    public void setGrammarIssues(List<String> grammarIssues) { this.grammarIssues = grammarIssues; }
+    public List<KeywordDensityResult> getKeywords() { return keywords != null ? keywords : new ArrayList<>(); }
+    public void setKeywords(List<KeywordDensityResult> keywords) { this.keywords = keywords != null ? keywords : new ArrayList<>(); }
 
-    public List<String> getImprovementsToAdd() { return improvementsToAdd; }
-    public void setImprovementsToAdd(List<String> improvementsToAdd) { this.improvementsToAdd = improvementsToAdd; }
+    public List<String> getSuggestions() { return suggestions != null ? suggestions : new ArrayList<>(); }
+    public void setSuggestions(List<String> suggestions) { this.suggestions = suggestions != null ? suggestions : new ArrayList<>(); }
 
-    public List<String> getImprovementsToRemove() { return improvementsToRemove; }
-    public void setImprovementsToRemove(List<String> improvementsToRemove) { this.improvementsToRemove = improvementsToRemove; }
+    public List<String> getGrammarIssues() { return grammarIssues != null ? grammarIssues : new ArrayList<>(); }
+    public void setGrammarIssues(List<String> grammarIssues) { this.grammarIssues = grammarIssues != null ? grammarIssues : new ArrayList<>(); }
+
+    public List<String> getImprovementsToAdd() { return improvementsToAdd != null ? improvementsToAdd : new ArrayList<>(); }
+    public void setImprovementsToAdd(List<String> improvementsToAdd) { this.improvementsToAdd = improvementsToAdd != null ? improvementsToAdd : new ArrayList<>(); }
+
+    public List<String> getImprovementsToRemove() { return improvementsToRemove != null ? improvementsToRemove : new ArrayList<>(); }
+    public void setImprovementsToRemove(List<String> improvementsToRemove) { this.improvementsToRemove = improvementsToRemove != null ? improvementsToRemove : new ArrayList<>(); }
 
     public Integer getWordCount() { return wordCount; }
     public void setWordCount(Integer wordCount) { this.wordCount = wordCount; }
@@ -93,11 +99,11 @@ public class ResumeAnalysisResponse {
     public String getJobDescription() { return jobDescription; }
     public void setJobDescription(String jobDescription) { this.jobDescription = jobDescription; }
 
-    public List<String> getMatchedJDKeywords() { return matchedJDKeywords; }
-    public void setMatchedJDKeywords(List<String> matchedJDKeywords) { this.matchedJDKeywords = matchedJDKeywords; }
+    public List<String> getMatchedJDKeywords() { return matchedJDKeywords != null ? matchedJDKeywords : new ArrayList<>(); }
+    public void setMatchedJDKeywords(List<String> matchedJDKeywords) { this.matchedJDKeywords = matchedJDKeywords != null ? matchedJDKeywords : new ArrayList<>(); }
 
-    public List<String> getMissingJDKeywords() { return missingJDKeywords; }
-    public void setMissingJDKeywords(List<String> missingJDKeywords) { this.missingJDKeywords = missingJDKeywords; }
+    public List<String> getMissingJDKeywords() { return missingJDKeywords != null ? missingJDKeywords : new ArrayList<>(); }
+    public void setMissingJDKeywords(List<String> missingJDKeywords) { this.missingJDKeywords = missingJDKeywords != null ? missingJDKeywords : new ArrayList<>(); }
 
     // Nested structures
     public static class ScoreCategoryBreakdown {

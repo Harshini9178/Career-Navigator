@@ -96,4 +96,64 @@ public class MockInterviewEntity {
 
     public String getQasJson() { return qasJson; }
     public void setQasJson(String qasJson) { this.qasJson = qasJson; }
+
+    @Transient
+    @com.fasterxml.jackson.annotation.JsonProperty("questions")
+    public List<String> getQuestions() {
+        List<String> list = new ArrayList<>();
+        if (qasJson != null && !qasJson.isBlank()) {
+            try {
+                com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+                List<java.util.Map<String, Object>> qas = mapper.readValue(qasJson, new com.fasterxml.jackson.core.type.TypeReference<List<java.util.Map<String, Object>>>() {});
+                for (java.util.Map<String, Object> qa : qas) {
+                    Object q = qa.get("question");
+                    if (q != null) list.add(q.toString());
+                }
+            } catch (Exception ignored) {}
+        }
+        return list;
+    }
+
+    @Transient
+    @com.fasterxml.jackson.annotation.JsonProperty("answers")
+    public List<java.util.Map<String, Object>> getAnswers() {
+        List<java.util.Map<String, Object>> list = new ArrayList<>();
+        if (qasJson != null && !qasJson.isBlank()) {
+            try {
+                com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+                List<java.util.Map<String, Object>> qas = mapper.readValue(qasJson, new com.fasterxml.jackson.core.type.TypeReference<List<java.util.Map<String, Object>>>() {});
+                for (java.util.Map<String, Object> qa : qas) {
+                    Object a = qa.get("answer");
+                    if (a != null && !a.toString().isBlank()) {
+                        list.add(qa);
+                    }
+                }
+            } catch (Exception ignored) {}
+        }
+        return list;
+    }
+
+    @Transient
+    @com.fasterxml.jackson.annotation.JsonProperty("createdAt")
+    public String getCreatedAt() {
+        return date != null && !date.isBlank() ? date : new java.util.Date().toInstant().toString();
+    }
+
+    @Transient
+    @com.fasterxml.jackson.annotation.JsonProperty("status")
+    public String getStatus() {
+        return overallScore != null ? "completed" : "started";
+    }
+
+    @Transient
+    @com.fasterxml.jackson.annotation.JsonProperty("currentQuestionIndex")
+    public int getCurrentQuestionIndex() {
+        return getAnswers().size();
+    }
+
+    @Transient
+    @com.fasterxml.jackson.annotation.JsonProperty("skills")
+    public List<String> getSkills() {
+        return new ArrayList<>();
+    }
 }

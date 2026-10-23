@@ -27,11 +27,19 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
 
   useEffect(() => {
     api.get('/api/interview/history')
-      .then((res) => res.json())
+      .then((res) => (res.ok ? res.json() : null))
       .then((data) => {
-        if (data.success && data.history) {
-          setHistory(data.history);
-        }
+        if (!data) return;
+        const list = Array.isArray(data)
+          ? data
+          : (Array.isArray(data.history) ? data.history : (Array.isArray(data.interviews) ? data.interviews : []));
+        setHistory(list.map((item: any) => ({
+          ...item,
+          questions: Array.isArray(item.questions) ? item.questions : [],
+          answers: Array.isArray(item.answers) ? item.answers : [],
+          createdAt: item.createdAt || item.date || new Date().toISOString(),
+          overallScore: typeof item.overallScore === 'number' ? item.overallScore : (item.score ?? 0)
+        })));
       })
       .catch((err) => console.error('Failed to load interview history:', err))
       .finally(() => setLoading(false));
@@ -54,9 +62,10 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
       }
 
       const data = await response.json();
-      if (data.success && data.interview) {
+      const targetInterview = data.interview || (data.id ? data : null);
+      if (targetInterview && targetInterview.id) {
         // Navigate directly to mock interview page with ID
-        onNavigate('mock-interview', data.interview.id);
+        onNavigate('mock-interview', targetInterview.id);
       } else {
         throw new Error('Interview initialization payload error.');
       }
@@ -185,7 +194,7 @@ export default function InterviewPrep({ user, onNavigate }: InterviewPrepProps) 
                 <div className="border-t border-[var(--border)] pt-3 flex items-center justify-between text-[11px] text-[var(--text-muted)]">
                   <span className="flex items-center space-x-1">
                     <Calendar className="w-3.5 h-3.5" />
-                    <span>{new Date(interview.createdAt).toLocaleDateString()}</span>
+                    <span>{new Date(interview.createdAt || interview.date || Date.now()).toLocaleDateString()}</span>
                   </span>
 
                   <button
