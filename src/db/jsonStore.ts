@@ -1,7 +1,7 @@
 // ponytail: deprecated — replaced by database.ts (SQLite). Kept for reference.
 import fs from 'fs';
 import path from 'path';
-import { User, ResumeAnalysis, MockInterview, ResumeTemplate, StudentFeedback, DashboardMetrics } from '../types.js';
+import { User, ResumeAnalysis, MockInterview, ResumeTemplate, StudentFeedback, DashboardMetrics, StoredConversation, ConversationSummary } from '../types.js';
 
 const DB_DIR = path.join(process.cwd(), 'data');
 const DB_FILE = path.join(DB_DIR, 'db.json');
@@ -12,6 +12,7 @@ interface Schema {
   interviews: MockInterview[];
   templates: ResumeTemplate[];
   feedback: StudentFeedback[];
+  conversations?: StoredConversation[];
 }
 
 const DEFAULT_TEMPLATES: ResumeTemplate[] = [
@@ -378,10 +379,11 @@ function readDb(): Schema {
         completedProfile: true
       });
     }
+    parsed.conversations = Array.isArray(parsed.conversations) ? parsed.conversations : [];
     return parsed;
   } catch (err) {
     console.error('Error reading JSON DB, reinitializing:', err);
-    return { users: [], resumes: [], interviews: [], templates: [...DEFAULT_TEMPLATES], feedback: [] };
+    return { users: [], resumes: [], interviews: [], templates: [...DEFAULT_TEMPLATES], feedback: [], conversations: [] };
   }
 }
 
@@ -609,5 +611,66 @@ export const jsonDb = {
       branchDistribution,
       weeklyInterviews
     };
+  },
+
+  // --- CHAT CONVERSATIONS ---
+  getConversationsByUserId: (userId: string): ConversationSummary[] => {
+    const list = readDb().conversations || [];
+    return list
+      .filter((c) => c.userId === userId)
+      .sort((a, b) => new Date(b.updatedAt || b.createdAt).getTime() - new Date(a.updatedAt || a.createdAt).getTime())
+      .map((c) => {
+        const msgs = Array.isArray(c.messages) ? c.messages : [];
+        const lastMsg = msgs.length > 0 ? msgs[msgs.length - 1] : null;
+        return {
+          id: c.id,
+          title: c.title || 'Conversation',
+          messageCount: msgs.length,
+          learningMode: c.learningMode,
+          createdAt: c.createdAt,
+          updatedAt: c.updatedAt || c.createdAt,
+          lastMessageSnippet: lastMsg?.content ? (lastMsg.content.slice(0, 100) + (lastMsg.content.length > 100 ? '...' : '')) : undefined
+        };
+      });
+  },
+
+  getConversationById: (id: string, userId: string): StoredConversation | undefined => {
+    const list = readDb().conversations || [];
+    return list.find((c) => c.id === id && c.userId === userId);
+  },
+
+  saveConversation: (conversation: StoredConversation): StoredConversation => {
+    const db = readDb();
+    if (!Array.isArray(db.conversations)) {
+      db.conversations = [];
+    }
+    const idx = db.conversations.findIndex((c) => c.id === conversation.id);
+    if (idx >= 0) {
+      db.conversations[idx] = { ...db.conversations[idx], ...conversation };
+    } else {
+      db.conversations.push(conversation);
+    }
+    writeDb(db);
+    return conversation;
+  },
+
+  deleteConversation: (id: string, userId: string): boolean => {
+    const db = readDb();
+    if (!Array.isArray(db.conversations)) return false;
+    const initialLen = db.conversations.length;
+    db.conversations = db.conversations.filter((c) => !(c.id === id && c.userId === userId));
+    if (db.conversations.length !== initialLen) {
+      writeDb(db);
+      return true;
+    }
+    return false;
+  },
+
+  clearConversationsByUserId: (userId: string): boolean => {
+    const db = readDb();
+    if (!Array.isArray(db.conversations)) return false;
+    db.conversations = db.conversations.filter((c) => c.userId !== userId);
+    writeDb(db);
+    return true;
   }
 };

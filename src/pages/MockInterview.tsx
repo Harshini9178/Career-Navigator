@@ -1004,7 +1004,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
 
   // 10. Final Submission of Mock Interview with Strict Lifecycle & Safe Retry
   const handleFinalizeInterview = async () => {
-    if (!interview) return;
+    if (!interview || submittingFinal) return;
     setSubmittingFinal(true);
     setSubmissionError(null);
 
@@ -1489,9 +1489,10 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                       <button
                         type="button"
                         onClick={handleFinalizeInterview}
-                        className="px-3 py-1 bg-[var(--danger)] hover:opacity-90 text-white rounded-lg text-xs font-bold transition ml-2"
+                        disabled={submittingFinal}
+                        className="px-3 py-1 bg-[var(--danger)] hover:opacity-90 text-white rounded-lg text-xs font-bold transition ml-2 disabled:opacity-50"
                       >
-                        Retry Submit
+                        {submittingFinal ? 'Submitting...' : 'Retry Submit'}
                       </button>
                     </div>
                   )}

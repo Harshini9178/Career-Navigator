@@ -11,21 +11,54 @@ import {
 
 // Lazy-initialize Gemini client to prevent crashes if key is initially absent
 let aiClient: GoogleGenAI | null = null;
-const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+
+export function isRealApiKey(key?: string): boolean {
+  if (!key) return false;
+  const clean = key.trim();
+  if (clean.length < 15) return false;
+  const upper = clean.toUpperCase();
+  if (
+    upper === 'MY_GEMINI_API_KEY' ||
+    upper === 'YOUR_REAL_GEMINI_API_KEY' ||
+    upper === 'PASTE_YOUR_REAL_GEMINI_API_KEY_HERE' ||
+    upper.startsWith('PASTE_') ||
+    upper.startsWith('YOUR_') ||
+    upper.includes('PLACEHOLDER') ||
+    upper.includes('EXAMPLE')
+  ) {
+    return false;
+  }
+  return true;
+}
+
+export function isGeminiConfigured(): boolean {
+  return isRealApiKey(process.env.GEMINI_API_KEY);
+}
+
+export function getEffectiveModel(): string {
+  const envModel = process.env.GEMINI_MODEL?.trim();
+  if (envModel && envModel !== 'YOUR_SUPPORTED_GEMINI_MODEL' && envModel !== 'gemini-2.5-flash') {
+    return envModel;
+  }
+  return 'gemini-3.1-flash-lite';
+}
+
+export const GEMINI_MODEL = getEffectiveModel();
 
 function getGeminiClient(): GoogleGenAI | null {
+  const apiKey = process.env.GEMINI_API_KEY?.trim();
+  if (!isRealApiKey(apiKey)) {
+    return null;
+  }
   if (!aiClient) {
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (apiKey && apiKey !== 'MY_GEMINI_API_KEY') {
-      aiClient = new GoogleGenAI({
-        apiKey,
-        httpOptions: {
-          headers: {
-            'User-Agent': 'aistudio-build',
-          },
+    aiClient = new GoogleGenAI({
+      apiKey,
+      httpOptions: {
+        headers: {
+          'User-Agent': 'aistudio-build',
         },
-      });
-    }
+      },
+    });
   }
   return aiClient;
 }
@@ -580,13 +613,15 @@ Return JSON.`;
   // --- AI STATUS & COPILOT HELPERS ---
 
   getStatus() {
-    const isConfigured = Boolean(process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== 'MY_GEMINI_API_KEY');
+    const isConfigured = isGeminiConfigured();
+    const model = getEffectiveModel();
     return {
       configured: isConfigured,
-      model: GEMINI_MODEL,
-      status: isConfigured ? 'active' : 'simulation',
-      mode: isConfigured ? 'Google Gemini 2.5 Flash (Live AI)' : 'Realistic Built-in AI Simulation Engine',
+      model,
+      status: isConfigured ? 'active' : 'unconfigured',
+      mode: isConfigured ? `Google Gemini (${model}) - Live AI Connected` : 'Unconfigured - GEMINI_API_KEY Required',
       features: [
+        'Career Assistant Technical Mentor & Placement Prep',
         'Multi-factor ATS Resume Scanner & Gap Analysis',
         'Tailored Technical Question Generation',
         'Real-time SSE Answer Evaluation',
@@ -594,6 +629,110 @@ Return JSON.`;
         'Monaco Code Lab Algorithmic Review'
       ]
     };
+  },
+
+  /**
+   * Conversational Career Assistant AI Mentor
+   * Directly interfaces with Google Gemini model to assist candidates with:
+   * - Programming & Web Dev (Java, Python, C, C++, JS, React, HTML, CSS, Spring Boot)
+   * - DSA, System Design, SQL, OS, DBMS, Computer Networks
+   * - Technical & HR Placement Prep, ATS Resume guidance, Code Debugging
+   */
+  async chat(params: {
+    message: string;
+    history?: Array<{ role: string; content: string; error?: boolean }>;
+    learningMode?: boolean;
+    careerContext?: Record<string, any>;
+  }): Promise<{ answer: string; source: 'gemini'; model: string }> {
+    const client = getGeminiClient();
+    if (!client) {
+      throw new Error(
+        'Google Gemini AI service is not configured. Please set a valid GEMINI_API_KEY in your server environment or .env file and restart the server.'
+      );
+    }
+
+    const model = getEffectiveModel();
+
+    let systemInstruction = `You are Career Navigator AI, an expert technical mentor, engineering educator, and placement preparation assistant for students and software developers.
+
+Your core mission is to answer candidate questions accurately, clearly, and practically to help them master technical concepts and excel in placements and technical interviews.
+
+Core Competencies:
+- Programming Languages: Java, Python, C, C++, JavaScript, TypeScript, HTML, CSS.
+- Frameworks & Backends: Spring Boot, REST APIs, React, Node.js, Express, Microservices, SQL, relational databases (PostgreSQL/MySQL), and NoSQL (MongoDB).
+- Computer Science Core: Data Structures & Algorithms (arrays, linked lists, trees, graphs, dynamic programming, sorting, recursion), Big-O time and space complexity.
+- Systems Concepts: Operating Systems (concurrency, threads, synchronization, memory management), DBMS (normalization, indexing, ACID transactions), Computer Networks (OSI, TCP/IP, HTTP/HTTPS, DNS), Git and GitHub workflows.
+- Placement Preparation: ATS resume improvements, project architecture walkthroughs for interviews, coding rounds, and behavioral questions using the STAR framework.
+
+Response Guidelines:
+1. Direct & Factual: Answer the actual question directly in simple, precise language.
+2. Code & Examples: Include practical, tested-pattern code examples in markdown code blocks (\`\`\`language ... \`\`\`) where appropriate. Explain code step-by-step for beginners.
+3. Complexity & Output: For algorithmic or coding queries, state the expected output, Big-O time complexity, and auxiliary space complexity.
+4. Debugging: For error messages or bug reports, identify the likely root cause, explain why it happens, and provide the corrected code.
+5. Career & Placement Advice: Provide realistic, actionable advice tailored to college students and freshers.
+6. Context-Aware: In multi-turn conversations, use earlier context to understand follow-ups seamlessly.
+7. Honesty & Integrity: Never invent APIs, company policies, or fake facts. If uncertain, state the uncertainty and provide steps to verify. Never claim code was executed unless tested.`;
+
+    if (params.learningMode) {
+      systemInstruction += `\n\n[LEARNING MODE ACTIVE]
+- Explain concepts step by step using relatable analogies and clean definitions.
+- Avoid overwhelming technical jargon without explaining it first.
+- End your response with:
+  1. A short, interactive 1-question "Concept Check" to test their understanding.
+  2. A 2-sentence key takeaway summary.`;
+    }
+
+    if (params.careerContext && Object.keys(params.careerContext).length > 0) {
+      systemInstruction += `\n\n[CANDIDATE CONTEXT] (Personalize explanations to their profile):`;
+      if (params.careerContext.targetRole) systemInstruction += `\n- Target Role: ${params.careerContext.targetRole}`;
+      if (params.careerContext.branch) systemInstruction += `\n- Branch: ${params.careerContext.branch}`;
+      if (params.careerContext.skills && Array.isArray(params.careerContext.skills)) systemInstruction += `\n- Skills: ${params.careerContext.skills.join(', ')}`;
+      if (params.careerContext.latestAtsScore) systemInstruction += `\n- Resume ATS Score: ${params.careerContext.latestAtsScore}%`;
+      if (params.careerContext.latestInterviewScore) systemInstruction += `\n- Mock Interview Score: ${params.careerContext.latestInterviewScore}%`;
+    }
+
+    // Format multi-turn contents ensuring proper alternation and role assignment
+    const contents = formatGeminiChatContents(params.history || [], params.message);
+
+    try {
+      const response = await client.models.generateContent({
+        model,
+        contents,
+        config: {
+          systemInstruction,
+          temperature: 0.7,
+        }
+      });
+
+      const text = response.text?.trim();
+      if (!text) {
+        throw new Error('Gemini AI returned an empty response. Please retry with more specific details.');
+      }
+
+      return {
+        answer: text,
+        source: 'gemini',
+        model
+      };
+    } catch (err: any) {
+      const msg = err.message || String(err);
+      console.error('Gemini Chat API call error:', msg);
+
+      if (msg.includes('503') || msg.includes('UNAVAILABLE') || msg.includes('high demand')) {
+        throw new Error('Google Gemini AI is currently experiencing high demand. Please retry in a few moments.');
+      }
+      if (msg.includes('429') || msg.includes('RESOURCE_EXHAUSTED')) {
+        throw new Error('Google Gemini API quota or rate limit exceeded. Please wait a moment and retry.');
+      }
+      if (msg.includes('API_KEY_INVALID') || (msg.includes('400') && msg.includes('API key'))) {
+        throw new Error('Configured GEMINI_API_KEY is invalid or unauthorized. Please verify the key in .env.');
+      }
+      if (msg.includes('404') && msg.includes('model')) {
+        throw new Error(`The configured Gemini model (${model}) is not accessible with this API key.`);
+      }
+
+      throw new Error(`Google Gemini API error: ${msg.replace(/key=[^&\s]+/g, 'key=[REDACTED]')}`);
+    }
   },
 
   async quickAsk(question: string): Promise<{ answer: string; source: 'gemini' | 'simulation' }> {
@@ -914,4 +1053,50 @@ Return JSON.`;
     };
   }
 };
+
+/**
+ * Normalizes multi-turn message history into Google GenAI format.
+ * - Ensures alternating user/model roles
+ * - Guarantees first role is 'user'
+ * - Appends current message to the end
+ * - Limits context window to 10 most recent turns
+ */
+export function formatGeminiChatContents(
+  history: Array<{ role: string; content: string; error?: boolean }>,
+  currentMessage: string
+): Array<{ role: 'user' | 'model'; parts: Array<{ text: string }> }> {
+  const turns: Array<{ role: 'user' | 'model'; text: string }> = [];
+
+  for (const m of history) {
+    if (!m || !m.content || m.error) continue;
+    const role: 'user' | 'model' = m.role === 'user' ? 'user' : 'model';
+    turns.push({ role, text: m.content.trim() });
+  }
+
+  const trimmed = currentMessage.trim();
+  if (turns.length === 0 || turns[turns.length - 1].role !== 'user' || turns[turns.length - 1].text !== trimmed) {
+    turns.push({ role: 'user', text: trimmed });
+  }
+
+  const recentTurns = turns.slice(-10);
+
+  while (recentTurns.length > 0 && recentTurns[0].role !== 'user') {
+    recentTurns.shift();
+  }
+
+  if (recentTurns.length === 0) {
+    recentTurns.push({ role: 'user', text: trimmed });
+  }
+
+  const result: Array<{ role: 'user' | 'model'; parts: Array<{ text: string }> }> = [];
+  for (const t of recentTurns) {
+    if (result.length > 0 && result[result.length - 1].role === t.role) {
+      result[result.length - 1].parts[0].text += `\n\n${t.text}`;
+    } else {
+      result.push({ role: t.role, parts: [{ text: t.text }] });
+    }
+  }
+
+  return result;
+}
 

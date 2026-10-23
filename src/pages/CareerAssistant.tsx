@@ -266,7 +266,8 @@ export default function CareerAssistant({ user }: CareerAssistantProps) {
     try {
       const res = await api.get('/api/ai/conversations');
       if (res.ok) {
-        const list = await res.json();
+        const text = await res.text();
+        const list = text ? JSON.parse(text) : [];
         setConversations(Array.isArray(list) ? list : []);
       }
     } catch (e) {
@@ -282,10 +283,13 @@ export default function CareerAssistant({ user }: CareerAssistantProps) {
     try {
       const res = await api.get(`/api/ai/conversations/${convId}`);
       if (res.ok) {
-        const detail = await res.json();
-        setMessages(detail.messages || []);
-        if (typeof detail.learningMode === 'boolean') {
-          setLearningMode(detail.learningMode);
+        const text = await res.text();
+        const detail = text ? JSON.parse(text) : null;
+        if (detail && Array.isArray(detail.messages)) {
+          setMessages(detail.messages);
+          if (typeof detail.learningMode === 'boolean') {
+            setLearningMode(detail.learningMode);
+          }
         }
       }
     } catch (e) {
@@ -365,9 +369,17 @@ export default function CareerAssistant({ user }: CareerAssistantProps) {
       };
 
       const res = await api.post('/api/ai/chat', payload);
-      const data = await res.json();
+      let data: any = null;
+      try {
+        const rawBody = await res.text();
+        if (rawBody && rawBody.trim()) {
+          data = JSON.parse(rawBody);
+        }
+      } catch {
+        data = null;
+      }
 
-      if (data.success && data.message) {
+      if (res.ok && data && data.success && data.message) {
         sound.playChime();
         setMessages((prev) => [...prev, data.message]);
 
@@ -377,17 +389,22 @@ export default function CareerAssistant({ user }: CareerAssistantProps) {
         }
       } else {
         sound.playClick(350);
-        // Server returned informative error (e.g. GEMINI_API_KEY unconfigured or rate limit)
+        const errContent =
+          (data && (data.error?.message || data.error || data.message)) ||
+          (!res.ok
+            ? `Server returned status ${res.status} (${res.statusText || 'Error'})`
+            : 'The AI service returned an empty or invalid response. Please retry.');
+
         const errorMessage: ChatMessage = {
           id: `err-${Date.now()}`,
           role: 'assistant',
-          content: data.error || 'The AI service encountered an unexpected error. Please check server configuration or retry.',
+          content: errContent,
           timestamp: new Date().toISOString(),
           error: true,
           learningMode
         };
         setMessages((prev) => [...prev, errorMessage]);
-        if (data.conversationId && !activeConversationId) {
+        if (data?.conversationId && !activeConversationId) {
           setActiveConversationId(data.conversationId);
           loadConversations();
         }
@@ -413,13 +430,16 @@ export default function CareerAssistant({ user }: CareerAssistantProps) {
     const lastUserMsg = [...messages].reverse().find((m) => m.role === 'user');
     if (!lastUserMsg) return;
 
-    // Filter out trailing error messages
+    // Filter out trailing error messages AND the failed user message so it does not duplicate
     setMessages((prev) => {
-      const reversed = [...prev];
-      while (reversed.length > 0 && reversed[reversed.length - 1].error) {
-        reversed.pop();
+      const list = [...prev];
+      while (list.length > 0 && list[list.length - 1].error) {
+        list.pop();
       }
-      return reversed;
+      if (list.length > 0 && list[list.length - 1].role === 'user') {
+        list.pop();
+      }
+      return list;
     });
 
     handleSendMessage(lastUserMsg.content);

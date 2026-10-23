@@ -6,7 +6,7 @@ import { createServer as createViteServer } from 'vite';
 import { db } from './src/db/database.js';
 const jsonDb = db;
 import { aiService } from './src/lib/gemini.js';
-import { User, ResumeAnalysis, MockInterview, StudentFeedback, ResumeTemplate } from './src/types.js';
+import { User, ResumeAnalysis, MockInterview, StudentFeedback, ResumeTemplate, ChatMessage, StoredConversation, ConversationSummary } from './src/types.js';
 import { validateEnvironment } from './src/lib/validateEnv.js';
 import { logger } from './src/lib/logger.js';
 import { openApiSpec } from './src/lib/openapi.js';
@@ -439,7 +439,7 @@ app.get(['/auth/callback', '/auth/callback/'], async (req, res) => {
 });
 
 // Demo Login endpoint (Bypasses Google OAuth for development/immediate previews)
-app.post('/api/auth/demo', (req, res) => {
+app.post(['/api/auth/demo', '/api/auth/demo-login'], (req, res) => {
   const { role } = req.body; // 'student' or 'admin'
 
   if (role === 'admin') {
@@ -1096,6 +1096,202 @@ app.post('/api/ai/quick-ask', aiRateLimiter(30), async (req, res) => {
     logger.error('Quick Ask AI error:', err);
     res.status(500).json({ error: 'Failed to process AI question', details: err.message });
   }
+});
+
+// Full-featured Career Assistant Chatbot (Placement & Technical Mentor)
+app.post('/api/ai/chat', aiRateLimiter(30), async (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({
+      success: false,
+      error: 'Authentication required to use Career Assistant. Please log in.'
+    });
+  }
+
+  const user = jsonDb.getUserById(userId);
+  if (!user) {
+    return res.status(401).json({
+      success: false,
+      error: 'User account not found. Please log in again.'
+    });
+  }
+
+  const { message, conversationId, learningMode, careerContext } = req.body || {};
+
+  if (!message || typeof message !== 'string' || !message.trim()) {
+    return res.status(400).json({
+      success: false,
+      error: 'Question message cannot be empty.'
+    });
+  }
+
+  const cleanMessage = message.trim();
+  if (cleanMessage.length > 4000) {
+    return res.status(400).json({
+      success: false,
+      error: 'Message exceeds maximum limit of 4000 characters.'
+    });
+  }
+
+  const now = new Date().toISOString();
+
+  // Find or create conversation with user isolation
+  let conversation: StoredConversation;
+  if (conversationId && typeof conversationId === 'string') {
+    const existing = jsonDb.getConversationById(conversationId, userId);
+    if (existing) {
+      conversation = existing;
+    } else {
+      conversation = {
+        id: `conv-${Date.now()}-${crypto.randomBytes(4).toString('hex')}`,
+        userId,
+        title: cleanMessage.slice(0, 45) + (cleanMessage.length > 45 ? '...' : ''),
+        learningMode: Boolean(learningMode),
+        createdAt: now,
+        updatedAt: now,
+        messages: [],
+        careerContext: careerContext || {}
+      };
+    }
+  } else {
+    conversation = {
+      id: `conv-${Date.now()}-${crypto.randomBytes(4).toString('hex')}`,
+      userId,
+      title: cleanMessage.slice(0, 45) + (cleanMessage.length > 45 ? '...' : ''),
+      learningMode: Boolean(learningMode),
+      createdAt: now,
+      updatedAt: now,
+      messages: [],
+      careerContext: careerContext || {}
+    };
+  }
+
+  // Append user message
+  const userMsg: ChatMessage = {
+    id: `msg-${Date.now()}-${crypto.randomBytes(3).toString('hex')}`,
+    role: 'user',
+    content: cleanMessage,
+    timestamp: now,
+    learningMode: Boolean(learningMode)
+  };
+  conversation.messages.push(userMsg);
+  conversation.learningMode = Boolean(learningMode);
+  conversation.updatedAt = now;
+  if (careerContext && typeof careerContext === 'object') {
+    conversation.careerContext = { ...conversation.careerContext, ...careerContext };
+  }
+
+  // Check if Gemini is configured
+  if (!aiService.getStatus().configured) {
+    jsonDb.saveConversation(conversation);
+    return res.status(503).json({
+      success: false,
+      error: 'Google Gemini AI service is not configured on this server. Please set GEMINI_API_KEY in your server environment or .env file and restart the server.',
+      conversationId: conversation.id
+    });
+  }
+
+  try {
+    const result = await aiService.chat({
+      message: cleanMessage,
+      history: conversation.messages,
+      learningMode: Boolean(learningMode),
+      careerContext: conversation.careerContext
+    });
+
+    const assistantMsg: ChatMessage = {
+      id: `msg-${Date.now()}-${crypto.randomBytes(3).toString('hex')}`,
+      role: 'assistant',
+      content: result.answer,
+      timestamp: new Date().toISOString(),
+      learningMode: Boolean(learningMode)
+    };
+    conversation.messages.push(assistantMsg);
+    conversation.updatedAt = assistantMsg.timestamp;
+    jsonDb.saveConversation(conversation);
+
+    return res.json({
+      success: true,
+      conversationId: conversation.id,
+      title: conversation.title,
+      message: assistantMsg,
+      answer: result.answer,
+      model: result.model,
+      source: result.source
+    });
+  } catch (err: any) {
+    logger.error('Career Assistant AI Chat generation failed:', err);
+    const errText = err.message || 'Unable to communicate with the AI backend service. Please retry.';
+
+    const errorMsg: ChatMessage = {
+      id: `err-${Date.now()}-${crypto.randomBytes(3).toString('hex')}`,
+      role: 'assistant',
+      content: errText,
+      timestamp: new Date().toISOString(),
+      error: true,
+      learningMode: Boolean(learningMode)
+    };
+    conversation.messages.push(errorMsg);
+    conversation.updatedAt = errorMsg.timestamp;
+    jsonDb.saveConversation(conversation);
+
+    return res.status(500).json({
+      success: false,
+      error: errText,
+      conversationId: conversation.id
+    });
+  }
+});
+
+// List candidate's conversations
+app.get('/api/ai/conversations', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  const list = jsonDb.getConversationsByUserId(userId);
+  res.json(list);
+});
+
+// Get single conversation details
+app.get('/api/ai/conversations/:id', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  const conv = jsonDb.getConversationById(req.params.id, userId);
+  if (!conv) {
+    return res.status(404).json({ error: 'Conversation not found' });
+  }
+  res.json({
+    id: conv.id,
+    title: conv.title,
+    learningMode: conv.learningMode,
+    createdAt: conv.createdAt,
+    updatedAt: conv.updatedAt,
+    messages: conv.messages || [],
+    careerContext: conv.careerContext
+  });
+});
+
+// Delete specific conversation
+app.delete('/api/ai/conversations/:id', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  jsonDb.deleteConversation(req.params.id, userId);
+  res.json({ success: true, message: 'Conversation deleted successfully' });
+});
+
+// Clear all conversations for authenticated user
+app.delete('/api/ai/conversations', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  jsonDb.clearConversationsByUserId(userId);
+  res.json({ success: true, message: 'All conversations cleared' });
 });
 
 // ==========================================

@@ -297,6 +297,10 @@ export interface ConversationDetail {
   careerContext?: Record<string, any>;
 }
 
+export interface StoredConversation extends ConversationDetail {
+  userId: string;
+}
+
 export interface AptitudeCategoryMeta {
   name: string;
   description: string;
