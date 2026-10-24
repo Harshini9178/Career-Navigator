@@ -162,8 +162,27 @@ export interface StructuredQuestion {
   defaultLanguage?: string;
 }
 
+export interface EvaluationBreakdown {
+  technicalAccuracy: number;      // 0-100 (30% default)
+  relevanceCompleteness: number;  // 0-100 (25% default)
+  reasoning: number;              // 0-100 (20% default)
+  communication: number;          // 0-100 (15% default)
+  practicalApplication: number;   // 0-100 (10% default)
+}
+
+export interface DimensionWeight {
+  technicalAccuracy: number;
+  relevanceCompleteness: number;
+  reasoning: number;
+  communication: number;
+  practicalApplication: number;
+}
+
 export interface AnswerEvaluation {
-  score: number;
+  questionId?: string;
+  score: number; // 0-100
+  breakdown?: EvaluationBreakdown;
+  weights?: DimensionWeight;
   feedback: string;
   technicalScore: number;
   communicationScore: number;
@@ -171,13 +190,16 @@ export interface AnswerEvaluation {
   grammar: string;
   clarity: string;
   strengths?: string[];
+  improvements?: string[];
   missingConcepts?: string[];
   improvementSuggestions?: string[];
   modelAnswerPoints?: string[];
+  suggestedAnswer?: string;
   wordsPerMinute?: number;
   fillerWordCount?: number;
   answerDurationSeconds?: number;
   evaluationSource?: 'ai' | 'rubric';
+  evaluatedAt?: string;
 }
 
 export interface InterviewAnswer {
@@ -209,7 +231,9 @@ export interface MockInterview {
   followUpQuestions?: string[];
   currentQuestionIndex: number;
   answers: InterviewAnswer[];
-  overallScore?: number;
+  overallScore?: number; // 0-100
+  performanceLevel?: 'Exceptional' | 'Strong' | 'Competent' | 'Developing' | 'Needs Improvement' | string;
+  overallBreakdown?: EvaluationBreakdown;
   averageAnsweredScore?: number;
   averageScoreOutOf10?: number;
   totalPointsEarned?: number;
@@ -231,6 +255,7 @@ export interface MockInterview {
   selectedResumeName?: string;
   feedbackText?: string;
   suggestions?: string[];
+  evaluationDisclaimer?: string;
   createdAt: string;
 }
 

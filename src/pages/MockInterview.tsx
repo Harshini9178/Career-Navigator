@@ -27,16 +27,18 @@ import {
   Check,
   ExternalLink,
   ShieldAlert,
+  ShieldCheck,
   HelpCircle,
   TrendingUp,
-  BrainCircuit
+  BrainCircuit,
+  Square
 } from 'lucide-react';
 import { MockInterview as InterviewType, AnswerEvaluation, StructuredQuestion, InterviewAnswer } from '../types.js';
 import { api } from '../lib/api.js';
 import { sound } from '../lib/sound.js';
 import { evaluateAnswerSubmission, compileFinalReport } from '../lib/evaluationService.js';
 import { BUILT_IN_QUESTION_BANK } from '../lib/questionBank.js';
-import { stopMediaStream } from '../lib/mediaManager.js';
+import { stopMediaStream, stopVideoElement, stopMediaRecorder } from '../lib/mediaManager.js';
 
 interface MockInterviewProps {
   interviewId: string;
@@ -86,6 +88,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
   // Question navigation & submission
   const [evaluatingCurrent, setEvaluatingCurrent] = useState(false);
   const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
+  const [showEndConfirm, setShowEndConfirm] = useState(false);
   const [submittingFinal, setSubmittingFinal] = useState(false);
   const [activeTab, setActiveTab] = useState<'text' | 'code'>('text');
 
@@ -167,45 +170,21 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
 
     // 2. Stop All Media Stream Tracks
     if (streamRef.current) {
-      try {
-        streamRef.current.getTracks().forEach((track) => {
-          try {
-            track.stop();
-          } catch (_e) {}
-        });
-      } catch (_e) {}
+      stopMediaStream(streamRef.current);
       streamRef.current = null;
     }
 
     // Stop all additional active streams acquired during the session
     if (activeStreamsRef.current) {
       activeStreamsRef.current.forEach((stream) => {
-        try {
-          stream.getTracks().forEach((track) => {
-            try {
-              track.stop();
-            } catch (_e) {}
-          });
-        } catch (_e) {}
+        stopMediaStream(stream);
       });
       activeStreamsRef.current.clear();
     }
 
     // 3. Clear Video Element Preview & Attached MediaStreams
     if (videoRef.current) {
-      try {
-        if (videoRef.current.srcObject && (videoRef.current.srcObject as MediaStream).getTracks) {
-          (videoRef.current.srcObject as MediaStream).getTracks().forEach((track) => {
-            try {
-              track.stop();
-            } catch (_e) {}
-          });
-        }
-      } catch (_e) {}
-      try {
-        videoRef.current.pause();
-      } catch (_e) {}
-      videoRef.current.srcObject = null;
+      stopVideoElement(videoRef.current);
     }
 
     // 4. Cancel Audio Analyser, Source, and Animation Frame
@@ -348,6 +327,53 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
 
     setDraftAnswers(newDrafts);
 
+    // Validate scores to strictly reflect true performance
+    let finalOverallScore = data.overallScore;
+    let finalTotalPoints = data.totalPointsEarned;
+    let finalMaxPoints = data.maxPossiblePoints;
+    let finalAvgAnswered = data.averageAnsweredScore;
+    let finalAvgOutOf10 = data.averageScoreOutOf10;
+    let finalBreakdown = data.overallBreakdown;
+    let finalPerformanceLevel = data.performanceLevel;
+    let finalTechnicalScore = data.technicalScore;
+
+    if (answersList.length > 0) {
+      const totalQ = Math.max(structured.length, answersList.length, 1);
+      const answered = answersList.filter((a) => !a.skipped && typeof a.evaluation?.score === 'number');
+      const answeredCount = answered.length;
+      const truePointsSum = answersList.reduce((sum, a) => sum + (a.skipped ? 0 : Math.min(100, Math.max(0, a.evaluation?.score ?? 0))), 0);
+
+      // Honest recalculation to prevent legacy multiplier bugs or hallucinated totals
+      finalTotalPoints = truePointsSum;
+      finalMaxPoints = totalQ * 100;
+      finalOverallScore = Math.round(truePointsSum / totalQ);
+      finalAvgAnswered = answeredCount > 0 ? Math.round(truePointsSum / answeredCount) : 0;
+      finalAvgOutOf10 = Number((finalAvgAnswered / 10).toFixed(1));
+
+      if (finalOverallScore >= 90) finalPerformanceLevel = 'Exceptional';
+      else if (finalOverallScore >= 75) finalPerformanceLevel = 'Strong';
+      else if (finalOverallScore >= 60) finalPerformanceLevel = 'Competent';
+      else if (finalOverallScore >= 45) finalPerformanceLevel = 'Developing';
+      else finalPerformanceLevel = 'Needs Improvement';
+
+      const denom = answeredCount > 0 ? answeredCount : 1;
+      const techSum = answered.reduce((sum, a) => sum + (a.evaluation?.breakdown?.technicalAccuracy ?? a.evaluation?.technicalScore ?? a.evaluation?.score ?? 0), 0);
+      const relSum = answered.reduce((sum, a) => sum + (a.evaluation?.breakdown?.relevanceCompleteness ?? a.evaluation?.score ?? 0), 0);
+      const reasSum = answered.reduce((sum, a) => sum + (a.evaluation?.breakdown?.reasoning ?? a.evaluation?.score ?? 0), 0);
+      const commSum = answered.reduce((sum, a) => sum + (a.evaluation?.breakdown?.communication ?? a.evaluation?.communicationScore ?? a.evaluation?.score ?? 0), 0);
+      const pracSum = answered.reduce((sum, a) => sum + (a.evaluation?.breakdown?.practicalApplication ?? a.evaluation?.score ?? 0), 0);
+
+      finalBreakdown = {
+        technicalAccuracy: Math.round(techSum / denom),
+        relevanceCompleteness: Math.round(relSum / denom),
+        reasoning: Math.round(reasSum / denom),
+        communication: Math.round(commSum / denom),
+        practicalApplication: Math.round(pracSum / denom)
+      };
+
+      finalTechnicalScore = finalBreakdown.technicalAccuracy;
+    }
+
     const intvObj: InterviewType = {
       ...data,
       questions: structured.map((s) => s.question),
@@ -356,7 +382,15 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
       currentQuestionIndex: data.status === 'completed' ? 0 : answersList.length < structured.length ? answersList.length : 0,
       durationMinutes: data.durationMinutes || 30,
       prepTimerSeconds: data.prepTimerSeconds || 0,
-      status: data.status || (data.overallScore ? 'completed' : 'started')
+      status: data.status || (data.overallScore !== undefined ? 'completed' : 'started'),
+      overallScore: finalOverallScore ?? data.overallScore,
+      totalPointsEarned: finalTotalPoints ?? data.totalPointsEarned,
+      maxPossiblePoints: finalMaxPoints ?? (structured.length * 100),
+      averageAnsweredScore: finalAvgAnswered ?? data.averageAnsweredScore,
+      averageScoreOutOf10: finalAvgOutOf10 ?? data.averageScoreOutOf10,
+      overallBreakdown: finalBreakdown ?? data.overallBreakdown,
+      performanceLevel: finalPerformanceLevel ?? data.performanceLevel,
+      technicalScore: finalTechnicalScore ?? data.technicalScore
     };
 
     if (intvObj.status === 'completed') {
@@ -497,8 +531,15 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
 
   // Camera & Microphone Setup with Volume Telemetry
   useEffect(() => {
-    // Strictly prevent media access if completed, text-only, or camera turned off
-    if (!interview || interview.status === 'completed' || isSessionCompletedRef.current || interview.interviewMode === 'text' || !isCameraOn) {
+    // Strictly prevent media access if completed, submitting, text-only, or camera turned off
+    if (
+      !interview ||
+      interview.status === 'completed' ||
+      isSessionCompletedRef.current ||
+      submittingFinal ||
+      interview.interviewMode === 'text' ||
+      !isCameraOn
+    ) {
       stopInterviewMedia();
       return;
     }
@@ -513,7 +554,14 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
           audio: true
         })
         .then((stream) => {
-          if (!isEffectActive || !isMountedRef.current || isSessionCompletedRef.current || interview.status === 'completed' || currentRequestId !== mediaRequestIdRef.current) {
+          if (
+            !isEffectActive ||
+            !isMountedRef.current ||
+            isSessionCompletedRef.current ||
+            submittingFinal ||
+            interview.status === 'completed' ||
+            currentRequestId !== mediaRequestIdRef.current
+          ) {
             stopMediaStream(stream);
             return;
           }
@@ -583,7 +631,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
       isEffectActive = false;
       stopInterviewMedia();
     };
-  }, [isCameraOn, interview?.status, interview?.interviewMode, stopInterviewMedia]);
+  }, [isCameraOn, submittingFinal, interview?.status, interview?.interviewMode, stopInterviewMedia]);
 
   // 5. Speech-to-Text Implementation (Non-Duplicating)
   const stopSpeechRecognition = () => {
@@ -999,14 +1047,27 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
 
   // 9. Auto-Submit on Timer Expiry
   const handleAutoSubmitOnExpiry = () => {
+    isSessionCompletedRef.current = true;
+    setIsCameraOn(false);
+    stopInterviewMedia();
     handleFinalizeInterview();
   };
 
-  // 10. Final Submission of Mock Interview with Strict Lifecycle & Safe Retry
+  // 10. Final Submission of Mock Interview with Immediate Media Release & Safe Retry
   const handleFinalizeInterview = async () => {
     if (!interview || submittingFinal) return;
+
+    // STEP 1: IMMEDIATELY stop camera, microphone, recording, and speech recognition
+    // Release media access right when submission starts without waiting for API / AI evaluation
+    isSessionCompletedRef.current = true;
+    setIsCameraOn(false);
+    stopInterviewMedia();
+
+    // STEP 2: Disable further interview inputs and set submitting UI state
     setSubmittingFinal(true);
     setSubmissionError(null);
+    setShowSubmitConfirm(false);
+    setShowEndConfirm(false);
 
     // 1. Finalize the candidate's current answer and stop speech recognition
     if (isRecording) {
@@ -1067,11 +1128,14 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
       // Compile comprehensive final metrics
       const reportData = compileFinalReport(interview.jobRole, compiledAnswers);
 
-      const updatedInterview: InterviewType = {
+      let updatedInterview: InterviewType = {
         ...interview,
         status: 'completed',
         answers: compiledAnswers,
         overallScore: reportData.overallScore,
+        performanceLevel: reportData.performanceLevel,
+        overallBreakdown: reportData.overallBreakdown,
+        evaluationDisclaimer: reportData.evaluationDisclaimer,
         averageAnsweredScore: reportData.averageAnsweredScore,
         averageScoreOutOf10: reportData.averageScoreOutOf10,
         totalPointsEarned: reportData.totalPointsEarned,
@@ -1106,16 +1170,32 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
             if (errData.message || errData.error) errorMsg = errData.message || errData.error;
           } catch (_parseErr) {}
           console.warn('Server submit returned non-200, continuing with local persistence:', errorMsg);
+        } else if (submitResponse.ok) {
+          try {
+            const submitData = await submitResponse.json();
+            if (submitData.interview) {
+              // Exactly adopt server calculated scores and breakdown for 100% DB-parity
+              updatedInterview = {
+                ...updatedInterview,
+                ...submitData.interview,
+                overallScore: submitData.interview.overallScore ?? updatedInterview.overallScore,
+                performanceLevel: submitData.interview.performanceLevel ?? updatedInterview.performanceLevel,
+                overallBreakdown: submitData.interview.overallBreakdown ?? updatedInterview.overallBreakdown,
+                evaluationDisclaimer: submitData.interview.evaluationDisclaimer ?? updatedInterview.evaluationDisclaimer
+              };
+            }
+          } catch (_e) {}
         }
       } catch (netErr: any) {
         console.warn('Network call to submit failed, continuing with local persistence:', netErr);
       }
 
-      // 5. Immediately stop all camera and microphone tracks.
-      // 6. Stop speech recognition and clear the video preview.
+      // 5. Ensure media tracks and streams remain completely stopped
       isSessionCompletedRef.current = true;
+      setIsCameraOn(false);
       stopInterviewMedia();
       setShowSubmitConfirm(false);
+      setShowEndConfirm(false);
 
       // Persist completed interview to local storage for instant reload & Past Performance Logs
       try {
@@ -1133,6 +1213,10 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
       setSubmissionError(null);
     } catch (submitErr: any) {
       console.error('Interview submission failed:', submitErr);
+      // Media remains stopped! Do not re-enable camera on failure
+      isSessionCompletedRef.current = true;
+      setIsCameraOn(false);
+      stopInterviewMedia();
       // Safe retry preservation: retain all candidate answers
       setSubmissionError(`Submission failed: ${submitErr.message || 'Network error'}. Your answers are safely preserved. Please retry.`);
       try {
@@ -1193,18 +1277,35 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
 
   return (
     <div className="p-4 sm:p-8 max-w-7xl mx-auto space-y-6 text-[var(--text-primary)]">
-      {/* Top Header / Exit Bar */}
+      {/* Top Header / Exit & End Bar */}
       <div className="flex items-center justify-between border-b border-[var(--border)] pb-3">
-        <button
-          onClick={() => {
-            stopInterviewMedia();
-            onNavigate('interview-prep');
-          }}
-          className="inline-flex items-center space-x-1.5 text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition font-semibold"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Exit Interview Session</span>
-        </button>
+        <div className="flex items-center space-x-3">
+          <button
+            onClick={() => {
+              isSessionCompletedRef.current = true;
+              setIsCameraOn(false);
+              stopInterviewMedia();
+              onNavigate('interview-prep');
+            }}
+            className="inline-flex items-center space-x-1.5 text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition font-semibold"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Exit Interview Session</span>
+          </button>
+
+          {!isCompleted && (
+            <button
+              type="button"
+              onClick={() => setShowEndConfirm(true)}
+              disabled={submittingFinal}
+              className="inline-flex items-center space-x-1.5 text-xs text-rose-400 hover:text-rose-300 transition font-semibold px-2.5 py-1 rounded-lg border border-rose-500/30 bg-rose-500/10 hover:bg-rose-500/20 disabled:opacity-50"
+              title="End interview immediately and compile evaluation results"
+            >
+              <Square className="w-3.5 h-3.5" />
+              <span>End Interview</span>
+            </button>
+          )}
+        </div>
 
         <div className="flex items-center space-x-3">
           <span className="text-[10px] font-bold text-[var(--text-muted)] font-mono uppercase">
@@ -1626,17 +1727,26 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
             <div className="spotlight-card bg-[var(--bg-card)] border border-[var(--border)] p-4 space-y-3 rounded-2xl">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <span className={`w-2 h-2 rounded-full ${isCameraOn ? 'bg-[var(--accent)] animate-pulse' : 'bg-[var(--text-muted)]'}`} />
+                  <span className={`w-2 h-2 rounded-full ${isCameraOn && !isSessionCompletedRef.current && !submittingFinal ? 'bg-[var(--accent)] animate-pulse' : 'bg-[var(--text-muted)]'}`} />
                   <span className="text-[10px] font-mono font-bold text-[var(--text-secondary)] uppercase tracking-wider">
-                    Candidate Telemetry Feed
+                    {isCameraOn && !isSessionCompletedRef.current && !submittingFinal ? 'Candidate Telemetry Feed' : 'Camera Disconnected'}
                   </span>
                 </div>
                 <button
-                  onClick={() => setIsCameraOn(!isCameraOn)}
-                  className="text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] p-1 rounded transition"
-                  title={isCameraOn ? 'Turn off camera' : 'Turn on camera'}
+                  onClick={() => {
+                    if (!submittingFinal && !isCompleted && !isSessionCompletedRef.current) {
+                      setIsCameraOn(!isCameraOn);
+                    }
+                  }}
+                  disabled={submittingFinal || isCompleted || isSessionCompletedRef.current}
+                  className="text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] p-1 rounded transition disabled:opacity-40 disabled:cursor-not-allowed"
+                  title={isCompleted || isSessionCompletedRef.current ? 'Interview ended (Camera off)' : isCameraOn ? 'Turn off camera' : 'Turn on camera'}
                 >
-                  {isCameraOn ? <Video className="w-4 h-4 text-[var(--accent)]" /> : <VideoOff className="w-4 h-4 text-[var(--text-muted)]" />}
+                  {isCameraOn && !isSessionCompletedRef.current && !submittingFinal ? (
+                    <Video className="w-4 h-4 text-[var(--accent)]" />
+                  ) : (
+                    <VideoOff className="w-4 h-4 text-[var(--text-muted)]" />
+                  )}
                 </button>
               </div>
 
@@ -1648,7 +1758,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                 <div className="absolute bottom-2 left-2 w-3 h-3 border-b-2 border-l-2 border-[var(--primary)]/70 pointer-events-none z-10" />
                 <div className="absolute bottom-2 right-2 w-3 h-3 border-b-2 border-r-2 border-[var(--primary)]/70 pointer-events-none z-10" />
 
-                {isCameraOn ? (
+                {isCameraOn && !isSessionCompletedRef.current && !submittingFinal ? (
                   <video
                     ref={videoRef}
                     autoPlay
@@ -1659,12 +1769,16 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                 ) : (
                   <div className="text-center p-4 space-y-1">
                     <VideoOff className="w-6 h-6 text-[var(--text-muted)] mx-auto" />
-                    <p className="text-[10px] text-[var(--text-muted)] font-mono">Camera feed paused</p>
+                    <p className="text-[10px] text-[var(--text-muted)] font-mono">
+                      {submittingFinal || isSessionCompletedRef.current
+                        ? 'Interview completed • Camera & Mic turned off'
+                        : 'Camera feed paused'}
+                    </p>
                   </div>
                 )}
 
                 {/* Overlays */}
-                {isCameraOn && (
+                {isCameraOn && !isSessionCompletedRef.current && !submittingFinal && (
                   <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between pointer-events-none z-10 text-[9px] font-mono">
                     <div className="bg-black/75 px-1.5 py-0.5 rounded text-[var(--accent)]">
                       LIVE • 30fps
@@ -1766,19 +1880,50 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
             <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-[var(--primary)]/15 via-[var(--accent)]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
 
             <div className="relative max-w-4xl space-y-4">
-              <div className="inline-flex items-center space-x-1.5 bg-[var(--primary-soft)] border border-[var(--primary)]/20 text-[var(--primary)] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider font-mono">
-                <CheckCircle2 className="w-4 h-4 text-[var(--primary)]" />
-                <span>Placement Assessment Complete</span>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <div className="inline-flex items-center space-x-1.5 bg-[var(--primary-soft)] border border-[var(--primary)]/20 text-[var(--primary)] text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider font-mono">
+                  <CheckCircle2 className="w-4 h-4 text-[var(--primary)]" />
+                  <span>Placement Assessment Complete</span>
+                </div>
+
+                <div className="inline-flex items-center space-x-1.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider font-mono">
+                  <VideoOff className="w-3.5 h-3.5" />
+                  <span>Camera & Mic Off</span>
+                </div>
+
+                {interview.performanceLevel && (
+                  <div
+                    className={`inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-[10px] font-bold font-mono uppercase tracking-wider ${
+                      interview.performanceLevel === 'Exceptional'
+                        ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/30'
+                        : interview.performanceLevel === 'Strong'
+                        ? 'bg-[var(--accent-soft)] text-[var(--accent)] border border-[var(--accent)]/30'
+                        : interview.performanceLevel === 'Competent'
+                        ? 'bg-[var(--primary-soft)] text-[var(--primary)] border border-[var(--primary)]/30'
+                        : interview.performanceLevel === 'Developing'
+                        ? 'bg-amber-500/10 text-amber-500 border border-amber-500/30'
+                        : 'bg-rose-500/10 text-rose-500 border border-rose-500/30'
+                    }`}
+                  >
+                    <Award className="w-3.5 h-3.5" />
+                    <span>Tier: {interview.performanceLevel}</span>
+                  </div>
+                )}
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight font-display text-[var(--text-primary)]">
-                AI Placement Evaluation Report
+                Performance Evaluation & Assessment Report
               </h2>
 
               <p className="text-[var(--text-secondary)] text-xs sm:text-sm leading-relaxed">
                 {interview.feedbackText ||
                   `Candidate completed mock interview for ${interview.jobRole} (${interview.experienceLevel} level). Review detailed category scores and submitted code below.`}
               </p>
+
+              <div className="flex items-center space-x-2.5 px-3.5 py-2 bg-emerald-500/10 border border-emerald-500/25 rounded-xl text-xs text-emerald-300 font-medium max-w-xl">
+                <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                <span>Interview completed. Camera and microphone have been turned off.</span>
+              </div>
 
               <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-[var(--text-muted)] font-mono">
                 <span>Completed: {new Date(interview.createdAt || Date.now()).toLocaleDateString()}</span>
@@ -1787,6 +1932,45 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                 <span>•</span>
                 <span>Role Track: {interview.jobRole}</span>
               </div>
+            </div>
+          </div>
+
+          {/* 5-Tier Standardized Performance Scale */}
+          <div className="glass-card bg-[var(--bg-card)] border border-[var(--border)] p-4 sm:p-5 rounded-2xl space-y-3">
+            <div className="flex items-center justify-between text-xs">
+              <span className="font-bold text-[var(--text-primary)] font-display flex items-center space-x-2">
+                <Award className="w-4 h-4 text-[var(--primary)]" />
+                <span>Standardized Performance Scale (0–100)</span>
+              </span>
+              <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                Final Score: <strong className="text-[var(--primary)] font-bold">{interview.overallScore}%</strong>
+              </span>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-center text-xs">
+              {[
+                { tier: 'Needs Improvement', range: '0–44%', color: 'border-rose-500/40 text-rose-400 bg-rose-500/5', active: (interview.overallScore ?? 0) < 45 },
+                { tier: 'Developing', range: '45–59%', color: 'border-amber-500/40 text-amber-400 bg-amber-500/5', active: (interview.overallScore ?? 0) >= 45 && (interview.overallScore ?? 0) < 60 },
+                { tier: 'Competent', range: '60–74%', color: 'border-indigo-500/40 text-indigo-400 bg-indigo-500/5', active: (interview.overallScore ?? 0) >= 60 && (interview.overallScore ?? 0) < 75 },
+                { tier: 'Strong', range: '75–89%', color: 'border-[var(--accent)]/40 text-[var(--accent)] bg-[var(--accent-soft)]', active: (interview.overallScore ?? 0) >= 75 && (interview.overallScore ?? 0) < 90 },
+                { tier: 'Exceptional', range: '90–100%', color: 'border-emerald-500/40 text-emerald-400 bg-emerald-500/5', active: (interview.overallScore ?? 0) >= 90 }
+              ].map((t) => (
+                <div
+                  key={t.tier}
+                  className={`p-2.5 rounded-xl border transition ${
+                    t.active
+                      ? `${t.color} ring-2 ring-[var(--primary)] font-bold shadow-sm`
+                      : 'border-[var(--border)] bg-[var(--bg-base)] text-[var(--text-muted)] opacity-60'
+                  }`}
+                >
+                  <span className="block text-[11px] font-bold">{t.tier}</span>
+                  <span className="block text-[10px] font-mono mt-0.5">{t.range}</span>
+                  {t.active && (
+                    <span className="inline-block mt-1 text-[9px] uppercase font-mono px-1.5 py-0.2 bg-[var(--primary)] text-white rounded">
+                      Assessed Tier
+                    </span>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
 
@@ -1800,13 +1984,13 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                 {interview.overallScore}%
               </span>
               <span className="block text-[10px] text-[var(--text-muted)] font-mono">
-                {interview.totalPointsEarned ?? Math.round(((interview.overallScore ?? 0) * totalQuestions * 10) / 100)} / {interview.maxPossiblePoints ?? (totalQuestions * 10)} total pts
+                {interview.totalPointsEarned ?? Math.round((interview.overallScore ?? 0) * totalQuestions)} / {interview.maxPossiblePoints ?? (totalQuestions * 100)} total pts
               </span>
             </div>
 
             <div className="glass-card bg-[var(--bg-card)] border border-[var(--border)] p-6 rounded-2xl text-center space-y-2">
               <span className="block text-[10px] font-bold text-[var(--text-muted)] uppercase font-mono tracking-wider">
-                Avg on Answered
+                Avg on Attempted
               </span>
               <span className="text-4xl font-extrabold text-[var(--accent)] font-mono block">
                 {interview.averageAnsweredScore ?? interview.overallScore}%
@@ -1835,23 +2019,104 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
               <span className="text-4xl font-extrabold text-[var(--primary)] font-mono block">
                 {interview.technicalScore}%
               </span>
-              <span className="block text-[10px] text-[var(--text-muted)]">Domain theory match</span>
+              <span className="block text-[10px] text-[var(--text-muted)]">30% Rubric Weight</span>
             </div>
           </div>
 
-          {/* Transparent Scoring Formula Notice */}
-          <div className="p-4 bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl flex items-start space-x-3 text-xs text-[var(--text-secondary)]">
-            <ShieldAlert className="w-5 h-5 text-[var(--primary)] flex-shrink-0 mt-0.5" />
-            <div className="space-y-1">
-              <span className="font-bold text-[var(--text-primary)] font-mono text-[11px] uppercase tracking-wider block">
-                Transparent Placement Scoring Breakdown:
-              </span>
-              <p className="leading-relaxed">
-                Overall score is computed via <span className="font-mono font-bold text-[var(--primary)]">Overall Score = (Total Points Earned / (Total Questions × 10)) × 100</span>.
-                The candidate earned <span className="font-bold text-[var(--text-primary)]">{interview.totalPointsEarned ?? Math.round(((interview.overallScore ?? 0) * totalQuestions * 10) / 100)}</span> points out of a maximum possible <span className="font-bold text-[var(--text-primary)]">{interview.maxPossiblePoints ?? (totalQuestions * 10)}</span> points across all {totalQuestions} questions.
-                On the {interview.questionsAnswered ?? (interview.answers || []).length} attempted questions, the candidate achieved an average score of <span className="font-bold text-[var(--accent)]">{interview.averageAnsweredScore ?? interview.overallScore}%</span> ({interview.averageScoreOutOf10 ?? ((interview.averageAnsweredScore ?? interview.overallScore ?? 0) / 10).toFixed(1)} / 10).
-                {interview.questionsSkipped ? ` The ${interview.questionsSkipped} skipped question(s) count as 0 points toward the overall interview percentage.` : ' All questions were attempted.'}
-              </p>
+          {/* 5-Dimension Rubric Breakdown Cards */}
+          <div className="glass-card bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl p-6 space-y-4">
+            <div className="flex justify-between items-center border-b border-[var(--border)] pb-2">
+              <div>
+                <h4 className="font-bold text-sm font-display text-[var(--text-primary)]">
+                  Evaluation Breakdown by Core Competencies
+                </h4>
+                <p className="text-[11px] text-[var(--text-muted)] mt-0.5">
+                  Performance-weighted across Technical Accuracy (30%), Relevance & Depth (25%), Problem Solving (20%), Communication (15%), and Practical Application (10%).
+                </p>
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+              {[
+                {
+                  key: 'technicalAccuracy',
+                  label: 'Technical Accuracy',
+                  weight: '30%',
+                  score: interview.overallBreakdown?.technicalAccuracy ?? interview.technicalScore ?? Math.round(interview.overallScore * 0.95)
+                },
+                {
+                  key: 'relevanceCompleteness',
+                  label: 'Relevance & Depth',
+                  weight: '25%',
+                  score: interview.overallBreakdown?.relevanceCompleteness ?? Math.round(interview.overallScore * 0.98)
+                },
+                {
+                  key: 'reasoning',
+                  label: 'Problem-Solving / Logic',
+                  weight: '20%',
+                  score: interview.overallBreakdown?.reasoning ?? Math.round(interview.overallScore * 0.96)
+                },
+                {
+                  key: 'communication',
+                  label: 'Communication Clarity',
+                  weight: '15%',
+                  score: interview.overallBreakdown?.communication ?? interview.communicationScore ?? Math.round(interview.overallScore * 1.02)
+                },
+                {
+                  key: 'practicalApplication',
+                  label: 'Practical Application',
+                  weight: '10%',
+                  score: interview.overallBreakdown?.practicalApplication ?? Math.round(interview.overallScore * 0.92)
+                }
+              ].map((dim) => {
+                const clamped = Math.min(100, Math.max(0, dim.score));
+                return (
+                  <div key={dim.key} className="bg-[var(--bg-base)] p-3.5 rounded-xl border border-[var(--border)] space-y-2">
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="font-bold text-[11px] text-[var(--text-secondary)]">{dim.label}</span>
+                      <span className="text-[10px] font-mono text-[var(--text-muted)]">{dim.weight}</span>
+                    </div>
+                    <div className="text-xl font-extrabold font-mono text-[var(--primary)]">
+                      {clamped}%
+                    </div>
+                    <div className="w-full bg-[var(--border)] h-1.5 rounded-full overflow-hidden">
+                      <div
+                        className="bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] h-full rounded-full transition-all duration-500"
+                        style={{ width: `${clamped}%` }}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Transparent Scoring Formula Notice & Fairness Cards */}
+          <div className="grid md:grid-cols-2 gap-4">
+            <div className="p-4 bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl flex items-start space-x-3 text-xs text-[var(--text-secondary)]">
+              <ShieldAlert className="w-5 h-5 text-[var(--primary)] flex-shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <span className="font-bold text-[var(--text-primary)] font-mono text-[11px] uppercase tracking-wider block">
+                  Transparent Scoring & Aggregation
+                </span>
+                <p className="leading-relaxed text-[11px]">
+                  Final score is calculated via <strong className="font-mono text-[var(--primary)]">Sum(Question Scores) / Total Questions</strong>.
+                  Candidate earned <strong className="text-[var(--text-primary)]">{interview.totalPointsEarned ?? Math.round((interview.overallScore ?? 0) * totalQuestions)}</strong> pts out of a maximum possible <strong className="text-[var(--text-primary)]">{interview.maxPossiblePoints ?? (totalQuestions * 100)}</strong> pts.
+                  {interview.questionsSkipped ? ` Skipped questions (${interview.questionsSkipped}) receive 0 points and remain in the denominator to ensure honest assessment.` : ' All questions were attempted.'}
+                </p>
+              </div>
+            </div>
+
+            <div className="p-4 bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl flex items-start space-x-3 text-xs text-[var(--text-secondary)]">
+              <Sparkles className="w-5 h-5 text-[var(--accent)] flex-shrink-0 mt-0.5" />
+              <div className="space-y-1">
+                <span className="font-bold text-[var(--text-primary)] font-mono text-[11px] uppercase tracking-wider block">
+                  AI-Assisted Assessment & Voice Fairness
+                </span>
+                <p className="leading-relaxed text-[11px]">
+                  {interview.evaluationDisclaimer || 'AI-assisted practice assessment designed for preparation and skill reinforcement.'} Spoken responses are transcribed and evaluated strictly on substance, correctness, and reasoning. Delivery pace (WPM) and filler words are purely informational and do not diminish technical competence scores.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -2017,7 +2282,7 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                       {item.evaluation && (
                         <div className="text-right">
                           <span className="text-xs font-mono font-bold px-2.5 py-1 bg-[var(--primary-soft)] border border-[var(--primary)]/20 text-[var(--primary)] rounded-lg">
-                            Score: {item.evaluation.score}/10
+                            Score: {Math.round(item.evaluation.score)} / 100
                           </span>
                           <span className="block text-[9px] text-[var(--text-muted)] mt-0.5 font-mono">
                             Source: {item.evaluation.evaluationSource === 'ai' ? 'AI Assessment' : 'Verified Rubric'}
@@ -2053,11 +2318,120 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
 
                     {/* Evaluation Details */}
                     {item.evaluation && (
-                      <div className="space-y-2 pt-2 border-t border-[var(--border)] text-xs">
-                        <span className="font-bold text-[var(--text-primary)] block">Assessor Review:</span>
-                        <p className="text-[var(--text-secondary)] leading-relaxed">
-                          {item.evaluation.feedback}
-                        </p>
+                      <div className="space-y-3 pt-2 border-t border-[var(--border)] text-xs">
+                        {/* 5-Dimension Individual Question Breakdown */}
+                        {item.evaluation.breakdown && (
+                          <div className="space-y-1.5">
+                            <span className="text-[10px] font-bold text-[var(--text-muted)] uppercase block font-mono">
+                              Rubric Assessment Breakdown:
+                            </span>
+                            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                              <div className="bg-[var(--bg-card)] p-2 rounded-lg border border-[var(--border)]">
+                                <span className="text-[10px] text-[var(--text-muted)] block">Technical (30%)</span>
+                                <span className="font-bold font-mono text-xs text-[var(--text-primary)]">
+                                  {item.evaluation.breakdown.technicalAccuracy}%
+                                </span>
+                              </div>
+                              <div className="bg-[var(--bg-card)] p-2 rounded-lg border border-[var(--border)]">
+                                <span className="text-[10px] text-[var(--text-muted)] block">Relevance (25%)</span>
+                                <span className="font-bold font-mono text-xs text-[var(--text-primary)]">
+                                  {item.evaluation.breakdown.relevanceCompleteness}%
+                                </span>
+                              </div>
+                              <div className="bg-[var(--bg-card)] p-2 rounded-lg border border-[var(--border)]">
+                                <span className="text-[10px] text-[var(--text-muted)] block">Reasoning (20%)</span>
+                                <span className="font-bold font-mono text-xs text-[var(--text-primary)]">
+                                  {item.evaluation.breakdown.reasoning}%
+                                </span>
+                              </div>
+                              <div className="bg-[var(--bg-card)] p-2 rounded-lg border border-[var(--border)]">
+                                <span className="text-[10px] text-[var(--text-muted)] block">Clarity (15%)</span>
+                                <span className="font-bold font-mono text-xs text-[var(--text-primary)]">
+                                  {item.evaluation.breakdown.communication}%
+                                </span>
+                              </div>
+                              <div className="bg-[var(--bg-card)] p-2 rounded-lg border border-[var(--border)]">
+                                <span className="text-[10px] text-[var(--text-muted)] block">Practical (10%)</span>
+                                <span className="font-bold font-mono text-xs text-[var(--text-primary)]">
+                                  {item.evaluation.breakdown.practicalApplication}%
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        <div className="space-y-1">
+                          <span className="font-bold text-[var(--text-primary)] block">Assessor Review:</span>
+                          <p className="text-[var(--text-secondary)] leading-relaxed">
+                            {item.evaluation.feedback}
+                          </p>
+                        </div>
+
+                        {/* Demonstrated Strengths */}
+                        {item.evaluation.strengths && item.evaluation.strengths.length > 0 && (
+                          <div className="space-y-1">
+                            <span className="font-bold text-emerald-400 font-mono text-[11px] flex items-center space-x-1.5">
+                              <CheckCircle2 className="w-3.5 h-3.5" />
+                              <span>Demonstrated Strengths:</span>
+                            </span>
+                            <ul className="space-y-1 pl-2 text-[11px] text-[var(--text-secondary)]">
+                              {item.evaluation.strengths.map((str, sIdx) => (
+                                <li key={sIdx} className="flex items-start space-x-1.5">
+                                  <span className="text-emerald-500 font-bold">•</span>
+                                  <span>{str}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {/* Missing Concepts & Technical Gaps */}
+                        {item.evaluation.missingConcepts && item.evaluation.missingConcepts.length > 0 && (
+                          <div className="space-y-1">
+                            <span className="font-bold text-amber-400 font-mono text-[11px] flex items-center space-x-1.5">
+                              <AlertCircle className="w-3.5 h-3.5" />
+                              <span>Missing Concepts & Omissions:</span>
+                            </span>
+                            <ul className="space-y-1 pl-2 text-[11px] text-[var(--text-secondary)]">
+                              {item.evaluation.missingConcepts.map((mc, mIdx) => (
+                                <li key={mIdx} className="flex items-start space-x-1.5">
+                                  <span className="text-amber-500 font-bold">•</span>
+                                  <span>{mc}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {/* Specific Suggested Improvements */}
+                        {item.evaluation.improvements && item.evaluation.improvements.length > 0 && (
+                          <div className="space-y-1">
+                            <span className="font-bold text-[var(--accent)] font-mono text-[11px] flex items-center space-x-1.5">
+                              <Sparkles className="w-3.5 h-3.5" />
+                              <span>Recommended Enhancements:</span>
+                            </span>
+                            <ul className="space-y-1 pl-2 text-[11px] text-[var(--text-secondary)]">
+                              {item.evaluation.improvements.map((imp, iIdx) => (
+                                <li key={iIdx} className="flex items-start space-x-1.5">
+                                  <span className="text-[var(--accent)] font-bold">•</span>
+                                  <span>{imp}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                        {/* Model Reference Answer */}
+                        {item.evaluation.suggestedAnswer && (
+                          <div className="space-y-1 bg-[var(--bg-card)] p-3 rounded-lg border border-[var(--border)]">
+                            <span className="font-bold text-[var(--primary)] font-mono text-[11px] block">
+                              Model Solution & Key Formulation:
+                            </span>
+                            <p className="text-[11px] text-[var(--text-secondary)] leading-relaxed">
+                              {item.evaluation.suggestedAnswer}
+                            </p>
+                          </div>
+                        )}
                       </div>
                     )}
 
@@ -2232,6 +2606,11 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
               </p>
             )}
 
+            <div className="p-2.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-xs text-emerald-300 flex items-center space-x-2">
+              <ShieldCheck className="w-4 h-4 flex-shrink-0 text-emerald-400" />
+              <span>Camera and microphone media tracks will stop immediately when you submit.</span>
+            </div>
+
             <div className="flex justify-end space-x-3 pt-2">
               <button
                 type="button"
@@ -2255,6 +2634,51 @@ export default function MockInterview({ interviewId, onNavigate }: MockInterview
                 ) : (
                   <span>{submissionError ? 'Retry Submission' : 'Confirm & Submit'}</span>
                 )}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* End Interview Confirmation Modal */}
+      {showEndConfirm && (
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl animate-in fade-in zoom-in-95 duration-150">
+            <div className="flex items-center space-x-2 text-rose-400">
+              <Square className="w-5 h-5 flex-shrink-0" />
+              <h3 className="font-bold text-base text-[var(--text-primary)]">End Interview Session?</h3>
+            </div>
+
+            <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
+              Are you sure you want to end this interview now? All active camera and microphone media tracks will be stopped immediately. Your completed answers will be evaluated and compiled into your final performance report, with any unattempted questions counted as skipped.
+            </p>
+
+            <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-xs text-emerald-300 flex items-center space-x-2">
+              <ShieldCheck className="w-4 h-4 flex-shrink-0 text-emerald-400" />
+              <span>Camera and microphone will turn off immediately upon confirmation.</span>
+            </div>
+
+            <div className="flex justify-end space-x-3 pt-2">
+              <button
+                type="button"
+                onClick={() => setShowEndConfirm(false)}
+                className="px-4 py-2 rounded-xl border border-[var(--border)] text-xs text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-semibold transition"
+              >
+                Resume Interview
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setShowEndConfirm(false);
+                  isSessionCompletedRef.current = true;
+                  setIsCameraOn(false);
+                  stopInterviewMedia();
+                  handleFinalizeInterview();
+                }}
+                className="px-5 py-2 bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs rounded-xl transition flex items-center space-x-1.5 shadow-md"
+              >
+                <span>Confirm & End Interview</span>
               </button>
             </div>
           </div>

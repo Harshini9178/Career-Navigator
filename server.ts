@@ -1180,17 +1180,254 @@ app.get('/api/interview/:id', (req, res) => {
   res.json({ success: true, interview });
 });
 
-// Answer the current interview question and evaluate it
-app.post('/api/interview/:id/answer', aiRateLimiter(20), async (req, res) => {
+// Finalize and submit mock interview session with server-validated performance scoring
+app.post('/api/interview/:id/submit', async (req, res) => {
   const { id } = req.params;
-  const { answer, wordsPerMinute, fillerWordCount, answerDurationSeconds } = req.body;
+  const userId = getSessionUserId(req);
 
-  if (!answer || typeof answer !== 'string') {
-    return res.status(400).json({ error: 'Answer string is required' });
+  try {
+    let interview = jsonDb.getInterviewById(id);
+
+    const submittedAnswers: any[] = Array.isArray(req.body.answers)
+      ? req.body.answers
+      : (interview?.answers || []);
+
+    const role = req.body.jobRole || interview?.jobRole || 'Software Engineer';
+    const totalQuestions = Math.max(
+      interview?.questions?.length || 0,
+      interview?.structuredQuestions?.length || 0,
+      submittedAnswers.length,
+      1
+    );
+
+    // If session is already completed with consistent scores, return preserved saved results
+    const isExplicitRecalculate = req.body?.forceRecalculate === true || req.query?.force === 'true';
+    const hasCompleteBreakdown = interview && interview.overallBreakdown && typeof interview.overallBreakdown.technicalAccuracy === 'number';
+    const hasCorrectScale = interview && interview.maxPossiblePoints === totalQuestions * 100;
+
+    let recordedSum = 0;
+    if (interview?.answers && Array.isArray(interview.answers)) {
+      for (const a of interview.answers) {
+        if (!a.skipped && a.evaluation && typeof a.evaluation.score === 'number') {
+          recordedSum += a.evaluation.score;
+        }
+      }
+    }
+    const isSumConsistent = interview && typeof interview.totalPointsEarned === 'number' && Math.abs(interview.totalPointsEarned - recordedSum) <= 1;
+
+    if (interview && interview.status === 'completed' && hasCompleteBreakdown && hasCorrectScale && isSumConsistent && !isExplicitRecalculate) {
+      logger.info(`Mock interview ${id} already completed with verified scores for user ${interview.userId}`);
+      return res.json({ success: true, interview });
+    }
+
+    // Ensure all answers are evaluated using the standard rubric
+    const compiledAnswers: any[] = [];
+    let totalScoreSum = 0;
+    let answeredCount = 0;
+    let skippedCount = 0;
+    let techSum = 0;
+    let relSum = 0;
+    let reasSum = 0;
+    let commSum = 0;
+    let pracSum = 0;
+    const categoryScoresMap: Record<string, { total: number; count: number }> = {};
+    const strongestSet = new Set<string>();
+    const improvementSet = new Set<string>();
+    const missingConceptsSet = new Set<string>();
+
+    for (let i = 0; i < submittedAnswers.length; i++) {
+      const ans = submittedAnswers[i];
+      const isSkippedOrEmpty = ans.skipped || (!ans.answer?.trim() && !ans.code?.trim()) || ans.answer === '[Question Skipped]';
+      const cat = ans.category || 'technical';
+      if (!categoryScoresMap[cat]) {
+        categoryScoresMap[cat] = { total: 0, count: 0 };
+      }
+
+      let evaluation = ans.evaluation;
+      if (!evaluation || typeof evaluation.score !== 'number') {
+        evaluation = await aiService.evaluateAnswer(ans.question || `Question ${i + 1}`, ans.answer || '', {
+          questionId: ans.questionId,
+          category: ans.category,
+          difficulty: ans.difficulty,
+          targetRole: role,
+          expectedAnswerPoints: ans.expectedAnswerPoints,
+          evaluationCriteria: ans.evaluationCriteria,
+          code: ans.code,
+          language: ans.language,
+          skipped: isSkippedOrEmpty
+        });
+      }
+
+      // Skipped/unanswered questions count as 0 earned points in overall denominator
+      const score = isSkippedOrEmpty ? 0 : Math.min(100, Math.max(0, evaluation.score));
+      totalScoreSum += score;
+      categoryScoresMap[cat].total += score;
+      categoryScoresMap[cat].count += 1;
+
+      if (isSkippedOrEmpty) {
+        skippedCount++;
+      } else {
+        answeredCount++;
+        const b = evaluation.breakdown;
+        techSum += b?.technicalAccuracy ?? score;
+        relSum += b?.relevanceCompleteness ?? score;
+        reasSum += b?.reasoning ?? score;
+        commSum += b?.communication ?? score;
+        pracSum += b?.practicalApplication ?? score;
+      }
+
+      if (Array.isArray(evaluation.strengths)) evaluation.strengths.forEach((s: string) => strongestSet.add(s));
+      if (Array.isArray(evaluation.improvements)) evaluation.improvements.forEach((s: string) => improvementSet.add(s));
+      if (Array.isArray(evaluation.missingConcepts)) evaluation.missingConcepts.forEach((s: string) => missingConceptsSet.add(s));
+
+      compiledAnswers.push({
+        ...ans,
+        skipped: isSkippedOrEmpty,
+        evaluation: {
+          ...evaluation,
+          score
+        }
+      });
+    }
+
+    // Documented aggregation formula:
+    // overallScore = (Total Points Earned / (Total Questions * 100)) * 100 = round(totalScoreSum / totalQuestions)
+    const overallScore = totalQuestions > 0 ? Math.min(100, Math.max(0, Math.round(totalScoreSum / totalQuestions))) : 0;
+    const averageAnsweredScore = answeredCount > 0 ? Math.min(100, Math.max(0, Math.round(totalScoreSum / answeredCount))) : 0;
+    const averageScoreOutOf10 = Number((averageAnsweredScore / 10).toFixed(1));
+
+    // Performance level definition
+    let performanceLevel: string = 'Needs Improvement';
+    if (overallScore >= 90) performanceLevel = 'Exceptional';
+    else if (overallScore >= 75) performanceLevel = 'Strong';
+    else if (overallScore >= 60) performanceLevel = 'Competent';
+    else if (overallScore >= 45) performanceLevel = 'Developing';
+
+    const denom = answeredCount > 0 ? answeredCount : 1;
+    const overallBreakdown = {
+      technicalAccuracy: Math.round(techSum / denom),
+      relevanceCompleteness: Math.round(relSum / denom),
+      reasoning: Math.round(reasSum / denom),
+      communication: Math.round(commSum / denom),
+      practicalApplication: Math.round(pracSum / denom)
+    };
+
+    const categoryScores: Record<string, number> = {};
+    for (const [c, data] of Object.entries(categoryScoresMap)) {
+      categoryScores[c] = data.count > 0 ? Math.round(data.total / data.count) : 0;
+    }
+
+    const defaultSuggestions = [
+      `Review algorithmic edge-case handling for ${role} placement technical scenarios.`,
+      'Structure behavioral answers using the STAR framework with quantifiable engineering outcomes.',
+      'Deepen command of system architecture trade-offs, caching policies, and database indexing.'
+    ];
+
+    if (interview) {
+      interview.status = 'completed';
+      interview.answers = compiledAnswers;
+      interview.overallScore = overallScore;
+      interview.performanceLevel = performanceLevel;
+      interview.overallBreakdown = overallBreakdown;
+      interview.averageAnsweredScore = averageAnsweredScore;
+      interview.averageScoreOutOf10 = averageScoreOutOf10;
+      interview.totalPointsEarned = totalScoreSum;
+      interview.maxPossiblePoints = totalQuestions * 100;
+      interview.technicalScore = overallBreakdown.technicalAccuracy;
+      interview.communicationScore = overallBreakdown.communication;
+      interview.confidenceScore = Math.min(100, Math.max(40, overallBreakdown.communication));
+      interview.categoryScores = categoryScores;
+      interview.questionsAnswered = answeredCount;
+      interview.questionsSkipped = skippedCount;
+      interview.questionsPending = Math.max(0, totalQuestions - answeredCount - skippedCount);
+      interview.strongestAreas = Array.from(strongestSet).slice(0, 4);
+      interview.topicsToImprove = Array.from(improvementSet).slice(0, 4);
+      interview.suggestedPracticeQuestions = req.body.suggestedPracticeQuestions || defaultSuggestions;
+      interview.recommendedLearningTopics = req.body.recommendedLearningTopics || [
+        'Distributed Concurrency & ACID Guarantees',
+        'Scalable API Microservice Design & Rate Limiting',
+        'Database Sharding & Query Optimization'
+      ];
+      interview.feedbackText = req.body.feedbackText || `Candidate completed mock interview with an overall score of ${overallScore}% (${performanceLevel} level). Answered ${answeredCount} of ${totalQuestions} questions with ${skippedCount} skipped.`;
+      interview.suggestions = interview.topicsToImprove.length ? interview.topicsToImprove : defaultSuggestions;
+      interview.evaluationDisclaimer = 'AI-assisted practice assessment. This educational evaluation is designed to guide candidate skill improvement and does not guarantee specific hiring outcomes.';
+      if (userId && (!interview.userId || interview.userId.startsWith('demo-'))) {
+        interview.userId = userId;
+      }
+    } else {
+      interview = {
+        id,
+        userId: userId || 'demo-student-1',
+        jobRole: role,
+        branch: req.body.branch || 'General Engineering',
+        skills: req.body.skills || ['Coding'],
+        experienceLevel: req.body.experienceLevel || 'Entry Level',
+        status: 'completed',
+        questions: compiledAnswers.map((a: any) => a.question || a.questionId),
+        currentQuestionIndex: compiledAnswers.length,
+        answers: compiledAnswers,
+        overallScore,
+        performanceLevel,
+        overallBreakdown,
+        averageAnsweredScore,
+        averageScoreOutOf10,
+        totalPointsEarned: totalScoreSum,
+        maxPossiblePoints: totalQuestions * 100,
+        technicalScore: overallBreakdown.technicalAccuracy,
+        communicationScore: overallBreakdown.communication,
+        confidenceScore: Math.min(100, Math.max(40, overallBreakdown.communication)),
+        categoryScores,
+        questionsAnswered: answeredCount,
+        questionsSkipped: skippedCount,
+        questionsPending: Math.max(0, totalQuestions - answeredCount - skippedCount),
+        strongestAreas: Array.from(strongestSet).slice(0, 4),
+        topicsToImprove: Array.from(improvementSet).slice(0, 4),
+        suggestedPracticeQuestions: req.body.suggestedPracticeQuestions || defaultSuggestions,
+        recommendedLearningTopics: req.body.recommendedLearningTopics || [
+          'Distributed Concurrency & ACID Guarantees',
+          'Scalable API Microservice Design & Rate Limiting',
+          'Database Sharding & Query Optimization'
+        ],
+        feedbackText: req.body.feedbackText || `Candidate completed mock interview with an overall score of ${overallScore}% (${performanceLevel} level). Answered ${answeredCount} of ${totalQuestions} questions with ${skippedCount} skipped.`,
+        suggestions: Array.from(improvementSet).slice(0, 4),
+        evaluationDisclaimer: 'AI-assisted practice assessment. This educational evaluation is designed to guide candidate skill improvement and does not guarantee specific hiring outcomes.',
+        createdAt: new Date().toISOString()
+      };
+    }
+
+    const saved = jsonDb.saveInterview(interview);
+    logger.info(`Mock interview ${id} finalized: Overall Score = ${overallScore}%, Performance = ${performanceLevel}`);
+    return res.json({ success: true, interview: saved });
+  } catch (error: any) {
+    logger.error('Interview final submit error:', error);
+    return res.status(500).json({ error: 'Failed to record interview submission', details: error.message });
   }
+});
 
-  if (answer.length > 10000) {
-    return res.status(400).json({ error: 'Answer exceeds maximum length of 10,000 characters' });
+// Answer a specific interview question and evaluate it objectively
+app.post('/api/interview/:id/answer', aiRateLimiter(25), async (req, res) => {
+  const { id } = req.params;
+  const {
+    answer,
+    code,
+    language,
+    question: reqQuestion,
+    questionId,
+    category,
+    difficulty,
+    expectedAnswerPoints,
+    evaluationCriteria,
+    skipped,
+    wordsPerMinute,
+    fillerWordCount,
+    answerDurationSeconds
+  } = req.body;
+
+  const isSkipped = !!skipped || (!answer?.trim() && !code?.trim()) || answer === '[Question Skipped]';
+  const answerText = isSkipped ? '' : (answer || '').trim();
+
+  if (!isSkipped && answerText.length > 15000) {
+    return res.status(400).json({ error: 'Answer exceeds maximum allowed length of 15,000 characters' });
   }
 
   const interview = jsonDb.getInterviewById(id);
@@ -1198,26 +1435,71 @@ app.post('/api/interview/:id/answer', aiRateLimiter(20), async (req, res) => {
     return res.status(404).json({ error: 'Interview session not found' });
   }
 
-  const currentQuestion = interview.questions[interview.currentQuestionIndex];
+  // Identify the target question accurately (by reqQuestion, questionId, or index)
+  let targetQuestion = reqQuestion;
+  if (!targetQuestion && questionId && interview.structuredQuestions) {
+    const found = interview.structuredQuestions.find((sq) => sq.id === questionId);
+    if (found) targetQuestion = found.question;
+  }
+  if (!targetQuestion && interview.questions && interview.questions[interview.currentQuestionIndex]) {
+    targetQuestion = interview.questions[interview.currentQuestionIndex];
+  }
+  if (!targetQuestion) {
+    targetQuestion = 'Technical Interview Question';
+  }
 
   try {
-    // Evaluate current answer
-    const evaluation = await aiService.evaluateAnswer(currentQuestion, answer);
+    const evaluation = await aiService.evaluateAnswer(targetQuestion, answerText, {
+      questionId,
+      category: category || 'technical',
+      difficulty: difficulty || 'intermediate',
+      targetRole: interview.jobRole,
+      expectedAnswerPoints,
+      evaluationCriteria,
+      code,
+      language,
+      skipped: isSkipped,
+      interviewMode: interview.interviewMode
+    });
+
     if (typeof wordsPerMinute === 'number') evaluation.wordsPerMinute = wordsPerMinute;
     if (typeof fillerWordCount === 'number') evaluation.fillerWordCount = fillerWordCount;
     if (typeof answerDurationSeconds === 'number') evaluation.answerDurationSeconds = answerDurationSeconds;
 
-    interview.answers.push({
-      question: currentQuestion,
-      answer,
-      evaluation
-    });
+    // Save answer into interview.answers (prevent duplicate question entries)
+    if (!Array.isArray(interview.answers)) {
+      interview.answers = [];
+    }
 
-    // Conversational follow-up: If candidate demonstrated depth (score >= 6) and under max 3 follow-ups
+    const existingAnswerIdx = interview.answers.findIndex(
+      (a) => (questionId && a.questionId === questionId) || a.question === targetQuestion
+    );
+
+    const answerRecord = {
+      question: targetQuestion,
+      questionId,
+      category,
+      difficulty,
+      answer: isSkipped ? '[Question Skipped]' : answerText,
+      code: code || '',
+      language: language || '',
+      skipped: isSkipped,
+      evaluation,
+      expectedAnswerPoints,
+      evaluationCriteria
+    };
+
+    if (existingAnswerIdx >= 0) {
+      interview.answers[existingAnswerIdx] = answerRecord;
+    } else {
+      interview.answers.push(answerRecord);
+    }
+
+    // Conversational follow-up: If candidate demonstrated depth (score >= 70) and under max 3 follow-ups
     const existingFollowUps = (interview.followUpQuestions || []).length;
-    if (evaluation.score >= 6 && existingFollowUps < 3) {
+    if (!isSkipped && evaluation.score >= 70 && existingFollowUps < 3) {
       try {
-        const followUp = await aiService.generateFollowUp(currentQuestion, answer, evaluation);
+        const followUp = await aiService.generateFollowUp(targetQuestion, answerText, evaluation);
         if (followUp && followUp.trim()) {
           const insertIdx = interview.currentQuestionIndex + 1;
           interview.questions.splice(insertIdx, 0, followUp);
@@ -1231,29 +1513,17 @@ app.post('/api/interview/:id/answer', aiRateLimiter(20), async (req, res) => {
       }
     }
 
-    interview.currentQuestionIndex += 1;
-
-    // Check if that was the last question
-    if (interview.currentQuestionIndex >= interview.questions.length) {
-      interview.status = 'completed';
-
-      // Generate overall evaluation report
-      const report = await aiService.generateOverallReport(interview.jobRole, interview.answers);
-
-      interview.overallScore = report.overallScore;
-      interview.technicalScore = report.technicalScore;
-      interview.communicationScore = report.communicationScore;
-      interview.confidenceScore = report.confidenceScore;
-      interview.feedbackText = report.feedbackText;
-      interview.suggestions = report.suggestions;
-    }
-
     const saved = jsonDb.saveInterview(interview);
-    res.json({ success: true, interview: saved, currentEvaluation: evaluation });
-
+    // Return both evaluation and currentEvaluation for client compatibility
+    return res.json({
+      success: true,
+      interview: saved,
+      evaluation,
+      currentEvaluation: evaluation
+    });
   } catch (error: any) {
     logger.error('Submit answer error:', error);
-    res.status(500).json({ error: 'Failed to evaluate your answer', details: error.message });
+    return res.status(500).json({ error: 'Failed to evaluate answer', details: error.message });
   }
 });
 
@@ -1332,13 +1602,68 @@ app.post('/api/interview/:id/answer-stream', aiRateLimiter(20), async (req, res)
       if (interview.currentQuestionIndex >= interview.questions.length) {
         interview.status = 'completed';
 
-        const report = await aiService.generateOverallReport(interview.jobRole, interview.answers);
-        interview.overallScore = report.overallScore;
-        interview.technicalScore = report.technicalScore;
-        interview.communicationScore = report.communicationScore;
-        interview.confidenceScore = report.confidenceScore;
-        interview.feedbackText = report.feedbackText;
-        interview.suggestions = report.suggestions;
+        const answers = interview.answers || [];
+        const totalQuestions = interview.questions.length || answers.length || 1;
+        let totalScoreSum = 0;
+        let answeredCount = 0;
+        let techSum = 0;
+        let relSum = 0;
+        let reasSum = 0;
+        let commSum = 0;
+        let pracSum = 0;
+
+        for (const ans of answers) {
+          const isSkippedOrEmpty = ans.skipped || (!ans.answer?.trim() && !ans.code?.trim()) || ans.answer === '[Question Skipped]';
+          const score = isSkippedOrEmpty ? 0 : Math.min(100, Math.max(0, ans.evaluation?.score ?? 0));
+          totalScoreSum += score;
+          if (!isSkippedOrEmpty) {
+            answeredCount++;
+            const b = ans.evaluation?.breakdown;
+            techSum += b?.technicalAccuracy ?? score;
+            relSum += b?.relevanceCompleteness ?? score;
+            reasSum += b?.reasoning ?? score;
+            commSum += b?.communication ?? score;
+            pracSum += b?.practicalApplication ?? score;
+          }
+        }
+
+        const overallScore = totalQuestions > 0 ? Math.min(100, Math.max(0, Math.round(totalScoreSum / totalQuestions))) : 0;
+        const averageAnsweredScore = answeredCount > 0 ? Math.min(100, Math.max(0, Math.round(totalScoreSum / answeredCount))) : 0;
+        const averageScoreOutOf10 = Number((averageAnsweredScore / 10).toFixed(1));
+
+        let performanceLevel: string = 'Needs Improvement';
+        if (overallScore >= 90) performanceLevel = 'Exceptional';
+        else if (overallScore >= 75) performanceLevel = 'Strong';
+        else if (overallScore >= 60) performanceLevel = 'Competent';
+        else if (overallScore >= 45) performanceLevel = 'Developing';
+
+        const denom = answeredCount > 0 ? answeredCount : 1;
+        const overallBreakdown = {
+          technicalAccuracy: Math.round(techSum / denom),
+          relevanceCompleteness: Math.round(relSum / denom),
+          reasoning: Math.round(reasSum / denom),
+          communication: Math.round(commSum / denom),
+          practicalApplication: Math.round(pracSum / denom)
+        };
+
+        interview.overallScore = overallScore;
+        interview.performanceLevel = performanceLevel;
+        interview.overallBreakdown = overallBreakdown;
+        interview.averageAnsweredScore = averageAnsweredScore;
+        interview.averageScoreOutOf10 = averageScoreOutOf10;
+        interview.totalPointsEarned = totalScoreSum;
+        interview.maxPossiblePoints = totalQuestions * 100;
+        interview.technicalScore = overallBreakdown.technicalAccuracy;
+        interview.communicationScore = overallBreakdown.communication;
+
+        try {
+          const report = await aiService.generateOverallReport(interview.jobRole, interview.answers);
+          interview.confidenceScore = report.confidenceScore ?? overallBreakdown.reasoning;
+          interview.feedbackText = report.feedbackText || interview.feedbackText;
+          interview.suggestions = report.suggestions || interview.suggestions;
+        } catch (repErr) {
+          logger.warn('Could not generate overall report narrative:', repErr);
+        }
       }
 
       const saved = jsonDb.saveInterview(interview);

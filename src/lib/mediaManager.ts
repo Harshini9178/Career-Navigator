@@ -35,7 +35,8 @@ export function stopMediaStream(stream: MediaStream | null | undefined): void {
     const tracks = stream.getTracks ? stream.getTracks() : [];
     tracks.forEach((track) => {
       try {
-        if (typeof track.stop === 'function') {
+        track.enabled = false;
+        if (track.readyState !== 'ended' && typeof track.stop === 'function') {
           track.stop();
         }
       } catch (_trackErr) {
@@ -44,6 +45,20 @@ export function stopMediaStream(stream: MediaStream | null | undefined): void {
     });
   } catch (_streamErr) {
     // Safe stream inspection ignore
+  }
+}
+
+/**
+ * Safely stops an active MediaRecorder instance and removes event listeners.
+ */
+export function stopMediaRecorder(recorder: any): void {
+  if (!recorder) return;
+  try {
+    if (recorder.state && recorder.state !== 'inactive') {
+      recorder.stop();
+    }
+  } catch (_e) {
+    // Ignore recorder stop error
   }
 }
 
