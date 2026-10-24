@@ -34,8 +34,46 @@ import {
   AptitudeHistoryItem,
   AptitudeCategoryMeta
 } from '../types.js';
-import { api, formatApiError } from '../lib/api.js';
+import { api, formatApiError, safeJson } from '../lib/api.js';
 import { sound } from '../lib/sound.js';
+
+const DEFAULT_CATEGORIES: AptitudeCategoryMeta[] = [
+  {
+    name: 'Quantitative Aptitude',
+    description: 'Arithmetic, percentages, time & work, speed/distance, algebra, ratios, and profit & loss.',
+    icon: 'Calculator',
+    totalInBank: 15,
+    questionsPerTest: 6
+  },
+  {
+    name: 'Logical Reasoning',
+    description: 'Number & letter series, syllogisms, blood relations, seating arrangements, and coding-decoding.',
+    icon: 'Lightbulb',
+    totalInBank: 15,
+    questionsPerTest: 6
+  },
+  {
+    name: 'Verbal Ability',
+    description: 'Reading comprehension, sentence completion, antonyms, idioms, error spotting, and grammar.',
+    icon: 'BookOpen',
+    totalInBank: 15,
+    questionsPerTest: 6
+  },
+  {
+    name: 'Technical Aptitude',
+    description: 'Data structures, algorithms, SQL queries, OOP principles, Big-O complexity, and system design.',
+    icon: 'Cpu',
+    totalInBank: 15,
+    questionsPerTest: 6
+  },
+  {
+    name: 'Data Interpretation & Analytical Reasoning',
+    description: 'Tables, bar graphs, pie charts, percentage variations, trend analysis, and decision making.',
+    icon: 'BarChart3',
+    totalInBank: 15,
+    questionsPerTest: 6
+  }
+];
 
 interface AptitudeAssessmentProps {
   user: User;
@@ -51,7 +89,7 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
   const [error, setError] = useState<string | null>(null);
 
   // Lobby state
-  const [categories, setCategories] = useState<AptitudeCategoryMeta[]>([]);
+  const [categories, setCategories] = useState<AptitudeCategoryMeta[]>(DEFAULT_CATEGORIES);
   const [history, setHistory] = useState<AptitudeHistoryItem[]>([]);
 
   // Exam state
@@ -72,6 +110,7 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
 
   const examContainerRef = useRef<HTMLDivElement>(null);
   const timerIntervalRef = useRef<any>(null);
+  const lastViolationTimeRef = useRef<number>(0);
 
   // ==========================================
   // Category Icons & Helpers
@@ -106,15 +145,23 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
       ]);
 
       if (catRes.ok) {
-        const catData = await catRes.json();
-        setCategories(catData.categories || []);
+        const catData = await safeJson(catRes);
+        if (catData?.categories && Array.isArray(catData.categories) && catData.categories.length > 0) {
+          setCategories(catData.categories);
+        } else {
+          setCategories(DEFAULT_CATEGORIES);
+        }
+      } else {
+        setCategories(DEFAULT_CATEGORIES);
       }
+
       if (histRes.ok) {
-        const histData = await histRes.json();
-        setHistory(histData.history || []);
+        const histData = await safeJson(histRes);
+        setHistory(histData?.history || []);
       }
     } catch (err: any) {
       console.error('Failed to load aptitude lobby data:', err);
+      setCategories((prev) => (prev.length > 0 ? prev : DEFAULT_CATEGORIES));
       setError(formatApiError(err, 'Failed to connect to the Aptitude Assessment service.'));
     } finally {
       setLoading(false);
@@ -161,21 +208,34 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
   // Attempt Lifecycle: Start / Resume / Submit
   // ==========================================
   const handleStartAssessment = async (isNew: boolean = false) => {
+    if (!user) {
+      setError('Please log in or click "Demo Login" in the top navigation bar to start your assessment.');
+      return;
+    }
     sound.playClick(800);
     setLoading(true);
     setError(null);
     try {
       const endpoint = isNew ? '/api/aptitude/attempts/new' : '/api/aptitude/attempts';
       const res = await api.post(endpoint);
-      const data = await res.json();
+      const data = await safeJson(res);
 
-      if (!res.ok) {
-        throw new Error(data.error || 'Failed to initialize assessment');
+      if (!res.ok || !data?.attempt) {
+        throw new Error(data?.error || data?.message || 'Failed to initialize assessment');
       }
 
       const activeAttempt: AptitudeAttempt = data.attempt;
       setAttempt(activeAttempt);
-      setRemainingSeconds(activeAttempt.remainingSeconds > 0 ? activeAttempt.remainingSeconds : 1800);
+
+      // Derive remaining time from server deadline if present
+      let remSec = activeAttempt.remainingSeconds;
+      if (activeAttempt.deadline) {
+        const serverRemaining = Math.max(0, Math.floor((new Date(activeAttempt.deadline).getTime() - Date.now()) / 1000));
+        if (serverRemaining > 0) {
+          remSec = serverRemaining;
+        }
+      }
+      setRemainingSeconds(remSec > 0 ? remSec : 1800);
       setViolationsCount(activeAttempt.violationsCount || 0);
       setCurrentIdx(0);
       setPhase('exam');
@@ -193,7 +253,7 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
   };
 
   const handleFinishAndSubmit = async (forcedReason?: string) => {
-    if (!attempt) return;
+    if (!attempt || isSubmitting) return;
     setIsSubmitting(true);
     sound.playChime();
 
@@ -201,16 +261,16 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
       const res = await api.post(`/api/aptitude/attempts/${attempt.id}/submit`, {
         forcedReason: forcedReason || null
       });
-      const data = await res.json();
+      const data = await safeJson(res);
 
-      if (res.ok && data.result) {
+      if (res.ok && data?.result) {
         setResult(data.result);
         setPhase('result');
         setShowSubmitModal(false);
         exitFullscreen();
         fetchLobbyData(); // refresh history
       } else {
-        throw new Error(data.error || 'Submission failed');
+        throw new Error(data?.error || data?.message || 'Submission failed');
       }
     } catch (err: any) {
       console.error('Failed to submit attempt:', err);
@@ -225,15 +285,15 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
     setLoading(true);
     try {
       const res = await api.get(`/api/aptitude/attempts/${attemptId}/result`);
-      const data = await res.json();
-      if (res.ok && data.result) {
+      const data = await safeJson(res);
+      if (res.ok && data?.result) {
         setResult(data.result);
         setPhase('result');
       } else {
-        alert(data.error || 'Failed to fetch test results');
+        alert(data?.error || 'Failed to fetch test results');
       }
-    } catch (err) {
-      alert('Error loading past results');
+    } catch (err: any) {
+      alert('Error loading past results: ' + formatApiError(err));
     } finally {
       setLoading(false);
     }
@@ -259,10 +319,11 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
 
     try {
       const isMarked = attempt.markedForReview.includes(currentQ.id);
-      await api.put(`/api/aptitude/attempts/${attempt.id}/answers/${currentQ.id}`, {
+      const res = await api.put(`/api/aptitude/attempts/${attempt.id}/answers/${currentQ.id}`, {
         selectedOption: optionIndex,
         markedForReview: isMarked
       });
+      await safeJson(res);
     } catch (err) {
       console.error('Failed to sync answer:', err);
     }
@@ -286,10 +347,11 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
 
     try {
       const isMarked = attempt.markedForReview.includes(currentQ.id);
-      await api.put(`/api/aptitude/attempts/${attempt.id}/answers/${currentQ.id}`, {
+      const res = await api.put(`/api/aptitude/attempts/${attempt.id}/answers/${currentQ.id}`, {
         selectedOption: null,
         markedForReview: isMarked
       });
+      await safeJson(res);
     } catch (err) {
       console.error('Failed to clear answer:', err);
     }
@@ -319,10 +381,11 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
 
     try {
       const selected = attempt.answers[currentQ.id] !== undefined ? attempt.answers[currentQ.id] : null;
-      await api.put(`/api/aptitude/attempts/${attempt.id}/answers/${currentQ.id}`, {
+      const res = await api.put(`/api/aptitude/attempts/${attempt.id}/answers/${currentQ.id}`, {
         selectedOption: selected,
         markedForReview: !isMarked
       });
+      await safeJson(res);
     } catch (err) {
       console.error('Failed to toggle mark for review:', err);
     }
@@ -366,6 +429,13 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
     async (eventType: string) => {
       if (phase !== 'exam' || !attempt) return;
 
+      // Debounce rapid consecutive focus loss / visibility events (within 1.5s)
+      const now = Date.now();
+      if (now - lastViolationTimeRef.current < 1500) {
+        return;
+      }
+      lastViolationTimeRef.current = now;
+
       sound.playWarning();
       const newCount = violationsCount + 1;
       setViolationsCount(newCount);
@@ -380,9 +450,9 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
         const res = await api.post(`/api/aptitude/attempts/${attempt.id}/violations`, {
           eventType
         });
-        const data = await res.json();
+        const data = await safeJson(res);
 
-        if (data.terminated) {
+        if (data?.terminated) {
           setShowViolationModal(false);
           alert('Security Alert: Test terminated due to exceeding proctoring violation limit (3 violations).');
           handleFinishAndSubmit('Proctoring violation limit reached (3 departures)');
@@ -499,18 +569,23 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
             </p>
             <div className="pt-4 flex flex-wrap items-center gap-4">
               <button
+                disabled={loading}
                 onClick={() => handleStartAssessment(false)}
-                className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold text-sm flex items-center gap-2 shadow-lg shadow-indigo-500/25 transition transform active:scale-95 cursor-pointer"
+                className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold text-sm flex items-center gap-2 shadow-lg shadow-indigo-500/25 transition transform active:scale-95 cursor-pointer"
               >
-                <span>Start Assessment</span>
-                <ArrowRight className="w-4 h-4" />
+                {loading ? (
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                ) : null}
+                <span>{loading ? 'Starting...' : 'Start Assessment'}</span>
+                {!loading && <ArrowRight className="w-4 h-4" />}
               </button>
 
               <button
+                disabled={loading}
                 onClick={() => handleStartAssessment(true)}
-                className="px-4 py-3.5 rounded-xl border border-slate-700 bg-slate-900/60 hover:bg-slate-800 text-slate-300 hover:text-white font-semibold text-xs transition cursor-pointer flex items-center gap-1.5"
+                className="px-4 py-3.5 rounded-xl border border-slate-700 bg-slate-900/60 hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed text-slate-300 hover:text-white font-semibold text-xs transition cursor-pointer flex items-center gap-1.5"
               >
-                <RotateCcw className="w-3.5 h-3.5 text-slate-400" />
+                <RotateCcw className={`w-3.5 h-3.5 text-slate-400 ${loading ? 'animate-spin' : ''}`} />
                 <span>New Question Set</span>
               </button>
             </div>
@@ -518,9 +593,17 @@ export default function AptitudeAssessment({ user, onNavigate }: AptitudeAssessm
         </div>
 
         {error && (
-          <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
-            <AlertTriangle className="w-4 h-4 flex-shrink-0" />
-            <span>{error}</span>
+          <div className="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 flex-shrink-0 text-rose-400" />
+              <span>{error}</span>
+            </div>
+            <button
+              onClick={() => setError(null)}
+              className="px-2.5 py-1 rounded-lg bg-rose-500/20 hover:bg-rose-500/30 text-rose-200 text-xs transition font-mono cursor-pointer"
+            >
+              Dismiss
+            </button>
           </div>
         )}
 

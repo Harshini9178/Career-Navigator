@@ -200,6 +200,7 @@ public class AptitudeService {
         }
 
         AssessmentAttemptEntity saved = attemptRepository.save(attempt);
+        databaseStorageService.syncToDbJson();
         logger.info("Created new Aptitude Assessment Attempt {} with {} questions for user {}", saved.getId(), saved.getTotalQuestions(), user.getEmail());
 
         return mapToAttemptDto(saved, 1800);
@@ -258,6 +259,7 @@ public class AptitudeService {
         }
 
         AssessmentAttemptEntity saved = attemptRepository.save(attempt);
+        databaseStorageService.syncToDbJson();
         return mapToAttemptDto(saved, remaining);
     }
 

@@ -13,7 +13,8 @@ interface Schema {
   templates: ResumeTemplate[];
   feedback: StudentFeedback[];
   conversations?: StoredConversation[];
-  resumeDocuments?: ResumeDocument[];
+  aptitudeAttempts?: any[];
+  resumeDocuments?: any[];
 }
 
 const DEFAULT_TEMPLATES: ResumeTemplate[] = [
@@ -382,10 +383,11 @@ function readDb(): Schema {
     }
     parsed.conversations = Array.isArray(parsed.conversations) ? parsed.conversations : [];
     parsed.resumeDocuments = Array.isArray(parsed.resumeDocuments) ? parsed.resumeDocuments : [];
+    parsed.aptitudeAttempts = Array.isArray(parsed.aptitudeAttempts) ? parsed.aptitudeAttempts : [];
     return parsed;
   } catch (err) {
     console.error('Error reading JSON DB, reinitializing:', err);
-    return { users: [], resumes: [], interviews: [], templates: [...DEFAULT_TEMPLATES], feedback: [], conversations: [], resumeDocuments: [] };
+    return { users: [], resumes: [], interviews: [], templates: [...DEFAULT_TEMPLATES], feedback: [], conversations: [], resumeDocuments: [], aptitudeAttempts: [] };
   }
 }
 
@@ -532,6 +534,74 @@ export const jsonDb = {
     return feedback;
   },
 
+  // --- APTITUDE ATTEMPTS ---
+  getAptitudeAttemptsByUserId: (userId: string): any[] => {
+    const db = readDb();
+    const attempts = db.aptitudeAttempts || [];
+    return attempts
+      .filter((a: any) => a.userId === userId)
+      .sort((a: any, b: any) => new Date(b.startedAt).getTime() - new Date(a.startedAt).getTime());
+  },
+
+  getAptitudeAttemptById: (id: string): any | undefined => {
+    const db = readDb();
+    const attempts = db.aptitudeAttempts || [];
+    return attempts.find((a: any) => a.id === id);
+  },
+
+  saveAptitudeAttempt: (attempt: any): any => {
+    const db = readDb();
+    if (!db.aptitudeAttempts) db.aptitudeAttempts = [];
+    const idx = db.aptitudeAttempts.findIndex((a: any) => a.id === attempt.id);
+    if (idx >= 0) {
+      db.aptitudeAttempts[idx] = { ...db.aptitudeAttempts[idx], ...attempt };
+    } else {
+      db.aptitudeAttempts.push(attempt);
+    }
+    writeDb(db);
+    return attempt;
+  },
+
+  // --- RESUME DOCUMENTS (RESUME BUILDER STUDIO) ---
+  getResumeDocumentsByUserId: (userId: string): any[] => {
+    const db = readDb();
+    const docs = db.resumeDocuments || [];
+    return docs
+      .filter((d: any) => d.userId === userId)
+      .sort((a: any, b: any) => new Date(b.updatedAt || 0).getTime() - new Date(a.updatedAt || 0).getTime());
+  },
+
+  getResumeDocumentById: (id: string): any | undefined => {
+    const db = readDb();
+    const docs = db.resumeDocuments || [];
+    return docs.find((d: any) => d.id === id);
+  },
+
+  saveResumeDocument: (doc: any): any => {
+    const db = readDb();
+    if (!db.resumeDocuments) db.resumeDocuments = [];
+    const idx = db.resumeDocuments.findIndex((d: any) => d.id === doc.id);
+    if (idx >= 0) {
+      db.resumeDocuments[idx] = { ...db.resumeDocuments[idx], ...doc };
+    } else {
+      db.resumeDocuments.unshift(doc);
+    }
+    writeDb(db);
+    return doc;
+  },
+
+  deleteResumeDocument: (id: string): boolean => {
+    const db = readDb();
+    if (!db.resumeDocuments) return false;
+    const idx = db.resumeDocuments.findIndex((d: any) => d.id === id);
+    if (idx >= 0) {
+      db.resumeDocuments.splice(idx, 1);
+      writeDb(db);
+      return true;
+    }
+    return false;
+  },
+
   // --- METRICS ---
   getDashboardMetrics: (): DashboardMetrics => {
     const db = readDb();
@@ -676,54 +746,12 @@ export const jsonDb = {
     return true;
   },
 
-  // --- RESUME DOCUMENTS (Resume Builder Studio) ---
-  getResumeDocumentsByUserId: (userId: string): ResumeDocument[] => {
-    const list = readDb().resumeDocuments || [];
-    return list
-      .filter((r) => r.userId === userId)
-      .sort((a, b) => new Date(b.updatedAt || b.createdAt).getTime() - new Date(a.updatedAt || a.createdAt).getTime());
-  },
-
-  getResumeDocumentById: (id: string, userId?: string): ResumeDocument | undefined => {
-    const list = readDb().resumeDocuments || [];
-    if (userId) {
-      return list.find((r) => r.id === id && r.userId === userId);
-    }
-    return list.find((r) => r.id === id);
-  },
-
-  saveResumeDocument: (doc: ResumeDocument): ResumeDocument => {
-    const db = readDb();
-    if (!Array.isArray(db.resumeDocuments)) {
-      db.resumeDocuments = [];
-    }
-    const idx = db.resumeDocuments.findIndex((r) => r.id === doc.id);
-    if (idx >= 0) {
-      db.resumeDocuments[idx] = { ...db.resumeDocuments[idx], ...doc };
-    } else {
-      db.resumeDocuments.push(doc);
-    }
-    writeDb(db);
-    return doc;
-  },
-
-  deleteResumeDocument: (id: string, userId: string): boolean => {
-    const db = readDb();
-    if (!Array.isArray(db.resumeDocuments)) return false;
-    const initialLen = db.resumeDocuments.length;
-    db.resumeDocuments = db.resumeDocuments.filter((r) => !(r.id === id && r.userId === userId));
-    if (db.resumeDocuments.length !== initialLen) {
-      writeDb(db);
-      return true;
-    }
-    return false;
-  },
-
-  duplicateResumeDocument: (id: string, userId: string): ResumeDocument | null => {
-    const original = jsonDb.getResumeDocumentById(id, userId);
+  duplicateResumeDocument: (id: string, userId?: string): any | null => {
+    const original = jsonDb.getResumeDocumentById(id);
     if (!original) return null;
+    if (userId && original.userId !== userId) return null;
     const now = new Date().toISOString();
-    const newDoc: ResumeDocument = {
+    const newDoc = {
       ...JSON.parse(JSON.stringify(original)),
       id: `res-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
       title: `${original.title} (Copy)`,

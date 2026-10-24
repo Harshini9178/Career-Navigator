@@ -40,6 +40,12 @@ class SoundEngine {
     // No-op: UI interaction sound disabled
   }
 
+  /**
+   * Harmonious success chime for final completion
+   */
+  public playSuccess() {
+    this.playChime();
+  }
 
   /**
    * Subtle alert chime when speech input begins
@@ -57,13 +63,6 @@ class SoundEngine {
     // Kept minimal or silent per requirement
   }
 
-  /**
-   * Success notification chime
-   * DISABLED: UI interaction sound disabled
-   */
-  public playSuccess() {
-    // No-op: UI interaction sound disabled
-  }
 
   /**
    * Error notification tone

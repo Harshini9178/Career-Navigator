@@ -82,6 +82,7 @@ public class SecurityConfig {
                                 "/api/ai/status",
                                 "/api/ai/quick-ask",
                                 "/api/resume/templates",
+                                "/api/aptitude/categories",
                                 "/api/docs/**",
                                 "/monitor"
                         ).permitAll()

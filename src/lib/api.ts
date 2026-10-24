@@ -65,20 +65,28 @@ export async function parseApiResponse<T = any>(res: Response): Promise<{ ok: bo
   let data: any = {};
   const contentType = res.headers.get('content-type') || '';
   try {
-    if (contentType.includes('application/json')) {
-      data = await res.json();
-    } else {
-      const text = await res.text();
+    const text = await res.text();
+    const cleanText = text ? text.trim() : '';
+    if (!cleanText) {
+      data = (res.status === 204 || res.ok) ? {} : { error: res.statusText || `Request failed with status ${res.status}` };
+    } else if (contentType.includes('application/json') || cleanText.startsWith('{') || cleanText.startsWith('[')) {
       try {
-        data = text ? JSON.parse(text) : {};
+        data = JSON.parse(cleanText);
       } catch {
-        data = { message: text || res.statusText };
+        data = { error: 'Failed to parse JSON response', message: cleanText };
       }
+    } else {
+      data = { message: cleanText || res.statusText };
     }
   } catch (parseErr) {
     data = { error: res.statusText || 'Unable to parse server response' };
   }
   return { ok: res.ok, status: res.status, data };
+}
+
+export async function safeJson<T = any>(res: Response): Promise<T> {
+  const result = await parseApiResponse<T>(res);
+  return result.data;
 }
 
 export const api = {

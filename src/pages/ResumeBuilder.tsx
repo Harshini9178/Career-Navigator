@@ -45,6 +45,7 @@ import TemplateGalleryModal from '../components/resume/TemplateGalleryModal.js';
 import MyResumesModal from '../components/resume/MyResumesModal.js';
 import AtsCompatibilityPanel from '../components/resume/AtsCompatibilityPanel.js';
 import AiSummaryHelperModal from '../components/resume/AiSummaryHelperModal.js';
+import { generateResumeFilename, exportLiveResumeToPdf } from '../lib/pdfExporter.js';
 
 interface ResumeBuilderProps {
   user: User;
@@ -114,6 +115,11 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
   const [showAtsPanel, setShowAtsPanel] = useState(false);
   const [showSummaryAiModal, setShowSummaryAiModal] = useState(false);
   const [showImportProfileModal, setShowImportProfileModal] = useState(false);
+
+  // PDF Export Feedback State
+  const [exportingPdf, setExportingPdf] = useState(false);
+  const [exportStatusMessage, setExportStatusMessage] = useState('');
+  const [exportToast, setExportToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   // Skills input temp state
   const [skillInputs, setSkillInputs] = useState<Record<string, string>>({
@@ -232,27 +238,9 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
 
   // Explicit Save
   const handleManualSave = async () => {
+    if (!activeResume) return;
     setSaveStatus('saving');
     try {
-      if (!activeResume) {
-        const res = await api.post('/api/resumes', {
-          title: title || `${user.name || 'Candidate'} - ${targetRole} Resume`,
-          targetRole,
-          templateId,
-          content
-        });
-        if (res.ok) {
-          const data = await res.json();
-          const newDoc: ResumeDocument = data.resume;
-          setActiveResume(newDoc);
-          setResumes((prev) => [newDoc, ...prev]);
-          setSaveStatus('saved');
-          runAtsCheck(content, targetRole);
-        } else {
-          setSaveStatus('unsaved');
-        }
-        return;
-      }
       const res = await api.put(`/api/resumes/${activeResume.id}`, {
         title,
         targetRole,
@@ -263,7 +251,6 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
         const data = await res.json();
         setActiveResume(data.resume);
         setSaveStatus('saved');
-        setResumes((prev) => prev.map((r) => (r.id === data.resume.id ? data.resume : r)));
         runAtsCheck(content, targetRole);
       } else {
         setSaveStatus('unsaved');
@@ -364,63 +351,99 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
     }
   };
 
-  // Export PDF (Direct Vector Download with Auto-save & Fallback)
+  // Export High-Fidelity A4 PDF
   const handleDownloadPdf = async () => {
-    let resumeToExport = activeResume;
+    if (exportingPdf) return; // Prevent duplicate rapid clicks
+
+    setExportingPdf(true);
+    setExportToast(null);
+    setExportStatusMessage('Saving current resume state...');
+
     try {
-      // First ensure state is persisted
-      if (!resumeToExport) {
-        const createRes = await api.post('/api/resumes', {
-          title: title || `${user.name || 'Candidate'} - ${targetRole} Resume`,
-          targetRole,
-          templateId,
-          content
-        });
-        if (createRes.ok) {
-          const data = await createRes.json();
-          resumeToExport = data.resume;
-          setActiveResume(data.resume);
-          setResumes((prev) => [data.resume, ...prev]);
-        } else {
-          throw new Error('Could not initialize resume for PDF export');
-        }
-      } else {
-        await api.put(`/api/resumes/${resumeToExport.id}`, {
+      let currentDoc = activeResume;
+
+      // 1. Ensure resume is saved to database
+      if (currentDoc) {
+        await api.put(`/api/resumes/${currentDoc.id}`, {
           title,
           targetRole,
           templateId,
           content
         });
-      }
-
-      if (!resumeToExport) throw new Error('No resume available to export');
-
-      const response = await api.get(`/api/resumes/${resumeToExport.id}/export/pdf`, {
-        headers: {
-          'Accept': 'application/pdf'
+      } else {
+        const createRes = await api.post('/api/resumes', {
+          title: title || 'Professional Resume',
+          targetRole: targetRole || 'Full Stack Engineer',
+          templateId: templateId || 'classic-ats',
+          content
+        });
+        if (createRes.ok) {
+          const createData = await createRes.json();
+          currentDoc = createData.resume;
+          setActiveResume(currentDoc);
         }
-      });
-
-      if (!response.ok) {
-        throw new Error(`PDF export failed with status ${response.status}`);
       }
 
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.style.display = 'none';
-      a.href = url;
-      a.download = `${(title || 'Resume').replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(() => {
+      // 2. Generate clean, sanitized filename (e.g. "Harshini_RB_Resume.pdf")
+      const filename = generateResumeFilename(content.personalInfo?.fullName, title);
+
+      // 3. Target the live A4 preview DOM container
+      const previewElem = document.getElementById('live-resume-document') || document.querySelector('.resume-sheet');
+
+      if (previewElem) {
+        // Export the live styled A4 preview with html2canvas + jsPDF
+        await exportLiveResumeToPdf(previewElem as HTMLElement, {
+          filename,
+          onProgress: (step) => setExportStatusMessage(step)
+        });
+
+        setExportToast({
+          type: 'success',
+          message: `Resume successfully downloaded as "${filename}".`
+        });
+      } else if (currentDoc) {
+        // Fallback: Download high-speed compiled vector PDF from server
+        setExportStatusMessage('Downloading compiled PDF from server...');
+        const response = await fetch(`/api/resumes/${currentDoc.id}/export/pdf`, {
+          method: 'GET',
+          headers: { 'Accept': 'application/pdf' }
+        });
+
+        if (!response.ok) {
+          throw new Error(`Server returned HTTP ${response.status}`);
+        }
+
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
         window.URL.revokeObjectURL(url);
         document.body.removeChild(a);
-      }, 500);
+
+        setExportToast({
+          type: 'success',
+          message: `Resume successfully downloaded as "${filename}".`
+        });
+      } else {
+        throw new Error('Resume preview element was not found in the DOM.');
+      }
     } catch (e) {
       console.error('PDF download error:', e);
-      // Fallback: Open print dialog
-      window.print();
+      const errMsg = e instanceof Error ? e.message : 'Unknown generation error';
+      setExportToast({
+        type: 'error',
+        message: `Failed to download PDF: ${errMsg}. You can also use the Print button to save as PDF.`
+      });
+    } finally {
+      setExportingPdf(false);
+      setExportStatusMessage('');
+      // Auto-clear success toast after 5 seconds
+      setTimeout(() => {
+        setExportToast((prev) => (prev?.type === 'success' ? null : prev));
+      }, 5000);
     }
   };
 
@@ -614,6 +637,42 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
     <div className="min-h-screen bg-[var(--bg-base)] text-[var(--text-primary)] flex flex-col pb-12">
       {/* 1. Header Toolbar (no-print) */}
       <div className="no-print sticky top-0 z-30 bg-[var(--bg-card)]/95 backdrop-blur-md border-b border-[var(--border)] px-4 sm:px-6 py-3 shadow-sm">
+        {/* Status Toast Banner */}
+        {exportToast && (
+          <div className="max-w-7xl mx-auto w-full mb-3">
+            <div
+              className={`p-3 rounded-xl border flex items-center justify-between text-xs transition-all ${
+                exportToast.type === 'success'
+                  ? 'bg-emerald-950/80 border-emerald-500/40 text-emerald-200'
+                  : 'bg-rose-950/80 border-rose-500/40 text-rose-200'
+              }`}
+            >
+              <div className="flex items-center space-x-2">
+                {exportToast.type === 'success' ? (
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                ) : (
+                  <AlertTriangle className="w-4 h-4 text-rose-400 shrink-0" />
+                )}
+                <span className="font-medium">{exportToast.message}</span>
+              </div>
+              <button
+                onClick={() => setExportToast(null)}
+                className="p-1 rounded hover:bg-white/10 text-slate-400 hover:text-white transition"
+                aria-label="Dismiss message"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+        )}
+        {exportingPdf && exportStatusMessage && (
+          <div className="max-w-7xl mx-auto w-full mb-3">
+            <div className="p-2.5 rounded-xl border bg-cyan-950/60 border-cyan-500/40 text-cyan-200 flex items-center space-x-2 text-xs">
+              <RefreshCw className="w-3.5 h-3.5 animate-spin text-cyan-400 shrink-0" />
+              <span className="font-medium">{exportStatusMessage}</span>
+            </div>
+          </div>
+        )}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 max-w-7xl mx-auto">
           {/* Title & Subtitle */}
           <div className="flex items-center space-x-3">
@@ -719,11 +778,25 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
             {/* Download PDF */}
             <button
               onClick={handleDownloadPdf}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold px-3.5 py-2 rounded-lg transition flex items-center space-x-1.5 shadow-sm"
-              title="Download High-Fidelity PDF with Selectable Text"
+              disabled={exportingPdf}
+              className={`text-white text-xs font-semibold px-3.5 py-2 rounded-lg transition flex items-center space-x-1.5 shadow-sm ${
+                exportingPdf
+                  ? 'bg-emerald-700/60 cursor-not-allowed opacity-80'
+                  : 'bg-emerald-600 hover:bg-emerald-500'
+              }`}
+              title="Download High-Fidelity A4 PDF containing user resume"
             >
-              <Download className="w-3.5 h-3.5" />
-              <span>PDF</span>
+              {exportingPdf ? (
+                <>
+                  <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                  <span>Exporting...</span>
+                </>
+              ) : (
+                <>
+                  <Download className="w-3.5 h-3.5" />
+                  <span>PDF</span>
+                </>
+              )}
             </button>
 
             {/* Print */}
@@ -1864,8 +1937,22 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
               </span>
             </div>
 
-            {/* Zoom Controls */}
-            <div className="flex items-center space-x-1.5">
+            {/* Zoom Controls & Quick Export */}
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={handleDownloadPdf}
+                disabled={exportingPdf}
+                className="p-1 px-2.5 rounded bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-300 border border-emerald-500/30 flex items-center space-x-1 transition font-medium text-[11px]"
+                title="Download High-Fidelity A4 PDF"
+              >
+                {exportingPdf ? (
+                  <RefreshCw className="w-3 h-3 animate-spin text-emerald-400" />
+                ) : (
+                  <Download className="w-3 h-3 text-emerald-400" />
+                )}
+                <span>PDF</span>
+              </button>
+              <div className="flex items-center space-x-1.5">
               <button
                 onClick={() => setZoomLevel((z) => Math.max(50, z - 10))}
                 className="p-1 rounded hover:bg-[var(--bg-base)] text-[var(--text-muted)] hover:text-[var(--text-primary)] transition"
@@ -1892,6 +1979,7 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
               </button>
             </div>
           </div>
+        </div>
 
           {/* Scaled A4 Document Viewport */}
           <div
@@ -1907,7 +1995,10 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
               }}
               className="transition-transform duration-100 ease-out"
             >
-              <div className="relative shadow-2xl rounded-sm overflow-hidden bg-white">
+              <div
+                id="live-resume-document"
+                className="relative shadow-2xl rounded-sm overflow-hidden bg-white resume-sheet"
+              >
                 {/* 1-Page Indicator Guide Line (297mm height boundary) */}
                 <div
                   style={{ top: '297mm' }}

@@ -6,13 +6,13 @@ import { createServer as createViteServer } from 'vite';
 import { db } from './src/db/database.js';
 const jsonDb = db;
 import { aiService } from './src/lib/gemini.js';
-import { User, ResumeAnalysis, MockInterview, StudentFeedback, ResumeTemplate, ChatMessage, StoredConversation, ConversationSummary, ResumeDocument } from './src/types.js';
+import { User, ResumeAnalysis, MockInterview, StudentFeedback, ResumeTemplate } from './src/types.js';
 import { validateEnvironment } from './src/lib/validateEnv.js';
 import { logger } from './src/lib/logger.js';
 import { openApiSpec } from './src/lib/openapi.js';
 import { hashPassword, verifyPassword, sanitizeUser, isValidEmail } from './src/lib/password.js';
-import { generateResumePdfBuffer } from './src/lib/pdfGenerator.js';
-import { calculateAtsReadiness, matchResumeWithJob, createDefaultResumeContent } from './src/lib/atsScorer.js';
+import * as aptitudeEngine from './src/lib/aptitudeEngine.js';
+import * as resumeEngine from './src/lib/resumeEngine.js';
 
 const app = express();
 const PORT = parseInt(process.env.PORT || '3000', 10);
@@ -441,7 +441,7 @@ app.get(['/auth/callback', '/auth/callback/'], async (req, res) => {
 });
 
 // Demo Login endpoint (Bypasses Google OAuth for development/immediate previews)
-app.post(['/api/auth/demo', '/api/auth/demo-login'], (req, res) => {
+app.post('/api/auth/demo', (req, res) => {
   const { role } = req.body; // 'student' or 'admin'
 
   if (role === 'admin') {
@@ -1070,217 +1070,6 @@ app.post('/api/resume/templates/import', (req, res) => {
 });
 
 // ==========================================
-// 3.4 RESUME BUILDER STUDIO & PDF EXPORT ENDPOINTS
-// ==========================================
-
-// List user's resumes
-app.get('/api/resumes', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
-  }
-
-  const list = jsonDb.getResumeDocumentsByUserId(userId);
-  res.json({ success: true, resumes: list, total: list.length });
-});
-
-// Create a new resume document
-app.post('/api/resumes', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
-  }
-
-  const user = jsonDb.getUserById(userId);
-  const { title, targetRole, templateId, content } = req.body || {};
-  const role = (targetRole && targetRole.trim()) ? targetRole.trim() : (user?.targetRole || 'Full Stack Engineer');
-  const finalContent = content || createDefaultResumeContent(user || {}, role);
-  const atsReport = calculateAtsReadiness(finalContent, role);
-
-  const now = new Date().toISOString();
-  const newDoc: ResumeDocument = {
-    id: `res-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
-    userId,
-    title: (title && title.trim()) ? title.trim() : `${user?.name || 'Candidate'} - Professional Resume`,
-    targetRole: role,
-    templateId: (templateId && templateId.trim()) ? templateId.trim() : 'classic-ats',
-    atsScore: atsReport.overallScore,
-    content: finalContent,
-    createdAt: now,
-    updatedAt: now
-  };
-
-  const saved = jsonDb.saveResumeDocument(newDoc);
-  logger.info(`Resume created successfully: ${saved.id} for user ${userId}`);
-  res.status(201).json({ success: true, resume: saved, message: 'Resume created successfully' });
-});
-
-// Live preview ATS check (used during editing before explicit save)
-app.post('/api/resumes/ats-check-preview', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
-  }
-
-  const { content, targetRole } = req.body || {};
-  const atsCheck = calculateAtsReadiness(content, targetRole || 'Full Stack Engineer');
-  res.json({ success: true, atsCheck });
-});
-
-// Get single resume document by ID
-app.get('/api/resumes/:id', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
-  }
-
-  const doc = jsonDb.getResumeDocumentById(req.params.id, userId);
-  if (!doc) {
-    return res.status(404).json({ error: 'Resume document not found or access denied' });
-  }
-
-  res.json({ success: true, resume: doc });
-});
-
-// Update resume document
-app.put('/api/resumes/:id', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
-  }
-
-  const doc = jsonDb.getResumeDocumentById(req.params.id, userId);
-  if (!doc) {
-    return res.status(404).json({ error: 'Resume document not found or access denied' });
-  }
-
-  const { title, targetRole, templateId, content } = req.body || {};
-
-  if (title && typeof title === 'string') doc.title = title.trim();
-  if (targetRole && typeof targetRole === 'string') doc.targetRole = targetRole.trim();
-  if (templateId && typeof templateId === 'string') doc.templateId = templateId.trim();
-
-  if (content && typeof content === 'object') {
-    doc.content = content;
-    const atsReport = calculateAtsReadiness(content, doc.targetRole);
-    doc.atsScore = atsReport.overallScore;
-  }
-
-  doc.updatedAt = new Date().toISOString();
-  const updated = jsonDb.saveResumeDocument(doc);
-  res.json({ success: true, resume: updated, message: 'Resume updated successfully' });
-});
-
-// Delete resume document
-app.delete('/api/resumes/:id', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
-  }
-
-  const deleted = jsonDb.deleteResumeDocument(req.params.id, userId);
-  if (!deleted) {
-    return res.status(404).json({ error: 'Resume document not found or access denied' });
-  }
-
-  res.json({ success: true, message: 'Resume deleted successfully' });
-});
-
-// Duplicate resume document
-app.post('/api/resumes/:id/duplicate', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
-  }
-
-  const duplicated = jsonDb.duplicateResumeDocument(req.params.id, userId);
-  if (!duplicated) {
-    return res.status(404).json({ error: 'Resume document not found or access denied' });
-  }
-
-  res.status(201).json({ success: true, resume: duplicated, message: 'Resume duplicated successfully' });
-});
-
-// Run ATS readiness check on saved resume
-app.post('/api/resumes/:id/ats-check', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
-  }
-
-  const doc = jsonDb.getResumeDocumentById(req.params.id, userId);
-  if (!doc) {
-    return res.status(404).json({ error: 'Resume document not found or access denied' });
-  }
-
-  const atsCheck = calculateAtsReadiness(doc.content, doc.targetRole);
-  res.json({ success: true, atsCheck });
-});
-
-// Match resume against Job Description
-app.post('/api/resumes/:id/job-match', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
-  }
-
-  const doc = jsonDb.getResumeDocumentById(req.params.id, userId);
-  if (!doc) {
-    return res.status(404).json({ error: 'Resume document not found or access denied' });
-  }
-
-  const { targetRole, jobDescription } = req.body || {};
-  const jobMatch = matchResumeWithJob(doc.content, targetRole || doc.targetRole, jobDescription || '');
-  res.json({ success: true, jobMatch });
-});
-
-// Export resume to standard vector PDF
-app.get('/api/resumes/:id/export/pdf', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized: Authentication required' });
-  }
-
-  const doc = jsonDb.getResumeDocumentById(req.params.id, userId);
-  if (!doc) {
-    return res.status(404).json({ error: 'Resume document not found or access denied' });
-  }
-
-  try {
-    const pdfBuffer = generateResumePdfBuffer(doc);
-    const safeTitle = (doc.title || 'Resume').replace(/[^a-zA-Z0-9_\-]/g, '_');
-
-    res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', `attachment; filename="${safeTitle}.pdf"`);
-    res.setHeader('Content-Length', pdfBuffer.length.toString());
-    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-
-    logger.info(`Exported resume PDF: ${doc.id} (${pdfBuffer.length} bytes) for user ${userId}`);
-    res.status(200).end(pdfBuffer);
-  } catch (err: any) {
-    logger.error('Failed to generate resume PDF:', err);
-    res.status(500).json({ error: 'Failed to generate PDF document', details: err.message });
-  }
-});
-
-// Aptitude Assessment routes fallback (avoid proxy errors)
-app.get('/api/aptitude/categories', (req, res) => {
-  res.json({
-    success: true,
-    categories: [
-      { id: 'quant', name: 'Quantitative Aptitude', questionsCount: 40, icon: 'Calculator' },
-      { id: 'logical', name: 'Logical Reasoning', questionsCount: 35, icon: 'Brain' },
-      { id: 'verbal', name: 'Verbal Ability', questionsCount: 30, icon: 'BookOpen' },
-      { id: 'tech', name: 'Core Computer Science', questionsCount: 50, icon: 'Code' }
-    ]
-  });
-});
-
-app.get('/api/aptitude/history', (req, res) => {
-  res.json({ success: true, history: [] });
-});
-
-// ==========================================
 // 3.5 AI ENGINE STATUS & COPILOT ENDPOINTS
 // ==========================================
 
@@ -1309,202 +1098,6 @@ app.post('/api/ai/quick-ask', aiRateLimiter(30), async (req, res) => {
     logger.error('Quick Ask AI error:', err);
     res.status(500).json({ error: 'Failed to process AI question', details: err.message });
   }
-});
-
-// Full-featured Career Assistant Chatbot (Placement & Technical Mentor)
-app.post('/api/ai/chat', aiRateLimiter(30), async (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({
-      success: false,
-      error: 'Authentication required to use Career Assistant. Please log in.'
-    });
-  }
-
-  const user = jsonDb.getUserById(userId);
-  if (!user) {
-    return res.status(401).json({
-      success: false,
-      error: 'User account not found. Please log in again.'
-    });
-  }
-
-  const { message, conversationId, learningMode, careerContext } = req.body || {};
-
-  if (!message || typeof message !== 'string' || !message.trim()) {
-    return res.status(400).json({
-      success: false,
-      error: 'Question message cannot be empty.'
-    });
-  }
-
-  const cleanMessage = message.trim();
-  if (cleanMessage.length > 4000) {
-    return res.status(400).json({
-      success: false,
-      error: 'Message exceeds maximum limit of 4000 characters.'
-    });
-  }
-
-  const now = new Date().toISOString();
-
-  // Find or create conversation with user isolation
-  let conversation: StoredConversation;
-  if (conversationId && typeof conversationId === 'string') {
-    const existing = jsonDb.getConversationById(conversationId, userId);
-    if (existing) {
-      conversation = existing;
-    } else {
-      conversation = {
-        id: `conv-${Date.now()}-${crypto.randomBytes(4).toString('hex')}`,
-        userId,
-        title: cleanMessage.slice(0, 45) + (cleanMessage.length > 45 ? '...' : ''),
-        learningMode: Boolean(learningMode),
-        createdAt: now,
-        updatedAt: now,
-        messages: [],
-        careerContext: careerContext || {}
-      };
-    }
-  } else {
-    conversation = {
-      id: `conv-${Date.now()}-${crypto.randomBytes(4).toString('hex')}`,
-      userId,
-      title: cleanMessage.slice(0, 45) + (cleanMessage.length > 45 ? '...' : ''),
-      learningMode: Boolean(learningMode),
-      createdAt: now,
-      updatedAt: now,
-      messages: [],
-      careerContext: careerContext || {}
-    };
-  }
-
-  // Append user message
-  const userMsg: ChatMessage = {
-    id: `msg-${Date.now()}-${crypto.randomBytes(3).toString('hex')}`,
-    role: 'user',
-    content: cleanMessage,
-    timestamp: now,
-    learningMode: Boolean(learningMode)
-  };
-  conversation.messages.push(userMsg);
-  conversation.learningMode = Boolean(learningMode);
-  conversation.updatedAt = now;
-  if (careerContext && typeof careerContext === 'object') {
-    conversation.careerContext = { ...conversation.careerContext, ...careerContext };
-  }
-
-  // Check if Gemini is configured
-  if (!aiService.getStatus().configured) {
-    jsonDb.saveConversation(conversation);
-    return res.status(503).json({
-      success: false,
-      error: 'Google Gemini AI service is not configured on this server. Please set GEMINI_API_KEY in your server environment or .env file and restart the server.',
-      conversationId: conversation.id
-    });
-  }
-
-  try {
-    const result = await aiService.chat({
-      message: cleanMessage,
-      history: conversation.messages,
-      learningMode: Boolean(learningMode),
-      careerContext: conversation.careerContext
-    });
-
-    const assistantMsg: ChatMessage = {
-      id: `msg-${Date.now()}-${crypto.randomBytes(3).toString('hex')}`,
-      role: 'assistant',
-      content: result.answer,
-      timestamp: new Date().toISOString(),
-      learningMode: Boolean(learningMode)
-    };
-    conversation.messages.push(assistantMsg);
-    conversation.updatedAt = assistantMsg.timestamp;
-    jsonDb.saveConversation(conversation);
-
-    return res.json({
-      success: true,
-      conversationId: conversation.id,
-      title: conversation.title,
-      message: assistantMsg,
-      answer: result.answer,
-      model: result.model,
-      source: result.source
-    });
-  } catch (err: any) {
-    logger.error('Career Assistant AI Chat generation failed:', err);
-    const errText = err.message || 'Unable to communicate with the AI backend service. Please retry.';
-
-    const errorMsg: ChatMessage = {
-      id: `err-${Date.now()}-${crypto.randomBytes(3).toString('hex')}`,
-      role: 'assistant',
-      content: errText,
-      timestamp: new Date().toISOString(),
-      error: true,
-      learningMode: Boolean(learningMode)
-    };
-    conversation.messages.push(errorMsg);
-    conversation.updatedAt = errorMsg.timestamp;
-    jsonDb.saveConversation(conversation);
-
-    return res.status(500).json({
-      success: false,
-      error: errText,
-      conversationId: conversation.id
-    });
-  }
-});
-
-// List candidate's conversations
-app.get('/api/ai/conversations', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
-  const list = jsonDb.getConversationsByUserId(userId);
-  res.json(list);
-});
-
-// Get single conversation details
-app.get('/api/ai/conversations/:id', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
-  const conv = jsonDb.getConversationById(req.params.id, userId);
-  if (!conv) {
-    return res.status(404).json({ error: 'Conversation not found' });
-  }
-  res.json({
-    id: conv.id,
-    title: conv.title,
-    learningMode: conv.learningMode,
-    createdAt: conv.createdAt,
-    updatedAt: conv.updatedAt,
-    messages: conv.messages || [],
-    careerContext: conv.careerContext
-  });
-});
-
-// Delete specific conversation
-app.delete('/api/ai/conversations/:id', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
-  jsonDb.deleteConversation(req.params.id, userId);
-  res.json({ success: true, message: 'Conversation deleted successfully' });
-});
-
-// Clear all conversations for authenticated user
-app.delete('/api/ai/conversations', (req, res) => {
-  const userId = getSessionUserId(req);
-  if (!userId) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
-  jsonDb.clearConversationsByUserId(userId);
-  res.json({ success: true, message: 'All conversations cleared' });
 });
 
 // ==========================================
@@ -1585,85 +1178,6 @@ app.get('/api/interview/:id', (req, res) => {
     return res.status(404).json({ error: 'Interview session not found' });
   }
   res.json({ success: true, interview });
-});
-
-// Finalize and submit mock interview session
-app.post('/api/interview/:id/submit', (req, res) => {
-  const { id } = req.params;
-  const userId = getSessionUserId(req);
-
-  try {
-    let interview = jsonDb.getInterviewById(id);
-
-    if (interview) {
-      // Update existing interview
-      interview.status = 'completed';
-      if (Array.isArray(req.body.answers)) {
-        interview.answers = req.body.answers;
-      }
-      if (typeof req.body.overallScore === 'number') interview.overallScore = req.body.overallScore;
-      if (typeof req.body.averageAnsweredScore === 'number') interview.averageAnsweredScore = req.body.averageAnsweredScore;
-      if (typeof req.body.averageScoreOutOf10 === 'number') interview.averageScoreOutOf10 = req.body.averageScoreOutOf10;
-      if (typeof req.body.totalPointsEarned === 'number') interview.totalPointsEarned = req.body.totalPointsEarned;
-      if (typeof req.body.maxPossiblePoints === 'number') interview.maxPossiblePoints = req.body.maxPossiblePoints;
-      if (typeof req.body.technicalScore === 'number') interview.technicalScore = req.body.technicalScore;
-      if (typeof req.body.communicationScore === 'number') interview.communicationScore = req.body.communicationScore;
-      if (typeof req.body.confidenceScore === 'number') interview.confidenceScore = req.body.confidenceScore;
-      if (req.body.categoryScores) interview.categoryScores = req.body.categoryScores;
-      if (typeof req.body.questionsAnswered === 'number') interview.questionsAnswered = req.body.questionsAnswered;
-      if (typeof req.body.questionsSkipped === 'number') interview.questionsSkipped = req.body.questionsSkipped;
-      if (typeof req.body.questionsPending === 'number') interview.questionsPending = req.body.questionsPending;
-      if (Array.isArray(req.body.strongestAreas)) interview.strongestAreas = req.body.strongestAreas;
-      if (Array.isArray(req.body.topicsToImprove)) interview.topicsToImprove = req.body.topicsToImprove;
-      if (Array.isArray(req.body.suggestedPracticeQuestions)) interview.suggestedPracticeQuestions = req.body.suggestedPracticeQuestions;
-      if (Array.isArray(req.body.recommendedLearningTopics)) interview.recommendedLearningTopics = req.body.recommendedLearningTopics;
-      if (req.body.feedbackText) interview.feedbackText = req.body.feedbackText;
-      if (Array.isArray(req.body.suggestions)) interview.suggestions = req.body.suggestions;
-      if (userId && (!interview.userId || interview.userId.startsWith('demo-'))) {
-        interview.userId = userId;
-      }
-    } else {
-      // If not present in JSON DB (e.g. client-side initialized), synthesize completed interview
-      interview = {
-        id,
-        userId: userId || 'demo-student-1',
-        jobRole: req.body.jobRole || 'Full Stack Engineer',
-        branch: req.body.branch || 'General Engineering',
-        skills: req.body.skills || ['Coding'],
-        experienceLevel: req.body.experienceLevel || 'Entry Level',
-        status: 'completed',
-        questions: Array.isArray(req.body.answers) ? req.body.answers.map((a: any) => a.question || a.questionId) : [],
-        currentQuestionIndex: Array.isArray(req.body.answers) ? req.body.answers.length : 0,
-        answers: Array.isArray(req.body.answers) ? req.body.answers : [],
-        overallScore: req.body.overallScore ?? 80,
-        averageAnsweredScore: req.body.averageAnsweredScore,
-        averageScoreOutOf10: req.body.averageScoreOutOf10,
-        totalPointsEarned: req.body.totalPointsEarned,
-        maxPossiblePoints: req.body.maxPossiblePoints,
-        technicalScore: req.body.technicalScore,
-        communicationScore: req.body.communicationScore,
-        confidenceScore: req.body.confidenceScore,
-        categoryScores: req.body.categoryScores,
-        questionsAnswered: req.body.questionsAnswered,
-        questionsSkipped: req.body.questionsSkipped,
-        questionsPending: req.body.questionsPending,
-        strongestAreas: req.body.strongestAreas,
-        topicsToImprove: req.body.topicsToImprove,
-        suggestedPracticeQuestions: req.body.suggestedPracticeQuestions,
-        recommendedLearningTopics: req.body.recommendedLearningTopics,
-        feedbackText: req.body.feedbackText,
-        suggestions: req.body.suggestions,
-        createdAt: new Date().toISOString()
-      };
-    }
-
-    const saved = jsonDb.saveInterview(interview);
-    logger.info(`Mock interview ${id} submitted and completed successfully for user ${saved.userId}`);
-    return res.json({ success: true, interview: saved });
-  } catch (error: any) {
-    logger.error('Interview final submit error:', error);
-    return res.status(500).json({ error: 'Failed to record interview submission', details: error.message });
-  }
 });
 
 // Answer the current interview question and evaluate it
@@ -2066,10 +1580,391 @@ app.delete('/api/admin/templates/:id', requireAdmin, (req, res) => {
 });
 
 // ==========================================
+// 7.4 RESUME BUILDER STUDIO ENDPOINTS
+// ==========================================
+
+// List resumes for authenticated user
+app.get('/api/resumes', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required to access Resume Builder Studio', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    const list = resumeEngine.listUserResumes(userId);
+    return res.json({ success: true, resumes: list, total: list.length });
+  } catch (err: any) {
+    logger.error('Error listing resumes:', err);
+    return res.status(500).json({ error: 'Failed to retrieve resumes', message: err.message });
+  }
+});
+
+// Create new resume document
+app.post('/api/resumes', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required to access Resume Builder Studio', code: 'UNAUTHORIZED' });
+  }
+
+  const user = jsonDb.getUserById(userId);
+  if (!user) {
+    return res.status(401).json({ error: 'User record not found' });
+  }
+
+  try {
+    const doc = resumeEngine.createResume(req.body || {}, user);
+    return res.status(201).json({ success: true, resume: doc, message: 'Resume created successfully' });
+  } catch (err: any) {
+    logger.error('Error creating resume:', err);
+    return res.status(500).json({ error: 'Failed to create resume', message: err.message });
+  }
+});
+
+// Run ATS readiness check on draft content without saving
+app.post('/api/resumes/ats-check-preview', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    const { content, targetRole } = req.body || {};
+    const atsCheck = resumeEngine.calculateAtsReadiness(content, targetRole || 'Full Stack Engineer');
+    return res.json({ success: true, atsCheck });
+  } catch (err: any) {
+    logger.error('Error calculating ATS preview:', err);
+    return res.status(500).json({ error: 'Failed to evaluate ATS preview', message: err.message });
+  }
+});
+
+// Run Job Description matching on draft content
+app.post('/api/resumes/job-match-preview', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    const { content, jobDescription } = req.body || {};
+    const jobMatch = resumeEngine.calculateJobMatch(content, jobDescription || '');
+    return res.json({ success: true, jobMatch });
+  } catch (err: any) {
+    logger.error('Error calculating job match preview:', err);
+    return res.status(500).json({ error: 'Failed to evaluate job match', message: err.message });
+  }
+});
+
+// Get specific resume by ID
+app.get('/api/resumes/:id', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    const doc = resumeEngine.getResume(req.params.id, userId);
+    if (!doc) {
+      return res.status(404).json({ error: 'Resume document not found or access denied' });
+    }
+    return res.json({ success: true, resume: doc });
+  } catch (err: any) {
+    logger.error('Error fetching resume:', err);
+    return res.status(500).json({ error: 'Failed to fetch resume', message: err.message });
+  }
+});
+
+// Update resume document
+app.put('/api/resumes/:id', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    const doc = resumeEngine.updateResume(req.params.id, req.body || {}, userId);
+    return res.json({ success: true, resume: doc, message: 'Resume updated successfully' });
+  } catch (err: any) {
+    logger.error('Error updating resume:', err);
+    return res.status(err.message?.includes('not found') ? 404 : 400).json({ error: err.message });
+  }
+});
+
+// Delete resume document
+app.delete('/api/resumes/:id', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    resumeEngine.deleteResume(req.params.id, userId);
+    return res.json({ success: true, message: 'Resume deleted successfully' });
+  } catch (err: any) {
+    logger.error('Error deleting resume:', err);
+    return res.status(err.message?.includes('not found') ? 404 : 400).json({ error: err.message });
+  }
+});
+
+// Duplicate resume document
+app.post('/api/resumes/:id/duplicate', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    const doc = resumeEngine.duplicateResume(req.params.id, userId);
+    return res.status(201).json({ success: true, resume: doc, message: 'Resume duplicated successfully' });
+  } catch (err: any) {
+    logger.error('Error duplicating resume:', err);
+    return res.status(err.message?.includes('not found') ? 404 : 400).json({ error: err.message });
+  }
+});
+
+// Calculate ATS readiness for specific resume
+app.post('/api/resumes/:id/ats-check', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    const doc = resumeEngine.getResume(req.params.id, userId);
+    if (!doc) {
+      return res.status(404).json({ error: 'Resume document not found' });
+    }
+    const check = resumeEngine.calculateAtsReadiness(doc.content, doc.targetRole);
+    return res.json({ success: true, atsCheck: check });
+  } catch (err: any) {
+    logger.error('Error running ATS check on resume:', err);
+    return res.status(500).json({ error: 'Failed to run ATS check', message: err.message });
+  }
+});
+
+// Calculate Job Match for specific resume
+app.post('/api/resumes/:id/job-match', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    const doc = resumeEngine.getResume(req.params.id, userId);
+    if (!doc) {
+      return res.status(404).json({ error: 'Resume document not found' });
+    }
+    const { jobDescription } = req.body || {};
+    const check = resumeEngine.calculateJobMatch(doc.content, jobDescription || '');
+    return res.json({ success: true, jobMatch: check });
+  } catch (err: any) {
+    logger.error('Error running job match on resume:', err);
+    return res.status(500).json({ error: 'Failed to run job match', message: err.message });
+  }
+});
+
+// Export resume as PDF document (Backend direct download endpoint)
+app.get('/api/resumes/:id/export/pdf', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required to export resume PDF', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    const doc = resumeEngine.getResume(req.params.id, userId);
+    if (!doc) {
+      return res.status(404).json({ error: 'Resume document not found or access denied' });
+    }
+
+    const pdfBuffer = resumeEngine.generateBackendPdf(doc);
+    const sanitizedTitle = (doc.title || 'Resume').replace(/[^a-zA-Z0-9_-]/g, '_');
+
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="${sanitizedTitle}.pdf"`);
+    res.setHeader('Content-Length', pdfBuffer.length);
+    return res.send(pdfBuffer);
+  } catch (err: any) {
+    logger.error('Error exporting resume PDF:', err);
+    return res.status(500).json({ error: 'Failed to generate resume PDF', message: err.message });
+  }
+});
+
+// ==========================================
+// 7.5 APTITUDE ASSESSMENT ENDPOINTS
+// ==========================================
+
+// Get categories metadata (public or authenticated)
+app.get('/api/aptitude/categories', (req, res) => {
+  try {
+    const categories = aptitudeEngine.getCategoriesMeta();
+    return res.json({ success: true, categories });
+  } catch (err: any) {
+    logger.error('Error fetching aptitude categories:', err);
+    return res.status(500).json({ error: 'Failed to retrieve aptitude categories', message: err.message });
+  }
+});
+
+// Start or resume active attempt
+app.post('/api/aptitude/attempts', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required to access Aptitude Assessment', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    const attempt = aptitudeEngine.startOrResumeAttempt(userId);
+    return res.json({ success: true, attempt });
+  } catch (err: any) {
+    logger.error('Error starting/resuming aptitude attempt:', err);
+    return res.status(500).json({ error: 'Failed to initialize assessment', message: err.message });
+  }
+});
+
+// Force generate brand-new question set attempt
+app.post('/api/aptitude/attempts/new', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required to access Aptitude Assessment', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    const attempt = aptitudeEngine.createNewAttempt(userId);
+    return res.json({ success: true, attempt });
+  } catch (err: any) {
+    logger.error('Error creating new question set:', err);
+    return res.status(500).json({ error: 'Failed to create new question set', message: err.message });
+  }
+});
+
+// Get specific attempt details
+app.get('/api/aptitude/attempts/:attemptId', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    const attempt = jsonDb.getAptitudeAttemptById(req.params.attemptId);
+    if (!attempt) {
+      return res.status(404).json({ error: 'Assessment attempt not found' });
+    }
+    if (attempt.userId !== userId) {
+      return res.status(403).json({ error: 'Unauthorized access to assessment attempt' });
+    }
+    const bank = aptitudeEngine.loadQuestionBank();
+    const deadlineMs = new Date(attempt.deadline).getTime();
+    const remaining = Math.max(0, Math.floor((deadlineMs - Date.now()) / 1000));
+    if (attempt.status === 'IN_PROGRESS' && remaining <= 0) {
+      aptitudeEngine.finalizeAttempt(attempt, 'TIMED_OUT', 'Time expired');
+    }
+    const formatted = aptitudeEngine.startOrResumeAttempt(userId);
+    return res.json({ success: true, attempt: formatted });
+  } catch (err: any) {
+    logger.error('Error retrieving attempt:', err);
+    return res.status(500).json({ error: 'Failed to fetch assessment attempt', message: err.message });
+  }
+});
+
+// Save question answer & marked status
+app.put('/api/aptitude/attempts/:attemptId/answers/:questionId', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  const { attemptId, questionId } = req.params;
+  const { selectedOption, markedForReview } = req.body || {};
+
+  try {
+    const updated = aptitudeEngine.saveAnswer(attemptId, questionId, selectedOption, markedForReview, userId);
+    return res.json({ success: true, attempt: updated });
+  } catch (err: any) {
+    logger.error('Error saving aptitude answer:', err);
+    return res.status(400).json({ error: err.message || 'Failed to save answer' });
+  }
+});
+
+// Record integrity violation (blur, tab switch, exit fullscreen)
+app.post('/api/aptitude/attempts/:attemptId/violations', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  const { attemptId } = req.params;
+  const { eventType } = req.body || {};
+
+  try {
+    const result = aptitudeEngine.recordViolation(attemptId, eventType || 'GENERIC_DEPARTURE', userId);
+    return res.json({
+      success: true,
+      attempt: result.attempt,
+      terminated: result.terminated,
+      violationsCount: result.violationsCount
+    });
+  } catch (err: any) {
+    logger.error('Error recording violation:', err);
+    return res.status(400).json({ error: err.message || 'Failed to log violation' });
+  }
+});
+
+// Submit assessment attempt
+app.post('/api/aptitude/attempts/:attemptId/submit', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  const { attemptId } = req.params;
+  const { forcedReason } = req.body || {};
+
+  try {
+    const result = aptitudeEngine.submitAttempt(attemptId, forcedReason, userId);
+    return res.json({ success: true, result });
+  } catch (err: any) {
+    logger.error('Error submitting aptitude attempt:', err);
+    return res.status(400).json({ error: err.message || 'Failed to submit attempt' });
+  }
+});
+
+// Get assessment result
+app.get('/api/aptitude/attempts/:attemptId/result', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  const { attemptId } = req.params;
+
+  try {
+    const result = aptitudeEngine.getAttemptResult(attemptId, userId);
+    return res.json({ success: true, result });
+  } catch (err: any) {
+    logger.error('Error fetching aptitude result:', err);
+    return res.status(404).json({ error: err.message || 'Result not found' });
+  }
+});
+
+// Get user's assessment history
+app.get('/api/aptitude/history', (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Authentication required', code: 'UNAUTHORIZED' });
+  }
+
+  try {
+    const history = aptitudeEngine.getUserHistory(userId);
+    return res.json({ success: true, history });
+  } catch (err: any) {
+    logger.error('Error fetching aptitude history:', err);
+    return res.status(500).json({ error: 'Failed to retrieve assessment history', message: err.message });
+  }
+});
+
+// ==========================================
 // 8. HEALTH CHECK ENDPOINT
 // ==========================================
 
-app.get('/health', (req, res) => {
+app.get(['/health', '/api/health'], (req, res) => {
   res.json({
     status: 'healthy',
     timestamp: new Date().toISOString(),

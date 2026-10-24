@@ -32,6 +32,7 @@ public class DatabaseStorageService {
     private final FeedbackRepository feedbackRepository;
     private final ResumeDocumentRepository resumeDocumentRepository;
     private final ChatConversationRepository chatConversationRepository;
+    private final AssessmentAttemptRepository attemptRepository;
     private final ObjectMapper objectMapper;
 
     @Value("${app.data.db-json-path:../data/db.json}")
@@ -45,6 +46,7 @@ public class DatabaseStorageService {
             FeedbackRepository feedbackRepository,
             ResumeDocumentRepository resumeDocumentRepository,
             ChatConversationRepository chatConversationRepository,
+            AssessmentAttemptRepository attemptRepository,
             ObjectMapper objectMapper) {
         this.userRepository = userRepository;
         this.resumeRepository = resumeRepository;
@@ -53,6 +55,7 @@ public class DatabaseStorageService {
         this.feedbackRepository = feedbackRepository;
         this.resumeDocumentRepository = resumeDocumentRepository;
         this.chatConversationRepository = chatConversationRepository;
+        this.attemptRepository = attemptRepository;
         this.objectMapper = objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
@@ -341,6 +344,31 @@ public class DatabaseStorageService {
                 logger.info("Imported {} chat conversations from db.json", chatConversationRepository.count());
             }
 
+            // 8. Aptitude Attempts
+            if (root.has("aptitudeAttempts") && root.get("aptitudeAttempts").isArray()) {
+                for (JsonNode aNode : root.get("aptitudeAttempts")) {
+                    AssessmentAttemptEntity att = new AssessmentAttemptEntity();
+                    att.setId(aNode.path("id").asText(UUID.randomUUID().toString()));
+                    att.setUserId(aNode.path("userId").asText(""));
+                    att.setStatus(aNode.path("status").asText("COMPLETED"));
+                    att.setStartedAt(aNode.path("startedAt").asText(""));
+                    att.setDeadline(aNode.path("deadline").asText(""));
+                    att.setCompletedAt(aNode.path("completedAt").asText(null));
+                    att.setDurationSeconds(aNode.path("durationSeconds").asInt(0));
+                    att.setScore(aNode.path("score").asInt(0));
+                    att.setPercentage(aNode.path("percentage").asDouble(0.0));
+                    att.setTotalQuestions(aNode.path("totalQuestions").asInt(30));
+                    att.setViolationsCount(aNode.path("violationsCount").asInt(0));
+                    att.setForcedSubmissionReason(aNode.path("forcedSubmissionReason").asText(null));
+                    att.setQuestionsJson(aNode.has("questionsJson") ? aNode.path("questionsJson").asText("[]") : "[]");
+                    att.setAnswersJson(aNode.has("answersJson") ? aNode.path("answersJson").asText("{}") : "{}");
+                    att.setMarkedForReviewJson(aNode.has("markedForReviewJson") ? aNode.path("markedForReviewJson").asText("[]") : "[]");
+                    att.setCategoryScoresJson(aNode.has("categoryScoresJson") ? aNode.path("categoryScoresJson").asText("{}") : "{}");
+                    attemptRepository.save(att);
+                }
+                logger.info("Imported {} aptitude attempts from db.json", attemptRepository.count());
+            }
+
         } catch (Exception e) {
             logger.error("Failed to parse db.json: {}", e.getMessage(), e);
         }
@@ -361,6 +389,7 @@ public class DatabaseStorageService {
             data.put("feedback", feedbackRepository.findAll());
             data.put("resumeDocuments", resumeDocumentRepository.findAll());
             data.put("chatConversations", chatConversationRepository.findAll());
+            data.put("aptitudeAttempts", attemptRepository.findAll());
 
             objectMapper.writeValue(dbFile, data);
             logger.debug("Synchronized current state to {}", dbFile.getAbsolutePath());

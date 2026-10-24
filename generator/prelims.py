@@ -12,22 +12,21 @@ from styles import (
 )
 
 def add_cover_page(doc):
-    # Title Page / Outer Cover Page
     # Top VTU Header
     p_univ = doc.add_paragraph()
     p_univ.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_univ.paragraph_format.space_before = Pt(4)
-    p_univ.paragraph_format.space_after = Pt(2)
-    p_univ.paragraph_format.line_spacing = 1.15
+    p_univ.paragraph_format.space_before = Pt(0)
+    p_univ.paragraph_format.space_after = Pt(1)
+    p_univ.paragraph_format.line_spacing = 1.05
     r_u1 = p_univ.add_run("VISVESVARAYA TECHNOLOGICAL UNIVERSITY\n")
     r_u1.font.name = 'Times New Roman'
-    r_u1.font.size = Pt(14)
+    r_u1.font.size = Pt(13)
     r_u1.font.bold = True
     r_u1.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
     
     r_u2 = p_univ.add_run("“Jnana Sangama”, Belagavi-590018, Karnataka\n")
     r_u2.font.name = 'Times New Roman'
-    r_u2.font.size = Pt(11)
+    r_u2.font.size = Pt(10)
     r_u2.font.color.rgb = RGBColor(0x33, 0x41, 0x55)
     
     # VTU Logo
@@ -35,58 +34,58 @@ def add_cover_page(doc):
     if os.path.exists(vtu_logo):
         p_logo = doc.add_paragraph()
         p_logo.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_logo.paragraph_format.space_before = Pt(6)
-        p_logo.paragraph_format.space_after = Pt(8)
+        p_logo.paragraph_format.space_before = Pt(2)
+        p_logo.paragraph_format.space_after = Pt(4)
         run_logo = p_logo.add_run()
-        run_logo.add_picture(vtu_logo, width=Inches(1.05))
+        run_logo.add_picture(vtu_logo, width=Inches(0.85))
 
     # Project Report Text
     p_rep = doc.add_paragraph()
     p_rep.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_rep.paragraph_format.space_before = Pt(4)
-    p_rep.paragraph_format.space_after = Pt(2)
-    p_rep.paragraph_format.line_spacing = 1.15
+    p_rep.paragraph_format.space_before = Pt(2)
+    p_rep.paragraph_format.space_after = Pt(1)
+    p_rep.paragraph_format.line_spacing = 1.05
     r_rep1 = p_rep.add_run("A PROJECT REPORT (BCS786)\n")
     r_rep1.font.name = 'Times New Roman'
-    r_rep1.font.size = Pt(13)
+    r_rep1.font.size = Pt(12)
     r_rep1.font.bold = True
     r_rep1.font.color.rgb = RGBColor(0x1E, 0x3A, 0x8A)
     
     r_rep2 = p_rep.add_run("on\n")
     r_rep2.font.name = 'Times New Roman'
-    r_rep2.font.size = Pt(11)
+    r_rep2.font.size = Pt(10)
     
     # Project Title
     p_title = doc.add_paragraph()
     p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_title.paragraph_format.space_before = Pt(4)
-    p_title.paragraph_format.space_after = Pt(8)
-    p_title.paragraph_format.line_spacing = 1.2
+    p_title.paragraph_format.space_before = Pt(2)
+    p_title.paragraph_format.space_after = Pt(4)
+    p_title.paragraph_format.line_spacing = 1.15
     r_title = p_title.add_run("“CAREER NAVIGATOR: ENTERPRISE-GRADE AI-POWERED CAREER AND PLACEMENT READINESS PLATFORM”\n")
     r_title.font.name = 'Times New Roman'
-    r_title.font.size = Pt(14)
+    r_title.font.size = Pt(13)
     r_title.font.bold = True
     r_title.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
 
     # Fulfillment statement
     p_ful = doc.add_paragraph()
     p_ful.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_ful.paragraph_format.space_before = Pt(4)
-    p_ful.paragraph_format.space_after = Pt(8)
-    p_ful.paragraph_format.line_spacing = 1.15
+    p_ful.paragraph_format.space_before = Pt(2)
+    p_ful.paragraph_format.space_after = Pt(4)
+    p_ful.paragraph_format.line_spacing = 1.1
     r_ful = p_ful.add_run("Submitted in partial fulfillment of the requirements for the award of the degree of\nBachelor of Engineering\nin\nComputer Science & Engineering\n")
     r_ful.font.name = 'Times New Roman'
-    r_ful.font.size = Pt(10.5)
+    r_ful.font.size = Pt(10)
     r_ful.font.color.rgb = RGBColor(0x33, 0x41, 0x55)
 
     # Submitted by header
     p_sub = doc.add_paragraph()
     p_sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_sub.paragraph_format.space_before = Pt(4)
-    p_sub.paragraph_format.space_after = Pt(4)
+    p_sub.paragraph_format.space_before = Pt(2)
+    p_sub.paragraph_format.space_after = Pt(2)
     r_sub = p_sub.add_run("Submitted by\n")
     r_sub.font.name = 'Times New Roman'
-    r_sub.font.size = Pt(11)
+    r_sub.font.size = Pt(10.5)
     r_sub.font.bold = True
 
     # Student Table
@@ -106,74 +105,75 @@ def add_cover_page(doc):
         for c_idx, val in enumerate([u, n]):
             cell = tbl_students.cell(r_idx, c_idx)
             cell.width = col_w[c_idx]
+            set_cell_margins(cell, top=20, bottom=20, left=40, right=40)
             p = cell.paragraphs[0]
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            p.paragraph_format.space_after = Pt(2)
+            p.paragraph_format.space_after = Pt(0)
             p.paragraph_format.line_spacing = 1.0
             r = p.add_run(val)
             r.font.name = 'Times New Roman'
-            r.font.size = Pt(10)
+            r.font.size = Pt(9.5)
             if r_idx == 0:
                 r.font.bold = True
                 r.font.color.rgb = RGBColor(0x1E, 0x3A, 0x8A)
-            else:
-                r.font.color.rgb = RGBColor(0x1E, 0x29, 0x3B)
 
-    # Guidance block
+    # Guidance Section
     p_guid = doc.add_paragraph()
     p_guid.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_guid.paragraph_format.space_before = Pt(8)
+    p_guid.paragraph_format.space_before = Pt(4)
     p_guid.paragraph_format.space_after = Pt(2)
-    p_guid.paragraph_format.line_spacing = 1.15
+    p_guid.paragraph_format.line_spacing = 1.05
     r_g1 = p_guid.add_run("Under the Guidance of\n")
     r_g1.font.name = 'Times New Roman'
-    r_g1.font.size = Pt(10.5)
-    r_g1.font.bold = True
+    r_g1.font.size = Pt(10)
+    r_g1.font.italic = True
     
-    r_g2 = p_guid.add_run("Dr. / Prof. Project Guide Name\nAssistant Professor\nDepartment of CS&E, KIT, Tiptur-572201\n")
+    r_g2 = p_guid.add_run("Prof. Guide Name\n")
     r_g2.font.name = 'Times New Roman'
-    r_g2.font.size = Pt(10)
-    r_g2.font.color.rgb = RGBColor(0x33, 0x41, 0x55)
+    r_g2.font.size = Pt(10.5)
+    r_g2.font.bold = True
+    
+    r_g3 = p_guid.add_run("Assistant Professor\nDepartment of CS&E, KIT, Tiptur-572201\n")
+    r_g3.font.name = 'Times New Roman'
+    r_g3.font.size = Pt(9.5)
+    r_g3.font.color.rgb = RGBColor(0x33, 0x41, 0x55)
 
-    # College Logo
+    # KIT Logo
     kit_logo = 'extracted_assets/img_p1_1__IM20.jpg'
     if os.path.exists(kit_logo):
-        p_kit = doc.add_paragraph()
-        p_kit.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_kit.paragraph_format.space_before = Pt(4)
-        p_kit.paragraph_format.space_after = Pt(4)
-        run_kit = p_kit.add_run()
-        run_kit.add_picture(kit_logo, width=Inches(0.95))
+        p_logo2 = doc.add_paragraph()
+        p_logo2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        p_logo2.paragraph_format.space_before = Pt(2)
+        p_logo2.paragraph_format.space_after = Pt(3)
+        run_logo2 = p_logo2.add_run()
+        run_logo2.add_picture(kit_logo, width=Inches(0.75))
 
-    # College Department Footer Block
-    p_dept = doc.add_paragraph()
-    p_dept.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_dept.paragraph_format.space_before = Pt(2)
-    p_dept.paragraph_format.space_after = Pt(0)
-    p_dept.paragraph_format.line_spacing = 1.15
+    # College Footer
+    p_col = doc.add_paragraph()
+    p_col.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_col.paragraph_format.space_before = Pt(1)
+    p_col.paragraph_format.space_after = Pt(0)
+    p_col.paragraph_format.line_spacing = 1.05
+    r_c1 = p_col.add_run("DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING\n")
+    r_c1.font.name = 'Times New Roman'
+    r_c1.font.size = Pt(11)
+    r_c1.font.bold = True
+    r_c1.font.color.rgb = RGBColor(0x1E, 0x3A, 0x8A)
     
-    r_d1 = p_dept.add_run("DEPARTMENT OF COMPUTER SCIENCE & ENGINEERING\n")
-    r_d1.font.name = 'Times New Roman'
-    r_d1.font.size = Pt(12)
-    r_d1.font.bold = True
-    r_d1.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
+    r_c2 = p_col.add_run("KALPATARU INSTITUTE OF TECHNOLOGY\n")
+    r_c2.font.name = 'Times New Roman'
+    r_c2.font.size = Pt(12)
+    r_c2.font.bold = True
+    r_c2.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
     
-    r_d2 = p_dept.add_run("KALPATARU INSTITUTE OF TECHNOLOGY\n")
-    r_d2.font.name = 'Times New Roman'
-    r_d2.font.size = Pt(13)
-    r_d2.font.bold = True
-    r_d2.font.color.rgb = RGBColor(0x1E, 0x3A, 0x8A)
-    
-    r_d3 = p_dept.add_run("NBA Accredited 2025-28 & NAAC Accredited\nN H-206, Tiptur-572201\n2026-2027")
-    r_d3.font.name = 'Times New Roman'
-    r_d3.font.size = Pt(9.5)
-    r_d3.font.bold = True
-    r_d3.font.color.rgb = RGBColor(0x33, 0x41, 0x55)
+    r_c3 = p_col.add_run("NBA Accredited 2025-28 & NAAC Accredited\nN H-206, Tiptur-572201\n2026-2027")
+    r_c3.font.name = 'Times New Roman'
+    r_c3.font.size = Pt(9.0)
+    r_c3.font.color.rgb = RGBColor(0x47, 0x55, 0x69)
 
     doc.add_page_break()
 
 def add_certificate_page(doc):
-    # Header
     p_hdr = doc.add_paragraph()
     p_hdr.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_hdr.paragraph_format.space_before = Pt(0)
@@ -187,11 +187,11 @@ def add_certificate_page(doc):
     
     r_h2 = p_hdr.add_run("NH-206, Tiptur-572201\n")
     r_h2.font.name = 'Times New Roman'
-    r_h2.font.size = Pt(10)
+    r_h2.font.size = Pt(11)
     
     r_h3 = p_hdr.add_run("DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING\n")
     r_h3.font.name = 'Times New Roman'
-    r_h3.font.size = Pt(11.5)
+    r_h3.font.size = Pt(12)
     r_h3.font.bold = True
     r_h3.font.color.rgb = RGBColor(0x1E, 0x3A, 0x8A)
     
@@ -204,15 +204,15 @@ def add_certificate_page(doc):
     if os.path.exists(kit_logo):
         p_logo = doc.add_paragraph()
         p_logo.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_logo.paragraph_format.space_before = Pt(4)
-        p_logo.paragraph_format.space_after = Pt(8)
+        p_logo.paragraph_format.space_before = Pt(3)
+        p_logo.paragraph_format.space_after = Pt(6)
         run_logo = p_logo.add_run()
-        run_logo.add_picture(kit_logo, width=Inches(0.95))
+        run_logo.add_picture(kit_logo, width=Inches(0.85))
 
     p_cert = doc.add_paragraph()
     p_cert.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_cert.paragraph_format.space_before = Pt(6)
-    p_cert.paragraph_format.space_after = Pt(12)
+    p_cert.paragraph_format.space_before = Pt(4)
+    p_cert.paragraph_format.space_after = Pt(10)
     r_cert = p_cert.add_run("Certificate")
     r_cert.font.name = 'Times New Roman'
     r_cert.font.size = Pt(18)
@@ -222,8 +222,8 @@ def add_certificate_page(doc):
 
     p_body = doc.add_paragraph()
     p_body.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    p_body.paragraph_format.line_spacing = 1.35
-    p_body.paragraph_format.space_after = Pt(8)
+    p_body.paragraph_format.line_spacing = 1.3
+    p_body.paragraph_format.space_after = Pt(6)
     r_b = p_body.add_run("This is to certify that the project work entitled “CAREER NAVIGATOR: ENTERPRISE-GRADE AI-POWERED CAREER AND PLACEMENT READINESS PLATFORM” carried out by:")
     r_b.font.name = 'Times New Roman'
     r_b.font.size = Pt(11)
@@ -245,6 +245,7 @@ def add_certificate_page(doc):
         for c_idx, val in enumerate([u, n]):
             cell = tbl_students.cell(r_idx, c_idx)
             cell.width = col_w[c_idx]
+            set_cell_margins(cell, top=20, bottom=20, left=40, right=40)
             p = cell.paragraphs[0]
             p.alignment = WD_ALIGN_PARAGRAPH.CENTER
             p.paragraph_format.space_after = Pt(2)
@@ -258,9 +259,9 @@ def add_certificate_page(doc):
 
     p_body2 = doc.add_paragraph()
     p_body2.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    p_body2.paragraph_format.line_spacing = 1.35
-    p_body2.paragraph_format.space_before = Pt(8)
-    p_body2.paragraph_format.space_after = Pt(18)
+    p_body2.paragraph_format.line_spacing = 1.3
+    p_body2.paragraph_format.space_before = Pt(6)
+    p_body2.paragraph_format.space_after = Pt(14)
     r_b2 = p_body2.add_run(
         "Bonafide students of VII semester B.E. for the partial fulfillment of the requirements for the award of "
         "Bachelor of Engineering Degree in Computer Science & Engineering of the VISVESVARAYA TECHNOLOGICAL UNIVERSITY "
@@ -272,13 +273,13 @@ def add_certificate_page(doc):
     r_b2.font.size = Pt(11)
 
     # Signatures Table (Guide, HOD, Principal)
-    tbl_sig = doc.add_table(rows=2, cols=3)
+    tbl_sig = doc.add_table(rows=1, cols=3)
     tbl_sig.alignment = WD_TABLE_ALIGNMENT.CENTER
     tbl_sig._tbl.tblPr.append(tblBorders)
     sig_w = [Inches(2.0), Inches(2.0), Inches(2.0)]
     
     sigs = [
-        ("Signature of Guide\n\n\n\nGuide Name\nDesignation\nDept. of CSE",
+        ("Signature of Guide\n\n\n\nProf. Guide Name\nDesignation\nDept. of CSE",
          "Signature of HOD\n\n\n\nDr. Maithri C\nProf. & Head\nDept. of CSE",
          "Signature of Principal\n\n\n\nDr. Sateesh Kumar H C\nPrincipal\nKIT, Tiptur")
     ]
@@ -302,8 +303,8 @@ def add_certificate_page(doc):
     # External Viva Table
     p_viva = doc.add_paragraph()
     p_viva.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_viva.paragraph_format.space_before = Pt(20)
-    p_viva.paragraph_format.space_after = Pt(4)
+    p_viva.paragraph_format.space_before = Pt(14)
+    p_viva.paragraph_format.space_after = Pt(3)
     r_v = p_viva.add_run("External Viva")
     r_v.font.name = 'Times New Roman'
     r_v.font.size = Pt(11)
@@ -325,7 +326,7 @@ def add_certificate_page(doc):
             cell.width = viva_w[c_idx]
             p = cell.paragraphs[0]
             p.alignment = WD_ALIGN_PARAGRAPH.LEFT
-            p.paragraph_format.space_after = Pt(4)
+            p.paragraph_format.space_after = Pt(3)
             p.paragraph_format.line_spacing = 1.15
             r = p.add_run(val)
             r.font.name = 'Times New Roman'
@@ -349,58 +350,63 @@ def add_declaration_page(doc):
     
     r_h2 = p_hdr.add_run("NH-206, Tiptur-572201\nDEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING\nNBA Accredited 2025-28 & NAAC Accredited\n")
     r_h2.font.name = 'Times New Roman'
-    r_h2.font.size = Pt(10)
+    r_h2.font.size = Pt(10.5)
     r_h2.font.color.rgb = RGBColor(0x33, 0x41, 0x55)
 
     kit_logo = 'extracted_assets/img_p1_1__IM20.jpg'
     if os.path.exists(kit_logo):
         p_logo = doc.add_paragraph()
         p_logo.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_logo.paragraph_format.space_before = Pt(4)
-        p_logo.paragraph_format.space_after = Pt(8)
+        p_logo.paragraph_format.space_before = Pt(3)
+        p_logo.paragraph_format.space_after = Pt(6)
         run_logo = p_logo.add_run()
-        run_logo.add_picture(kit_logo, width=Inches(0.95))
+        run_logo.add_picture(kit_logo, width=Inches(0.85))
 
-    p_dec = doc.add_paragraph()
-    p_dec.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_dec.paragraph_format.space_before = Pt(8)
-    p_dec.paragraph_format.space_after = Pt(16)
-    r_dec = p_dec.add_run("DECLARATION")
+    p_decl = doc.add_paragraph()
+    p_decl.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_decl.paragraph_format.space_before = Pt(6)
+    p_decl.paragraph_format.space_after = Pt(14)
+    r_dec = p_decl.add_run("DECLARATION")
     r_dec.font.name = 'Times New Roman'
     r_dec.font.size = Pt(16)
     r_dec.font.bold = True
     r_dec.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
 
+    decl_text = (
+        "We, the students of Seventh semester, Department of Computer Science & Engineering, Kalpataru Institute of Technology, Tiptur, "
+        "hereby declare that the Major Project Phase 2 (BCS786) entitled “CAREER NAVIGATOR: ENTERPRISE-GRADE AI-POWERED CAREER AND PLACEMENT "
+        "READINESS PLATFORM” has been successfully completed under the guidance of Prof. Guide Name, Assistant Professor, "
+        "Department of Computer Science and Engineering, Kalpataru Institute of Technology, in partial fulfillment of the course requirement for the "
+        "award of degree of Bachelor of Engineering in Computer Science and Engineering of Visvesvaraya Technological University, Belagavi, "
+        "during the academic year 2026-2027. Further, the matter embodied in this project report has not been submitted previously by anybody "
+        "for the award of any other degree or diploma to any university."
+    )
     p_body = doc.add_paragraph()
     p_body.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    p_body.paragraph_format.line_spacing = 1.5
+    p_body.paragraph_format.line_spacing = 1.4
     p_body.paragraph_format.space_after = Pt(12)
-    r_b = p_body.add_run(
-        "We, the students of Seventh semester, Department of Computer Science & Engineering, Kalpataru Institute of Technology, "
-        "Tiptur, would hereby declare that the Major Project Phase 2 (BCS786) entitled “CAREER NAVIGATOR: ENTERPRISE-GRADE AI-POWERED "
-        "CAREER AND PLACEMENT READINESS PLATFORM” has been successfully completed under the guidance of Guide Name, "
-        "Assistant Professor, Department of Computer Science and Engineering, Kalpataru Institute of Technology, in partial "
-        "fulfilment of the course requirement for the award of degree of Bachelor of Engineering in Computer Science and Engineering "
-        "of Visvesvaraya Technological University, Belagavi, during the academic year 2026-2027. Further, the matter embodied in "
-        "the project report has not been submitted previously by anybody for the award of any other degree or diploma to any university."
-    )
-    r_b.font.name = 'Times New Roman'
-    r_b.font.size = Pt(11.5)
+    r = p_body.add_run(decl_text)
+    r.font.name = 'Times New Roman'
+    r.font.size = Pt(11)
 
-    p_place = doc.add_paragraph()
-    p_place.paragraph_format.space_before = Pt(16)
-    p_place.paragraph_format.space_after = Pt(2)
-    r_pl = p_place.add_run("Place: Tiptur\nDate: 21st October 2026")
-    r_pl.font.name = 'Times New Roman'
-    r_pl.font.size = Pt(11)
-    r_pl.font.bold = True
+    # Place and Date
+    p_pd = doc.add_paragraph()
+    p_pd.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    p_pd.paragraph_format.space_before = Pt(8)
+    p_pd.paragraph_format.space_after = Pt(12)
+    r_pd = p_pd.add_run("Place: Tiptur\nDate: 23-10-2026")
+    r_pd.font.name = 'Times New Roman'
+    r_pd.font.size = Pt(11)
+    r_pd.font.bold = True
 
+    # Associates Header
     p_assoc = doc.add_paragraph()
-    p_assoc.paragraph_format.space_before = Pt(16)
-    p_assoc.paragraph_format.space_after = Pt(8)
+    p_assoc.alignment = WD_ALIGN_PARAGRAPH.LEFT
+    p_assoc.paragraph_format.space_before = Pt(6)
+    p_assoc.paragraph_format.space_after = Pt(6)
     r_as = p_assoc.add_run("Project Associates:\n")
     r_as.font.name = 'Times New Roman'
-    r_as.font.size = Pt(11.5)
+    r_as.font.size = Pt(11)
     r_as.font.bold = True
 
     tblBorders = parse_xml(f'<w:tblBorders {nsdecls("w")}><w:top w:val="none"/><w:left w:val="none"/><w:bottom w:val="none"/><w:right w:val="none"/><w:insideH w:val="none"/><w:insideV w:val="none"/></w:tblBorders>')
@@ -421,19 +427,19 @@ def add_declaration_page(doc):
             cell.width = assoc_w[c_idx]
             p = cell.paragraphs[0]
             p.alignment = WD_ALIGN_PARAGRAPH.LEFT
-            p.paragraph_format.space_after = Pt(6)
+            p.paragraph_format.space_after = Pt(4)
             p.paragraph_format.line_spacing = 1.15
             r = p.add_run(val)
             r.font.name = 'Times New Roman'
-            r.font.size = Pt(10.5)
+            r.font.size = Pt(10)
 
     doc.add_page_break()
 
 def add_acknowledgement_page(doc):
     p_ack = doc.add_paragraph()
     p_ack.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_ack.paragraph_format.space_before = Pt(10)
-    p_ack.paragraph_format.space_after = Pt(18)
+    p_ack.paragraph_format.space_before = Pt(8)
+    p_ack.paragraph_format.space_after = Pt(14)
     r_ack = p_ack.add_run("ACKNOWLEDGEMENT")
     r_ack.font.name = 'Times New Roman'
     r_ack.font.size = Pt(16)
@@ -451,19 +457,19 @@ def add_acknowledgement_page(doc):
     for para in ack_paragraphs:
         p = doc.add_paragraph()
         p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-        p.paragraph_format.line_spacing = 1.5
-        p.paragraph_format.space_after = Pt(10)
+        p.paragraph_format.line_spacing = 1.45
+        p.paragraph_format.space_after = Pt(8)
         r = p.add_run(para)
         r.font.name = 'Times New Roman'
-        r.font.size = Pt(11.5)
+        r.font.size = Pt(11)
 
     p_thanks = doc.add_paragraph()
     p_thanks.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-    p_thanks.paragraph_format.space_before = Pt(20)
+    p_thanks.paragraph_format.space_before = Pt(14)
     p_thanks.paragraph_format.space_after = Pt(4)
     r_th = p_thanks.add_run("Thanking You,\n\nNames of the students\nHARSHINI P (1KI21CS001)\nANANYA S (1KI21CS002)\nKIRAN KUMAR R (1KI21CS003)\nDARSHAN M (1KI21CS004)")
     r_th.font.name = 'Times New Roman'
-    r_th.font.size = Pt(11)
+    r_th.font.size = Pt(10.5)
     r_th.font.bold = True
 
     doc.add_page_break()
@@ -471,8 +477,8 @@ def add_acknowledgement_page(doc):
 def add_abstract_page(doc):
     p_abs = doc.add_paragraph()
     p_abs.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_abs.paragraph_format.space_before = Pt(10)
-    p_abs.paragraph_format.space_after = Pt(18)
+    p_abs.paragraph_format.space_before = Pt(8)
+    p_abs.paragraph_format.space_after = Pt(14)
     r_abs = p_abs.add_run("ABSTRACT")
     r_abs.font.name = 'Times New Roman'
     r_abs.font.size = Pt(16)
@@ -480,115 +486,129 @@ def add_abstract_page(doc):
     r_abs.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
 
     abstract_text = (
-        "Modern engineering graduates face acute challenges securing technical employment due to automated Application Tracking System "
-        "(ATS) filtering algorithms, rigorous multi-round technical interviews, and severe communication anxiety. Career Navigator introduces an "
-        "enterprise-grade, artificial intelligence-powered placement preparation platform architected to bridge the preparation gap. The platform "
-        "synthesizes a dual-tier evaluation pipeline combining a deterministic, evidence-based ATS scoring engine with generative multimodal interview simulation. "
-        "The ATS engine utilizes content-aware regex parsing, Unicode sanitization, DJB2 fingerprint caching, and keyword density modeling to score resumes "
-        "and benchmark them against target Job Descriptions (JD). The conversational mock interview room leverages Google Gemini 2.5 Flash, streaming real-time "
-        "tokenized feedback through Server-Sent Events (SSE) alongside automated Web Audio telemetry measuring speech cadence (Words Per Minute) and filler word frequency. "
-        "An integrated Monaco Code Lab executes client-side algorithmic reviews, performing Big-O time and space complexity audits with edge-case static analysis. "
-        "Built on a hardened full-stack TypeScript stack featuring React 19, Node.js Express, double-submit CSRF guards, HMAC SHA-256 session integrity, and "
-        "zero-dependency cookie security, Career Navigator establishes an objective, scalable, and privacy-preserving placement readiness ecosystem."
+        "Undergraduate computer science students frequently encounter rejection in campus recruitment funnels due to opaque Applicant Tracking System "
+        "(ATS) resume filters, conversational interview anxiety, and lack of structured practice in articulating code solutions. "
+        "Career Navigator introduces an integrated, AI-powered placement readiness web platform built to address these preparation challenges. "
+        "The platform combines a deterministic resume analysis engine with generative multimodal interview simulations. "
+        "The ATS module uses unicode text normalization, section boundary detection, DJB2 content hashing, and keyword density modeling to score resumes "
+        "and compare them against employer job descriptions. An interactive mock interview room leverages Google Gemini 2.5 Flash, streaming real-time "
+        "tokenized feedback through Server-Sent Events (SSE) while measuring speech cadence (Words Per Minute) and filler word frequency via the Web Audio API. "
+        "An embedded Monaco Code Lab executes client-side programming challenges, performing static Big-O time and space complexity audits. "
+        "Built on a full-stack TypeScript architecture using React 19, Express, double-submit CSRF protection, and HMAC SHA-256 session integrity, "
+        "Career Navigator provides an accessible, objective, and privacy-preserving placement practice environment for engineering students."
     )
 
     p_body = doc.add_paragraph()
     p_body.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    p_body.paragraph_format.line_spacing = 1.5
-    p_body.paragraph_format.space_after = Pt(12)
+    p_body.paragraph_format.line_spacing = 1.45
+    p_body.paragraph_format.space_after = Pt(10)
     r = p_body.add_run(abstract_text)
     r.font.name = 'Times New Roman'
-    r.font.size = Pt(12)
+    r.font.size = Pt(11.5)
 
     # Keywords paragraph
     p_kw = doc.add_paragraph()
     p_kw.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-    p_kw.paragraph_format.space_before = Pt(14)
+    p_kw.paragraph_format.space_before = Pt(10)
     r_kwh = p_kw.add_run("Keywords: ")
     r_kwh.font.name = 'Times New Roman'
     r_kwh.font.size = Pt(11)
     r_kwh.font.bold = True
     
-    r_kwt = p_kw.add_run("Mock Interview Simulation, Applicant Tracking System (ATS), Gemini 2.5 Flash, Server-Sent Events (SSE), Monaco Code Lab, Algorithmic Big-O Analysis, Speech Telemetry, OWASP Security Baseline.")
+    r_kwt = p_kw.add_run("Applicant Tracking System (ATS), Mock Interview Simulation, Gemini 2.5 Flash, Server-Sent Events (SSE), Monaco Code Lab, Big-O Complexity, Speech Cadence Telemetry, OWASP Security.")
     r_kwt.font.name = 'Times New Roman'
     r_kwt.font.size = Pt(11)
     r_kwt.font.italic = True
 
     doc.add_page_break()
 
-def add_toc_page(doc):
+def add_toc_page(doc, page_map=None):
     p_toc = doc.add_paragraph()
     p_toc.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_toc.paragraph_format.space_before = Pt(10)
-    p_toc.paragraph_format.space_after = Pt(16)
+    p_toc.paragraph_format.space_before = Pt(8)
+    p_toc.paragraph_format.space_after = Pt(12)
     r_toc = p_toc.add_run("TABLE OF CONTENTS")
     r_toc.font.name = 'Times New Roman'
     r_toc.font.size = Pt(16)
     r_toc.font.bold = True
     r_toc.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
 
+    pm = page_map or {}
+    def get_pg(key, default_val):
+        return str(pm.get(key, default_val))
+
     toc_items = [
-        ("CHAPTER 1: INTRODUCTION", "1 - 5", True, 0),
-        ("1.1  Overview", "1", False, 1),
-        ("1.2  Objectives", "2", False, 1),
-        ("1.3  Purpose, Scope, and Applicability", "3", False, 1),
-        ("1.3.1  Purpose", "3", False, 2),
-        ("1.3.2  Scope", "4", False, 2),
-        ("1.3.3  Applicability", "4", False, 2),
-        ("1.4  Organization of Report", "5", False, 1),
-        ("CHAPTER 2: LITERATURE SURVEY", "6 - 11", True, 0),
-        ("2.1  Introduction", "6", False, 1),
-        ("2.2  Summary of Papers", "7", False, 1),
-        ("2.3  Drawbacks of Existing System", "10", False, 1),
-        ("2.4  Problem Statement", "10", False, 1),
-        ("2.5  Proposed Solution", "11", False, 1),
-        ("CHAPTER 3: REQUIREMENT ENGINEERING", "12 - 19", True, 0),
-        ("3.1  Software and Hardware Tools Used", "12", False, 1),
-        ("3.2  Conceptual / Analysis Modeling", "14", False, 1),
-        ("3.2.1  Use Case Diagram & Specifications", "14", False, 2),
-        ("3.2.2  Sequence Diagram & Interactive Lifecycles", "15", False, 2),
-        ("3.2.3  Activity Diagram & Processing Pipelines", "16", False, 2),
-        ("3.3  Software Requirements Specification", "17", False, 1),
-        ("3.3.1  User Requirements", "17", False, 2),
-        ("3.3.2  System Requirements (Functional & Non-Functional)", "18", False, 2),
-        ("CHAPTER 4: PROJECT PLANNING", "20 - 23", True, 0),
-        ("4.1  Project Planning and Scheduling", "20", False, 1),
-        ("4.1.1  Work Breakdown Structure (WBS)", "20", False, 2),
-        ("4.1.2  Gantt Chart Timeline & Milestone Scheduling", "21", False, 2),
-        ("4.1.3  Agile Sprint Breakdown & Deliverables", "21", False, 2),
-        ("4.1.4  Comprehensive Project Risk Assessment & Mitigation", "22", False, 2),
-        ("CHAPTER 5: SYSTEM DESIGN", "24 - 30", True, 0),
-        ("5.1  System Architecture", "24", False, 1),
-        ("5.2  Component Design / Module Decomposition", "25", False, 1),
-        ("5.3  Interface Design (UI/UX Flow & OpenAPI Contract)", "26", False, 1),
-        ("5.4  Data Structure Design (ER Schema & Models)", "27", False, 1),
-        ("5.5  Algorithm Design (ATS Scoring, DJB2 Hash, Big-O Review)", "28", False, 1),
-        ("CHAPTER 6: IMPLEMENTATION", "31 - 34", True, 0),
-        ("6.1  Implementation Approaches", "31", False, 1),
-        ("6.2  Coding Details and Code Efficiency", "31", False, 1),
-        ("6.2.1  Resume Normalization & DJB2 Content Fingerprinting", "31", False, 2),
-        ("6.2.2  OWASP Security Pipeline & Double-Submit CSRF Guard", "32", False, 2),
-        ("6.2.3  HMAC SHA-256 Session Signing & Brute-Force Rate Limiting", "33", False, 2),
-        ("6.2.4  Gemini SSE Streaming Token Pipeline", "34", False, 2),
-        ("CHAPTER 7: TESTING", "35 - 40", True, 0),
-        ("7.1  Testing Approach", "35", False, 1),
-        ("7.1.1  Unit Testing Framework & Vitest Suite", "35", False, 2),
-        ("7.1.2  Integrated Testing & End-to-End Lifecycles", "36", False, 2),
-        ("7.1.3  Comprehensive Test Cases and Results Matrix", "36", False, 2),
-        ("CHAPTER 8: RESULTS DISCUSSION AND PERFORMANCE ANALYSIS", "41 - 44", True, 0),
-        ("8.1  Results & Quantitative Evaluation", "41", False, 1),
-        ("8.1.1  Inference & Streaming Latency Telemetry", "41", False, 2),
-        ("8.1.2  ATS Scoring Validation vs Human Recruiter Benchmarks", "42", False, 2),
-        ("8.1.3  Speech Analytics & Cadence Correlation", "43", False, 2),
-        ("8.2  Snapshots & UI Architectural Walkthrough", "44", False, 1),
-        ("CHAPTER 9: APPLICATIONS & CONCLUSION", "45 - 46", True, 0),
-        ("9.1  Applications", "45", False, 1),
-        ("9.2  Conclusion", "45", False, 1),
-        ("9.3  Future Scope of the Work", "46", False, 1),
-        ("REFERENCES", "47 - 48", True, 0),
-        ("ANNEXURE A: GLOSSARY", "49 - 50", True, 0),
-        ("ANNEXURE B: Paper Publication Draft (IEEE / Springer)", "51 - 52", True, 0),
-        ("ANNEXURE C: Project Exhibition Certificate / Funding Award Details", "53 - 54", True, 0)
+        ("CHAPTER 1: INTRODUCTION", f"{get_pg('CH1', '1')} - {get_pg('CH2_START_MINUS_1', '8')}", True, 0),
+        ("1.1  Overview", get_pg("SEC_1_1", "1"), False, 1),
+        ("1.2  Objectives", get_pg("SEC_1_2", "3"), False, 1),
+        ("1.3  Purpose, Scope, and Applicability", get_pg("SEC_1_3", "4"), False, 1),
+        ("1.3.1  Purpose", get_pg("SEC_1_3_1", "4"), False, 2),
+        ("1.3.2  Scope", get_pg("SEC_1_3_2", "4"), False, 2),
+        ("1.3.3  Target Stakeholder Ecosystem", get_pg("SEC_1_3_3", "5"), False, 2),
+        ("1.3.4  Operational Assumptions and Environmental Constraints", get_pg("SEC_1_3_4", "6"), False, 2),
+        ("1.4  Organization of Report", get_pg("SEC_1_4", "6"), False, 1),
+        ("CHAPTER 2: LITERATURE SURVEY", f"{get_pg('CH2', '9')} - {get_pg('CH3_START_MINUS_1', '20')}", True, 0),
+        ("2.1  Introduction", get_pg("SEC_2_1", "9"), False, 1),
+        ("2.2  Summary of Papers", get_pg("SEC_2_2", "10"), False, 1),
+        ("2.3  Drawbacks of Existing Systems", get_pg("SEC_2_3", "18"), False, 1),
+        ("2.4  Problem Statement", get_pg("SEC_2_4", "19"), False, 1),
+        ("2.5  Proposed Solution", get_pg("SEC_2_5", "20"), False, 1),
+        ("CHAPTER 3: REQUIREMENT ENGINEERING", f"{get_pg('CH3', '21')} - {get_pg('CH4_START_MINUS_1', '34')}", True, 0),
+        ("3.1  Software and Hardware Tools Used", get_pg("SEC_3_1", "21"), False, 1),
+        ("3.2  Conceptual / Analysis Modeling", get_pg("SEC_3_2", "23"), False, 1),
+        ("3.2.1  Use Case Modeling", get_pg("SEC_3_2_1", "23"), False, 2),
+        ("3.2.2  Sequence Diagram & Interactive Lifecycles", get_pg("SEC_3_2_2", "25"), False, 2),
+        ("3.2.3  Activity Diagram & Processing Pipelines", get_pg("SEC_3_2_3", "27"), False, 2),
+        ("3.3  Software Requirements Specification", get_pg("SEC_3_3", "28"), False, 1),
+        ("3.3.1  User Requirements", get_pg("SEC_3_3_1", "28"), False, 2),
+        ("3.3.2  System Requirements", get_pg("SEC_3_3_2", "29"), False, 2),
+        ("3.3.3  External Interface Specifications", get_pg("SEC_3_3_3", "33"), False, 2),
+        ("CHAPTER 4: PROJECT PLANNING", f"{get_pg('CH4', '35')} - {get_pg('CH5_START_MINUS_1', '42')}", True, 0),
+        ("4.1  Project Planning and Scheduling", get_pg("SEC_4_1", "35"), False, 1),
+        ("4.1.1  Work Breakdown Structure (WBS)", get_pg("SEC_4_1_1", "35"), False, 2),
+        ("4.1.2  Gantt Chart Timeline & Milestone Scheduling", get_pg("SEC_4_1_2", "37"), False, 2),
+        ("4.1.3  Agile Sprint Breakdown & Deliverables", get_pg("SEC_4_1_3", "38"), False, 2),
+        ("4.1.4  Risk Assessment & Mitigation Matrix", get_pg("SEC_4_1_4", "39"), False, 2),
+        ("4.1.5  Effort and Resource Estimation via COCOMO II", get_pg("SEC_4_1_5", "41"), False, 2),
+        ("CHAPTER 5: SYSTEM DESIGN", f"{get_pg('CH5', '43')} - {get_pg('CH6_START_MINUS_1', '58')}", True, 0),
+        ("5.1  System Architecture", get_pg("SEC_5_1", "43"), False, 1),
+        ("5.2  Component Design / Module Decomposition", get_pg("SEC_5_2", "45"), False, 1),
+        ("5.3  Interface Design", get_pg("SEC_5_3", "46"), False, 1),
+        ("5.3.1  UI/UX Design Tokens & Accessibility Standards", get_pg("SEC_5_3_1", "47"), False, 2),
+        ("5.4  Data Structure Design", get_pg("SEC_5_4", "49"), False, 1),
+        ("5.4.1  Relational Database Migration Bridge", get_pg("SEC_5_4_1", "53"), False, 2),
+        ("5.5  Algorithm Design", get_pg("SEC_5_5", "54"), False, 1),
+        ("CHAPTER 6: IMPLEMENTATION", f"{get_pg('CH6', '61')} - {get_pg('CH7_START_MINUS_1', '74')}", True, 0),
+        ("6.1  Implementation Approaches", get_pg("SEC_6_1", "61"), False, 1),
+        ("6.2  Coding Details and Code Efficiency", get_pg("SEC_6_2", "62"), False, 1),
+        ("6.2.8  Local Heuristic Simulation Engine (Offline Fallback)", get_pg("SEC_6_2_8", "72"), False, 2),
+        ("6.2.9  Web Speech API Audio Context Polyfill", get_pg("SEC_6_2_9", "73"), False, 2),
+        ("6.3  Code Efficiency, Memory Profiling and Optimizations", get_pg("SEC_6_3", "74"), False, 1),
+        ("CHAPTER 7: TESTING", f"{get_pg('CH7', '76')} - {get_pg('CH8_START_MINUS_1', '85')}", True, 0),
+        ("7.1  Testing Approach", get_pg("SEC_7_1", "76"), False, 1),
+        ("7.1.1  Unit Testing Framework & Vitest Suite", get_pg("SEC_7_1_1", "76"), False, 2),
+        ("7.1.2  Code Listings of Automated Vitest Test Suites", get_pg("SEC_7_1_2", "78"), False, 2),
+        ("7.1.3  Performance, Concurrency, and Load Testing", get_pg("SEC_7_1_3", "80"), False, 2),
+        ("7.1.4  Security and Penetration Testing", get_pg("SEC_7_1_4", "81"), False, 2),
+        ("7.1.5  Exhaustive Test Case Execution Matrix", get_pg("SEC_7_1_5", "82"), False, 2),
+        ("7.1.6  Continuous Integration & Code Quality Pipeline", get_pg("SEC_7_1_6", "84"), False, 2),
+        ("CHAPTER 8: RESULTS DISCUSSION AND PERFORMANCE ANALYSIS", f"{get_pg('CH8', '86')} - {get_pg('CH9_START_MINUS_1', '94')}", True, 0),
+        ("8.1  Results & Quantitative Evaluation", get_pg("SEC_8_1", "86"), False, 1),
+        ("8.1.1  Inference & Streaming Latency Telemetry", get_pg("SEC_8_1_1", "86"), False, 2),
+        ("8.1.2  ATS Scoring Validation vs Human Recruiter Benchmarks", get_pg("SEC_8_1_2", "88"), False, 2),
+        ("8.1.3  Speech Analytics & Vocal Cadence Correlation", get_pg("SEC_8_1_3", "90"), False, 2),
+        ("8.1.4  Code Lab Complexity Review Accuracy", get_pg("SEC_8_1_4", "91"), False, 2),
+        ("8.2  Snapshots & UI Architectural Walkthrough", get_pg("SEC_8_2", "93"), False, 1),
+        ("8.3  Comparative Analysis with Existing Solutions", get_pg("SEC_8_3", "94"), False, 1),
+        ("8.4  User Usability Survey & SUS Evaluation", get_pg("SEC_8_4", "95"), False, 1),
+        ("CHAPTER 9: APPLICATIONS & CONCLUSION", f"{get_pg('CH9', '95')} - {get_pg('REF_START_MINUS_1', '97')}", True, 0),
+        ("9.1  Applications", get_pg("SEC_9_1", "95"), False, 1),
+        ("9.2  Conclusion", get_pg("SEC_9_2", "96"), False, 1),
+        ("9.3  Future Scope of the Work", get_pg("SEC_9_3", "97"), False, 1),
+        ("REFERENCES", get_pg("CH_REF", "98"), True, 0),
+        ("ANNEXURE A: GLOSSARY", get_pg("CH_ANNEX_A", "101"), True, 0),
+        ("ANNEXURE B: PAPER PUBLICATION DRAFT", get_pg("CH_ANNEX_B", "104"), True, 0),
+        ("ANNEXURE C: PROJECT EXHIBITION & FUNDING DETAILS", get_pg("CH_ANNEX_C", "107"), True, 0)
     ]
 
     tbl_toc = doc.add_table(rows=len(toc_items) + 1, cols=2)
@@ -596,7 +616,7 @@ def add_toc_page(doc):
     tblBorders = parse_xml(f'<w:tblBorders {nsdecls("w")}><w:top w:val="none"/><w:left w:val="none"/><w:bottom w:val="none"/><w:right w:val="none"/><w:insideH w:val="none"/><w:insideV w:val="none"/></w:tblBorders>')
     tbl_toc._tbl.tblPr.append(tblBorders)
     
-    col_w = [Inches(5.0), Inches(1.1)]
+    col_w = [Inches(5.15), Inches(0.85)]
     
     # Header
     cell_h1 = tbl_toc.cell(0, 0)
@@ -626,14 +646,14 @@ def add_toc_page(doc):
         pp = cell_p.paragraphs[0]
         pt.alignment = WD_ALIGN_PARAGRAPH.LEFT
         pp.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-        pt.paragraph_format.space_after = Pt(2)
-        pp.paragraph_format.space_after = Pt(2)
+        pt.paragraph_format.space_after = Pt(1.5)
+        pp.paragraph_format.space_after = Pt(1.5)
         pt.paragraph_format.line_spacing = 1.1
         pp.paragraph_format.line_spacing = 1.1
         
         indent_str = "    " * indent_level
         rt = pt.add_run(indent_str + title)
-        rp = pp.add_run(page)
+        rp = pp.add_run(str(page))
         
         rt.font.name = 'Times New Roman'
         rp.font.name = 'Times New Roman'
@@ -641,40 +661,43 @@ def add_toc_page(doc):
         if is_major:
             rt.font.bold = True
             rp.font.bold = True
-            rt.font.size = Pt(10.5)
-            rp.font.size = Pt(10.5)
-            rt.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
-        else:
             rt.font.size = Pt(10)
             rp.font.size = Pt(10)
+            rt.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
+        else:
+            rt.font.size = Pt(9.5)
+            rp.font.size = Pt(9.5)
             rt.font.color.rgb = RGBColor(0x33, 0x41, 0x55)
 
     doc.add_page_break()
 
-def add_list_of_figures_page(doc):
+def add_list_of_figures_page(doc, page_map=None):
     p_lof = doc.add_paragraph()
     p_lof.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_lof.paragraph_format.space_before = Pt(10)
-    p_lof.paragraph_format.space_after = Pt(16)
+    p_lof.paragraph_format.space_before = Pt(8)
+    p_lof.paragraph_format.space_after = Pt(14)
     r_lof = p_lof.add_run("LIST OF FIGURES")
     r_lof.font.name = 'Times New Roman'
     r_lof.font.size = Pt(16)
     r_lof.font.bold = True
     r_lof.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
 
+    pm = page_map or {}
+    def get_pg(key, default_val):
+        return str(pm.get(key, default_val))
+
     figures = [
-        ("Figure 1.1", "Paradigm Comparison: Traditional Placement Prep vs Career Navigator Platform", "2"),
-        ("Figure 2.1", "Taxonomy of Artificial Intelligence in Candidate Evaluation and Recruitment Technology", "6"),
-        ("Figure 3.1", "UML Use Case Diagram for Student and Administrative Personas", "14"),
-        ("Figure 3.2", "UML Sequence Diagram: Real-Time SSE Mock Interview Lifecycle", "15"),
-        ("Figure 3.3", "UML Activity Diagram: Dual-Phase Resume ATS Ingestion & Analysis Pipeline", "16"),
-        ("Figure 4.1", "Project Execution Gantt Chart: Work Breakdown Structure Across 26 Weeks", "21"),
-        ("Figure 5.1", "High-Level Tiered Enterprise System Architecture of Career Navigator", "24"),
-        ("Figure 5.3", "Entity-Relationship (ER) Schema Modeling Core Relational Entities", "27"),
-        ("Figure 6.1", "OWASP-Hardened Request Ingestion & Security Middleware Pipeline", "32"),
-        ("Figure 7.1", "Vitest Test Execution Results by Functional Module (100% Pass Rate)", "35"),
-        ("Figure 8.1", "Response Latency Benchmarking across Streaming, REST, and Local Heuristic Execution", "41"),
-        ("Figure 8.2", "Validation Correlation: Career Navigator ATS Scoring vs Expert Recruiter Benchmarks", "43")
+        ("Figure 1.1", "Paradigm Comparison: Traditional Placement Prep vs Career Navigator Platform", get_pg("FIG_1_1", "2")),
+        ("Figure 2.1", "Taxonomy of Artificial Intelligence in Candidate Evaluation and Recruitment Technology", get_pg("FIG_2_1", "9")),
+        ("Figure 3.1", "UML Use Case Diagram: Candidate and Administrator Interaction Spaces", get_pg("FIG_3_1", "23")),
+        ("Figure 3.2", "UML Sequence Diagram: Real-Time SSE Mock Interview Lifecycle", get_pg("FIG_3_2", "26")),
+        ("Figure 3.3", "UML Activity Diagram: Dual-Phase Resume ATS Ingestion & Analysis Pipeline", get_pg("FIG_3_3", "28")),
+        ("Figure 4.1", "Project Execution Gantt Chart: Work Breakdown Structure Across 26 Weeks", get_pg("FIG_4_1", "37")),
+        ("Figure 5.1", "High-Level Tiered Enterprise System Architecture of Career Navigator", get_pg("FIG_5_1", "44")),
+        ("Figure 5.3", "Entity-Relationship (ER) Logical Schema Diagram of Career Navigator", get_pg("FIG_5_3", "50")),
+        ("Figure 7.1", "Vitest Test Execution Results by Functional Module (100% Pass Rate)", get_pg("FIG_7_1", "77")),
+        ("Figure 8.1", "Latency Benchmark: Time-To-First-Token (TTFT) and End-to-End Evaluation Latency", get_pg("FIG_8_1", "87")),
+        ("Figure 8.2", "ATS Score Distribution and Human Recruiter Correlation (R^2 = 0.892)", get_pg("FIG_8_2", "89"))
     ]
 
     tbl_lof = doc.add_table(rows=len(figures) + 1, cols=3)
@@ -682,7 +705,7 @@ def add_list_of_figures_page(doc):
     tblBorders = parse_xml(f'<w:tblBorders {nsdecls("w")}><w:top w:val="none"/><w:left w:val="none"/><w:bottom w:val="none"/><w:right w:val="none"/><w:insideH w:val="none"/><w:insideV w:val="none"/></w:tblBorders>')
     tbl_lof._tbl.tblPr.append(tblBorders)
     
-    col_w = [Inches(1.2), Inches(4.0), Inches(0.9)]
+    col_w = [Inches(1.10), Inches(4.15), Inches(0.75)]
     
     # Header
     for c_idx, h_text in enumerate(["Figure No.", "Figure Name", "Page No."]):
@@ -692,7 +715,7 @@ def add_list_of_figures_page(doc):
         p.alignment = WD_ALIGN_PARAGRAPH.RIGHT if c_idx == 2 else WD_ALIGN_PARAGRAPH.LEFT
         r = p.add_run(h_text)
         r.font.name = 'Times New Roman'
-        r.font.size = Pt(10.5)
+        r.font.size = Pt(10)
         r.font.bold = True
         r.font.color.rgb = RGBColor(0x1E, 0x3A, 0x8A)
 
@@ -702,44 +725,60 @@ def add_list_of_figures_page(doc):
             cell.width = col_w[c_idx]
             p = cell.paragraphs[0]
             p.alignment = WD_ALIGN_PARAGRAPH.RIGHT if c_idx == 2 else WD_ALIGN_PARAGRAPH.LEFT
-            p.paragraph_format.space_after = Pt(3)
-            p.paragraph_format.line_spacing = 1.15
+            p.paragraph_format.space_after = Pt(2.5)
+            p.paragraph_format.line_spacing = 1.1
             r = p.add_run(val)
             r.font.name = 'Times New Roman'
-            r.font.size = Pt(10)
+            r.font.size = Pt(9.5)
             if c_idx == 0:
                 r.font.bold = True
 
     doc.add_page_break()
 
-def add_list_of_tables_page(doc):
+def add_list_of_tables_page(doc, page_map=None):
+    # Professional 3-column List of Tables
     p_lot = doc.add_paragraph()
     p_lot.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_lot.paragraph_format.space_before = Pt(10)
-    p_lot.paragraph_format.space_after = Pt(16)
+    p_lot.paragraph_format.space_before = Pt(4)
+    p_lot.paragraph_format.space_after = Pt(8)
     r_lot = p_lot.add_run("LIST OF TABLES")
     r_lot.font.name = 'Times New Roman'
     r_lot.font.size = Pt(16)
     r_lot.font.bold = True
     r_lot.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
 
+    pm = page_map or {}
+    def get_pg(key, default_val):
+        return str(pm.get(key, default_val))
+
     tables = [
-        ("Table 2.1", "Comprehensive Literature Survey and Feature Matrix Comparison", "9"),
-        ("Table 3.1", "Development and Production Deployment Hardware Environment Specifications", "12"),
-        ("Table 3.2", "Full-Stack Software Tools, Frameworks, Middleware, and Runtime Packages", "12"),
-        ("Table 3.3", "Formal Use Case Specifications for Student and Administrator Personas", "14"),
-        ("Table 3.4", "Comprehensive Functional Requirements Specifications (FR1 - FR20)", "17"),
-        ("Table 3.5", "Non-Functional System Performance, Security, and Scalability Requirements", "18"),
-        ("Table 4.1", "Agile Sprint Scheduling, Work Packages, and Milestone Deliverables", "21"),
-        ("Table 4.2", "Systematic Technical and Operational Risk Assessment & Mitigation Matrix", "22"),
-        ("Table 5.1", "OpenAPI 3.0 REST and Server-Sent Events (SSE) Endpoint Contracts", "26"),
-        ("Table 5.2", "Relational and JSON Entity Schema Property Definitions", "28"),
-        ("Table 5.3", "Deterministic Keyword Catalog and Category Density Weights", "29"),
-        ("Table 6.1", "Enterprise Security Middleware Configurations and OWASP Hardening Baseline", "33"),
-        ("Table 7.1", "Exhaustive Vitest Test Suite Execution and Verification Matrix (TC01 - TC35)", "36"),
-        ("Table 8.1", "Empirical Latency and Throughput Telemetry Across Execution Modes", "42"),
-        ("Table 8.2", "ATS Scoring Engine Accuracy, Precision, and Confusion Classification", "43"),
-        ("Table 8.3", "Speech Analytics Cadence Evaluation across Word Per Minute Profiles", "43")
+        ("Table 1.1", "Measurable Engineering Objectives, Key Performance Indicators (KPIs), and Target SLAs", get_pg("TBL_1_1", "3")),
+        ("Table 1.2", "Comprehensive Stakeholder Analysis and Value Proposition Matrix", get_pg("TBL_1_2", "5")),
+        ("Table 2.1", "Comprehensive Comparative Literature Analysis Matrix of Surveyed Research Papers", get_pg("TBL_2_1", "17")),
+        ("Table 2.2", "Comprehensive Feature Matrix: Career Navigator vs Existing Commercial and Academic Solutions", get_pg("TBL_2_2", "20")),
+        ("Table 3.1", "Hardware Environment Specifications for Development and Production Deployment", get_pg("TBL_3_1", "21")),
+        ("Table 3.2", "Complete Software Technology Stack, Libraries, and Architectural Justifications", get_pg("TBL_3_2", "22")),
+        ("Table 3.3", "Comprehensive Use Case Specifications (UC01 - UC10)", get_pg("TBL_3_3", "24")),
+        ("Table 3.4", "Comprehensive Functional Requirements Specifications (FR01 - FR25)", get_pg("TBL_3_4", "30")),
+        ("Table 3.5", "Non-Functional System Performance, Security, and Scalability Requirements", get_pg("TBL_3_5", "32")),
+        ("Table 4.1", "Comprehensive Work Breakdown Structure (WBS) Dictionary and Task Allocation", get_pg("TBL_4_1", "36")),
+        ("Table 4.2", "Agile Sprint Scheduling, Velocity, Story Points, and Milestone Deliverables", get_pg("TBL_4_2", "38")),
+        ("Table 4.3", "Systematic Technical, Algorithmic, Operational, and Institutional Risk Assessment Matrix", get_pg("TBL_4_3", "40")),
+        ("Table 5.1", "Comprehensive OpenAPI 3.0.3 REST and Server-Sent Events API Endpoint Contracts", get_pg("TBL_5_1", "47")),
+        ("Table 5.2", "Physical Data Dictionary — User Entity (`users`)", get_pg("TBL_5_2", "49")),
+        ("Table 5.3", "Physical Data Dictionary — StudentProfile Entity (`student_profiles`)", get_pg("TBL_5_3", "49")),
+        ("Table 5.4", "Physical Data Dictionary — ResumeAnalysis Entity (`resume_analyses`)", get_pg("TBL_5_4", "50")),
+        ("Table 5.5", "Physical Data Dictionary — MockInterview Entity (`mock_interviews`)", get_pg("TBL_5_5", "51")),
+        ("Table 5.6", "Physical Data Dictionary — CodeSubmission Entity (`code_submissions`)", get_pg("TBL_5_6", "51")),
+        ("Table 7.1", "Apache JMeter / Artillery Concurrent Load Test Benchmarks", get_pg("TBL_7_1", "80")),
+        ("Table 7.2", "Exhaustive Vitest Test Suite Execution and Verification Matrix (TC01 - TC50)", get_pg("TBL_7_2", "82")),
+        ("Table 8.1", "Empirical Generative AI Streaming Latency and Throughput Benchmarks", get_pg("TBL_8_1", "87")),
+        ("Table 8.2", "Statistical Correlation: Career Navigator ATS Engine vs Human Recruiter Panel", get_pg("TBL_8_2", "89")),
+        ("Table 8.3", "Speech Telemetry and Vocal Cadence Accuracy Validation", get_pg("TBL_8_3", "90")),
+        ("Table 8.4", "Algorithmic Big-O Complexity Detection Accuracy across Standard Algorithms", get_pg("TBL_8_4", "91")),
+        ("Table 8.5", "Comparative Evaluation of Career Navigator against Existing Industry Platforms", get_pg("TBL_8_5", "94")),
+        ("Table 8.6", "System Usability Scale (SUS) Evaluation Metrics and Student Survey Feedback", get_pg("TBL_8_6", "92")),
+        ("Table C.1", "State-Level Project Exhibition Official Evaluation Scorecard", get_pg("TBL_C_1", "107"))
     ]
 
     tbl_lot = doc.add_table(rows=len(tables) + 1, cols=3)
@@ -747,30 +786,38 @@ def add_list_of_tables_page(doc):
     tblBorders = parse_xml(f'<w:tblBorders {nsdecls("w")}><w:top w:val="none"/><w:left w:val="none"/><w:bottom w:val="none"/><w:right w:val="none"/><w:insideH w:val="none"/><w:insideV w:val="none"/></w:tblBorders>')
     tbl_lot._tbl.tblPr.append(tblBorders)
     
-    col_w = [Inches(1.2), Inches(4.0), Inches(0.9)]
+    col_w = [Inches(1.10), Inches(4.15), Inches(0.75)]
     
+    # Header Row
     for c_idx, h_text in enumerate(["Table No.", "Title", "Page No."]):
         cell = tbl_lot.cell(0, c_idx)
         cell.width = col_w[c_idx]
+        set_cell_margins(cell, top=20, bottom=20, left=40, right=40)
         p = cell.paragraphs[0]
         p.alignment = WD_ALIGN_PARAGRAPH.RIGHT if c_idx == 2 else WD_ALIGN_PARAGRAPH.LEFT
+        p.paragraph_format.space_after = Pt(2)
         r = p.add_run(h_text)
         r.font.name = 'Times New Roman'
-        r.font.size = Pt(10.5)
+        r.font.size = Pt(9.5)
         r.font.bold = True
         r.font.color.rgb = RGBColor(0x1E, 0x3A, 0x8A)
 
+    # Data Rows
     for idx, (t_no, t_name, page) in enumerate(tables):
+        trPr = tbl_lot.rows[idx + 1]._tr.get_or_add_trPr()
+        trPr.append(parse_xml(f'<w:cantSplit {nsdecls("w")}/>'))
+        
         for c_idx, val in enumerate([t_no, t_name, page]):
             cell = tbl_lot.cell(idx + 1, c_idx)
             cell.width = col_w[c_idx]
+            set_cell_margins(cell, top=20, bottom=20, left=40, right=40)
             p = cell.paragraphs[0]
             p.alignment = WD_ALIGN_PARAGRAPH.RIGHT if c_idx == 2 else WD_ALIGN_PARAGRAPH.LEFT
-            p.paragraph_format.space_after = Pt(3)
-            p.paragraph_format.line_spacing = 1.15
+            p.paragraph_format.space_after = Pt(1.0)
+            p.paragraph_format.line_spacing = 1.0
             r = p.add_run(val)
             r.font.name = 'Times New Roman'
-            r.font.size = Pt(10)
+            r.font.size = Pt(8.5)
             if c_idx == 0:
                 r.font.bold = True
 

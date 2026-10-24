@@ -34,7 +34,7 @@ def set_cell_background(cell, fill_hex):
     shd = parse_xml(f'<w:shd {nsdecls("w")} w:fill="{fill_hex}"/>')
     tcPr.append(shd)
 
-def set_cell_margins(cell, top=120, bottom=120, left=180, right=180):
+def set_cell_margins(cell, top=100, bottom=100, left=140, right=140):
     tcPr = cell._tc.get_or_add_tcPr()
     tcMar = parse_xml(f'''
         <w:tcMar {nsdecls("w")}>
@@ -74,7 +74,7 @@ def setup_header_footer(section, is_prelims=False):
     if not is_prelims:
         hrun = hp.add_run("CAREER NAVIGATOR: AI-POWERED CAREER AND PLACEMENT PLATFORM")
         hrun.font.name = 'Times New Roman'
-        hrun.font.size = Pt(9)
+        hrun.font.size = Pt(8.5)
         hrun.font.italic = True
         hrun.font.color.rgb = RGBColor(0x64, 0x74, 0x8B)
     
@@ -85,9 +85,8 @@ def setup_header_footer(section, is_prelims=False):
     fp.alignment = WD_ALIGN_PARAGRAPH.LEFT
     
     # We create a 1-row, 3-column borderless table for footer
-    tbl = footer.add_table(1, 3, Inches(6.02))
+    tbl = footer.add_table(1, 3, Inches(6.00))
     tbl.alignment = WD_TABLE_ALIGNMENT.CENTER
-    # Remove table borders
     tblBorders = parse_xml(f'<w:tblBorders {nsdecls("w")}><w:top w:val="none"/><w:left w:val="none"/><w:bottom w:val="none"/><w:right w:val="none"/><w:insideH w:val="none"/><w:insideV w:val="none"/></w:tblBorders>')
     tbl._tbl.tblPr.append(tblBorders)
     
@@ -100,7 +99,7 @@ def setup_header_footer(section, is_prelims=False):
     p_left.paragraph_format.space_after = Pt(0)
     r_left = p_left.add_run("Department of CS&E, KIT, Tiptur")
     r_left.font.name = 'Times New Roman'
-    r_left.font.size = Pt(9.5)
+    r_left.font.size = Pt(9.0)
     r_left.font.color.rgb = RGBColor(0x47, 0x55, 0x69)
     
     # Col 2: Middle
@@ -112,74 +111,74 @@ def setup_header_footer(section, is_prelims=False):
     p_mid.paragraph_format.space_after = Pt(0)
     r_mid = p_mid.add_run("2026-2027")
     r_mid.font.name = 'Times New Roman'
-    r_mid.font.size = Pt(9.5)
+    r_mid.font.size = Pt(9.0)
     r_mid.font.color.rgb = RGBColor(0x47, 0x55, 0x69)
     
     # Col 3: Right
     cell_right = tbl.cell(0, 2)
-    cell_right.width = Inches(2.02)
+    cell_right.width = Inches(2.0)
     p_right = cell_right.paragraphs[0]
     p_right.alignment = WD_ALIGN_PARAGRAPH.RIGHT
     p_right.paragraph_format.line_spacing = 1.0
     p_right.paragraph_format.space_after = Pt(0)
     r_right_text = p_right.add_run("Page ")
     r_right_text.font.name = 'Times New Roman'
-    r_right_text.font.size = Pt(9.5)
+    r_right_text.font.size = Pt(9.0)
     r_right_text.font.color.rgb = RGBColor(0x47, 0x55, 0x69)
     r_page = p_right.add_run()
     r_page.font.name = 'Times New Roman'
-    r_page.font.size = Pt(9.5)
+    r_page.font.size = Pt(9.0)
     r_page.font.bold = True
     r_page.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
     add_page_number_field(r_page)
 
 def add_chapter_heading(doc, chapter_num_text, chapter_title_text):
-    # Key point: Chapter number left-justified (size 16), Title in capital & center justified (size 18 Bold)
+    # Chapter number left-justified (size 16), Title in capital & center justified (size 16-18 Bold)
     p_num = doc.add_paragraph()
     p_num.alignment = WD_ALIGN_PARAGRAPH.LEFT
-    p_num.paragraph_format.space_before = Pt(12)
+    p_num.paragraph_format.space_before = Pt(14)
     p_num.paragraph_format.space_after = Pt(4)
     p_num.paragraph_format.keep_with_next = True
     r_num = p_num.add_run(chapter_num_text.upper())
     r_num.font.name = 'Times New Roman'
     r_num.font.size = Pt(16)
     r_num.font.bold = True
-    r_num.font.color.rgb = RGBColor(0x1E, 0x3A, 0x8A)  # Navy accent
+    r_num.font.color.rgb = RGBColor(0x1E, 0x3A, 0x8A)
 
     p_title = doc.add_paragraph()
     p_title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_title.paragraph_format.space_before = Pt(4)
-    p_title.paragraph_format.space_after = Pt(18)
+    p_title.paragraph_format.space_after = Pt(16)
     p_title.paragraph_format.keep_with_next = True
     r_title = p_title.add_run(chapter_title_text.upper())
     r_title.font.name = 'Times New Roman'
-    r_title.font.size = Pt(18)
+    r_title.font.size = Pt(16)
     r_title.font.bold = True
     r_title.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
 
 def add_section_heading(doc, sec_num, sec_title):
-    # Key point: Section number and headings in font size 16 with Bold, left justified
+    # Section headings: 14 pt, bold, left justified
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.LEFT
-    p.paragraph_format.space_before = Pt(14)
-    p.paragraph_format.space_after = Pt(6)
+    p.paragraph_format.space_before = Pt(12)
+    p.paragraph_format.space_after = Pt(4)
     p.paragraph_format.keep_with_next = True
     r = p.add_run(f"{sec_num}  {sec_title}")
     r.font.name = 'Times New Roman'
-    r.font.size = Pt(16)
+    r.font.size = Pt(14)
     r.font.bold = True
     r.font.color.rgb = RGBColor(0x11, 0x18, 0x27)
 
 def add_subsection_heading(doc, subsec_num, subsec_title):
-    # Key point: Subsection and headings in font size 14 with Bold, left justified
+    # Subsection headings: 12 pt, bold, left justified
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.LEFT
     p.paragraph_format.space_before = Pt(10)
-    p.paragraph_format.space_after = Pt(4)
+    p.paragraph_format.space_after = Pt(3)
     p.paragraph_format.keep_with_next = True
     r = p.add_run(f"{subsec_num}  {subsec_title}")
     r.font.name = 'Times New Roman'
-    r.font.size = Pt(14)
+    r.font.size = Pt(12)
     r.font.bold = True
     r.font.color.rgb = RGBColor(0x1E, 0x29, 0x3B)
 
@@ -187,7 +186,7 @@ def add_subsubsection_heading(doc, subsubsec_num, subsubsec_title):
     p = doc.add_paragraph()
     p.alignment = WD_ALIGN_PARAGRAPH.LEFT
     p.paragraph_format.space_before = Pt(8)
-    p.paragraph_format.space_after = Pt(3)
+    p.paragraph_format.space_after = Pt(2)
     p.paragraph_format.keep_with_next = True
     r = p.add_run(f"{subsubsec_num}  {subsubsec_title}")
     r.font.name = 'Times New Roman'
@@ -217,6 +216,7 @@ def add_paragraph(doc, text, bold_prefix=None, space_after=6, italic=False):
     return p
 
 def add_bullet(doc, text, bold_prefix=None):
+    # Ensure exactly ONE bullet marker is used by stripping accidental literal bullets from prefix
     p = doc.add_paragraph(style='List Bullet')
     p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
     p.paragraph_format.line_spacing = 1.25
@@ -224,12 +224,45 @@ def add_bullet(doc, text, bold_prefix=None):
     p.paragraph_format.space_before = Pt(0)
     
     if bold_prefix:
-        r_pre = p.add_run(bold_prefix)
-        r_pre.font.name = 'Times New Roman'
-        r_pre.font.size = Pt(12)
-        r_pre.font.bold = True
-        r_pre.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
+        clean_prefix = bold_prefix.lstrip('•·-\t ').strip()
+        if clean_prefix:
+            r_pre = p.add_run(clean_prefix + " ")
+            r_pre.font.name = 'Times New Roman'
+            r_pre.font.size = Pt(12)
+            r_pre.font.bold = True
+            r_pre.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
         
+    r = p.add_run(text)
+    r.font.name = 'Times New Roman'
+    r.font.size = Pt(12)
+    r.font.color.rgb = RGBColor(0x1F, 0x29, 0x37)
+    return p
+
+def add_numbered_item(doc, num_str, text, bold_prefix=None):
+    # Clean hanging indent for numbered lists
+    p = doc.add_paragraph()
+    p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+    p.paragraph_format.line_spacing = 1.25
+    p.paragraph_format.space_after = Pt(3)
+    p.paragraph_format.space_before = Pt(0)
+    p.paragraph_format.left_indent = Inches(0.4)
+    p.paragraph_format.first_line_indent = Inches(-0.4)
+    
+    r_num = p.add_run(num_str + "\t")
+    r_num.font.name = 'Times New Roman'
+    r_num.font.size = Pt(12)
+    r_num.font.bold = True
+    r_num.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
+    
+    if bold_prefix:
+        clean_prefix = bold_prefix.lstrip('•·-\t ').strip()
+        if clean_prefix:
+            r_pre = p.add_run(clean_prefix + " ")
+            r_pre.font.name = 'Times New Roman'
+            r_pre.font.size = Pt(12)
+            r_pre.font.bold = True
+            r_pre.font.color.rgb = RGBColor(0x0F, 0x17, 0x2A)
+            
     r = p.add_run(text)
     r.font.name = 'Times New Roman'
     r.font.size = Pt(12)
@@ -248,19 +281,20 @@ def add_table_caption(doc, caption_text):
     r.font.bold = True
     r.font.color.rgb = RGBColor(0x1E, 0x3A, 0x8A)
 
-def add_figure(doc, img_path, caption_text, width_inches=5.8):
+def add_figure(doc, img_path, caption_text, width_inches=5.6):
     if os.path.exists(img_path):
         p_img = doc.add_paragraph()
         p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_img.paragraph_format.space_before = Pt(10)
         p_img.paragraph_format.space_after = Pt(4)
+        p_img.paragraph_format.keep_with_next = True
         run_img = p_img.add_run()
         run_img.add_picture(img_path, width=Inches(width_inches))
         
         p_cap = doc.add_paragraph()
         p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p_cap.paragraph_format.space_before = Pt(2)
-        p_cap.paragraph_format.space_after = Pt(14)
+        p_cap.paragraph_format.space_after = Pt(12)
         r_cap = p_cap.add_run(caption_text)
         r_cap.font.name = 'Times New Roman'
         r_cap.font.size = Pt(10.5)
@@ -280,7 +314,7 @@ def add_table(doc, headers, rows_data, col_widths=None):
     for col_idx, header_text in enumerate(headers):
         cell = table.cell(0, col_idx)
         set_cell_background(cell, "1E3A8A")  # Deep Navy
-        set_cell_margins(cell, top=140, bottom=140, left=160, right=160)
+        set_cell_margins(cell, top=120, bottom=120, left=140, right=140)
         p = cell.paragraphs[0]
         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
         p.paragraph_format.space_after = Pt(0)
@@ -300,7 +334,7 @@ def add_table(doc, headers, rows_data, col_widths=None):
         for col_idx, val in enumerate(row_values):
             cell = table.cell(row_idx + 1, col_idx)
             set_cell_background(cell, bg)
-            set_cell_margins(cell, top=100, bottom=100, left=140, right=140)
+            set_cell_margins(cell, top=90, bottom=90, left=120, right=120)
             p = cell.paragraphs[0]
             p.alignment = WD_ALIGN_PARAGRAPH.LEFT
             p.paragraph_format.space_after = Pt(0)
@@ -324,9 +358,9 @@ def add_code_box(doc, code_snippet, language="TypeScript"):
     table.alignment = WD_TABLE_ALIGNMENT.CENTER
     cell = table.cell(0, 0)
     set_cell_background(cell, "F1F5F9")
-    set_cell_margins(cell, top=140, bottom=140, left=180, right=180)
+    set_cell_margins(cell, top=120, bottom=120, left=160, right=160)
     
-    # Single left border
+    # Left border accent
     tcPr = cell._tc.get_or_add_tcPr()
     tcBorders = parse_xml(f'''
         <w:tcBorders {nsdecls("w")}>
@@ -343,7 +377,6 @@ def add_code_box(doc, code_snippet, language="TypeScript"):
     p.paragraph_format.line_spacing = 1.1
     p.paragraph_format.space_after = Pt(0)
     
-    # Header tag
     r_tag = p.add_run(f"// --- Code Listing: {language} ---\n")
     r_tag.font.name = 'Consolas'
     r_tag.font.size = Pt(8.5)
@@ -362,7 +395,7 @@ def add_callout_box(doc, title, text_content):
     table.alignment = WD_TABLE_ALIGNMENT.CENTER
     cell = table.cell(0, 0)
     set_cell_background(cell, "EFF6FF")
-    set_cell_margins(cell, top=140, bottom=140, left=180, right=180)
+    set_cell_margins(cell, top=120, bottom=120, left=160, right=160)
     
     tcPr = cell._tc.get_or_add_tcPr()
     tcBorders = parse_xml(f'''

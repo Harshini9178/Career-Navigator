@@ -1,0 +1,1127 @@
+[
+  {
+    "id": "QA-001",
+    "questionText": "A can complete a piece of work in 12 days and B can complete the same work in 18 days. If they work together, how many days will it take for them to finish the work?",
+    "category": "Quantitative Aptitude",
+    "topic": "Time & Work",
+    "difficulty": "Medium",
+    "options": [
+      "6 days",
+      "7.2 days",
+      "8 days",
+      "9.5 days"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "1 day work of A = 1/12. 1 day work of B = 1/18. Combined 1 day work = 1/12 + 1/18 = (3 + 2)/36 = 5/36. Therefore, total time taken = 36/5 = 7.2 days."
+  },
+  {
+    "id": "QA-002",
+    "questionText": "A train 150 meters long passes an electric pole in 9 seconds. What is the speed of the train in kilometers per hour?",
+    "category": "Quantitative Aptitude",
+    "topic": "Speed, Distance & Time",
+    "difficulty": "Easy",
+    "options": [
+      "45 km/h",
+      "54 km/h",
+      "60 km/h",
+      "72 km/h"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Speed = Distance / Time = 150 / 9 m/s = 50/3 m/s. Converting to km/h: (50/3) * (18/5) = 10 * 6 = 60 km/h."
+  },
+  {
+    "id": "QA-003",
+    "questionText": "A retailer sells an article for $480, thereby earning a profit of 20%. What was the original cost price of the article?",
+    "category": "Quantitative Aptitude",
+    "topic": "Profit & Loss",
+    "difficulty": "Easy",
+    "options": [
+      "$380",
+      "$400",
+      "$420",
+      "$440"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Selling Price = Cost Price * (1 + Profit%). 480 = CP * 1.20 => CP = 480 / 1.20 = $400."
+  },
+  {
+    "id": "QA-004",
+    "questionText": "Find the compound interest on a principal of $10,000 for 2 years at an interest rate of 10% per annum, compounded annually.",
+    "category": "Quantitative Aptitude",
+    "topic": "Simple & Compound Interest",
+    "difficulty": "Medium",
+    "options": [
+      "$2,000",
+      "$2,100",
+      "$2,200",
+      "$2,400"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Amount = P * (1 + r/100)^t = 10000 * (1.10)^2 = 10000 * 1.21 = $12,100. Compound Interest = Amount - Principal = 12100 - 10000 = $2,100."
+  },
+  {
+    "id": "QA-005",
+    "questionText": "If the price of sugar increases by 25%, by what percentage must a household reduce its consumption so that the total expenditure remains unchanged?",
+    "category": "Quantitative Aptitude",
+    "topic": "Percentages",
+    "difficulty": "Medium",
+    "options": [
+      "15%",
+      "20%",
+      "25%",
+      "30%"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Percentage reduction in consumption = [r / (100 + r)] * 100% = [25 / (100 + 25)] * 100% = (25 / 125) * 100% = 20%."
+  },
+  {
+    "id": "QA-006",
+    "questionText": "If the ratio A : B is 2 : 3 and B : C is 4 : 5, what is the combined ratio A : C?",
+    "category": "Quantitative Aptitude",
+    "topic": "Ratio & Proportion",
+    "difficulty": "Easy",
+    "options": [
+      "8:15",
+      "6:15",
+      "2:5",
+      "3:4"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "A/B = 2/3 and B/C = 4/5. Multiplying both equations: A/C = (A/B) * (B/C) = (2/3) * (4/5) = 8/15. Thus A : C = 8 : 15."
+  },
+  {
+    "id": "QA-007",
+    "questionText": "In how many distinct ways can all the letters of the word 'LEADER' be arranged?",
+    "category": "Quantitative Aptitude",
+    "topic": "Permutations & Combinations",
+    "difficulty": "Medium",
+    "options": [
+      "120",
+      "360",
+      "720",
+      "1440"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "The word 'LEADER' contains 6 letters where 'E' appears twice. Distinct permutations = 6! / 2! = 720 / 2 = 360 ways."
+  },
+  {
+    "id": "QA-008",
+    "questionText": "Two fair six-sided dice are thrown simultaneously. What is the probability that the sum of the numbers appearing on the top faces is 8?",
+    "category": "Quantitative Aptitude",
+    "topic": "Probability",
+    "difficulty": "Medium",
+    "options": [
+      "5/36",
+      "1/6",
+      "7/36",
+      "1/4"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Total sample space = 6 * 6 = 36 outcomes. Favorable pairs totaling 8 are: (2,6), (3,5), (4,4), (5,3), (6,2) = 5 outcomes. Probability = 5/36."
+  },
+  {
+    "id": "QA-009",
+    "questionText": "The average of 5 consecutive measurements is 27. When one measurement is removed, the average of the remaining 4 measurements becomes 25. What was the value of the removed measurement?",
+    "category": "Quantitative Aptitude",
+    "topic": "Averages",
+    "difficulty": "Easy",
+    "options": [
+      "25",
+      "30",
+      "35",
+      "40"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Sum of initial 5 numbers = 5 * 27 = 135. Sum of remaining 4 numbers = 4 * 25 = 100. Removed value = 135 - 100 = 35."
+  },
+  {
+    "id": "QA-010",
+    "questionText": "What is the least positive number which, when divided by 6, 9, 12, and 18, leaves a remainder of 2 in each case?",
+    "category": "Quantitative Aptitude",
+    "topic": "Number Systems",
+    "difficulty": "Medium",
+    "options": [
+      "36",
+      "38",
+      "72",
+      "74"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "LCM(6, 9, 12, 18) = 36. The required number = LCM + remainder = 36 + 2 = 38."
+  },
+  {
+    "id": "QA-011",
+    "questionText": "Inlet Pipe A can fill a reservoir in 20 hours, while Pipe B can fill it in 30 hours. If both pipes are opened simultaneously, how many hours will it take to fill the empty reservoir?",
+    "category": "Quantitative Aptitude",
+    "topic": "Pipes & Cisterns",
+    "difficulty": "Easy",
+    "options": [
+      "10 hours",
+      "12 hours",
+      "15 hours",
+      "25 hours"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Combined filling rate per hour = 1/20 + 1/30 = (3 + 2)/60 = 5/60 = 1/12 reservoir/hour. Hence the reservoir fills in 12 hours."
+  },
+  {
+    "id": "QA-012",
+    "questionText": "The ratio of the present ages of a father and son is 7 : 3. If the sum of their present ages is 60 years, what will be the son's age after 5 years?",
+    "category": "Quantitative Aptitude",
+    "topic": "Ages",
+    "difficulty": "Easy",
+    "options": [
+      "18 years",
+      "21 years",
+      "23 years",
+      "25 years"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Let present ages be 7x and 3x. 7x + 3x = 60 => 10x = 60 => x = 6. Son's current age = 3 * 6 = 18 years. After 5 years, son's age = 18 + 5 = 23 years."
+  },
+  {
+    "id": "QA-013",
+    "questionText": "A rectangular solar panel has a perimeter of 80 cm and a length of 24 cm. What is the surface area of the panel?",
+    "category": "Quantitative Aptitude",
+    "topic": "Mensuration",
+    "difficulty": "Easy",
+    "options": [
+      "360 cm²",
+      "384 cm²",
+      "400 cm²",
+      "420 cm²"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Perimeter = 2 * (length + width) => 80 = 2 * (24 + width) => 24 + width = 40 => width = 16 cm. Area = length * width = 24 * 16 = 384 cm²."
+  },
+  {
+    "id": "QA-014",
+    "questionText": "In what ratio must premium coffee beans priced at $60 per kg be blended with standard beans priced at $65 per kg to yield a blend worth $62 per kg?",
+    "category": "Quantitative Aptitude",
+    "topic": "Mixtures & Alligation",
+    "difficulty": "Medium",
+    "options": [
+      "3:2",
+      "2:3",
+      "3:4",
+      "4:3"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "By the rule of alligation: (Price of Dearer - Mean Price) : (Mean Price - Price of Cheaper) = (65 - 62) : (62 - 60) = 3 : 2."
+  },
+  {
+    "id": "QA-015",
+    "questionText": "What is the acute angle formed between the hour hand and the minute hand of an analog clock at exactly 3:30?",
+    "category": "Quantitative Aptitude",
+    "topic": "Clocks & Angles",
+    "difficulty": "Medium",
+    "options": [
+      "65°",
+      "70°",
+      "75°",
+      "80°"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Minute hand at 30 min = 30 * 6° = 180°. Hour hand at 3:30 = (3 * 30°) + (30 * 0.5°) = 90° + 15° = 105°. Acute angle = |180° - 105°| = 75°."
+  },
+  {
+    "id": "LR-001",
+    "questionText": "Statements:\\n1. All apples are fruits.\\n2. Some fruits are sweet.\\nConclusions:\\nI. Some apples are sweet.\\nII. No apple is sweet.",
+    "category": "Logical Reasoning",
+    "topic": "Syllogisms",
+    "difficulty": "Medium",
+    "options": [
+      "Only conclusion I follows",
+      "Only conclusion II follows",
+      "Either I or II follows",
+      "Neither I nor II follows"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Since 'Some fruits are sweet' is an I-type proposition that may or may not overlap with 'apples', conclusions I and II form a complementary pair (Some and No). Therefore, either I or II must follow."
+  },
+  {
+    "id": "LR-002",
+    "questionText": "Introducing a woman, a man said: 'Her father is the only son of my mother.' How is the man related to the woman?",
+    "category": "Logical Reasoning",
+    "topic": "Blood Relations",
+    "difficulty": "Easy",
+    "options": [
+      "Uncle",
+      "Brother",
+      "Father",
+      "Grandfather"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "'The only son of my mother' refers to the speaker himself. Since her father is the only son of his mother, the speaker is her father."
+  },
+  {
+    "id": "LR-003",
+    "questionText": "In a specific coding system, if 'COMPUTER' is encoded as 'RFUVQNPC', how is the word 'MEDICINE' encoded in that system?",
+    "category": "Logical Reasoning",
+    "topic": "Coding-Decoding",
+    "difficulty": "Hard",
+    "options": [
+      "EOJDEJFM",
+      "EOJDJEFM",
+      "MFEDJJOE",
+      "EOJDJFEM"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Reversing 'COMPUTER' yields 'RETUPMOC'. Keeping the first and last letters 'R' and 'C' fixed and shifting each inner letter forward by +1: E->F, T->U, U->V, P->Q, M->N, O->P => 'RFUVQNPC'. Applying the same rule to 'MEDICINE': reversed is 'ENICIDEM'. Keeping 'E' and 'M' at the ends and shifting the inner letters +1: N->O, I->J, C->D, I->J, D->E, E->F => 'EOJDJEFM'."
+  },
+  {
+    "id": "LR-004",
+    "questionText": "A courier walks 10 km North, turns right and walks 6 km East, then turns right again and walks 10 km South. How far and in which direction is the courier relative to the starting point?",
+    "category": "Logical Reasoning",
+    "topic": "Direction Sense",
+    "difficulty": "Easy",
+    "options": [
+      "6 km East",
+      "6 km West",
+      "10 km East",
+      "16 km North"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "The 10 km North and 10 km South movements cancel each other out vertically. The horizontal displacement is 6 km East of the origin."
+  },
+  {
+    "id": "LR-005",
+    "questionText": "Identify the next number in the following numerical sequence: 2, 6, 12, 20, 30, 42, ___",
+    "category": "Logical Reasoning",
+    "topic": "Series Completion",
+    "difficulty": "Medium",
+    "options": [
+      "52",
+      "54",
+      "56",
+      "60"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "The differences between successive terms are +4, +6, +8, +10, +12. Following this progression, the next difference is +14. 42 + 14 = 56 (also observable as n*(n+1): 1*2, 2*3, 3*4, 4*5, 5*6, 6*7, 7*8 = 56)."
+  },
+  {
+    "id": "LR-006",
+    "questionText": "Five candidates (A, B, C, D, E) are seated in a row facing North. C is seated in the exact middle. A sits immediately to the left of B. D is at one of the extreme ends. If B is adjacent to C, who is seated to the immediate right of C?",
+    "category": "Logical Reasoning",
+    "topic": "Seating Arrangement",
+    "difficulty": "Medium",
+    "options": [
+      "A",
+      "B",
+      "D",
+      "E"
+    ],
+    "correctAnswerIndex": 3,
+    "explanation": "Positions 1 to 5: C is in position 3. B is adjacent to C and A is immediately left of B, which requires A in position 1 and B in position 2. D is at one extreme end, which must be position 5. Candidate E therefore occupies position 4, immediately right of C."
+  },
+  {
+    "id": "LR-007",
+    "questionText": "Complete the analogy: Odometer is to Mileage as Compass is to: _______",
+    "category": "Logical Reasoning",
+    "topic": "Analogy",
+    "difficulty": "Easy",
+    "options": [
+      "Speed",
+      "Direction",
+      "Altitude",
+      "Pressure"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "An odometer is an instrument designed to measure mileage/distance; a compass is an instrument designed to indicate geographic direction."
+  },
+  {
+    "id": "LR-008",
+    "questionText": "Which number does not belong to the group: 27, 64, 125, 144, 216?",
+    "category": "Logical Reasoning",
+    "topic": "Odd One Out",
+    "difficulty": "Easy",
+    "options": [
+      "27",
+      "64",
+      "144",
+      "216"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "27 = 3³, 64 = 4³, 125 = 5³, and 216 = 6³ are all cubes of integers. 144 = 12² is a square and not the cube of an integer."
+  },
+  {
+    "id": "LR-009",
+    "questionText": "Statement: 'Passengers are advised to verify and collect all personal baggage before detraining.'\\nAssumptions:\\nI. Passengers occasionally forget personal belongings on the train.\\nII. The railway operator assumes no financial liability for lost articles.",
+    "category": "Logical Reasoning",
+    "topic": "Statement & Assumption",
+    "difficulty": "Medium",
+    "options": [
+      "Only assumption I is implicit",
+      "Only assumption II is implicit",
+      "Both I and II are implicit",
+      "Neither I nor II is implicit"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "An advisory warning passengers to collect belongings implicitly assumes that without such a reminder, people may forget items (Assumption I). The statement makes no legal or liability assertions regarding operator policy (Assumption II)."
+  },
+  {
+    "id": "LR-010",
+    "questionText": "Evaluate the logical flaw: 'All backend developers at our firm write Java. Sarah writes Java; therefore, Sarah must be a backend developer at our firm.'",
+    "category": "Logical Reasoning",
+    "topic": "Critical Reasoning",
+    "difficulty": "Hard",
+    "options": [
+      "Circular reasoning",
+      "Affirming the consequent",
+      "Ad hominem fallacy",
+      "Hasty generalization"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "The argument takes the conditional 'If P then Q' (If backend developer -> writes Java) and invalidly deduces P from Q (Sarah writes Java -> backend developer). This is the formal fallacy of affirming the consequent."
+  },
+  {
+    "id": "LR-011",
+    "questionText": "On a standard fair six-sided die, opposite faces always sum to 7. If three visible adjacent faces show the values 1, 2, and 3, what are the values on their opposite opposing faces?",
+    "category": "Logical Reasoning",
+    "topic": "Cube & Dice",
+    "difficulty": "Easy",
+    "options": [
+      "4, 5, 6",
+      "3, 4, 5",
+      "2, 4, 6",
+      "1, 5, 6"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Opposite to 1 is (7 - 1) = 6. Opposite to 2 is (7 - 2) = 5. Opposite to 3 is (7 - 3) = 4. The opposite faces are 6, 5, and 4 (or 4, 5, 6)."
+  },
+  {
+    "id": "LR-012",
+    "questionText": "Identify the next term in the alphanumeric pattern: A1Z, C3X, E5V, G7T, ___",
+    "category": "Logical Reasoning",
+    "topic": "Alphanumeric Series",
+    "difficulty": "Medium",
+    "options": [
+      "H8S",
+      "I9R",
+      "I8R",
+      "J9S"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "First letter advances by +2: A, C, E, G -> I. Middle number increases by +2: 1, 3, 5, 7 -> 9. Last letter regresses by -2: Z, X, V, T -> R. The next term is I9R."
+  },
+  {
+    "id": "LR-013",
+    "questionText": "Statements:\\nI. The city authority completed resurfacing and stormwater drainage repairs across all major avenues.\\nII. Traffic accidents and vehicular congestion during heavy monsoon downpours dropped by 45%.",
+    "category": "Logical Reasoning",
+    "topic": "Cause and Effect",
+    "difficulty": "Medium",
+    "options": [
+      "Statement I is the cause and Statement II is its effect",
+      "Statement II is the cause and Statement I is its effect",
+      "Both statements are independent causes",
+      "Both statements are effects of independent causes"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Completing infrastructure repair and drainage work (Statement I) directly caused the observed drop in monsoon road accidents and waterlogged congestion (Statement II)."
+  },
+  {
+    "id": "LR-014",
+    "questionText": "Statement: 'Company Alpha grew its renewable energy sourcing by 40% during the current fiscal year.'\\nConclusions:\\nI. Company Alpha completely halted all consumption of fossil-fuel electricity.\\nII. Company Alpha's overall electricity expenditure has decreased.",
+    "category": "Logical Reasoning",
+    "topic": "Statement & Conclusion",
+    "difficulty": "Medium",
+    "options": [
+      "Only conclusion I follows",
+      "Only conclusion II follows",
+      "Either I or II follows",
+      "Neither conclusion I nor II follows"
+    ],
+    "correctAnswerIndex": 3,
+    "explanation": "An increase in renewable sourcing does not imply complete cessation of fossil-fuel reliance (I), nor does it guarantee lower overall electricity expenditure (II) without tariffs and total demand data. Neither follows."
+  },
+  {
+    "id": "LR-015",
+    "questionText": "Four professionals (Doctor, Engineer, Lawyer, Pilot) reside in four distinct cities (New York, Chicago, Boston, Seattle). The Engineer does not live in Chicago or Boston. The Lawyer lives in Seattle. The Doctor does not live in Boston. In which city does the Engineer reside?",
+    "category": "Logical Reasoning",
+    "topic": "Matrix Arrangement",
+    "difficulty": "Medium",
+    "options": [
+      "New York",
+      "Chicago",
+      "Boston",
+      "Seattle"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Seattle is occupied by the Lawyer. The remaining cities are New York, Chicago, and Boston. The Engineer cannot live in Chicago or Boston, so the Engineer must live in New York."
+  },
+  {
+    "id": "VA-001",
+    "questionText": "Select the grammatically correct sentence adhering to subject-verb agreement:",
+    "category": "Verbal Ability",
+    "topic": "Subject-Verb Agreement",
+    "difficulty": "Medium",
+    "options": [
+      "Neither the team lead nor the developers was aware of the system outage.",
+      "Neither the team lead nor the developers were aware of the system outage.",
+      "Neither the team lead or the developers was aware of the system outage.",
+      "Neither the team lead nor the developers is aware of the system outage."
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "When subjects are joined by 'neither... nor', the verb must agree in number with the closer subject. 'The developers' is plural, requiring the plural verb 'were'."
+  },
+  {
+    "id": "VA-002",
+    "questionText": "Choose the word closest in meaning (synonym) to 'METICULOUS':",
+    "category": "Verbal Ability",
+    "topic": "Synonyms",
+    "difficulty": "Easy",
+    "options": [
+      "Hasty",
+      "Fastidious",
+      "Indifferent",
+      "Ambiguous"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "'Meticulous' means showing great attention to detail and thorough precision. 'Fastidious' is the closest synonym."
+  },
+  {
+    "id": "VA-003",
+    "questionText": "Choose the word most directly opposite in meaning (antonym) to 'EPHEMERAL':",
+    "category": "Verbal Ability",
+    "topic": "Antonyms",
+    "difficulty": "Medium",
+    "options": [
+      "Fleeting",
+      "Transient",
+      "Permanent",
+      "Trivial"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "'Ephemeral' means lasting for a very short duration or transient. Its exact opposite is 'Permanent'."
+  },
+  {
+    "id": "VA-004",
+    "questionText": "Fill in the blank: 'Despite the engineering team's relentless effort, the release deadline had to be _______ due to unexpected third-party API deprecations.'",
+    "category": "Verbal Ability",
+    "topic": "Fill in the Blanks",
+    "difficulty": "Easy",
+    "options": [
+      "accelerated",
+      "extended",
+      "abbreviated",
+      "curtailed"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Because unexpected technical deprecations delayed progress, the deadline had to be moved later or 'extended'."
+  },
+  {
+    "id": "VA-005",
+    "questionText": "What is the meaning of the common English idiom 'to bite the bullet'?",
+    "category": "Verbal Ability",
+    "topic": "Idioms & Phrases",
+    "difficulty": "Easy",
+    "options": [
+      "To refuse to accept constructive feedback",
+      "To face a difficult or inevitable situation with fortitude",
+      "To make an impetuous and reckless financial decision",
+      "To concede defeat in an argument prematurely"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "'To bite the bullet' means to bravely endure or confront an unavoidable hardship or painful reality."
+  },
+  {
+    "id": "VA-006",
+    "questionText": "Select the appropriate one-word substitution: 'A person who remains indifferent to both pain and pleasure, enduring adversity without complaint.'",
+    "category": "Verbal Ability",
+    "topic": "One Word Substitution",
+    "difficulty": "Medium",
+    "options": [
+      "Hedonist",
+      "Stoic",
+      "Ascetic",
+      "Cynic"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "A 'Stoic' is an individual who accepts hardships or pleasures impassively without exhibiting distress or emotional agitation."
+  },
+  {
+    "id": "VA-007",
+    "questionText": "Arrange the four sentences in coherent logical paragraph order:\\nP: This transition cuts municipal greenhouse emissions dramatically.\\nQ: Cities worldwide are accelerating the electrification of transit systems.\\nR: Consequently, urban ambient air quality shows quantifiable improvements.\\nS: Specifically, legacy diesel bus fleets are being replaced with battery electric vehicles.",
+    "category": "Verbal Ability",
+    "topic": "Para Jumbles",
+    "difficulty": "Hard",
+    "options": [
+      "QSPR",
+      "QPSR",
+      "SQPR",
+      "PQSR"
+    ],
+    "correctAnswerIndex": 0,
+    "explanation": "Q introduces the broad topic (cities electrifying transit). S specifies the tangible action (replacing diesel buses with electric). P explains the immediate technical effect (cutting greenhouse emissions). R concludes with the resulting urban outcome (ambient air quality improvements). The logical order is QSPR."
+  },
+  {
+    "id": "VA-008",
+    "questionText": "Identify the segment containing a grammatical error: 'Each of the participants (A) / were presented with a certificate (B) / and an honorarium (C) / at the symposium (D).'",
+    "category": "Verbal Ability",
+    "topic": "Error Spotting",
+    "difficulty": "Medium",
+    "options": [
+      "Each of the participants (A)",
+      "were presented with a certificate (B)",
+      "and an honorarium (C)",
+      "at the symposium (D)"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "'Each' is a singular indefinite pronoun and requires a singular verb. Part (B) should read 'was presented with a certificate' instead of 'were presented'."
+  },
+  {
+    "id": "VA-009",
+    "questionText": "Determine the author's tone: 'While generative AI tools undoubtedly expedite initial boilerplate authoring, adopting them without rigorous architectural review risks infusing subtle, untraceable security flaws across critical production tiers.'",
+    "category": "Verbal Ability",
+    "topic": "Critical Reading & Tone",
+    "difficulty": "Medium",
+    "options": [
+      "Unconditionally enthusiastic",
+      "Cautiously analytical",
+      "Dismissive and cynical",
+      "Overly alarmist"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "The author balances recognition of efficiency gains with a reasoned warning about structural vulnerabilities, adopting a cautiously analytical tone."
+  },
+  {
+    "id": "VA-010",
+    "questionText": "Convert the sentence from active to passive voice: 'The senior architect evaluated the distributed cache architecture.'",
+    "category": "Verbal Ability",
+    "topic": "Active/Passive Voice",
+    "difficulty": "Easy",
+    "options": [
+      "The distributed cache architecture had been evaluated by the senior architect.",
+      "The distributed cache architecture was evaluated by the senior architect.",
+      "The senior architect was evaluating the distributed cache architecture.",
+      "The distributed cache architecture has been evaluated by the senior architect."
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Simple past active 'evaluated' converts to 'was evaluated by' in the passive voice."
+  },
+  {
+    "id": "VA-011",
+    "questionText": "Complete the analogy based on functional structure: Epilogue : Book :: _______ : Symphony",
+    "category": "Verbal Ability",
+    "topic": "Analogies",
+    "difficulty": "Medium",
+    "options": [
+      "Prologue",
+      "Coda",
+      "Movement",
+      "Overture"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "An epilogue is the concluding section of a literary book; a coda is the concluding musical passage that brings a symphony or movement to a formal close."
+  },
+  {
+    "id": "VA-012",
+    "questionText": "Identify the correctly spelled English word:",
+    "category": "Verbal Ability",
+    "topic": "Spelling",
+    "difficulty": "Easy",
+    "options": [
+      "Accomodate",
+      "Acommodate",
+      "Accommodate",
+      "Acomodate"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "'Accommodate' is correctly spelled with double 'c' and double 'm'."
+  },
+  {
+    "id": "VA-013",
+    "questionText": "Transform into indirect speech: She said, 'I have completed the code review.'",
+    "category": "Verbal Ability",
+    "topic": "Direct/Indirect Speech",
+    "difficulty": "Easy",
+    "options": [
+      "She said that she has completed the code review.",
+      "She said that she had completed the code review.",
+      "She told that she was completing the code review.",
+      "She said she completes the code review."
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "In reported speech with a past tense reporting verb ('said'), present perfect ('have completed') shifts to past perfect ('had completed')."
+  },
+  {
+    "id": "VA-014",
+    "questionText": "Select the word that best completes the sentence: 'The candidate presented such a _______ case for the architectural refactoring that even the most skeptical stakeholders approved the proposal.'",
+    "category": "Verbal Ability",
+    "topic": "Vocabulary in Context",
+    "difficulty": "Medium",
+    "options": [
+      "convoluted",
+      "cogent",
+      "specious",
+      "redundant"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "'Cogent' means clear, logical, and powerfully convincing, which fits the context of persuading skeptical stakeholders."
+  },
+  {
+    "id": "VA-015",
+    "questionText": "Choose the word that logically completes the sentence: 'Although the team encountered severe onboarding friction, their persistent agility and shared vision ultimately _______ the long-term success of the product.'",
+    "category": "Verbal Ability",
+    "topic": "Sentence Completion",
+    "difficulty": "Easy",
+    "options": [
+      "compromised",
+      "ensured",
+      "precluded",
+      "undermined"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "The conjunction 'Although' contrasts the initial friction with the positive outcome, making 'ensured' the only coherent choice."
+  },
+  {
+    "id": "TA-001",
+    "questionText": "In Java, how do String, StringBuilder, and StringBuffer differ regarding mutability and thread safety?",
+    "category": "Technical Aptitude",
+    "topic": "Java Core",
+    "difficulty": "Medium",
+    "options": [
+      "String is mutable; StringBuffer is immutable and thread-safe",
+      "StringBuilder is thread-safe, whereas StringBuffer is not thread-safe",
+      "StringBuffer is thread-safe via synchronized methods; StringBuilder is not synchronized",
+      "String and StringBuilder are both thread-safe; StringBuffer is deprecated"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "String is immutable. StringBuffer is mutable and thread-safe because its public methods are synchronized. StringBuilder is mutable but unsynchronized, making it faster in single-threaded contexts."
+  },
+  {
+    "id": "TA-002",
+    "questionText": "In the Spring Framework, which annotation is a specialized stereotype of @Component specifically used to encapsulate business logic and transactional workflows?",
+    "category": "Technical Aptitude",
+    "topic": "Spring Boot",
+    "difficulty": "Easy",
+    "options": [
+      "@Repository",
+      "@Service",
+      "@Controller",
+      "@Configuration"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "@Service indicates that the annotated class holds business logic and represents the service layer. @Repository is for data access, @Controller for web routing, and @Configuration for bean declarations."
+  },
+  {
+    "id": "TA-003",
+    "questionText": "What are the average-case and worst-case time complexities for searching an element in a self-balancing binary search tree (such as a Red-Black Tree) containing N nodes?",
+    "category": "Technical Aptitude",
+    "topic": "Data Structures & Algorithms",
+    "difficulty": "Medium",
+    "options": [
+      "O(1) average, O(N) worst-case",
+      "O(log N) average, O(log N) worst-case",
+      "O(log N) average, O(N) worst-case",
+      "O(N) average, O(N log N) worst-case"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Because self-balancing BSTs guarantee a maximum height proportional to log(N) through rotations, both average and worst-case search complexities remain strictly O(log N)."
+  },
+  {
+    "id": "TA-004",
+    "questionText": "In relational database ACID guarantees, what does 'Isolation' specifically ensure?",
+    "category": "Technical Aptitude",
+    "topic": "Databases & SQL",
+    "difficulty": "Medium",
+    "options": [
+      "Ensures that all committed changes survive hardware crashes permanently",
+      "Ensures concurrent transactions execute without interfering with or observing intermediate uncommitted states of one another",
+      "Ensures all foreign key relationships remain strictly valid across table deletions",
+      "Guarantees that repeated executions of the same query produce identical result sets"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Isolation ensures that the concurrent execution of transactions leaves the system in the same state as if they were executed sequentially, preventing dirty reads, non-repeatable reads, or phantom reads depending on the isolation level."
+  },
+  {
+    "id": "TA-005",
+    "questionText": "Which implementation of the Java Set interface preserves the insertion order of elements while offering O(1) average time complexity for basic operations?",
+    "category": "Technical Aptitude",
+    "topic": "Java Collections",
+    "difficulty": "Easy",
+    "options": [
+      "TreeSet",
+      "HashSet",
+      "LinkedHashSet",
+      "ConcurrentSkipListSet"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "LinkedHashSet maintains a doubly-linked list through all of its entries, thus preserving insertion order while maintaining the hash table performance (O(1)) of HashSet."
+  },
+  {
+    "id": "TA-006",
+    "questionText": "According to HTTP/REST architectural semantics, which method is intended to be idempotent and completely replace the targeted resource representation with the request payload?",
+    "category": "Technical Aptitude",
+    "topic": "RESTful APIs",
+    "difficulty": "Easy",
+    "options": [
+      "POST",
+      "PUT",
+      "PATCH",
+      "CONNECT"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "PUT is defined as idempotent and replaces the entire target resource with the provided representation. PATCH is intended for partial modifications and is not guaranteed to be idempotent."
+  },
+  {
+    "id": "TA-007",
+    "questionText": "In concurrent programming, what situation arises when two or more threads are permanently blocked because each holds a lock that the other needs?",
+    "category": "Technical Aptitude",
+    "topic": "Operating Systems & Concurrency",
+    "difficulty": "Easy",
+    "options": [
+      "Race condition",
+      "Deadlock",
+      "Livelock",
+      "Starvation"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "A deadlock occurs when processes form a circular wait dependency, each holding a shared resource lock while waiting for another resource held by another process."
+  },
+  {
+    "id": "TA-008",
+    "questionText": "What HTTP status code should a compliant REST API return upon successfully handling a POST request that creates a new resource?",
+    "category": "Technical Aptitude",
+    "topic": "Web & Networking",
+    "difficulty": "Easy",
+    "options": [
+      "200 OK",
+      "201 Created",
+      "202 Accepted",
+      "204 No Content"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "HTTP status 201 Created indicates that the request was successful and resulted in the creation of one or more new resources, typically accompanied by a Location header."
+  },
+  {
+    "id": "TA-009",
+    "questionText": "Given tables `customers` and `orders`, which SQL construct returns all rows from `customers` regardless of whether they have placed any matching orders?",
+    "category": "Technical Aptitude",
+    "topic": "SQL",
+    "difficulty": "Easy",
+    "options": [
+      "FROM customers INNER JOIN orders ON customers.id = orders.customer_id",
+      "FROM customers LEFT JOIN orders ON customers.id = orders.customer_id",
+      "FROM customers RIGHT JOIN orders ON customers.id = orders.customer_id",
+      "FROM customers CROSS JOIN orders"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "A LEFT JOIN returns all rows from the left table (`customers`), filling in NULL values for columns of the right table (`orders`) if no matching relation exists."
+  },
+  {
+    "id": "TA-010",
+    "questionText": "In Java memory model semantics, what guarantee does the `volatile` modifier provide for a field?",
+    "category": "Technical Aptitude",
+    "topic": "Java Concurrency",
+    "difficulty": "Hard",
+    "options": [
+      "Guarantees atomic execution for compound check-then-act operations",
+      "Guarantees that read and write operations are directly committed to main memory and visible across all threads, without acquiring locks",
+      "Prevents the enclosing object from being serialized by the JVM",
+      "Ensures that only one thread can invoke any method accessing the field"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "The `volatile` keyword ensures visibility and ordering: any write to a volatile field happens-before every subsequent read of that field across all threads, avoiding stale cached values in CPU registers or L1/L2 caches without locking."
+  },
+  {
+    "id": "TA-011",
+    "questionText": "Which sorting algorithm exhibits an asymptotic worst-case time complexity of O(N log N) while maintaining stability (preserving relative order of equal elements)?",
+    "category": "Technical Aptitude",
+    "topic": "Algorithms",
+    "difficulty": "Medium",
+    "options": [
+      "Quick Sort",
+      "Merge Sort",
+      "Heap Sort",
+      "Selection Sort"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Merge Sort has a deterministic time complexity of O(N log N) across best, average, and worst cases, and is stable. Quick Sort has worst case O(N²), and Heap Sort is unstable."
+  },
+  {
+    "id": "TA-012",
+    "questionText": "In web application security, what core purpose does a CSRF (Cross-Site Request Forgery) protection token serve?",
+    "category": "Technical Aptitude",
+    "topic": "Web Security",
+    "difficulty": "Medium",
+    "options": [
+      "It encrypts sensitive payload parameters over unencrypted HTTP connections",
+      "It ensures that state-changing requests originate from an authorized client application rather than an unauthorized third-party site",
+      "It protects the client browser from malicious cross-site scripting (XSS) script injections",
+      "It rate-limits client IP addresses to defend against distributed denial-of-service attacks"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "A CSRF token is an unpredictable, secret token validated on state-changing requests (POST, PUT, DELETE) to verify that the incoming command originated from the authentic user application rather than a forged cross-site request."
+  },
+  {
+    "id": "TA-013",
+    "questionText": "Which object-oriented principle allows a subclass to provide a specific implementation of a method defined in its superclass, executed dynamically at runtime?",
+    "category": "Technical Aptitude",
+    "topic": "Object-Oriented Programming",
+    "difficulty": "Easy",
+    "options": [
+      "Method Overloading",
+      "Method Overriding",
+      "Encapsulation",
+      "Data Abstraction"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Method Overriding (runtime polymorphism) occurs when a subclass redefines an inherited instance method with the exact same signature, dispatched at runtime based on the actual object instance."
+  },
+  {
+    "id": "TA-014",
+    "questionText": "Which caching pattern ensures that writes are synchronously applied to both the cache and the backing database before returning confirmation to the caller?",
+    "category": "Technical Aptitude",
+    "topic": "System Design",
+    "difficulty": "Medium",
+    "options": [
+      "Cache-Aside (Lazy Loading)",
+      "Write-Through",
+      "Write-Behind (Write-Back)",
+      "Refresh-Ahead"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "In a Write-Through caching pattern, the application updates the cache, and the cache synchronously writes the updated data to the underlying database before returning success, ensuring immediate consistency."
+  },
+  {
+    "id": "TA-015",
+    "questionText": "Why is a database index on a boolean column (such as `is_active`) often ignored by the query optimizer on a large table?",
+    "category": "Technical Aptitude",
+    "topic": "Databases & Indexing",
+    "difficulty": "Hard",
+    "options": [
+      "B-tree index structures cannot physically store boolean data types",
+      "The column has low cardinality and poor selectivity, making a sequential table scan cheaper than traversing the index and random-accessing table pages",
+      "Boolean indexes trigger immediate transactional deadlocks under concurrent write traffic",
+      "SQL standard forbids indexing columns with fewer than 10 unique values"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Boolean columns have a cardinality of only 2. Because an index on a low-selectivity column matches a large percentage of rows (e.g. 50%), the query optimizer recognizes that index random I/O lookups are more expensive than a simple sequential table scan."
+  },
+  {
+    "id": "DI-001",
+    "questionText": "Financial data for four business divisions ($ in Millions):\\n- Alpha: Revenue $120M, Expenses $80M\\n- Beta: Revenue $150M, Expenses $90M\\n- Gamma: Revenue $200M, Expenses $150M\\n- Delta: Revenue $160M, Expenses $100M\\nWhich division achieved the highest Profit Margin percentage (Profit / Revenue * 100%)?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Tabular Data Analysis",
+    "difficulty": "Medium",
+    "options": [
+      "Alpha",
+      "Beta",
+      "Gamma",
+      "Delta"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Alpha: Profit = 120 - 80 = $40M; Margin = 40/120 = 33.33%.\\nBeta: Profit = 150 - 90 = $60M; Margin = 60/150 = 40.00%.\\nGamma: Profit = 200 - 150 = $50M; Margin = 50/200 = 25.00%.\\nDelta: Profit = 160 - 100 = $60M; Margin = 60/160 = 37.50%.\\nBeta achieved the highest margin at 40%."
+  },
+  {
+    "id": "DI-002",
+    "questionText": "An enterprise has a total annual operating budget of $2.4 Million. A pie chart distributes the expenditure as follows:\\n- Engineering & R&D: 30%\\n- Marketing: 25%\\n- Cloud & Infrastructure: 20%\\n- Salaries: 15%\\n- Legal & Administration: 10%\\nHow much more capital is allocated to Engineering & R&D than to Salaries?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Pie Chart Interpretation",
+    "difficulty": "Easy",
+    "options": [
+      "$240,000",
+      "$300,000",
+      "$360,000",
+      "$420,000"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Difference in percentage = 30% - 15% = 15%. Total difference in dollars = 15% of $2,400,000 = 0.15 * 2,400,000 = $360,000."
+  },
+  {
+    "id": "DI-003",
+    "questionText": "Quarterly active subscribers for a SaaS product are recorded as follows:\\n- Q1: 200,000\\n- Q2: 260,000\\n- Q3: 312,000\\n- Q4: 390,000\\nWhat was the percentage growth in active subscribers from Q1 to Q4?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Trend & Percentage Growth",
+    "difficulty": "Easy",
+    "options": [
+      "85%",
+      "90%",
+      "95%",
+      "105%"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Growth = [(Q4 - Q1) / Q1] * 100% = [(390,000 - 200,000) / 200,000] * 100% = (190,000 / 200,000) * 100% = 95%."
+  },
+  {
+    "id": "DI-004",
+    "questionText": "A manufacturing facility produces microchips across three work shifts with the following metrics:\\n- Shift A: 450 units produced, 2% defect rate\\n- Shift B: 550 units produced, 4% defect rate\\n- Shift C: 400 units produced, 5% defect rate\\nWhat is the total number of defective microchips produced across all three shifts?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Production & Defect Metrics",
+    "difficulty": "Medium",
+    "options": [
+      "45 units",
+      "51 units",
+      "56 units",
+      "60 units"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Shift A defects = 450 * 0.02 = 9 units.\\nShift B defects = 550 * 0.04 = 22 units.\\nShift C defects = 400 * 0.05 = 20 units.\\nTotal defects = 9 + 22 + 20 = 51 units."
+  },
+  {
+    "id": "DI-005",
+    "questionText": "In a cohort of 100 software engineers, 65 are proficient in Java, 50 are proficient in Python, and 25 are proficient in both Java and Python. How many engineers in the cohort know neither Java nor Python?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Venn Diagram Analysis",
+    "difficulty": "Easy",
+    "options": [
+      "5",
+      "10",
+      "15",
+      "20"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Number of engineers knowing at least one language = N(Java) + N(Python) - N(Java ∩ Python) = 65 + 50 - 25 = 90. Engineers proficient in neither = Total - 90 = 100 - 90 = 10."
+  },
+  {
+    "id": "DI-006",
+    "questionText": "A cloud data transfer service bills according to tiered monthly bandwidth:\\n- Tier 1 (First 1,000 GB): Fixed base rate of $50\\n- Tier 2 (Next 4,000 GB, up to 5,000 GB): $0.05 per GB\\n- Tier 3 (Usage exceeding 5,000 GB): $0.03 per GB\\nWhat will a customer be invoiced for consuming 6,000 GB in a single billing cycle?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Caselet Analysis",
+    "difficulty": "Medium",
+    "options": [
+      "$260",
+      "$280",
+      "$300",
+      "$320"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Tier 1 (First 1,000 GB) = $50.\\nTier 2 (Next 4,000 GB) = 4,000 * $0.05 = $200.\\nTier 3 (Remaining 1,000 GB beyond 5,000 GB) = 1,000 * $0.03 = $30.\\nTotal invoice = $50 + $200 + $30 = $280."
+  },
+  {
+    "id": "DI-007",
+    "questionText": "Departmental gender distribution in a software agency:\\n- Backend: 48 engineers, Male to Female ratio is 3 : 1\\n- Frontend: 32 engineers, Male to Female ratio is 1 : 1\\n- DevOps: 20 engineers, Male to Female ratio is 4 : 1\\nWhat is the simplified ratio of total Male engineers to total Female engineers across all three departments?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Ratio in Data Sets",
+    "difficulty": "Medium",
+    "options": [
+      "15:8",
+      "17:8",
+      "19:8",
+      "21:10"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Backend: 48 * (3/4) = 36 Males, 12 Females.\\nFrontend: 32 * (1/2) = 16 Males, 16 Females.\\nDevOps: 20 * (4/5) = 16 Males, 4 Females.\\nTotal Males = 36 + 16 + 16 = 68.\\nTotal Females = 12 + 16 + 4 = 32.\\nRatio = 68 : 32 = 17 : 8."
+  },
+  {
+    "id": "DI-008",
+    "questionText": "Question: Is the integer x an even number?\\nStatement (1): x + 3 is an odd integer.\\nStatement (2): 2x is evenly divisible by 4.\\nWhich statement(s) provide sufficient data to answer the question?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Data Sufficiency",
+    "difficulty": "Hard",
+    "options": [
+      "Statement (1) ALONE is sufficient, but Statement (2) alone is not",
+      "Statement (2) ALONE is sufficient, but Statement (1) alone is not",
+      "EACH statement ALONE is sufficient",
+      "Statements (1) and (2) TOGETHER are not sufficient"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "From Statement (1): x + odd = odd => x must be even. Sufficient.\\nFrom Statement (2): 2x is divisible by 4 => 2x = 4k => x = 2k, so x is an even integer. Sufficient.\\nTherefore, each statement alone is sufficient."
+  },
+  {
+    "id": "DI-009",
+    "questionText": "A digital transformation initiative is evaluated across four phased milestones with assigned weights and completion statuses:\\n- Phase 1 (Architecture): Weight 20%, Completed: 100%\\n- Phase 2 (Core Development): Weight 30%, Completed: 80%\\n- Phase 3 (Integration & QA): Weight 30%, Completed: 50%\\n- Phase 4 (Deployment & Rollout): Weight 20%, Completed: 25%\\nWhat is the aggregate weighted progress of the overall initiative?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Weighted Averages",
+    "difficulty": "Medium",
+    "options": [
+      "58%",
+      "62%",
+      "64%",
+      "68%"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Weighted progress = (0.20 * 100%) + (0.30 * 80%) + (0.30 * 50%) + (0.20 * 25%) = 20% + 24% + 15% + 5% = 64%."
+  },
+  {
+    "id": "DI-010",
+    "questionText": "An inventory report shows the following unit counts for a flagship hardware sensor:\\n- Beginning Inventory: 1,500 units\\n- Manufactured in Q1: 12,000 units\\n- Sold to Customers: 11,200 units\\n- Scrapped due to shipping damage: 300 units\\nWhat is the ending inventory count of operational sensors at the close of Q1?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Inventory Reconciliation",
+    "difficulty": "Easy",
+    "options": [
+      "1,800 units",
+      "2,000 units",
+      "2,100 units",
+      "2,300 units"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Ending Inventory = Beginning Inventory + Units Manufactured - Units Sold - Units Scrapped = 1,500 + 12,000 - 11,200 - 300 = 2,000 units."
+  },
+  {
+    "id": "DI-011",
+    "questionText": "An online education platform recorded $50,000 in subscription revenue in January. Revenue grew at a consistent compounded rate of 10% month-over-month for February, March, and April. What was the subscription revenue in April?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Compounded Trends",
+    "difficulty": "Medium",
+    "options": [
+      "$65,000",
+      "$66,550",
+      "$67,200",
+      "$68,500"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "February = $50,000 * 1.10 = $55,000.\\nMarch = $55,000 * 1.10 = $60,500.\\nApril = $60,500 * 1.10 = $66,550."
+  },
+  {
+    "id": "DI-012",
+    "questionText": "A survey collected satisfaction ratings (on a 1 to 5 star scale) from 500 verified users:\\n- 5 Stars: 200 respondents\\n- 4 Stars: 150 respondents\\n- 3 Stars: 80 respondents\\n- 2 Stars: 40 respondents\\n- 1 Star: 30 respondents\\nWhat is the exact mean (weighted average) satisfaction rating?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Survey Statistics",
+    "difficulty": "Medium",
+    "options": [
+      "3.75",
+      "3.85",
+      "3.90",
+      "4.05"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Total points = (200 * 5) + (150 * 4) + (80 * 3) + (40 * 2) + (30 * 1) = 1000 + 600 + 240 + 80 + 30 = 1,950 points.\\nWeighted average = 1,950 / 500 = 3.90."
+  },
+  {
+    "id": "DI-013",
+    "questionText": "A technology company employs 1,200 full-time staff members. The organizational distribution is:\\n- Software Engineering: 45%\\n- Sales & Business Development: 25%\\n- Product & Design: 15%\\n- Cloud Operations & IT: Remainder\\nHow many employees work in Cloud Operations & IT?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Workforce Demographics",
+    "difficulty": "Easy",
+    "options": [
+      "150",
+      "180",
+      "200",
+      "220"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Remaining percentage = 100% - (45% + 25% + 15%) = 100% - 85% = 15%. Total employees in Cloud Operations & IT = 15% of 1,200 = 0.15 * 1,200 = 180 employees."
+  },
+  {
+    "id": "DI-014",
+    "questionText": "Question: What was the total gross revenue generated by Product Alpha during the preceding quarter?\\nStatement (1): Product Alpha was sold at a uniform unit price of $45 throughout the quarter.\\nStatement (2): Exactly 1,400 units of Product Alpha were sold during the quarter.\\nWhich statement(s) are sufficient to answer the question?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Data Sufficiency",
+    "difficulty": "Easy",
+    "options": [
+      "Statement (1) ALONE is sufficient",
+      "Statement (2) ALONE is sufficient",
+      "BOTH statements TOGETHER are sufficient, but NEITHER statement alone is sufficient",
+      "Statements (1) and (2) TOGETHER are not sufficient"
+    ],
+    "correctAnswerIndex": 2,
+    "explanation": "Gross revenue requires both price per unit and quantity sold (Revenue = $45 * 1,400 = $63,000). Neither statement alone provides both parameters, but together they are sufficient."
+  },
+  {
+    "id": "DI-015",
+    "questionText": "Annual profits ($ in Thousands) for four regional sales territories:\\n- North: Year 1 = $300k, Year 2 = $360k\\n- South: Year 1 = $200k, Year 2 = $250k\\n- East: Year 1 = $400k, Year 2 = $440k\\n- West: Year 1 = $100k, Year 2 = $150k\\nWhat is the overall percentage growth in aggregate profits across all four territories combined from Year 1 to Year 2?",
+    "category": "Data Interpretation & Analytical Reasoning",
+    "topic": "Tabular Profit Breakdown",
+    "difficulty": "Medium",
+    "options": [
+      "18.5%",
+      "20.0%",
+      "22.5%",
+      "26.25%"
+    ],
+    "correctAnswerIndex": 1,
+    "explanation": "Year 1 Aggregate = 300 + 200 + 400 + 100 = $1,000k.\\nYear 2 Aggregate = 360 + 250 + 440 + 150 = $1,200k.\\nOverall Growth = [(1,200 - 1,000) / 1,000] * 100% = (200 / 1,000) * 100% = 20.0%."
+  }
+]
