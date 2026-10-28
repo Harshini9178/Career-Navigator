@@ -474,7 +474,11 @@
       "skills": [],
       "projects": [],
       "completedProfile": false,
+<<<<<<< HEAD
       "passwordHash": "ce03433fd098cc997ce45cc6a8de8e43:b6671d0a6841709f512fa814106fd8951dfeb41e232ae5a38ba144c38cbe030a14d821e7b9dbc5a99d6fc3eddd0bcbae5ad84640ef4d344f4d0c3c624012fed5",
+=======
+      "passwordHash": "f2d0d5e6edc2bfdbdbc05935f0397776:7c3e5f2ba233de51171ad59973eb5cbb4bee25859e6a13dae054eab54ee621c841a2d03f4b579d8adfdcb73ab6091ad23393545bb4db17f5f5d6d9fb404828a0",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "emailVerified": true
     },
     {
@@ -486,7 +490,11 @@
       "skills": [],
       "projects": [],
       "completedProfile": true,
+<<<<<<< HEAD
       "passwordHash": "3de5e220812c64580f59029f239fc183:ddc9ec8b365f270eb2c17539e3a34690162c35700dd7f2d415d210355a35d971b580e97f51366defacb45d68e58264bd52a03523226a35c7f21749e9c280b2dc",
+=======
+      "passwordHash": "fff44e1ca1fd11c9bbd2f002e6d73c13:8c10dd0ae02cbd588bb26f31801a1ae51413386cc411dacb4f79ec0dfd55e2d9d83765b91d4f34cdeb32cf42cd704a6c5a910a921cdb0588504b0c10588e508d",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "emailVerified": true
     },
     {
@@ -3608,8 +3616,13 @@
       "completedProfile": false
     },
     {
+<<<<<<< HEAD
       "id": "test-1793157051733",
       "email": "candidate-1793157051733@example.com",
+=======
+      "id": "test-1793203784707",
+      "email": "candidate-1793203784707@example.com",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "name": "Test Candidate",
       "picture": "https://example.com/photo.jpg",
       "role": "student",
@@ -3624,6 +3637,7 @@
       "completedProfile": true
     },
     {
+<<<<<<< HEAD
       "id": "usr-test-1793157054611",
       "email": "candidate.1793157054611@careernavigator.app",
       "name": "Jane Candidate",
@@ -3681,6 +3695,15 @@
         "Career Navigator"
       ],
       "completedProfile": true
+=======
+      "id": "usr-test-1793203789189",
+      "email": "candidate.1793203789189@careernavigator.app",
+      "name": "Jane Candidate",
+      "passwordHash": "28801e9807c6d8aa11a1403fd6033a88:a9c00903ef2c3b6229f37c8a608eef3e4661b31ad9adb20550dd1b9b981def68f2348cc7cc53ea97f0c8b7869cf9e537fa1310f6b45d91d290c1c36edfa0bf9c",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "completedProfile": false
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
     }
   ],
   "resumes": [
@@ -4080,7 +4103,11 @@
       "id": "res-alice-1",
       "userId": "user-alice-123",
       "fileName": "alice.pdf",
+<<<<<<< HEAD
       "uploadedAt": "2026-10-28T17:24:56.133Z",
+=======
+      "uploadedAt": "2026-10-28T16:09:39.432Z",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "atsScore": 49,
       "categoryBreakdown": [
         {
@@ -9609,6 +9636,7 @@
       "createdAt": "2026-10-24T08:53:57.796Z"
     },
     {
+<<<<<<< HEAD
       "id": "int-yzxstxgl9",
       "userId": "usr-1791951546428-b9e0q",
       "jobRole": "Full Stack developer",
@@ -9967,6 +9995,9 @@
     },
     {
       "id": "test-intv-1793157046165",
+=======
+      "id": "test-intv-1793203779717",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "userId": "test-user-scoring-1",
       "branch": "Computer Science",
       "skills": [
@@ -10055,6 +10086,7 @@
       "evaluationDisclaimer": "AI-assisted practice assessment. This educational evaluation is designed to guide candidate skill improvement and does not guarantee specific hiring outcomes.",
       "totalPointsEarned": 160,
       "maxPossiblePoints": 200,
+<<<<<<< HEAD
       "createdAt": "2026-10-28T03:10:46.165Z"
     },
     {
@@ -10814,6 +10846,9 @@
       "totalPointsEarned": 160,
       "maxPossiblePoints": 200,
       "createdAt": "2026-10-28T17:25:05.209Z"
+=======
+      "createdAt": "2026-10-28T16:09:39.718Z"
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
     }
   ],
   "templates": [
@@ -11091,6 +11126,7 @@
       }
     },
     {
+<<<<<<< HEAD
       "id": "conv-1793156984997-1gh5q",
       "userId": "guest",
       "title": "Review my resume for a Java devel...",
@@ -11111,10 +11147,31 @@
           "content": "I would be more than happy to help you optimize your resume for a Java Developer role! \n\nSince you haven't shared it yet, please **copy and paste your resume text directly into our chat** (make sure to remove sensitive personal info like your exact phone number, home address, or personal email if you prefer to keep them private).\n\nTo give you the most targeted review, please also let me know:\n1. **Your current experience level:** (e.g., Final-year student, recent graduate, or 1–2 years of experience)\n2. **Your target role:** (e.g., Junior Java Developer, Backend Engineer, Full-Stack Developer)\n\n---\n\n### What I Will Look For in Your Java Resume:\nWhen you share it, I will evaluate it against the strict standards of modern Applicant Tracking Systems (ATS) and hiring managers by checking for:\n\n* **Impact-Driven Bullet Points:** Are your project or work descriptions focused on *what you built and the results/metrics* (e.g., \"Improved API response time by 20% using Spring caching\") rather than just listing duties?\n* **Java & Ecosystem Keywords:** Does it properly showcase core Java concepts (OOPs, Collections, Multithreading, Java 8+ features like Streams/Lambdas) alongside essential frameworks (Spring Boot, Hibernate/JPA, REST APIs)?\n* **CS Fundamentals & Databases:** Are your database skills (SQL, MySQL/PostgreSQL, indexing, normalization) and system-level knowledge clearly represented?\n* **Project Architecture:** Do your projects sound like professional applications (mentioning architecture patterns, security, and deployment) rather than basic college assignments?\n* **Formatting & Clarity:** Is it clean, easy to read, and free of filler sections that waste valuable space?\n\nWhenever you're ready, **paste your resume below**, and let's get it interview-ready!",
           "timestamp": "2026-10-28T03:09:47.628Z",
           "learningMode": false
+=======
+      "id": "conv-alpha-1",
+      "userId": "student-test-alpha",
+      "title": "Java Spring Boot Doubts",
+      "learningMode": true,
+      "createdAt": "2026-10-28T16:09:39.566Z",
+      "updatedAt": "2026-10-28T16:09:39.566Z",
+      "messages": [
+        {
+          "id": "m1",
+          "role": "user",
+          "content": "Explain @Autowired",
+          "timestamp": "2026-10-28T16:09:39.566Z"
+        },
+        {
+          "id": "m2",
+          "role": "assistant",
+          "content": "@Autowired injects beans.",
+          "timestamp": "2026-10-28T16:09:39.566Z"
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
         }
       ]
     },
     {
+<<<<<<< HEAD
       "id": "conv-1793157100266-v7wzi",
       "userId": "usr-1791951546428-b9e0q",
       "title": "Explain Java inheritance with an ...",
@@ -11227,25 +11284,142 @@
       }
     },
     {
+=======
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "id": "conv-beta-1",
       "userId": "student-test-beta",
       "title": "Python Django Setup",
       "learningMode": false,
+<<<<<<< HEAD
       "createdAt": "2026-10-28T17:25:44.938Z",
       "updatedAt": "2026-10-28T17:25:44.938Z",
+=======
+      "createdAt": "2026-10-28T16:09:39.566Z",
+      "updatedAt": "2026-10-28T16:09:39.566Z",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "messages": [
         {
           "id": "m3",
           "role": "user",
           "content": "How do migrations work?",
+<<<<<<< HEAD
           "timestamp": "2026-10-28T17:25:44.938Z"
+=======
+          "timestamp": "2026-10-28T16:09:39.566Z"
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
         }
       ]
     }
   ],
   "resumeDocuments": [
     {
+<<<<<<< HEAD
       "id": "c3235833-6f34-4103-8e3f-f0365c13ba7e",
+=======
+      "id": "375cd534-f7b4-4fa6-a758-5c1e2ce6a995",
+      "userId": "usr-1791951546428-b9e0q",
+      "title": "Harshinipatel03 - Full Stack developer Resume",
+      "targetRole": "Full Stack developer",
+      "templateId": "classic-ats",
+      "atsScore": 78,
+      "content": {
+        "personalInfo": {
+          "fullName": "Harshini R B",
+          "headline": "Full Stack developer",
+          "email": "harshinipatel03@gmail.com",
+          "phone": "+918073089178",
+          "cityCountry": "Tiptur",
+          "linkedIn": "kkkkkk",
+          "github": "mjhbgvhui",
+          "portfolioWebsite": "pytrdfghj"
+        },
+        "summary": "poiuytrdfghjkl;.,mnbvc bnm,.l,kjhgfdsfghujkl;'",
+        "education": [
+          {
+            "id": "0.8883796282039128",
+            "institution": "Kalpataru Institute of Technology",
+            "degree": "Bachelor of Engineering",
+            "fieldOfStudy": "Computer Science and Engineering",
+            "startDate": "2023",
+            "graduationDate": "2027",
+            "gradeCgpa": "8.3",
+            "coursework": ""
+          }
+        ],
+        "skills": {
+          "programmingLanguages": [
+            "java"
+          ],
+          "frameworks": [
+            "node"
+          ],
+          "databases": [
+            "h2"
+          ],
+          "toolsPlatforms": [
+            "uytfdfghj"
+          ],
+          "coreConcepts": [
+            "uytf"
+          ],
+          "communicationLeadership": []
+        },
+        "experience": [
+          {
+            "id": "0.4936580186669617",
+            "jobTitle": "uytfghj",
+            "company": "dfghjk",
+            "location": "otrdfghj",
+            "startDate": "01",
+            "endDate": "02",
+            "currentRole": false,
+            "responsibilities": "",
+            "achievements": "",
+            "impact": "",
+            "bullets": [
+              "Spearheaded Spearheaded..."
+            ]
+          }
+        ],
+        "projects": [
+          {
+            "id": "0.4361405395717496",
+            "title": "Text to Image  Generator",
+            "description": "",
+            "technologies": [
+              "Python"
+            ],
+            "keyContributions": "",
+            "resultsImpact": "",
+            "githubUrl": "",
+            "liveUrl": ""
+          }
+        ],
+        "certifications": [
+          {
+            "id": "0.9464163191859619",
+            "name": "",
+            "issuingOrganization": "",
+            "issueDate": "2024",
+            "credentialUrl": "",
+            "type": "certification"
+          }
+        ],
+        "additionalSections": {
+          "publications": [],
+          "volunteerExperience": [],
+          "leadership": [],
+          "languages": [],
+          "interests": [],
+          "customSections": []
+        }
+      },
+      "createdAt": "2026-10-28T16:13:58.399Z",
+      "updatedAt": "2026-10-28T16:52:09.034Z"
+    },
+    {
+      "id": "fda19908-14ea-497f-b4e1-dddfdd538583",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "userId": "usr-1791951546428-b9e0q",
       "title": "Harshinipatel03 - Full Stack developer Resume",
       "targetRole": "Full Stack developer",
@@ -11284,6 +11458,7 @@
           "customSections": []
         }
       },
+<<<<<<< HEAD
       "createdAt": "2026-10-28T17:23:46.533Z",
       "updatedAt": "2026-10-28T17:23:46.533Z"
     },
@@ -11329,6 +11504,10 @@
       },
       "createdAt": "2026-10-28T17:23:46.260Z",
       "updatedAt": "2026-10-28T17:23:46.260Z"
+=======
+      "createdAt": "2026-10-28T16:13:58.341Z",
+      "updatedAt": "2026-10-28T16:13:58.341Z"
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
     },
     {
       "id": "a809619a-4adb-4b87-b637-0dcf800f4987",
@@ -12127,6 +12306,7 @@
       "categoryScores": {}
     },
     {
+<<<<<<< HEAD
       "id": "e167ca70-d2d8-4d8c-a57b-70fee789c5d8",
       "userId": "usr-1791951546428-b9e0q",
       "status": "COMPLETED",
@@ -12215,12 +12395,20 @@
       "status": "IN_PROGRESS",
       "startedAt": "2026-10-28T03:10:46.431Z",
       "deadline": "2026-10-28T03:40:46.431Z",
+=======
+      "id": "d62988bc-6848-4f8d-bcc5-4e2600ddeb1e",
+      "userId": "test-student-1",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T16:09:38.790Z",
+      "deadline": "2026-10-28T16:39:38.790Z",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "durationSeconds": 0,
       "score": 0,
       "percentage": 0,
       "totalQuestions": 30,
       "violationsCount": 0,
       "questionsJson": [
+<<<<<<< HEAD
         "TA-012",
         "DI-005",
         "LR-008",
@@ -12257,15 +12445,108 @@
       },
       "markedForReview": [
         "TA-012"
+=======
+        "LR-013",
+        "VA-010",
+        "DI-013",
+        "VA-006",
+        "TA-009",
+        "LR-008",
+        "QA-012",
+        "TA-003",
+        "QA-004",
+        "VA-009",
+        "TA-011",
+        "LR-003",
+        "DI-005",
+        "VA-004",
+        "TA-014",
+        "VA-011",
+        "QA-008",
+        "TA-015",
+        "QA-009",
+        "DI-015",
+        "LR-004",
+        "QA-002",
+        "DI-004",
+        "DI-011",
+        "TA-004",
+        "LR-006",
+        "DI-009",
+        "QA-007",
+        "LR-002",
+        "VA-012"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {}
+    },
+    {
+      "id": "c06a8176-8854-4a7c-89b2-6dd290f8caca",
+      "userId": "test-student-2",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T16:09:38.918Z",
+      "deadline": "2026-10-28T16:39:38.918Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "DI-006",
+        "TA-013",
+        "DI-009",
+        "TA-009",
+        "LR-012",
+        "DI-002",
+        "LR-005",
+        "VA-002",
+        "LR-010",
+        "DI-001",
+        "TA-012",
+        "QA-008",
+        "VA-013",
+        "DI-004",
+        "LR-014",
+        "QA-003",
+        "QA-004",
+        "VA-001",
+        "LR-008",
+        "VA-006",
+        "TA-011",
+        "TA-002",
+        "QA-002",
+        "LR-001",
+        "QA-001",
+        "VA-011",
+        "TA-007",
+        "DI-005",
+        "VA-009",
+        "QA-011"
+      ],
+      "answers": {
+        "DI-006": 2
+      },
+      "markedForReview": [
+        "DI-006"
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       ],
       "categoryScores": {}
     },
     {
+<<<<<<< HEAD
       "id": "776c1255-1c0b-4f87-a8d6-ad5ac14537d7",
       "userId": "test-student-3",
       "status": "VIOLATION_TERMINATED",
       "startedAt": "2026-10-28T03:10:46.729Z",
       "deadline": "2026-10-28T03:40:46.729Z",
+=======
+      "id": "a6f18877-741b-4ea5-9f7d-0ed422894a47",
+      "userId": "test-student-3",
+      "status": "VIOLATION_TERMINATED",
+      "startedAt": "2026-10-28T16:09:39.147Z",
+      "deadline": "2026-10-28T16:39:39.147Z",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "durationSeconds": 0,
       "score": 0,
       "percentage": 0,
@@ -12273,6 +12554,7 @@
       "violationsCount": 3,
       "questionsJson": [
         "VA-008",
+<<<<<<< HEAD
         "DI-015",
         "QA-008",
         "TA-004",
@@ -12302,6 +12584,37 @@
         "DI-014",
         "LR-015",
         "DI-009"
+=======
+        "TA-015",
+        "TA-006",
+        "QA-002",
+        "QA-014",
+        "LR-009",
+        "VA-012",
+        "LR-006",
+        "TA-011",
+        "QA-003",
+        "DI-005",
+        "LR-008",
+        "LR-015",
+        "TA-009",
+        "DI-014",
+        "LR-014",
+        "QA-008",
+        "DI-006",
+        "QA-005",
+        "VA-001",
+        "DI-012",
+        "LR-012",
+        "QA-007",
+        "DI-015",
+        "VA-009",
+        "TA-012",
+        "DI-009",
+        "TA-004",
+        "VA-015",
+        "VA-007"
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       ],
       "answers": {},
       "markedForReview": [],
@@ -12337,6 +12650,7 @@
           "percentage": 0
         }
       },
+<<<<<<< HEAD
       "completedAt": "2026-10-28T03:10:47.232Z",
       "forcedSubmissionReason": "Terminated due to multiple integrity violations (3 tab-switches or fullscreen exits detected)."
     },
@@ -12432,12 +12746,24 @@
       "status": "IN_PROGRESS",
       "startedAt": "2026-10-28T03:10:48.292Z",
       "deadline": "2026-10-28T03:40:48.292Z",
+=======
+      "completedAt": "2026-10-28T16:09:39.365Z",
+      "forcedSubmissionReason": "Terminated due to multiple integrity violations (3 tab-switches or fullscreen exits detected)."
+    },
+    {
+      "id": "b576ce67-1d8e-4232-901e-00275bc9e2a1",
+      "userId": "test-student-rotation",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T16:09:39.800Z",
+      "deadline": "2026-10-28T16:39:39.800Z",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "durationSeconds": 0,
       "score": 0,
       "percentage": 0,
       "totalQuestions": 30,
       "violationsCount": 0,
       "questionsJson": [
+<<<<<<< HEAD
         "VA-001",
         "QA-008",
         "VA-002",
@@ -13276,6 +13602,37 @@
         "QA-014",
         "QA-015",
         "TA-001",
+=======
+        "LR-003",
+        "QA-010",
+        "LR-001",
+        "DI-008",
+        "DI-010",
+        "DI-013",
+        "TA-006",
+        "QA-004",
+        "VA-010",
+        "DI-003",
+        "QA-002",
+        "QA-007",
+        "VA-013",
+        "TA-001",
+        "QA-001",
+        "TA-008",
+        "DI-009",
+        "LR-014",
+        "QA-011",
+        "LR-010",
+        "DI-015",
+        "LR-002",
+        "VA-003",
+        "TA-015",
+        "VA-007",
+        "LR-008",
+        "VA-005",
+        "TA-013",
+        "VA-004",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
         "TA-002"
       ],
       "answers": {},
@@ -13283,6 +13640,7 @@
       "categoryScores": {}
     },
     {
+<<<<<<< HEAD
       "id": "7197b01e-4f13-42b3-a922-0818798c5119",
       "userId": "test-student-2",
       "status": "IN_PROGRESS",
@@ -13340,11 +13698,20 @@
       "startedAt": "2026-10-28T17:25:42.057Z",
       "deadline": "2026-10-28T17:55:42.057Z",
       "durationSeconds": 0,
+=======
+      "id": "a919c763-86b4-46a4-a961-e110a4cc2e5e",
+      "userId": "usr-1791951546428-b9e0q",
+      "status": "VIOLATION_TERMINATED",
+      "startedAt": "2026-10-28T16:14:17.852Z",
+      "deadline": "2026-10-28T16:44:17.852Z",
+      "durationSeconds": 9,
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "score": 0,
       "percentage": 0,
       "totalQuestions": 30,
       "violationsCount": 3,
       "questionsJson": [
+<<<<<<< HEAD
         "VA-001",
         "LR-013",
         "TA-001",
@@ -13375,6 +13742,38 @@
         "LR-007",
         "QA-015",
         "VA-014"
+=======
+        "QA-008",
+        "LR-014",
+        "QA-005",
+        "DI-002",
+        "LR-002",
+        "TA-002",
+        "VA-005",
+        "QA-009",
+        "DI-008",
+        "VA-012",
+        "QA-001",
+        "LR-015",
+        "VA-006",
+        "VA-014",
+        "LR-001",
+        "DI-001",
+        "DI-014",
+        "TA-014",
+        "LR-008",
+        "TA-003",
+        "QA-004",
+        "TA-001",
+        "QA-012",
+        "VA-003",
+        "DI-011",
+        "DI-013",
+        "VA-001",
+        "LR-009",
+        "TA-008",
+        "TA-012"
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       ],
       "answers": {},
       "markedForReview": [],
@@ -13410,6 +13809,7 @@
           "percentage": 0
         }
       },
+<<<<<<< HEAD
       "completedAt": "2026-10-28T17:25:42.189Z",
       "forcedSubmissionReason": "Terminated due to multiple integrity violations (3 tab-switches or fullscreen exits detected)."
     },
@@ -13419,12 +13819,202 @@
       "status": "COMPLETED",
       "startedAt": "2026-10-28T17:25:42.241Z",
       "deadline": "2026-10-28T17:55:42.241Z",
+=======
+      "completedAt": "2026-10-28T16:14:27.551Z",
+      "forcedSubmissionReason": "Terminated due to multiple integrity violations (3 tab-switches or fullscreen exits detected)."
+    },
+    {
+      "id": "cc647e5d-23b7-42af-acbc-3dc35b62a612",
+      "userId": "test-student-1",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T16:49:01.263Z",
+      "deadline": "2026-10-28T17:19:01.263Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "DI-008",
+        "TA-003",
+        "QA-001",
+        "VA-013",
+        "VA-001",
+        "TA-013",
+        "TA-002",
+        "VA-002",
+        "QA-005",
+        "LR-003",
+        "QA-006",
+        "LR-015",
+        "LR-011",
+        "LR-004",
+        "TA-010",
+        "DI-001",
+        "TA-004",
+        "LR-002",
+        "DI-006",
+        "QA-011",
+        "VA-007",
+        "DI-012",
+        "QA-013",
+        "LR-014",
+        "DI-002",
+        "QA-014",
+        "DI-003",
+        "VA-014",
+        "TA-001",
+        "VA-008"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {}
+    },
+    {
+      "id": "2d0acdc2-f6a4-4a75-8cd9-fe26b17e8f4c",
+      "userId": "test-student-2",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T16:49:01.337Z",
+      "deadline": "2026-10-28T17:19:01.337Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "QA-009",
+        "DI-004",
+        "VA-015",
+        "DI-014",
+        "TA-009",
+        "TA-003",
+        "DI-001",
+        "QA-010",
+        "DI-013",
+        "VA-008",
+        "VA-012",
+        "LR-001",
+        "LR-009",
+        "VA-001",
+        "QA-007",
+        "VA-010",
+        "TA-006",
+        "TA-012",
+        "TA-011",
+        "DI-008",
+        "LR-014",
+        "TA-014",
+        "QA-011",
+        "VA-005",
+        "LR-013",
+        "QA-015",
+        "DI-015",
+        "QA-008",
+        "LR-015",
+        "LR-005"
+      ],
+      "answers": {
+        "QA-009": 2
+      },
+      "markedForReview": [
+        "QA-009"
+      ],
+      "categoryScores": {}
+    },
+    {
+      "id": "be2f19e8-885b-4b89-af54-26374d1d29f7",
+      "userId": "test-student-3",
+      "status": "VIOLATION_TERMINATED",
+      "startedAt": "2026-10-28T16:49:01.459Z",
+      "deadline": "2026-10-28T17:19:01.459Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 3,
+      "questionsJson": [
+        "VA-011",
+        "QA-010",
+        "DI-014",
+        "TA-004",
+        "VA-010",
+        "QA-011",
+        "LR-006",
+        "QA-012",
+        "TA-001",
+        "TA-006",
+        "QA-004",
+        "TA-014",
+        "DI-001",
+        "LR-010",
+        "DI-007",
+        "LR-004",
+        "TA-005",
+        "QA-003",
+        "QA-013",
+        "VA-002",
+        "TA-012",
+        "LR-012",
+        "LR-013",
+        "VA-001",
+        "LR-001",
+        "DI-005",
+        "VA-013",
+        "VA-014",
+        "DI-011",
+        "DI-010"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {
+        "Quantitative Aptitude": {
+          "category": "Quantitative Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Logical Reasoning": {
+          "category": "Logical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Verbal Ability": {
+          "category": "Verbal Ability",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Technical Aptitude": {
+          "category": "Technical Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Data Interpretation & Analytical Reasoning": {
+          "category": "Data Interpretation & Analytical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        }
+      },
+      "completedAt": "2026-10-28T16:49:01.657Z",
+      "forcedSubmissionReason": "Terminated due to multiple integrity violations (3 tab-switches or fullscreen exits detected)."
+    },
+    {
+      "id": "3bc78fee-c27d-4425-85ef-0a6322547a03",
+      "userId": "test-student-4",
+      "status": "COMPLETED",
+      "startedAt": "2026-10-28T16:49:01.749Z",
+      "deadline": "2026-10-28T17:19:01.749Z",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "durationSeconds": 0,
       "score": 5,
       "percentage": 16.7,
       "totalQuestions": 30,
       "violationsCount": 0,
       "questionsJson": [
+<<<<<<< HEAD
         "TA-010",
         "VA-001",
         "QA-009",
@@ -13462,6 +14052,45 @@
         "QA-009": 2,
         "TA-005": 2,
         "VA-014": 1
+=======
+        "LR-007",
+        "LR-014",
+        "QA-012",
+        "VA-007",
+        "VA-013",
+        "TA-015",
+        "VA-006",
+        "TA-014",
+        "QA-004",
+        "LR-001",
+        "LR-005",
+        "TA-012",
+        "DI-009",
+        "DI-008",
+        "DI-003",
+        "TA-009",
+        "VA-004",
+        "QA-008",
+        "QA-005",
+        "TA-006",
+        "VA-008",
+        "LR-008",
+        "DI-006",
+        "QA-001",
+        "DI-004",
+        "QA-011",
+        "TA-007",
+        "VA-003",
+        "LR-002",
+        "DI-002"
+      ],
+      "answers": {
+        "LR-007": 1,
+        "LR-014": 3,
+        "QA-012": 2,
+        "VA-007": 0,
+        "VA-013": 1
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       },
       "markedForReview": [],
       "categoryScores": {
@@ -13473,9 +14102,15 @@
         },
         "Logical Reasoning": {
           "category": "Logical Reasoning",
+<<<<<<< HEAD
           "score": 0,
           "total": 6,
           "percentage": 0
+=======
+          "score": 2,
+          "total": 6,
+          "percentage": 33.3
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
         },
         "Verbal Ability": {
           "category": "Verbal Ability",
@@ -13485,9 +14120,15 @@
         },
         "Technical Aptitude": {
           "category": "Technical Aptitude",
+<<<<<<< HEAD
           "score": 2,
           "total": 6,
           "percentage": 33.3
+=======
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
         },
         "Data Interpretation & Analytical Reasoning": {
           "category": "Data Interpretation & Analytical Reasoning",
@@ -13496,6 +14137,7 @@
           "percentage": 0
         }
       },
+<<<<<<< HEAD
       "completedAt": "2026-10-28T17:25:42.633Z",
       "forcedSubmissionReason": "Manual completion"
     },
@@ -13505,12 +14147,24 @@
       "status": "IN_PROGRESS",
       "startedAt": "2026-10-28T17:25:42.706Z",
       "deadline": "2026-10-28T17:55:42.706Z",
+=======
+      "completedAt": "2026-10-28T16:49:02.154Z",
+      "forcedSubmissionReason": "Manual completion"
+    },
+    {
+      "id": "9e9c02f2-625f-4829-b7e3-fe52fda40b85",
+      "userId": "test-student-rotation",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T16:49:02.232Z",
+      "deadline": "2026-10-28T17:19:02.232Z",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "durationSeconds": 0,
       "score": 0,
       "percentage": 0,
       "totalQuestions": 30,
       "violationsCount": 0,
       "questionsJson": [
+<<<<<<< HEAD
         "LR-006",
         "TA-007",
         "QA-014",
@@ -13541,17 +14195,57 @@
         "QA-012",
         "TA-014",
         "LR-008"
+=======
+        "LR-011",
+        "TA-007",
+        "LR-004",
+        "DI-002",
+        "QA-009",
+        "VA-008",
+        "LR-003",
+        "VA-003",
+        "QA-013",
+        "VA-015",
+        "VA-004",
+        "DI-010",
+        "DI-007",
+        "QA-004",
+        "QA-002",
+        "DI-009",
+        "VA-012",
+        "TA-008",
+        "DI-001",
+        "TA-001",
+        "TA-014",
+        "QA-014",
+        "LR-002",
+        "LR-013",
+        "QA-003",
+        "LR-001",
+        "TA-006",
+        "TA-002",
+        "VA-007",
+        "DI-012"
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       ],
       "answers": {},
       "markedForReview": [],
       "categoryScores": {}
     },
     {
+<<<<<<< HEAD
       "id": "63ee67d6-9ba5-43f7-b243-e8c6e7db16c7",
       "userId": "test-student-rotation",
       "status": "IN_PROGRESS",
       "startedAt": "2026-10-28T17:25:42.775Z",
       "deadline": "2026-10-28T17:55:42.775Z",
+=======
+      "id": "a530dbc8-c72c-44c4-a383-c645ac1675a3",
+      "userId": "test-student-rotation",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T16:49:02.282Z",
+      "deadline": "2026-10-28T17:19:02.282Z",
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       "durationSeconds": 0,
       "score": 0,
       "percentage": 0,
@@ -13559,6 +14253,7 @@
       "violationsCount": 0,
       "questionsJson": [
         "TA-007",
+<<<<<<< HEAD
         "QA-005",
         "TA-005",
         "DI-007",
@@ -13588,6 +14283,37 @@
         "QA-013",
         "LR-002",
         "VA-013"
+=======
+        "VA-009",
+        "TA-008",
+        "LR-010",
+        "TA-009",
+        "QA-008",
+        "LR-002",
+        "VA-003",
+        "QA-011",
+        "TA-013",
+        "VA-006",
+        "VA-013",
+        "LR-015",
+        "DI-003",
+        "TA-004",
+        "LR-012",
+        "VA-008",
+        "LR-013",
+        "QA-007",
+        "QA-010",
+        "QA-009",
+        "DI-009",
+        "DI-010",
+        "DI-015",
+        "LR-003",
+        "DI-004",
+        "VA-004",
+        "TA-002",
+        "DI-007",
+        "QA-012"
+>>>>>>> a8d5002532dde2d8a67637d55d4b4a46f592b0a4
       ],
       "answers": {},
       "markedForReview": [],

@@ -32,6 +32,7 @@ export default defineConfig(() => {
       sourcemap: false,
       chunkSizeWarningLimit: 700,
       rollupOptions: {
+        external: ['canvg', 'html2pdf.js', /^core-js/],
         output: {
           manualChunks(id) {
             if (id.includes('@monaco-editor') || id.includes('monaco-editor')) {
