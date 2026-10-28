@@ -6,6 +6,9 @@ import {defineConfig} from 'vite';
 export default defineConfig(() => {
   return {
     plugins: [react(), tailwindcss()],
+    optimizeDeps: {
+      exclude: ['jspdf', 'canvg', 'html2pdf.js']
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
@@ -46,6 +49,7 @@ export default defineConfig(() => {
     },
     test: {
       exclude: ['**/node_modules/**', '**/dist/**', 'MockGenius-main/**'],
+      fileParallelism: false
     }
   };
 });

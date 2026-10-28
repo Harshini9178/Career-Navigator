@@ -751,11 +751,13 @@ export const jsonDb = {
     return conversation;
   },
 
-  deleteConversation: (id: string, userId: string): boolean => {
+  deleteConversation: (id: string, userId?: string): boolean => {
     const db = readDb();
     if (!Array.isArray(db.conversations)) return false;
     const initialLen = db.conversations.length;
-    db.conversations = db.conversations.filter((c) => !(c.id === id && c.userId === userId));
+    db.conversations = db.conversations.filter(
+      (c) => !(c.id === id && (!userId || c.userId === userId || c.userId?.trim().toLowerCase() === userId?.trim().toLowerCase()))
+    );
     if (db.conversations.length !== initialLen) {
       writeDb(db);
       return true;

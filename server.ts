@@ -6,7 +6,7 @@ import { createServer as createViteServer } from 'vite';
 import { db } from './src/db/database.js';
 const jsonDb = db;
 import { aiService } from './src/lib/gemini.js';
-import { User, ResumeAnalysis, MockInterview, StudentFeedback, ResumeTemplate } from './src/types.js';
+import { User, ResumeAnalysis, MockInterview, StudentFeedback, ResumeTemplate, ChatMessage, StoredConversation } from './src/types.js';
 import { validateEnvironment } from './src/lib/validateEnv.js';
 import { logger } from './src/lib/logger.js';
 import { openApiSpec } from './src/lib/openapi.js';
@@ -1098,6 +1098,176 @@ app.post('/api/ai/quick-ask', aiRateLimiter(30), async (req, res) => {
     logger.error('Quick Ask AI error:', err);
     res.status(500).json({ error: 'Failed to process AI question', details: err.message });
   }
+});
+
+// Helper for resilient fallback AI mentor guidance
+function generateFallbackChatResponse(query: string, careerContext?: any, learningMode?: boolean): string {
+  const q = query.toLowerCase();
+
+  if (q.includes('java') || q.includes('spring') || q.includes('jvm')) {
+    return `### ☕ Java Developer Placement & Resume Review Guide
+
+For a **Java Developer** role, recruiters and technical hiring managers focus heavily on core OOP mastery, JVM architecture, Spring Boot frameworks, and database optimizations:
+
+#### 1. Core Competencies to Showcase:
+* **Java Core & JVM:** Java 17/21 LTS features (Records, Pattern Matching, Sealed Classes, Virtual Threads), JVM architecture (Garbage Collection algorithms, Heap/Stack memory layout, classloaders).
+* **Frameworks:** Spring Boot 3.x, Spring Data JPA, Spring Security, RESTful Microservices architecture, Dependency Injection (\`@Autowired\`, Bean scopes, Inversion of Control).
+* **Databases & Caching:** SQL (PostgreSQL / MySQL), JPA Hibernate optimization (\`N+1\` query mitigation, pagination, composite indexing), Redis for distributed caching.
+* **Architecture & Concurrency:** Multi-threading (\`CompletableFuture\`, \`ExecutorService\`), Kafka/RabbitMQ message queues, Docker containerization.
+
+#### 2. High-Impact Resume Action Verbs (STAR Framework):
+* *"Architected Spring Boot 3 microservices handling 2,000+ RPM with sub-50ms latency using Redis caching."*
+* *"Optimized relational database queries and JPA relationships, reducing database execution bottlenecks by 38%."*
+* *"Designed asynchronous event-driven pipelines using Apache Kafka for decoupled message streaming."*
+
+${learningMode ? '\n---\n**💡 Concept Check:** In Java, what is the key difference between optimistic and pessimistic locking in database transactions, and when would you choose one over the other?' : ''}`;
+  }
+
+  if (q.includes('resume') || q.includes('review') || q.includes('cv')) {
+    return `### 📄 Resume Review & Optimization Strategy
+
+To maximize your placement readiness and ATS screening score:
+
+1. **Clear Structural Sections:** Ensure mandatory sections (\`Education\`, \`Technical Skills\`, \`Projects\`, \`Experience/Certifications\`, \`Contact\`) have standard headings.
+2. **Quantified Bullet Points:** Never write passive descriptions. Use Google's XYZ formula: *Accomplished [X], as measured by [Y], by doing [Z]*.
+3. **Keyword Density:** Ensure your top technical stack keywords match the Job Description (e.g., REST APIs, Git, Unit Testing with JUnit/Jest, CI/CD).
+4. **Format Simplicity:** Avoid complex graphics, tables, or multi-column text boxes that linear ATS parsers struggle to read.
+
+${learningMode ? '\n---\n**💡 Key Takeaway:** Recruiters spend an average of 6–7 seconds on initial resume scans. Put your strongest technical projects and metrics at the very top!' : ''}`;
+  }
+
+  return `### 🎯 Career Navigator AI Mentor Guidance
+
+Regarding: **"${query}"**
+
+1. **Fundamental Approach:**
+   * Break the problem down into core computational components and architectural constraints.
+   * State your trade-offs clearly: evaluate time complexity ($\\mathcal{O}$), auxiliary space, and maintainability.
+
+2. **Interview Framing:**
+   * Explain your thought process out loud before diving into implementation.
+   * Highlight edge cases (null inputs, boundary conditions, concurrent access).
+
+3. **Actionable Next Step:**
+   * Practice implementing this pattern directly in the **Monaco Code Lab** or run a tailored simulation in **Mock Interviews**.
+
+${learningMode ? '\n---\n**💡 Concept Check:** How would this design behave if your system scaled from 100 to 100,000 concurrent requests per minute?' : ''}`;
+}
+
+// -------------------------------------------------------------
+// Career Assistant Conversations & Chat Endpoints
+// -------------------------------------------------------------
+
+// List user's conversations
+app.get('/api/ai/conversations', (req, res) => {
+  const userId = getSessionUserId(req) || 'guest';
+  const list = jsonDb.getConversationsByUserId(userId);
+  res.json(list || []);
+});
+
+// Get a specific conversation detail
+app.get('/api/ai/conversations/:id', (req, res) => {
+  const userId = getSessionUserId(req) || 'guest';
+  const conv = jsonDb.getConversationById(req.params.id, userId);
+  if (!conv) {
+    return res.status(404).json({ error: 'Conversation not found' });
+  }
+  res.json(conv);
+});
+
+// Delete a single conversation
+app.delete('/api/ai/conversations/:id', (req, res) => {
+  const userId = getSessionUserId(req) || 'guest';
+  jsonDb.deleteConversation(req.params.id, userId);
+  res.json({ success: true, message: 'Conversation deleted successfully' });
+});
+
+// Clear all conversations for user
+app.delete('/api/ai/conversations', (req, res) => {
+  const userId = getSessionUserId(req) || 'guest';
+  jsonDb.clearConversationsByUserId(userId);
+  res.json({ success: true, message: 'All conversations cleared' });
+});
+
+// Send message to AI Career Assistant
+app.post('/api/ai/chat', aiRateLimiter(60), async (req, res) => {
+  const userId = getSessionUserId(req) || 'guest';
+  const { conversationId, message, learningMode, careerContext } = req.body;
+
+  if (!message || typeof message !== 'string' || !message.trim()) {
+    return res.status(400).json({ error: 'Message content is required.' });
+  }
+
+  const cleanMessage = message.trim();
+  const convId = conversationId || `conv-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
+  const existingConv = jsonDb.getConversationById(convId, userId);
+
+  const userMsg: ChatMessage = {
+    id: `msg-${Date.now()}-u`,
+    role: 'user',
+    content: cleanMessage,
+    timestamp: new Date().toISOString(),
+    learningMode: !!learningMode
+  };
+
+  const history = (existingConv?.messages || []).map(m => ({
+    role: m.role,
+    content: m.content,
+    error: m.error
+  }));
+
+  let aiReplyText = '';
+  let source: 'gemini' | 'simulation' = 'gemini';
+  let modelName = 'gemini-3.5-flash-lite';
+
+  try {
+    const aiResult = await aiService.chat({
+      message: cleanMessage,
+      history,
+      learningMode: !!learningMode,
+      careerContext
+    });
+    aiReplyText = aiResult.answer;
+    source = aiResult.source;
+    modelName = aiResult.model;
+  } catch (err: any) {
+    logger.warn('Gemini chat API call fallback:', { error: err?.message || err });
+    aiReplyText = generateFallbackChatResponse(cleanMessage, careerContext, !!learningMode);
+    source = 'simulation';
+    modelName = 'career-navigator-offline-mentor';
+  }
+
+  const assistantMsg: ChatMessage = {
+    id: `msg-${Date.now()}-a`,
+    role: 'assistant',
+    content: aiReplyText,
+    timestamp: new Date().toISOString(),
+    learningMode: !!learningMode
+  };
+
+  const title = existingConv?.title || (cleanMessage.length > 36 ? cleanMessage.substring(0, 33) + '...' : cleanMessage);
+  const updatedMessages = [...(existingConv?.messages || []), userMsg, assistantMsg];
+
+  const storedConv: StoredConversation = {
+    id: convId,
+    userId,
+    title,
+    learningMode: !!learningMode,
+    createdAt: existingConv?.createdAt || new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    messages: updatedMessages,
+    careerContext
+  };
+
+  jsonDb.saveConversation(storedConv);
+
+  res.json({
+    success: true,
+    conversationId: convId,
+    message: assistantMsg,
+    source,
+    model: modelName
+  });
 });
 
 // ==========================================

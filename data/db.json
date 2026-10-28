@@ -474,7 +474,7 @@
       "skills": [],
       "projects": [],
       "completedProfile": false,
-      "passwordHash": "8e70654afd4e23447e5e0a2dcd6b273e:7758c43a329ee570588baa502d36937deb4759ad9dd266bf8bc0b512dd5e7d4dbf1f5cbb2f2c09214de2456c568ccbcadbe123fb3a6c640eb0d2cb7cf35cd1c3",
+      "passwordHash": "ce03433fd098cc997ce45cc6a8de8e43:b6671d0a6841709f512fa814106fd8951dfeb41e232ae5a38ba144c38cbe030a14d821e7b9dbc5a99d6fc3eddd0bcbae5ad84640ef4d344f4d0c3c624012fed5",
       "emailVerified": true
     },
     {
@@ -486,7 +486,7 @@
       "skills": [],
       "projects": [],
       "completedProfile": true,
-      "passwordHash": "4584c4ea43a63827a91a21dbadba803a:5b2f97f103029baa91550de4e6a888e65dd2dd63a042e457db0a67bb5838c72d9a95a237715a53c98a72b3f1cdaa7afea5277908f599610e18929754dd9f7be3",
+      "passwordHash": "3de5e220812c64580f59029f239fc183:ddc9ec8b365f270eb2c17539e3a34690162c35700dd7f2d415d210355a35d971b580e97f51366defacb45d68e58264bd52a03523226a35c7f21749e9c280b2dc",
       "emailVerified": true
     },
     {
@@ -3606,6 +3606,81 @@
       "picture": "https://example.com/photo.jpg",
       "role": "student",
       "completedProfile": false
+    },
+    {
+      "id": "test-1793157051733",
+      "email": "candidate-1793157051733@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "Career Navigator"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "usr-test-1793157054611",
+      "email": "candidate.1793157054611@careernavigator.app",
+      "name": "Jane Candidate",
+      "passwordHash": "3033d83ace482e35f65a4f325daaeac5:ce589c23923fc9eb175adb9cac6aa438ff726aca13c0a23f49b8a23ca1a6b429b410514e58282b502d03ddfc9987293eff51f782776c686b8821b96d6463f291",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "test-1793207342958",
+      "email": "candidate-1793207342958@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "Career Navigator"
+      ],
+      "completedProfile": true
+    },
+    {
+      "id": "usr-test-1793207343598",
+      "email": "candidate.1793207343598@careernavigator.app",
+      "name": "Jane Candidate",
+      "passwordHash": "67a4650af6a2efa417a3a353ea4ff984:522daf6923859c4778c43b2c031a8a310db571fec7e63283909e09585a3635d2df48e6679845913b397a1b034c2b587fa0af00a3d467b4877c341393096c6c10",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "usr-test-1793208354429",
+      "email": "candidate.1793208354429@careernavigator.app",
+      "name": "Jane Candidate",
+      "passwordHash": "39c8176ae2c9162dc17d3696ec92f523:e35c27c868663ba1fb4c97dda2bb08341f1d2b135121b797559c782b6c5755fadb8333af6b24f7c56f24fd0b01da87b7f8a35c0b3296aa7688ca72b916bc34ed",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "completedProfile": false
+    },
+    {
+      "id": "test-1793208398009",
+      "email": "candidate-1793208398009@example.com",
+      "name": "Test Candidate",
+      "picture": "https://example.com/photo.jpg",
+      "role": "student",
+      "skills": [
+        "React",
+        "TypeScript",
+        "Node.js"
+      ],
+      "projects": [
+        "Career Navigator"
+      ],
+      "completedProfile": true
     }
   ],
   "resumes": [
@@ -3702,52 +3777,310 @@
       "missingJDKeywords": []
     },
     {
-      "id": "sim-res-ob5c7f8hc",
+      "id": "res-e8p36b4zj",
       "userId": "usr-1791951546428-b9e0q",
-      "fileName": "HARSHINI_Resume_DA.pdf",
-      "uploadedAt": "2026-10-15T18:11:43.726Z",
-      "atsScore": 68,
+      "fileName": "Chandana_M_P_Resume_HCLTech.pdf",
+      "targetRole": "Full Stack Engineer",
+      "uploadedAt": "2026-10-28T13:30:37.020Z",
+      "simulated": true,
+      "atsScore": 80,
+      "categoryBreakdown": [
+        {
+          "category": "Section Completeness",
+          "score": 20,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Detected 7 of 7 core structural sections."
+        },
+        {
+          "category": "Technical Skills & Density",
+          "score": 25,
+          "maxScore": 25,
+          "weight": 25,
+          "reason": "Found 7 verified technologies in resume text."
+        },
+        {
+          "category": "Experience & Project Depth",
+          "score": 18,
+          "maxScore": 20,
+          "weight": 20,
+          "reason": "Found 3 action verbs across project and work bullet points."
+        },
+        {
+          "category": "Quantified Impact & Metrics",
+          "score": 0,
+          "maxScore": 15,
+          "weight": 15,
+          "reason": "Found 0 measurable metrics/outcomes."
+        },
+        {
+          "category": "Contact Information",
+          "score": 7,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Contact points evaluated (Email: ✓, Phone: ✗, Links: ✓)."
+        },
+        {
+          "category": "Readability & Structure",
+          "score": 10,
+          "maxScore": 10,
+          "weight": 10,
+          "reason": "Document contains 413 words with formatted section spacing."
+        }
+      ],
       "skills": [
         "Python",
         "Java",
+        "C++",
+        "HTML/CSS",
         "SQL",
-        "MySQL",
-        "MongoDB",
+        "REST APIs",
         "Git / GitHub"
       ],
-      "missingSections": [
-        "Work Experience / Internships"
+      "detectedSections": [
+        "Contact Information",
+        "Professional Summary",
+        "Education",
+        "Technical Skills",
+        "Projects",
+        "Work Experience / Internships",
+        "Certifications"
+      ],
+      "missingSections": [],
+      "sectionDetails": [
+        {
+          "sectionName": "Contact Information",
+          "detected": true,
+          "evidence": "Contextual match: \"chandanakargal25@gmail.com\"",
+          "confidence": 0.75
+        },
+        {
+          "sectionName": "Professional Summary",
+          "detected": true,
+          "evidence": "Found heading: \"CAREER OBJECTIVE\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Education",
+          "detected": true,
+          "evidence": "Found heading: \"EDUCATION\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Technical Skills",
+          "detected": true,
+          "evidence": "Found heading: \"TECHNICAL SKILLS\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Projects",
+          "detected": true,
+          "evidence": "Found heading: \"PROJECTS\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Work Experience / Internships",
+          "detected": true,
+          "evidence": "Found heading: \"improving overall logic reliability and user experience.\"",
+          "confidence": 0.95
+        },
+        {
+          "sectionName": "Certifications",
+          "detected": true,
+          "evidence": "Found heading: \"CERTIFICATIONS & COURSEWORK\"",
+          "confidence": 0.95
+        }
       ],
       "suggestions": [
-        "Add a distinct \"Work Experience / Internships\" section to pass automated category parsers.",
-        "Format your project bullets using the STAR method: Begin each bullet with strong verbs like Engineered, Optimized, or Deployed.",
-        "Substantiate your achievements with quantifiable results (e.g., \"improved query performance by 25%\" or \"servicing 10k+ requests\").",
-        "Resume demonstrates strong keyword and competency alignment with Full Stack Engineer standards."
+        "Add a dedicated front-end framework like React.js, Angular, or Vue.js to strengthen full-stack capabilities.",
+        "Quantify project metrics more effectively (e.g., latency, user scale, request handling speed) rather than relying on qualitative statements.",
+        "Include links to live deployments or GitHub repositories for the listed projects.",
+        "Expand backend technology stack beyond Flask to include Node.js, Express, or Spring Boot for better enterprise readiness."
       ],
       "grammarIssues": [
-        "Action verb density is low. Lead technical accomplishment bullets with active verbs rather than passive statements.",
-        "Impact warning: Absence of measurable metrics (%, latency, user scale) to substantiate project accomplishments.",
-        "Header warning: No email address detected in candidate contact section."
+        "Inconsistent capitalization and bullet point styling under the projects section.",
+        "Career objective is overly wordy and mentions specific company names (HCLTech), which is discouraged in generic resumes."
+      ],
+      "keywords": [
+        {
+          "keyword": "JavaScript",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "TypeScript",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Python",
+          "match": true,
+          "count": 6,
+          "density": 1.45
+        },
+        {
+          "keyword": "Java",
+          "match": true,
+          "count": 2,
+          "density": 0.48
+        },
+        {
+          "keyword": "C++",
+          "match": true,
+          "count": 2,
+          "density": 0.48
+        },
+        {
+          "keyword": "C# / .NET",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Go",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Rust",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "HTML/CSS",
+          "match": true,
+          "count": 6,
+          "density": 1.45
+        },
+        {
+          "keyword": "React",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Node.js",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Express.js",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "SQL",
+          "match": true,
+          "count": 1,
+          "density": 0.24
+        },
+        {
+          "keyword": "PostgreSQL",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "MySQL",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "MongoDB",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "REST APIs",
+          "match": true,
+          "count": 3,
+          "density": 0.73
+        },
+        {
+          "keyword": "GraphQL",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Git / GitHub",
+          "match": true,
+          "count": 1,
+          "density": 0.24
+        },
+        {
+          "keyword": "Docker",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Kubernetes",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "AWS",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Google Cloud / GCP",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "CI/CD",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Unit Testing",
+          "match": false,
+          "count": 0,
+          "density": 0
+        },
+        {
+          "keyword": "Jest / Vitest / Cypress",
+          "match": false,
+          "count": 0,
+          "density": 0
+        }
       ],
       "improvementsToAdd": [
-        "Cloud & Containerization context (Docker, AWS, Kubernetes, or Vercel)",
-        "Testing paradigms and frameworks (Unit testing, Vitest, Jest, or Cypress)"
+        "JavaScript",
+        "React.js",
+        "Node.js",
+        "Express",
+        "Docker",
+        "Agile/Scrum methodologies",
+        "GitHub repository links"
       ],
       "improvementsToRemove": [
-        "Vague introductory fluff (e.g. \"Hardworking team player looking for any opportunity\")",
-        "Non-technical high school coursework or obsolete computer package references"
+        "Targeting a specific company name in the career objective (HCLTech)",
+        "Irrelevant hardware or networking certifications like CCNA when applying strictly for Full Stack roles",
+        "Vague filler phrases like 'reliably functioning application'"
       ],
-      "wordCount": 315,
-      "contentHash": "4ac2f892",
-      "targetRole": "Full Stack Engineer",
-      "matchedJDKeywords": [],
-      "missingJDKeywords": []
+      "contentHash": "f46f1aff",
+      "wordCount": 413
     },
     {
       "id": "res-alice-1",
       "userId": "user-alice-123",
       "fileName": "alice.pdf",
-      "uploadedAt": "2026-10-24T09:01:06.532Z",
+      "uploadedAt": "2026-10-28T17:24:56.133Z",
       "atsScore": 49,
       "categoryBreakdown": [
         {
@@ -4095,7 +4428,7 @@
       "id": "res-bob-1",
       "userId": "user-bob-456",
       "fileName": "bob.pdf",
-      "uploadedAt": "2026-10-24T09:01:06.532Z",
+      "uploadedAt": "2026-10-28T17:24:56.135Z",
       "atsScore": 49,
       "categoryBreakdown": [
         {
@@ -9274,6 +9607,1213 @@
       "totalPointsEarned": 160,
       "maxPossiblePoints": 200,
       "createdAt": "2026-10-24T08:53:57.796Z"
+    },
+    {
+      "id": "int-yzxstxgl9",
+      "userId": "usr-1791951546428-b9e0q",
+      "jobRole": "Full Stack developer",
+      "branch": "Computer Science",
+      "skills": [
+        "java",
+        "python",
+        "react",
+        "vite"
+      ],
+      "experienceLevel": "Entry Level",
+      "status": "completed",
+      "questions": [
+        "Can you explain how the Java Virtual Machine (JVM) handles memory management and garbage collection, and how you would diagnose a memory leak in a Java-based backend service?",
+        "Given your experience with React and Vite, can you walk me through how Vite improves development and build performance compared to traditional bundlers like Webpack, and how you structure your state management for a scalable frontend?",
+        "In your text-to-image generator project, what was the system architecture for handling asynchronous API requests between the frontend and the Python-based AI model backend, and how did you manage queueing or rate limiting for long-running generation tasks?",
+        "Tell me about a time when you had to debug a complex performance bottleneck across the full stack under a tight deadline. How did you isolate the issue, collaborate with your team, and what was the quantifiable result?",
+        "How would you design a robust caching strategy using Redis for a weather application to minimize external API calls while ensuring users receive up-to-date meteorological data?"
+      ],
+      "currentQuestionIndex": 0,
+      "answers": [
+        {
+          "question": "Can you explain how the Java Virtual Machine (JVM) handles memory management and garbage collection, and how you would diagnose a memory leak in a Java-based backend service?",
+          "questionId": "q-auto-1",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "can you explain how the Java Virtual Machine handles memory management and garbage collection",
+          "code": "",
+          "language": "java",
+          "skipped": false,
+          "evaluation": {
+            "questionId": "q-auto-1",
+            "score": 0,
+            "breakdown": {
+              "technicalAccuracy": 0,
+              "relevanceCompleteness": 0,
+              "reasoning": 0,
+              "communication": 0,
+              "practicalApplication": 0
+            },
+            "weights": {
+              "technicalAccuracy": 0.3,
+              "relevanceCompleteness": 0.25,
+              "reasoning": 0.2,
+              "communication": 0.15,
+              "practicalApplication": 0.1
+            },
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 40,
+            "grammar": "Adequate sentence clarity.",
+            "clarity": "Expand on core mechanisms and reasoning.",
+            "feedback": "The candidate failed to provide an answer entirely, instead repeating the prompt question. Therefore, no points can be awarded across any evaluation dimension.",
+            "strengths": [
+              "Demonstrated basic familiarity with the topic."
+            ],
+            "improvements": [
+              "Provide a complete answer to the entire interview question.",
+              "Explain JVM memory management (Heap, Stack, Metaspace) and how garbage collection works.",
+              "Explain practical steps for diagnosing a memory leak in a production Java backend service."
+            ],
+            "missingConcepts": [
+              "JVM memory architecture (Young Generation, Old Generation, Metaspace)",
+              "Garbage collection mechanisms (Mark-and-Sweep, GC roots, stop-the-world)",
+              "Memory leak diagnosis tools (Heap dumps, JVisualVM, Eclipse MAT, profilers)"
+            ],
+            "improvementSuggestions": [
+              "Provide a complete answer to the entire interview question.",
+              "Explain JVM memory management (Heap, Stack, Metaspace) and how garbage collection works.",
+              "Explain practical steps for diagnosing a memory leak in a production Java backend service."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "suggestedAnswer": "The JVM manages memory primarily through the Heap and Stack, divided into generations (Young and Old) for garbage collection optimization. Garbage collection identifies live objects via GC roots and reclaims memory from unreferenced objects. To diagnose a memory leak, one would capture a heap dump (e.g., using jmap), analyze object retention trees using tools like Eclipse MAT or JVisualVM to find unexpected accumulation of specific classes, and trace back to the offending code references.",
+            "wordsPerMinute": 27,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 31,
+            "evaluationSource": "ai",
+            "evaluatedAt": "2026-10-28T02:59:51.777Z"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "Given your experience with React and Vite, can you walk me through how Vite improves development and build performance compared to traditional bundlers like Webpack, and how you structure your state management for a scalable frontend?",
+          "questionId": "q-auto-2",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-28T03:00:07.606Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in technical under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 15,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "In your text-to-image generator project, what was the system architecture for handling asynchronous API requests between the frontend and the Python-based AI model backend, and how did you manage queueing or rate limiting for long-running generation tasks?",
+          "questionId": "q-auto-3",
+          "category": "resume",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-28T03:00:34.281Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in resume under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 26,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "Tell me about a time when you had to debug a complex performance bottleneck across the full stack under a tight deadline. How did you isolate the issue, collaborate with your team, and what was the quantifiable result?",
+          "questionId": "q-auto-4",
+          "category": "resume",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-28T03:00:47.177Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in resume under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 12,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "How would you design a robust caching strategy using Redis for a weather application to minimize external API calls while ensuring users receive up-to-date meteorological data?",
+          "questionId": "q-auto-5",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-28T03:00:49.651Z",
+          "evaluation": {
+            "questionId": "q-auto-5",
+            "score": 0,
+            "breakdown": {
+              "technicalAccuracy": 0,
+              "relevanceCompleteness": 0,
+              "reasoning": 0,
+              "communication": 0,
+              "practicalApplication": 0
+            },
+            "weights": {
+              "technicalAccuracy": 0.3,
+              "relevanceCompleteness": 0.25,
+              "reasoning": 0.2,
+              "communication": 0.15,
+              "practicalApplication": 0.1
+            },
+            "feedback": "This question was skipped by the candidate (0 points).",
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped.",
+            "strengths": [],
+            "improvements": [
+              "Study core concepts: Clear technical explanation covering core principles."
+            ],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts before your next mock interview."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 11,
+            "evaluationSource": "rubric",
+            "evaluatedAt": "2026-10-28T03:00:59.508Z"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        }
+      ],
+      "createdAt": "2026-10-28T02:59:09.690Z",
+      "overallScore": 0,
+      "performanceLevel": "Needs Improvement",
+      "overallBreakdown": {
+        "technicalAccuracy": 0,
+        "relevanceCompleteness": 0,
+        "reasoning": 0,
+        "communication": 0,
+        "practicalApplication": 0
+      },
+      "averageAnsweredScore": 0,
+      "averageScoreOutOf10": 0,
+      "totalPointsEarned": 0,
+      "maxPossiblePoints": 500,
+      "technicalScore": 0,
+      "communicationScore": 0,
+      "confidenceScore": 40,
+      "categoryScores": {
+        "technical": 0,
+        "resume": 0
+      },
+      "questionsAnswered": 1,
+      "questionsSkipped": 4,
+      "questionsPending": 0,
+      "strongestAreas": [
+        "Demonstrated basic familiarity with the topic."
+      ],
+      "topicsToImprove": [
+        "Provide a complete answer to the entire interview question.",
+        "Explain JVM memory management (Heap, Stack, Metaspace) and how garbage collection works.",
+        "Explain practical steps for diagnosing a memory leak in a production Java backend service.",
+        "Study core concepts: Clear technical explanation covering core principles."
+      ],
+      "suggestedPracticeQuestions": [
+        "Review algorithmic optimization and edge cases for Full Stack developer technical scenarios.",
+        "Practice designing resilient database schemas, ACID transactions, and indexing structures.",
+        "Refine STAR-method behavioral responses regarding complex team collaboration and technical trade-offs."
+      ],
+      "recommendedLearningTopics": [
+        "Distributed Concurrency, Locks & Thread Safety",
+        "System Design Patterns: Caching, Rate Limiting & Message Queues",
+        "Database Sharding, ACID Transactions & Index Optimization"
+      ],
+      "feedbackText": "Baseline technical interview completed (Needs Improvement tier). Answered 1 of 5 questions with an average score of 0% on attempted questions (4 skipped). Prioritize strengthening core Full Stack developer fundamentals and code syntax structure.",
+      "suggestions": [
+        "Provide a complete answer to the entire interview question.",
+        "Explain JVM memory management (Heap, Stack, Metaspace) and how garbage collection works.",
+        "Explain practical steps for diagnosing a memory leak in a production Java backend service.",
+        "Study core concepts: Clear technical explanation covering core principles."
+      ],
+      "evaluationDisclaimer": "AI-assisted practice assessment. This educational evaluation is designed to guide candidate skill improvement and does not guarantee specific hiring outcomes."
+    },
+    {
+      "id": "test-intv-1793157046165",
+      "userId": "test-user-scoring-1",
+      "branch": "Computer Science",
+      "skills": [
+        "Java",
+        "Algorithms"
+      ],
+      "jobRole": "Full Stack Developer",
+      "experienceLevel": "Mid Level",
+      "status": "completed",
+      "questions": [
+        "Explain how a HashMap handles collisions in Java and what its average vs worst-case time complexity is.",
+        "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target in O(n) time."
+      ],
+      "currentQuestionIndex": 1,
+      "answers": [
+        {
+          "question": "Explain how a HashMap handles collisions in Java and what its average vs worst-case time complexity is.",
+          "questionId": "tech-hashmap-1",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "Thorough collision explanation with separate chaining and red-black trees",
+          "skipped": false,
+          "evaluation": {
+            "score": 84,
+            "breakdown": {
+              "technicalAccuracy": 84,
+              "relevanceCompleteness": 84,
+              "reasoning": 84,
+              "communication": 84,
+              "practicalApplication": 84
+            },
+            "technicalScore": 84,
+            "communicationScore": 84,
+            "confidenceScore": 84,
+            "grammar": "Good",
+            "clarity": "Clear",
+            "strengths": [
+              "Great explanation of collision handling"
+            ],
+            "improvements": [],
+            "missingConcepts": [],
+            "feedback": "Score: 84",
+            "evaluationSource": "ai"
+          }
+        },
+        {
+          "question": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target in O(n) time.",
+          "questionId": "code-two-sum-1",
+          "category": "coding",
+          "difficulty": "intermediate",
+          "answer": "Used a single pass hash map for two sum",
+          "skipped": false,
+          "evaluation": {
+            "score": 76,
+            "breakdown": {
+              "technicalAccuracy": 76,
+              "relevanceCompleteness": 76,
+              "reasoning": 76,
+              "communication": 76,
+              "practicalApplication": 76
+            },
+            "technicalScore": 76,
+            "communicationScore": 76,
+            "confidenceScore": 76,
+            "grammar": "Good",
+            "clarity": "Clear",
+            "strengths": [
+              "Correct algorithmic approach"
+            ],
+            "improvements": [],
+            "missingConcepts": [],
+            "feedback": "Score: 76",
+            "evaluationSource": "ai"
+          }
+        }
+      ],
+      "overallScore": 80,
+      "performanceLevel": "Strong",
+      "overallBreakdown": {
+        "technicalAccuracy": 80,
+        "relevanceCompleteness": 80,
+        "reasoning": 80,
+        "communication": 80,
+        "practicalApplication": 80
+      },
+      "evaluationDisclaimer": "AI-assisted practice assessment. This educational evaluation is designed to guide candidate skill improvement and does not guarantee specific hiring outcomes.",
+      "totalPointsEarned": 160,
+      "maxPossiblePoints": 200,
+      "createdAt": "2026-10-28T03:10:46.165Z"
+    },
+    {
+      "id": "int-1hkat7n17",
+      "userId": "usr-1791951546428-b9e0q",
+      "jobRole": "Full Stack developer",
+      "branch": "Computer Science",
+      "skills": [
+        "java",
+        "python",
+        "react",
+        "vite"
+      ],
+      "experienceLevel": "Entry Level",
+      "status": "completed",
+      "questions": [
+        "Can you explain the difference between method overloading and method overriding in Java, and provide an example of how polymorphism is applied in a backend application?",
+        "How would you optimize the state management and asset bundling using Vite and React to ensure fast load times for a real-time data dashboard?",
+        "In your text-to-image generator project, what specific backend architecture and queuing mechanism did you implement to handle heavy asynchronous generation requests without timing out the client?",
+        "Describe a situation where you had a disagreement with a team member regarding architectural choices in a project, and how you resolved it constructively.",
+        "How would you design a scalable caching layer using Redis for a weather application to minimize external API rate-limiting issues while maintaining data freshness for thousands of concurrent users?"
+      ],
+      "currentQuestionIndex": 0,
+      "answers": [
+        {
+          "question": "Can you explain the difference between method overloading and method overriding in Java, and provide an example of how polymorphism is applied in a backend application?",
+          "questionId": "q-auto-1",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "I don't know",
+          "code": "",
+          "language": "java",
+          "skipped": false,
+          "evaluation": {
+            "questionId": "q-auto-1",
+            "score": 0,
+            "breakdown": {
+              "technicalAccuracy": 0,
+              "relevanceCompleteness": 0,
+              "reasoning": 0,
+              "communication": 0,
+              "practicalApplication": 0
+            },
+            "weights": {
+              "technicalAccuracy": 0.3,
+              "relevanceCompleteness": 0.25,
+              "reasoning": 0.2,
+              "communication": 0.15,
+              "practicalApplication": 0.1
+            },
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 40,
+            "grammar": "Adequate sentence clarity.",
+            "clarity": "Expand on core mechanisms and reasoning.",
+            "feedback": "The candidate provided no answer, stating only 'I don't know'. Consequently, all scoring dimensions receive zero points due to a complete lack of technical content and completeness.",
+            "strengths": [
+              "Demonstrated basic familiarity with the topic."
+            ],
+            "improvements": [
+              "Study the core object-oriented programming concepts of method overloading and method overriding in Java.",
+              "Learn how polymorphism is applied in backend architectures, such as dependency injection and service interfaces.",
+              "Provide complete and thorough explanations rather than declining to answer."
+            ],
+            "missingConcepts": [
+              "Compile-time (static) vs runtime (dynamic) polymorphism",
+              "Method signature rules for overloading",
+              "Method overriding rules (same signature, inheritance, annotations like @Override)",
+              "Real-world backend polymorphism example (e.g., payment gateways or notification services)"
+            ],
+            "improvementSuggestions": [
+              "Study the core object-oriented programming concepts of method overloading and method overriding in Java.",
+              "Learn how polymorphism is applied in backend architectures, such as dependency injection and service interfaces.",
+              "Provide complete and thorough explanations rather than declining to answer."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "suggestedAnswer": "Method overloading occurs within the same class when multiple methods share the same name but have different parameter lists (compile-time polymorphism). Method overriding occurs when a subclass provides a specific implementation of a method that is already defined in its parent class (runtime polymorphism). In a backend application, polymorphism is commonly used by defining a service interface (e.g., PaymentService) and injecting different implementations (StripePaymentService, PayPalPaymentService) at runtime based on configuration or user choice.",
+            "wordsPerMinute": 13,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 14,
+            "evaluationSource": "ai",
+            "evaluatedAt": "2026-10-28T13:32:16.101Z"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "How would you optimize the state management and asset bundling using Vite and React to ensure fast load times for a real-time data dashboard?",
+          "questionId": "q-auto-2",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-28T13:32:21.538Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in technical under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 5,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "In your text-to-image generator project, what specific backend architecture and queuing mechanism did you implement to handle heavy asynchronous generation requests without timing out the client?",
+          "questionId": "q-auto-3",
+          "category": "resume",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-28T13:32:24.466Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in resume under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 2,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "Describe a situation where you had a disagreement with a team member regarding architectural choices in a project, and how you resolved it constructively.",
+          "questionId": "q-auto-4",
+          "category": "resume",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-28T13:32:26.001Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in resume under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 1,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "How would you design a scalable caching layer using Redis for a weather application to minimize external API rate-limiting issues while maintaining data freshness for thousands of concurrent users?",
+          "questionId": "q-auto-5",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-28T13:32:37.979Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in technical under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 11,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        }
+      ],
+      "createdAt": "2026-10-28T13:31:53.465Z",
+      "overallScore": 0,
+      "performanceLevel": "Needs Improvement",
+      "overallBreakdown": {
+        "technicalAccuracy": 0,
+        "relevanceCompleteness": 0,
+        "reasoning": 0,
+        "communication": 0,
+        "practicalApplication": 0
+      },
+      "averageAnsweredScore": 0,
+      "averageScoreOutOf10": 0,
+      "totalPointsEarned": 0,
+      "maxPossiblePoints": 500,
+      "technicalScore": 0,
+      "communicationScore": 0,
+      "confidenceScore": 40,
+      "categoryScores": {
+        "technical": 0,
+        "resume": 0
+      },
+      "questionsAnswered": 1,
+      "questionsSkipped": 4,
+      "questionsPending": 0,
+      "strongestAreas": [
+        "Demonstrated basic familiarity with the topic."
+      ],
+      "topicsToImprove": [
+        "Study the core object-oriented programming concepts of method overloading and method overriding in Java.",
+        "Learn how polymorphism is applied in backend architectures, such as dependency injection and service interfaces.",
+        "Provide complete and thorough explanations rather than declining to answer."
+      ],
+      "suggestedPracticeQuestions": [
+        "Review algorithmic optimization and edge cases for Full Stack developer technical scenarios.",
+        "Practice designing resilient database schemas, ACID transactions, and indexing structures.",
+        "Refine STAR-method behavioral responses regarding complex team collaboration and technical trade-offs."
+      ],
+      "recommendedLearningTopics": [
+        "Distributed Concurrency, Locks & Thread Safety",
+        "System Design Patterns: Caching, Rate Limiting & Message Queues",
+        "Database Sharding, ACID Transactions & Index Optimization"
+      ],
+      "feedbackText": "Baseline technical interview completed (Needs Improvement tier). Answered 1 of 5 questions with an average score of 0% on attempted questions (4 skipped). Prioritize strengthening core Full Stack developer fundamentals and code syntax structure.",
+      "suggestions": [
+        "Study the core object-oriented programming concepts of method overloading and method overriding in Java.",
+        "Learn how polymorphism is applied in backend architectures, such as dependency injection and service interfaces.",
+        "Provide complete and thorough explanations rather than declining to answer."
+      ],
+      "evaluationDisclaimer": "AI-assisted practice assessment. This educational evaluation is designed to guide candidate skill improvement and does not guarantee specific hiring outcomes."
+    },
+    {
+      "id": "int-idifjb5ki",
+      "userId": "usr-1791951546428-b9e0q",
+      "jobRole": "Full Stack developer",
+      "branch": "Computer Science",
+      "skills": [
+        "java",
+        "python",
+        "react",
+        "vite"
+      ],
+      "experienceLevel": "Entry Level",
+      "status": "completed",
+      "questions": [
+        "Can you explain how Java manages memory through the garbage collector and how you would prevent memory leaks when dealing with long-lived objects in a backend service?",
+        "Given your experience with building a text-to-image generator, how would you design the system architecture to handle asynchronous image generation requests and update the React frontend in real-time via Vite?",
+        "How do you handle state management and component lifecycle in React, and what advantages does Vite provide over traditional bundlers like Webpack during development?",
+        "Can you describe a time when you had a disagreement with a team member regarding a technical implementation choice on your weather app project, and how you resolved it?",
+        "How would you optimize the REST API layer for your text-to-image generator to handle heavy payload responses and reduce overall latency under high concurrent user load?"
+      ],
+      "currentQuestionIndex": 0,
+      "answers": [
+        {
+          "question": "Can you explain how Java manages memory through the garbage collector and how you would prevent memory leaks when dealing with long-lived objects in a backend service?",
+          "questionId": "q-auto-1",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "I don't know",
+          "code": "",
+          "language": "java",
+          "skipped": false,
+          "evaluation": {
+            "questionId": "q-auto-1",
+            "score": 9,
+            "breakdown": {
+              "technicalAccuracy": 10,
+              "relevanceCompleteness": 5,
+              "reasoning": 10,
+              "communication": 20,
+              "practicalApplication": 0
+            },
+            "weights": {
+              "technicalAccuracy": 0.3,
+              "relevanceCompleteness": 0.25,
+              "reasoning": 0.2,
+              "communication": 0.15,
+              "practicalApplication": 0.1
+            },
+            "technicalScore": 10,
+            "communicationScore": 20,
+            "confidenceScore": 30,
+            "grammar": "Written in prose, but content is irrelevant.",
+            "clarity": "Does not address the prompt.",
+            "feedback": "The answer is off-topic and does not address the technical question asked.",
+            "strengths": [
+              "Demonstrated understanding of core concepts."
+            ],
+            "improvements": [
+              "Focus strictly on answering the specific technical question."
+            ],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Focus strictly on answering the specific technical question."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 18,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 10,
+            "evaluationSource": "rubric",
+            "evaluatedAt": "2026-10-28T13:38:57.693Z"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "Given your experience with building a text-to-image generator, how would you design the system architecture to handle asynchronous image generation requests and update the React frontend in real-time via Vite?",
+          "questionId": "q-auto-2",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-28T13:38:59.627Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in technical under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 1,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "How do you handle state management and component lifecycle in React, and what advantages does Vite provide over traditional bundlers like Webpack during development?",
+          "questionId": "q-auto-3",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-28T13:39:01.419Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in technical under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 1,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "Can you describe a time when you had a disagreement with a team member regarding a technical implementation choice on your weather app project, and how you resolved it?",
+          "questionId": "q-auto-4",
+          "category": "resume",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-28T13:39:02.894Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in resume under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 1,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        },
+        {
+          "question": "How would you optimize the REST API layer for your text-to-image generator to handle heavy payload responses and reduce overall latency under high concurrent user load?",
+          "questionId": "q-auto-5",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "[Question Skipped]",
+          "code": "",
+          "language": "java",
+          "skipped": true,
+          "skipTimestamp": "2026-10-28T13:39:04.110Z",
+          "evaluation": {
+            "score": 0,
+            "technicalScore": 0,
+            "communicationScore": 0,
+            "confidenceScore": 0,
+            "grammar": "N/A (Skipped)",
+            "clarity": "Question was skipped by candidate.",
+            "feedback": "This question was explicitly skipped by the candidate.",
+            "strengths": [],
+            "missingConcepts": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "improvementSuggestions": [
+              "Review fundamental concepts in technical under difficulty level \"intermediate\".",
+              "Practice articulating key bullet points aloud before moving to code."
+            ],
+            "modelAnswerPoints": [
+              "Clear technical explanation covering core principles.",
+              "Mention of time/space complexity or architectural trade-offs.",
+              "Practical real-world consideration and edge-case handling."
+            ],
+            "wordsPerMinute": 0,
+            "fillerWordCount": 0,
+            "answerDurationSeconds": 1,
+            "evaluationSource": "rubric"
+          },
+          "expectedAnswerPoints": [
+            "Clear technical explanation covering core principles.",
+            "Mention of time/space complexity or architectural trade-offs.",
+            "Practical real-world consideration and edge-case handling."
+          ],
+          "evaluationCriteria": [
+            "Conceptual accuracy and clarity",
+            "Completeness of response"
+          ]
+        }
+      ],
+      "createdAt": "2026-10-28T13:38:44.612Z",
+      "overallScore": 2,
+      "performanceLevel": "Needs Improvement",
+      "overallBreakdown": {
+        "technicalAccuracy": 10,
+        "relevanceCompleteness": 5,
+        "reasoning": 10,
+        "communication": 20,
+        "practicalApplication": 0
+      },
+      "averageAnsweredScore": 9,
+      "averageScoreOutOf10": 0.9,
+      "totalPointsEarned": 9,
+      "maxPossiblePoints": 500,
+      "technicalScore": 10,
+      "communicationScore": 20,
+      "confidenceScore": 40,
+      "categoryScores": {
+        "technical": 2,
+        "resume": 0
+      },
+      "questionsAnswered": 1,
+      "questionsSkipped": 4,
+      "questionsPending": 0,
+      "strongestAreas": [
+        "Demonstrated understanding of core concepts."
+      ],
+      "topicsToImprove": [
+        "Focus strictly on answering the specific technical question."
+      ],
+      "suggestedPracticeQuestions": [
+        "Review algorithmic optimization and edge cases for Full Stack developer technical scenarios.",
+        "Practice designing resilient database schemas, ACID transactions, and indexing structures.",
+        "Refine STAR-method behavioral responses regarding complex team collaboration and technical trade-offs."
+      ],
+      "recommendedLearningTopics": [
+        "Distributed Concurrency, Locks & Thread Safety",
+        "System Design Patterns: Caching, Rate Limiting & Message Queues",
+        "Database Sharding, ACID Transactions & Index Optimization"
+      ],
+      "feedbackText": "Baseline technical interview completed (Needs Improvement tier). Answered 1 of 5 questions with an average score of 9% on attempted questions (4 skipped). Prioritize strengthening core Full Stack developer fundamentals and code syntax structure.",
+      "suggestions": [
+        "Focus strictly on answering the specific technical question."
+      ],
+      "evaluationDisclaimer": "AI-assisted practice assessment. This educational evaluation is designed to guide candidate skill improvement and does not guarantee specific hiring outcomes."
+    },
+    {
+      "id": "test-intv-1793208305202",
+      "userId": "test-user-scoring-1",
+      "branch": "Computer Science",
+      "skills": [
+        "Java",
+        "Algorithms"
+      ],
+      "jobRole": "Full Stack Developer",
+      "experienceLevel": "Mid Level",
+      "status": "completed",
+      "questions": [
+        "Explain how a HashMap handles collisions in Java and what its average vs worst-case time complexity is.",
+        "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target in O(n) time."
+      ],
+      "currentQuestionIndex": 1,
+      "answers": [
+        {
+          "question": "Explain how a HashMap handles collisions in Java and what its average vs worst-case time complexity is.",
+          "questionId": "tech-hashmap-1",
+          "category": "technical",
+          "difficulty": "intermediate",
+          "answer": "Thorough collision explanation with separate chaining and red-black trees",
+          "skipped": false,
+          "evaluation": {
+            "score": 84,
+            "breakdown": {
+              "technicalAccuracy": 84,
+              "relevanceCompleteness": 84,
+              "reasoning": 84,
+              "communication": 84,
+              "practicalApplication": 84
+            },
+            "technicalScore": 84,
+            "communicationScore": 84,
+            "confidenceScore": 84,
+            "grammar": "Good",
+            "clarity": "Clear",
+            "strengths": [
+              "Great explanation of collision handling"
+            ],
+            "improvements": [],
+            "missingConcepts": [],
+            "feedback": "Score: 84",
+            "evaluationSource": "ai"
+          }
+        },
+        {
+          "question": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target in O(n) time.",
+          "questionId": "code-two-sum-1",
+          "category": "coding",
+          "difficulty": "intermediate",
+          "answer": "Used a single pass hash map for two sum",
+          "skipped": false,
+          "evaluation": {
+            "score": 76,
+            "breakdown": {
+              "technicalAccuracy": 76,
+              "relevanceCompleteness": 76,
+              "reasoning": 76,
+              "communication": 76,
+              "practicalApplication": 76
+            },
+            "technicalScore": 76,
+            "communicationScore": 76,
+            "confidenceScore": 76,
+            "grammar": "Good",
+            "clarity": "Clear",
+            "strengths": [
+              "Correct algorithmic approach"
+            ],
+            "improvements": [],
+            "missingConcepts": [],
+            "feedback": "Score: 76",
+            "evaluationSource": "ai"
+          }
+        }
+      ],
+      "overallScore": 80,
+      "performanceLevel": "Strong",
+      "overallBreakdown": {
+        "technicalAccuracy": 80,
+        "relevanceCompleteness": 80,
+        "reasoning": 80,
+        "communication": 80,
+        "practicalApplication": 80
+      },
+      "evaluationDisclaimer": "AI-assisted practice assessment. This educational evaluation is designed to guide candidate skill improvement and does not guarantee specific hiring outcomes.",
+      "totalPointsEarned": 160,
+      "maxPossiblePoints": 200,
+      "createdAt": "2026-10-28T17:25:05.209Z"
     }
   ],
   "templates": [
@@ -9335,6 +10875,13 @@
     },
     {
       "id": "custom-test-1792828608159",
+      "name": "FinTech Quantitative Developer ATS Format",
+      "description": "Specialized layout for high-frequency trading and financial risk models.",
+      "downloadCount": 0,
+      "fileContent": "# Quantitative Developer Resume\n## SKILLS\nC++, Python, CUDA, TimescaleDB"
+    },
+    {
+      "id": "custom-test-1793208336549",
       "name": "FinTech Quantitative Developer ATS Format",
       "description": "Specialized layout for high-frequency trading and financial risk models.",
       "downloadCount": 0,
@@ -9544,23 +11091,245 @@
       }
     },
     {
+      "id": "conv-1793156984997-1gh5q",
+      "userId": "guest",
+      "title": "Review my resume for a Java devel...",
+      "learningMode": false,
+      "createdAt": "2026-10-28T03:09:47.628Z",
+      "updatedAt": "2026-10-28T03:09:47.628Z",
+      "messages": [
+        {
+          "id": "msg-1793156985008-u",
+          "role": "user",
+          "content": "Review my resume for a Java developer role.",
+          "timestamp": "2026-10-28T03:09:45.008Z",
+          "learningMode": false
+        },
+        {
+          "id": "msg-1793156987628-a",
+          "role": "assistant",
+          "content": "I would be more than happy to help you optimize your resume for a Java Developer role! \n\nSince you haven't shared it yet, please **copy and paste your resume text directly into our chat** (make sure to remove sensitive personal info like your exact phone number, home address, or personal email if you prefer to keep them private).\n\nTo give you the most targeted review, please also let me know:\n1. **Your current experience level:** (e.g., Final-year student, recent graduate, or 1–2 years of experience)\n2. **Your target role:** (e.g., Junior Java Developer, Backend Engineer, Full-Stack Developer)\n\n---\n\n### What I Will Look For in Your Java Resume:\nWhen you share it, I will evaluate it against the strict standards of modern Applicant Tracking Systems (ATS) and hiring managers by checking for:\n\n* **Impact-Driven Bullet Points:** Are your project or work descriptions focused on *what you built and the results/metrics* (e.g., \"Improved API response time by 20% using Spring caching\") rather than just listing duties?\n* **Java & Ecosystem Keywords:** Does it properly showcase core Java concepts (OOPs, Collections, Multithreading, Java 8+ features like Streams/Lambdas) alongside essential frameworks (Spring Boot, Hibernate/JPA, REST APIs)?\n* **CS Fundamentals & Databases:** Are your database skills (SQL, MySQL/PostgreSQL, indexing, normalization) and system-level knowledge clearly represented?\n* **Project Architecture:** Do your projects sound like professional applications (mentioning architecture patterns, security, and deployment) rather than basic college assignments?\n* **Formatting & Clarity:** Is it clean, easy to read, and free of filler sections that waste valuable space?\n\nWhenever you're ready, **paste your resume below**, and let's get it interview-ready!",
+          "timestamp": "2026-10-28T03:09:47.628Z",
+          "learningMode": false
+        }
+      ]
+    },
+    {
+      "id": "conv-1793157100266-v7wzi",
+      "userId": "usr-1791951546428-b9e0q",
+      "title": "Explain Java inheritance with an ...",
+      "learningMode": false,
+      "createdAt": "2026-10-28T03:11:44.511Z",
+      "updatedAt": "2026-10-28T03:11:44.511Z",
+      "messages": [
+        {
+          "id": "msg-1793157100277-u",
+          "role": "user",
+          "content": "Explain Java inheritance with an example.",
+          "timestamp": "2026-10-28T03:11:40.277Z",
+          "learningMode": false
+        },
+        {
+          "id": "msg-1793157104511-a",
+          "role": "assistant",
+          "content": "Hello! As a Computer Science student targeting Full Stack roles, understanding Object-Oriented Programming (OOP) concepts like **inheritance** is crucial—not just for Java interviews, but also because frameworks like Spring Boot rely heavily on these principles under the hood.\n\n---\n\n### What is Java Inheritance?\n\n**Inheritance** is an OOP mechanism where one class (called the **subclass**, **child**, or **derived class**) acquires the fields and methods of another class (called the **superclass**, **parent**, or **base class**). \n\n* **Keyword used:** `extends`\n* **Core Benefit:** **Code Reusability**. Instead of rewriting common properties and methods across multiple classes, you write them once in a parent class and inherit them.\n* **Java Limitation:** Java **does not support multiple inheritance** with classes (a class cannot `extend` more than one class) to avoid ambiguity issues like the \"Diamond Problem.\" However, it achieves multiple inheritance behavior using **Interfaces**.\n\n---\n\n### Real-World Full Stack Example\n\nImagine we are building a user management system. We have a generic `User` entity, and specialized users like an `Admin` and a `Developer`. Both admins and developers have a `username` and `email`, but an admin has a specific `adminLevel`, and a developer has a specific programming `techStack`.\n\n```java\n// Parent / Superclass\nclass User {\n    String username;\n    String email;\n\n    // Constructor for User\n    public User(String username, String email) {\n        this.username = username;\n        this.email = email;\n    }\n\n    // Common method for all users\n    public void login() {\n        System.out.println(username + \" logged into the system.\");\n    }\n}\n\n// Child / Subclass 1\nclass Admin extends User {\n    int adminLevel;\n\n    public Admin(String username, String email, int adminLevel) {\n        super(username, email); // super() calls the parent class constructor\n        this.adminLevel = adminLevel;\n    }\n\n    // Admin-specific method\n    public void manageDatabase() {\n        System.out.println(username + \" is managing the database with Level \" + adminLevel + \" access.\");\n    }\n}\n\n// Child / Subclass 2\nclass Developer extends User {\n    String techStack;\n\n    public Developer(String username, String email, String techStack) {\n        super(username, email);\n        this.techStack = techStack;\n    }\n\n    // Developer-specific method\n    public void writeCode() {\n        System.out.println(username + \" is writing code using \" + techStack + \".\");\n    }\n}\n\n// Main Execution Class\npublic class Main {\n    public static void main(String[] args) {\n        // Creating an Admin object\n        Admin admin = new Admin(\"Alice_Admin\", \"alice@company.com\", 5);\n        admin.login();         // Inherited method from User\n        admin.manageDatabase(); // Admin's own method\n\n        System.out.println(\"-------------------\");\n\n        // Creating a Developer object\n        Developer dev = new Developer(\"Bob_Dev\", \"bob@company.com\", \"Java & React\");\n        dev.login();           // Inherited method from User\n        dev.writeCode();       // Developer's own method\n    }\n}\n```\n\n---\n\n### Expected Output\n\n```text\nAlice_Admin logged into the system.\nAlice_Admin is managing the database with Level 5 access.\n-------------------\nBob_Dev logged into the system.\nBob_Dev is writing code using Java & React.\n```\n\n---\n\n### Step-by-Step Code Explanation\n\n1. **`class Admin extends User`**: This tells Java that `Admin` inherits everything non-private from `User`.\n2. **`super(username, email);`**: The `super` keyword is used inside the child's constructor to invoke the parent class's constructor. This ensures that the parent fields (`username`, `email`) are properly initialized before setting child-specific fields.\n3. **Inherited Behavior**: Even though `Admin` and `Developer` classes do not explicitly define a `login()` method inside their own code blocks, they can use it because they `extend` `User`.\n\n---\n\n### Placement & Interview Tip 💡\n* **Common Interview Question:** *\"Why doesn't Java support multiple inheritance with classes?\"* \n  * **Answer:** To prevent the **Diamond Problem**—a scenario where a class inherits from two classes that have methods with the same signature, causing ambiguity about which method the compiler should execute.\n* **Resume Context:** When building Spring Boot full-stack projects (like a CRUD app), you will often see inheritance patterns used in **JPA/Hibernate entities** or when defining **DTO (Data Transfer Object) hierarchies**. Mentioning this architectural understanding during interviews adds strong value!",
+          "timestamp": "2026-10-28T03:11:44.511Z",
+          "learningMode": false
+        }
+      ],
+      "careerContext": {
+        "targetRole": "Full Stack developer",
+        "branch": "Computer Science",
+        "skills": [
+          "Python",
+          "Java",
+          "SQL",
+          "MySQL",
+          "MongoDB",
+          "Git / GitHub"
+        ],
+        "latestAtsScore": 68
+      }
+    },
+    {
+      "id": "conv-1793194035213-cv2ns",
+      "userId": "usr-1791951546428-b9e0q",
+      "title": "Give me a 30-day placement prepar...",
+      "learningMode": false,
+      "createdAt": "2026-10-28T13:27:33.029Z",
+      "updatedAt": "2026-10-28T13:27:33.029Z",
+      "messages": [
+        {
+          "id": "msg-1793194035230-u",
+          "role": "user",
+          "content": "Give me a 30-day placement preparation plan.",
+          "timestamp": "2026-10-28T13:27:15.230Z",
+          "learningMode": false
+        },
+        {
+          "id": "msg-1793194053029-a",
+          "role": "assistant",
+          "content": "Hello! As your Career Navigator AI, I’ve put together a rigorous, high-impact **30-day placement preparation plan** tailored specifically for your profile as a **Computer Science** student targeting **Full Stack Developer** roles. \n\nWith an ATS resume score of 68%, we also need to spend a little time optimizing your resume concurrently so you actually get interview calls.\n\nHere is your roadmap to success:\n\n---\n\n### Phase 1: Core CS Fundamentals & Data Structures (Days 1 – 10)\n*Focus: Crashing through coding rounds and core technical interviews.*\n\n*   **Days 1–3: Arrays, Strings, and Two-Pointer Techniques**\n    *   *Topics:* Sliding window, prefix sum, sorting, basic string manipulation.\n    *   *Target Problems (LeetCode Easy/Medium):* Two Sum, Valid Anagram, Longest Substring Without Repeating Characters.\n*   **Days 4–6: Linked Lists, Stacks, Queues, and Hash Maps**\n    *   *Topics:* Pointer manipulation, FIFO/LIFO structures, frequency counting.\n    *   *Target Problems:* Reverse a Linked List, Valid Parentheses, LRU Cache (Medium).\n*   **Days 7–8: Trees and Graphs (BFS/DFS)**\n    *   *Topics:* Binary Trees, Binary Search Trees, graph traversals, adjacency list representation.\n    *   *Target Problems:* Maximum Depth of Binary Tree, Lowest Common Ancestor, Number of Islands.\n*   **Days 9–10: Core CS Revision (OS, DBMS, Networks)**\n    *   *DBMS:* SQL Joins, Indexing, ACID properties, Normalization (1NF to 3NF). *Crucial for your Full Stack track.*\n    *   *OS:* Process vs. Threads, Synchronization (Mutex/Semaphores), Deadlocks.\n    *   *Networks:* HTTP/HTTPS methods, status codes, TCP/IP vs. OSI model, DNS.\n\n---\n\n### Phase 2: Full Stack Development & Database Mastery (Days 11 – 20)\n*Focus: Building confidence in your tech stack (Python/Java, SQL, MongoDB, Git).*\n\n*   **Days 11–13: Backend & REST API Design**\n    *   *Topics:* Statelessness, RESTful conventions, routing, middleware, error handling.\n    *   *Action:* Build a small CRUD REST API using **Java (Spring Boot)** or **Python (Flask/FastAPI)**. Ensure you implement proper status codes (200, 201, 400, 404, 500).\n*   **Days 14–16: Databases (SQL vs. NoSQL)**\n    *   *SQL (MySQL):* Write complex queries involving `GROUP BY`, `HAVING`, subqueries, and multi-table `JOIN` operations.\n    *   *NoSQL (MongoDB):* Practice schema design, embedding vs. referencing, and basic aggregation pipelines.\n*   **Days 17–18: Frontend Basics & Integration**\n    *   *Topics:* HTML5, CSS3 (Flexbox/Grid), JavaScript (ES6+ features like async/await, promises, arrow functions).\n    *   *Action:* Connect your backend API to a simple frontend or test endpoints thoroughly using Postman.\n*   **Days 19–20: Git, GitHub, and Version Control Workflow**\n    *   *Topics:* Branching, merging, resolving merge conflicts, pull requests.\n    *   *Action:* Clean up your GitHub repositories. Add professional `README.md` files containing setup instructions, tech stacks, and architecture diagrams.\n\n---\n\n### Phase 3: Resume Polish, Projects, & Mock Interviews (Days 21 – 30)\n*Focus: Beating the ATS, mastering behavioral rounds, and final polishing.*\n\n*   **Day 21: Resume Optimization (Boosting ATS from 68% to 85+%)**\n    *   *Action:* Integrate exact keywords from target Full Stack job descriptions (e.g., *REST APIs, Relational Databases, Agile, Git*). \n    *   *Format:* Ensure a clean, single-column, ATS-friendly format (remove graphics, tables, and multi-column layouts). Use bullet points starting with strong action verbs (*Engineered, Architected, Optimized*).\n*   **Days 22–24: Project Architecture Walkthroughs**\n    *   *Action:* Prepare to explain 2 major full-stack projects using the **STAR framework** or **ARCH framework** (Architecture, Role, Challenges, Highlights). Be ready to draw your system architecture on a digital whiteboard.\n*   **Days 25–27: Advanced Problem Solving & Dynamic Programming (Basics)**\n    *   *Topics:* Recursion with memoization, 0/1 Knapsack, Coin Change. (Don't spend too much time on hard DP if pressed for time; focus on patterns).\n*   **Days 28–29: Behavioral Preparation & HR Questions**\n    *   *Prepare Answers For:* \"Tell me about yourself,\" \"Describe a time you faced a technical conflict,\" \"Why Full Stack development?\"\n    *   Use the **STAR Method** (Situation, Task, Action, Result) for all behavioral scenarios.\n*   **Day 30: Final Mock Test & Mindset**\n    *   *Action:* Take a timed mock coding assessment and relax. Ensure your LinkedIn profile mirrors your updated resume.\n\n---\n\n### 💡 Career Navigator Tip for Success:\nDon't just watch tutorials during Phase 2—**write code by hand or in a blank editor.** During technical interviews, you'll often be asked to write syntax without autocomplete. Stick to this schedule strictly, and you will see a massive leap in your confidence and interview conversions! \n\nHow would you like to start? We can dive into a **Data Structures mock problem** or review **SQL optimization techniques** right now.",
+          "timestamp": "2026-10-28T13:27:33.029Z",
+          "learningMode": false
+        }
+      ],
+      "careerContext": {
+        "targetRole": "Full Stack developer",
+        "branch": "Computer Science",
+        "skills": [
+          "Python",
+          "Java",
+          "SQL",
+          "MySQL",
+          "MongoDB",
+          "Git / GitHub"
+        ],
+        "latestAtsScore": 68
+      }
+    },
+    {
+      "id": "conv-1793206117654-0bdoq",
+      "userId": "usr-1791951546428-b9e0q",
+      "title": "Explain this programming error.",
+      "learningMode": false,
+      "createdAt": "2026-10-28T16:49:04.027Z",
+      "updatedAt": "2026-10-28T16:49:04.027Z",
+      "messages": [
+        {
+          "id": "msg-1793206117956-u",
+          "role": "user",
+          "content": "Explain this programming error.",
+          "timestamp": "2026-10-28T16:48:37.956Z",
+          "learningMode": false
+        },
+        {
+          "id": "msg-1793206144027-a",
+          "role": "assistant",
+          "content": "Hello! It looks like you didn't include the specific programming error in your message. \n\nPlease paste the **error message**, the **stack trace**, or the **relevant snippet of your code** (whether it's in Python, Java, C++, SQL, or JavaScript/HTML/CSS), and I will gladly:\n1. Identify the exact root cause.\n2. Explain *why* it is happening in simple terms.\n3. Provide the corrected, working code.\n4. Give you tips on how to avoid it in future technical interviews or projects!\n\nWhenever you're ready, share the details below.",
+          "timestamp": "2026-10-28T16:49:04.027Z",
+          "learningMode": false
+        }
+      ],
+      "careerContext": {
+        "targetRole": "Full Stack developer",
+        "branch": "Computer Science",
+        "skills": [
+          "Python",
+          "Java",
+          "C++",
+          "HTML/CSS",
+          "SQL",
+          "REST APIs",
+          "Git / GitHub"
+        ],
+        "latestAtsScore": 80
+      }
+    },
+    {
       "id": "conv-beta-1",
       "userId": "student-test-beta",
       "title": "Python Django Setup",
       "learningMode": false,
-      "createdAt": "2026-10-24T09:01:05.984Z",
-      "updatedAt": "2026-10-24T09:01:05.984Z",
+      "createdAt": "2026-10-28T17:25:44.938Z",
+      "updatedAt": "2026-10-28T17:25:44.938Z",
       "messages": [
         {
           "id": "m3",
           "role": "user",
           "content": "How do migrations work?",
-          "timestamp": "2026-10-24T09:01:05.984Z"
+          "timestamp": "2026-10-28T17:25:44.938Z"
         }
       ]
     }
   ],
   "resumeDocuments": [
+    {
+      "id": "c3235833-6f34-4103-8e3f-f0365c13ba7e",
+      "userId": "usr-1791951546428-b9e0q",
+      "title": "Harshinipatel03 - Full Stack developer Resume",
+      "targetRole": "Full Stack developer",
+      "templateId": "classic-ats",
+      "atsScore": 25,
+      "content": {
+        "personalInfo": {
+          "fullName": "Harshinipatel03",
+          "headline": "Full Stack developer",
+          "email": "harshinipatel03@gmail.com",
+          "phone": "",
+          "cityCountry": "",
+          "linkedIn": "",
+          "github": "",
+          "portfolioWebsite": ""
+        },
+        "summary": "",
+        "education": [],
+        "skills": {
+          "programmingLanguages": [],
+          "frameworks": [],
+          "databases": [],
+          "toolsPlatforms": [],
+          "coreConcepts": [],
+          "communicationLeadership": []
+        },
+        "experience": [],
+        "projects": [],
+        "certifications": [],
+        "additionalSections": {
+          "publications": [],
+          "volunteerExperience": [],
+          "leadership": [],
+          "languages": [],
+          "interests": [],
+          "customSections": []
+        }
+      },
+      "createdAt": "2026-10-28T17:23:46.533Z",
+      "updatedAt": "2026-10-28T17:23:46.533Z"
+    },
+    {
+      "id": "3f81b88c-66f9-492d-91a4-21038b7db6be",
+      "userId": "usr-1791951546428-b9e0q",
+      "title": "Harshinipatel03 - Full Stack developer Resume",
+      "targetRole": "Full Stack developer",
+      "templateId": "classic-ats",
+      "atsScore": 25,
+      "content": {
+        "personalInfo": {
+          "fullName": "Harshinipatel03",
+          "headline": "Full Stack developer",
+          "email": "harshinipatel03@gmail.com",
+          "phone": "",
+          "cityCountry": "",
+          "linkedIn": "",
+          "github": "",
+          "portfolioWebsite": ""
+        },
+        "summary": "",
+        "education": [],
+        "skills": {
+          "programmingLanguages": [],
+          "frameworks": [],
+          "databases": [],
+          "toolsPlatforms": [],
+          "coreConcepts": [],
+          "communicationLeadership": []
+        },
+        "experience": [],
+        "projects": [],
+        "certifications": [],
+        "additionalSections": {
+          "publications": [],
+          "volunteerExperience": [],
+          "leadership": [],
+          "languages": [],
+          "interests": [],
+          "customSections": []
+        }
+      },
+      "createdAt": "2026-10-28T17:23:46.260Z",
+      "updatedAt": "2026-10-28T17:23:46.260Z"
+    },
     {
       "id": "a809619a-4adb-4b87-b637-0dcf800f4987",
       "userId": "usr-1792824831305-tlxst",
@@ -10352,6 +12121,1473 @@
         "TA-009",
         "LR-015",
         "DI-001"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {}
+    },
+    {
+      "id": "e167ca70-d2d8-4d8c-a57b-70fee789c5d8",
+      "userId": "usr-1791951546428-b9e0q",
+      "status": "COMPLETED",
+      "startedAt": "2026-10-28T03:02:19.570Z",
+      "deadline": "2026-10-28T03:32:19.570Z",
+      "durationSeconds": 26,
+      "score": 1,
+      "percentage": 3.3,
+      "totalQuestions": 30,
+      "violationsCount": 2,
+      "questionsJson": [
+        "LR-002",
+        "VA-001",
+        "VA-007",
+        "DI-015",
+        "QA-011",
+        "QA-010",
+        "VA-010",
+        "LR-014",
+        "DI-006",
+        "TA-004",
+        "QA-012",
+        "VA-002",
+        "LR-003",
+        "TA-014",
+        "DI-001",
+        "QA-006",
+        "QA-007",
+        "DI-004",
+        "QA-003",
+        "TA-002",
+        "TA-015",
+        "VA-011",
+        "VA-014",
+        "TA-012",
+        "LR-006",
+        "DI-005",
+        "TA-013",
+        "LR-011",
+        "LR-008",
+        "DI-014"
+      ],
+      "answers": {
+        "LR-002": 0,
+        "VA-001": 1
+      },
+      "markedForReview": [],
+      "categoryScores": {
+        "Quantitative Aptitude": {
+          "category": "Quantitative Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Logical Reasoning": {
+          "category": "Logical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Verbal Ability": {
+          "category": "Verbal Ability",
+          "score": 1,
+          "total": 6,
+          "percentage": 16.7
+        },
+        "Technical Aptitude": {
+          "category": "Technical Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Data Interpretation & Analytical Reasoning": {
+          "category": "Data Interpretation & Analytical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        }
+      },
+      "completedAt": "2026-10-28T03:02:45.607Z",
+      "forcedSubmissionReason": null
+    },
+    {
+      "id": "d18c59c2-72b1-4334-a1c3-7e61cf93944d",
+      "userId": "test-student-2",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T03:10:46.431Z",
+      "deadline": "2026-10-28T03:40:46.431Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "TA-012",
+        "DI-005",
+        "LR-008",
+        "TA-006",
+        "TA-003",
+        "QA-010",
+        "QA-002",
+        "QA-009",
+        "DI-008",
+        "QA-011",
+        "LR-012",
+        "VA-009",
+        "VA-010",
+        "TA-014",
+        "DI-001",
+        "LR-013",
+        "VA-006",
+        "LR-010",
+        "VA-002",
+        "TA-013",
+        "LR-009",
+        "DI-002",
+        "LR-014",
+        "QA-001",
+        "VA-005",
+        "TA-002",
+        "VA-011",
+        "DI-009",
+        "DI-004",
+        "QA-003"
+      ],
+      "answers": {
+        "TA-012": 2
+      },
+      "markedForReview": [
+        "TA-012"
+      ],
+      "categoryScores": {}
+    },
+    {
+      "id": "776c1255-1c0b-4f87-a8d6-ad5ac14537d7",
+      "userId": "test-student-3",
+      "status": "VIOLATION_TERMINATED",
+      "startedAt": "2026-10-28T03:10:46.729Z",
+      "deadline": "2026-10-28T03:40:46.729Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 3,
+      "questionsJson": [
+        "VA-008",
+        "DI-015",
+        "QA-008",
+        "TA-004",
+        "TA-012",
+        "QA-007",
+        "QA-003",
+        "TA-014",
+        "QA-005",
+        "TA-001",
+        "LR-010",
+        "VA-007",
+        "VA-015",
+        "DI-012",
+        "LR-009",
+        "VA-012",
+        "TA-005",
+        "DI-007",
+        "QA-012",
+        "VA-009",
+        "TA-011",
+        "DI-011",
+        "VA-014",
+        "LR-004",
+        "LR-006",
+        "QA-014",
+        "LR-008",
+        "DI-014",
+        "LR-015",
+        "DI-009"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {
+        "Quantitative Aptitude": {
+          "category": "Quantitative Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Logical Reasoning": {
+          "category": "Logical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Verbal Ability": {
+          "category": "Verbal Ability",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Technical Aptitude": {
+          "category": "Technical Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Data Interpretation & Analytical Reasoning": {
+          "category": "Data Interpretation & Analytical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        }
+      },
+      "completedAt": "2026-10-28T03:10:47.232Z",
+      "forcedSubmissionReason": "Terminated due to multiple integrity violations (3 tab-switches or fullscreen exits detected)."
+    },
+    {
+      "id": "74eed8d6-fc52-4d5d-beab-a31750328ff0",
+      "userId": "test-student-4",
+      "status": "COMPLETED",
+      "startedAt": "2026-10-28T03:10:47.471Z",
+      "deadline": "2026-10-28T03:40:47.471Z",
+      "durationSeconds": 0,
+      "score": 5,
+      "percentage": 16.7,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "LR-014",
+        "VA-012",
+        "TA-003",
+        "VA-008",
+        "TA-009",
+        "TA-014",
+        "TA-007",
+        "DI-003",
+        "DI-001",
+        "QA-001",
+        "QA-015",
+        "QA-005",
+        "QA-002",
+        "TA-006",
+        "QA-012",
+        "DI-010",
+        "VA-006",
+        "VA-001",
+        "TA-013",
+        "QA-008",
+        "LR-009",
+        "LR-011",
+        "LR-008",
+        "LR-002",
+        "DI-004",
+        "DI-008",
+        "VA-003",
+        "DI-012",
+        "LR-013",
+        "VA-010"
+      ],
+      "answers": {
+        "LR-014": 3,
+        "VA-012": 2,
+        "TA-003": 1,
+        "VA-008": 1,
+        "TA-009": 1
+      },
+      "markedForReview": [],
+      "categoryScores": {
+        "Quantitative Aptitude": {
+          "category": "Quantitative Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Logical Reasoning": {
+          "category": "Logical Reasoning",
+          "score": 1,
+          "total": 6,
+          "percentage": 16.7
+        },
+        "Verbal Ability": {
+          "category": "Verbal Ability",
+          "score": 2,
+          "total": 6,
+          "percentage": 33.3
+        },
+        "Technical Aptitude": {
+          "category": "Technical Aptitude",
+          "score": 2,
+          "total": 6,
+          "percentage": 33.3
+        },
+        "Data Interpretation & Analytical Reasoning": {
+          "category": "Data Interpretation & Analytical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        }
+      },
+      "completedAt": "2026-10-28T03:10:48.117Z",
+      "forcedSubmissionReason": "Manual completion"
+    },
+    {
+      "id": "5909abca-8d3b-40cc-a069-4665e466e25e",
+      "userId": "test-student-rotation",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T03:10:48.292Z",
+      "deadline": "2026-10-28T03:40:48.292Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "VA-001",
+        "QA-008",
+        "VA-002",
+        "LR-010",
+        "VA-004",
+        "TA-014",
+        "TA-008",
+        "DI-008",
+        "QA-009",
+        "LR-002",
+        "TA-001",
+        "TA-009",
+        "LR-008",
+        "LR-015",
+        "LR-003",
+        "VA-007",
+        "LR-006",
+        "DI-006",
+        "QA-015",
+        "QA-005",
+        "TA-006",
+        "TA-010",
+        "DI-001",
+        "VA-005",
+        "QA-006",
+        "VA-008",
+        "DI-009",
+        "QA-002",
+        "DI-011",
+        "DI-012"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {}
+    },
+    {
+      "id": "4dd63fef-439b-405d-a5e2-f0fbf7eba277",
+      "userId": "test-student-rotation",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T03:10:48.416Z",
+      "deadline": "2026-10-28T03:40:48.416Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "VA-008",
+        "QA-007",
+        "DI-004",
+        "DI-001",
+        "VA-010",
+        "QA-001",
+        "LR-014",
+        "DI-002",
+        "LR-004",
+        "VA-002",
+        "QA-014",
+        "TA-010",
+        "VA-005",
+        "TA-006",
+        "TA-007",
+        "TA-004",
+        "DI-003",
+        "QA-012",
+        "QA-009",
+        "LR-007",
+        "QA-004",
+        "LR-005",
+        "LR-015",
+        "LR-006",
+        "VA-001",
+        "DI-013",
+        "VA-014",
+        "TA-012",
+        "DI-015",
+        "TA-015"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {}
+    },
+    {
+      "id": "2337d175-6529-4c26-9e94-7573b13645db",
+      "userId": "test-student-1",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T17:08:50.068Z",
+      "deadline": "2026-10-28T17:38:50.068Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "VA-006",
+        "LR-014",
+        "DI-004",
+        "QA-004",
+        "VA-014",
+        "TA-002",
+        "QA-011",
+        "TA-013",
+        "LR-004",
+        "TA-011",
+        "DI-005",
+        "QA-009",
+        "QA-013",
+        "VA-010",
+        "TA-001",
+        "VA-007",
+        "VA-004",
+        "DI-015",
+        "DI-003",
+        "DI-006",
+        "QA-002",
+        "QA-007",
+        "LR-013",
+        "VA-011",
+        "LR-003",
+        "DI-013",
+        "TA-015",
+        "LR-006",
+        "LR-008",
+        "TA-014"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {}
+    },
+    {
+      "id": "007f0b11-f1c3-4075-bfac-c2fd535fe1cf",
+      "userId": "test-student-2",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T17:08:50.218Z",
+      "deadline": "2026-10-28T17:38:50.218Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "LR-006",
+        "DI-015",
+        "LR-001",
+        "LR-009",
+        "LR-005",
+        "QA-009",
+        "DI-013",
+        "TA-003",
+        "VA-002",
+        "QA-010",
+        "DI-006",
+        "QA-004",
+        "LR-004",
+        "DI-012",
+        "DI-004",
+        "LR-015",
+        "TA-002",
+        "QA-008",
+        "DI-003",
+        "VA-014",
+        "VA-006",
+        "QA-005",
+        "TA-014",
+        "QA-015",
+        "VA-001",
+        "TA-009",
+        "VA-008",
+        "TA-011",
+        "TA-007",
+        "VA-013"
+      ],
+      "answers": {
+        "LR-006": 2
+      },
+      "markedForReview": [
+        "LR-006"
+      ],
+      "categoryScores": {}
+    },
+    {
+      "id": "606b59d6-d9e0-49b5-9f9d-61758226ea6c",
+      "userId": "test-student-3",
+      "status": "VIOLATION_TERMINATED",
+      "startedAt": "2026-10-28T17:08:50.761Z",
+      "deadline": "2026-10-28T17:38:50.761Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 3,
+      "questionsJson": [
+        "VA-002",
+        "QA-002",
+        "DI-011",
+        "TA-008",
+        "LR-014",
+        "VA-003",
+        "TA-012",
+        "DI-001",
+        "LR-002",
+        "LR-012",
+        "DI-006",
+        "VA-005",
+        "TA-013",
+        "QA-010",
+        "QA-011",
+        "QA-006",
+        "TA-015",
+        "TA-006",
+        "LR-013",
+        "VA-011",
+        "LR-001",
+        "QA-003",
+        "QA-013",
+        "DI-004",
+        "DI-003",
+        "DI-005",
+        "TA-009",
+        "VA-001",
+        "VA-013",
+        "LR-003"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {
+        "Quantitative Aptitude": {
+          "category": "Quantitative Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Logical Reasoning": {
+          "category": "Logical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Verbal Ability": {
+          "category": "Verbal Ability",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Technical Aptitude": {
+          "category": "Technical Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Data Interpretation & Analytical Reasoning": {
+          "category": "Data Interpretation & Analytical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        }
+      },
+      "completedAt": "2026-10-28T17:08:51.610Z",
+      "forcedSubmissionReason": "Terminated due to multiple integrity violations (3 tab-switches or fullscreen exits detected)."
+    },
+    {
+      "id": "208732d9-56d3-462d-bdc7-84d3fa11897d",
+      "userId": "test-student-4",
+      "status": "COMPLETED",
+      "startedAt": "2026-10-28T17:08:51.962Z",
+      "deadline": "2026-10-28T17:38:51.962Z",
+      "durationSeconds": 0,
+      "score": 4,
+      "percentage": 13.3,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "QA-008",
+        "LR-005",
+        "VA-005",
+        "QA-007",
+        "DI-013",
+        "LR-010",
+        "QA-011",
+        "QA-015",
+        "TA-006",
+        "DI-011",
+        "TA-009",
+        "TA-002",
+        "LR-012",
+        "VA-001",
+        "DI-001",
+        "DI-004",
+        "QA-005",
+        "VA-015",
+        "DI-014",
+        "TA-014",
+        "TA-013",
+        "LR-008",
+        "VA-006",
+        "QA-012",
+        "DI-005",
+        "LR-013",
+        "LR-001",
+        "TA-008",
+        "VA-004",
+        "VA-014"
+      ],
+      "answers": {
+        "QA-008": 0,
+        "LR-005": 2,
+        "VA-005": 1,
+        "DI-013": 1
+      },
+      "markedForReview": [],
+      "categoryScores": {
+        "Quantitative Aptitude": {
+          "category": "Quantitative Aptitude",
+          "score": 1,
+          "total": 6,
+          "percentage": 16.7
+        },
+        "Logical Reasoning": {
+          "category": "Logical Reasoning",
+          "score": 1,
+          "total": 6,
+          "percentage": 16.7
+        },
+        "Verbal Ability": {
+          "category": "Verbal Ability",
+          "score": 1,
+          "total": 6,
+          "percentage": 16.7
+        },
+        "Technical Aptitude": {
+          "category": "Technical Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Data Interpretation & Analytical Reasoning": {
+          "category": "Data Interpretation & Analytical Reasoning",
+          "score": 1,
+          "total": 6,
+          "percentage": 16.7
+        }
+      },
+      "completedAt": "2026-10-28T17:08:52.924Z",
+      "forcedSubmissionReason": "Manual completion"
+    },
+    {
+      "id": "3ba11b74-00cf-41ae-85c8-b96f402acbbd",
+      "userId": "test-student-rotation",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T17:08:53.470Z",
+      "deadline": "2026-10-28T17:38:53.470Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "DI-011",
+        "VA-012",
+        "QA-001",
+        "DI-015",
+        "LR-001",
+        "DI-008",
+        "VA-009",
+        "VA-006",
+        "QA-002",
+        "TA-014",
+        "QA-003",
+        "TA-009",
+        "VA-015",
+        "QA-009",
+        "TA-002",
+        "VA-001",
+        "TA-010",
+        "DI-010",
+        "LR-012",
+        "LR-004",
+        "VA-010",
+        "TA-001",
+        "DI-012",
+        "QA-004",
+        "QA-012",
+        "LR-013",
+        "DI-001",
+        "LR-006",
+        "LR-002",
+        "TA-011"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {}
+    },
+    {
+      "id": "6702bfa4-d9ed-4ebd-af68-e81f96212e87",
+      "userId": "test-student-rotation",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T17:08:53.750Z",
+      "deadline": "2026-10-28T17:38:53.750Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "TA-014",
+        "TA-008",
+        "DI-005",
+        "QA-005",
+        "DI-010",
+        "QA-012",
+        "LR-003",
+        "LR-002",
+        "DI-003",
+        "LR-012",
+        "VA-013",
+        "TA-004",
+        "QA-004",
+        "QA-006",
+        "VA-014",
+        "DI-009",
+        "LR-009",
+        "LR-013",
+        "VA-012",
+        "LR-006",
+        "VA-003",
+        "TA-013",
+        "DI-004",
+        "QA-015",
+        "TA-003",
+        "QA-007",
+        "VA-004",
+        "VA-002",
+        "TA-010",
+        "DI-007"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {}
+    },
+    {
+      "id": "39d38f87-a089-4074-b0c8-c2c954d2d096",
+      "userId": "test-student-1",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T17:17:39.479Z",
+      "deadline": "2026-10-28T17:47:39.479Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "TA-009",
+        "VA-013",
+        "LR-015",
+        "VA-006",
+        "LR-002",
+        "TA-013",
+        "TA-003",
+        "QA-014",
+        "DI-013",
+        "DI-004",
+        "QA-001",
+        "QA-012",
+        "LR-011",
+        "LR-004",
+        "VA-012",
+        "VA-005",
+        "VA-004",
+        "LR-009",
+        "DI-008",
+        "TA-008",
+        "DI-002",
+        "TA-001",
+        "VA-009",
+        "QA-008",
+        "QA-010",
+        "LR-005",
+        "QA-005",
+        "DI-011",
+        "TA-004",
+        "DI-009"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {}
+    },
+    {
+      "id": "8f64f05e-4014-4a30-918c-338e9a5c3255",
+      "userId": "test-student-2",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T17:17:39.672Z",
+      "deadline": "2026-10-28T17:47:39.672Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "QA-014",
+        "QA-001",
+        "LR-005",
+        "TA-012",
+        "VA-002",
+        "VA-004",
+        "VA-012",
+        "DI-014",
+        "QA-015",
+        "TA-011",
+        "QA-012",
+        "LR-002",
+        "DI-012",
+        "LR-015",
+        "LR-013",
+        "DI-011",
+        "TA-007",
+        "DI-004",
+        "DI-006",
+        "TA-008",
+        "DI-010",
+        "QA-013",
+        "VA-008",
+        "LR-004",
+        "VA-003",
+        "VA-011",
+        "LR-011",
+        "TA-013",
+        "TA-004",
+        "QA-007"
+      ],
+      "answers": {
+        "QA-014": 2
+      },
+      "markedForReview": [
+        "QA-014"
+      ],
+      "categoryScores": {}
+    },
+    {
+      "id": "b52b88e4-8211-4c1d-8d83-50a570c79197",
+      "userId": "test-student-3",
+      "status": "VIOLATION_TERMINATED",
+      "startedAt": "2026-10-28T17:17:39.990Z",
+      "deadline": "2026-10-28T17:47:39.990Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 3,
+      "questionsJson": [
+        "QA-006",
+        "DI-004",
+        "VA-013",
+        "DI-010",
+        "LR-004",
+        "LR-001",
+        "TA-006",
+        "QA-012",
+        "QA-011",
+        "QA-013",
+        "VA-010",
+        "LR-008",
+        "DI-012",
+        "LR-009",
+        "DI-005",
+        "QA-014",
+        "VA-011",
+        "DI-007",
+        "TA-002",
+        "TA-011",
+        "VA-009",
+        "TA-009",
+        "VA-001",
+        "TA-008",
+        "VA-008",
+        "LR-010",
+        "DI-001",
+        "LR-002",
+        "TA-001",
+        "QA-007"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {
+        "Quantitative Aptitude": {
+          "category": "Quantitative Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Logical Reasoning": {
+          "category": "Logical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Verbal Ability": {
+          "category": "Verbal Ability",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Technical Aptitude": {
+          "category": "Technical Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Data Interpretation & Analytical Reasoning": {
+          "category": "Data Interpretation & Analytical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        }
+      },
+      "completedAt": "2026-10-28T17:17:40.438Z",
+      "forcedSubmissionReason": "Terminated due to multiple integrity violations (3 tab-switches or fullscreen exits detected)."
+    },
+    {
+      "id": "80cd79a8-2e4a-4a9a-b624-12940caa2fa2",
+      "userId": "test-student-4",
+      "status": "COMPLETED",
+      "startedAt": "2026-10-28T17:17:40.571Z",
+      "deadline": "2026-10-28T17:47:40.571Z",
+      "durationSeconds": 0,
+      "score": 5,
+      "percentage": 16.7,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "VA-011",
+        "TA-003",
+        "QA-005",
+        "DI-004",
+        "QA-008",
+        "LR-015",
+        "TA-007",
+        "VA-010",
+        "QA-007",
+        "QA-010",
+        "VA-007",
+        "LR-014",
+        "QA-003",
+        "DI-006",
+        "DI-003",
+        "LR-012",
+        "LR-005",
+        "VA-014",
+        "DI-014",
+        "DI-007",
+        "QA-009",
+        "TA-014",
+        "LR-007",
+        "VA-006",
+        "LR-011",
+        "DI-015",
+        "TA-002",
+        "TA-011",
+        "VA-001",
+        "TA-010"
+      ],
+      "answers": {
+        "VA-011": 1,
+        "TA-003": 1,
+        "QA-005": 1,
+        "DI-004": 1,
+        "QA-008": 0
+      },
+      "markedForReview": [],
+      "categoryScores": {
+        "Quantitative Aptitude": {
+          "category": "Quantitative Aptitude",
+          "score": 2,
+          "total": 6,
+          "percentage": 33.3
+        },
+        "Logical Reasoning": {
+          "category": "Logical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Verbal Ability": {
+          "category": "Verbal Ability",
+          "score": 1,
+          "total": 6,
+          "percentage": 16.7
+        },
+        "Technical Aptitude": {
+          "category": "Technical Aptitude",
+          "score": 1,
+          "total": 6,
+          "percentage": 16.7
+        },
+        "Data Interpretation & Analytical Reasoning": {
+          "category": "Data Interpretation & Analytical Reasoning",
+          "score": 1,
+          "total": 6,
+          "percentage": 16.7
+        }
+      },
+      "completedAt": "2026-10-28T17:17:41.423Z",
+      "forcedSubmissionReason": "Manual completion"
+    },
+    {
+      "id": "ad3986b2-9602-4520-8a97-0680352a7b7d",
+      "userId": "test-student-rotation",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T17:17:41.611Z",
+      "deadline": "2026-10-28T17:47:41.611Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "TA-009",
+        "QA-003",
+        "LR-014",
+        "TA-015",
+        "LR-004",
+        "TA-001",
+        "DI-004",
+        "VA-004",
+        "QA-013",
+        "QA-007",
+        "LR-005",
+        "VA-013",
+        "DI-015",
+        "TA-004",
+        "QA-011",
+        "QA-012",
+        "VA-006",
+        "VA-003",
+        "LR-015",
+        "TA-014",
+        "TA-007",
+        "VA-012",
+        "QA-014",
+        "LR-006",
+        "LR-012",
+        "DI-003",
+        "DI-008",
+        "VA-008",
+        "DI-006",
+        "DI-007"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {}
+    },
+    {
+      "id": "0f4a8730-b194-4c20-a50f-5c8c950a6704",
+      "userId": "test-student-rotation",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T17:17:41.705Z",
+      "deadline": "2026-10-28T17:47:41.705Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "VA-009",
+        "QA-008",
+        "VA-003",
+        "TA-010",
+        "QA-003",
+        "VA-001",
+        "DI-002",
+        "DI-014",
+        "QA-015",
+        "TA-007",
+        "VA-004",
+        "QA-009",
+        "TA-006",
+        "VA-015",
+        "VA-002",
+        "DI-001",
+        "LR-003",
+        "TA-008",
+        "DI-012",
+        "DI-008",
+        "TA-005",
+        "LR-015",
+        "QA-001",
+        "TA-004",
+        "DI-004",
+        "LR-004",
+        "QA-006",
+        "LR-001",
+        "LR-012",
+        "LR-002"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {}
+    },
+    {
+      "id": "1cb961a6-03f3-4471-9d20-79d5c51d1bcb",
+      "userId": "test-student-1",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T17:25:41.907Z",
+      "deadline": "2026-10-28T17:55:41.907Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "QA-004",
+        "DI-011",
+        "DI-012",
+        "VA-012",
+        "QA-009",
+        "QA-005",
+        "VA-009",
+        "VA-005",
+        "VA-010",
+        "LR-005",
+        "VA-006",
+        "VA-007",
+        "LR-015",
+        "DI-009",
+        "LR-011",
+        "TA-005",
+        "DI-015",
+        "LR-008",
+        "LR-004",
+        "DI-007",
+        "QA-003",
+        "LR-003",
+        "TA-007",
+        "TA-003",
+        "DI-013",
+        "TA-011",
+        "QA-014",
+        "QA-015",
+        "TA-001",
+        "TA-002"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {}
+    },
+    {
+      "id": "7197b01e-4f13-42b3-a922-0818798c5119",
+      "userId": "test-student-2",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T17:25:41.957Z",
+      "deadline": "2026-10-28T17:55:41.957Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "QA-001",
+        "QA-010",
+        "LR-015",
+        "DI-007",
+        "TA-014",
+        "LR-014",
+        "DI-014",
+        "LR-004",
+        "LR-005",
+        "VA-011",
+        "QA-002",
+        "TA-005",
+        "LR-002",
+        "QA-006",
+        "DI-005",
+        "VA-013",
+        "QA-005",
+        "DI-013",
+        "DI-010",
+        "TA-001",
+        "TA-006",
+        "VA-015",
+        "LR-009",
+        "QA-014",
+        "DI-006",
+        "VA-003",
+        "TA-002",
+        "TA-004",
+        "VA-014",
+        "VA-012"
+      ],
+      "answers": {
+        "QA-001": 2
+      },
+      "markedForReview": [
+        "QA-001"
+      ],
+      "categoryScores": {}
+    },
+    {
+      "id": "575c6cd8-1b7a-4e59-a617-efc6052a35ca",
+      "userId": "test-student-3",
+      "status": "VIOLATION_TERMINATED",
+      "startedAt": "2026-10-28T17:25:42.057Z",
+      "deadline": "2026-10-28T17:55:42.057Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 3,
+      "questionsJson": [
+        "VA-001",
+        "LR-013",
+        "TA-001",
+        "LR-014",
+        "QA-010",
+        "DI-010",
+        "LR-003",
+        "QA-001",
+        "DI-006",
+        "TA-002",
+        "DI-013",
+        "TA-005",
+        "DI-001",
+        "VA-002",
+        "DI-007",
+        "QA-012",
+        "VA-004",
+        "LR-015",
+        "QA-014",
+        "DI-002",
+        "VA-007",
+        "VA-009",
+        "TA-014",
+        "QA-009",
+        "TA-006",
+        "TA-009",
+        "LR-004",
+        "LR-007",
+        "QA-015",
+        "VA-014"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {
+        "Quantitative Aptitude": {
+          "category": "Quantitative Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Logical Reasoning": {
+          "category": "Logical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Verbal Ability": {
+          "category": "Verbal Ability",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Technical Aptitude": {
+          "category": "Technical Aptitude",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Data Interpretation & Analytical Reasoning": {
+          "category": "Data Interpretation & Analytical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        }
+      },
+      "completedAt": "2026-10-28T17:25:42.189Z",
+      "forcedSubmissionReason": "Terminated due to multiple integrity violations (3 tab-switches or fullscreen exits detected)."
+    },
+    {
+      "id": "b3642f3d-f8f1-43e2-9475-cd8d7b4faf0c",
+      "userId": "test-student-4",
+      "status": "COMPLETED",
+      "startedAt": "2026-10-28T17:25:42.241Z",
+      "deadline": "2026-10-28T17:55:42.241Z",
+      "durationSeconds": 0,
+      "score": 5,
+      "percentage": 16.7,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "TA-010",
+        "VA-001",
+        "QA-009",
+        "TA-005",
+        "VA-014",
+        "QA-013",
+        "TA-007",
+        "QA-004",
+        "TA-002",
+        "TA-003",
+        "VA-002",
+        "QA-003",
+        "QA-001",
+        "LR-004",
+        "QA-007",
+        "LR-008",
+        "DI-002",
+        "LR-015",
+        "DI-003",
+        "DI-012",
+        "DI-004",
+        "TA-001",
+        "LR-012",
+        "LR-005",
+        "LR-013",
+        "VA-013",
+        "DI-010",
+        "VA-012",
+        "VA-010",
+        "DI-001"
+      ],
+      "answers": {
+        "TA-010": 1,
+        "VA-001": 1,
+        "QA-009": 2,
+        "TA-005": 2,
+        "VA-014": 1
+      },
+      "markedForReview": [],
+      "categoryScores": {
+        "Quantitative Aptitude": {
+          "category": "Quantitative Aptitude",
+          "score": 1,
+          "total": 6,
+          "percentage": 16.7
+        },
+        "Logical Reasoning": {
+          "category": "Logical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        },
+        "Verbal Ability": {
+          "category": "Verbal Ability",
+          "score": 2,
+          "total": 6,
+          "percentage": 33.3
+        },
+        "Technical Aptitude": {
+          "category": "Technical Aptitude",
+          "score": 2,
+          "total": 6,
+          "percentage": 33.3
+        },
+        "Data Interpretation & Analytical Reasoning": {
+          "category": "Data Interpretation & Analytical Reasoning",
+          "score": 0,
+          "total": 6,
+          "percentage": 0
+        }
+      },
+      "completedAt": "2026-10-28T17:25:42.633Z",
+      "forcedSubmissionReason": "Manual completion"
+    },
+    {
+      "id": "e43ed676-ecc5-4ab7-8720-c4589567df15",
+      "userId": "test-student-rotation",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T17:25:42.706Z",
+      "deadline": "2026-10-28T17:55:42.706Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "LR-006",
+        "TA-007",
+        "QA-014",
+        "VA-006",
+        "DI-012",
+        "VA-010",
+        "TA-015",
+        "TA-003",
+        "QA-010",
+        "TA-010",
+        "VA-001",
+        "DI-013",
+        "LR-004",
+        "QA-007",
+        "DI-006",
+        "TA-004",
+        "DI-001",
+        "DI-015",
+        "VA-007",
+        "LR-003",
+        "DI-004",
+        "VA-003",
+        "QA-005",
+        "LR-002",
+        "VA-011",
+        "QA-006",
+        "LR-001",
+        "QA-012",
+        "TA-014",
+        "LR-008"
+      ],
+      "answers": {},
+      "markedForReview": [],
+      "categoryScores": {}
+    },
+    {
+      "id": "63ee67d6-9ba5-43f7-b243-e8c6e7db16c7",
+      "userId": "test-student-rotation",
+      "status": "IN_PROGRESS",
+      "startedAt": "2026-10-28T17:25:42.775Z",
+      "deadline": "2026-10-28T17:55:42.775Z",
+      "durationSeconds": 0,
+      "score": 0,
+      "percentage": 0,
+      "totalQuestions": 30,
+      "violationsCount": 0,
+      "questionsJson": [
+        "TA-007",
+        "QA-005",
+        "TA-005",
+        "DI-007",
+        "DI-004",
+        "DI-015",
+        "QA-002",
+        "VA-007",
+        "TA-006",
+        "DI-006",
+        "TA-009",
+        "VA-009",
+        "LR-004",
+        "TA-012",
+        "QA-007",
+        "DI-012",
+        "LR-012",
+        "LR-011",
+        "VA-003",
+        "QA-001",
+        "QA-015",
+        "LR-006",
+        "TA-004",
+        "DI-001",
+        "VA-011",
+        "LR-015",
+        "VA-006",
+        "QA-013",
+        "LR-002",
+        "VA-013"
       ],
       "answers": {},
       "markedForReview": [],
