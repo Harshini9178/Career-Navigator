@@ -9706,7 +9706,7 @@
       "title": "Harshinipatel03 - Full Stack developer Resume",
       "targetRole": "Full Stack developer",
       "templateId": "classic-ats",
-      "atsScore": 78,
+      "atsScore": 80,
       "content": {
         "personalInfo": {
           "fullName": "Harshini R B",
@@ -9714,11 +9714,11 @@
           "email": "harshinipatel03@gmail.com",
           "phone": "+918073089178",
           "cityCountry": "Tiptur",
-          "linkedIn": "kkkkkk",
-          "github": "mjhbgvhui",
-          "portfolioWebsite": "pytrdfghj"
+          "linkedIn": "LinkedIn:// harshini-r-b ",
+          "github": "Github:// Harshini9178",
+          "portfolioWebsite": ""
         },
-        "summary": "poiuytrdfghjkl;.,mnbvc bnm,.l,kjhgfdsfghujkl;'",
+        "summary": "Computer Science student with a strong foundation in Python, Java, C, Data Structures and Algorithms, \nand Object-Oriented Programming. Hands-on experience developing web applications using Flask and \nNode.js, with knowledge of JavaScript, REST APIs, SQL/NoSQL databases, Git, and application debugging. \nInterested in building efficient, scalable, and maintainable full-stack software solutions.",
         "education": [
           {
             "id": "0.8883796282039128",
@@ -9733,44 +9733,36 @@
         ],
         "skills": {
           "programmingLanguages": [
-            "java"
+            "java",
+            "Python",
+            "C",
+            "C++"
           ],
           "frameworks": [
-            "node"
+            "Spring boot",
+            "React",
+            "Node.js"
           ],
           "databases": [
-            "h2"
+            "PostgreSQL",
+            "MongoDB"
           ],
           "toolsPlatforms": [
-            "uytfdfghj"
+            "Docker",
+            "AWS"
           ],
           "coreConcepts": [
-            "uytf"
+            "REST APIs",
+            "Data Structures"
           ],
           "communicationLeadership": []
         },
-        "experience": [
-          {
-            "id": "0.4936580186669617",
-            "jobTitle": "uytfghj",
-            "company": "dfghjk",
-            "location": "otrdfghj",
-            "startDate": "01",
-            "endDate": "02",
-            "currentRole": false,
-            "responsibilities": "",
-            "achievements": "",
-            "impact": "",
-            "bullets": [
-              "Spearheaded Spearheaded..."
-            ]
-          }
-        ],
+        "experience": [],
         "projects": [
           {
             "id": "0.4361405395717496",
             "title": "Text to Image  Generator",
-            "description": "",
+            "description": "-Developed a Flask-based web application that integrates an external AI API to generate images from \nuser-provided text prompts.\n\nImplemented application functionality for accepting user inputs and processing API-based image \ngeneration requests.\n\nContributed to frontend development and data visualization while organizing project resources and \napplication components",
             "technologies": [
               "Python"
             ],
@@ -9800,7 +9792,7 @@
         }
       },
       "createdAt": "2026-10-28T16:13:58.399Z",
-      "updatedAt": "2026-10-28T16:52:09.034Z"
+      "updatedAt": "2026-10-28T16:59:20.999Z"
     },
     {
       "id": "fda19908-14ea-497f-b4e1-dddfdd538583",
