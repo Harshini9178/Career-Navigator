@@ -1,6 +1,3 @@
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
-
 /**
  * Sanitizes candidate name or resume title into a clean, safe filename.
  * Example: "Harshini RB" -> "Harshini_RB_Resume.pdf"
@@ -53,6 +50,12 @@ export async function exportLiveResumeToPdf(
       // Font loading error is non-fatal
     }
   }
+
+  options.onProgress?.('Loading PDF rendering engine...');
+  const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
+    import('html2canvas'),
+    import('jspdf')
+  ]);
 
   options.onProgress?.('Rendering high-resolution A4 preview...');
 

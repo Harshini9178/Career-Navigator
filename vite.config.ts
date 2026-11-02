@@ -6,6 +6,9 @@ import {defineConfig} from 'vite';
 export default defineConfig(() => {
   return {
     plugins: [react(), tailwindcss()],
+    optimizeDeps: {
+      exclude: ['jspdf', 'canvg', 'html2pdf.js']
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
@@ -29,6 +32,7 @@ export default defineConfig(() => {
       sourcemap: false,
       chunkSizeWarningLimit: 700,
       rollupOptions: {
+        external: ['canvg', 'html2pdf.js', /^core-js/],
         output: {
           manualChunks(id) {
             if (id.includes('@monaco-editor') || id.includes('monaco-editor')) {
@@ -46,6 +50,7 @@ export default defineConfig(() => {
     },
     test: {
       exclude: ['**/node_modules/**', '**/dist/**', 'MockGenius-main/**'],
+      fileParallelism: false
     }
   };
 });
