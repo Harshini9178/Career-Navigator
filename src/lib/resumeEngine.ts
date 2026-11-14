@@ -1,13 +1,6 @@
 import crypto from 'crypto';
+import { jsPDF } from 'jspdf';
 import { db as jsonDb } from '../db/database.js';
-let jsPDF: any = null;
-try {
-  // @ts-ignore
-  const jspdfModule = await import('jspdf');
-  jsPDF = jspdfModule.jsPDF || jspdfModule.default;
-} catch {
-  // Graceful fallback if jspdf is not available in node_modules
-}
 import {
   ResumeDocument,
   ResumeContent,
