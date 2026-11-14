@@ -125,6 +125,34 @@ export interface ScoreCategoryBreakdown {
   reason?: string;
 }
 
+export interface StarBulletRewrite {
+  id: string;
+  originalText?: string;
+  starBullet: string;
+  category?: 'experience' | 'project' | 'skill';
+  actionVerb: string;
+  situation: string;
+  task: string;
+  action: string;
+  resultMetric: string;
+  keywordsCovered: string[];
+  impactScore?: number;
+}
+
+export interface JdStarTailoringResult {
+  jobTitle?: string;
+  targetCompany?: string;
+  matchScore: number;
+  matchedKeywords: string[];
+  missingKeywords: string[];
+  tailoredBullets: StarBulletRewrite[];
+  tailoredSummary?: string;
+  atsFilterInsights: {
+    atsSystem: 'Workday' | 'Greenhouse' | 'Taleo' | 'Lever';
+    recommendation: string;
+  }[];
+}
+
 export interface ResumeAnalysis {
   id: string;
   userId: string;
@@ -146,6 +174,7 @@ export interface ResumeAnalysis {
   jobDescription?: string;
   missingJDKeywords?: string[];
   matchedJDKeywords?: string[];
+  starBulletRewrites?: StarBulletRewrite[];
   contentHash?: string;
   wordCount?: number;
 }

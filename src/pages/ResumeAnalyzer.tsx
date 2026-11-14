@@ -16,7 +16,9 @@ import {
   Edit3,
   FileEdit,
   FolderOpen,
-  ArrowRight
+  ArrowRight,
+  Copy,
+  Check
 } from 'lucide-react';
 import { ResumeAnalysis } from '../types.js';
 import { api } from '../lib/api.js';
@@ -47,7 +49,14 @@ export default function ResumeAnalyzer({ onNavigate }: ResumeAnalyzerProps = {})
   const [savedResumesList, setSavedResumesList] = useState<any[]>([]);
   const [showSavedPicker, setShowSavedPicker] = useState(false);
   const [loadingSavedResumes, setLoadingSavedResumes] = useState(false);
+  const [copiedBulletId, setCopiedBulletId] = useState<string | null>(null);
   const analysisRequestIdRef = useRef<number>(0);
+
+  const handleCopyBullet = (text: string, id: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedBulletId(id);
+    setTimeout(() => setCopiedBulletId(null), 2000);
+  };
 
   const normalizeResumeAnalysis = (data: any): ResumeAnalysis => {
     let breakdownList: any[] = [];
@@ -83,6 +92,7 @@ export default function ResumeAnalyzer({ onNavigate }: ResumeAnalyzerProps = {})
       keywords: Array.isArray(data.keywords) ? data.keywords : [],
       matchedJDKeywords: Array.isArray(data.matchedJDKeywords) ? data.matchedJDKeywords : [],
       missingJDKeywords: Array.isArray(data.missingJDKeywords) ? data.missingJDKeywords : [],
+      starBulletRewrites: Array.isArray(data.starBulletRewrites) ? data.starBulletRewrites : [],
       improvementsToAdd: Array.isArray(data.improvementsToAdd) ? data.improvementsToAdd : [],
       improvementsToRemove: Array.isArray(data.improvementsToRemove) ? data.improvementsToRemove : [],
       atsScore: typeof data.atsScore === 'number' ? data.atsScore : 0,
@@ -882,6 +892,116 @@ export default function ResumeAnalyzer({ onNavigate }: ResumeAnalyzerProps = {})
                       )}
                     </div>
                   </div>
+                </div>
+              </div>
+            )}
+
+            {/* STAR-Method Bullet Rewrites (STAR Formula: Situation, Task, Action, Result) */}
+            {analysis.starBulletRewrites && analysis.starBulletRewrites.length > 0 && (
+              <div className="glass-card bg-[var(--bg-card)] border border-emerald-500/30 rounded-2xl p-6 space-y-5">
+                <div className="border-b border-[var(--border)] pb-3 flex flex-wrap justify-between items-center gap-2">
+                  <div className="flex items-center space-x-2">
+                    <div className="p-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      <Sparkles className="w-4 h-4 text-emerald-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[var(--text-primary)] text-sm font-display flex items-center gap-2">
+                        <span>STAR-Method Accomplishment Rewrites</span>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold">
+                          ATS Tailored
+                        </span>
+                      </h4>
+                      <p className="text-[11px] text-[var(--text-secondary)]">
+                        Tailored using Situation · Task · Action · Result with quantifiable metrics to beat Workday & Greenhouse filters.
+                      </p>
+                    </div>
+                  </div>
+                  {onNavigate && (
+                    <button
+                      onClick={() => onNavigate('resume')}
+                      className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white flex items-center space-x-1.5 shadow-sm transition-all"
+                    >
+                      <span>Apply in Builder</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                </div>
+
+                <div className="space-y-3">
+                  {analysis.starBulletRewrites.map((bullet) => (
+                    <div
+                      key={bullet.id}
+                      className="p-4 rounded-xl bg-[var(--bg-card-subtle)] border border-[var(--border)] hover:border-emerald-500/40 transition-all space-y-2.5"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="text-[10px] uppercase font-bold font-mono px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                            {bullet.actionVerb}
+                          </span>
+                          <span className="text-[11px] font-bold text-[var(--text-primary)]">
+                            {bullet.keywordsCovered?.[0] || 'STAR Achievement'}
+                          </span>
+                          <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                            Impact Score: {bullet.impactScore || 95}/100
+                          </span>
+                        </div>
+                        <button
+                          onClick={() => handleCopyBullet(bullet.starBullet, bullet.id)}
+                          className="flex items-center space-x-1 text-xs font-medium px-2.5 py-1 rounded bg-[var(--bg-card)] border border-[var(--border)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:border-[var(--primary)] transition-all flex-shrink-0"
+                          title="Copy tailored bullet"
+                        >
+                          {copiedBulletId === bullet.id ? (
+                            <>
+                              <Check className="w-3.5 h-3.5 text-emerald-400" />
+                              <span className="text-emerald-400 text-[11px]">Copied!</span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-3.5 h-3.5" />
+                              <span className="text-[11px]">Copy STAR</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
+
+                      <p className="text-xs text-[var(--text-primary)] font-medium leading-relaxed bg-[var(--bg-card)] p-3 rounded-lg border border-[var(--border)]">
+                        "{bullet.starBullet}"
+                      </p>
+
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1 text-[10px]">
+                        <div className="bg-[var(--bg-card)] p-2 rounded border border-[var(--border)]">
+                          <span className="text-[var(--text-muted)] font-mono font-bold block mb-0.5">SITUATION</span>
+                          <span className="text-[var(--text-secondary)] line-clamp-2">{bullet.situation}</span>
+                        </div>
+                        <div className="bg-[var(--bg-card)] p-2 rounded border border-[var(--border)]">
+                          <span className="text-[var(--text-muted)] font-mono font-bold block mb-0.5">TASK</span>
+                          <span className="text-[var(--text-secondary)] line-clamp-2">{bullet.task}</span>
+                        </div>
+                        <div className="bg-[var(--bg-card)] p-2 rounded border border-[var(--border)]">
+                          <span className="text-[var(--text-muted)] font-mono font-bold block mb-0.5">ACTION</span>
+                          <span className="text-[var(--text-secondary)] line-clamp-2">{bullet.action}</span>
+                        </div>
+                        <div className="bg-emerald-500/10 p-2 rounded border border-emerald-500/20">
+                          <span className="text-emerald-400 font-mono font-bold block mb-0.5">RESULT METRIC</span>
+                          <span className="text-emerald-300 font-semibold line-clamp-2">{bullet.resultMetric}</span>
+                        </div>
+                      </div>
+
+                      {bullet.keywordsCovered && bullet.keywordsCovered.length > 0 && (
+                        <div className="flex items-center gap-1.5 flex-wrap pt-1">
+                          <span className="text-[10px] text-[var(--text-muted)] font-mono">Keywords addressed:</span>
+                          {bullet.keywordsCovered.map((kw, idx) => (
+                            <span
+                              key={idx}
+                              className="text-[9px] font-mono font-semibold px-1.5 py-0.5 rounded bg-[var(--primary)]/10 text-[var(--primary)] border border-[var(--primary)]/20"
+                            >
+                              {kw}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
                 </div>
               </div>
             )}

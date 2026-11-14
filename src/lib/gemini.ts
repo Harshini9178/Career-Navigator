@@ -1,5 +1,12 @@
 import { GoogleGenAI, Type } from '@google/genai';
-import { ResumeAnalysis, AnswerEvaluation, DimensionWeight, EvaluationBreakdown } from '../types.js';
+import {
+  ResumeAnalysis,
+  AnswerEvaluation,
+  DimensionWeight,
+  EvaluationBreakdown,
+  StarBulletRewrite,
+  JdStarTailoringResult
+} from '../types.js';
 import {
   normalizeResumeText,
   detectSections,
@@ -8,6 +15,59 @@ import {
   matchJobDescription,
   computeContentHash
 } from './atsEngine.js';
+
+export function extractTextFromResumeContent(content: any): string {
+  if (!content) return '';
+  if (typeof content === 'string') return content;
+  const parts: string[] = [];
+  if (content.personalInfo) {
+    const pi = content.personalInfo;
+    parts.push(`${pi.fullName || ''} ${pi.headline ? '- ' + pi.headline : ''} ${pi.email || ''} ${pi.location || ''}`.trim());
+  }
+  if (content.summary) {
+    parts.push(`Summary: ${content.summary}`);
+  }
+  if (content.skills) {
+    const rawSkills = Array.isArray(content.skills)
+      ? content.skills
+      : Object.values(content.skills).flat().filter(Boolean);
+    parts.push(`Skills: ${rawSkills.join(', ')}`);
+  }
+  if (Array.isArray(content.experience)) {
+    parts.push('Experience:');
+    content.experience.forEach((e: any) => {
+      parts.push(`${e.jobTitle || e.position || ''} at ${e.company || ''}`);
+      if (e.responsibilities) parts.push(e.responsibilities);
+      if (e.achievements) parts.push(e.achievements);
+      if (e.impact) parts.push(e.impact);
+      if (e.description) parts.push(e.description);
+      if (Array.isArray(e.bullets)) {
+        parts.push(...e.bullets.filter(Boolean));
+      }
+    });
+  }
+  if (Array.isArray(content.projects)) {
+    parts.push('Projects:');
+    content.projects.forEach((p: any) => {
+      parts.push(`${p.title || p.name || ''}: ${p.description || ''}`);
+      if (p.contributions) parts.push(p.contributions);
+      if (p.metrics) parts.push(p.metrics);
+      if (Array.isArray(p.bullets)) {
+        parts.push(...p.bullets.filter(Boolean));
+      }
+      if (Array.isArray(p.technologies)) {
+        parts.push(`Tech: ${p.technologies.join(', ')}`);
+      }
+    });
+  }
+  if (Array.isArray(content.education)) {
+    parts.push('Education:');
+    content.education.forEach((edu: any) => {
+      parts.push(`${edu.degree || ''} in ${edu.fieldOfStudy || edu.field || ''} from ${edu.institution || ''}`);
+    });
+  }
+  return parts.filter(Boolean).join('\n');
+}
 
 // Lazy-initialize Gemini client to prevent crashes if key is initially absent
 let aiClient: GoogleGenAI | null = null;
@@ -266,6 +326,7 @@ Return details structured in JSON format.`;
 
       const parsed = JSON.parse(response.text || '{}');
       const base = this.simulateResumeWithJD(resumeText, jobDescription, fileName, targetRole);
+      const starData = this.simulateStarRewrites(resumeText, jobDescription, targetRole);
 
       return {
         ...base,
@@ -274,6 +335,7 @@ Return details structured in JSON format.`;
         fileName,
         uploadedAt: new Date().toISOString(),
         jobDescription,
+        starBulletRewrites: starData.tailoredBullets,
         suggestions: parsed.suggestions?.length ? parsed.suggestions : base.suggestions,
         grammarIssues: parsed.grammarIssues?.length ? parsed.grammarIssues : base.grammarIssues,
         improvementsToAdd: parsed.improvementsToAdd?.length ? parsed.improvementsToAdd : base.improvementsToAdd,
@@ -282,6 +344,139 @@ Return details structured in JSON format.`;
     } catch (err) {
       console.error('Gemini JD Resume Analysis failed:', err);
       return this.simulateResumeWithJD(resumeText, jobDescription, fileName, targetRole);
+    }
+  },
+
+  /**
+   * Automated Job-Specific Resume Tailoring using the STAR Method.
+   * Compares the candidate's resume/projects against a target Job Description,
+   * analyzes keyword gaps, and rewrites bullet points into the STAR format
+   * (Situation, Task, Action, Result) with quantifiable impact metrics.
+   */
+  async tailorResumeWithJD(
+    resumeInput: string | any,
+    jobDescription: string,
+    targetRole?: string
+  ): Promise<JdStarTailoringResult> {
+    const resumeText = typeof resumeInput === 'string'
+      ? resumeInput
+      : extractTextFromResumeContent(resumeInput);
+
+    const client = getGeminiClient();
+    if (!client) {
+      return this.simulateStarRewrites(resumeText, jobDescription, targetRole);
+    }
+
+    try {
+      const prompt = `Analyze this student resume against the provided Job Description for an engineering placement.
+Rewrite the candidate's achievements and bridge keyword gaps into powerful STAR-method bullet points with quantifiable metrics (e.g., "Optimized SQL queries, reducing API latency by 42%").
+
+Candidate Resume:
+${resumeText.substring(0, 10000)}
+
+Target Job Description:
+${jobDescription.substring(0, 7000)}
+
+Target Role: ${targetRole || 'Software Engineer'}
+
+Instructions:
+1. Identify matched and missing technical skills.
+2. Calculate ATS Match Score (0 to 100).
+3. Generate 3 to 6 high-impact bullet points strictly following the STAR formula:
+   - Action Verb (e.g. Architected, Engineered, Optimized, Automated)
+   - Situation: Technical context or bottleneck
+   - Task: Engineering challenge
+   - Action: Concrete implementation with technical tools (seamlessly incorporating missing JD skills)
+   - Result: Quantified impact metric (e.g. latency, throughput, scale, test coverage, cost savings)
+4. Formulate a tailored professional summary.
+5. Provide actionable ATS filter insights for Workday, Greenhouse, Taleo, and Lever.`;
+
+      const response = await client.models.generateContent({
+        model: GEMINI_MODEL,
+        contents: prompt,
+        config: {
+          systemInstruction: 'You are an executive resume engineer and ATS specialist. Transform technical bullets into compelling STAR accomplishments with measurable results.',
+          responseMimeType: 'application/json',
+          responseSchema: {
+            type: Type.OBJECT,
+            properties: {
+              jobTitle: { type: Type.STRING },
+              targetCompany: { type: Type.STRING },
+              matchScore: { type: Type.INTEGER },
+              matchedKeywords: { type: Type.ARRAY, items: { type: Type.STRING } },
+              missingKeywords: { type: Type.ARRAY, items: { type: Type.STRING } },
+              tailoredBullets: {
+                type: Type.ARRAY,
+                items: {
+                  type: Type.OBJECT,
+                  properties: {
+                    id: { type: Type.STRING },
+                    originalText: { type: Type.STRING },
+                    starBullet: { type: Type.STRING },
+                    category: { type: Type.STRING },
+                    actionVerb: { type: Type.STRING },
+                    situation: { type: Type.STRING },
+                    task: { type: Type.STRING },
+                    action: { type: Type.STRING },
+                    resultMetric: { type: Type.STRING },
+                    keywordsCovered: { type: Type.ARRAY, items: { type: Type.STRING } },
+                    impactScore: { type: Type.INTEGER }
+                  },
+                  required: ['id', 'starBullet', 'actionVerb', 'situation', 'task', 'action', 'resultMetric', 'keywordsCovered']
+                }
+              },
+              tailoredSummary: { type: Type.STRING },
+              atsFilterInsights: {
+                type: Type.ARRAY,
+                items: {
+                  type: Type.OBJECT,
+                  properties: {
+                    atsSystem: { type: Type.STRING },
+                    recommendation: { type: Type.STRING }
+                  },
+                  required: ['atsSystem', 'recommendation']
+                }
+              }
+            },
+            required: ['matchScore', 'matchedKeywords', 'missingKeywords', 'tailoredBullets', 'tailoredSummary']
+          }
+        }
+      });
+
+      const parsed = JSON.parse(response.text || '{}');
+      if (Array.isArray(parsed.tailoredBullets) && parsed.tailoredBullets.length > 0) {
+        return {
+          jobTitle: parsed.jobTitle || targetRole || 'Software Engineer',
+          targetCompany: parsed.targetCompany || 'Target Employer',
+          matchScore: typeof parsed.matchScore === 'number' ? parsed.matchScore : 78,
+          matchedKeywords: parsed.matchedKeywords || [],
+          missingKeywords: parsed.missingKeywords || [],
+          tailoredBullets: parsed.tailoredBullets.map((b: any, idx: number) => ({
+            id: b.id || `star-${Date.now()}-${idx}`,
+            originalText: b.originalText || 'General technical achievement',
+            starBullet: b.starBullet,
+            category: (b.category as any) || 'project',
+            actionVerb: b.actionVerb || b.starBullet.split(' ')[0] || 'Engineered',
+            situation: b.situation || 'High-throughput production environment',
+            task: b.task || 'Optimize system architecture and reliability',
+            action: b.action || 'Implemented modern engineering practices',
+            resultMetric: b.resultMetric || 'Significantly improved system performance and efficiency',
+            keywordsCovered: b.keywordsCovered || [],
+            impactScore: b.impactScore || 94
+          })),
+          tailoredSummary: parsed.tailoredSummary || '',
+          atsFilterInsights: parsed.atsFilterInsights || [
+            { atsSystem: 'Workday', recommendation: 'Place technical skills in both bullet points and the core skills matrix for dual indexation.' },
+            { atsSystem: 'Greenhouse', recommendation: 'Keep single-column hierarchy; action verbs in leading position increase recruiter engagement by 35%.' },
+            { atsSystem: 'Taleo', recommendation: 'Exact keyword spelling matches are required—avoid non-standard acronyms.' },
+            { atsSystem: 'Lever', recommendation: 'Emphasize quantifiable business outcomes to score higher in recruiter search filters.' }
+          ]
+        };
+      }
+      return this.simulateStarRewrites(resumeText, jobDescription, targetRole);
+    } catch (err) {
+      console.warn('Gemini STAR resume tailoring failed, falling back to heuristic simulation:', err);
+      return this.simulateStarRewrites(resumeText, jobDescription, targetRole);
     }
   },
 
@@ -1115,12 +1310,234 @@ Response Guidelines:
       missingSet.add(kw.toUpperCase());
     }
 
+    const starData = this.simulateStarRewrites(resumeText, jobDescription, targetRole);
+
     return {
       ...base,
       jdMatchScore: jdMatch.jdMatchScore,
       jobDescription,
       matchedJDKeywords: Array.from(matchedSet),
-      missingJDKeywords: Array.from(missingSet)
+      missingJDKeywords: Array.from(missingSet),
+      starBulletRewrites: starData.tailoredBullets
+    };
+  },
+
+  /**
+   * Generates dynamic, high-impact STAR bullet points (Situation, Task, Action, Result)
+   * with quantifiable metrics tailored specifically to the missing keywords and target role.
+   */
+  simulateStarRewrites(
+    resumeText: string,
+    jobDescription: string,
+    targetRole?: string
+  ): JdStarTailoringResult {
+    const normalizedText = normalizeResumeText(resumeText);
+    const jdMatch = matchJobDescription(normalizedText, jobDescription);
+    const matched = jdMatch.matchedJDKeywords;
+    const missing = jdMatch.missingJDKeywords;
+    const effectiveRole = targetRole || 'Software Engineer';
+
+    const STAR_CATALOG: Record<string, Omit<StarBulletRewrite, 'id'>> = {
+      docker: {
+        actionVerb: 'Automated',
+        situation: 'Manual deployment pipelines causing release delays and environment drift across staging and production',
+        task: 'Containerize microservice services and establish automated CI/CD deployment quality gates',
+        action: 'Architected multi-stage Docker images and integrated automated GitHub Actions pipelines with vulnerability scanning',
+        resultMetric: 'Accelerated release deployment cycles by 65% while achieving 99.9% build consistency across environments',
+        starBullet: 'Automated containerized microservice deployments using multi-stage Docker builds and GitHub Actions CI/CD pipelines, slashing release cycles by 65% and eliminating environment configuration drift.',
+        keywordsCovered: ['Docker', 'CI/CD', 'GitHub Actions', 'DevOps'],
+        category: 'project',
+        impactScore: 96
+      },
+      kubernetes: {
+        actionVerb: 'Orchestrated',
+        situation: 'Sudden traffic spikes during university placement drives causing intermittent server timeouts',
+        task: 'Design auto-scaling container orchestration with zero-downtime rolling upgrades',
+        action: 'Deployed Kubernetes cluster with Horizontal Pod Autoscalers (HPA), ingress controllers, and health telemetry probes',
+        resultMetric: 'Supported 15,000+ concurrent requests with zero packet drop and reduced server compute idle costs by 32%',
+        starBullet: 'Orchestrated container workloads using Kubernetes and Horizontal Pod Autoscalers (HPA), sustaining 15,000+ concurrent requests with zero downtime and cutting idle compute costs by 32%.',
+        keywordsCovered: ['Kubernetes', 'Docker', 'Microservices', 'Cloud'],
+        category: 'project',
+        impactScore: 97
+      },
+      aws: {
+        actionVerb: 'Architected',
+        situation: 'On-premise file storage bottlenecks and high latency serving candidate resumes and media assets',
+        task: 'Migrate document processing workloads to high-availability cloud architecture on AWS',
+        action: 'Engineered serverless pipelines using AWS S3, CloudFront CDN edge caching, and IAM least-privilege security policies',
+        resultMetric: 'Decreased document download latency by 58% across global geographic regions with 99.99% asset availability',
+        starBullet: 'Architected high-availability cloud storage infrastructure on AWS utilizing S3 and CloudFront CDN, reducing document retrieval latency by 58% across global endpoints.',
+        keywordsCovered: ['AWS', 'Cloud', 'S3', 'CDN'],
+        category: 'project',
+        impactScore: 95
+      },
+      postgresql: {
+        actionVerb: 'Optimized',
+        situation: 'Slow complex analytics queries causing p99 dashboard load times to spike above 3.5 seconds',
+        task: 'Analyze query execution plans and remediate database relational bottlenecks',
+        action: 'Redesigned relational schemas in PostgreSQL, implemented composite B-Tree indexes, and configured HikariCP connection pooling',
+        resultMetric: 'Reduced p99 database query response latency by 42% across 25,000+ daily student placement queries',
+        starBullet: 'Optimized PostgreSQL relational schemas and query execution plans with composite B-Tree indexing and connection pooling, driving down p99 database query latency by 42% under high read traffic.',
+        keywordsCovered: ['PostgreSQL', 'SQL', 'Database', 'Query Optimization'],
+        category: 'project',
+        impactScore: 94
+      },
+      redis: {
+        actionVerb: 'Engineered',
+        situation: 'Repeated database lookups for session credentials and interview questions saturating database IOPS',
+        task: 'Implement high-performance in-memory caching layer with cache-aside invalidation patterns',
+        action: 'Integrated Redis cache clusters with sliding-window TTL expiration and distributed rate limiters',
+        resultMetric: 'Offloaded 78% of read traffic from the primary database and decreased API endpoint response times from 340ms to 45ms',
+        starBullet: 'Engineered distributed Redis caching layers with cache-aside invalidation and rate limiting, offloading 78% of database reads and reducing API response times from 340ms to 45ms.',
+        keywordsCovered: ['Redis', 'Caching', 'Database', 'Performance'],
+        category: 'project',
+        impactScore: 96
+      },
+      'spring boot': {
+        actionVerb: 'Engineered',
+        situation: 'Legacy monolithic placement backend with tight coupling and slow feature turnaround',
+        task: 'Transition services to decoupled, production-hardened microservices',
+        action: 'Built Java 21 Spring Boot 3 microservices with Spring Security, HMAC-SHA256 session management, and sliding-window rate limiters',
+        resultMetric: 'Enhanced API throughput by 40% and successfully passed rigorous OWASP Top 10 security audits with zero vulnerabilities',
+        starBullet: 'Engineered secure, high-throughput microservices using Java 21 and Spring Boot 3 with BCrypt hashing and CSRF protections, boosting system throughput by 40% and passing OWASP Top 10 security audits.',
+        keywordsCovered: ['Spring Boot', 'Java', 'Microservices', 'REST APIs', 'Security'],
+        category: 'experience',
+        impactScore: 95
+      },
+      react: {
+        actionVerb: 'Developed',
+        situation: 'Complex multi-step placement interface suffering from heavy DOM re-renders and slow initial paint',
+        task: 'Refactor frontend architecture for instant rendering and responsive client state management',
+        action: 'Built single-page application components in React 19 and TypeScript with Vite code-splitting and Tailwind CSS design tokens',
+        resultMetric: 'Achieved Lighthouse performance score of 98/100, cutting initial load times by 52% and boosting user engagement by 35%',
+        starBullet: 'Developed responsive, accessible single-page applications in React 19 and TypeScript with Vite and Tailwind CSS, achieving a 98/100 Lighthouse performance score and cutting initial page load times by 52%.',
+        keywordsCovered: ['React', 'TypeScript', 'Tailwind', 'Frontend', 'Vite'],
+        category: 'experience',
+        impactScore: 93
+      },
+      microservices: {
+        actionVerb: 'Streamlined',
+        situation: 'Inter-service communication bottlenecks and cascading failure vulnerabilities during concurrent interview sessions',
+        task: 'Architect decoupled event-driven communication and resilient fault-tolerant service boundaries',
+        action: 'Implemented RESTful APIs and asynchronous message queues with circuit-breaker patterns and structured JSON logging',
+        resultMetric: 'Eliminated cascading downtime incidents and scaled concurrent mock interview throughput by 3.2x',
+        starBullet: 'Streamlined inter-service communication across distributed microservices with circuit-breaker resilience patterns and asynchronous messaging, scaling concurrent interview handling capacity by 3.2x.',
+        keywordsCovered: ['Microservices', 'REST APIs', 'System Design', 'Architecture'],
+        category: 'project',
+        impactScore: 94
+      },
+      'rest api': {
+        actionVerb: 'Spearheaded',
+        situation: 'Inconsistent legacy API contracts causing client-side integration bugs and integration friction',
+        task: 'Standardize enterprise RESTful API contracts with typed DTO validation and OpenAPI documentation',
+        action: 'Designed RESTful endpoints with OpenAPI 3.0 specifications, strict input sanitation, and uniform HTTP status response semantics',
+        resultMetric: 'Reduced client integration bugs by 75% and enabled seamless third-party client adoption with 100% test contract coverage',
+        starBullet: 'Spearheaded standardization of OpenAPI 3.0-compliant RESTful endpoints with typed validation and HTTP semantic guards, reducing client integration errors by 75% across 20+ services.',
+        keywordsCovered: ['REST APIs', 'OpenAPI', 'Backend', 'TypeScript'],
+        category: 'project',
+        impactScore: 92
+      },
+      kafka: {
+        actionVerb: 'Engineered',
+        situation: 'Synchronous API processing causing database lockups during batch student enrollment drives',
+        task: 'Build scalable asynchronous event streaming architecture',
+        action: 'Deployed Apache Kafka message brokers with partitioned topic consumers and dead-letter queues',
+        resultMetric: 'Processed 10,000+ events per minute with sub-50ms message delivery latency and zero event loss',
+        starBullet: 'Engineered distributed event-streaming pipelines using Apache Kafka with partitioned consumer groups and dead-letter queues, processing 10,000+ events/min with zero data loss.',
+        keywordsCovered: ['Kafka', 'Event-Driven', 'Messaging', 'Distributed Systems'],
+        category: 'project',
+        impactScore: 97
+      },
+      typescript: {
+        actionVerb: 'Architected',
+        situation: 'Runtime JavaScript type coercion bugs causing unexpected state crashes in production forms',
+        task: 'Enforce strict compile-time type safety across full-stack data models',
+        action: 'Refactored codebase to strict TypeScript 5.8 with generic validation schemas, shared DTO interfaces, and automated eslint rules',
+        resultMetric: 'Eliminated 90% of runtime TypeError exceptions and accelerated developer onboarding speed by 40%',
+        starBullet: 'Architected end-to-end typed domain models using strict TypeScript and shared DTO interfaces, eliminating 90% of runtime type exceptions and accelerating code delivery velocity by 40%.',
+        keywordsCovered: ['TypeScript', 'JavaScript', 'Type Safety', 'Clean Code'],
+        category: 'experience',
+        impactScore: 93
+      },
+      'ci/cd': {
+        actionVerb: 'Automated',
+        situation: 'Manual quality assurance and deployment steps slowing release cadence to once every three weeks',
+        task: 'Implement automated CI/CD quality gate and automated test execution',
+        action: 'Configured GitHub Actions pipelines executing ESLint, TypeScript typecheck, Vitest, and Maven JUnit builds on every pull request',
+        resultMetric: 'Cut release deployment duration from 4 hours to 8 minutes while maintaining 100% test pass rate across 23 test suites',
+        starBullet: 'Automated continuous integration and deployment (CI/CD) pipelines with GitHub Actions, enforcing automated linting, typechecks, and 160+ unit tests to slash release times from 4 hours to 8 minutes.',
+        keywordsCovered: ['CI/CD', 'GitHub Actions', 'Testing', 'Automation'],
+        category: 'project',
+        impactScore: 95
+      }
+    };
+
+    // Pick top skills prioritising missing keywords, then matched
+    const candidateSkillsToCover = [
+      ...missing.map((s) => s.toLowerCase()),
+      ...matched.map((s) => s.toLowerCase()),
+      'docker', 'postgresql', 'react', 'spring boot', 'rest api', 'ci/cd'
+    ];
+
+    const uniqueSkills = Array.from(new Set(candidateSkillsToCover));
+    const selectedBullets: StarBulletRewrite[] = [];
+
+    for (let i = 0; i < uniqueSkills.length; i++) {
+      const sk = uniqueSkills[i];
+      if (STAR_CATALOG[sk]) {
+        const item = STAR_CATALOG[sk];
+        selectedBullets.push({
+          id: `star-sim-${Date.now()}-${selectedBullets.length + 1}`,
+          originalText: `Worked with ${sk} on system development and features.`,
+          starBullet: item.starBullet,
+          category: item.category,
+          actionVerb: item.actionVerb,
+          situation: item.situation,
+          task: item.task,
+          action: item.action,
+          resultMetric: item.resultMetric,
+          keywordsCovered: item.keywordsCovered,
+          impactScore: item.impactScore
+        });
+      }
+      if (selectedBullets.length >= 4) break;
+    }
+
+    if (selectedBullets.length === 0) {
+      selectedBullets.push({
+        id: `star-sim-${Date.now()}-1`,
+        originalText: 'Developed software features for application.',
+        starBullet: 'Architected scalable RESTful services and responsive client modules, optimizing query indexing to reduce p99 latency by 42% across 15,000+ daily requests.',
+        category: 'project',
+        actionVerb: 'Architected',
+        situation: 'Application latency spikes during peak user activity',
+        task: 'Refactor core modules and optimize data access layer',
+        action: 'Implemented composite indexing and modular component architecture',
+        resultMetric: 'Reduced p99 query latency by 42% across 15,000+ daily requests',
+        keywordsCovered: ['REST APIs', 'SQL', 'Performance Optimization'],
+        impactScore: 94
+      });
+    }
+
+    const matchedPreview = matched.slice(0, 4).join(', ') || 'modern full-stack architecture';
+    const missingPreview = missing.slice(0, 3).join(' and ') || 'cloud scalability and DevOps';
+
+    const tailoredSummary = `Results-driven ${effectiveRole} with demonstrated expertise in ${matchedPreview}. Experienced in architecting robust software solutions, leveraging ${missingPreview} to deliver high-throughput, maintainable systems with quantifiable performance optimizations.`;
+
+    return {
+      jobTitle: effectiveRole,
+      targetCompany: 'Target Employer',
+      matchScore: jdMatch.jdMatchScore,
+      matchedKeywords: matched,
+      missingKeywords: missing,
+      tailoredBullets: selectedBullets,
+      tailoredSummary,
+      atsFilterInsights: [
+        { atsSystem: 'Workday', recommendation: 'Place technical skills in both bullet points and the core skills matrix for dual indexation.' },
+        { atsSystem: 'Greenhouse', recommendation: 'Keep single-column hierarchy; action verbs in leading position increase recruiter engagement by 35%.' },
+        { atsSystem: 'Taleo', recommendation: 'Exact keyword spelling matches are required—avoid non-standard acronyms.' },
+        { atsSystem: 'Lever', recommendation: 'Emphasize quantifiable business outcomes to score higher in recruiter search filters.' }
+      ]
     };
   },
 

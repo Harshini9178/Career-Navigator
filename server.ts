@@ -1019,6 +1019,49 @@ app.post('/api/resume/upload-with-jd', aiRateLimiter(15), async (req, res) => {
   }
 });
 
+// Automated Job-Specific Resume Tailoring (STAR Method)
+app.post('/api/resume/tailor-star', aiRateLimiter(20), async (req, res) => {
+  const userId = getSessionUserId(req);
+  if (!userId) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+
+  const { jobDescription, resumeText, resumeContent, targetRole } = req.body;
+
+  if (!jobDescription || typeof jobDescription !== 'string' || jobDescription.trim().length < 20) {
+    return res.status(400).json({
+      error: 'Job description is required (at least 20 characters) to analyze keyword gaps and tailor STAR bullets.'
+    });
+  }
+
+  try {
+    let effectiveResumeInput = resumeText || resumeContent;
+    if (!effectiveResumeInput) {
+      // Fallback to active resume in DB if not passed
+      const userResumes = jsonDb.getResumeDocumentsByUserId(userId);
+      if (userResumes.length > 0) {
+        effectiveResumeInput = userResumes[0].content;
+      } else {
+        const lastAnalysis = jsonDb.getResumesByUserId(userId);
+        if (lastAnalysis.length > 0) {
+          effectiveResumeInput = lastAnalysis[0].skills.join(', ');
+        }
+      }
+    }
+
+    const result = await aiService.tailorResumeWithJD(
+      effectiveResumeInput || 'Full Stack Engineer with React, TypeScript, Java, and SQL experience.',
+      jobDescription,
+      targetRole
+    );
+
+    res.json({ success: true, result });
+  } catch (error: any) {
+    logger.error('STAR resume tailoring error:', error);
+    res.status(500).json({ error: 'Failed to tailor resume with STAR method', details: error.message });
+  }
+});
+
 // Get user's active resume analysis
 app.get('/api/resume/my-analysis', (req, res) => {
   const userId = getSessionUserId(req);

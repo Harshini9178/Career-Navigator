@@ -45,6 +45,7 @@ import TemplateGalleryModal from '../components/resume/TemplateGalleryModal.js';
 import MyResumesModal from '../components/resume/MyResumesModal.js';
 import AtsCompatibilityPanel from '../components/resume/AtsCompatibilityPanel.js';
 import AiSummaryHelperModal from '../components/resume/AiSummaryHelperModal.js';
+import StarTailorModal from '../components/resume/StarTailorModal.js';
 import { generateResumeFilename, exportLiveResumeToPdf } from '../lib/pdfExporter.js';
 
 interface ResumeBuilderProps {
@@ -115,6 +116,7 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
   const [showAtsPanel, setShowAtsPanel] = useState(false);
   const [showSummaryAiModal, setShowSummaryAiModal] = useState(false);
   const [showImportProfileModal, setShowImportProfileModal] = useState(false);
+  const [showStarTailorModal, setShowStarTailorModal] = useState(false);
 
   // PDF Export Feedback State
   const [exportingPdf, setExportingPdf] = useState(false);
@@ -585,6 +587,58 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
   };
 
   // Send to Resume Analyzer
+  const handleApplyStarBullet = (bullet: string, dest: 'project' | 'experience') => {
+    if (dest === 'project') {
+      updateContent((prev) => {
+        const projects = [...prev.projects];
+        if (projects.length === 0) {
+          projects.push({
+            id: `proj-${Date.now()}`,
+            title: 'Core Technical Project',
+            description: 'Scalable distributed software application',
+            technologies: ['React', 'TypeScript', 'Docker', 'PostgreSQL'],
+            bullets: [bullet]
+          });
+        } else {
+          projects[0] = {
+            ...projects[0],
+            bullets: [...projects[0].bullets, bullet]
+          };
+        }
+        return { ...prev, projects };
+      });
+    } else {
+      updateContent((prev) => {
+        const experience = [...prev.experience];
+        if (experience.length === 0) {
+          experience.push({
+            id: `exp-${Date.now()}`,
+            company: 'Engineering Organization / Internship',
+            jobTitle: targetRole || 'Software Engineer',
+            location: 'Remote',
+            startDate: '2024',
+            endDate: 'Present',
+            currentRole: true,
+            bullets: [bullet]
+          });
+        } else {
+          experience[0] = {
+            ...experience[0],
+            bullets: [...experience[0].bullets, bullet]
+          };
+        }
+        return { ...prev, experience };
+      });
+    }
+  };
+
+  const handleApplyStarSummary = (newSummary: string) => {
+    updateContent((prev) => ({
+      ...prev,
+      summary: newSummary
+    }));
+  };
+
   const handleSendToAnalyzer = () => {
     try {
       // Format plain text representation for the analyzer
@@ -816,6 +870,17 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
             >
               <Sparkles className="w-3.5 h-3.5 text-purple-400" />
               <span>Audit ATS</span>
+            </button>
+
+            {/* 🎯 Job-Specific STAR Tailoring Button */}
+            <button
+              onClick={() => setShowStarTailorModal(true)}
+              className="border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 text-xs font-semibold px-3 py-2 rounded-lg transition flex items-center space-x-1.5 shadow-sm"
+              title="Tailor resume bullets to any employer Job Description using the STAR formula"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
+              <span className="hidden sm:inline">Tailor to JD (STAR)</span>
+              <span className="sm:hidden">STAR Tailor</span>
             </button>
           </div>
         </div>
@@ -2073,6 +2138,15 @@ export default function ResumeBuilder({ user, onNavigate }: ResumeBuilderProps) 
             summary: sug
           }));
         }}
+      />
+
+      <StarTailorModal
+        isOpen={showStarTailorModal}
+        onClose={() => setShowStarTailorModal(false)}
+        resumeContent={content}
+        targetRole={targetRole}
+        onApplyBullet={handleApplyStarBullet}
+        onApplySummary={handleApplyStarSummary}
       />
 
       {/* Import Profile Confirmation Modal */}
