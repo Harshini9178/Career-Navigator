@@ -2,6 +2,7 @@
   "name": "career-navigator",
   "private": true,
   "version": "1.0.0",
+  "homepage": "https://career-navigator-1.onrender.com",
   "type": "module",
   "engines": {
     "node": ">=20.0.0"

@@ -1,5 +1,6 @@
 # Career Navigator
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-career--navigator--1.onrender.com-success?style=for-the-badge&logo=render)](https://career-navigator-1.onrender.com)
 [![CI Pipeline](https://github.com/Harshini9178/Career-Navigator/actions/workflows/ci.yml/badge.svg)](https://github.com/Harshini9178/Career-Navigator/actions)
 ![Java](https://img.shields.io/badge/Java-21%20LTS-orange.svg)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.3-brightgreen.svg)
@@ -8,7 +9,27 @@
 ![Vitest](https://img.shields.io/badge/Vitest-Tests%20Passing-emerald.svg)
 ![Security](https://img.shields.io/badge/Security-Spring%20Security%20Hardened-green.svg)
 
-**Enterprise-Grade AI Placement & Career Platform** — Practice technical and behavioral interviews with real-time SSE feedback, Monaco Code Lab algorithmic reviews, ATS resume analysis with JD matching, and automated quality gates.
+> **Enterprise-Grade AI Placement & Career Platform** — Practice technical and behavioral interviews with real-time speech analytics & SSE feedback, Monaco Code Lab algorithmic reviews, ATS resume scoring with Job Description matching, and automated STAR-method resume tailoring.
+
+---
+
+## 🌐 Live Production Links
+
+* 🚀 **Live Web Application:** [https://career-navigator-1.onrender.com](https://career-navigator-1.onrender.com)
+* ⚙️ **Render Service Dashboard:** [Career-Navigator-1 on Render](https://dashboard.render.com/web/srv-dbsf4f7e1egvs73cqaa7kg)
+* 📦 **GitHub Repository:** [https://github.com/Harshini9178/Career-Navigator](https://github.com/Harshini9178/Career-Navigator)
+
+---
+
+## ✨ Key Capabilities & Highlights
+
+* **Automated Job-Specific Resume Tailoring (STAR Method):** Paste any corporate Job Description (JD); the AI analyzes keyword gaps and provides 1-click bullet point rewrites following the **STAR formula** (*Situation, Task, Action, Result*) with quantifiable metrics (e.g. *"Optimized SQL queries, reducing API latency by 42%"*) to beat Workday, Greenhouse, Taleo, and Lever ATS filters.
+* **ATS Keywords Optimizer & Resume Analyzer:** 6-factor deterministic scoring rubric analyzing section completeness, technical depth, formatting, and term density with instant PDF/Word extraction.
+* **LaTeX-Grade Resume Builder Studio:** Multi-step wizard generating clean, ATS-compliant single-column PDF resumes with real-time score preview and direct STAR accomplishment injection.
+* **AI Mock Interview Studio:** Speech-to-text audio recording, real-time WPM, filler word detection (`um`, `like`), and 5-dimension rubric scoring (Accuracy, Relevance, Logic, Communication, Delivery) via Google Gemini.
+* **Aptitude & Technical Assessment Center:** Timed examinations across Quantitative Aptitude, Logical Reasoning, Verbal Ability, and Core CS with proctoring / anti-cheat tab-switch detection.
+* **AI Career Assistant & Mentor:** Conversational AI offering personalized preparation roadmaps, algorithm design walkthroughs, and behavioral interview roleplays.
+* **Admin / Placement Officer Portal:** Departmental cohort analytics, student readiness percentiles, interview scorecards, and batch candidate exports.
 
 ---
 
@@ -129,6 +150,27 @@ npm run build
 3. **Cross-Site Request Forgery (CSRF):** Auto-issued CSRF token cookies with header validation on state-changing API endpoints.
 4. **Rate Limiting:** Sliding-window rate limiter protecting authentication endpoints against credential stuffing and AI endpoints against abuse.
 5. **Role-Based Authorization:** Candidate student vs Administrator role guards enforced at the Spring Security filter chain level.
+
+---
+
+## ☁️ Cloud Deployment (Render & Docker)
+
+The repository is pre-configured for continuous integration and automated deployment on **Render**:
+
+1. **Deployment Architecture:** Multi-stage Docker container (`Dockerfile`) compiling React 19 frontend assets via Vite and bundling the Express server via `esbuild` into a lightweight, high-performance Node 20 production runtime.
+2. **Environment Variables Required:**
+   | Variable | Description | Example / Default |
+   |---|---|---|
+   | `PORT` | Listening server port | `3000` |
+   | `NODE_ENV` | Production execution mode | `production` |
+   | `JWT_SECRET` | Secret key for signed JWT tokens | `your_secure_jwt_secret` |
+   | `GEMINI_API_KEY` | Google Gemini AI API Key | `AIzaSy...` |
+   | `GEMINI_MODEL` | Effective Gemini model | `gemini-3.5-flash-lite` |
+   | `GOOGLE_CLIENT_ID` | Google OAuth 2.0 Web Client ID | `...apps.googleusercontent.com` |
+   | `GOOGLE_CLIENT_SECRET` | Google OAuth 2.0 Client Secret | `GOCSPX-...` |
+   | `APP_URL` | Canonical public application URL | `https://career-navigator-1.onrender.com` |
+
+3. **Auto-Deployment:** Any push to the `main` branch automatically triggers a fresh build and zero-downtime deployment on Render at [https://career-navigator-1.onrender.com](https://career-navigator-1.onrender.com).
 
 ---
 
